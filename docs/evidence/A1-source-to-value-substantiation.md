@@ -75,13 +75,13 @@ The following matrix audits all seventeen headline inputs (8 for Case A, 9 for C
 
 | Input ID | Scenario / Component | Parameter / Field | Modeled Value | Primary Source Entity & Document | Exact Location in Source | Verbatim Quote / Reference Text | Evidence Classification | Boundary / Scope Qualifier | Allowed Claim | Demo Fallback |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **A-01** | Case A / Baseline `body` | `plastic_mass_g` | `19.5` | Coca-Cola HBC AG, *Green Finance Report* (Sep 2023) | Page 18, Footnote 2 (Methodology section) | *"Average weight of one 500ml PET bottle is 19.5 g and its closure is 2.5 g in average as per our internal data."* | `EXACT_PRIMARY` | Internal corporate portfolio average for lightweighted 500ml PET bottles across 29 European markets (2019–2022). Excludes label and glue. | "Modeled body mass is 19.5g, representing Coca-Cola HBC's reported average portfolio weight for a 500ml PET bottle." | Point to CCHBC Green Finance Report (Sep 2023), Page 18, Footnote 2. |
+| **A-01** | Case A / Baseline `body` | `plastic_mass_g` | `19.5` | Coca-Cola HBC AG, *Green Finance Report* (Sep 2023) | Page 18, Footnote 2 (Methodology section) | *"Average weight of one 500ml PET bottle is 19.5 g and its closure is 2.5 g in average as per our internal data."* | `EXACT_PRIMARY` | CCHBC-reported average from internal data. The cited footnote does not state geographic weighting or label/adhesive inclusion; PackShift treats unquantified decoration outside represented boundary. | "Modeled body mass is 19.5g, representing Coca-Cola HBC's reported average portfolio weight for a 500ml PET bottle." | Point to CCHBC Green Finance Report (Sep 2023), Page 18, Footnote 2. |
 | **A-02** | Case A / Baseline `closure` | `plastic_mass_g` | `2.5` | Coca-Cola HBC AG, *Green Finance Report* (Sep 2023) | Page 18, Footnote 2 (Methodology section) | *"Average weight of one 500ml PET bottle is 19.5 g and its closure is 2.5 g in average as per our internal data."* | `EXACT_PRIMARY` | Reported closure portfolio average mass. | "Modeled closure mass is 2.5g, reflecting Coca-Cola HBC's reported average closure weight." | Point to CCHBC Green Finance Report (Sep 2023), Page 18, Footnote 2. |
 | **A-03** | Case A / Baseline `body` | `recycled_content_fraction` | `0.0` | Coca-Cola HBC AG, *Green Finance Report* (Sep 2023) | Page 19, Circular Economy use/reuse section | *"the rPET is used instead of virgin PET"* | `MODELING_ASSUMPTION` | Counterfactual baseline representing a 100% virgin PET bottle. Report uses virgin PET as the avoided counterfactual, but historical fleet was not necessarily 0.00% across all markets. | "Demonstration assumes a counterfactual 100% virgin PET baseline to isolate the maximum conversion impact." | Clarify that 0% is an illustrative baseline counterfactual reflecting pre-conversion virgin state. |
 | **A-04** | Case A / Baseline `closure` | `recycled_content_fraction` & `material` | `0.0` / `HDPE` | Unstated in CCHBC report; PackShift domain assumption | Silent in CCHBC report | CCHBC report gives closure mass (2.5g) but is completely silent on closure resin (HDPE vs PP) and recycled content. | `MODELING_ASSUMPTION` | CCHBC report does not state closure polymer or recycled fraction. Modeling closure as virgin HDPE (0.0 recycled content) is an explicit PackShift domain assumption. | "Closure is modeled with 0.0 recycled content as an explicit PackShift baseline assumption, reflecting conventional beverage closure practice where the cited report is silent." | Transparently state that CCHBC report does not specify closure polymer or recycled content; this is an explicit PackShift modeling assumption. |
 | **A-05** | Case A / Candidate `body` | `recycled_content_fraction` | `1.0` | Coca-Cola HBC AG, *Green Finance Report* (Sep 2023) | Page 15 & Page 19 | Page 15: *"Gaglianico plant in Italy that will transform up to 30,000 tonnes of PET each year into 100% recycled PET preforms... We are transitioning to 100% rPET portfolio in selected markets, including Switzerland, Italy and Austria."* | `PRIMARY_WITH_QUALIFIER` | 100% rPET body applies to dedicated converted markets (e.g. Switzerland, Italy, Austria) and in-house preform facilities, NOT universal global deployment. | "Candidate body represents Coca-Cola HBC's 100% rPET bottle conversion deployed in selected European markets." | Quote CCHBC Report p. 15 on Gaglianico plant and selected 100% rPET markets. |
 | **A-06** | Case A / Candidate `body` | `plastic_mass_g` | `19.5` | PackShift Preform Tooling Invariance Assumption | Derived from p. 18 baseline body mass | Preform mass is conserved in blow-moulding tooling conversion. Report does not publish post-conversion scale weight. | `MODELING_ASSUMPTION` | Candidate body mass 19.5 g is a PackShift modeling assumption; CCHBC does not publish a post-conversion measured bottle mass in the cited report. | "Candidate body mass is modeled at 19.5g under a PackShift mass-conservation assumption, as post-conversion bottle scale weight is not published in the CCHBC report." | Explain that 19.5g is an explicit modeling assumption of nominal mass conservation. |
-| **A-07** | Case A / Candidate `closure` | `plastic_mass_g` & `recycled_content_fraction` | `2.5` g / `0.0` | CCHBC Report pp. 15, 18 (mass); PackShift assumption (retained virgin status) | Page 15 & Page 18 | Scope of rPET investment in CCHBC report is specifically "rPET preforms" for bottle bodies. Report is silent on closure conversions. | `DERIVED_FROM_PRIMARY` (2.5g mass) / `MODELING_ASSUMPTION` (retained virgin status) | CCHBC report does not discuss closure conversion or closure resin. Candidate closure is modeled as an unconverted 2.5g virgin component under explicit PackShift domain assumptions. | "Under PackShift's modeled assumption of an unconverted 2.5g virgin closure, complete-package virgin plastic drops from 22.0g to 2.5g (-88.64%)." | State clearly that CCHBC's reported transition covers bottle preforms; retaining the closure as virgin is a PackShift modeling assumption demonstrating component boundary effects. |
+| **A-07** | Case A / Candidate `closure` | `plastic_mass_g` & `recycled_content_fraction` | `2.5` g / `0.0` | CCHBC Report pp. 15, 18 (mass); PackShift assumption (retained virgin status) | Page 15 & Page 18 | Scope of rPET investment in CCHBC report is specifically "rPET preforms" for bottle bodies. Report is silent on closure conversions. | `MODELING_ASSUMPTION (candidate mass retention; 2.5g seeded from source-backed baseline average)` | CCHBC report does not discuss closure conversion or closure resin. Candidate closure is modeled as an unconverted 2.5g virgin component under explicit PackShift domain assumptions. | "Under PackShift's modeled assumption of an unconverted 2.5g virgin closure, complete-package virgin plastic drops from 22.0g to 2.5g (-88.64%)." | State clearly that CCHBC's reported transition covers bottle preforms; retaining the closure as virgin is a PackShift modeling assumption demonstrating component boundary effects. |
 | **A-08** | Case A / Label & Adhesive | `plastic_mass_g` | *EXCLUDED* (Unmodeled) | Omitted from CCHBC Green Finance Report | Silent in primary source | Earlier NDR-01 text cited "~0.3–0.5g OPP label"; this specific number does NOT appear anywhere in the CCHBC report. | `SOURCE_SILENT` / `MODELING_ASSUMPTION` (boundary scope) / `UNSUBSTANTIATED` (earlier numeric estimate) | CCHBC report is silent on label/adhesive mass. PackShift explicitly excludes secondary decoration from the modeled boundary, treating missing mass as unknown rather than zero. | "Secondary packaging components (labels, adhesives) are unquantified in the primary source and remain outside the represented component boundary with unknown mass." | Confirm that CCHBC does not report label mass; PackShift treats missing mass as unknown rather than fabricating an assumption. |
 | **B-01** | Case B / Current `container` | Identity & Code | `Berry UniPak 360ml (5226)` | Berry Global / Superfos Technical Datasheet | Product code 5226 | *"UniPak Round 360 ml... Product code: 5226... Diameter: 118 mm... Height: 52.6 mm"* | `EXACT_PRIMARY` | Technical catalog identity for standard injection-molded round pot. | "Baseline is Berry Global / Superfos Product 5226, a 360ml injection-moulded UniPak container." | Present Berry technical product catalog for code 5226. |
 | **B-02** | Case B / Current `pot` | `plastic_mass_g` | `14.8` | Berry Global / Superfos Technical Datasheet | Specification field: Weight | *"Weight: 14.8 g ±0.7 g"* | `PRIMARY_WITH_QUALIFIER` | 14.8g is the **pot body only**. The snap-on lid is sold separately and not included in this figure. | "Baseline container body has a manufacturer-specified weight of 14.8g (excluding separate snap-on lid)." | Note explicitly that 14.8g covers the container body only; lid is separate catalog item. |
@@ -101,8 +101,8 @@ The following matrix audits all seventeen headline inputs (8 for Case A, 9 for C
 - **Issuing Entity:** Coca-Cola HBC AG
 - **Document Title:** *Green Finance Report — September 2023*
 - **Publication Date:** September 2023
-- **Document Nature:** Audited Green Bond Allocation and Impact Report (governed by ICMA Harmonised Framework for Impact Reporting)
-- **External Assurance:** Includes Independent Limited Assurance Report by PricewaterhouseCoopers (PwC)
+- **Document Nature:** Green Bond Allocation and Impact Report (governed by ICMA Harmonised Framework for Impact Reporting)
+- **External Assurance:** Contains an Independent Limited Assurance Report by PricewaterhouseCoopers (PwC) covering quantitative Use of Proceeds disclosures (allocation section). The PwC assurance scope explicitly does NOT cover the Impact Report or packaging metrics. The 19.5g and 2.5g figures remain CCHBC-reported values from internal data (`SOURCE_AVAILABLE`), not audited or externally assured impact values.
 - **Official Online Location:** Publicly accessible via corporate investor relations: `https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf`
 - **Committed Local Copy:** *No committed local PDF in repository.* Primary verification relies on official corporate URL and external public investor archives.
 
@@ -114,8 +114,8 @@ The following matrix audits all seventeen headline inputs (8 for Case A, 9 for C
   > *"For calculation of the single-use plastic material saved, we assume that every 1.04 (520ml/500ml) packaging unit from these dispensers replace one single 500ml PET bottle² and its closure and then the packaging units sold are multiplied by the average weight of the 500ml PET bottle and its closure."*  
   > *"² Average weight of one 500ml PET bottle is 19.5 g and its closure is 2.5 g in average as per our internal data."*
 - **Epistemic Classification:** `EXACT_PRIMARY` (for body and closure mass values).
-- **Scope & Context:** This represents Coca-Cola HBC's internal corporate portfolio weighted average across 29 operating markets for lightweighted 500ml single-use PET bottles. It is a reported corporate average (`SOURCE_AVAILABLE`), not an empirical single-sample weigh-scale measurement.
-- **Exclusions:** Footnote 2 mentions only the 500ml PET bottle body and its closure. Labels, hot-melt adhesives, and secondary packaging are completely omitted from the calculation methodology.
+- **Scope & Context:** CCHBC-reported average from internal data (`SOURCE_AVAILABLE`), not an empirical single-sample weigh-scale measurement. The cited footnote does not state geographic weighting or label/adhesive inclusion.
+- **Exclusions:** Footnote 2 specifies only the average weight of the 500ml PET bottle and its closure. Labels, hot-melt adhesives, and secondary packaging are unquantified in the cited source; PackShift treats unquantified decoration outside represented boundary.
 
 #### 2. Recycled Content Baseline (0.0 / 0%)
 - **Source Location:** Page 19, Circular Economy use/reuse phase.
@@ -140,8 +140,8 @@ The following matrix audits all seventeen headline inputs (8 for Case A, 9 for C
 
 #### 5. Candidate Closure (2.5 g Virgin Component)
 - **Source Location:** Page 15 & Page 18.
-- **Epistemic Classification:** `DERIVED_FROM_PRIMARY` (2.5 g mass) / `MODELING_ASSUMPTION` (retained virgin status).
-- **Epistemic Boundary:** The CCHBC report confirms an average closure mass of 2.5 g (p. 18, Footnote 2), but does **not** state the closure polymer or its recycled fraction, nor does it discuss closure conversions alongside its rPET preform investments. In PackShift, the candidate closure is modeled with identical mass (2.5 g) and virgin status (0.0 recycled fraction) as an explicit domain assumption. This assumption illustrates that marketing claims of "100% rPET bottles" do not automatically imply a 100% virgin-free complete package when closures are excluded from the conversion scope. However, this closure specification is a PackShift modeling assumption, **not** a manufacturer-verified transition.
+- **Epistemic Classification:** `MODELING_ASSUMPTION (candidate mass retention; 2.5g seeded from source-backed baseline average)`.
+- **Epistemic Boundary:** The CCHBC report confirms an average closure mass of 2.5 g (p. 18, Footnote 2), but does **not** state the closure polymer or its recycled fraction, nor does it discuss closure conversions alongside its rPET preform investments. In PackShift, the candidate closure is modeled with retained baseline mass (2.5 g seeded from source-backed baseline average) and virgin status (0.0 recycled fraction) as an explicit domain modeling assumption. This assumption illustrates that marketing claims of "100% rPET bottles" do not automatically imply a 100% virgin-free complete package when closures are excluded from the conversion scope. This candidate closure specification is a PackShift modeling assumption, **not** a manufacturer-verified transition.
 
 #### 6. Label & Adhesive Boundary Exclusion
 - **Source Evidence:** The CCHBC Green Finance Report is completely silent on bottle label and adhesive masses.
@@ -275,7 +275,7 @@ Transition Delta:
   - `verification_state`: `INDICATIVE`
   - `current_virgin_pack_g`: `14.8`
   - `candidate_virgin_pack_g`: `2.4` (IEEE float: `2.3999999999999995`)
-  - `reduction_g`: `12.4` (IEEE float: `12.400000000000002`)
+  - `reduction_g`: `12.4` (IEEE float: `12.400000000000002`
   - `reduction_pct`: `83.78378378378379`
 - **Arithmetic Parity:** Exact match between manual calculation, documentation, and Python backend.
 - **Epistemic Status:** 83.78% is a deterministic calculation over represented components under the explicit baseline 0% recycled content modeling assumption.
@@ -361,7 +361,9 @@ A rapid-lookup reference card for presenters facing judge questioning.
 ║ SCENARIO A: 500ml PET Beverage Bottle (Virgin -> 100% rPET Body)                         ║
 ║ ──────────────────────────────────────────────────────────────────────────────────────── ║
 ║ • Primary Source: Coca-Cola HBC AG — Green Finance Report (September 2023)               ║
-║ • Assurance: PricewaterhouseCoopers (PwC) Independent Limited Assurance Report           ║
+║ • PwC Limited Assurance: Applies strictly to quantitative Use of Proceeds allocations;   ║
+║   explicitly does NOT cover Impact Report figures or packaging metrics. 19.5g and 2.5g   ║
+║   are CCHBC-reported internal figures (SOURCE_AVAILABLE), not audited impact values.     ║
 ║ • Key Citations:                                                                         ║
 ║   - Page 18, Footnote 2: "Average weight of one 500ml PET bottle is 19.5 g and its       ║
 ║     closure is 2.5 g in average as per our internal data."                               ║
@@ -431,7 +433,7 @@ In earlier drafts of project documentation, enthusiastic language about thermal 
 - **Canon Rule Alignment:**
   - `docs/canon/challenge_canon.md`: *"PackShift evaluates eligibility against explicit operational constraints. It does not certify physical danger or provide accident liability analysis."*
 - **Corrected Formulation:**
-  > *"The Duni Deli Hinged container is thermoformed from amorphous rPET with a manufacturer-documented temperature ceiling of +70°C for up to 2 hours, and is explicitly designated as not microwave safe. Subjecting the container to 95°C hot-fill exceeds the material's operational envelope, causing loss of dimensional stability and seal integrity. PackShift's operational gate flags this as an incompatibility block."*
+  > *"The Duni Deli Hinged container has a manufacturer-documented temperature ceiling of +70°C for up to 2 hours, and is explicitly designated as not microwave safe. Subjecting the container to 95°C hot-fill or microwave reheating exceeds the manufacturer-documented operational envelope. PackShift's operational gate flags this as an operational incompatibility block."*
 
 ### 10.2 "Regulation (EU) 2022/1616 Compliance" vs Food Contact Suitability
 - **Previous Implication:** Citations of Regulation (EU) 2022/1616 implied that citing the regulation proved the candidate's food-contact suitability.
@@ -453,29 +455,13 @@ To maintain epistemic honesty, PackShift explicitly catalogues all factors that 
 
 ```text
 ┌────────────────────────────────────────────────────────────────────────┐
-│                      STRUCTURED TAXONOMY OF UNKNOWNS                   │
+│                        WHAT IS STILL NOT PROVEN                        │
 ├────────────────────────────────────────────────────────────────────────┤
-│ CATEGORY A: DATA GAPS IN PUBLIC SOURCES (Unknown to PackShift)         │
-│ • Case A Closure Polymer & Recycled Content: CCHBC report states 2.5g  │
-│   mass but is silent on resin identity and recycled fraction.          │
-│ • Case A Bottle Label & Adhesive Mass: Omitted from CCHBC report.       │
-│ • Case A Post-Conversion Bottle Body Weight: Empirical weigh-scale     │
-│   verification of the 100% rPET bottle body is unreleased.             │
-│ • Case B Baseline Snap-on Lid Mass: Berry datasheet specifies pot body │
-│   weight only (14.8g); separate lid mass is unquantified.              │
-│ • Case B Baseline Recycled Content: Berry datasheet states raw         │
-│   material PP without recycled content declaration; 0.0% is assumed.   │
-│                                                                        │
-│ CATEGORY B: CONTEXT-DEPENDENT FACTORS (Requires Proprietary Testing)   │
-│ • Client Food Chemistry & Specific Migration: Suitability for acidic,  │
-│   high-fat, or alcohol-containing food matrices under EU 10/2011.      │
-│ • Organoleptic Performance: Flavor scalping or sensory alteration from │
-│   recycled polymer volatile organic compounds (VOCs).                  │
-│ • Automated Packaging Line Runnability: Denesting friction, filling    │
-│   track speed, top-load compressive strength, and capping torque.      │
-│                                                                        │
-│ CATEGORY C: OUT OF SCOPE FOR PUBLIC MVP (Supply Chain & Commercial)    │
-│ • Commercial Resin Pricing: Spot market price premiums of rPET over    │
+│ • Actual Bill-of-Materials & Resin Mix of Client Packaging.           │
+│ • Migration Testing Results Under Specific High-Fat / Acidic Foods.    │
+│ • Production Line Performance (Denesting, Sealing Speed, Capping).    │
+│ • Unmodeled Secondary Components (Inks, Glues, Tamper Seals).          │
+│ • Commercial Availability & Contract Pricing of Food-Grade rPET vs    │
 │   virgin polymers.                                                     │
 │ • Supplier Minimum Order Quantities (MOQ) & Regional Allocation Quotas.│
 │ • Municipal End-of-Life Sorting & Real-World Recycling Infrastructure  │
@@ -491,7 +477,7 @@ Detailed, defensible scripted answers to five challenging judge questions.
 
 ### Question 1: *"Coca-Cola HBC is a massive multinational. How can you claim their numbers represent standard packaging for other companies?"*
 - **Defensible Response:**
-  > *"We do not claim Coca-Cola HBC's numbers represent all beverage packaging. In fact, our public evidence pack explicitly labels this scenario as an illustrative public case study. The 19.5g body and 2.5g closure are reported portfolio averages from Coca-Cola HBC's audited Green Finance Report (September 2023, page 18, Footnote 2; verification state `SOURCE_AVAILABLE`). We chose this source specifically because it is publicly traceable and externally assured by PwC. When deployed for a private client like Profi, PackShift replaces these public reference numbers with the client's actual bill-of-materials. The calculation engine remains identical, but the provenance changes."*
+  > *"We do not claim Coca-Cola HBC's numbers represent all beverage packaging. In fact, our public evidence pack explicitly labels this scenario as an illustrative public case study. The 19.5g body and 2.5g closure are reported portfolio averages from Coca-Cola HBC's Green Finance Report (September 2023, page 18, Footnote 2; verification state `SOURCE_AVAILABLE`). While the Green Finance Report contains a PwC limited assurance report, that assurance scope strictly covers quantitative Use of Proceeds allocations and explicitly does not cover the Impact Report or packaging metrics. The 19.5g and 2.5g figures are CCHBC-reported internal portfolio metrics (`SOURCE_AVAILABLE`), not audited or externally assured impact numbers. When deployed for a private client like Profi, PackShift replaces these public reference numbers with the client's actual bill-of-materials. The calculation engine remains identical, but the provenance changes."*
 
 ### Question 2: *"In Case B, you're comparing a 14.8g pot body without a lid to a 12.0g complete hinged container with a lid. Isn't that an apples-to-oranges comparison?"*
 - **Defensible Response:**
