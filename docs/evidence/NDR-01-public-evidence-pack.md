@@ -2,7 +2,7 @@
 
 ## Executive Summary & Boundary
 
-This evidence pack establishes the first publicly verifiable dataset for PackShift, replacing synthetic illustrative fixtures with traceable packaging specifications sourced from audited corporate sustainability reports and manufacturer technical datasheets.
+This evidence pack establishes the first publicly verifiable dataset for PackShift, replacing synthetic illustrative fixtures with traceable packaging specifications sourced from corporate sustainability/green finance reports and manufacturer technical datasheets.
 
 Profi confirmed that proprietary internal packaging data will not be provided due to confidentiality. In accordance with NDR-01 guidelines:
 - All figures are derived strictly from public manufacturer documentation and official regulatory references.
@@ -25,7 +25,7 @@ Profi confirmed that proprietary internal packaging data will not be provided du
 1. **Coca-Cola HBC AG** — *Green Finance Report* (September 2023), Circular Economy / Packaging Allocation section:
    - URL: [Coca-Cola HBC Green Finance Report (PDF)](https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf)
    - Exact locations: Page 15 (Case study: in-house 100% rPET preforms at Gaglianico plant; 100% rPET portfolio in selected markets); Page 18, Footnote 2 (500ml PET bottle average weight 19.5g, closure 2.5g); Page 19 (Impact report methodology for rPET preforms).
-   - Scope: Audited project allocation for in-house food-grade rPET preform manufacturing plants (e.g. Gaglianico, Italy; Edelstal, Austria). Includes independent limited assurance report by PricewaterhouseCoopers (PwC).
+   - Scope: Project allocation for in-house food-grade rPET preform manufacturing plants (e.g. Gaglianico, Italy; Edelstal, Austria). The report contains an independent limited assurance report by PricewaterhouseCoopers (PwC) covering quantitative Use of Proceeds allocations; the assurance scope explicitly does not cover the Impact Report or packaging metrics (19.5g and 2.5g are CCHBC-reported internal figures, SOURCE_AVAILABLE).
 2. **Directive (EU) 2019/904** (Single-Use Plastics Directive) & **Regulation (EU) 2022/1616** (Recycled Plastic Food Contact Materials):
    - Establishes mandatory recycled content targets for PET beverage bottles (min. 25% by 2025, 30% by 2030) and regulatory authorization of closed-loop/bottle-to-bottle mechanical decontamination processes.
 
@@ -79,7 +79,7 @@ $$\text{virgin}_i = \text{plastic\_mass\_g}_i \times (1 - \text{recycled\_conten
 - **Current Packaging**: Berry Superfos UniPak 360ml Round Pot (Product Code 5226).
   - Material: Polypropylene (PP)
   - Plastic Mass: 14.8 g
-  - Recycled Content Fraction: 0.00 (100% virgin PP)
+  - Recycled Content Fraction: 0.00 (PackShift baseline modeling assumption; source specifies PP but does not declare recycled fraction)
   - Current Virgin Plastic: $14.8\text{ g} \times (1 - 0.00) = 14.8\text{ g}$
 - **Candidate Packaging**: Duni BioPak Deli Hinged 375ml Container (Article 205971).
   - Material: Recycled Polyethylene Terephthalate (rPET)
@@ -100,11 +100,11 @@ On paper, this transition demonstrates an exceptional **83.78% reduction in virg
 ### 2. Operational & Regulatory Constraints
 
 #### A. Thermal & Microwave Incompatibility
-- **Current Container Capability**: The Berry UniPak PP container is injection-moulded from virgin polypropylene, rated for hot-filling up to **95°C** and safe for consumer **microwave reheating**.
+- **Current Container Capability**: The Berry UniPak PP container is injection-moulded PP; 0.0 recycled content is a PackShift modeling assumption. It is rated for hot-filling up to **95°C** and safe for consumer **microwave reheating**.
 - **Candidate Container Constraint**: The Duni Deli Hinged container is thermoformed from amorphous rPET. The official manufacturer technical datasheet specifies:
   > *Maximum temperature: +70°C for up to 2 hours.*
   > *Restrictions: Not suitable for use in a microwave oven.*
-- **Operational Requirement Incompatibility**: Amorphous PET has a glass transition temperature ($T_g$) around 67–70°C. Exposing this article to 95°C hot-filling or microwave reheating exceeds the manufacturer-documented thermal envelope, resulting in loss of dimensional stability and compromised seal integrity. PackShift evaluates this strictly as an operational gate block, not a forensic physical hazard prediction.
+- **Operational Requirement Incompatibility**: Exposing this article to 95°C hot-filling or microwave reheating exceeds the manufacturer-documented operational envelope (maximum +70°C for up to 2 hours; explicitly not suitable for microwave oven). PackShift evaluates this strictly as an operational gate block based on documented manufacturer limits, without asserting specific physical failure mechanisms.
 
 #### B. Food Contact Migration Limits
 - Under **Regulation (EU) No 10/2011** and **Regulation (EU) 2022/1616**, food contact migration testing for rPET containers is valid only within declared temperature-time envelopes (chilled storage and short-term ambient contact). Subjecting rPET to elevated temperatures without a high-temperature compliance certification risks non-compliant migration of non-intentionally added substances (NIAS) and polymer degradation products.
@@ -119,8 +119,8 @@ On paper, this transition demonstrates an exceptional **83.78% reduction in virg
 3. **Commission Regulation (EU) 2022/1616** on recycled plastic materials and articles intended to come into contact with foods.
 
 ### 4. Safe Conclusion
-- **Conditional Suitability**: The candidate container can only be deployed if the customer's food application is strictly limited to **cold/chilled foods** (e.g., fresh salads, sliced fruits, cold dips) where no hot-filling or consumer reheating will ever occur.
-- **Operational Block**: For prepared meals requiring hot-filling (95°C) or microwave reheating, the candidate is **functionally and physically incompatible**, regardless of its numerical virgin plastic savings.
+- **Conditional Suitability**: The candidate avoids these specific modeled thermal/microwave incompatibility blocks only when the operating context is strictly limited to **cold/chilled foods** (e.g., fresh salads, sliced fruits, cold dips) where no hot-filling or consumer reheating occurs; food-contact and implementation suitability remain `REVIEW_REQUIRED` / `NOT_VERIFIED`.
+- **Operational Block**: For prepared meals requiring hot-filling (95°C) or microwave reheating, the candidate **exceeds the manufacturer-documented operational envelope**, triggering an operational gate block regardless of numerical virgin plastic calculations.
 - **PackShift Status**:
   - Environmental calculation: status `CALCULATED`, verification state `INDICATIVE` (12.4 g / 83.78% reduction on represented body components).
   - Bounded operational eligibility gate: status `BLOCKED` due to explicit gating findings:
@@ -141,7 +141,7 @@ On paper, this transition demonstrates an exceptional **83.78% reduction in virg
 ## Evidence Ledger
 
 | # | Source Entity | Source URL / Document | Supported Fact / Value | Value Origin | Verification State | Scope / Limitations |
-| :- | :--- | :--- | :--- | :--- | :--- | :--- |
+| :- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **S-01** | Coca-Cola HBC AG | [Green Finance Report Sep 2023](https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf) | 500ml PET bottle body mass = 19.5 g | MANUFACTURER_SUPPLIED | SOURCE_AVAILABLE | Average internal baseline for lightweighted 500ml CSD PET preforms across European operations. Excludes label. |
 | **S-02** | Coca-Cola HBC AG | [Green Finance Report Sep 2023](https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf) | 500ml bottle closure mass = 2.5 g | MANUFACTURER_SUPPLIED | SOURCE_AVAILABLE | Average closure mass of 2.5 g reported by CCHBC (p. 18, Footnote 2). Closure resin identity (HDPE) and 0.0 recycled content are PackShift modeling assumptions; CCHBC report does not state closure resin or recycled content. |
 | **S-03** | Coca-Cola HBC AG | [Green Finance Report Sep 2023](https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf) | In-house bottle body conversion = 100% rPET (fraction 1.0) | MANUFACTURER_SUPPLIED | SOURCE_AVAILABLE | Attributed to eligible capital expenditures on in-house decontamination and preform blowing (Gaglianico / Edelstal). |
