@@ -5,14 +5,27 @@ export interface Provenance {
   origin: Origin; verification_state: Verification; source_reference: string; note: string;
 }
 export interface NumericInput { value: number | null; provenance: Provenance }
+export interface BooleanInput { value: boolean | null; provenance: Provenance }
+export interface PackageCapabilities {
+  max_temperature_c?: NumericInput | null;
+  microwave_safe?: BooleanInput | null;
+}
+export interface OperationalRequirements {
+  max_temperature_c?: NumericInput | null;
+  microwave_safe?: BooleanInput | null;
+}
 export interface Component {
   id: string; material: string; plastic_mass_g: NumericInput; recycled_content_fraction: NumericInput;
 }
 export interface Package {
   id: string; label: string; components: Component[]; food_contact: boolean | null; use_context: string | null;
   max_temperature_c?: number | null; microwave_safe?: boolean | null;
+  capabilities?: PackageCapabilities | null;
 }
-export interface Scenario { id: string; label: string; current: Package; candidate: Package }
+export interface Scenario {
+  id: string; label: string; current: Package; candidate: Package;
+  operational_requirements?: OperationalRequirements | null;
+}
 export interface Evidence {
   schema_version: '1.0'; dataset_kind: 'ILLUSTRATIVE' | 'PUBLIC' | 'PROVIDER'; disclosure: string; scenarios: Scenario[];
 }

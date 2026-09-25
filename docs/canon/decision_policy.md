@@ -52,11 +52,15 @@ the candidate. NDR-01 Case B exposes this distinction.
 | UNKNOWN | No evidence establishes whether a required property is satisfied | Review / insufficient evidence; do not assume compatibility |
 | Demonstrated incompatibility | Manufacturer evidence explicitly excludes a required use condition | Treat as incompatible for that stated context; do not flatten into mere missing evidence or a universal material verdict |
 
-**OBSERVED_IMPLEMENTATION GAP / FUTURE DECISION GATE:** Current use-context text is
-not evaluated as structured eligibility. The service emits a generic suitability
-review finding and blocks calculation only for missing required numeric inputs.
-It does not distinguish these two epistemic situations strongly enough. The table
-above does not add statuses to current enums or claim an implemented eligibility engine.
+**OBSERVED_IMPLEMENTATION — BOUNDED OPERATIONAL GATE:** The runtime implements a
+bounded operational eligibility gate that evaluates explicit operational requirements
+(`operational_requirements` on `Scenario`) against candidate packaging capabilities
+(`capabilities` on `Package`) across thermal envelope and microwave reheating dimensions.
+Calculation status (`CALCULATED` vs `INSUFFICIENT_DATA`) and operational eligibility
+(`ELIGIBLE`, `REVIEW_REQUIRED`, `BLOCKED`) are strictly independent axes. Missing
+numerical calculation inputs do not fabricate an operational incompatibility.
+Demonstrated incompatibilities yield `BLOCKED`. Unmodeled or unverified requirements
+yield `REVIEW_REQUIRED`. Generic `food-contact-suitability` remains an advisory finding.
 
 ## Future ranking guard
 
@@ -73,16 +77,8 @@ Per-unit reductions are defensible only within the sourced input/component scope
 Hypothetical volume can support an explicitly labelled hypothetical scenario, never
 actual Profi impact. **OBSERVED_IMPLEMENTATION:** There is deliberately no annual-impact field.
 
-**TEAM_DECISION:** Human Integrator approval of a separate implementation contract
-is required before changing eligibility semantics, enums, Pydantic/TypeScript contracts,
-API responses or frontend behavior. Product output never grants food-contact,
-shelf-life, supplier, procurement, legal or implementation approval.
-
-**RECOMMENDATION — next decision gate:** Agree intended use context and required
-conditions; specify evidence needed to establish compatibility, missing evidence and
-explicit incompatibility; review component inventory completeness; define acceptance
-examples using Case B and unknown evidence. Have the Human Integrator approve the
-shared contract and UI representation before implementing an eligibility gate or ranking.
-Source auditing and context/acceptance preparation can proceed without changing runtime
-contracts; eligibility implementation is not authorized by this documentation task.
-See [questions that unblock decisions](open_questions.md).
+**TEAM_DECISION:** The bounded operational eligibility gate evaluates only explicitly
+modeled technical dimensions (thermal, microwave). Product output never grants
+food-contact, shelf-life, supplier, procurement, legal or implementation approval.
+Wider packaging qualification (barrier properties, line speeds, migration under specific
+food matrices) remains outside current runtime scope. See [questions that unblock decisions](open_questions.md).

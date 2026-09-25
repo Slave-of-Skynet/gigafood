@@ -127,7 +127,7 @@
                 "origin": "MANUFACTURER_SUPPLIED",
                 "verification_state": "SOURCE_AVAILABLE",
                 "source_reference": "https://www.berryglobal.com/en/product/5226",
-                "note": "Berry Global / Superfos Product 5226 technical specification: 360ml UniPak container body weight 14.8 g."
+                "note": "Berry Global / Superfos Product 5226 technical specification: 360ml UniPak container body weight 14.8 g. Excludes separate snap-on lid (boundary limitation: represented body component only, not verified complete package)."
               }
             },
             "recycled_content_fraction": {
@@ -142,7 +142,27 @@
           }
         ],
         "food_contact": true,
-        "use_context": "Hot filling up to 95°C and microwave reheating; food-contact approved under Regulation (EU) 10/2011"
+        "use_context": "Hot filling up to 95°C and microwave reheating; food-contact approved under Regulation (EU) 10/2011",
+        "capabilities": {
+          "max_temperature_c": {
+            "value": 95.0,
+            "provenance": {
+              "origin": "MANUFACTURER_SUPPLIED",
+              "verification_state": "SOURCE_AVAILABLE",
+              "source_reference": "https://www.berryglobal.com/en/product/5226",
+              "note": "Berry Superfos Product 5226 technical specification: rated for hot filling up to 95°C."
+            }
+          },
+          "microwave_safe": {
+            "value": true,
+            "provenance": {
+              "origin": "MANUFACTURER_SUPPLIED",
+              "verification_state": "SOURCE_AVAILABLE",
+              "source_reference": "https://www.berryglobal.com/en/product/5226",
+              "note": "Berry Superfos Product 5226 technical specification: microwave safe."
+            }
+          }
+        }
       },
       "candidate": {
         "id": "duni-deli-375ml-rpet",
@@ -172,7 +192,47 @@
           }
         ],
         "food_contact": true,
-        "use_context": "Chilled storage only (up to 70°C for 2h max); strictly NOT suitable for microwave oven reheating"
+        "use_context": "Chilled storage only (up to 70°C for 2h max); strictly NOT suitable for microwave oven reheating",
+        "capabilities": {
+          "max_temperature_c": {
+            "value": 70.0,
+            "provenance": {
+              "origin": "MANUFACTURER_SUPPLIED",
+              "verification_state": "SOURCE_AVAILABLE",
+              "source_reference": "https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971",
+              "note": "Duni BioPak Article 205971 technical datasheet: maximum temperature +70°C for up to 2 hours."
+            }
+          },
+          "microwave_safe": {
+            "value": false,
+            "provenance": {
+              "origin": "MANUFACTURER_SUPPLIED",
+              "verification_state": "SOURCE_AVAILABLE",
+              "source_reference": "https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971",
+              "note": "Duni BioPak Article 205971 technical datasheet: strictly not suitable for use in a microwave oven."
+            }
+          }
+        }
+      },
+      "operational_requirements": {
+        "max_temperature_c": {
+          "value": 95.0,
+          "provenance": {
+            "origin": "ASSUMED",
+            "verification_state": "NOT_VERIFIED",
+            "source_reference": "demo:prepared-food-hot-fill",
+            "note": "Demonstration operating requirement: hot filling up to 95°C for prepared hot food; hypothetical demo scenario assumption, not Profi provider requirement."
+          }
+        },
+        "microwave_safe": {
+          "value": true,
+          "provenance": {
+            "origin": "ASSUMED",
+            "verification_state": "NOT_VERIFIED",
+            "source_reference": "demo:prepared-food-microwave",
+            "note": "Demonstration operating requirement: microwave reheating suitability; hypothetical demo scenario assumption, not Profi provider requirement."
+          }
+        }
       }
     }
   ]

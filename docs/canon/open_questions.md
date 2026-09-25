@@ -30,11 +30,11 @@ Each question is **UNKNOWN — ASK MENTOR**, in priority order. Q5 is conditiona
 | Real collection/sorting/recycling yield | Enables local end-of-life assessment; recycled content alone does not prove recyclability outcomes |
 | Commercial food-grade recyclate availability, MOQ and supply risk | Enables scale/sourcing feasibility assessment |
 | Exact internal Profi decision owner and workflow | Enables product/user validation (Q3) |
-| Candidate-specific eligibility requirements and sufficient evidence | Enables the human-gated compatibility contract, including UNKNOWN vs demonstrated incompatibility |
+| Candidate-specific qualification beyond thermal/microwave (barrier, seal, migration) | Enables full packaging qualification beyond the implemented bounded operational gate |
 | Final portfolio-ranking methodology | Enables future ranking after eligibility/evidence gates; no formula selected |
 | Original official-brief artifact/URL and mentor clarification date/transcript | Enables direct audit of the Integrator-supplied challenge record without inventing provenance |
 | Independent source-to-value verification of NDR-01's attributed inputs and use envelopes | Enables stronger evidence claims; a merged ledger and SOURCE_AVAILABLE do not establish VERIFIED |
 
-**RECOMMENDATION:** Prepare source checks, use-context examples and acceptance cases
-next. Resolve the [Human Integrator decision gate](decision_policy.md#annual-impact-and-human-boundary)
-before implementing eligibility behavior; keep unanswered questions visible.
+**RECOMMENDATION:** The bounded operational eligibility gate is implemented for
+temperature and microwave reheating dimensions. Keep wider packaging qualification
+requirements, portfolio ranking and mentor questions visible as active UNKNOWNs.

@@ -15,8 +15,11 @@ versioned evidence JSON
 ## Responsibilities and shared surfaces
 
 - `backend/app/domain`: strict input/output contracts; rejects extra keys, invalid
-  numbers, duplicate IDs and empty component lists. Every numerical input carries provenance.
-- `backend/app/services/virgin_plastic.py`: pure deterministic calculation; no IO or web calls.
+  numbers, duplicate IDs and empty component lists. Every numerical and decision-critical
+  constraint input carries provenance. Includes `OperationalRequirements` on Scenario
+  and `PackageCapabilities` on Package.
+- `backend/app/services/virgin_plastic.py`: pure deterministic calculation and bounded
+  operational eligibility gate evaluation; no IO or web calls.
 - `backend/app/runtime/context.py`: validates the complete evidence file atomically at startup.
 - `backend/app/main.py`: small application factory, lifespan and three read-only routes.
   A separate routes module adds no value at this size.
@@ -55,9 +58,14 @@ not interpreted as a verified plastic-free package. Fully recycled plastic can p
 
 Provenance and verification are separate axes; CALCULATED never verifies inputs.
 `ConstraintFinding` exposes constraint_id, status (REVIEW_REQUIRED/BLOCKED), reason,
-nullable source_reference and verification_state. The current generic suitability finding
-is NOT_VERIFIED; missing required inputs attach a BLOCKED calculation finding.
-This seam can accept cited reference findings later; it is not a regulation engine.
+nullable source_reference and verification_state. Findings are separated into advisory
+disclosures (`food-contact-suitability`) and operational gate findings
+(`thermal-envelope-incompatibility`, `microwave-reheating-incompatibility`).
+Aggregated `eligibility_status` is derived solely from operational gate findings:
+BLOCKED if any operational incompatibility is demonstrated, REVIEW_REQUIRED if
+requirements/capabilities are unmodeled or unverified, and ELIGIBLE when evaluated
+requirements are satisfied. Missing calculation evidence produces `INSUFFICIENT_DATA`
+for environmental calculation, never an operational BLOCKED.
 
 Missing, unreadable or invalid evidence makes the whole runtime unavailable (503).
 No fallback dataset, partial load, automatic reload or hidden repairs. A validated snapshot
@@ -70,8 +78,9 @@ No portfolio/ranking, annual volumes/impact, costs, LCA/CO2, legal certification
 sustainability score, database/ORM, accounts, Docker, external APIs, ingestion framework,
 LLM/ML, supplier integration, PDF extraction, deployment or final visual design.
 Future direction: single comparison → curated portfolio ranking, under a separate contract
-and the [eligibility/evidence gate](canon/decision_policy.md). Current generic findings
-do not evaluate specific use-context incompatibilities. See [current product canon](canon/product_canon.md).
+and the [eligibility/evidence gate](canon/decision_policy.md). The bounded operational gate
+evaluates modeled thermal and microwave dimensions; it is not a complete packaging
+qualification or certification engine. See [current product canon](canon/product_canon.md).
 
 Smart Harvest / `training_agrifood` is rehearsal only. No crop, telemetry, evaluation or
 old sponsor semantics belong here. No historical repository code was imported.
