@@ -14,6 +14,12 @@ function Input({ label, input, unit }: { label: string; input: NumericInput; uni
 function PackageView({ title, data }: { title: string; data: Package }) {
   return <section><h3>{title}: {data.label}</h3><p>{data.use_context}</p>
     <p>Food-contact use flag: {data.food_contact === null ? 'Unknown' : String(data.food_contact)} (not suitability approval)</p>
+    {data.max_temperature_c !== undefined && data.max_temperature_c !== null && (
+      <p>Max operating temperature: {data.max_temperature_c}°C</p>
+    )}
+    {data.microwave_safe !== undefined && data.microwave_safe !== null && (
+      <p>Microwave safe: {data.microwave_safe ? 'Yes' : 'No'}</p>
+    )}
     {data.components.map(c => <article key={c.id}><h4>{c.id} · {c.material}</h4>
       <Input label="Plastic mass" input={c.plastic_mass_g} unit="g" />
       <Input label="Recycled fraction (0–1)" input={c.recycled_content_fraction} unit="" /></article>)}
@@ -62,11 +68,64 @@ export function HomePage() {
       {result.state === 'loading' && <p role="status">Calculating…</p>}
       {result.state === 'error' && <div role="alert"><p>{result.message}</p><button onClick={retry}>Retry</button></div>}
       {result.state === 'ready' && <div aria-live="polite">
-        <h2>{result.data.status}</h2><p>Derivation: {result.data.origin} · Decision state: {result.data.verification_state}</p>
-        <dl><dt>Current virgin plastic</dt><dd>{format(result.data.current_virgin_pack_g, 'g/unit')}</dd>
-          <dt>Candidate virgin plastic</dt><dd>{format(result.data.candidate_virgin_pack_g, 'g/unit')}</dd>
-          <dt>Reduction</dt><dd>{format(result.data.reduction_g, 'g/unit')}</dd>
-          <dt>Reduction percentage</dt><dd>{format(result.data.reduction_pct, '%')}</dd></dl>
+        <div
+          role="status"
+          style={{
+            padding: '12px 16px',
+            margin: '16px 0',
+            borderRadius: '6px',
+            fontWeight: 'bold',
+            border: '2px solid',
+            ...(result.data.eligibility_status === 'BLOCKED' ? {
+              backgroundColor: '#fee2e2',
+              color: '#b91c1c',
+              borderColor: '#ef4444'
+            } : result.data.eligibility_status === 'REVIEW_REQUIRED' ? {
+              backgroundColor: '#fef3c7',
+              color: '#92400e',
+              borderColor: '#f59e0b'
+            } : {
+              backgroundColor: '#dcfce7',
+              color: '#15803d',
+              borderColor: '#22c55e'
+            })
+          }}
+        >
+          {result.data.eligibility_status === 'BLOCKED' && <span>⛔ NOT ELIGIBLE FOR OPERATING CONTEXT</span>}
+          {result.data.eligibility_status === 'REVIEW_REQUIRED' && <span>⚠️ REVIEW REQUIRED — UNVERIFIED OPERATIONAL CONSTRAINTS</span>}
+          {result.data.eligibility_status === 'ELIGIBLE' && <span>✅ ELIGIBLE — MEETS EVALUATED CONSTRAINTS</span>}
+        </div>
+
+        {result.data.eligibility_status === 'BLOCKED' && (
+          <div role="alert" style={{
+            backgroundColor: '#fff1f2',
+            border: '1px solid #fecdd3',
+            padding: '12px',
+            marginBottom: '16px',
+            borderRadius: '4px'
+          }}>
+            <h4 style={{ color: '#be123c', marginTop: 0, marginBottom: '8px' }}>Blocking Operational Incompatibilities:</h4>
+            <ul style={{ margin: 0, paddingLeft: '20px', color: '#9f1239' }}>
+              {result.data.constraints.filter(c => c.status === 'BLOCKED').map(c => (
+                <li key={c.constraint_id}><strong>{c.constraint_id}:</strong> {c.reason}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <h2>{result.data.status}</h2>
+        <p>Derivation: {result.data.origin} · Decision state: {result.data.verification_state} · Eligibility: {result.data.eligibility_status}</p>
+
+        <dl style={result.data.eligibility_status === 'BLOCKED' ? { opacity: 0.6 } : undefined}>
+          <dt>Current virgin plastic</dt>
+          <dd>{format(result.data.current_virgin_pack_g, 'g/unit')}</dd>
+          <dt>Candidate virgin plastic</dt>
+          <dd>{format(result.data.candidate_virgin_pack_g, 'g/unit')}</dd>
+          <dt>{result.data.eligibility_status === 'BLOCKED' ? 'Theoretical reduction' : 'Reduction'}</dt>
+          <dd>{result.data.eligibility_status === 'BLOCKED' && <small>(Ineligible) </small>}{format(result.data.reduction_g, 'g/unit')}</dd>
+          <dt>{result.data.eligibility_status === 'BLOCKED' ? 'Theoretical reduction percentage' : 'Reduction percentage'}</dt>
+          <dd>{result.data.eligibility_status === 'BLOCKED' && <small>(Ineligible) </small>}{format(result.data.reduction_pct, '%')}</dd>
+        </dl>
         {result.data.current_virgin_pack_g === 0 && <p>Percentage is N/A because current virgin plastic is zero.</p>}
         {result.data.reduction_g !== null && result.data.reduction_g < 0 && <p>The candidate uses more virgin plastic.</p>}
         {!!result.data.missing_fields.length && <><p>Comparison refused: required inputs are missing.</p><ul>{result.data.missing_fields.map(f => <li key={f}>{f}</li>)}</ul></>}

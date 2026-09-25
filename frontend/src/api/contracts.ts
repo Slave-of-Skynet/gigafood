@@ -10,6 +10,7 @@ export interface Component {
 }
 export interface Package {
   id: string; label: string; components: Component[]; food_contact: boolean | null; use_context: string | null;
+  max_temperature_c?: number | null; microwave_safe?: boolean | null;
 }
 export interface Scenario { id: string; label: string; current: Package; candidate: Package }
 export interface Evidence {
@@ -19,8 +20,12 @@ export interface ConstraintFinding {
   constraint_id: string; status: 'REVIEW_REQUIRED' | 'BLOCKED'; reason: string;
   source_reference: string | null; verification_state: Verification;
 }
+export type EligibilityStatus = 'ELIGIBLE' | 'REVIEW_REQUIRED' | 'BLOCKED';
+
 export interface Comparison {
-  scenario: Scenario; status: 'CALCULATED' | 'INSUFFICIENT_DATA'; origin: 'CALCULATED';
+  scenario: Scenario; status: 'CALCULATED' | 'INSUFFICIENT_DATA';
+  eligibility_status: EligibilityStatus;
+  origin: 'CALCULATED';
   verification_state: 'INDICATIVE' | 'INSUFFICIENT_DATA';
   current_virgin_pack_g: number | null; candidate_virgin_pack_g: number | null;
   reduction_g: number | null; reduction_pct: number | null;
