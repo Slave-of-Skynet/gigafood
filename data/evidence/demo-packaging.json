@@ -1,0 +1,135 @@
+{
+  "schema_version": "1.0",
+  "dataset_kind": "ILLUSTRATIVE",
+  "disclosure": "ILLUSTRATIVE DEMO DATA — NOT PROFI PROVIDER DATA",
+  "scenarios": [
+    {
+      "id": "illustrative-reduction",
+      "label": "Illustrative reduction",
+      "current": {
+        "id": "fixture-current",
+        "label": "Fixture Current",
+        "components": [
+          {
+            "id": "body",
+            "material": "Illustrative PET",
+            "plastic_mass_g": {
+              "value": 20,
+              "provenance": {
+                "origin": "ASSUMED",
+                "verification_state": "NOT_VERIFIED",
+                "source_reference": "fixture:fixture-current/mass",
+                "note": "Synthetic ARC-01 fixture input; not measured, provider-supplied or independently verified."
+              }
+            },
+            "recycled_content_fraction": {
+              "value": 0.25,
+              "provenance": {
+                "origin": "ASSUMED",
+                "verification_state": "NOT_VERIFIED",
+                "source_reference": "fixture:fixture-current/recycled-fraction",
+                "note": "Synthetic ARC-01 fixture input; not measured, provider-supplied or independently verified."
+              }
+            }
+          }
+        ],
+        "food_contact": null,
+        "use_context": "Illustrative comparison only; intended use not validated"
+      },
+      "candidate": {
+        "id": "fixture-candidate",
+        "label": "Fixture Candidate",
+        "components": [
+          {
+            "id": "body",
+            "material": "Illustrative PET",
+            "plastic_mass_g": {
+              "value": 16,
+              "provenance": {
+                "origin": "ASSUMED",
+                "verification_state": "NOT_VERIFIED",
+                "source_reference": "fixture:fixture-candidate/mass",
+                "note": "Synthetic ARC-01 fixture input; not measured, provider-supplied or independently verified."
+              }
+            },
+            "recycled_content_fraction": {
+              "value": 0.5,
+              "provenance": {
+                "origin": "ASSUMED",
+                "verification_state": "NOT_VERIFIED",
+                "source_reference": "fixture:fixture-candidate/recycled-fraction",
+                "note": "Synthetic ARC-01 fixture input; not measured, provider-supplied or independently verified."
+              }
+            }
+          }
+        ],
+        "food_contact": null,
+        "use_context": "Illustrative comparison only; intended use not validated"
+      }
+    },
+    {
+      "id": "illustrative-incomplete",
+      "label": "Illustrative missing recycled content",
+      "current": {
+        "id": "fixture-current",
+        "label": "Fixture Current",
+        "components": [
+          {
+            "id": "body",
+            "material": "Illustrative PET",
+            "plastic_mass_g": {
+              "value": 20,
+              "provenance": {
+                "origin": "ASSUMED",
+                "verification_state": "NOT_VERIFIED",
+                "source_reference": "fixture:fixture-current/mass",
+                "note": "Synthetic ARC-01 fixture input; not measured, provider-supplied or independently verified."
+              }
+            },
+            "recycled_content_fraction": {
+              "value": 0.25,
+              "provenance": {
+                "origin": "ASSUMED",
+                "verification_state": "NOT_VERIFIED",
+                "source_reference": "fixture:fixture-current/recycled-fraction",
+                "note": "Synthetic ARC-01 fixture input; not measured, provider-supplied or independently verified."
+              }
+            }
+          }
+        ],
+        "food_contact": null,
+        "use_context": "Illustrative comparison only; intended use not validated"
+      },
+      "candidate": {
+        "id": "fixture-incomplete",
+        "label": "Fixture Incomplete",
+        "components": [
+          {
+            "id": "body",
+            "material": "Illustrative PET",
+            "plastic_mass_g": {
+              "value": 16,
+              "provenance": {
+                "origin": "ASSUMED",
+                "verification_state": "NOT_VERIFIED",
+                "source_reference": "fixture:fixture-incomplete/mass",
+                "note": "Synthetic ARC-01 fixture input; not measured, provider-supplied or independently verified."
+              }
+            },
+            "recycled_content_fraction": {
+              "value": null,
+              "provenance": {
+                "origin": "ASSUMED",
+                "verification_state": "INSUFFICIENT_DATA",
+                "source_reference": "fixture:fixture-incomplete/recycled-fraction",
+                "note": "Synthetic ARC-01 fixture input; not measured, provider-supplied or independently verified."
+              }
+            }
+          }
+        ],
+        "food_contact": null,
+        "use_context": "Illustrative comparison only; intended use not validated"
+      }
+    }
+  ]
+}
