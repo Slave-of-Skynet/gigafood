@@ -4,7 +4,7 @@
 **Owner:** Igor (Packaging Recon & Technical Architecture)
 **Date:** 2026-09-26 (Europe/Bucharest)
 **Target Repository:** `Slave-of-Skynet/gigafood`
-**Base Commit:** `31e7381ec8d4bb3cfdeac7f77769934ae2a6a152` (`main`)
+**Base Commit:** `ddbb05931f835ce2e5a3f55ac97e4563f35b4ca8` (`main`)
 **Branch:** `igor/igr-r2a-candidate-portfolio-recon`
 **Write Scope:** Strictly limited to `docs/evidence/IGR-R2A-candidate-portfolio-recon.md`
 
@@ -25,23 +25,23 @@
 ### Packaging Family Focus
 This reconnaissance investigates the **Faerch A/S rigid food tray family** in the prepared-food, ready-meal, and food-to-go category: single-compartment sealable rigid tray bodies where the flexible sealing film lid is separate and excluded from stated article masses.
 
-### Demo Viability: Evidence-Honest Operational Gate vs. Anti-Greenwashing Evidence Block
+### Demo Viability: Operational Constraints vs. Epistemic Integrity (Calculation Withheld)
 - **Operational Demo:** **FULLY VIABLE.** Manufacturer technical datasheets (TDS) support verifiable article identities, nominal tray body masses, nominal volumes (on two of three articles), documented maximum service temperatures, and explicit cooking suitability fields.
-- **Virgin-Plastic Ranking Demo:** **NOT DEFENSIVE FROM PUBLIC EVIDENCE ALONE (INTENTIONAL ANTI-GREENWASHING SEAM).** Manufacturer datasheets for PET articles explicitly state that recycled-content percentages fluctuate year-to-year and direct the reader to contact Sales/Compliance for current recipe declarations.
-- **Product Value:** This portfolio demonstrates PackShift's core strength: **Anti-Greenwashing Protection**. Rather than fabricating a 70% or 40% recycled content figure from high-level corporate press releases, PackShift's engine enforces epistemic honesty by flagging **`INSUFFICIENT_DATA`** / **`REVIEW_REQUIRED`** on the environmental axis while independently computing the operational gate.
+- **Virgin-Plastic Ranking Demo:** **NOT DEFENSIVE FROM PUBLIC EVIDENCE ALONE (INTENTIONAL CALCULATION-WITHHELD SEAM).** Manufacturer datasheets for PET articles explicitly state that recycled-content percentages fluctuate year-to-year and direct the reader to contact Sales/Compliance for current recipe declarations.
+- **Product Value:** This portfolio demonstrates PackShift's core strength: **Epistemic Integrity & Anti-Greenwashing Protection**. Rather than fabricating a 70% or 40% recycled content figure from high-level corporate press releases, PackShift's engine enforces independent axes: withholding calculation (**`INSUFFICIENT_DATA`**) on the calculation axis due to missing SKU-level evidence, while evaluating operational eligibility (**`REVIEW_REQUIRED`** or **`BLOCKED`**) strictly against documented capability versus requirements.
 
 ### Recommended MVP Portfolio (3 Articles)
 A three-article portfolio is recommended over four. A fourth candidate (C 2187-1F) merely duplicates the APET temperature limitation without introducing a distinct decision outcome:
 
 1. **Baseline — Faerch P 2226-1C (Item 2226014004):** Grey virgin Polypropylene (PP) tray, $26.29\text{ g} \pm 10\%$, $T_{\max} = 121^\circ\text{C}$, Cooking: *Microwave*. Family-scoped recycled content: $0\%$ (food-grade PP declared 100% virgin). Volume: `UNKNOWN`.
-   *Outcome: Passes modeled operational gates; environmental calculation is `CALCULATED` for tray body only.*
-2. **Candidate A (Non-blocked, but Environmentally Insufficient) — Faerch C 2200-1L (Item 2200012097):** Evolve CPET tray, $1000\text{ ml}$, $21.38\text{ g} \pm 10\%$, $T_{\max} = 220^\circ\text{C}$, Cooking: *Oven/Microwave*. Recycled-content fraction: `UNKNOWN` at SKU level.
-   *Outcome: Passes modeled operational gates ($220^\circ\text{C} \ge 95^\circ\text{C}$, microwave safe), but environmental calculation is `INSUFFICIENT_DATA` (Anti-Greenwashing block).*
-3. **Candidate B (Hard Operational Block) — Faerch K 2182-1G (Item 2182015004):** Clear APET tray, $895\text{ ml}$, $21.48\text{ g} \pm 10\%$, $T_{\max} = 70^\circ\text{C}$, Cooking: *Not ovenable*. Recycled-content fraction: `UNKNOWN`.
-   *Outcome: Hard-blocked on thermal constraint ($70^\circ\text{C} < 95^\circ\text{C}$ demo requirement); microwave suitability remains `UNKNOWN`.*
+   *Outcome: Numerically satisfies modeled operational capabilities ($121^\circ\text{C} \ge 95^\circ\text{C}$, microwave affirmed), resulting in operational eligibility `REVIEW_REQUIRED` (because demo operating context is an unverified modeling assumption); environmental calculation is `CALCULATED` for tray body only.*
+2. **Candidate A — Faerch C 2200-1L (Item 2200012097):** Evolve CPET tray, $1000\text{ ml}$, $21.38\text{ g} \pm 10\%$, $T_{\max} = 220^\circ\text{C}$, Cooking: *Oven/Microwave*. Recycled-content fraction: `UNKNOWN` at SKU level.
+   *Outcome: Numerically satisfies modeled temperature ($220^\circ\text{C} \ge 95^\circ\text{C}$) and microwave assumptions; calculation status is `INSUFFICIENT_DATA` (because SKU-level recycled-content fraction is unavailable); operational eligibility is `REVIEW_REQUIRED` (because decision-critical premises and source capabilities are not VERIFIED).*
+3. **Candidate B (Operational Block under Demo Assumptions) — Faerch K 2182-1G (Item 2182015004):** Clear APET tray, $895\text{ ml}$, $21.48\text{ g} \pm 10\%$, $T_{\max} = 70^\circ\text{C}$, Cooking: *Not ovenable*. Recycled-content fraction: `UNKNOWN`.
+   *Outcome: Operational eligibility is `BLOCKED` because documented $70^\circ\text{C} < \text{assumed } 95^\circ\text{C}$ demo requirement; calculation status is `INSUFFICIENT_DATA` (recycled-content fraction unavailable); microwave suitability remains `UNKNOWN`.*
 
 ### Core Takeaway
-Freeze the operational story (Pass vs. Hard Temperature Block vs. Missing PCR $\rightarrow$ Review). **Do NOT freeze fabricated virgin-plastic deltas for the PET articles.**
+Freeze the decision story (Documented $70^\circ\text{C} < 95^\circ\text{C}$ demo mismatch $\rightarrow$ `BLOCKED`; Modeled operational fit with unverified premises $\rightarrow$ `REVIEW_REQUIRED`; Missing PCR input $\rightarrow$ `CALCULATION WITHHELD — INSUFFICIENT_DATA`). **Do NOT freeze fabricated virgin-plastic deltas for the PET articles.**
 
 ---
 
@@ -58,8 +58,8 @@ The comparison context represents a single-portion prepared / ready-to-eat hot f
 | **Component Scope** | **Tray body only** | `PUBLIC EVIDENCE` (TDS specification) | Not a closed complete pack. Sealing film mass is `UNKNOWN`. |
 
 Under these stated demonstration requirements:
-- Documented $T_{\max} < 95^\circ\text{C}$ constitutes a **hard operational failure (`BLOCKED`)**.
-- Documented $T_{\max} \ge 95^\circ\text{C}$ is **numerically sufficient** on that isolated dimension.
+- Documented $T_{\max} < 95^\circ\text{C}$ constitutes an operational constraint violation (**`BLOCKED`**) against the assumed $95^\circ\text{C}$ requirement.
+- Documented $T_{\max} \ge 95^\circ\text{C}$ is **numerically sufficient** on that isolated dimension, but leaves operational eligibility as **`REVIEW_REQUIRED`** because the demo requirements are unverified assumptions.
 - Meeting the operational threshold does **not** certify sealing integrity, shelf life, or food-contact migration compliance under specific food matrices.
 
 ### 2.2 Baseline Article Specification
@@ -116,10 +116,10 @@ To prevent greenwashing and algorithmic hallucinations, the recon strictly enfor
 `UNKNOWN` denotes that the primary source governing that specific SKU does not publish the value. No cell contains an assumed number.
 
 | Candidate ID | Product & Item Number | Material & Recipe | Nominal Capacity | Mass Scope | Recycled Content Fraction | $T_{\max}$ Capability | Microwave Suitability | Comparability Rating | Evidence & Gate Status |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Baseline** | Faerch P 2226-1C<br>`2226014004` | Polypropylene (PP)<br>Grey · Recipe `9626` | **`UNKNOWN`**<br>($227 \times 177 \times 49\text{ mm}$) | Body only<br>**$26.29\text{ g}$** ($\pm 10\%$) | **$0.00$ ($0\%$)**<br>`FAMILY_CLAIM`<br>Food-grade PP virgin | **$+121^\circ\text{C}$**<br>(TDS stated) | **Yes**<br>Cooking: *Microwave* | **BOUNDED**<br>(Volume unknown; body only) | Sheet read (2021).<br>Oper: **Non-blocked**<br>Calc: **`CALCULATED`** (body) |
-| **Candidate A** | Faerch C 2200-1L<br>`2200012097` | CPET Evolve<br>Recipe `6811` | **$1000\text{ ml}$**<br>($200 \times 155 \times 47\text{ mm}$) | Body only<br>**$21.38\text{ g}$** ($\pm 10\%$) | **`UNKNOWN`**<br>(TDS defers to current declaration) | **$+220^\circ\text{C}$**<br>(TDS stated) | **Yes**<br>Cooking: *Oven/Microwave* | **BOUNDED**<br>(Capacity known here, not in baseline) | Sheet read (2023).<br>Oper: **Non-blocked**<br>Calc: **`INSUFFICIENT_DATA`** |
-| **Candidate B** | Faerch K 2182-1G<br>`2182015004` | APET Clear<br>Recipe `7900` | **$895\text{ ml}$**<br>($180 \times 100 \times 76\text{ mm}$) | Body only<br>**$21.48\text{ g}$** ($\pm 10\%$) | **`UNKNOWN`**<br>(2025 TDS defers to current declaration) | **$+70^\circ\text{C}$**<br>(TDS stated) | **`UNKNOWN`**<br>*Not ovenable* $\neq$ not microwaveable | **BOUNDED**<br>(Dimensions differ; close volume to A) | Sheet read (2025).<br>Oper: **`BLOCKED`** ($T_{\max}$)<br>Calc: **`INSUFFICIENT_DATA`** |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Baseline** | Faerch P 2226-1C<br>`2226014004` | Polypropylene (PP)<br>Grey · Recipe `9626` | **`UNKNOWN`**<br>($227 \times 177 \times 49\text{ mm}$) | Body only<br>**$26.29\text{ g}$** ($\pm 10\%$) | **$0.00$ ($0\%$)**<br>`FAMILY_CLAIM`<br>Food-grade PP virgin | **$+121^\circ\text{C}$**<br>(TDS stated) | **Yes**<br>Cooking: *Microwave* | **BOUNDED**<br>(Volume unknown; body only) | Sheet read (2021).<br>Eligibility: **`REVIEW_REQUIRED`** (demo assumptions)<br>Calc: **`CALCULATED`** (body) |
+| **Candidate A** | Faerch C 2200-1L<br>`2200012097` | CPET Evolve<br>Recipe `6811` | **$1000\text{ ml}$**<br>($200 \times 155 \times 47\text{ mm}$) | Body only<br>**$21.38\text{ g}$** ($\pm 10\%$) | **`UNKNOWN`**<br>(TDS defers to current declaration) | **$+220^\circ\text{C}$**<br>(TDS stated) | **Yes**<br>Cooking: *Oven/Microwave* | **BOUNDED**<br>(Capacity known here, not in baseline) | Sheet read (2023).<br>Eligibility: **`REVIEW_REQUIRED`** (unverified premises)<br>Calc: **`INSUFFICIENT_DATA`** |
+| **Candidate B** | Faerch K 2182-1G<br>`2182015004` | APET Clear<br>Recipe `7900` | **$895\text{ ml}$**<br>($180 \times 100 \times 76\text{ mm}$) | Body only<br>**$21.48\text{ g}$** ($\pm 10\%$) | **`UNKNOWN`**<br>(2025 TDS defers to current declaration) | **$+70^\circ\text{C}$**<br>(TDS stated) | **`UNKNOWN`**<br>*Not ovenable* $\neq$ not microwaveable | **BOUNDED**<br>(Dimensions differ; close volume to A) | Sheet read (2025).<br>Eligibility: **`BLOCKED`** (doc $70^\circ\text{C} < \text{assumed } 95^\circ\text{C}$)<br>Calc: **`INSUFFICIENT_DATA`** |
 
 *Supporting Reference Article (Not recommended as 4th demo state):*
 - **Faerch C 2187-1F (Item 2187015044):** Clear APET, $685\text{ ml}$, $16.93\text{ g} \pm 10\%$, Recipe `7900`, $T_{\max} = 70^\circ\text{C}$, Cooking: *Not ovenable*, Recycled fraction: `UNKNOWN`. Sheet date: 16-12-2021. Corroborates APET thermal limits, but introduces no distinct decision state.
@@ -134,7 +134,7 @@ To prevent greenwashing and algorithmic hallucinations, the recon strictly enfor
 - **Recycled Content Evidence:** Sourced from live Faerch PP Material Platform: *"PP is made from 100% virgin material"* and *"Food-grade PP must be produced from 100% virgin material"*. Scoped to Faerch food-grade PP class; not an audited SKU lot certificate.
 - **Missing Evidence:** Nominal volume (`UNKNOWN`). Intended food matrix (`UNKNOWN`). Sealing film identity, mass, and recycled content (`UNKNOWN`).
 - **Comparability:** **BOUNDED / WITH QUALIFIER**. Same manufacturer and body-only boundary, but baseline volume is unstated on the sheet. Grey color is stated NIR non-detectable (recyclability limitation, not modeled as a score).
-- **Safe Conclusion:** Under the stated $95^\circ\text{C}$ + microwave demo requirement, the tray body clears operational gates ($121^\circ\text{C} \ge 95^\circ\text{C}$, microwave affirmed). Virgin plastic for the tray body is calculable under the family claim ($26.29\text{ g}$). It is not a complete-pack verification.
+- **Safe Conclusion:** Under the stated $95^\circ\text{C}$ + microwave demo assumptions, the tray body numerically satisfies the thermal and microwave parameters ($121^\circ\text{C} \ge 95^\circ\text{C}$, microwave affirmed); operational eligibility is `REVIEW_REQUIRED` because the demo requirements are unverified assumptions. Virgin plastic for the tray body is `CALCULATED` under the family claim ($26.29\text{ g}$). It is not a complete-pack verification.
 
 ---
 
@@ -147,7 +147,7 @@ To prevent greenwashing and algorithmic hallucinations, the recon strictly enfor
   - *Do NOT use "minimum 40% Tray rPET":* 2025 launch applies specifically to UK/Ireland chilled ready-meal CPET; Tray rPET is not total PCR fraction.
   - *Do NOT use 2021 historical bands (69–75%):* Historical table does not cite recipe `6811`.
 - **Comparability:** **BOUNDED / WITH QUALIFIER**. Nominal volume ($1000\text{ ml}$) is known here, unlike the baseline.
-- **Safe Conclusion:** Clears modeled operational constraints ($220^\circ\text{C} \ge 95^\circ\text{C}$, dual-ovenable/microwave affirmed). Virgin plastic is **not calculable** from public evidence alone. PackShift must flag **`INSUFFICIENT_DATA`** rather than claiming an unverified environmental saving.
+- **Safe Conclusion:** Numerically satisfies modeled operational constraints ($220^\circ\text{C} \ge 95^\circ\text{C}$, dual-ovenable/microwave affirmed). Because decision-critical premises and source capabilities are not VERIFIED, operational eligibility is **`REVIEW_REQUIRED`** (not ELIGIBLE). Because SKU-level recycled-content fraction is unavailable on the TDS, calculation status is **`INSUFFICIENT_DATA`** (`CALCULATION WITHHELD — INSUFFICIENT_DATA`). PackShift must not calculate or present an unverified virgin-plastic reduction.
 
 ---
 
@@ -156,10 +156,10 @@ To prevent greenwashing and algorithmic hallucinations, the recon strictly enfor
 - **Supported Values (from Datasheet):** Length $180.1\text{ mm}$, Width $99.9\text{ mm}$, Depth $75.9\text{ mm}$ ($\pm 0.6\text{ mm}$). Nominal volume: **$895\text{ ml}$**. Sheet thickness: $900\text{ }\mu\text{m}$. Nominal piece weight: **$21.48\text{ g}$** ($\pm 10\%$). Temperature range: **$-40^\circ\text{C}$ to $+70^\circ\text{C}$**. NIR detectable: `Yes`. Recyclable: `YES`.
 - **Recycled Content Evidence:** **`UNKNOWN` at SKU level.** The 2025 datasheet repeats the requirement to request current recipe figures. General claims that "the majority of APET contains rPET" do not establish an article percentage.
 - **Operational Constraint Assessment:**
-  - $T_{\max} = \mathbf{+70^\circ\text{C}}$: Hard failure against the demo requirement of $95^\circ\text{C}$ ($70^\circ\text{C} < 95^\circ\text{C}$).
+  - $T_{\max} = \mathbf{+70^\circ\text{C}}$: Mismatch against the assumed demo requirement of $95^\circ\text{C}$ (documented $70^\circ\text{C} < \text{assumed } 95^\circ\text{C}$).
   - Cooking field *"Not ovenable"*: Disallows conventional ovens; microwave suitability remains **`UNKNOWN`**.
 - **Comparability:** **BOUNDED / WITH QUALIFIER**. Volume ($895\text{ ml}$) is within $10.5\%$ of Candidate A ($1000\text{ ml}$), but footprint and depth differ.
-- **Safe Conclusion:** **`BLOCKED` on maximum operating temperature.** The $70^\circ\text{C}$ limit fails the $95^\circ\text{C}$ hot-fill demo assumption. The block is fully evidenced by the printed datasheet, independent of the unstated recycled-content fraction.
+- **Safe Conclusion:** Operational eligibility is **`BLOCKED`** because documented $70^\circ\text{C} < \text{assumed } 95^\circ\text{C}$ demo requirement. This operational block is strictly bounded to the stated demo context and does not constitute a universal verdict on APET packaging. Calculation status is independently **`INSUFFICIENT_DATA`** due to unstated recycled content.
 
 ---
 
@@ -169,32 +169,36 @@ Tracing execution through PackShift's deterministic runtime contracts:
 
 ```text
 ====================================================================================================
-FAERCH A/S PREPARED-FOOD PORTFOLIO: DEMO OUTCOMES (Stated Context: 95°C Hot Fill, Microwave Safe)
+FAERCH A/S PREPARED-FOOD PORTFOLIO: DEMO OUTCOMES (Stated Context: Assumed 95°C, Microwave Safe)
 ====================================================================================================
 
 [BASELINE]  Faerch P 2226-1C PP Tray (Item 2226014004)
             Mass: 26.29 g | Recycled: 0% (Family claim) | Virgin Plastic: 26.29 g (Body only)
-            Operational: 121°C, Microwave Safe
-            --> Gate Result: OPERATIONAL PASS | ENVIRONMENTAL CALCULABLE (Body only)
+            Operational Capabilities: 121°C, Microwave Safe
+            - Eligibility Axis Status: REVIEW_REQUIRED (Assumed demo premises)
+            - Calculation Axis Status: CALCULATED (Body only)
+            --> RUNTIME STATUS: ELIGIBILITY: REVIEW_REQUIRED | CALCULATION: CALCULATED
 
 ----------------------------------------------------------------------------------------------------
 
 1. [CANDIDATE A] Faerch C 2200-1L CPET Evolve (Item 2200012097)
    - Operational Capabilities:  220°C (>= 95°C), Microwave: Oven/Microwave affirmed
-   - Operational Gate Status:   NON-BLOCKED on modeled dimensions
+   - Eligibility Axis Status:   REVIEW_REQUIRED (Unverified demo premises and source capabilities)
    - Recycled Content Fraction: UNKNOWN (Datasheet withholds annual fluctuating figure)
    - Calculation Axis Status:   INSUFFICIENT_DATA (Missing required PCR input)
-   --> PACKSHIFT VERDICT:       ANTI-GREENWASHING BLOCK.
-                                Clears operational envelope, but virgin reduction CANNOT be
-                                calculated without verified supplier declaration.
+   --> PACKSHIFT VERDICT:       CALCULATION WITHHELD — INSUFFICIENT_DATA | Eligibility: REVIEW_REQUIRED.
+                                Numerically satisfies modeled temperature and microwave assumptions,
+                                but eligibility requires review and calculation cannot proceed
+                                without verified supplier declaration.
 
 2. [CANDIDATE B] Faerch K 2182-1G APET Clear (Item 2182015004)
-   - Operational Capabilities:  70°C (< 95°C), Microwave: UNKNOWN ("Not ovenable")
-   - Operational Gate Status:   BLOCKED (Thermal ceiling: 70°C < 95°C)
+   - Operational Capabilities:  70°C (documented), Microwave: UNKNOWN ("Not ovenable")
+   - Eligibility Axis Status:   BLOCKED (Documented 70°C < assumed 95°C demo requirement)
    - Recycled Content Fraction: UNKNOWN
    - Calculation Axis Status:   INSUFFICIENT_DATA
-   --> PACKSHIFT VERDICT:       HARD OPERATIONAL BLOCK.
-                                Inoperable for hot takeaway regardless of potential recycled content.
+   --> PACKSHIFT VERDICT:       Eligibility: BLOCKED | Calculation: INSUFFICIENT_DATA.
+                                Documented thermal envelope is incompatible with the stated
+                                95°C demo requirement. Calculation is independently INSUFFICIENT_DATA.
 ====================================================================================================
 ```
 
@@ -224,17 +228,17 @@ Deploy the **3-article Faerch set** (Baseline P 2226-1C, Candidate A C 2200-1L, 
 
 ### Distinct Demonstration Roles
 1. **Baseline (P 2226-1C):** Establishes the operational benchmark ($121^\circ\text{C}$, microwave safe) with a calculable virgin baseline for the tray body.
-2. **Candidate A (C 2200-1L — The Epistemic / Anti-Greenwashing Win):** Shows a modern CPET tray that is technically capable ($220^\circ\text{C}$, dual-ovenable), but PackShift visibly refuses to calculate an unverified virgin-plastic reduction because Faerch's TDS withholds the fluctuating PCR fraction. This proves PackShift does not hallucinate green claims.
-3. **Candidate B (K 2182-1G — The Hard Operational Block):** Shows a clear APET tray cleanly blocked by the thermal gate ($70^\circ\text{C} < 95^\circ\text{C}$), proving the constraint engine protects retailers from melting containers.
+2. **Candidate A (C 2200-1L — Epistemic Rigor / Calculation Withheld):** Shows a modern CPET tray that numerically satisfies modeled thermal and microwave assumptions ($220^\circ\text{C}$, dual-ovenable), but PackShift visibly withholds calculation (`INSUFFICIENT_DATA`) and flags operational eligibility as `REVIEW_REQUIRED` because the TDS withholds the fluctuating PCR fraction and demo premises are unverified. This proves PackShift separates operational eligibility from environmental calculation and refuses to fabricate green claims.
+3. **Candidate B (K 2182-1G — Operational Block under Demo Context):** Shows a clear APET tray cleanly blocked by the thermal gate (documented $70^\circ\text{C} < \text{assumed } 95^\circ\text{C}$ demo requirement), proving the constraint engine prevents recommending a candidate whose documented thermal envelope is incompatible with the stated 95°C demo requirement.
 
 ---
 
 ## 10. Schema & Implementation Implications
 
-### 10.1 Supported by Existing Architecture (`main @ 31e7381`)
+### 10.1 Supported by Existing Architecture (`main @ ddbb059`)
 - Independent calculation axis (`CALCULATED` vs `INSUFFICIENT_DATA`) and eligibility axis (`ELIGIBLE`, `REVIEW_REQUIRED`, `BLOCKED`).
 - Bounded operational gate comparing `operational_requirements` on `Scenario` against `capabilities` on `Package`.
-- Refusal to compute deltas on missing numeric inputs without fabricating operational blocks.
+- Refusal to compute deltas on missing numeric inputs without fabricating operational blocks or falsifying eligibility.
 
 ### 10.2 Future API Anti-Hallucination Contracts (Recommended for Integrator)
 When multi-candidate schemas are formally drafted, the domain model should introduce four explicit guards:
@@ -253,7 +257,7 @@ When multi-candidate schemas are formally drafted, the domain model should intro
 
 ## 11. UNKNOWNs & Stop Conditions
 
-| Item / Parameter | Why It Blocks a Decision Claim | Stop Action |
+| Item / Parameter | Why It Precludes a Decision Claim | Stop Action |
 | :--- | :--- | :--- |
 | **Current PCR for Recipe `6811` (C 2200-1L)** | Sheet withholds value and states it fluctuates annually. "Up to 70%" is an unverified ceiling. | **STOP:** Do not calculate virgin plastic or delta. |
 | **Current PCR for Recipe `7900` (K 2182-1G)** | 2025 sheet withholds value. 2021 historical tables do not cite recipe `7900`. | **STOP:** Do not calculate virgin plastic. |
