@@ -60,6 +60,8 @@ class Package(Contract):
     food_contact: bool | None = None
     use_context: str | None = None
     capabilities: PackageCapabilities | None = None
+    # Deprecated transitional/presentation fields preserved for backward compatibility with frontend mock.
+    # Strictly ignored by the operational eligibility gate; decision-critical capabilities must carry explicit provenance in `capabilities`.
     max_temperature_c: float | None = None
     microwave_safe: bool | None = None
 

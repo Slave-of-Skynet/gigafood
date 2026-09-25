@@ -19,6 +19,8 @@ export interface Component {
 }
 export interface Package {
   id: string; label: string; components: Component[]; food_contact: boolean | null; use_context: string | null;
+  // Deprecated transitional fields preserved for UI mock compatibility.
+  // Strictly ignored by backend eligibility gate; decision-critical capabilities must be in capabilities.
   max_temperature_c?: number | null; microwave_safe?: boolean | null;
   capabilities?: PackageCapabilities | null;
 }
