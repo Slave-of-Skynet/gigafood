@@ -21,6 +21,8 @@ versioned evidence JSON
 - `backend/app/main.py`: small application factory, lifespan and three read-only routes.
   A separate routes module adds no value at this size.
 - `data/evidence/demo-packaging.json`: schema v1.0, two explicitly synthetic scenarios.
+- `data/evidence/public-packaging.json`: NDR-01 public evidence, two source-attributed
+  comparisons. Select with `GIGAFOOD_EVIDENCE_PATH`; the illustrative default is unchanged.
 - `frontend/src/api`: TypeScript mirror of the shared Pydantic contract and fetch client.
 - `frontend/src/pages/HomePage.tsx`: service state, selection, result, evidence and retry.
   Aborted requests cannot replace a newer selection. UI never recalculates business values.
@@ -67,7 +69,9 @@ Vite proxies API calls on localhost; no CORS dependency or production hosting is
 No portfolio/ranking, annual volumes/impact, costs, LCA/CO2, legal certification, risk or
 sustainability score, database/ORM, accounts, Docker, external APIs, ingestion framework,
 LLM/ML, supplier integration, PDF extraction, deployment or final visual design.
-Future direction: single comparison → curated portfolio ranking, under a separate contract.
+Future direction: single comparison → curated portfolio ranking, under a separate contract
+and the [eligibility/evidence gate](canon/decision_policy.md). Current generic findings
+do not evaluate specific use-context incompatibilities. See [current product canon](canon/product_canon.md).
 
 Smart Harvest / `training_agrifood` is rehearsal only. No crop, telemetry, evaluation or
 old sponsor semantics belong here. No historical repository code was imported.
