@@ -34,7 +34,7 @@ This reconnaissance investigates the **Faerch A/S rigid food tray family** in th
 A three-article portfolio is recommended over four. A fourth candidate (C 2187-1F) merely duplicates the APET temperature limitation without introducing a distinct decision outcome:
 
 1. **Baseline — Faerch P 2226-1C (Item 2226014004):** Grey virgin Polypropylene (PP) tray, $26.29\text{ g} \pm 10\%$, $T_{\max} = 121^\circ\text{C}$, Cooking: *Microwave*. Family-scoped recycled content: $0\%$ (food-grade PP declared 100% virgin). Volume: `UNKNOWN`.
-   *Outcome: Numerically satisfies modeled operational capabilities ($121^\circ\text{C} \ge 95^\circ\text{C}$, microwave affirmed), resulting in operational eligibility `REVIEW_REQUIRED` (because demo operating context is an unverified modeling assumption); environmental calculation is `CALCULATED` for tray body only.*
+   *Reference Role: Serves as the current packaging baseline with calculable virgin plastic ($26.29\text{ g}$ tray body only under family claim). PackShift evaluates operational requirements against transition candidates, not the current baseline.*
 2. **Candidate A — Faerch C 2200-1L (Item 2200012097):** Evolve CPET tray, $1000\text{ ml}$, $21.38\text{ g} \pm 10\%$, $T_{\max} = 220^\circ\text{C}$, Cooking: *Oven/Microwave*. Recycled-content fraction: `UNKNOWN` at SKU level.
    *Outcome: Numerically satisfies modeled temperature ($220^\circ\text{C} \ge 95^\circ\text{C}$) and microwave assumptions; calculation status is `INSUFFICIENT_DATA` (because SKU-level recycled-content fraction is unavailable); operational eligibility is `REVIEW_REQUIRED` (because decision-critical premises and source capabilities are not VERIFIED).*
 3. **Candidate B (Operational Block under Demo Assumptions) — Faerch K 2182-1G (Item 2182015004):** Clear APET tray, $895\text{ ml}$, $21.48\text{ g} \pm 10\%$, $T_{\max} = 70^\circ\text{C}$, Cooking: *Not ovenable*. Recycled-content fraction: `UNKNOWN`.
@@ -116,8 +116,8 @@ To prevent greenwashing and algorithmic hallucinations, the recon strictly enfor
 `UNKNOWN` denotes that the primary source governing that specific SKU does not publish the value. No cell contains an assumed number.
 
 | Candidate ID | Product & Item Number | Material & Recipe | Nominal Capacity | Mass Scope | Recycled Content Fraction | $T_{\max}$ Capability | Microwave Suitability | Comparability Rating | Evidence & Gate Status |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Baseline** | Faerch P 2226-1C<br>`2226014004` | Polypropylene (PP)<br>Grey · Recipe `9626` | **`UNKNOWN`**<br>($227 \times 177 \times 49\text{ mm}$) | Body only<br>**$26.29\text{ g}$** ($\pm 10\%$) | **$0.00$ ($0\%$)**<br>`FAMILY_CLAIM`<br>Food-grade PP virgin | **$+121^\circ\text{C}$**<br>(TDS stated) | **Yes**<br>Cooking: *Microwave* | **BOUNDED**<br>(Volume unknown; body only) | Sheet read (2021).<br>Eligibility: **`REVIEW_REQUIRED`** (demo assumptions)<br>Calc: **`CALCULATED`** (body) |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Baseline** | Faerch P 2226-1C<br>`2226014004` | Polypropylene (PP)<br>Grey · Recipe `9626` | **`UNKNOWN`**<br>($227 \times 177 \times 49\text{ mm}$) | Body only<br>**$26.29\text{ g}$** ($\pm 10\%$) | **$0.00$ ($0\%$)**<br>`FAMILY_CLAIM`<br>Food-grade PP virgin | **$+121^\circ\text{C}$**<br>(TDS stated) | **Yes**<br>Cooking: *Microwave* | **BOUNDED**<br>(Volume unknown; body only) | Sheet read (2021).<br>Role: **Reference Baseline**<br>Calc: **`CALCULATED`** (body) |
 | **Candidate A** | Faerch C 2200-1L<br>`2200012097` | CPET Evolve<br>Recipe `6811` | **$1000\text{ ml}$**<br>($200 \times 155 \times 47\text{ mm}$) | Body only<br>**$21.38\text{ g}$** ($\pm 10\%$) | **`UNKNOWN`**<br>(TDS defers to current declaration) | **$+220^\circ\text{C}$**<br>(TDS stated) | **Yes**<br>Cooking: *Oven/Microwave* | **BOUNDED**<br>(Capacity known here, not in baseline) | Sheet read (2023).<br>Eligibility: **`REVIEW_REQUIRED`** (unverified premises)<br>Calc: **`INSUFFICIENT_DATA`** |
 | **Candidate B** | Faerch K 2182-1G<br>`2182015004` | APET Clear<br>Recipe `7900` | **$895\text{ ml}$**<br>($180 \times 100 \times 76\text{ mm}$) | Body only<br>**$21.48\text{ g}$** ($\pm 10\%$) | **`UNKNOWN`**<br>(2025 TDS defers to current declaration) | **$+70^\circ\text{C}$**<br>(TDS stated) | **`UNKNOWN`**<br>*Not ovenable* $\neq$ not microwaveable | **BOUNDED**<br>(Dimensions differ; close volume to A) | Sheet read (2025).<br>Eligibility: **`BLOCKED`** (doc $70^\circ\text{C} < \text{assumed } 95^\circ\text{C}$)<br>Calc: **`INSUFFICIENT_DATA`** |
 
@@ -134,7 +134,7 @@ To prevent greenwashing and algorithmic hallucinations, the recon strictly enfor
 - **Recycled Content Evidence:** Sourced from live Faerch PP Material Platform: *"PP is made from 100% virgin material"* and *"Food-grade PP must be produced from 100% virgin material"*. Scoped to Faerch food-grade PP class; not an audited SKU lot certificate.
 - **Missing Evidence:** Nominal volume (`UNKNOWN`). Intended food matrix (`UNKNOWN`). Sealing film identity, mass, and recycled content (`UNKNOWN`).
 - **Comparability:** **BOUNDED / WITH QUALIFIER**. Same manufacturer and body-only boundary, but baseline volume is unstated on the sheet. Grey color is stated NIR non-detectable (recyclability limitation, not modeled as a score).
-- **Safe Conclusion:** Under the stated $95^\circ\text{C}$ + microwave demo assumptions, the tray body numerically satisfies the thermal and microwave parameters ($121^\circ\text{C} \ge 95^\circ\text{C}$, microwave affirmed); operational eligibility is `REVIEW_REQUIRED` because the demo requirements are unverified assumptions. Virgin plastic for the tray body is `CALCULATED` under the family claim ($26.29\text{ g}$). It is not a complete-pack verification.
+- **Safe Conclusion:** Serves as the current reference baseline. Documented capabilities ($121^\circ\text{C}$, microwave affirmed) align with the assumed demo context. Virgin plastic for the tray body is `CALCULATED` under the family claim ($26.29\text{ g}$). (PackShift evaluates operational requirements against transition candidates, not the reference baseline). It is not a complete-pack verification.
 
 ---
 
@@ -147,7 +147,7 @@ To prevent greenwashing and algorithmic hallucinations, the recon strictly enfor
   - *Do NOT use "minimum 40% Tray rPET":* 2025 launch applies specifically to UK/Ireland chilled ready-meal CPET; Tray rPET is not total PCR fraction.
   - *Do NOT use 2021 historical bands (69–75%):* Historical table does not cite recipe `6811`.
 - **Comparability:** **BOUNDED / WITH QUALIFIER**. Nominal volume ($1000\text{ ml}$) is known here, unlike the baseline.
-- **Safe Conclusion:** Numerically satisfies modeled operational constraints ($220^\circ\text{C} \ge 95^\circ\text{C}$, dual-ovenable/microwave affirmed). Because decision-critical premises and source capabilities are not VERIFIED, operational eligibility is **`REVIEW_REQUIRED`** (not ELIGIBLE). Because SKU-level recycled-content fraction is unavailable on the TDS, calculation status is **`INSUFFICIENT_DATA`** (`CALCULATION WITHHELD — INSUFFICIENT_DATA`). PackShift must not calculate or present an unverified virgin-plastic reduction.
+- **Safe Conclusion:** Numerically satisfies modeled operational constraints ($220^\circ\text{C} \ge 95^\circ\text{C}$, dual-ovenable/microwave affirmed). Because decision-critical premises and source capabilities are not VERIFIED, operational eligibility is **`REVIEW_REQUIRED`** (not ELIGIBLE). Because SKU-level recycled-content fraction is unavailable on the TDS, calculation status is **`INSUFFICIENT_DATA`** (`CALCULATION WITHHELD — INSUFFICIENT_DATA`). Calculation remains `INSUFFICIENT_DATA` until a numeric recycled-content fraction applicable to this SKU is supplied with provenance. PackShift must not calculate or present an unverified virgin-plastic reduction.
 
 ---
 
@@ -172,12 +172,10 @@ Tracing execution through PackShift's deterministic runtime contracts:
 FAERCH A/S PREPARED-FOOD PORTFOLIO: DEMO OUTCOMES (Stated Context: Assumed 95°C, Microwave Safe)
 ====================================================================================================
 
-[BASELINE]  Faerch P 2226-1C PP Tray (Item 2226014004)
+[BASELINE]  Faerch P 2226-1C PP Tray (Item 2226014004) — Current Reference Package
             Mass: 26.29 g | Recycled: 0% (Family claim) | Virgin Plastic: 26.29 g (Body only)
-            Operational Capabilities: 121°C, Microwave Safe
-            - Eligibility Axis Status: REVIEW_REQUIRED (Assumed demo premises)
-            - Calculation Axis Status: CALCULATED (Body only)
-            --> RUNTIME STATUS: ELIGIBILITY: REVIEW_REQUIRED | CALCULATION: CALCULATED
+            Capabilities: 121°C, Microwave Safe
+            --> REFERENCE BASELINE: CALCULATION: CALCULATED (Body only)
 
 ----------------------------------------------------------------------------------------------------
 
@@ -189,7 +187,7 @@ FAERCH A/S PREPARED-FOOD PORTFOLIO: DEMO OUTCOMES (Stated Context: Assumed 95°C
    --> PACKSHIFT VERDICT:       CALCULATION WITHHELD — INSUFFICIENT_DATA | Eligibility: REVIEW_REQUIRED.
                                 Numerically satisfies modeled temperature and microwave assumptions,
                                 but eligibility requires review and calculation cannot proceed
-                                without verified supplier declaration.
+                                without a current SKU-level numeric recycled-content value.
 
 2. [CANDIDATE B] Faerch K 2182-1G APET Clear (Item 2182015004)
    - Operational Capabilities:  70°C (documented), Microwave: UNKNOWN ("Not ovenable")
@@ -281,7 +279,7 @@ When multi-candidate schemas are formally drafted, the domain model should intro
 
 ## 13. Source Ledger
 
-All decision-critical facts are traced to verified primary manufacturer product sheets and official corporate platforms.
+Decision-critical facts are traced to manufacturer-authored product sheets and official corporate sources, with provenance and limitations recorded below.
 
 | Source ID | Source Entity | Title / Document Reference | Source URL | Key Attributed Facts | Scope / Limitations | Source Class |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
