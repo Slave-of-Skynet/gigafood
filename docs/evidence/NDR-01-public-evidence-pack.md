@@ -24,6 +24,7 @@ Profi confirmed that proprietary internal packaging data will not be provided du
 ### 2. Sources
 1. **Coca-Cola HBC AG** — *Green Finance Report* (September 2023), Circular Economy / Packaging Allocation section:
    - URL: [Coca-Cola HBC Green Finance Report (PDF)](https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf)
+   - Exact locations: Page 15 (Case study: in-house 100% rPET preforms at Gaglianico plant; 100% rPET portfolio in selected markets); Page 18, Footnote 2 (500ml PET bottle average weight 19.5g, closure 2.5g); Page 19 (Impact report methodology for rPET preforms).
    - Scope: Audited project allocation for in-house food-grade rPET preform manufacturing plants (e.g. Gaglianico, Italy; Edelstal, Austria). Includes independent limited assurance report by PricewaterhouseCoopers (PwC).
 2. **Directive (EU) 2019/904** (Single-Use Plastics Directive) & **Regulation (EU) 2022/1616** (Recycled Plastic Food Contact Materials):
    - Establishes mandatory recycled content targets for PET beverage bottles (min. 25% by 2025, 30% by 2030) and regulatory authorization of closed-loop/bottle-to-bottle mechanical decontamination processes.
@@ -66,7 +67,7 @@ $$\text{virgin}_i = \text{plastic\_mass\_g}_i \times (1 - \text{recycled\_conten
   - `food-contact-suitability`: `REVIEW_REQUIRED` (verification_state: `NOT_VERIFIED`)
 
 ### 6. Limitations & Nuances
-- **Component Boundary**: Secondary packaging components, specifically the oriented polypropylene (OPP) wrap label (~0.3–0.5 g) and hot-melt adhesives, are excluded from the calculation because they are not quantified in the cited Green Finance Report.
+- **Component Boundary**: Secondary packaging components, specifically the label and hot-melt adhesives, are excluded from the calculation boundary because their masses are unquantified in the cited Green Finance Report. In accordance with PackShift semantics, unquantified component mass is treated as unknown, not zero.
 - **The Closure Reality Check**: Public marketing frequently promotes "100% rPET bottles." However, at the complete package level, virgin plastic is **not zero**. The 2.5 g HDPE closure remains 100% virgin polymer due to mechanical stress-crack resistance and organoleptic requirements in pressurized carbonated beverages. PackShift accurately captures this nuance: virgin plastic drops from 22.0 g to 2.5 g (-88.64%), rather than 0.0 g (-100%).
 - **Scope**: Figures represent a specific 500ml CSD preform/bottle geometry lightweighted to 19.5 g and cannot be extrapolated linearly to larger formats (e.g. 1.5L or 2.0L bottles).
 
@@ -103,7 +104,7 @@ On paper, this transition demonstrates an exceptional **83.78% reduction in virg
 - **Candidate Container Constraint**: The Duni Deli Hinged container is thermoformed from amorphous rPET. The official manufacturer technical datasheet specifies:
   > *Maximum temperature: +70°C for up to 2 hours.*
   > *Restrictions: Not suitable for use in a microwave oven.*
-- **Failure Mode**: The glass transition temperature ($T_g$) of amorphous PET is between 65°C and 70°C. If an operator or consumer uses this container for hot food packaging, soup hot-filling, or microwave reheating, the material suffers immediate thermal deformation, softening, and structural collapse, creating severe scalding and leaking hazards.
+- **Operational Requirement Incompatibility**: Amorphous PET has a glass transition temperature ($T_g$) around 67–70°C. Exposing this article to 95°C hot-filling or microwave reheating exceeds the manufacturer-documented thermal envelope, resulting in loss of dimensional stability and compromised seal integrity. PackShift evaluates this strictly as an operational gate block, not a forensic physical hazard prediction.
 
 #### B. Food Contact Migration Limits
 - Under **Regulation (EU) No 10/2011** and **Regulation (EU) 2022/1616**, food contact migration testing for rPET containers is valid only within declared temperature-time envelopes (chilled storage and short-term ambient contact). Subjecting rPET to elevated temperatures without a high-temperature compliance certification risks non-compliant migration of non-intentionally added substances (NIAS) and polymer degradation products.
@@ -111,10 +112,10 @@ On paper, this transition demonstrates an exceptional **83.78% reduction in virg
 ### 3. Sources
 1. **Berry Global / Superfos** — *UniPak 360ml Round Technical Specification* (Product Code 5226):
    - URL: [Berry Global Product 5226](https://www.berryglobal.com/en/product/5226)
-   - Certified facts: Weight 14.8 g (body only), material PP, hot filling up to 95°C, dishwasher and freezer safe.
-2. **Duni Group / BioPak** — *Deli Hinged 375ml Transparent 1-Comp Technical Datasheet* (Article 205971):
+   - Documented specifications: Weight 14.8 g (body only), material PP, hot filling up to 95°C, dishwasher and freezer safe.
+2. **Duni Group / BioPak** — *Deli Hinged 375ml Transparent 1-Comp Technical Datasheet & Declaration of Compliance* (Article 205971):
    - URL: [Duni Product 205971](https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971)
-   - Certified facts: Piece gross weight 12.0 g, 80% post-consumer rPET, maximum temperature +70°C, explicitly not suitable for microwave oven.
+   - Documented specifications: Piece gross weight 12.0 g, 80% post-consumer rPET, maximum temperature +70°C for up to 2 hours, explicitly not suitable for microwave oven.
 3. **Commission Regulation (EU) 2022/1616** on recycled plastic materials and articles intended to come into contact with foods.
 
 ### 4. Safe Conclusion
