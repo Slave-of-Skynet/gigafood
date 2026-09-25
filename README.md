@@ -20,9 +20,12 @@ available. Results are decision support, not certification or implementation app
 - [NDR-01 public evidence pack](docs/evidence/NDR-01-public-evidence-pack.md): source ledger and limitations.
 - [Architecture](docs/architecture.md) and [evidence semantics](docs/evidence_semantics.md).
 
-Current UI/API titles still use GigaFood. No portfolio ranking, annual-impact field,
-costs/ROI, LCA/CO2 engine, full eligibility engine, database/accounts, supplier
-integration, AI/LLM runtime or production deployment is implemented.
+Current UI/API titles still use GigaFood. A bounded operational eligibility
+gate is implemented in the runtime, evaluating modeled thermal and microwave
+constraints with explicit provenance, strictly decoupled from environmental
+calculations. No portfolio ranking, annual-impact field, costs/ROI, LCA/CO2
+engine, comprehensive packaging qualification engine, database/accounts,
+supplier integration, AI/LLM runtime or production deployment is implemented.
 
 ## Run locally
 
@@ -78,11 +81,17 @@ These install the declared dependencies, run backend tests, build the UI and che
 With the public pack selected, confirm `PUBLIC` and the not-Profi disclosure:
 
 1. Select **Case A** (`cchbc-500ml-rpet-transition`): 22.0 → 2.5 g/unit;
-   reduction 19.5 g/unit, about 88.64%, `CALCULATED` / `INDICATIVE`.
+   reduction 19.5 g/unit, about 88.64%, `CALCULATED` / `INDICATIVE`. Operational
+   requirements are unmodeled for beverage bottles, safely returning `REVIEW_REQUIRED`.
+   Component boundary: secondary wrap label (~0.3–0.5g) and adhesives excluded.
 2. Select **Case B** (`deli-pp-to-rpet-transition`): 14.8 → 2.4 g/unit;
-   reduction 12.4 g/unit, about 83.78%. Explain the different recorded use envelopes.
-   This delta is not a replacement recommendation; the runtime emits only a generic
-   suitability warning, not a specific incompatibility verdict.
+   reduction 12.4 g/unit, about 83.78%, `CALCULATED` / `INDICATIVE`. The bounded
+   operational gate returns `BLOCKED` due to demonstrated thermal incompatibility
+   (candidate max 70.0°C < required 95.0°C) and microwave incompatibility (candidate
+   not microwave safe, operating context requires microwave reheating). Explain that
+   theoretical reduction does not grant eligibility. Component boundary: Berry 14.8g
+   is container body only (separate lid excluded, missing mass unknown); candidate
+   12.0g is complete hinged container gross weight.
 3. Inspect provenance and limitations in the ledger: represented components are not
    verified complete-package inventories. Neither case describes actual Profi impact.
 
@@ -90,7 +99,9 @@ With the illustrative pack selected, confirm `ILLUSTRATIVE`:
 
 1. Select **Illustrative reduction**: 15 → 8 g/unit; reduction 7 g/unit, about 46.667%.
 2. Select **Illustrative missing recycled content**: candidate and delta N/A;
-   `INSUFFICIENT_DATA`, missing-field path and a blocked calculation finding.
+   `INSUFFICIENT_DATA`, missing-field paths. Operational eligibility evaluates to
+   `REVIEW_REQUIRED`, not `BLOCKED` (missing numerical evidence does not fabricate
+   an operational incompatibility).
 3. Inspect both packages' values, provenance, and `NOT_VERIFIED` suitability notice.
 4. Stop the backend, reload the page: service error and Retry. Restart it and retry.
 5. Start backend with an absent evidence path: health and calculation routes return 503.

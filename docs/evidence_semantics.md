@@ -11,10 +11,12 @@
 | ESTIMATED | Approximation with stated method/limitations |
 | ASSUMED | Explicit scenario assumption, not an observed fact |
 
-Every mass/fraction field includes value (nullable) and provenance with origin,
+Every mass/fraction and decision-critical constraint field (`max_temperature_c`,
+`microwave_safe`) includes value (nullable) and provenance with origin,
 verification_state, source_reference and note. Fixture references identify synthetic
-inputs; they are not public citations. A null value's provenance describes the input slot
-and why it is unavailable; it does not supply a numerical assumption.
+inputs; public URLs cite manufacturer documentation; demo operational requirements
+are marked ASSUMED / NOT_VERIFIED. A null value's provenance describes the input slot
+and why it is unavailable; it does not supply an unverified assumption.
 
 ## Verification / decision states
 
@@ -33,8 +35,10 @@ Neither food_contact nor use_context proves suitability. Constraint findings do 
 certify food safety, shelf life, operations or legal compliance.
 
 Unknown is never zero. Missing mass or recycled fraction blocks the corresponding
-package total and transition delta. Explicit zero recycled fraction is valid; zero mass
-is invalid. A zero current virgin total makes percentage N/A. Annual impact is absent.
+package total and transition delta (`status = INSUFFICIENT_DATA`), but does NOT
+fabricate an operational incompatibility or block candidate eligibility. Explicit
+zero recycled fraction is valid; zero mass is invalid. A zero current virgin total
+makes percentage N/A. Annual impact is absent.
 
 ## Dataset identity
 
@@ -53,6 +57,9 @@ SOURCE_AVAILABLE and its calculable outputs INDICATIVE, not VERIFIED. See the
 [ledger](evidence/NDR-01-public-evidence-pack.md) for source scope and excluded
 components. Validation does not establish inventory completeness.
 
-The [decision policy](canon/decision_policy.md) separates calculation, eligibility
-and approval, including UNKNOWN versus demonstrated incompatibility. It is future
-product policy, not a change to current enums, contracts or generic findings.
+The [decision policy](canon/decision_policy.md) separates environmental calculation,
+operational eligibility, evidence verification, and implementation approval. The runtime
+evaluates modeled operational constraints (temperature, microwave) into `ELIGIBLE`,
+`REVIEW_REQUIRED`, or `BLOCKED`, while environmental calculations independently return
+`CALCULATED` or `INSUFFICIENT_DATA`. Operational eligibility within a bounded gate does
+not constitute full product certification or implementation approval.

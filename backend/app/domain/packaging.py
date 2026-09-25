@@ -26,6 +26,26 @@ class FractionInput(Contract):
     provenance: Provenance
 
 
+class TemperatureInput(Contract):
+    value: float | None = None
+    provenance: Provenance
+
+
+class BooleanInput(Contract):
+    value: bool | None = None
+    provenance: Provenance
+
+
+class PackageCapabilities(Contract):
+    max_temperature_c: TemperatureInput | None = None
+    microwave_safe: BooleanInput | None = None
+
+
+class OperationalRequirements(Contract):
+    max_temperature_c: TemperatureInput | None = None
+    microwave_safe: BooleanInput | None = None
+
+
 class Component(Contract):
     id: Text
     material: Text
@@ -39,6 +59,7 @@ class Package(Contract):
     components: Annotated[list[Component], Field(min_length=1)]
     food_contact: bool | None = None
     use_context: str | None = None
+    capabilities: PackageCapabilities | None = None
     max_temperature_c: float | None = None
     microwave_safe: bool | None = None
 
@@ -54,6 +75,7 @@ class Scenario(Contract):
     label: Text
     current: Package
     candidate: Package
+    operational_requirements: OperationalRequirements | None = None
 
 
 class Evidence(Contract):

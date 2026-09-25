@@ -76,30 +76,37 @@ container lid; these totals must not be promoted to verified complete-package
 inventories. Schema validation cannot prove inventory completeness or comparable scope.
 
 Case B's recorded use envelopes differ materially. NDR-01 attributes a maximum
-70°C for 2 h and no microwave use to the candidate, versus a different hot-fill /
-reheating context for the current container. These are scoped source attributions
-in that pack, not a new blanket claim about rPET or food safety. The runtime displays
-use-context text but does not evaluate these specific incompatibilities; the generic
-`food-contact-suitability` finding remains `REVIEW_REQUIRED` / `NOT_VERIFIED`.
-An attractive delta cannot establish eligibility; see [the decision gate](decision_policy.md).
+70°C for 2 h and no microwave use to the candidate, versus a hot-fill (up to 95°C)
+and microwave reheating context for the demonstrated prepared-food scenario.
+The runtime evaluates these constraints in a bounded operational eligibility gate:
+candidate capabilities (sourced from manufacturer datasheets) are compared against
+explicit scenario operational requirements (clearly marked as demonstration assumptions,
+not Profi provider requirements). Because candidate maximum temperature (70°C) is
+below required (95°C) and the candidate is not microwave safe, the operational gate
+evaluates to `BLOCKED`. Simultaneously, the virgin-plastic calculation remains
+`CALCULATED` / `INDICATIVE` (12.4 g / 83.78% reduction on represented components),
+demonstrating that theoretical environmental benefit does not imply operational eligibility.
+The generic `food-contact-suitability` finding remains `REVIEW_REQUIRED` / `NOT_VERIFIED`
+as an advisory disclosure.
 
 ## Demo claims and non-features
 
-**TEAM_DECISION — allowed:** Show the explicit inputs, represented-component scope,
+**TEAM_DECISION — allowed:** Show explicit inputs, represented-component scope,
 deterministic per-unit delta, dataset identity, provenance and uncertainty. Demonstrate
-refusal on missing inputs and unavailable evidence. Present Case B as the reason
-eligibility needs a separate gate, not as an approved replacement. Use the
-[README runbook](../../README.md) to select either evidence pack.
+refusal on missing calculation inputs (`INSUFFICIENT_DATA` without false operational block).
+Present Case B as a live demonstration of the bounded operational eligibility gate
+blocking an operationally incompatible candidate despite attractive theoretical savings.
+Use the [README runbook](../../README.md) to select either evidence pack.
 
 **TEAM_DECISION — not allowed:** Claim actual Profi packaging/savings; verified
 complete-package savings from incomplete inventories; guaranteed safety, shelf life,
 legal compliance, supplier/procurement approval or implementation approval; a universal
 drop-in replacement; annual Profi impact without sourced volume; or that public inputs
-are automatically verified. Do not say the current engine detects Case B's specific
-thermal/microwave mismatch or certifies a cold-food application.
+are automatically verified. Do not claim the bounded gate constitutes a comprehensive
+packaging qualification or certification engine.
 
 **OBSERVED_IMPLEMENTATION — absent:** Portfolio ranking, annual-volume impact,
-costs/ROI, LCA/CO2 engine, legal certification, full eligibility engine,
+costs/ROI, LCA/CO2 engine, legal certification, comprehensive packaging qualification engine,
 database/accounts, supplier integration, AI/LLM runtime and production deployment.
 PackShift is decision support, not a certification engine or an LCA oracle, and
 must not fabricate commercial savings.

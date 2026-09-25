@@ -91,6 +91,11 @@ $$\text{virgin}_i = \text{plastic\_mass\_g}_i \times (1 - \text{recycled\_conten
 
 On paper, this transition demonstrates an exceptional **83.78% reduction in virgin plastic** per package, accompanied by a 18.9% overall mass reduction (14.8 g → 12.0 g).
 
+#### Critical Component Boundary & Comparability Limitation
+- **Baseline Boundary**: The Berry UniPak 14.8 g specification represents the **container body only**; the separate snap-on lid is not quantified in the cited datasheet. Missing lid mass remains **unknown**, never assumed to be zero.
+- **Candidate Boundary**: The Duni Deli Hinged 12.0 g specification represents the **complete hinged container gross weight** (body + integral lid).
+- **Comparability Verdict**: The 83.78% delta is strictly an environmental calculation on **represented components**, NOT a verified like-for-like complete-package transition or implementable saving.
+
 ### 2. Operational & Regulatory Constraints
 
 #### A. Thermal & Microwave Incompatibility
@@ -106,7 +111,7 @@ On paper, this transition demonstrates an exceptional **83.78% reduction in virg
 ### 3. Sources
 1. **Berry Global / Superfos** — *UniPak 360ml Round Technical Specification* (Product Code 5226):
    - URL: [Berry Global Product 5226](https://www.berryglobal.com/en/product/5226)
-   - Certified facts: Weight 14.8 g, material PP, hot filling up to 95°C, dishwasher and freezer safe.
+   - Certified facts: Weight 14.8 g (body only), material PP, hot filling up to 95°C, dishwasher and freezer safe.
 2. **Duni Group / BioPak** — *Deli Hinged 375ml Transparent 1-Comp Technical Datasheet* (Article 205971):
    - URL: [Duni Product 205971](https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971)
    - Certified facts: Piece gross weight 12.0 g, 80% post-consumer rPET, maximum temperature +70°C, explicitly not suitable for microwave oven.
@@ -114,11 +119,18 @@ On paper, this transition demonstrates an exceptional **83.78% reduction in virg
 
 ### 4. Safe Conclusion
 - **Conditional Suitability**: The candidate container can only be deployed if the customer's food application is strictly limited to **cold/chilled foods** (e.g., fresh salads, sliced fruits, cold dips) where no hot-filling or consumer reheating will ever occur.
-- **Operational Block**: For prepared meals, hot soups, or reheatable takeaway, the candidate is **functionally and physically unsuitable**, regardless of its numerical virgin plastic savings.
-- **PackShift Status**: The computation returns status `CALCULATED` with verification state `INDICATIVE`, while the constraint engine attaches `food-contact-suitability: REVIEW_REQUIRED` (`NOT_VERIFIED`).
+- **Operational Block**: For prepared meals requiring hot-filling (95°C) or microwave reheating, the candidate is **functionally and physically incompatible**, regardless of its numerical virgin plastic savings.
+- **PackShift Status**:
+  - Environmental calculation: status `CALCULATED`, verification state `INDICATIVE` (12.4 g / 83.78% reduction on represented body components).
+  - Bounded operational eligibility gate: status `BLOCKED` due to explicit gating findings:
+    - `thermal-envelope-incompatibility`: candidate max 70.0°C < required 95.0°C (`SOURCE_AVAILABLE`)
+    - `microwave-reheating-incompatibility`: candidate not microwave safe (`SOURCE_AVAILABLE`)
+  - Advisory disclosure: `food-contact-suitability`: `REVIEW_REQUIRED` (`NOT_VERIFIED`).
+  - Provenance: Demo operational requirements are explicitly attributed as `ASSUMED` / `NOT_VERIFIED` scenario assumptions, not actual Profi provider requirements.
 
 ### 5. What PackShift Must NOT Claim
 - PackShift must **NOT** claim that Duni 205971 is a universal or "drop-in" substitute for Berry UniPak 5226.
+- PackShift must **NOT** claim that 83.78% represents a like-for-like complete-package saving, because the baseline excludes the separate lid.
 - PackShift must **NOT** certify microwave safety, heat tolerance, or hot-fill compatibility.
 - PackShift must **NOT** state that 80% rPET compliance in chilled conditions implies regulatory approval for general food service applications.
 - PackShift must **NOT** produce a unilateral legal, regulatory, or food-contact safety verdict.
