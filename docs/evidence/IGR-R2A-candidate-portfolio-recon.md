@@ -1,11 +1,11 @@
 # IGR-R2A — Candidate Portfolio Recon for Multi-Candidate Packaging Selection
 
-**Status:** RECON REPORT / DECISION SUPPORT ONLY  
-**Date:** 2026-09-26  
-**Author:** Igor (Packaging Recon & Technical Architecture)  
-**Target Repository:** `Slave-of-Skynet/gigafood`  
-**Base Commit:** `31e7381ec8d4bb3cfdeac7f77769934ae2a6a152` (`main`)  
-**Branch:** `igor/igr-r2a-candidate-portfolio-recon`  
+**Status:** RECON REPORT / DECISION SUPPORT ONLY
+**Date:** 2026-09-26
+**Author:** Igor (Packaging Recon & Technical Architecture)
+**Target Repository:** `Slave-of-Skynet/gigafood`
+**Base Commit:** `31e7381ec8d4bb3cfdeac7f77769934ae2a6a152` (`main`)
+**Branch:** `igor/igr-r2a-candidate-portfolio-recon`
 **Write Scope:** Strictly limited to `docs/evidence/IGR-R2A-candidate-portfolio-recon.md`
 
 ---
@@ -19,7 +19,7 @@ This reconnaissance evaluates the **"Deli Food & Prepared Hot Takeaway Container
 3. It presents severe, conflicting physical constraints (hot-filling up to $95^\circ\text{C}$ and microwave reheating) that expose the critical difference between theoretical virgin-plastic reduction and operational implementation feasibility.
 
 ### Demo Viability Assessment
-**VIABLE WITH A 4-CANDIDATE PORTFOLIO.**  
+**VIABLE WITH A 4-CANDIDATE PORTFOLIO.**
 A multi-candidate selection demo is fully viable using publicly verifiable manufacturer technical datasheets (TDS) and official product documentation. The portfolio successfully demonstrates four distinct decision outcomes under deterministic gating rules without resorting to subjective weighted scoring (e.g. TOPSIS/AHP) or unverified carbon/LCA models:
 
 1. **Baseline**: Injection-molded virgin Polypropylene (PP) pot ($14.8\text{ g}$, $0\%$ recycled content).
