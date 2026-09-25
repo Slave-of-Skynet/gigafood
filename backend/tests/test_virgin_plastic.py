@@ -435,3 +435,51 @@ def test_operational_microwave_truth_table(req_ver, cand_ver, cand_mw, expected_
     else:
         assert not any(c.constraint_id == "microwave-reheating-verification" for c in result.constraints)
         assert not any(c.constraint_id == "microwave-reheating-incompatibility" for c in result.constraints)
+
+
+def test_operational_null_requirement_temperature_with_verified_microwave():
+    """Test A: Temperature requirement input exists with value=null / INSUFFICIENT_DATA;
+    microwave requirement = VERIFIED True and candidate microwave capability = VERIFIED True.
+    Expected: REVIEW_REQUIRED, not ELIGIBLE, not BLOCKED."""
+    reqs = OperationalRequirements(
+        max_temperature_c=temp_input(None, origin="USER_PROVIDED", verification="INSUFFICIENT_DATA", ref="spec:null-temp", note="Temp input unavailable"),
+        microwave_safe=bool_input(True, origin="USER_PROVIDED", verification="VERIFIED", ref="spec:verified-mw", note="Verified mw req"),
+    )
+    current = package(component(20, 0))
+    candidate = package(component(20, 0.5), capabilities=PackageCapabilities(
+        microwave_safe=bool_input(True, origin="MANUFACTURER_SUPPLIED", verification="VERIFIED", ref="cert:mw", note="Certified mw"),
+    ))
+    result = transition(current, candidate, operational_requirements=reqs)
+    assert result.status == "CALCULATED"
+    assert result.eligibility_status == "REVIEW_REQUIRED"
+    assert result.eligibility_status != "ELIGIBLE"
+    assert result.eligibility_status != "BLOCKED"
+    assert not any(c.status == "BLOCKED" for c in result.constraints)
+    thermal = next(c for c in result.constraints if c.constraint_id == "thermal-envelope-verification")
+    assert thermal.status == "REVIEW_REQUIRED"
+    assert thermal.verification_state == "INSUFFICIENT_DATA"
+    assert "thermal operating requirement is present but its value is unavailable" in thermal.reason
+
+
+def test_operational_verified_temperature_with_null_requirement_microwave():
+    """Test B: Temperature requirement = VERIFIED and satisfied;
+    microwave requirement input exists with value=null / INSUFFICIENT_DATA.
+    Expected: REVIEW_REQUIRED, not ELIGIBLE, not BLOCKED."""
+    reqs = OperationalRequirements(
+        max_temperature_c=temp_input(90.0, origin="USER_PROVIDED", verification="VERIFIED", ref="spec:verified-temp", note="Verified temp req"),
+        microwave_safe=bool_input(None, origin="USER_PROVIDED", verification="INSUFFICIENT_DATA", ref="spec:null-mw", note="MW input unavailable"),
+    )
+    current = package(component(20, 0))
+    candidate = package(component(20, 0.5), capabilities=PackageCapabilities(
+        max_temperature_c=temp_input(100.0, origin="MANUFACTURER_SUPPLIED", verification="VERIFIED", ref="cert:temp", note="Certified temp"),
+    ))
+    result = transition(current, candidate, operational_requirements=reqs)
+    assert result.status == "CALCULATED"
+    assert result.eligibility_status == "REVIEW_REQUIRED"
+    assert result.eligibility_status != "ELIGIBLE"
+    assert result.eligibility_status != "BLOCKED"
+    assert not any(c.status == "BLOCKED" for c in result.constraints)
+    mw = next(c for c in result.constraints if c.constraint_id == "microwave-reheating-verification")
+    assert mw.status == "REVIEW_REQUIRED"
+    assert mw.verification_state == "INSUFFICIENT_DATA"
+    assert "microwave operating requirement is present but its value is unavailable" in mw.reason

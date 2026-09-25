@@ -80,11 +80,20 @@ def compare(scenario: Scenario) -> Comparison:
     req_mw_val = req_mw.value if req_mw else None
 
     # Evaluate thermal constraint
-    if req_temp_val is not None:
+    if req_temp is not None:
         evaluated_requirements += 1
-        req_temp_ver = req_temp.provenance.verification_state if req_temp else "NOT_VERIFIED"
-        req_temp_origin = req_temp.provenance.origin if req_temp else "ASSUMED"
-        if cand_temp_val is None:
+        req_temp_ver = req_temp.provenance.verification_state
+        req_temp_origin = req_temp.provenance.origin
+        req_temp_source = req_temp.provenance.source_reference
+        if req_temp_val is None:
+            operational_findings.append(ConstraintFinding(
+                constraint_id="thermal-envelope-verification",
+                status="REVIEW_REQUIRED",
+                reason="The thermal operating requirement is present but its value is unavailable, so operational eligibility cannot be established.",
+                source_reference=req_temp_source,
+                verification_state=req_temp_ver,
+            ))
+        elif cand_temp_val is None:
             operational_findings.append(ConstraintFinding(
                 constraint_id="thermal-envelope-incompatibility",
                 status="REVIEW_REQUIRED",
@@ -128,51 +137,62 @@ def compare(scenario: Scenario) -> Comparison:
                 ))
 
     # Evaluate microwave constraint
-    if req_mw_val is True:
-        evaluated_requirements += 1
-        req_mw_ver = req_mw.provenance.verification_state if req_mw else "NOT_VERIFIED"
-        req_mw_origin = req_mw.provenance.origin if req_mw else "ASSUMED"
-        if cand_mw_val is None:
+    if req_mw is not None:
+        req_mw_ver = req_mw.provenance.verification_state
+        req_mw_origin = req_mw.provenance.origin
+        req_mw_source = req_mw.provenance.source_reference
+        if req_mw_val is None:
+            evaluated_requirements += 1
             operational_findings.append(ConstraintFinding(
-                constraint_id="microwave-reheating-incompatibility",
+                constraint_id="microwave-reheating-verification",
                 status="REVIEW_REQUIRED",
-                reason="Operating context requires microwave reheating, but candidate packaging microwave capability is not established.",
-                source_reference=None,
-                verification_state="NOT_VERIFIED",
+                reason="The microwave operating requirement is present but its value is unavailable, so operational eligibility cannot be established.",
+                source_reference=req_mw_source,
+                verification_state=req_mw_ver,
             ))
-        elif cand_mw_val is False:
-            if req_mw_origin == "ASSUMED":
-                reason = "The assumed demo operating context requires microwave reheating, while the candidate manufacturer source states it is not microwave safe."
-            else:
-                reason = "Operating context requires microwave reheating, but candidate packaging is not microwave safe."
-            combined_ver = combine_verification(req_mw_ver, cand_mw_verification)
-            operational_findings.append(ConstraintFinding(
-                constraint_id="microwave-reheating-incompatibility",
-                status="BLOCKED",
-                reason=reason,
-                source_reference=cand_mw_source,
-                verification_state=combined_ver,
-            ))
-        else:
-            if req_mw_ver != "VERIFIED" or cand_mw_verification != "VERIFIED":
+        elif req_mw_val is True:
+            evaluated_requirements += 1
+            if cand_mw_val is None:
+                operational_findings.append(ConstraintFinding(
+                    constraint_id="microwave-reheating-incompatibility",
+                    status="REVIEW_REQUIRED",
+                    reason="Operating context requires microwave reheating, but candidate packaging microwave capability is not established.",
+                    source_reference=None,
+                    verification_state="NOT_VERIFIED",
+                ))
+            elif cand_mw_val is False:
                 if req_mw_origin == "ASSUMED":
-                    reason = (
-                        "The candidate satisfies the assumed demo microwave reheating requirement, "
-                        "but eligibility cannot be established because one or more decision-critical premises are not VERIFIED."
-                    )
+                    reason = "The assumed demo operating context requires microwave reheating, while the candidate manufacturer source states it is not microwave safe."
                 else:
-                    reason = (
-                        "The candidate satisfies the stated microwave reheating requirement, "
-                        "but eligibility cannot be established because one or more decision-critical premises are not VERIFIED."
-                    )
+                    reason = "Operating context requires microwave reheating, but candidate packaging is not microwave safe."
                 combined_ver = combine_verification(req_mw_ver, cand_mw_verification)
                 operational_findings.append(ConstraintFinding(
-                    constraint_id="microwave-reheating-verification",
-                    status="REVIEW_REQUIRED",
+                    constraint_id="microwave-reheating-incompatibility",
+                    status="BLOCKED",
                     reason=reason,
                     source_reference=cand_mw_source,
                     verification_state=combined_ver,
                 ))
+            else:
+                if req_mw_ver != "VERIFIED" or cand_mw_verification != "VERIFIED":
+                    if req_mw_origin == "ASSUMED":
+                        reason = (
+                            "The candidate satisfies the assumed demo microwave reheating requirement, "
+                            "but eligibility cannot be established because one or more decision-critical premises are not VERIFIED."
+                        )
+                    else:
+                        reason = (
+                            "The candidate satisfies the stated microwave reheating requirement, "
+                            "but eligibility cannot be established because one or more decision-critical premises are not VERIFIED."
+                        )
+                    combined_ver = combine_verification(req_mw_ver, cand_mw_verification)
+                    operational_findings.append(ConstraintFinding(
+                        constraint_id="microwave-reheating-verification",
+                        status="REVIEW_REQUIRED",
+                        reason=reason,
+                        source_reference=cand_mw_source,
+                        verification_state=combined_ver,
+                    ))
 
     # Aggregate operational eligibility: strictly from operational findings
     if any(f.status == "BLOCKED" for f in operational_findings):
