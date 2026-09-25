@@ -3,17 +3,20 @@ from math import fsum
 from app.domain.packaging import Comparison, ConstraintFinding, Package, Scenario, Verification
 
 
+_VERIFICATION_RANK: dict[Verification, int] = {
+    "INSUFFICIENT_DATA": 0,
+    "NOT_VERIFIED": 1,
+    "INDICATIVE": 2,
+    "SOURCE_AVAILABLE": 3,
+    "VERIFIED": 4,
+}
+
+
 def combine_verification(req_state: Verification, cand_state: Verification) -> Verification:
     """A derived finding's verification state cannot be stronger than its weakest essential premise."""
-    if req_state == "INSUFFICIENT_DATA" or cand_state == "INSUFFICIENT_DATA":
-        return "INSUFFICIENT_DATA"
-    if req_state == "NOT_VERIFIED" or cand_state == "NOT_VERIFIED":
-        return "NOT_VERIFIED"
-    if req_state == "INDICATIVE" or cand_state == "INDICATIVE":
-        return "INDICATIVE"
-    if req_state == "SOURCE_AVAILABLE" and cand_state == "SOURCE_AVAILABLE":
-        return "SOURCE_AVAILABLE"
-    return "NOT_VERIFIED"
+    req_rank = _VERIFICATION_RANK.get(req_state, 1)
+    cand_rank = _VERIFICATION_RANK.get(cand_state, 1)
+    return req_state if req_rank <= cand_rank else cand_state
 
 
 def virgin_plastic(package: Package) -> float | None:
@@ -102,6 +105,27 @@ def compare(scenario: Scenario) -> Comparison:
                 source_reference=cand_temp_source,
                 verification_state=combined_ver,
             ))
+        else:
+            if req_temp_ver != "VERIFIED" or cand_temp_verification != "VERIFIED":
+                if req_temp_origin == "ASSUMED":
+                    reason = (
+                        f"For the assumed demo operating requirement of {req_temp_val:g}°C, the candidate numerically satisfies "
+                        f"the thermal requirement ({cand_temp_val:g}°C), but eligibility cannot be established because one or more "
+                        f"decision-critical premises are not VERIFIED."
+                    )
+                else:
+                    reason = (
+                        f"The candidate numerically satisfies the stated thermal requirement ({cand_temp_val:g}°C >= {req_temp_val:g}°C), "
+                        f"but eligibility cannot be established because one or more decision-critical premises are not VERIFIED."
+                    )
+                combined_ver = combine_verification(req_temp_ver, cand_temp_verification)
+                operational_findings.append(ConstraintFinding(
+                    constraint_id="thermal-envelope-verification",
+                    status="REVIEW_REQUIRED",
+                    reason=reason,
+                    source_reference=cand_temp_source,
+                    verification_state=combined_ver,
+                ))
 
     # Evaluate microwave constraint
     if req_mw_val is True:
@@ -129,6 +153,26 @@ def compare(scenario: Scenario) -> Comparison:
                 source_reference=cand_mw_source,
                 verification_state=combined_ver,
             ))
+        else:
+            if req_mw_ver != "VERIFIED" or cand_mw_verification != "VERIFIED":
+                if req_mw_origin == "ASSUMED":
+                    reason = (
+                        "The candidate satisfies the assumed demo microwave reheating requirement, "
+                        "but eligibility cannot be established because one or more decision-critical premises are not VERIFIED."
+                    )
+                else:
+                    reason = (
+                        "The candidate satisfies the stated microwave reheating requirement, "
+                        "but eligibility cannot be established because one or more decision-critical premises are not VERIFIED."
+                    )
+                combined_ver = combine_verification(req_mw_ver, cand_mw_verification)
+                operational_findings.append(ConstraintFinding(
+                    constraint_id="microwave-reheating-verification",
+                    status="REVIEW_REQUIRED",
+                    reason=reason,
+                    source_reference=cand_mw_source,
+                    verification_state=combined_ver,
+                ))
 
     # Aggregate operational eligibility: strictly from operational findings
     if any(f.status == "BLOCKED" for f in operational_findings):
