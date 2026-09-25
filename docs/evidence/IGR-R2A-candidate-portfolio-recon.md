@@ -4,7 +4,7 @@
 **Owner:** Igor (Packaging Recon & Technical Architecture)
 **Date:** 2026-09-26 (Europe/Bucharest)
 **Target Repository:** `Slave-of-Skynet/gigafood`
-**Base Commit:** `9beacfe2a58b29ff08906aa32a0cb4ec9e9da288` (`main`)
+**Base Commit:** `9beacfefc07621b4e2d24e0ff320e081f6bccfef` (`main`)
 **Branch:** `igor/igr-r2a-review-packet`
 **Write Scope:** Strictly limited to `docs/evidence/IGR-R2A-candidate-portfolio-recon.md`
 
@@ -244,7 +244,7 @@ When multi-candidate schemas are formally drafted, the domain model should intro
 1. **`component_boundary: Literal["TRAY_BODY_ONLY", "BODY_AND_FILM", "HINGED_COMPLETE_PACK"]`:** Prevents comparing open tray bodies against complete closed containers without qualification.
 2. **`recycled_content_scope: Literal["TOTAL_PCR", "TRAY_RPET", "MASS_BALANCE_ALLOCATION"]`:** Distinguishes total post-consumer content from tray-to-tray recyclate (CIRPET+) or chemical recycling mass balance.
 3. **`recycled_content_is_range_or_minimum: bool`:** Blocks marketing ceilings (e.g. "up to 70%") or regulatory minima (e.g. "minimum 40%") from being ingested as point values.
-4. **`evidence_date: str`:** Records the issuance date of the recipe declaration, since manufacturer PCR formulations fluctuate annually. Dates should follow ISO 8601 (`YYYY-MM-DD`) notation to harmonize with A1 evidence standards, while noting that raw manufacturer datasheets may use European format (`DD-MM-YYYY`).
+4. **`evidence_date: str`:** Records the issuance date of the recipe declaration, since manufacturer PCR formulations fluctuate annually. RECOMMENDATION: future `evidence_date` values should use ISO 8601 (`YYYY-MM-DD`) for machine-readable consistency; raw manufacturer dates may retain their original format.
 
 ### 10.3 Prohibited for MVP
 - Do not introduce ranking algorithms (TOPSIS, AHP, weighted scores).
@@ -297,7 +297,7 @@ Decision-critical facts are traced to manufacturer-authored product sheets and o
 ### Review & Sign-Off Ledger
 | Role | Status | Notes |
 | :--- | :--- | :--- |
-| **Packaging Recon (Igor)** | `SUBMITTED` | Candidate portfolio verified against primary TDS sources. |
+| **Packaging Recon (Igor)** | `SUBMITTED` | Candidate portfolio source mappings cross-checked against manufacturer-authored TDS sources. |
 | **Project Core / Integrator** | `PENDING_REVIEW` | Operational gate & anti-greenwashing calculation withheld audit. |
 
 ---
