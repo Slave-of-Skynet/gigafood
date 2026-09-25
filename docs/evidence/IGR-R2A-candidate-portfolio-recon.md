@@ -1,331 +1,294 @@
-# IGR-R2A — Candidate Portfolio Recon for Multi-Candidate Packaging Selection
+# IGR-R2A — Candidate Portfolio Recon: Faerch A/S Rigid Prepared-Food Trays
 
-**Status:** RECON REPORT / DECISION SUPPORT ONLY
-**Date:** 2026-09-26
-**Author:** Igor (Packaging Recon & Technical Architecture)
+**Work Class:** CORE / RECON
+**Owner:** Igor (Packaging Recon & Technical Architecture)
+**Date:** 2026-09-26 (Europe/Bucharest)
 **Target Repository:** `Slave-of-Skynet/gigafood`
 **Base Commit:** `31e7381ec8d4bb3cfdeac7f77769934ae2a6a152` (`main`)
 **Branch:** `igor/igr-r2a-candidate-portfolio-recon`
 **Write Scope:** Strictly limited to `docs/evidence/IGR-R2A-candidate-portfolio-recon.md`
+
+> [!IMPORTANT]
+> **EPISTEMIC BOUNDARY & ANTI-GREENWASHING MANDATE**
+> This packet does not implement multi-candidate selection, does not change any shared contract, and does not certify food safety, migration, shelf life, line compatibility, legal compliance, procurement approval, or suitability for any named retailer.
+> - `CALCULATED ≠ VERIFIED`
+> - `SOURCE_AVAILABLE ≠ VERIFIED`
+> - A missing value is not zero (`missing ≠ 0`)
+> - Public evidence is not a provider requirement
+> - Environmental benefit is not operational eligibility, and neither is implementation approval
+> Where a decision-critical number is not on a source that applies to that specific article, the value is **`UNKNOWN`**. It is not estimated, interpolated, or assumed.
 
 ---
 
 ## 1. Executive Conclusion
 
 ### Packaging Family Focus
-This reconnaissance evaluates the **"Deli Food & Prepared Hot Takeaway Containers"** packaging family in the nominal volume band of **$330\text{--}400\text{ ml}$**. This family was selected because:
-1. It is directly grounded in committed public evidence ([Case B of NDR-01](NDR-01-public-evidence-pack.md)).
-2. It represents a real-world supermarket/convenience retail category (ready-to-eat hot soups, pasta dishes, stews, warm deli sides).
-3. It presents severe, conflicting physical constraints (hot-filling up to $95^\circ\text{C}$ and microwave reheating) that expose the critical difference between theoretical virgin-plastic reduction and operational implementation feasibility.
+This reconnaissance investigates the **Faerch A/S rigid food tray family** in the prepared-food, ready-meal, and food-to-go category: single-compartment sealable rigid tray bodies where the flexible sealing film lid is separate and excluded from stated article masses.
 
-### Demo Viability Assessment
-**VIABLE WITH A 4-CANDIDATE PORTFOLIO.**
-A multi-candidate selection demo is fully viable using publicly verifiable manufacturer technical datasheets (TDS) and official product documentation. The portfolio successfully demonstrates four distinct decision outcomes under deterministic gating rules without resorting to subjective weighted scoring (e.g. TOPSIS/AHP) or unverified carbon/LCA models:
+### Demo Viability: Evidence-Honest Operational Gate vs. Anti-Greenwashing Evidence Block
+- **Operational Demo:** **FULLY VIABLE.** Manufacturer technical datasheets (TDS) support verifiable article identities, nominal tray body masses, nominal volumes (on two of three articles), documented maximum service temperatures, and explicit cooking suitability fields.
+- **Virgin-Plastic Ranking Demo:** **NOT DEFENSIVE FROM PUBLIC EVIDENCE ALONE (INTENTIONAL ANTI-GREENWASHING SEAM).** Manufacturer datasheets for PET articles explicitly state that recycled-content percentages fluctuate year-to-year and direct the reader to contact Sales/Compliance for current recipe declarations.
+- **Product Value:** This portfolio demonstrates PackShift's core strength: **Anti-Greenwashing Protection**. Rather than fabricating a 70% or 40% recycled content figure from high-level corporate press releases, PackShift's engine enforces epistemic honesty by flagging **`INSUFFICIENT_DATA`** / **`REVIEW_REQUIRED`** on the environmental axis while independently computing the operational gate.
 
-1. **Baseline**: Injection-molded virgin Polypropylene (PP) pot ($14.8\text{ g}$, $0\%$ recycled content).
-2. **Candidate 1 (Duni 205971 rPET)**: **Hard-Gate Failure (`BLOCKED`)**. High virgin-plastic reduction ($83.78\%$), but physically inoperable due to thermal collapse at $70^\circ\text{C}$ and microwave prohibition.
-3. **Candidate 2 (Duni 758512 PP)**: **Lightweighting Drop-in (`REVIEW_REQUIRED` / Numerically Compatible)**. Demonstrates $45.95\%$ virgin-plastic reduction achieved through source reduction / thin-wall design ($8.0\text{ g}$ vs $14.8\text{ g}$) with full operational temperature compatibility ($-20^\circ\text{C}$ to $+120^\circ\text{C}$).
-4. **Candidate 3 (Faerch C 0106-1F CPET Evolve)**: **Epistemic Evidence Gap (`INSUFFICIENT_DATA` / `REVIEW_REQUIRED`)**. Demonstrates high-performance dual-ovenable recycled polymer ($-40^\circ\text{C}$ to $+220^\circ\text{C}$), but exposes that individual piece net weight and batch-specific PCR fraction are omitted from public distributor sheets.
-5. **Candidate 4 (Duni 188140 Octabagasse)**: **Renewable Fiber & Boundary Trap (`REVIEW_REQUIRED`)**. Demonstrates $100\%$ fossil virgin plastic elimination using natural sugarcane fiber, while exposing functional shelf-life limits (moisture/grease) and lid-matching bottlenecks (pairing with clear rPET lid re-introduces a $70^\circ\text{C}$ failure).
+### Recommended MVP Portfolio (3 Articles)
+A three-article portfolio is recommended over four. A fourth candidate (C 2187-1F) merely duplicates the APET temperature limitation without introducing a distinct decision outcome:
 
-### Core Recommendation
-The Human Integrator should retain **Candidate 1 (Duni rPET)** as the primary attack case, adopt **Candidate 2 (Duni PP lightweight)** as the proven, operationally safe alternative, and include **Candidate 3 (Faerch CPET)** or **Candidate 4 (Duni Bagasse)** to demonstrate epistemic uncertainty and component boundary traps.
+1. **Baseline — Faerch P 2226-1C (Item 2226014004):** Grey virgin Polypropylene (PP) tray, $26.29\text{ g} \pm 10\%$, $T_{\max} = 121^\circ\text{C}$, Cooking: *Microwave*. Family-scoped recycled content: $0\%$ (food-grade PP declared 100% virgin). Volume: `UNKNOWN`.
+   *Outcome: Passes modeled operational gates; environmental calculation is `CALCULATED` for tray body only.*
+2. **Candidate A (Non-blocked, but Environmentally Insufficient) — Faerch C 2200-1L (Item 2200012097):** Evolve CPET tray, $1000\text{ ml}$, $21.38\text{ g} \pm 10\%$, $T_{\max} = 220^\circ\text{C}$, Cooking: *Oven/Microwave*. Recycled-content fraction: `UNKNOWN` at SKU level.
+   *Outcome: Passes modeled operational gates ($220^\circ\text{C} \ge 95^\circ\text{C}$, microwave safe), but environmental calculation is `INSUFFICIENT_DATA` (Anti-Greenwashing block).*
+3. **Candidate B (Hard Operational Block) — Faerch K 2182-1G (Item 2182015004):** Clear APET tray, $895\text{ ml}$, $21.48\text{ g} \pm 10\%$, $T_{\max} = 70^\circ\text{C}$, Cooking: *Not ovenable*. Recycled-content fraction: `UNKNOWN`.
+   *Outcome: Hard-blocked on thermal constraint ($70^\circ\text{C} < 95^\circ\text{C}$ demo requirement); microwave suitability remains `UNKNOWN`.*
 
-### Primary UNKNOWNs
-- **Confidential Client Packaging**: Actual Profi deli container unit weights, purchase volumes, and food matrix recipes remain unprovided (`UNKNOWN`).
-- **Secondary Component Inventories**: Unit masses of snap-on lids, lidding films, labels, and barrier coatings are unquantified across public catalog sheets.
-- **Micro-Coating Classification**: Regulatory classification and exact gram mass of biopolymer linings (PBAT/PLA) on molded fiber containers are proprietary.
+### Core Takeaway
+Freeze the operational story (Pass vs. Hard Temperature Block vs. Missing PCR $\rightarrow$ Review). **Do NOT freeze fabricated virgin-plastic deltas for the PET articles.**
 
 ---
 
 ## 2. Baseline & Use-Context Definition
 
-### Stated Demo Application & Requirements
-- **Category:** Prepared hot deli food / takeaway single-serve portions (e.g. hot soup, pasta, warm sides).
-- **Nominal Capacity Band:** $330\text{--}400\text{ ml}$.
-- **Stated Operational Requirements (Demonstration Assumptions, NOT Profi Requirements):**
-  - **Thermal Envelope:** Hot filling with food up to **$95^\circ\text{C}$**.
-  - **Consumer Reheating:** Microwave reheating capability (**`microwave_safe: true`**).
-  - **Regulatory Safety:** Food contact approved under **Regulation (EU) No 10/2011** (for plastics) or applicable EU/national food-contact frameworks.
-  - **Storage:** Chilled retail display ($+4^\circ\text{C}$) to ambient holding.
+### 2.1 Stated Demonstration Use Context
+The comparison context represents a single-portion prepared / ready-to-eat hot food item packed in a rigid sealable tray where consumer microwave reheating is expected.
 
-### Current Baseline Packaging Identity
-- **Product Entity:** Berry Superfos UniPak 360ml Round Pot (Product Code 5226).
-- **Manufacturer:** Berry Global / Superfos.
-- **Component Format:** Injection-molded rigid cylindrical pot.
-- **Physical Specifications:**
-  - Capacity: $360\text{ ml}$ (brimful volume $\sim 390\text{ ml}$).
-  - Dimensions: Top diameter $118\text{ mm}$, base diameter $95\text{ mm}$, height $54\text{ mm}$.
-  - Weight: **$14.8\text{ g}$** (body only).
-  - Material: Polypropylene (PP), injection molding grade.
-  - Recycled Content Fraction: **$0.00$** ($100\%$ virgin PP resin).
-- **Baseline Virgin Plastic per Unit:**
-  $$\text{virgin}_{\text{baseline}} = 14.8\text{ g} \times (1 - 0.00) = 14.8\text{ g}$$
+| Requirement | Value Used | Epistemic Status | Boundary / What It Is NOT |
+| :--- | :--- | :--- | :--- |
+| **Maximum Service Temp** | **$95^\circ\text{C}$** | `MODELING ASSUMPTION` (Demo context) | Not a Profi requirement. Not a universal material limit. Not food-safety certification. |
+| **Microwave Reheating** | **Required (`true`)** | `MODELING ASSUMPTION` (Demo context) | Not a provider requirement. Not a chemical migration test. |
+| **Nominal Volume Class** | $\sim 0.7\text{--}1.0\text{ L}$ | `RESEARCH FRAME` | Not an automated client packaging line constraint. |
+| **Component Scope** | **Tray body only** | `PUBLIC EVIDENCE` (TDS specification) | Not a closed complete pack. Sealing film mass is `UNKNOWN`. |
+
+Under these stated demonstration requirements:
+- Documented $T_{\max} < 95^\circ\text{C}$ constitutes a **hard operational failure (`BLOCKED`)**.
+- Documented $T_{\max} \ge 95^\circ\text{C}$ is **numerically sufficient** on that isolated dimension.
+- Meeting the operational threshold does **not** certify sealing integrity, shelf life, or food-contact migration compliance under specific food matrices.
+
+### 2.2 Baseline Article Specification
+- **Product Entity:** Faerch P 2226-1C Rectangular 1-Compartment Tray.
+- **Item Number:** `2226014004` (EAN: `5023262137517`).
+- **Material Recipe:** Polypropylene (PP), grey, recipe number `9626`.
+- **Datasheet Source:** Faerch A/S Technical Product Sheet dated `07-09-2021` (European DD-MM-YYYY notation).
+- **Physical Dimensions:** Length $227.0\text{ mm}$, Width $177.0\text{ mm}$, Depth $49.0\text{ mm}$ (tolerances $\pm 0.8\text{ mm}$).
+- **Nominal Gauge:** $650\text{ }\mu\text{m}$.
+- **Nominal Piece Mass:** **$26.29\text{ g}$** (tolerance $\pm 10\%$, tray body only).
+- **Nominal Volume:** **`UNKNOWN`** (omitted from the manufacturer product sheet).
 - **Operational Capabilities:**
-  - Documented maximum temperature: **$95^\circ\text{C}$** (hot-fill certified).
-  - Microwave suitability: **Safe** for microwave reheating.
-  - Freezing/Dishwasher: Freezer safe ($-20^\circ\text{C}$), dishwasher safe.
-- **Component Boundary Explicit Limitation:**
-  - *`MODELING ASSUMPTION`*: In line with NDR-01 Case B, the baseline is evaluated for the **represented container body component only ($14.8\text{ g}$)**. The separate snap-on lid (Berry Product Code 5227, estimated $3.5\text{--}4.0\text{ g}$) is omitted from the numerical comparison because candidate boundaries vary (some candidates are open trays requiring film, others are hinged clamshells).
+  - Temperature Range: **$-20^\circ\text{C}$ to $+121^\circ\text{C}$** ($T_{\max} = 121^\circ\text{C}$).
+  - Cooking Suitability: **`Microwave`** (explicitly affirmed).
+  - NIR Detectable: `No` (carbon black / grey pigment).
+- **Recycled Content Provenance:**
+  - Article block does not state recycled content.
+  - Live Faerch PP Material Platform explicitly states: *"PP is made from 100% virgin material"* and *"Food-grade PP must be produced from 100% virgin material, forming the essential first stage in the PP recycling chain."*
+  - *Epistemic status:* Classified as `MANUFACTURER_SUPPLIED` / `SOURCE_AVAILABLE` with scope `FAMILY_CLAIM` (applies to Faerch food-grade PP class), **NOT** a third-party audited batch lot certificate.
+
+### 2.3 Component Boundary & Mass Asymmetry
+- **Included:** Nominal weight of the thermoformed rigid tray body only as declared on the manufacturer sheet.
+- **Excluded / `UNKNOWN`:** Flexible top sealing film and snap-on lids. No paired film article number, film mass, or film polymer formulation is disclosed on the tray datasheets.
+- **Manufacturing Tolerance:** $\pm 10\%$ on nominal weight. Figures reported are printed nominals, not measured samples.
+- **Critical Comparison Rule:** A comparison of these masses is strictly a **tray-body comparison**. It is not a complete-package comparison.
 
 ---
 
-## 3. Candidate Portfolio Matrix
+## 3. Epistemic Rules (Faerch Evidence Invariants)
 
-The matrix summarizes the baseline and four candidate transitions evaluated against the stated demo requirements ($95^\circ\text{C}$ hot fill, microwave safe, $\sim 350\text{--}400\text{ ml}$ deli container).
+To prevent greenwashing and algorithmic hallucinations, the recon strictly enforces the following seven rules:
 
-| Property | Baseline (Current) | Candidate 1 (Attack Case) | Candidate 2 (Drop-in / Thin-wall) | Candidate 3 (High-Temp Recycled) | Candidate 4 (Renewable Fiber) |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Product Identifier** | Berry UniPak 360ml (5226) | Duni BioPak Deli 375ml (205971) | Duni Duniform Side Dish 350ml (758512) | Faerch C 0106-1F Circular 330ml (Evolve) | Duni Octabagasse Bowl 400ml (188140) |
-| **Manufacturer** | Berry Global / Superfos | Duni Group / BioPak | Duni Group / Duniform | Faerch Group | Duni Group / BioPak |
-| **Material** | Virgin Polypropylene (PP) | Recycled PET (rPET) | Virgin Polypropylene (PP) | Crystalline PET (CPET Evolve) | Sugarcane bagasse fiber |
-| **Format** | Round pot (body only) | Hinged clamshell (body + lid) | Rectangular sealable portion tray | Circular ready-meal bowl | Octagonal bowl (body only) |
-| **Nominal Volume** | $360\text{ ml}$ | $375\text{ ml}$ | $350\text{ ml}$ | $330\text{ ml}$ | $400\text{ ml}$ |
-| **Component Mass** | $14.8\text{ g}$ | $12.0\text{ g}$ (gross) | $8.0\text{ g}$ (gross) | $12.35\text{ g}$ (*inferred*) / `UNKNOWN` (*TDS net*) | $14.0\text{ g}$ (gross) |
-| **Recycled Content** | $0.00$ ($0\%$) | $0.80$ ($80\%$ post-consumer) | $0.00$ ($0\%$) | $\sim 0.70\text{--}0.80$ (*claim*) / `UNKNOWN` (*cert*) | $0.00$ fossil ($100\%$ renewable fiber) |
-| **Virgin Plastic** | $14.8\text{ g}$ | $2.4\text{ g}$ | $8.0\text{ g}$ | $\sim 3.7\text{ g}$ (*inferred*) | $0.0\text{ g}$ fossil (*base fiber*) |
-| **$\Delta$ Virgin Plastic** | *Baseline* | $-12.4\text{ g}$ ($-83.78\%$) | $-6.8\text{ g}$ ($-45.95\%$) | $\sim -11.1\text{ g}$ ($\sim -75.0\%$) | $-14.8\text{ g}$ ($-100.0\%$) |
-| **$T_{\max}$ Capability** | $95^\circ\text{C}$ (hot fill) | $+70^\circ\text{C}$ (max 2 h) | $+120^\circ\text{C}$ (1 h) / $+100^\circ\text{C}$ (2 h) | $+220^\circ\text{C}$ (dual-ovenable) | $+100^\circ\text{C}$ (hot fill) |
-| **Microwave Safe** | Yes | **NO (strictly prohibited)** | Yes | Yes | Yes (brief reheating) |
-| **Operational Gate** | *Baseline* | **`BLOCKED`** | **`REVIEW_REQUIRED`** (*passes values*) | **`REVIEW_REQUIRED`** (*passes values*) | **`REVIEW_REQUIRED`** (*passes values*) |
-| **Calculation Gate** | *Baseline* | **`CALCULATED`** | **`CALCULATED`** | **`INSUFFICIENT_DATA`** (*if strict TDS*) | **`CALCULATED`** (*if base fiber*) |
-| **Comparability** | *Baseline* | **BOUNDED** (pot vs hinged) | **STRONG** (pot vs seal tray) | **BOUNDED** (pot vs bowl) | **BOUNDED** (plastic vs fiber) |
-| **Primary Source** | Berry TDS Product 5226 | Duni TDS Article 205971 | Duni TDS Article 758512 | Cater4You / Faerch Catalog | Duni TDS Article 188140 |
+1. **"Up to 70%" $\neq 70\%$:** Faerch's corporate press release states the Evolve ready-meal recipe *"allows for up to 70% post-consumer recycled content"*. This is an engineering ceiling, not a point value or guaranteed minimum. It must **not** be ingested as $0.70$.
+2. **"Minimum 40% Tray rPET" $\neq$ Total PCR:** Faerch's 2025 UK/Ireland chilled ready-meal commitment guarantees *"a minimum of 40% Tray rPET"*. Tray rPET is a specific circular metric (tray-to-tray recyclate), distinct from total post-consumer content (which includes bottle rPET). It must **not** be ingested as a $0.40$ total recycled content fraction.
+3. **"Not Ovenable" $\neq$ "Not Microwaveable":** On APET sheets (K 2182-1G), the cooking field states *"Not ovenable"*. This denies conventional oven use; it does **not** assert whether microwave reheating is safe or unsafe. Microwave suitability remains **`UNKNOWN`**.
+4. **"100% RECYCLABLE" $\neq 100\%$ Recycled Content:** Product sheets printing *"YES — 100% RECYCLABLE"* declare theoretical recyclability in collection streams, not post-consumer resin content.
+5. **Historical 2021 Recipe Bands Do Not Apply to 2023/2025 SKUs:** The 2021 datasheet appendix listed historical recipe bands (e.g. CPET Standard 69–75% PCR). Current 2023 and 2025 sheets explicitly state that recycled PET content fluctuates and instruct the buyer to contact Sales/Compliance for the current figure. Applying 2021 bands to recipe `6811` or `7900` is invalid.
+6. **Component Boundary Isolation:** All Faerch masses represent **tray body only**. Top sealing film mass and film polymer composition are unquantified (`UNKNOWN`).
+7. **PP Baseline Recycled Content is Family-Scoped:** $0\%$ recycled content for P 2226-1C is grounded in Faerch's published policy on food-grade PP, not a lot-specific test certificate.
 
 ---
 
-## 4. Candidate Evidence Cards
+## 4. Comparability Classification Framework
 
-### Evidence Card 1: Candidate 1 (Attack Case / Hard-Gate Failure)
-- **Identity:** Duni BioPak Deli Hinged 375ml Container (Article 205971).
-- **Manufacturer:** Duni Group / BioPak.
-- **Attributed Values:**
-  - Material: Recycled Polyethylene Terephthalate (rPET).
-  - Piece Gross Weight: **$12.0\text{ g}$** (`FACT` — declared on official datasheet).
-  - Recycled Content Fraction: **$0.80$** ($80\%$ post-consumer rPET) (`FACT` — declared on official datasheet).
-  - Documented $T_{\max}$: **$+70^\circ\text{C}$** for up to 2 hours (`FACT` — declared restriction).
-  - Microwave Suitability: **`False`** ("strictly not suitable for use in a microwave oven") (`FACT` — declared restriction).
-- **Sources:**
-  - Primary: Duni Technical Datasheet Article 205971 ([Duni Product 205971](https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971)).
-- **Component Boundaries:**
-  - Format is a 1-compartment hinged container with an integral lid. Total gross weight ($12.0\text{ g}$) includes both container body and lid.
-  - *`MODELING ASSUMPTION`*: Compared against the baseline body-only ($14.8\text{ g}$), this candidate slightly over-represents savings by substituting both pot and lid for less mass than the current pot alone.
-- **Missing Evidence:**
-  - Specific migration limits under fatty/acidic foods at elevated ambient temperatures (`UNKNOWN`).
-- **Safe Conclusion:**
-  - **NOT ELIGIBLE FOR DEMO APPLICATION.** While offering a theoretical $83.78\%$ virgin-plastic reduction ($14.8\text{ g} \rightarrow 2.4\text{ g}$), the candidate softens and collapses at $T_g \approx 65\text{--}70^\circ\text{C}$ and cannot be microwaved. Deploying this container in a hot-food application presents scalding, leakage, and non-compliant chemical migration hazards.
+- **STRONG:** Same manufacturer system, identical packaging format (open sealable tray body), identical component boundary, nominal capacity matched within $\pm 15\%$, intended use aligned, and all decision-critical inputs sourced at the specific SKU level.
+- **BOUNDED / WITH QUALIFIER:** Same packaging family and component boundary, but constrained by an explicit qualifier: nominal capacity unknown or differing $> 15\%$, evidence dates differing, or inputs sourced at the family level rather than SKU level.
+- **WEAK:** Same broad job, but structural format differs (e.g. hinged clamshell vs. separate open tray), material class differs substantially, or secondary components are missing.
+- **NOT COMPARABLE:** Asymmetric component boundaries presented as like-for-like (e.g. comparing a complete closed container including lid against an open tray body).
 
 ---
 
-### Evidence Card 2: Candidate 2 (Lightweighting / Thin-Wall Thermoforming)
-- **Identity:** Duni Duniform Side Dish Tray 350ml (Article 758512).
-- **Manufacturer:** Duni Group / Duniform.
-- **Attributed Values:**
-  - Material: Polypropylene (PP), transparent.
-  - Piece Gross Weight: **$8.0\text{ g}$** (`FACT` — declared on official datasheet).
-  - Recycled Content Fraction: **$0.00$** ($100\%$ virgin PP resin) (`FACT` — virgin food-grade polymer).
-  - Documented $T_{\max}$: **$+120^\circ\text{C}$** for 1 hour; **$+100^\circ\text{C}$** for 2 hours; $-20^\circ\text{C}$ to $+120^\circ\text{C}$ range (`FACT` — declared on datasheet).
-  - Microwave Suitability: **`True`** (classified under Cold Use, Hot Fill, Microwave Safe) (`FACT` — declared on datasheet).
-- **Sources:**
-  - Primary: Duni Environmental and Product Data Sheet Article 758512 ([Duni Product 758512](https://www.duni.com/en/products/side-dish-tray-138-x-114-x-35-mm-transparent-1-comp-758512)).
-- **Component Boundaries:**
-  - Format is an open, sealable rectangular portion tray ($138 \times 114 \times 35\text{ mm}$).
-  - Weight ($8.0\text{ g}$) represents the tray body. In commercial operations, it requires heat-sealable top lidding film (typically PP-based, $\sim 0.5\text{--}1.0\text{ g}$) or a snap-on lid.
-- **Missing Evidence:**
-  - Mass and formulation of sealing lidding film (`UNKNOWN`).
-  - Automated tray-sealer sealing profile and speed on client packing lines (`UNKNOWN`).
-- **Safe Conclusion:**
-  - **OPERATIONALLY COMPATIBLE DROP-IN CANDIDATE.** Demonstrates that virgin plastic reduction is achievable via **source reduction / lightweighting** ($14.8\text{ g} \rightarrow 8.0\text{ g}$, saving **$45.95\%$** of virgin plastic) without sacrificing thermal tolerance ($+120^\circ\text{C} > 95^\circ\text{C}$) or microwave reheating functionality.
+## 5. Candidate Portfolio Matrix
+
+`UNKNOWN` denotes that the primary source governing that specific SKU does not publish the value. No cell contains an assumed number.
+
+| Candidate ID | Product & Item Number | Material & Recipe | Nominal Capacity | Mass Scope | Recycled Content Fraction | $T_{\max}$ Capability | Microwave Suitability | Comparability Rating | Evidence & Gate Status |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Baseline** | Faerch P 2226-1C<br>`2226014004` | Polypropylene (PP)<br>Grey · Recipe `9626` | **`UNKNOWN`**<br>($227 \times 177 \times 49\text{ mm}$) | Body only<br>**$26.29\text{ g}$** ($\pm 10\%$) | **$0.00$ ($0\%$)**<br>`FAMILY_CLAIM`<br>Food-grade PP virgin | **$+121^\circ\text{C}$**<br>(TDS stated) | **Yes**<br>Cooking: *Microwave* | **BOUNDED**<br>(Volume unknown; body only) | Sheet read (2021).<br>Oper: **Non-blocked**<br>Calc: **`CALCULATED`** (body) |
+| **Candidate A** | Faerch C 2200-1L<br>`2200012097` | CPET Evolve<br>Recipe `6811` | **$1000\text{ ml}$**<br>($200 \times 155 \times 47\text{ mm}$) | Body only<br>**$21.38\text{ g}$** ($\pm 10\%$) | **`UNKNOWN`**<br>(TDS defers to current declaration) | **$+220^\circ\text{C}$**<br>(TDS stated) | **Yes**<br>Cooking: *Oven/Microwave* | **BOUNDED**<br>(Capacity known here, not in baseline) | Sheet read (2023).<br>Oper: **Non-blocked**<br>Calc: **`INSUFFICIENT_DATA`** |
+| **Candidate B** | Faerch K 2182-1G<br>`2182015004` | APET Clear<br>Recipe `7900` | **$895\text{ ml}$**<br>($180 \times 100 \times 76\text{ mm}$) | Body only<br>**$21.48\text{ g}$** ($\pm 10\%$) | **`UNKNOWN`**<br>(2025 TDS defers to current declaration) | **$+70^\circ\text{C}$**<br>(TDS stated) | **`UNKNOWN`**<br>*Not ovenable* $\neq$ not microwaveable | **BOUNDED**<br>(Dimensions differ; close volume to A) | Sheet read (2025).<br>Oper: **`BLOCKED`** ($T_{\max}$)<br>Calc: **`INSUFFICIENT_DATA`** |
+
+*Supporting Reference Article (Not recommended as 4th demo state):*
+- **Faerch C 2187-1F (Item 2187015044):** Clear APET, $685\text{ ml}$, $16.93\text{ g} \pm 10\%$, Recipe `7900`, $T_{\max} = 70^\circ\text{C}$, Cooking: *Not ovenable*, Recycled fraction: `UNKNOWN`. Sheet date: 16-12-2021. Corroborates APET thermal limits, but introduces no distinct decision state.
 
 ---
 
-### Evidence Card 3: Candidate 3 (Dual-Ovenable High-Temperature Recycled Polymer)
-- **Identity:** Faerch C 0106-1F Circular 330ml Dual-Ovenable Bowl (Evolve Range).
-- **Manufacturer:** Faerch Group.
-- **Attributed Values:**
-  - Material: CPET (Crystalline Polyethylene Terephthalate).
-  - Piece Gross Weight: **$12.35\text{ g}$** (`INFERENCE` derived from case gross shipping weight of $10.0\text{ kg}$ per 810 units; individual piece net weight on public datasheet is `UNKNOWN`).
-  - Recycled Content Fraction: **$0.70\text{--}0.80$** ($70\text{--}80\%$ post-consumer recycled PET) (`INFERENCE` based on Faerch Evolve range-level technical marketing; batch-specific PCR fraction on public product sheet is `UNKNOWN`).
-  - Documented $T_{\max}$: **$+220^\circ\text{C}$** (operating range $-40^\circ\text{C}$ to $+220^\circ\text{C}$) (`FACT` — certified CPET standard specification).
-  - Microwave Suitability: **`True`** (dual-ovenable: certified for conventional oven and microwave reheating) (`FACT` — certified specification).
-- **Sources:**
-  - Secondary / Distributor: Cater4You Technical Specification Sheet for Product C 0106-1F ([Cater4You Faerch 330ml](https://www.cater4you.co.uk/item/faerch-cpet-evolve-330ml-circular-bowl/)).
-  - Primary / Range-level: Faerch Corporate Evolve CPET Technical Platform ([Faerch Circular Food Packaging](https://www.faerch.com)).
-- **Component Boundaries:**
-  - Format is a circular bowl ($\varnothing 107\text{ mm} \times 60\text{ mm}$).
-  - Designed for top-film heat sealing. Excludes top film mass ($\sim 0.5\text{ g}$).
-- **Missing Evidence:**
-  - Manufacturer-certified single-unit net mass in grams (`UNKNOWN` on public web portal).
-  - Batch-specific certificate of post-consumer recycled fraction for Article C 0106-1F (`UNKNOWN` without supplier declaration).
-- **Safe Conclusion:**
-  - **POTENTIALLY SUPERIOR TECHNICAL SOLUTION WITH EPISTEMIC DATA GAPS.** CPET completely resolves the thermal limitations of amorphous rPET ($+220^\circ\text{C}$ vs $+70^\circ\text{C}$) while maintaining high circularity. However, under strict evidence semantics, it cannot be promoted to `CALCULATED` unless the Human Integrator accepts the inferred $12.35\text{ g}$ mass or obtains a signed manufacturer certificate.
+## 6. Candidate Evidence Cards
+
+### 6.1 Baseline — Faerch P 2226-1C Grey PP Tray
+- **Identity:** Faerch A/S, Rasmus Færchs Vej 1, DK-7500 Holstebro. Article: `P 2226-1C`, Item: `2226014004`, EAN: `5023262137517`. Rectangular single-compartment grey PP tray, recipe `9626`. Sheet date: `07-09-2021`.
+- **Supported Values (from Datasheet):** Length $227.0\text{ mm}$, Width $177.0\text{ mm}$, Depth $49.0\text{ mm}$ ($\pm 0.8\text{ mm}$). Nominal gauge: $650\text{ }\mu\text{m}$. Nominal piece weight: **$26.29\text{ g}$** ($\pm 10\%$). Cooking: **`Microwave`**. Temperature range: **$-20^\circ\text{C}$ to $+121^\circ\text{C}$**. NIR detectable: `No`.
+- **Recycled Content Evidence:** Sourced from live Faerch PP Material Platform: *"PP is made from 100% virgin material"* and *"Food-grade PP must be produced from 100% virgin material"*. Scoped to Faerch food-grade PP class; not an audited SKU lot certificate.
+- **Missing Evidence:** Nominal volume (`UNKNOWN`). Intended food matrix (`UNKNOWN`). Sealing film identity, mass, and recycled content (`UNKNOWN`).
+- **Comparability:** **BOUNDED / WITH QUALIFIER**. Same manufacturer and body-only boundary, but baseline volume is unstated on the sheet. Grey color is stated NIR non-detectable (recyclability limitation, not modeled as a score).
+- **Safe Conclusion:** Under the stated $95^\circ\text{C}$ + microwave demo requirement, the tray body clears operational gates ($121^\circ\text{C} \ge 95^\circ\text{C}$, microwave affirmed). Virgin plastic for the tray body is calculable under the family claim ($26.29\text{ g}$). It is not a complete-pack verification.
 
 ---
 
-### Evidence Card 4: Candidate 4 (Renewable Molded Bagasse Fiber)
-- **Identity:** Duni BioPak Octabagasse Bowl 400ml (Article 188140).
-- **Manufacturer:** Duni Group / BioPak.
-- **Attributed Values:**
-  - Material: Sugarcane bagasse fiber (natural plant fiber byproduct of sugar production).
-  - Piece Gross Weight: **$14.0\text{ g}$** (`FACT` — declared on official datasheet).
-  - Conventional Fossil Plastic Mass: **$0.0\text{ g}$** (`FACT` for base natural fiber).
-  - Recycled Content Fraction: **$0.00$** ($0\%$ synthetic plastic recycled content; $100\%$ renewable bio-based content).
-  - Documented $T_{\max}$: **$+100^\circ\text{C}$** (hot fill certified) (`FACT` — declared on datasheet).
-  - Microwave Suitability: **`True`** (safe for brief reheating up to $100^\circ\text{C}$) (`FACT` — declared on datasheet).
-- **Sources:**
-  - Primary: Duni Environmental and Product Data Sheet Article 188140 ([Duni Product 188140](https://www.duni.com/en/products/octabagasse-bowl-400-ml-brown-1-comp-188140)).
-- **Component Boundaries & The "Lid Trap":**
-  - Bowl body is an open octagonal container ($152 \times 152 \times 38\text{ mm}$, $14.0\text{ g}$).
-  - *`CRITICAL BOUNDARY INSIGHT`*: The bowl requires a separate lid. Duni offers two lids:
-    1. **Bagasse Fiber Lid (Article 188148):** Mass $17.0\text{ g}$, $T_{\max} = +100^\circ\text{C}$, microwave safe, $0\text{ g}$ plastic.
-    2. **Clear rPET Lid (Article 192514):** Mass $11.0\text{ g}$, $100\%$ rPET, but **$T_{\max} = +70^\circ\text{C}$**!
-  - If a retail store pairs this hot-safe bowl with the transparent rPET lid for merchandising display, the lid softens and collapses during hot holding or microwave reheating, creating a secondary component failure!
-- **Missing Evidence:**
-  - Presence and mass of micro-thin biopolymer barrier coating (PBAT/PLA) if liquid grease resistance is required (`UNKNOWN`).
-  - Extended aqueous liquid shelf-life holding duration before structural softening (`UNKNOWN` — manufacturer recommends short-term use only).
-- **Safe Conclusion:**
-  - **RENEWABLE FIBER ALTERNATIVE WITH SYSTEM BOUNDARY CONSTRAINTS.** Completely eliminates virgin fossil plastic at the bowl level ($14.8\text{ g} \rightarrow 0.0\text{ g}$, $100\%$ reduction). However, implementation requires testing food matrix absorption (soup vs salad) and enforces a strict lid-matching policy to prevent lid thermal collapse.
+### 6.2 Candidate A — Faerch C 2200-1L Evolve CPET Tray
+- **Identity:** Faerch A/S. Article: `C 2200-1L`, Item: `2200012097`, EAN: `5703969041835`. Rectangular single-compartment tray, color Evolve, material CPET, recipe `6811`. Sheet date: `09-01-2023`. Cooking: **`Oven/Microwave`**.
+- **Supported Values (from Datasheet):** Length $199.9\text{ mm}$, Width $154.8\text{ mm}$, Depth $47.1\text{ mm}$ ($\pm 0.6\text{ mm}$). Nominal volume: **$1000\text{ ml}$**. Sheet thickness: $550\text{ }\mu\text{m}$. Nominal piece weight: **$21.38\text{ g}$** ($\pm 10\%$). Temperature range: **$-40^\circ\text{C}$ to $+220^\circ\text{C}$**. NIR detectable: `Yes`. Recyclable: `YES`.
+- **Recycled Content Evidence:** **`UNKNOWN` at SKU level.** The datasheet explicitly states recycled PET content fluctuates annually and directs the customer to contact Sales/Compliance for the current declaration for recipe `6811`.
+- **Prohibited Substitutions:**
+  - *Do NOT use "up to 70%":* Corporate press release (20-11-2024) cites "up to 70%" as a recipe ceiling, not an article point value.
+  - *Do NOT use "minimum 40% Tray rPET":* 2025 launch applies specifically to UK/Ireland chilled ready-meal CPET; Tray rPET is not total PCR fraction.
+  - *Do NOT use 2021 historical bands (69–75%):* Historical table does not cite recipe `6811`.
+- **Comparability:** **BOUNDED / WITH QUALIFIER**. Nominal volume ($1000\text{ ml}$) is known here, unlike the baseline.
+- **Safe Conclusion:** Clears modeled operational constraints ($220^\circ\text{C} \ge 95^\circ\text{C}$, dual-ovenable/microwave affirmed). Virgin plastic is **not calculable** from public evidence alone. PackShift must flag **`INSUFFICIENT_DATA`** rather than claiming an unverified environmental saving.
 
 ---
 
-## 5. Potential PackShift Outcome
+### 6.3 Candidate B — Faerch K 2182-1G Clear APET Tray
+- **Identity:** Faerch A/S. Article: `K 2182-1G`, Item: `2182015004`, EAN: `5703969013399`. Rectangular single-compartment tray, clear APET, recipe `7900`. Sheet date: `25-06-2025`. Cooking: **`Not ovenable`**.
+- **Supported Values (from Datasheet):** Length $180.1\text{ mm}$, Width $99.9\text{ mm}$, Depth $75.9\text{ mm}$ ($\pm 0.6\text{ mm}$). Nominal volume: **$895\text{ ml}$**. Sheet thickness: $900\text{ }\mu\text{m}$. Nominal piece weight: **$21.48\text{ g}$** ($\pm 10\%$). Temperature range: **$-40^\circ\text{C}$ to $+70^\circ\text{C}$**. NIR detectable: `Yes`. Recyclable: `YES`.
+- **Recycled Content Evidence:** **`UNKNOWN` at SKU level.** The 2025 datasheet repeats the requirement to request current recipe figures. General claims that "the majority of APET contains rPET" do not establish an article percentage.
+- **Operational Constraint Assessment:**
+  - $T_{\max} = \mathbf{+70^\circ\text{C}}$: Hard failure against the demo requirement of $95^\circ\text{C}$ ($70^\circ\text{C} < 95^\circ\text{C}$).
+  - Cooking field *"Not ovenable"*: Disallows conventional ovens; microwave suitability remains **`UNKNOWN`**.
+- **Comparability:** **BOUNDED / WITH QUALIFIER**. Volume ($895\text{ ml}$) is within $10.5\%$ of Candidate A ($1000\text{ ml}$), but footprint and depth differ.
+- **Safe Conclusion:** **`BLOCKED` on maximum operating temperature.** The $70^\circ\text{C}$ limit fails the $95^\circ\text{C}$ hot-fill demo assumption. The block is fully evidenced by the printed datasheet, independent of the unstated recycled-content fraction.
 
-Tracing how each portfolio option executes under PackShift's deterministic runtime contracts (`compare()` in `backend/app/services/virgin_plastic.py`):
+---
+
+## 7. Potential PackShift Runtime Outcomes
+
+Tracing execution through PackShift's deterministic runtime contracts:
 
 ```text
 ====================================================================================================
-PACKSHIFT MULTI-CANDIDATE DEMO EVALUATION (Target: Hot Deli Takeaway, 95°C Hot Fill, Microwave Safe)
+FAERCH A/S PREPARED-FOOD PORTFOLIO: DEMO OUTCOMES (Stated Context: 95°C Hot Fill, Microwave Safe)
 ====================================================================================================
 
-[BASELINE]  Berry UniPak 360ml Pot (PP)
-            Virgin Plastic: 14.8 g | Status: BASELINE | Capabilities: 95°C, Microwave Safe
+[BASELINE]  Faerch P 2226-1C PP Tray (Item 2226014004)
+            Mass: 26.29 g | Recycled: 0% (Family claim) | Virgin Plastic: 26.29 g (Body only)
+            Operational: 121°C, Microwave Safe
+            --> Gate Result: OPERATIONAL PASS | ENVIRONMENTAL CALCULABLE (Body only)
+
 ----------------------------------------------------------------------------------------------------
 
-1. [CANDIDATE 1] Duni BioPak Deli 375ml (80% rPET)
-   - Numerical Delta:       14.8 g → 2.4 g (-12.4 g / -83.78%)
-   - Calculation Axis:      CALCULATED (Indicative)
-   - Operational Gate:      BLOCKED (Failed Hard Gate)
-   - Findings:              ⛔ Thermal Envelope: Candidate documented max 70°C < required 95°C.
-                            ⛔ Microwave Reheating: Candidate manufacturer states not microwave safe.
-   - Decision Outcome:      REJECTED FOR TAKEAWAY HOT FOOD. (Attractive theoretical greenwashing trap).
+1. [CANDIDATE A] Faerch C 2200-1L CPET Evolve (Item 2200012097)
+   - Operational Capabilities:  220°C (>= 95°C), Microwave: Oven/Microwave affirmed
+   - Operational Gate Status:   NON-BLOCKED on modeled dimensions
+   - Recycled Content Fraction: UNKNOWN (Datasheet withholds annual fluctuating figure)
+   - Calculation Axis Status:   INSUFFICIENT_DATA (Missing required PCR input)
+   --> PACKSHIFT VERDICT:       ANTI-GREENWASHING BLOCK.
+                                Clears operational envelope, but virgin reduction CANNOT be
+                                calculated without verified supplier declaration.
 
-2. [CANDIDATE 2] Duni Duniform 350ml Side Dish (PP)
-   - Numerical Delta:       14.8 g → 8.0 g (-6.8 g / -45.95%)
-   - Calculation Axis:      CALCULATED (Indicative)
-   - Operational Gate:      REVIEW_REQUIRED (Numerically Compatible; Epistemic Gate)
-   - Findings:              ✓ Thermal Envelope: Candidate 120°C >= required 95°C.
-                            ✓ Microwave Reheating: Candidate is microwave safe.
-                            ⚠️ Decision premises are SOURCE_AVAILABLE, not audit-VERIFIED.
-   - Decision Outcome:      ELIGIBLE FOR OPERATIONAL TRIALS. (Safe, immediate lightweighting win).
-
-3. [CANDIDATE 3] Faerch C 0106-1F 330ml Bowl (CPET Evolve)
-   - Numerical Delta:       14.8 g → ~3.7 g (~ -11.1 g / ~ -75.0%) [If inferred mass accepted]
-   - Calculation Axis:      INSUFFICIENT_DATA (If strict TDS required) / CALCULATED (If inferred)
-   - Operational Gate:      REVIEW_REQUIRED (Numerically Compatible; Epistemic Gate)
-   - Findings:              ✓ Thermal Envelope: Candidate 220°C >= required 95°C (Dual-ovenable).
-                            ✓ Microwave Reheating: Candidate is microwave safe.
-                            ⚠️ Net piece mass not verified on primary datasheet.
-   - Decision Outcome:      HIGH POTENTIAL TECHNICAL SOLUTION; REQUIRES SUPPLIER TDS CONFIRMATION.
-
-4. [CANDIDATE 4] Duni Octabagasse 400ml Bowl (Sugarcane Fiber)
-   - Numerical Delta:       14.8 g → 0.0 g fossil (-14.8 g / -100.0%)
-   - Calculation Axis:      CALCULATED (Indicative for base natural fiber)
-   - Operational Gate:      REVIEW_REQUIRED (Numerically Compatible; Boundary Warning)
-   - Findings:              ✓ Thermal Envelope: Bowl 100°C >= required 95°C.
-                            ✓ Microwave Reheating: Bowl is microwave safe.
-                            ⚠️ System Boundary Warning: Pairing with clear rPET lid introduces 70°C ceiling.
-                            ⚠️ Food Matrix Limitation: Aqueous soup holding time unverified.
-   - Decision Outcome:      VIABLE RENEWABLE ALTERNATIVE CONDITIONAL ON LID SELECTION AND FOOD MATRIX.
+2. [CANDIDATE B] Faerch K 2182-1G APET Clear (Item 2182015004)
+   - Operational Capabilities:  70°C (< 95°C), Microwave: UNKNOWN ("Not ovenable")
+   - Operational Gate Status:   BLOCKED (Thermal ceiling: 70°C < 95°C)
+   - Recycled Content Fraction: UNKNOWN
+   - Calculation Axis Status:   INSUFFICIENT_DATA
+   --> PACKSHIFT VERDICT:       HARD OPERATIONAL BLOCK.
+                                Inoperable for hot takeaway regardless of potential recycled content.
 ====================================================================================================
 ```
 
 ---
 
-## 6. Demo Portfolio Recommendation
+## 8. Environmental Calculation Truth Table
 
-To deliver an exceptional, defensible multi-candidate demonstration within hackathon time constraints, Team SoS should adopt the following **3-to-4 candidate slice**:
+Under the protected formula:
+$$\text{virgin\_plastic} = \text{plastic\_mass\_g} \times (1 - \text{recycled\_content\_fraction})$$
 
-```
-+--------------------------------------------------------------------------------------------------+
-|                                    RECOMMENDED DEMO PORTFOLIO                                    |
-|                                                                                                  |
-|   [BASELINE]    Berry UniPak 360ml (14.8g Virgin PP)                                             |
-|                     │                                                                            |
-|        ┌────────────┼──────────────────────────────┬─────────────────────────────┐               |
-|        ▼            ▼                              ▼                             ▼               |
-|  [CANDIDATE 1]  [CANDIDATE 2]                  [CANDIDATE 3]                 [CANDIDATE 4]        |
-|  Duni Deli rPET Duni Duniform PP               Faerch CPET Evolve            Duni Octabagasse    |
-|   (12.0g, 80%)    (8.0g, 0%)                     (12.35g, 70%)                 (14.0g, Fiber)    |
-|        │            │                              │                             │               |
-|   -83.78% Sav.  -45.95% Sav.                   -75.0% Sav.                   -100% Fossil Sav.   |
-|     BLOCKED      REVIEW_REQ (Compatible)        REVIEW_REQ (Compatible)       REVIEW_REQ (System)|
-|  "The Blocker"  "The Safe Engineering Win"     "The Recycled Tech Win"       "The Material Shift"|
-+--------------------------------------------------------------------------------------------------+
-```
+### 8.1 What Can Be Calculated
+- **Baseline Tray Body (P 2226-1C):**
+  $$\text{virgin}_{\text{body}} = 26.29\text{ g} \times (1 - 0.00) = \mathbf{26.29\text{ g}}$$
+  *(Applying the $\pm 10\%$ datasheet mass tolerance yields a nominal band of $23.661\text{ g}$ to $28.919\text{ g}$. Does not include sealing film).*
 
-### Strategic Narrative for the Demo
-1. **The Trap (Candidate 1)**: Show how a conventional sustainability dashboard ranks Duni rPET #1 ($83.78\%$ savings), but PackShift's constraint gate immediately flashes **`BLOCKED`**, citing manufacturer technical limits ($70^\circ\text{C}$, no microwave). This prevents client liability.
-2. **The Safe Engineering Win (Candidate 2)**: Show Duni Duniform PP. Even with $0\%$ recycled content, it cuts virgin plastic by **$45.95\%$** through thin-wall engineering, and its operational gate passes ($120^\circ\text{C}$, microwave safe). This proves PackShift understands real packaging optimization.
-3. **The Advanced Circular Win (Candidate 3)**: Show Faerch CPET. It proves high recycled content ($70\text{--}80\%$) *can* work at high temperatures ($220^\circ\text{C}$), but exposes how missing supplier documentation flags `INSUFFICIENT_DATA` / `REVIEW_REQUIRED`, demonstrating epistemic honesty.
-4. **The System Boundary Lesson (Candidate 4)**: Show Duni Octabagasse. Demonstrates $100\%$ fossil reduction, but PackShift warns about lid compatibility (clear lid softens at $70^\circ\text{C}$).
+### 8.2 What MUST NOT Be Calculated
+- **No Virgin Plastic for Candidate A (C 2200-1L):** Mass ($21.38\text{ g}$) is known, but recycled content is `UNKNOWN`. Substituting $0.70$ or $0.40$ is prohibited.
+- **No Virgin Plastic for Candidate B (K 2182-1G):** Mass ($21.48\text{ g}$) is known, but recycled content is `UNKNOWN`.
+- **No Transition Deltas:** Transition delta ($\Delta_{\text{reduction}}$) cannot be computed because candidate virgin plastic is `UNKNOWN`, baseline volume is `UNKNOWN`, and sealing film is omitted across all articles.
 
 ---
 
-## 7. Schema & Implementation Implications
+## 9. Demo Portfolio Recommendation
 
-### What Already Exists in the Committed Baseline (`main @ 31e7381`)
-- Structured operational requirements on `Scenario` (`operational_requirements.max_temperature_c`, `operational_requirements.microwave_safe`).
-- Structured candidate capabilities on `Package` (`capabilities.max_temperature_c`, `capabilities.microwave_safe`).
-- Deterministic operational gate in `backend/app/services/virgin_plastic.py` implementing tri-state logic (`ELIGIBLE`, `REVIEW_REQUIRED`, `BLOCKED`) and epistemic premise combination (`combine_verification`).
-- Front-end visual badges and metric subordination for `BLOCKED` candidates in `frontend/src/pages/HomePage.tsx`.
+### Smallest Coherent Set
+Deploy the **3-article Faerch set** (Baseline P 2226-1C, Candidate A C 2200-1L, Candidate B K 2182-1G).
 
-### What Is Required to Support Multi-Candidate Selection (MVP Scope)
-1. **Evidence Data Curation (`public-packaging.json`)**:
-   - Add the candidate packaging definitions into `data/evidence/public-packaging.json`.
-   - Update `Scenario` structure or introduce a multi-candidate scenario wrapper (e.g. `candidates: list[Package]`).
-   - *Note*: As established in CANON-01, modifying `public-packaging.json` or shared domain models requires **Human Gate Authorization**.
-2. **Comparison Endpoint Flexibility**:
-   - Current API route `GET /api/v1/scenarios/{id}/comparison` compares a single `current` vs `candidate` pairing.
-   - For a multi-candidate demo, the API can either:
-     - *Option A (Zero-Schema-Change)*: Represent each alternative as an independent paired scenario (e.g. `deli-pp-to-rpet-blocked`, `deli-pp-to-pp-lightweight`, `deli-pp-to-cpet-evolve`, `deli-pp-to-bagasse`). The user switches scenarios via the existing dropdown.
-     - *Option B (Portfolio Route)*: Add a portfolio comparison contract (`GET /api/v1/scenarios/{id}/portfolio`).
-
-### What Is NOT Needed / Prohibited for MVP
-- **NO Weighted Scoring / Ranking Algorithms**: No TOPSIS, AHP, or weighted sum formulas. Ranking candidates purely by reduction percentage is dangerous and prohibited by CANON-01 until operational gating has partitioned out blocked candidates.
-- **NO LCA / $\text{CO}_2$ Engine**: Do not introduce unverified carbon calculators.
-- **NO Database or ORM**: Keep JSON-backed startup validation.
+### Distinct Demonstration Roles
+1. **Baseline (P 2226-1C):** Establishes the operational benchmark ($121^\circ\text{C}$, microwave safe) with a calculable virgin baseline for the tray body.
+2. **Candidate A (C 2200-1L — The Epistemic / Anti-Greenwashing Win):** Shows a modern CPET tray that is technically capable ($220^\circ\text{C}$, dual-ovenable), but PackShift visibly refuses to calculate an unverified virgin-plastic reduction because Faerch's TDS withholds the fluctuating PCR fraction. This proves PackShift does not hallucinate green claims.
+3. **Candidate B (K 2182-1G — The Hard Operational Block):** Shows a clear APET tray cleanly blocked by the thermal gate ($70^\circ\text{C} < 95^\circ\text{C}$), proving the constraint engine protects retailers from melting containers.
 
 ---
 
-## 8. UNKNOWNs & Stop Conditions
+## 10. Schema & Implementation Implications
 
-### Active UNKNOWNs
-1. **Client (Profi) Specific Operational Parameters**: Does Profi hot-fill soups in store at $85^\circ\text{C}$, $90^\circ\text{C}$, or $95^\circ\text{C}$? What are their exact consumer reheating instructions? (`UNKNOWN`).
-2. **Faerch C 0106-1F Certified Single-Piece Net Weight**: Official manufacturer technical declaration confirming net piece mass without shipping carton tare (`UNKNOWN`).
-3. **Bagasse Micro-Coating Mass**: Exact chemical composition and gram weight of moisture/grease barrier layers in Duni Article 188140 (`UNKNOWN`).
-4. **Client Automated Sealing Machinery Compatibility**: Sealing jaw profiles, cycle times, and temperature settings for client packaging machines (`UNKNOWN`).
+### 10.1 Supported by Existing Architecture (`main @ 31e7381`)
+- Independent calculation axis (`CALCULATED` vs `INSUFFICIENT_DATA`) and eligibility axis (`ELIGIBLE`, `REVIEW_REQUIRED`, `BLOCKED`).
+- Bounded operational gate comparing `operational_requirements` on `Scenario` against `capabilities` on `Package`.
+- Refusal to compute deltas on missing numeric inputs without fabricating operational blocks.
 
-### Hard Stop Conditions
-- **DO NOT** claim Duni rPET (Article 205971) can be used for hot food or microwave reheating under any circumstances.
-- **DO NOT** fabricate a single-piece net weight for Faerch CPET without an explicit citation.
-- **DO NOT** assert that Duni Duniform or Faerch CPET represents an approved commercial supply agreement for Profi.
-- **DO NOT** modify backend, frontend, or evidence files without Human Gate approval.
+### 10.2 Future API Anti-Hallucination Contracts (Recommended for Integrator)
+When multi-candidate schemas are formally drafted, the domain model should introduce four explicit guards:
+
+1. **`component_boundary: Literal["TRAY_BODY_ONLY", "BODY_AND_FILM", "HINGED_COMPLETE_PACK"]`:** Prevents comparing open tray bodies against complete closed containers without qualification.
+2. **`recycled_content_scope: Literal["TOTAL_PCR", "TRAY_RPET", "MASS_BALANCE_ALLOCATION"]`:** Distinguishes total post-consumer content from tray-to-tray recyclate (CIRPET+) or chemical recycling mass balance.
+3. **`recycled_content_is_range_or_minimum: bool`:** Blocks marketing ceilings (e.g. "up to 70%") or regulatory minima (e.g. "minimum 40%") from being ingested as point values.
+4. **`evidence_date: str`:** Records the issuance date of the recipe declaration, since manufacturer PCR formulations fluctuate annually.
+
+### 10.3 Prohibited for MVP
+- Do not introduce ranking algorithms (TOPSIS, AHP, weighted scores).
+- Do not introduce carbon / LCA scoring engines.
+- Do not add complex oven or dishwasher gates; operational dimensions remain strictly maximum temperature and microwave suitability.
 
 ---
 
-## 9. Source Ledger
+## 11. UNKNOWNs & Stop Conditions
 
-All primary facts, values, and constraints in this report are traceable to the audited public sources below:
+| Item / Parameter | Why It Blocks a Decision Claim | Stop Action |
+| :--- | :--- | :--- |
+| **Current PCR for Recipe `6811` (C 2200-1L)** | Sheet withholds value and states it fluctuates annually. "Up to 70%" is an unverified ceiling. | **STOP:** Do not calculate virgin plastic or delta. |
+| **Current PCR for Recipe `7900` (K 2182-1G)** | 2025 sheet withholds value. 2021 historical tables do not cite recipe `7900`. | **STOP:** Do not calculate virgin plastic. |
+| **UK/IE Jan 2025 40% Tray rPET Applicability** | Launch does not name item `2200012097`. Metric is Tray rPET, not total PCR. | **STOP:** Do not store $0.40$ as PCR fraction. |
+| **Baseline Nominal Volume (P 2226-1C)** | Volume is unprinted on the manufacturer product sheet. | **QUALIFIER:** Capacity matching is bounded. |
+| **Sealing Film Mass & Composition** | Film lid is not included in the weighed article on any sheet. | **STOP:** Comparison limited to tray body only. |
+| **Microwave Suitability for K 2182-1G** | *"Not ovenable"* denies conventional oven; does not determine microwave. | **QUALIFIER:** Microwave field remains `UNKNOWN`. |
+| **Chemical Migration & Food Contact Testing** | Product sheets reference framework compliance, but specific migration under client food matrices requires lab DoC. | **STOP:** Do not issue compliance verdicts. |
 
-| Source ID | Source Entity | Title / Document Reference | URL | Supported Fact / Metric | Origin | Verification State |
+---
+
+## 12. Considered and Excluded Packaging
+
+- **ILIP Hinged Deli rPET:** Offers complete hinged packs ($23.5\text{ g}$, $1000\text{ ml}$), but mixes packaging formats (hinged clamshell vs. Faerch open sealable tray body). Excluded to preserve format consistency.
+- **Sabert BePulp Molded Bagasse:** Bagasse bowls offer high heat resistance, but exact biopolymer lining mass (PBAT/PLA) is unquantified on public sheets, creating an unevidenced plastic mass boundary. Excluded.
+- **Faerch Meat Trays (MAPET / Evolve Meat):** High recycled content declarations exist for fresh meat packaging (e.g. Danish Crown, Norfersk), but belong to a different packaging family. Excluded.
+- **Faerch C 2187-1F (APET $685\text{ ml}$):** Corroborates the $70^\circ\text{C}$ APET ceiling, but adds no new decision outcome. Excluded from MVP to prevent redundancy.
+- **Distributor / Retailer Listings:** Third-party retail websites claiming "85% recycled" or "230°C max" were rejected as weaker sources that conflict with Faerch's official TDS ($220^\circ\text{C}$).
+
+---
+
+## 13. Source Ledger
+
+All decision-critical facts are traced to verified primary manufacturer product sheets and official corporate platforms.
+
+| Source ID | Source Entity | Title / Document Reference | Source URL | Key Attributed Facts | Scope / Limitations | Source Class |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **S-01** | Berry Global / Superfos | Product 5226 Technical Specification: UniPak $\varnothing 118\text{ mm}$ $360\text{ ml}$ | [Berry Product 5226](https://www.berryglobal.com/en/product/5226) | Mass = $14.8\text{ g}$; Material = PP; $0\%$ PCR; $T_{\max} = 95^\circ\text{C}$; Microwave safe. | `MANUFACTURER_SUPPLIED` | `SOURCE_AVAILABLE` |
-| **S-02** | Duni Group / BioPak | Article 205971 Environmental & Product Datasheet: Deli Hinged $375\text{ ml}$ | [Duni Product 205971](https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971) | Mass = $12.0\text{ g}$; Material = rPET; $80\%$ PCR; $T_{\max} = 70^\circ\text{C}$ (2h); NOT microwave safe. | `MANUFACTURER_SUPPLIED` | `SOURCE_AVAILABLE` |
-| **S-03** | Duni Group / Duniform | Article 758512 Environmental & Product Datasheet: Side Dish Tray $350\text{ ml}$ | [Duni Product 758512](https://www.duni.com/en/products/side-dish-tray-138-x-114-x-35-mm-transparent-1-comp-758512) | Mass = $8.0\text{ g}$; Material = PP; $0\%$ PCR; $T_{\max} = +120^\circ\text{C}$ (1h); Microwave safe. | `MANUFACTURER_SUPPLIED` | `SOURCE_AVAILABLE` |
-| **S-04** | Duni Group / BioPak | Article 188140 Environmental & Product Datasheet: Octabagasse Bowl $400\text{ ml}$ | [Duni Product 188140](https://www.duni.com/en/products/octabagasse-bowl-400-ml-brown-1-comp-188140) | Mass = $14.0\text{ g}$; Material = Bagasse; $0\text{ g}$ fossil; $T_{\max} = 100^\circ\text{C}$; Microwave safe. | `MANUFACTURER_SUPPLIED` | `SOURCE_AVAILABLE` |
-| **S-05** | Duni Group / BioPak | Article 192514 Technical Datasheet: Octabagasse Lid $\varnothing 152\text{ mm}$ rPET | [Duni Product 192514](https://www.duni.com/en/products/octabagasse-lid-152-x-152-x-17-mm-transparent-192514) | Material = $100\%$ rPET; $T_{\max} = +70^\circ\text{C}$. (Exposes boundary bottleneck). | `MANUFACTURER_SUPPLIED` | `SOURCE_AVAILABLE` |
-| **S-06** | Cater4You / Faerch | Faerch C 0106-1F Circular $330\text{ ml}$ Dual Ovenable Bowl Specification | [Cater4You Product C 0106-1F](https://www.cater4you.co.uk/item/faerch-cpet-evolve-330ml-circular-bowl/) | Capacity = $330\text{ ml}$; Material = CPET; $T = -40^\circ\text{C}\text{ to }+220^\circ\text{C}$; Case 810 units = $10.0\text{ kg}$. | `DISTRIBUTOR_CATALOG` | `SOURCE_AVAILABLE` |
-| **S-07** | European Commission | Directive (EU) 2019/904 (Single-Use Plastics) & Regulation (EU) 2022/1616 | [EUR-Lex 32022R1616](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32022R1616) | Regulatory criteria for food contact recycled plastics and definition of bio-polymers. | `OFFICIAL_REGULATORY` | `SOURCE_AVAILABLE` |
+| **S1** | Faerch A/S | Product Sheet: C 2200-1L (Item `2200012097`), Date: `09-01-2023` | [Dayton Host: C 2200-1L PDF](https://verkkokauppa.daytongroup.fi/PDF%20Files/Product%20Sheets/Faerch%20Trays/Faerch%20C%202200-1L%20Product%20sheet.pdf) | $1000\text{ ml}$; $21.38\text{ g} \pm 10\%$; Recipe `6811`; $-40^\circ\text{C}$ to $220^\circ\text{C}$; Cooking: *Oven/Microwave*; PCR withheld. | Tray body only. Sealing film excluded. | Primary (Distributor-hosted) |
+| **S2** | Faerch A/S | Product Sheet: K 2182-1G (Item `2182015004`), Date: `25-06-2025` | [HC Host: K 2182-1G PDF](https://www.hc.dk/.0/pp-static/prodimages/Datablade/datablad_140380.pdf) | $895\text{ ml}$; $21.48\text{ g} \pm 10\%$; Recipe `7900`; $-40^\circ\text{C}$ to $70^\circ\text{C}$; Cooking: *Not ovenable*; PCR withheld. | Tray body only. Microwave is unstated. | Primary (Distributor-hosted) |
+| **S3** | Faerch A/S | Product Sheet: C 2187-1F (Item `2187015044`), Date: `16-12-2021` | [Dayton Host: C 2187-1F PDF](https://verkkokauppa.daytongroup.fi/PDF%20Files/Faerch%20C%202187-1F%20spec%20sheet.pdf) | $685\text{ ml}$; $16.93\text{ g} \pm 10\%$; Recipe `7900`; $T_{\max} = 70^\circ\text{C}$; "100% RECYCLABLE" $\neq$ recycled. | Supporting article only. | Primary (Distributor-hosted) |
+| **S4** | Faerch A/S | Product Sheet: P 2226-1C (Item `2226014004`), Date: `07-09-2021` | [Bunzl IE Host: 152407 PDF](https://www.bunzlireland.ie/medias/sys_master/root/h46/h1b/8888294604830/152407-SPECS.pdf) | $26.29\text{ g} \pm 10\%$; $227 \times 177 \times 49\text{ mm}$; Recipe `9626`; $-20^\circ\text{C}$ to $121^\circ\text{C}$; Cooking: *Microwave*. | Tray body only. Volume unstated. | Primary (Distributor-hosted) |
+| **S5** | Faerch A/S | Live PP Material Platform | [Faerch PP Ready Meals](https://www.faerch.com/en/products/ready-meals/pp) | "PP is made from 100% virgin material"; "Food-grade PP must be produced from 100% virgin material". | Family-scoped statement. Not lot certificate. | Primary (Live official page) |
+| **S6** | Faerch A/S | Live CPET Material Platform | [Faerch CPET Ready Meals](https://www.faerch.com/en/products/ready-meals/cpet) | CPET temperature range $-40^\circ\text{C}$ to $220^\circ\text{C}$; freezer-to-oven and freezer-to-microwave. | Material class capabilities. | Primary (Live official page) |
+| **S7** | Faerch A/S | Press Release: Chilled Ready Meal Trays Minimum 40% Tray rPET (20-11-2024) | [Faerch Launch Nov 2024](https://www.faerch.com/en/faerch-launches-chilled-ready-meal-trays-with-minimum-40-tray-rpet-content) | Evolve recipe allows "up to 70% post-consumer content"; Jan 2025 UK/IE launch min 40% Tray rPET. | Launch scope. Tray rPET $\neq$ total PCR. | Primary (Live official page) |
+| **S8** | Faerch A/S | Product Sheet Appendix (07-09-2021): Historical PET PCR Bands | [Bunzl IE Host: 152408 PDF](https://www.bunzlireland.ie/medias/sys_master/root/h56/hbb/8888294670366/152408-SPECS.pdf) | Historical named-recipe bands (CPET Standard 69–75% PCR). Not mapped to current recipe `6811` or `7900`. | Historical reference only. Not applied to SKUs. | Primary (Historical datasheet) |
 
 ---
-*Report completed in strict adherence to PackShift CANON-01 and Evidence Semantics.*
+*Report updated and certified under PackShift CANON-01 Epistemic and Evidence Guidelines.*
