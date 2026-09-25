@@ -60,11 +60,12 @@ Provenance and verification are separate axes; CALCULATED never verifies inputs.
 `ConstraintFinding` exposes constraint_id, status (REVIEW_REQUIRED/BLOCKED), reason,
 nullable source_reference and verification_state. Findings are separated into advisory
 disclosures (`food-contact-suitability`) and operational gate findings
-(`thermal-envelope-incompatibility`, `microwave-reheating-incompatibility`).
+(`thermal-envelope-incompatibility`, `microwave-reheating-incompatibility`,
+`thermal-envelope-verification`, `microwave-reheating-verification`).
 Aggregated `eligibility_status` is derived solely from operational gate findings:
 BLOCKED if any operational incompatibility is demonstrated, REVIEW_REQUIRED if
 requirements/capabilities are unmodeled or unverified, and ELIGIBLE when evaluated
-requirements are satisfied. Missing calculation evidence produces `INSUFFICIENT_DATA`
+requirements and candidate capabilities are verified and compatible. Missing calculation evidence produces `INSUFFICIENT_DATA`
 for environmental calculation, never an operational BLOCKED.
 
 Missing, unreadable or invalid evidence makes the whole runtime unavailable (503).
