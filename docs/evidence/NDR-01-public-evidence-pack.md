@@ -123,10 +123,10 @@ On paper, this transition demonstrates an exceptional **83.78% reduction in virg
 - **PackShift Status**:
   - Environmental calculation: status `CALCULATED`, verification state `INDICATIVE` (12.4 g / 83.78% reduction on represented body components).
   - Bounded operational eligibility gate: status `BLOCKED` due to explicit gating findings:
-    - `thermal-envelope-incompatibility`: candidate max 70.0°C < required 95.0°C (`SOURCE_AVAILABLE`)
-    - `microwave-reheating-incompatibility`: candidate not microwave safe (`SOURCE_AVAILABLE`)
+    - `thermal-envelope-incompatibility`: candidate max 70.0°C < required 95.0°C (`NOT_VERIFIED`, derived from `ASSUMED` requirement premise; candidate manufacturer source cited)
+    - `microwave-reheating-incompatibility`: candidate not microwave safe (`NOT_VERIFIED`, derived from `ASSUMED` requirement premise; candidate manufacturer source cited)
   - Advisory disclosure: `food-contact-suitability`: `REVIEW_REQUIRED` (`NOT_VERIFIED`).
-  - Provenance: Demo operational requirements are explicitly attributed as `ASSUMED` / `NOT_VERIFIED` scenario assumptions, not actual Profi provider requirements.
+  - Provenance: Demo operational requirements are explicitly attributed as `ASSUMED` / `NOT_VERIFIED` scenario assumptions, not actual Profi provider requirements. Finding verification is conservatively capped by the requirement premise.
 
 ### 5. What PackShift Must NOT Claim
 - PackShift must **NOT** claim that Duni 205971 is a universal or "drop-in" substitute for Berry UniPak 5226.

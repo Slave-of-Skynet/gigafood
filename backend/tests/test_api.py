@@ -125,20 +125,21 @@ def test_public_evidence_pack_api():
         assert case_b["reduction_pct"] == pytest.approx(12.4 / 14.8 * 100)
         assert case_b["eligibility_status"] == "BLOCKED"
 
-        # Operational gating findings for Case B
+        # Operational gating findings for Case B: capped by ASSUMED/NOT_VERIFIED requirement premise
         thermal = next((c for c in case_b["constraints"] if c["constraint_id"] == "thermal-envelope-incompatibility"), None)
         assert thermal is not None
         assert thermal["status"] == "BLOCKED"
-        assert "70.0°C < required 95.0°C" in thermal["reason"]
+        assert "70" in thermal["reason"] and "95" in thermal["reason"]
+        assert "assumed demo operating requirement" in thermal["reason"].lower()
         assert thermal["source_reference"] == "https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971"
-        assert thermal["verification_state"] == "SOURCE_AVAILABLE"
+        assert thermal["verification_state"] == "NOT_VERIFIED"
 
         mw = next((c for c in case_b["constraints"] if c["constraint_id"] == "microwave-reheating-incompatibility"), None)
         assert mw is not None
         assert mw["status"] == "BLOCKED"
-        assert "microwave" in mw["reason"].lower()
+        assert "assumed demo operating context requires microwave" in mw["reason"].lower()
         assert mw["source_reference"] == "https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971"
-        assert mw["verification_state"] == "SOURCE_AVAILABLE"
+        assert mw["verification_state"] == "NOT_VERIFIED"
 
         # Advisory safety finding
         advisory = next((c for c in case_b["constraints"] if c["constraint_id"] == "food-contact-suitability"), None)

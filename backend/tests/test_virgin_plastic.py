@@ -146,7 +146,10 @@ def test_operational_case3_explicit_requirement_microwave_incompatibility():
     mw_block = next((c for c in result.constraints if c.constraint_id == "microwave-reheating-incompatibility"), None)
     assert mw_block is not None
     assert mw_block.status == "BLOCKED"
+    # Epistemic combination: ASSUMED/NOT_VERIFIED requirement caps finding at NOT_VERIFIED
+    assert mw_block.verification_state == "NOT_VERIFIED"
     assert mw_block.source_reference == "https://duni.com/product"
+    assert "assumed demo operating context requires microwave reheating" in mw_block.reason.lower()
 
 
 def test_operational_case4_temperature_incompatibility():
@@ -164,7 +167,10 @@ def test_operational_case4_temperature_incompatibility():
     thermal_block = next((c for c in result.constraints if c.constraint_id == "thermal-envelope-incompatibility"), None)
     assert thermal_block is not None
     assert thermal_block.status == "BLOCKED"
-    assert "70.0°C < required 95.0°C" in thermal_block.reason
+    # Epistemic combination: ASSUMED/NOT_VERIFIED requirement caps finding at NOT_VERIFIED
+    assert thermal_block.verification_state == "NOT_VERIFIED"
+    assert "70" in thermal_block.reason and "95" in thermal_block.reason
+    assert "assumed demo operating requirement" in thermal_block.reason.lower()
     assert thermal_block.source_reference == "https://duni.com/product"
 
 
@@ -238,3 +244,58 @@ def test_operational_no_silent_inference_from_current():
     assert result.eligibility_status == "REVIEW_REQUIRED"
     assert result.eligibility_status != "BLOCKED"
 
+
+def test_operational_legacy_temperature_ignored():
+    """FIX 1: Legacy max_temperature_c without structured capability is ignored by the operational gate."""
+    reqs = OperationalRequirements(
+        max_temperature_c=temp_input(95.0, origin="ASSUMED", verification="NOT_VERIFIED", ref="demo:req-temp", note="95C required")
+    )
+    current = package(component(20, 0))
+    # Candidate has legacy max_temperature_c=100.0, but capabilities=None (no provenance)
+    candidate = package(component(20, 0.5), capabilities=None, max_temperature_c=100.0)
+    result = transition(current, candidate, operational_requirements=reqs)
+    assert result.status == "CALCULATED"
+    # Must NOT grant ELIGIBLE based on unprovenanced legacy field!
+    assert result.eligibility_status == "REVIEW_REQUIRED"
+    assert result.eligibility_status != "ELIGIBLE"
+    finding = next(c for c in result.constraints if c.constraint_id == "thermal-envelope-incompatibility")
+    assert finding.status == "REVIEW_REQUIRED"
+
+
+def test_operational_legacy_microwave_ignored():
+    """FIX 1: Legacy microwave_safe without structured capability is ignored by the operational gate."""
+    reqs = OperationalRequirements(
+        microwave_safe=bool_input(True, origin="ASSUMED", verification="NOT_VERIFIED", ref="demo:req-mw", note="MW required")
+    )
+    current = package(component(20, 0))
+    # Candidate has legacy microwave_safe=True, but capabilities=None (no provenance)
+    candidate = package(component(20, 0.5), capabilities=None, microwave_safe=True)
+    result = transition(current, candidate, operational_requirements=reqs)
+    assert result.status == "CALCULATED"
+    # Must NOT grant ELIGIBLE based on unprovenanced legacy field!
+    assert result.eligibility_status == "REVIEW_REQUIRED"
+    assert result.eligibility_status != "ELIGIBLE"
+    finding = next(c for c in result.constraints if c.constraint_id == "microwave-reheating-incompatibility")
+    assert finding.status == "REVIEW_REQUIRED"
+
+
+def test_operational_sourced_requirement_and_capability_allows_source_available():
+    """FIX 2: When both requirement and capability have SOURCE_AVAILABLE, derived finding has SOURCE_AVAILABLE."""
+    reqs = OperationalRequirements(
+        max_temperature_c=temp_input(95.0, origin="MANUFACTURER_SUPPLIED", verification="SOURCE_AVAILABLE",
+                                     ref="source:req-spec", note="Sourced requirement"),
+    )
+    current = package(component(14.8, 0))
+    candidate = package(component(12.0, 0.8), capabilities=PackageCapabilities(
+        max_temperature_c=temp_input(70.0, origin="MANUFACTURER_SUPPLIED", verification="SOURCE_AVAILABLE",
+                                     ref="https://duni.com/product", note="Sourced capability"),
+    ))
+    result = transition(current, candidate, operational_requirements=reqs)
+    assert result.status == "CALCULATED"
+    assert result.eligibility_status == "BLOCKED"
+    thermal_block = next(c for c in result.constraints if c.constraint_id == "thermal-envelope-incompatibility")
+    assert thermal_block.status == "BLOCKED"
+    assert thermal_block.verification_state == "SOURCE_AVAILABLE"
+    assert thermal_block.verification_state != "VERIFIED"
+    assert "Thermal envelope: candidate max 70.0°C < required 95.0°C." in thermal_block.reason
+    assert thermal_block.source_reference == "https://duni.com/product"
