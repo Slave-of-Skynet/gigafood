@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0",
+  "dataset_kind": "PUBLIC",
+  "disclosure": "PUBLIC-EVIDENCE DEMO DATA — NOT PROFI PROVIDER DATA. Candidate comparisons are decision-support examples, not implementation approvals.",
+  "scenarios": [
+    {
+      "id": "cchbc-500ml-rpet-transition",
+      "label": "Case A: 500ml PET Beverage Bottle (Virgin PET Baseline to 100% rPET Body)",
+      "current": {
+        "id": "cchbc-500ml-virgin",
+        "label": "500ml PET Bottle — Virgin Baseline",
+        "components": [
+          {
+            "id": "body",
+            "material": "Polyethylene terephthalate (PET)",
+            "plastic_mass_g": {
+              "value": 19.5,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                "note": "Average 500ml PET bottle body mass of 19.5 g reported in Coca-Cola HBC Green Finance Report (September 2023), Circular Economy / Packaging section."
+              }
+            },
+            "recycled_content_fraction": {
+              "value": 0.0,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                "note": "Conventional virgin PET baseline prior to rPET conversion; 0.0 recycled content fraction (100% virgin PET)."
+              }
+            }
+          },
+          {
+            "id": "closure",
+            "material": "High-density polyethylene (HDPE)",
+            "plastic_mass_g": {
+              "value": 2.5,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                "note": "Average bottle closure mass of 2.5 g reported in Coca-Cola HBC Green Finance Report (September 2023)."
+              }
+            },
+            "recycled_content_fraction": {
+              "value": 0.0,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                "note": "Standard beverage bottle closure manufactured from virgin food-grade HDPE (0.0 recycled content fraction)."
+              }
+            }
+          }
+        ],
+        "food_contact": true,
+        "use_context": "Carbonated soft drink and mineral water single-use packaging (room temperature / refrigerated)"
+      },
+      "candidate": {
+        "id": "cchbc-500ml-rpet",
+        "label": "500ml PET Bottle — 100% rPET Body + Virgin HDPE Closure",
+        "components": [
+          {
+            "id": "body",
+            "material": "Recycled polyethylene terephthalate (rPET)",
+            "plastic_mass_g": {
+              "value": 19.5,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                "note": "Bottle body mass maintained at 19.5 g using food-grade decontaminated rPET preforms produced in-house (e.g. Gaglianico plant)."
+              }
+            },
+            "recycled_content_fraction": {
+              "value": 1.0,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                "note": "100% post-consumer recycled PET preform resin allocation certified in Coca-Cola HBC Green Finance Report."
+              }
+            }
+          },
+          {
+            "id": "closure",
+            "material": "High-density polyethylene (HDPE)",
+            "plastic_mass_g": {
+              "value": 2.5,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                "note": "Retained 2.5 g HDPE closure mass (closure unconverted)."
+              }
+            },
+            "recycled_content_fraction": {
+              "value": 0.0,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                "note": "Closure remains 0.0 recycled content fraction due to technical and organoleptic constraints on recycled polyolefins for pressurized caps."
+              }
+            }
+          }
+        ],
+        "food_contact": true,
+        "use_context": "Carbonated soft drink and mineral water single-use packaging (room temperature / refrigerated)"
+      }
+    },
+    {
+      "id": "deli-pp-to-rpet-transition",
+      "label": "Case B: 360-375ml Food Container (Virgin PP Hot/Microwave vs 80% rPET Chilled-Only)",
+      "current": {
+        "id": "berry-unipak-360ml-pp",
+        "label": "Berry UniPak 360ml Round Pot — Virgin Polypropylene",
+        "components": [
+          {
+            "id": "pot",
+            "material": "Polypropylene (PP)",
+            "plastic_mass_g": {
+              "value": 14.8,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.berryglobal.com/en/product/5226",
+                "note": "Berry Global / Superfos Product 5226 technical specification: 360ml UniPak container body weight 14.8 g."
+              }
+            },
+            "recycled_content_fraction": {
+              "value": 0.0,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.berryglobal.com/en/product/5226",
+                "note": "Standard virgin injection moulding PP grade; 0.0 recycled content fraction."
+              }
+            }
+          }
+        ],
+        "food_contact": true,
+        "use_context": "Hot filling up to 95°C and microwave reheating; food-contact approved under Regulation (EU) 10/2011"
+      },
+      "candidate": {
+        "id": "duni-deli-375ml-rpet",
+        "label": "Duni Deli Hinged 375ml Container — 80% rPET",
+        "components": [
+          {
+            "id": "container",
+            "material": "Recycled polyethylene terephthalate (rPET)",
+            "plastic_mass_g": {
+              "value": 12.0,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971",
+                "note": "Duni BioPak Article 205971 technical datasheet: Deli Hinged 375ml piece gross weight 12.0 g."
+              }
+            },
+            "recycled_content_fraction": {
+              "value": 0.8,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971",
+                "note": "Manufacturer technical specification declares 80% post-consumer recycled PET (RPET) content."
+              }
+            }
+          }
+        ],
+        "food_contact": true,
+        "use_context": "Chilled storage only (up to 70°C for 2h max); strictly NOT suitable for microwave oven reheating"
+      }
+    }
+  ]
+}
