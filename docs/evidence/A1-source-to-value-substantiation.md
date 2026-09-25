@@ -1,11 +1,11 @@
 # A1 — PUBLIC Evidence Source-to-Value Substantiation
 ## Exact Source → Modeled Value → Boundary → Allowed Claim → Demo Fallback
 
-**Document Version:** 1.1.0  
-**Status:** REVISED / READY FOR INTEGRATOR REVIEW  
+**Document Version:** 1.2.0  
+**Status:** READY FOR MERGE / INTEGRATOR REVIEW  
 **Author:** Mister Ressentiment (`@Mr-Ressentiment`)  
-**Reconciled Base Commit:** `31e7381ec8d4bb3cfdeac7f77769934ae2a6a152` (`origin/main`)  
-**Reviewed Commit:** `afadfe507a8798e909de10324b450c55fd80a61a` (PR #8 HEAD)  
+**Base Commit:** `31e7381ec8d4bb3cfdeac7f77769934ae2a6a152` (`origin/main`)  
+**Target Pull Request:** PR #8 (`mister-ressentiment/a1-source-to-value-substantiation`)  
 **Target Repository:** `https://github.com/Slave-of-Skynet/gigafood`  
 **Dataset Reference:** `data/evidence/public-packaging.json` (`dataset_kind: PUBLIC`)
 
@@ -292,12 +292,12 @@ Transition Delta:
 ├────────────────────────────────────────────────────────────────────────┤
 │ CURRENT PACKAGE (22.0 g represented)                                   │
 │ ├── Body: 19.5 g Virgin PET [INCLUDED]                                 │
-│ ├── Closure: 2.5 g Virgin HDPE [INCLUDED]                              │
+│ ├── Closure: 2.5 g modeled Virgin HDPE [INCLUDED / ASSUMPTION]         │
 │ └── Label & Adhesive: Unknown mass [EXCLUDED]                          │
 │                                                                        │
 │ CANDIDATE PACKAGE (22.0 g represented)                                 │
 │ ├── Body: 19.5 g 100% rPET [INCLUDED]                                  │
-│ ├── Closure: 2.5 g Virgin HDPE [INCLUDED]                              │
+│ ├── Closure: 2.5 g modeled Virgin HDPE [INCLUDED / ASSUMPTION]         │
 │ └── Label & Adhesive: Unknown mass [EXCLUDED]                          │
 └────────────────────────────────────────────────────────────────────────┘
 ```
