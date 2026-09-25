@@ -45,3 +45,14 @@ is invalid. A zero current virgin total makes percentage N/A. Annual impact is a
 The ARC-01 file is ILLUSTRATIVE, NOT PROFI PROVIDER DATA. No input or suitability
 claim is marked VERIFIED. Replacing it with public/provider data requires evidence
 curation and Integrator review; changing a label cannot establish verification.
+
+NDR-01 added [public-packaging.json](../data/evidence/public-packaging.json) as a
+PUBLIC pack alongside the ILLUSTRATIVE fixture; it did not replace the runtime
+default. No Profi PROVIDER dataset is present. Its source-attributed inputs remain
+SOURCE_AVAILABLE and its calculable outputs INDICATIVE, not VERIFIED. See the
+[ledger](evidence/NDR-01-public-evidence-pack.md) for source scope and excluded
+components. Validation does not establish inventory completeness.
+
+The [decision policy](canon/decision_policy.md) separates calculation, eligibility
+and approval, including UNKNOWN versus demonstrated incompatibility. It is future
+product policy, not a change to current enums, contracts or generic findings.

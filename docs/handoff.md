@@ -1,5 +1,8 @@
 # ARC-01 — Human Integrator handoff
 
+> Historical document: this records the ARC-01 handoff state. For current
+> product/challenge canon and repository context, see [docs/canon](canon/product_canon.md).
+
 ## Repository state
 
 ```text
