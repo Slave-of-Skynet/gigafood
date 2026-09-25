@@ -76,3 +76,55 @@ def test_empty_and_duplicate_components_invalid():
         package()
     with pytest.raises(ValidationError):
         package(component(), component())
+
+
+def test_operational_constraints_compatible():
+    current = Package(id="cur", label="Current", components=[component(20, 0)],
+                      max_temperature_c=95.0, microwave_safe=True)
+    candidate = Package(id="cand", label="Candidate", components=[component(20, 0.5)],
+                        max_temperature_c=100.0, microwave_safe=True)
+    result = transition(current, candidate)
+    assert result.status == "CALCULATED"
+    assert result.eligibility_status == "ELIGIBLE"
+    assert result.reduction_pct == 50
+    assert not any(c.status == "BLOCKED" for c in result.constraints)
+
+
+def test_operational_constraints_thermal_mismatch_blocks():
+    current = Package(id="cur", label="Current PP", components=[component(14.8, 0)],
+                      max_temperature_c=95.0, microwave_safe=True)
+    candidate = Package(id="cand", label="Candidate rPET", components=[component(12.0, 0.8)],
+                        max_temperature_c=70.0, microwave_safe=False)
+    result = transition(current, candidate)
+    assert result.status == "CALCULATED"
+    assert result.reduction_pct is not None
+    assert result.eligibility_status == "BLOCKED"
+    thermal_block = next((c for c in result.constraints if c.constraint_id == "thermal-envelope-incompatibility"), None)
+    assert thermal_block is not None
+    assert thermal_block.status == "BLOCKED"
+    assert "70.0°C < required 95.0°C" in thermal_block.reason
+
+
+def test_operational_constraints_microwave_mismatch_blocks():
+    current = Package(id="cur", label="Current PP", components=[component(14.8, 0)],
+                      max_temperature_c=70.0, microwave_safe=True)
+    candidate = Package(id="cand", label="Candidate rPET", components=[component(12.0, 0.8)],
+                        max_temperature_c=70.0, microwave_safe=False)
+    result = transition(current, candidate)
+    assert result.status == "CALCULATED"
+    assert result.eligibility_status == "BLOCKED"
+    mw_block = next((c for c in result.constraints if c.constraint_id == "microwave-reheating-incompatibility"), None)
+    assert mw_block is not None
+    assert mw_block.status == "BLOCKED"
+
+
+def test_operational_constraints_missing_temp_review_required():
+    current = Package(id="cur", label="Current", components=[component(20, 0)],
+                      max_temperature_c=95.0, microwave_safe=True)
+    candidate = Package(id="cand", label="Candidate", components=[component(20, 0.5)],
+                        max_temperature_c=None, microwave_safe=True)
+    result = transition(current, candidate)
+    assert result.status == "CALCULATED"
+    assert result.eligibility_status == "REVIEW_REQUIRED"
+    assert result.eligibility_status != "ELIGIBLE"
+

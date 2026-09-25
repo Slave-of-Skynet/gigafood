@@ -32,8 +32,44 @@ def compare(scenario: Scenario) -> Comparison:
             reason="Required numerical evidence is missing; no transition delta can be calculated.",
             source_reference=None, verification_state="INSUFFICIENT_DATA",
         ))
+
+    curr_pkg = scenario.current
+    cand_pkg = scenario.candidate
+
+    if curr_pkg.max_temperature_c is not None and cand_pkg.max_temperature_c is not None:
+        if cand_pkg.max_temperature_c < curr_pkg.max_temperature_c:
+            constraints.append(ConstraintFinding(
+                constraint_id="thermal-envelope-incompatibility",
+                status="BLOCKED",
+                reason=f"Thermal envelope: candidate max {cand_pkg.max_temperature_c}°C < required {curr_pkg.max_temperature_c}°C.",
+                source_reference=None,
+                verification_state="NOT_VERIFIED",
+            ))
+
+    microwave_required = curr_pkg.microwave_safe is True or (
+        bool(curr_pkg.use_context and "microwave" in curr_pkg.use_context.lower())
+    )
+    if microwave_required and cand_pkg.microwave_safe is False:
+        constraints.append(ConstraintFinding(
+            constraint_id="microwave-reheating-incompatibility",
+            status="BLOCKED",
+            reason="Operating context requires microwave reheating, but candidate packaging is not microwave safe.",
+            source_reference=None,
+            verification_state="NOT_VERIFIED",
+        ))
+
+    if any(c.status == "BLOCKED" for c in constraints):
+        eligibility_status = "BLOCKED"
+    elif (curr_pkg.max_temperature_c is None or cand_pkg.max_temperature_c is None or
+          curr_pkg.microwave_safe is None or cand_pkg.microwave_safe is None):
+        eligibility_status = "REVIEW_REQUIRED"
+    else:
+        eligibility_status = "ELIGIBLE"
+
     return Comparison(
-        scenario=scenario, status="INSUFFICIENT_DATA" if missing else "CALCULATED",
+        scenario=scenario,
+        status="INSUFFICIENT_DATA" if missing else "CALCULATED",
+        eligibility_status=eligibility_status,
         verification_state="INSUFFICIENT_DATA" if missing else "INDICATIVE",
         current_virgin_pack_g=current, candidate_virgin_pack_g=candidate,
         reduction_g=reduction,

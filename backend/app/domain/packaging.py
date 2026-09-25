@@ -39,6 +39,8 @@ class Package(Contract):
     components: Annotated[list[Component], Field(min_length=1)]
     food_contact: bool | None = None
     use_context: str | None = None
+    max_temperature_c: float | None = None
+    microwave_safe: bool | None = None
 
     @model_validator(mode="after")
     def unique_components(self):
@@ -78,6 +80,7 @@ class ConstraintFinding(Contract):
 class Comparison(Contract):
     scenario: Scenario
     status: Literal["CALCULATED", "INSUFFICIENT_DATA"]
+    eligibility_status: Literal["ELIGIBLE", "REVIEW_REQUIRED", "BLOCKED"]
     origin: Literal["CALCULATED"] = "CALCULATED"
     verification_state: Literal["INDICATIVE", "INSUFFICIENT_DATA"]
     current_virgin_pack_g: float | None
