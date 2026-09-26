@@ -43,7 +43,7 @@ When answering judge questions:
 ### Q4: "Why even consider aluminium if your primary goal is virgin plastic reduction and sustainability?"
 > **Direct Answer:** *"Because operating physics overrides green aspirations. If Profi specifies a workflow where packaging must enter an oven at literal 250°C, candidates with verified thermal ceilings below 250°C—such as Siralon nylon, Cryovac, and BIOPAP—evaluate to BLOCKED, while Gaia's thermal limit remains unverified.*
 >
-> *Aluminium is an established high-temperature material capable of withstanding oven heat. Our system surfaces the C6-RO-H aluminium body as a configuration-bound high-temperature body fallback for that specific workflow. However, we also expose its severe compromises: the transparent lid cannot enter the oven and must be fitted post-cooking, duration and closure remain unresolved, and sourcing it locally costs over 200% more than conventional market bags. Aluminium proves that our system reflects operational reality rather than blind ideology."*
+> *Aluminium is an established high-temperature material capable of withstanding oven heat. Our system surfaces the C6-RO-H aluminium body as a configuration-bound high-temperature body fallback for that specific workflow. However, we also expose its severe compromises: no selected transparent closure is qualified for 250°C (the clear closure remains unresolved and is modeled as a separately qualified post-oven component), duration is unverified, and sourcing it locally costs over 200% more than conventional market bags. Aluminium proves that our system reflects operational reality rather than blind ideology."*
 
 ---
 
@@ -64,9 +64,9 @@ When answering judge questions:
 ### Q7: "What happens if Profi insists that packaging must survive 250°C in an oven?"
 > **Direct Answer:** *"Then the candidate landscape completely changes—and that is exactly what our demo proves.*
 >
-> *Under a post-cook hot-holding workflow (`POST_COOK_HOT_HOLD_6H`), renewable fibre solutions like Gaia and BIOPAP are prioritized for qualification. But the moment you toggle the workflow to literal 250°C oven exposure (`LITERAL_OVEN_250C_THEN_HOLD`), candidates with tested thermal limits below 250°C (C2 Siralon at 200–220°C, C3 Cryovac at 175°C, C4 Cryovac at 200°C, and C5 BIOPAP at 175–185°C) evaluate to BLOCKED.*
+> *Under a post-cook hot-holding workflow (`POST_COOK_HOT_HOLD_6H`), renewable fibre solutions like Gaia and BIOPAP are prioritized for qualification. But the moment you toggle the workflow to literal 250°C oven exposure (`LITERAL_OVEN_250C_THEN_HOLD`), C2, C3, C4, and C5 evaluate to BLOCKED in the canonical literal-250°C workflow; their scoped thermal evidence does not establish qualification for 250°C. C1 Gaia remains unresolved because its numeric peak limit is UNKNOWN.*
 >
-> *C1 Gaia is not physically proven to fail, but its numeric peak temperature limit is unverified (UNKNOWN), so it is not prioritized and remains unresolved (`QUALIFICATION REQUIRED`). The system surfaces C6-RO-H as a configuration-bound high-temperature body fallback, while explicitly noting that its transparent lid cannot enter the oven, duration and closure remain unresolved, and local portion sourcing costs over 200% more than conventional packaging."*
+> *The system surfaces C6-RO-H as a configuration-bound high-temperature body fallback, while explicitly noting that no selected transparent closure is qualified for 250°C. The clear closure remains unresolved and is modeled as a separately qualified post-oven component, body duration is unverified, and local portion sourcing costs over 200% more than conventional packaging."*
 
 ---
 

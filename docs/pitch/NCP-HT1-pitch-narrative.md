@@ -45,7 +45,7 @@ Across every version of this pitch—from 30 seconds to 4 minutes—the factual 
 >
 > *First, **the right package depends strictly on the food format and store workflow.** For a whole rotisserie chicken packed after cooking, the first qualification lead is **Sacma Gaia**—a renewable paper and NatureFlex cellulosic window bag. For portioned sides like wings and roasted potatoes, the lead path is **BIOPAP LC SI-14**, a compostable cellulose tray backed by family-level hot-hold testing up to six hours at 90°C.*
 >
-> *Second, **workflows dictate survival.** If Profi cooks food inside the packaging at a literal 250°C, C2, C3, C4, and C5 are strictly blocked by published thermal limits, while Gaia remains unresolved pending numeric limits. The system surfaces an aluminium high-temperature body fallback (C6-RO-H), while warning that a transparent lid must be applied post-oven and still requires qualification.*
+> *Second, **workflows dictate survival.** If Profi cooks food inside the packaging at a literal 250°C, C2, C3, C4, and C5 are strictly blocked by published thermal limits, while Gaia remains unresolved pending numeric limits. The system surfaces an aluminium high-temperature body fallback (C6-RO-H), while noting that no selected transparent closure is qualified for 250°C and clear closure remains an unresolved post-oven component.*
 >
 > *Third, **we refuse to greenwash.** On C5 BIOPAP, under our conservative material model, virgin plastic reduction spans from −68% to +82%. Because that interval crosses zero, we tell Profi honestly: no reduction is guaranteed until the exact sealing film is measured.*
 >
@@ -163,8 +163,8 @@ The system surfaces the Aluminium High-Temperature Body fallback (C6-RO-H)."
 [0:60 – 0:75] OPERATOR: Points to C6-RO-H gate breakdown and closure caveat.
 PRESENTER:
 "Even here, PackShift prevents false claims.
-While the aluminium body withstands 280°C, the transparent closure cannot survive the oven.
-The lid must be applied post-oven, and its fit and retail clarity remain an open qualification action.
+While the aluminium body has a 280°C seller rating, no selected transparent closure is qualified for 250°C.
+The clear closure remains unresolved and is modeled as a separately qualified post-oven component.
 PackShift rejects false universal answers—it gives Profi the truth."
 ```
 
@@ -204,7 +204,7 @@ Use these verified, defensible phrases during presentation and judge Q&A:
 | *"Guaranteed 90% plastic reduction"* | Untrue; C5 crosses zero, C1 is unmeasured, C4 increases plastic. | *"Conditional material model spanning −68% to +82%"* |
 | *"Proven annual savings of X RON / tonnes"* | Fabricates Profi purchase volume and unit cost. | *"Annual impact depends on actual Profi purchasing volumes"* |
 | *"Survives 250°C for 6 hours"* | Physically absurd; 250°C is an oven peak, not a 6h holding temperature. | *"250°C oven exposure followed by hot holding"* |
-| *"Aluminium solves the 250°C requirement"* | Ignores the transparent lid, which melts at oven temperatures. | *"Aluminium body provides a high-temperature fallback; closure unresolved"* |
+| *"Aluminium solves the 250°C requirement"* | Ignores transparent closure; no selected transparent closure is qualified for 250°C. | *"Aluminium body provides a high-temperature fallback; closure unresolved"* |
 | *"AI/ML packaging optimization"* | Fabricates artificial intelligence algorithms where none exist. | *"Deterministic, evidence-aware decision support engine"* |
 | *"Current Profi bag weighs 6.5 grams"* | Converts a synthetic scenario into an invented provider fact. | *"Our estimated baseline scenario models 2.6 to 12.5 grams"* |
 | *"Profi packaging costs X RON"* | Fabricates confidential commercial pricing. | *"Actual Profi incumbent cost remains confidential and unknown"* |

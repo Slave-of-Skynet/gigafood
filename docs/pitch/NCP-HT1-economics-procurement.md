@@ -66,7 +66,7 @@ $$\text{Unit Cost (Standard)} = 0.9030 + 0.3885 = 1.2915 \text{ RON incl. VAT}$$
 ### Commercial Limitations & Caveats
 1. **Cross-seller fit assumed:** Although both products cite the industry-standard "729" form factor, physical sealing and snap-fit between different manufacturers must be verified with physical samples.
 2. **Order unit vs industrial MOQ:** 100-pack web pricing reflects small-batch commercial ordering, not volume procurement contracts.
-3. **Closure thermal limits:** Transparent lid material and thermal resistance are unpublished; lid cannot enter a 250°C oven and must be fitted post-cooking at hot-hold temperatures.
+3. **Closure thermal limits:** No selected transparent closure is qualified for 250°C. The clear closure remains unresolved and is modeled as a separately qualified post-oven component.
 
 ---
 
