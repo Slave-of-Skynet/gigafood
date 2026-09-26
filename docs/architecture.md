@@ -1,5 +1,15 @@
 # PackShift architecture
 
+**TARGET_CONTRACT — INT-HTF-04A:** The next canonical application remains FastAPI
++ React/TypeScript/Vite. Use HTF-03 → allowlisted application adapter → independently
+validated snapshot → recommendation service → additive recommendation API. Do not
+change the meaning of `/api/v1/portfolios` or serve the research JSON as a raw response.
+The [transition contract](recon/INT-HTF-04A-canonical-runtime-transition.md) defines
+the conceptual model, proposed API, projection boundary and single-writer ownership
+for four downstream scopes. It supersedes older planned handoff/schema-deferral
+language below for this slice, subject to Human Integrator acceptance. Implementation
+observations below still describe the old runtime; HTF-03 integration is not implemented.
+
 **TEAM_DECISION — VLD-MR1:** The primary proposed solution is a sustainable physical
 high-temperature food-packaging concept for Profi. PackShift supports its evidence
 and demonstration; virgin-plastic reduction remains important alongside feasibility.

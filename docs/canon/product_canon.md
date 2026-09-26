@@ -1,5 +1,18 @@
 # PackShift — product canon
 
+**TARGET_DIRECTION — INT-HTF-04A:** The canonical packaging evidence baseline for
+the next GigaFood / PackShift recommendation experience is committed HTF-03.
+Use the existing FastAPI + React/TypeScript/Vite application through a curated
+adapter and additive recommendation API. P1/post-cook holding prioritises Gaia
+qualification; P2–P4 prioritise BIOPAP; literal 250°C is a separate configuration-bound
+aluminium body path. All current HTF-03 paths remain unqualified or blocked.
+Old Faerch Selection is historical/reference; `Проэкт Хакатон/**` is not canonical
+demo truth. These are target semantics, not migrated runtime or procurement approval.
+The [transition gate](../recon/INT-HTF-04A-canonical-runtime-transition.md) supersedes
+older unfrozen target/parallel-handoff language below for this next slice and supplies
+identities, evidence boundaries and proposed contracts for Human Integrator acceptance.
+Historical implementation observations below remain scoped to their stated base.
+
 Read with the [challenge and source hierarchy](challenge_canon.md),
 [decision policy](decision_policy.md) and [open questions](open_questions.md).
 
