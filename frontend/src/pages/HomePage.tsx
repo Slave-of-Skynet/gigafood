@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { format, OperationalRequirementsView, PackageView } from '../components/EvidenceDetails';
 import { SelectionView } from '../components/SelectionView';
 import { EconomicScenarioView } from '../components/EconomicScenarioView';
+import { reductionRingStyle } from '../components/metricRing';
 import { api } from '../api/client';
 import type {
   Comparison,
@@ -663,6 +664,10 @@ export function HomePage() {
 
                       <div className="stat-circle-wrapper">
                         <div
+                          style={reductionRingStyle(
+                            result.data.reduction_pct,
+                            result.data.eligibility_status === 'BLOCKED'
+                          )}
                           className={`stat-circle ${
                             result.data.reduction_pct === null
                               ? 'missing-ring'
@@ -671,7 +676,7 @@ export function HomePage() {
                               : result.data.reduction_pct <= 0
                               ? 'nonpositive-ring'
                               : 'candidate-ring'
-                          }`}
+                          } ${result.data.reduction_pct !== null && result.data.reduction_pct >= 0 ? 'progress-ring' : ''}`}
                         >
                           <span className="circle-num">
                             {result.data.reduction_pct === null
