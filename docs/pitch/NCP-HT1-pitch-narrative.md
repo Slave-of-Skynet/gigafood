@@ -15,17 +15,17 @@ Across every version of this pitch—from 30 seconds to 4 minutes—the factual 
 2. **PackShift is the decision & demonstration layer:** It enforces hard technical operating gates, tracks scientific provenance, models honest uncertainty, and recalculates paths when workflow requirements change.
 3. **The Core Pitch Differentiator:** We do not pretend to have found a "universal magic green package." Instead:
    > *“The correct sustainable packaging depends on the actual product and operating workflow, and our system refuses to recommend a packaging path that fails hard technical requirements.”*
-4. **Honest Engineering Over Greenwashing:** Zero candidates in Europe today are fully qualified for Profi off-the-shelf. We do not hide unknowns; we turn scientific discipline into our strongest proof of credibility.
+4. **Honest Engineering Over Greenwashing:** None of the six researched candidate families / 48 evaluated context rows is fully qualified for the evaluated Profi use cases today. We do not hide unknowns; we turn scientific discipline into our strongest proof of credibility.
 
 ---
 
 ## 2. 30-Second Elevator Pitch
 
-> *"Profi already solved low-temperature packaging using recycled PET, but high-temperature rotisserie and oven food remains an unsolved packaging challenge. In hot-food retail, you cannot sacrifice grease barriers, food safety, transparency, or six hours of holding time just to claim a green metric.*
+> *"Profi reportedly already has a working low-temperature solution using 100% recycled plastic, but high-temperature rotisserie and oven food remains an unresolved packaging challenge (approx. 200–250°C requirement context, alongside the official brief's 180–190°C rotisserie context). In hot-food retail, you cannot sacrifice grease barriers, food safety, transparency, or six hours of holding time just to claim a green metric.*
 >
 > *We built **PackShift**: an evidence-backed decision layer supporting a real physical transition. Instead of guessing a single 'winner,' PackShift maps Profi's products and store workflows against hard technical qualification gates.*
 >
-> *For whole rotisserie chicken under a post-cook workflow, our system nominates **Sacma Gaia** as the first qualification path; for portions, **BIOPAP** cellulose trays. But if store operations require literal 250°C oven exposure, biopolymers fail and the candidate landscape shifts to an aluminium body fallback.*
+> *For whole rotisserie chicken under a post-cook workflow, our system nominates **Sacma Gaia** as the first qualification path; for portions, **BIOPAP** cellulose trays. But if store operations require literal 250°C oven exposure, candidates with tested limits below 250°C are blocked, Gaia remains thermally unverified, and the candidate landscape shifts to an aluminium body fallback.*
 >
 > *PackShift doesn't sell green illusions—it tells Profi exactly what to qualify next, and exactly what evidence is required before procurement."*
 
@@ -33,9 +33,9 @@ Across every version of this pitch—from 30 seconds to 4 minutes—the factual 
 
 ## 3. ~2-Minute Standard Pitch
 
-> *"Good afternoon, judges. Profi has achieved impressive progress with 100% recycled plastic in cold deli packaging. But when you walk up to the hot rotisserie counter, the rules completely change.*
+> *"Good afternoon, judges. Profi reportedly has a working solution using 100% recycled plastic in cold deli packaging. But when you walk up to the hot rotisserie counter, the rules completely change.*
 >
-> *Hot-food packaging is one of retail’s toughest engineering problems. You have temperatures from 180°C up to 250°C, hot chicken fat, steam, condensation, up to six hours of in-store holding, and the commercial necessity of a transparent window so customers can see what they buy. Today, Profi relies on an unmeasured conventional plastic bag.*
+> *Hot-food packaging is one of retail’s toughest engineering problems. You have temperature requirements of approximately 200–250°C, alongside the official brief's 180–190°C rotisserie context, hot chicken fat, steam, condensation, up to six hours of in-store holding, and the commercial necessity of a transparent window so customers can see what they buy. Today, Profi relies on an unmeasured conventional plastic bag.*
 >
 > *Our team did not attempt to invent a miracle material overnight. Instead, we developed a defensible physical packaging transition supported by **PackShift**—an evidence-backed decision engine.*
 >
@@ -45,7 +45,7 @@ Across every version of this pitch—from 30 seconds to 4 minutes—the factual 
 >
 > *First, **the right package depends strictly on the food format and store workflow.** For a whole rotisserie chicken packed after cooking, the first qualification lead is **Sacma Gaia**—a renewable paper and NatureFlex cellulosic window bag. For portioned sides like wings and roasted potatoes, the lead path is **BIOPAP LC SI-14**, a compostable cellulose tray backed by family-level hot-hold testing up to six hours at 90°C.*
 >
-> *Second, **workflows dictate survival.** If Profi cooks food inside the packaging at a literal 250°C, Gaia and BIOPAP are immediately blocked. The system dynamically pivots to an aluminium high-temperature body fallback, while warning that a transparent lid must be applied post-oven and still requires qualification.*
+> *Second, **workflows dictate survival.** If Profi cooks food inside the packaging at a literal 250°C, C2, C3, C4, and C5 are strictly blocked by published thermal limits, while Gaia remains unresolved pending numeric limits. The system surfaces an aluminium high-temperature body fallback (C6-RO-H), while warning that a transparent lid must be applied post-oven and still requires qualification.*
 >
 > *Third, **we refuse to greenwash.** On C5 BIOPAP, under our conservative material model, virgin plastic reduction spans from −68% to +82%. Because that interval crosses zero, we tell Profi honestly: no reduction is guaranteed until the exact sealing film is measured.*
 >
@@ -65,7 +65,7 @@ Across every version of this pitch—from 30 seconds to 4 minutes—the factual 
 > *Our central thesis is simple: **The correct sustainable packaging depends on product and workflow, and our system refuses to recommend a packaging path that fails hard technical requirements.**"*
 
 ### Slide 2: The High-Temperature Reality [0:30 – 1:00]
-> *"Why is hot food so difficult? In cold packaging, switching to 100% rPET is straightforward. In hot food, you are managing temperatures between 180°C and 250°C, hot poultry fats, condensation, food contact migration, and up to six hours in a warming cabinet.*
+> *"Why is hot food so difficult? In cold packaging, Profi reportedly has a working solution using 100% recycled plastic. In hot food, you are managing temperature requirements of approximately 200–250°C, alongside the official brief's 180–190°C rotisserie context, hot poultry fats, condensation, food contact migration, and up to six hours in a warming cabinet.*
 >
 > *Furthermore, a transparent window is an absolute commercial requirement—shoppers will not buy rotisserie chicken blindly. Yet, many bio-based films melt above 120°C, heavier rigid plastic boxes can actually increase total plastic mass, and complex plastic-paper laminates ruin recyclability.*
 >
@@ -81,11 +81,11 @@ Across every version of this pitch—from 30 seconds to 4 minutes—the factual 
 > *These two workflows require completely different physical containers."*
 
 ### Slide 4: The 6 Qualification Gates [1:30 – 2:00]
-> *"We investigated six candidate families across Europe: Sacma Gaia, Sirane Siralon nylon, Cryovac Oven Ease, Faerch CPET, BIOPAP cellulose trays, and Aluminium architectures.*
+> *"We investigated six candidate families: Sacma Gaia, Sirane Siralon nylon, Cryovac Oven Ease, Faerch CPET, BIOPAP cellulose trays, and Aluminium architectures.*
 >
 > *Rather than computing an arbitrary 'eco-score,' PackShift screens every candidate through **six non-compensable gates**: Physical Fit, Food Contact, Thermal Envelope, Grease Resistance, Transparent Viewing, and Romanian Procurement.*
 >
-> *Our findings from 48 evaluated combinations: **Zero candidates are fully qualified today.** 28 require qualification; 20 are technically blocked. We don't hide this—we use it to establish a disciplined qualification priority."*
+> *Our findings from the 48 evaluated combinations in the canonical dataset: **none of the candidate rows is fully qualified today.** 28 require qualification; 20 are technically blocked. We don't hide this—we use it to establish a disciplined qualification priority."*
 
 ### Slide 5: Live Demo [2:00 – 3:00]
 *(Transition to live demo — see Section 5 for the exact 60–90 second spoken script)*
@@ -111,13 +111,13 @@ Across every version of this pitch—from 30 seconds to 4 minutes—the factual 
 > *Step 1: Confirm store deli temperature profiles.*
 > *Step 2: Weigh 10 incumbent Profi bags.*
 > *Step 3: Dispatch our pre-drafted RFQs to Sacma, BIOPAP, and local distributors.*
-> *Step 4: Execute EN 1186 migration tests with hot chicken fat.*
+> *Step 4: Execute a proposed qualification plan with suppliers and accredited laboratories for overall and specific migration testing under fatty-food hot-fill conditions per applicable material frameworks.*
 > *Step 5: Run 6-hour warming cabinet tests for grease barrier and anti-fog clarity.*
 > *Step 6: Confirm delivered Romanian case pricing.*
 > *Step 7: Launch a 2-store customer pilot.*
 > *Step 8: Re-run PackShift with verified laboratory inputs.*
 >
-> *PackShift is not just for this hackathon. Its decision engine can scale across all 1,600+ Profi stores, evaluating bakery, fresh meat, and ready-to-eat packaging as EU PPWR regulations mandate strict virgin plastic reductions.*
+> *PackShift is not just for this hackathon. Its decision engine can scale across all 1,600+ Profi stores, evaluating bakery, fresh meat, and ready-to-eat packaging as EU PPWR packaging regulations phase in mandatory design-for-recycling criteria and minimum post-consumer recycled content targets.*
 >
 > *Thank you. We are ready for your questions."*
 
@@ -156,8 +156,9 @@ PRESENTER:
 If Profi tells us: 'No, this packaging must enter a convection oven at literal 250°C'—
 we change the workflow selector.
 Instantly, the candidate landscape transforms.
-Biopolymers cannot withstand 250°C: Siralon, Oven Ease, and BIOPAP are now strictly BLOCKED.
-The system pivots to an Aluminium High-Temperature Body fallback (C6-RO-H)."
+Candidates with tested limits below 250°C—Siralon, Oven Ease, Faerch CPET, and BIOPAP—are now strictly BLOCKED,
+while Gaia remains unresolved without a verified numeric peak rating.
+The system surfaces the Aluminium High-Temperature Body fallback (C6-RO-H)."
 
 [0:60 – 0:75] OPERATOR: Points to C6-RO-H gate breakdown and closure caveat.
 PRESENTER:

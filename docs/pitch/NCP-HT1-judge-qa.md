@@ -22,7 +22,7 @@ When answering judge questions:
 ### Q1: "Why should Profi trust these numbers if you haven't tested the packages in a physical lab?"
 > **Direct Answer:** *"Profi should trust our numbers precisely because we do not pretend they are lab-tested. Every number in PackShift is tied to an explicit epistemic state—whether it is a manufacturer-verified datasheet value, an exact mathematical derivation, or a bounded engineering model.*
 >
-> *Where data is unmeasured, such as Profi's confidential incumbent bag or BIOPAP's exact sealing film, we refuse to present a single speculative number. Instead, we show bounded intervals and flag them as UNKNOWN. What Profi can trust is our methodology: our system establishes the exact engineering boundaries and pre-drafts the RFQs and lab protocols needed before spending procurement capital."*
+> *Where data is unmeasured, such as Profi's confidential incumbent bag or BIOPAP's exact sealing film, we refuse to present a single speculative number. Instead, we show bounded intervals and flag them as UNKNOWN. What Profi can trust is our methodology: our system establishes the exact engineering boundaries and pre-drafts the RFQs and proposed lab qualification protocols needed before spending procurement capital."*
 
 ---
 
@@ -36,14 +36,14 @@ When answering judge questions:
 ### Q3: "Is BIOPAP certified food-safe for six hours of hot holding?"
 > **Direct Answer:** *"No, it is not certified food-safe for Profi's specific store conditions. In our system, its status is strictly `QUALIFICATION REQUIRED`.*
 >
-> *BIOPAP publishes verified family-level hot-hold testing for its LC line up to six hours at 90°C and five hours at 100°C. However, that applies to their catering system generally. Before Profi can use it, the specific SI-14 tray, paired with the exact nominated transparent barrier film, must undergo migration testing (EN 1186 / EN 13130) with hot poultry fat to certify food contact compliance for a six-hour hot display."*
+> *BIOPAP publishes verified family-level hot-hold testing for its LC line up to six hours at 90°C and five hours at 100°C. However, that applies to their catering system generally. Before Profi can use it, the specific SI-14 tray, paired with the exact nominated transparent barrier film, must undergo proposed migration qualification testing per applicable European frameworks (Framework Regulation 1935/2004, GMP 2023/2006, and Regulation 10/2011 for plastic barrier layers) with hot poultry fat simulants to certify food contact compliance for a six-hour hot display."*
 
 ---
 
 ### Q4: "Why even consider aluminium if your primary goal is virgin plastic reduction and sustainability?"
-> **Direct Answer:** *"Because operating physics overrides green aspirations. If Profi specifies a workflow where packaging must enter an oven at literal 250°C, paper fibres and biopolymers char, melt, or fail.*
+> **Direct Answer:** *"Because operating physics overrides green aspirations. If Profi specifies a workflow where packaging must enter an oven at literal 250°C, candidates with verified thermal ceilings below 250°C—such as Siralon nylon, Cryovac, and BIOPAP—evaluate to BLOCKED, while Gaia's thermal limit remains unverified.*
 >
-> *Aluminium is an established high-temperature material capable of withstanding oven heat. Our system surfaces the C6-RO-H aluminium body as a technical fallback for that specific workflow. However, we also expose its severe compromises: the transparent lid cannot enter the oven and must be fitted post-cooking, and sourcing it locally costs over 200% more than conventional packaging. Aluminium proves that our system reflects operational reality rather than blind ideology."*
+> *Aluminium is an established high-temperature material capable of withstanding oven heat. Our system surfaces the C6-RO-H aluminium body as a configuration-bound high-temperature body fallback for that specific workflow. However, we also expose its severe compromises: the transparent lid cannot enter the oven and must be fitted post-cooking, duration and closure remain unresolved, and sourcing it locally costs over 200% more than conventional market bags. Aluminium proves that our system reflects operational reality rather than blind ideology."*
 
 ---
 
@@ -57,21 +57,23 @@ When answering judge questions:
 ### Q6: "Why doesn't your software pick one clear winner for Profi?"
 > **Direct Answer:** *"Because declaring a single winner would be scientifically false and commercially irresponsible.*
 >
-> *In hot food retail, a whole chicken has completely different physical requirements than a portion of chicken wings. Furthermore, out of 48 evaluated product, workflow, and candidate combinations, exactly zero have passed all six technical gates today. Declaring a 'winner' today would mean ignoring missing food-contact certifications or unverified thermal limits. PackShift identifies the first qualification path—telling Profi where to focus testing first—without making false promises."*
+> *In hot food retail, a whole chicken has completely different physical requirements than a portion of chicken wings. Furthermore, out of 48 evaluated product, workflow, and candidate combinations in our canonical dataset, exactly zero have passed all six technical gates today. Declaring a 'winner' today would mean ignoring missing food-contact certifications or unverified thermal limits. PackShift identifies the first qualification path—telling Profi where to focus testing first—without making false promises."*
 
 ---
 
 ### Q7: "What happens if Profi insists that packaging must survive 250°C in an oven?"
 > **Direct Answer:** *"Then the candidate landscape completely changes—and that is exactly what our demo proves.*
 >
-> *Under a post-cook hot-holding workflow, renewable fibre solutions like Gaia and BIOPAP are viable. But the moment you toggle the workflow to a literal 250°C oven, Gaia, Siralon nylon, Cryovac, and BIOPAP are immediately marked BLOCKED by our decision engine. The only viable path is a high-temperature metal body like aluminium (C6-RO-H), with transparent lids applied post-oven. Our software prevents Profi from accidentally deploying a biopolymer that would melt in the oven."*
+> *Under a post-cook hot-holding workflow (`POST_COOK_HOT_HOLD_6H`), renewable fibre solutions like Gaia and BIOPAP are prioritized for qualification. But the moment you toggle the workflow to literal 250°C oven exposure (`LITERAL_OVEN_250C_THEN_HOLD`), candidates with tested thermal limits below 250°C (C2 Siralon at 200–220°C, C3 Cryovac at 175°C, C4 Cryovac at 200°C, and C5 BIOPAP at 175–185°C) evaluate to BLOCKED.*
+>
+> *C1 Gaia is not physically proven to fail, but its numeric peak temperature limit is unverified (UNKNOWN), so it is not prioritized and remains unresolved (`QUALIFICATION REQUIRED`). The system surfaces C6-RO-H as a configuration-bound high-temperature body fallback, while explicitly noting that its transparent lid cannot enter the oven, duration and closure remain unresolved, and local portion sourcing costs over 200% more than conventional packaging."*
 
 ---
 
 ### Q8: "Is this packaging certified food-safe under EU and Romanian law?"
 > **Direct Answer:** *"The base materials have European food-contact declarations, but the complete finished retail systems are NOT yet certified for Profi's intended use.*
 >
-> *EU Regulation 1935/2004 and Regulation 10/2011 require overall and specific migration testing under actual time and temperature conditions. Holding fatty poultry at 80–90°C for six hours represents an aggressive food matrix. Declarations of Compliance (DoC) must be obtained from Sacma and BIOPAP specifically covering fatty food simulants (Simulant D2) under elevated hot-holding profiles before any procurement contract is signed."*
+> *Framework Regulation (EC) No 1935/2004 and GMP Regulation (EC) No 2023/2006 apply generally across all food contact materials, while Regulation (EU) No 10/2011 governs plastic layers and components specifically; paper and board components fall under national frameworks and Council of Europe guidelines. Holding fatty poultry at 80–90°C for six hours represents an aggressive food matrix. Declarations of Compliance (DoC) and migration testing with fatty food simulants (Simulant D2 / vegetable oil or 95% ethanol screening per applicable protocols) represent our proposed lab qualification plan to confirm with suppliers and accredited laboratories for each component before any procurement contract is signed."*
 
 ---
 
@@ -100,7 +102,7 @@ When answering judge questions:
 > **Direct Answer:** *"Monday morning, we execute the first three steps of our 8-stage roadmap:*
 > *First, we confirm Profi's exact store deli operating temperatures—specifically whether food is packed post-cooking and what the warming cabinet temperature is.*
 > *Second, we weigh 10 empty incumbent Profi bags to lock down the exact baseline mass.*
-> *Third, we dispatch our pre-drafted RFQs to Sacma for Gaia samples and BIOPAP for SI-14 trays, requesting formal food-contact migration dossiers for hot fatty chicken. That gives Profi a clear, low-risk path from hackathon concept to store pilot."*
+> *Third, we dispatch our pre-drafted RFQs to Sacma for Gaia samples and BIOPAP for SI-14 trays, initiating our proposed qualification plan with suppliers and accredited laboratories for hot fatty chicken migration per applicable European frameworks. That gives Profi a clear, low-risk path from hackathon concept to store pilot."*
 
 ---
 
@@ -109,8 +111,8 @@ When answering judge questions:
 | Risk ID | Judge Risk Description | How We Disclose It | Why Our Solution Remains Valid | Next Immediate Action |
 |:---:|---|---|---|---|
 | **R1** | **Incumbent baseline mass & cost are confidential and unknown.** | Explicitly labelled as `UNKNOWN` in all tables; we model `B1-ESTIMATED` at 2.6–12.5 g (central 6.5 g) and state B1 cost is unmeasured. | The prototype demonstrates gate logic, candidate comparison, and uncertainty propagation; the engine recalculates instantly when Profi inputs true baseline values. | Weigh 10 empty Profi incumbent bags and obtain recent procurement invoice. |
-| **R2** | **Zero candidates are currently fully qualified for store deployment.** | Disclosed as a headline on Slide 4: "28 Qualification Required, 20 Blocked, 0 Qualified Survivors." | Retail packaging cannot be certified in a 48-hour hackathon. Proving what must be tested before buying protects Profi from regulatory and operational failure. | Execute migration testing (EN 1186 / EN 13130) with hot poultry fat simulants. |
-| **R3** | **Exact store thermal profile (oven air vs surface vs holding) is partly unknown.** | We model two distinct workflows (`POST_COOK_HOT_HOLD_6H` vs `LITERAL_OVEN_250C`) rather than guessing a single temperature. | Software allows store managers to toggle between workflows and see candidate survivability dynamically update. | Place temperature data-loggers inside Profi rotisserie ovens and display cases. |
+| **R2** | **None of the six researched candidate families / 48 evaluated context rows is fully qualified for store deployment today.** | Disclosed as a headline on Slide 4: "28 Qualification Required, 20 Blocked, 0 Qualified Survivors." | Retail packaging cannot be certified in a 48-hour hackathon. Proving what must be tested before buying protects Profi from regulatory and operational failure. | Execute proposed migration testing per applicable European frameworks (Framework 1935/2004, GMP 2023/2006, and Regulation 10/2011 for plastics) with hot poultry fat simulants via accredited testing laboratories. |
+| **R3** | **Exact store thermal profile (oven air vs surface vs holding) is partly unknown.** | We model two distinct workflows (`POST_COOK_HOT_HOLD_6H` vs `LITERAL_OVEN_250C`) rather than guessing a single temperature, acknowledging the mentor/challenge target of approx. 200–250°C alongside official rotisserie operating context of 180–190°C. | Software allows store managers to toggle between workflows and see candidate survivability dynamically update. | Place temperature data-loggers inside Profi rotisserie ovens and display cases. |
 | **R4** | **Candidate layer BOM and coating chemistry are incomplete for Gaia and BIOPAP.** | We maintain an explicit `CONFLICT` for BIOPAP (175°C vs 185°C) and treat Gaia plastic mass as `UNKNOWN`. | We use conservative engineering bounds (treating films/liners as plastic budget) rather than assuming zero plastic. | Dispatch written technical RFQs to Sacma SpA and BIOPAP Srl engineering teams. |
 | **R5** | **Romanian sourcing routes for preferred candidates require factory RFQs.** | Every candidate is assigned an exact supply maturity badge (`ROMANIA_DISTRIBUTOR_CURRENT` vs `QUOTE_REQUIRED_ROMANIA`). | We verified domestic listings for aluminium and market bags, proving local sourcing mechanisms, while highlighting direct supplier channels for Europe-wide solutions. | Request formal Romanian delivered quotation and sample trial packs. |
 
@@ -128,7 +130,7 @@ To maximize judge impact before presentation, we identify the top 3 high-impact 
 - **Feasibility / Time:** 1–2 hours locally in Bucharest / Cluj / Timișoara retail/packaging distributors. Integration risk: Zero (pure presentation amplifier).
 
 ### #2. Deterministic Before/After Workflow Demo (Rank 2 — High UX Impact)
-- **Concept:** Execute a flawless 60-second live interaction in PackShift showing P1 whole chicken under post-cook workflow (Gaia nominated), followed by an immediate switch to literal 250°C oven exposure (Gaia blocked, C6-RO-H fallback displayed).
+- **Concept:** Execute a flawless 60-second live interaction in PackShift showing P1 whole chicken under post-cook workflow (Gaia nominated), followed by an immediate switch to literal 250°C oven exposure (C2–C5 blocked, Gaia unprioritized due to unverified peak limits, C6-RO-H fallback displayed).
 - **Judge Impact:** **HIGH.** Proves the core differentiator: the software is a dynamic decision engine that enforces physical laws, not a static product brochure.
 - **Feasibility / Time:** Pre-tested script; 75 seconds runtime. Integration risk: Low (relies on frozen API).
 

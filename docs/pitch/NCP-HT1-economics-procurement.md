@@ -15,7 +15,7 @@ The economic and procurement narrative for GigaFood / PackShift is built on comp
 2. **The local market benchmark:** A conventional Romanian rotisserie market bag (Barleta 128002 paper + PP, B3) costs **0.37026 RON incl. VAT**.
 3. **The local aluminium option is an expensive technical fallback:** Sourcing the locally available aluminium portion pair (C6-RO-P: E-ambalaj 729 tray + La Habibi clear lid) costs **1.1485–1.2915 RON incl. VAT**, representing a **+210.2% to +248.8% premium** over the B3 conventional market bag.
 4. **Profi incumbent cost is confidential and UNKNOWN:** We cannot claim our solution costs "+X% vs Profi today" because Profi's actual purchase price is unmeasured.
-5. **The mentor's +10–15% premium:** A ~10–15% cost premium was identified as a realistic business design target for a genuinely sustainable solution, not an automatic procurement approval threshold. For C6-RO-P to fit within a 15% ceiling, Profi's current bag would need to cost at least 1.00–1.12 RON, which is implausible for lightweight plastic bags. Therefore, preferred commercial development must focus on our renewable fibre candidates (C1 Gaia and C5 BIOPAP), where factory RFQs must establish direct commercial pricing.
+5. **The mentor's +10–15% premium:** A ~10–15% cost premium was identified as a realistic business design target for a genuinely sustainable solution, not an automatic procurement approval threshold. For C6-RO-P to fit within a 15% ceiling on the same gross component basis, Profi's current packaging would need to cost at least 1.00–1.12 RON (central 1.00 EST. RON/unit). Whether Profi's incumbent packaging approaches this threshold remains UNKNOWN, as actual incumbent unit cost is confidential. Therefore, preferred commercial development must focus on our renewable fibre candidates (C1 Gaia and C5 BIOPAP), where factory RFQs must establish direct commercial pricing.
 
 ---
 
@@ -124,7 +124,7 @@ Phase 2: RFQ Dispatch (Weeks 2–3)
   │  └── E-ambalaj / La Habibi: Order 100 sample pairs of 729 body + clear lid to test physical snap-fit
   │
 Phase 3: Lab Testing & Quote Reconciliation (Weeks 4–6)
-  │  ├── Migration testing (EN 1186 / EN 13130) with hot poultry fat
+  │  ├── Proposed migration qualification plan confirmed with supplier/accredited lab for each component
   │  ├── 6-hour warming cabinet holding test (steam, grease barrier, anti-fog clarity)
   │  └── Compare formal delivered quotes against the +10–15% budget tolerance
   │
@@ -138,13 +138,13 @@ Phase 4: Store Pilot & System Scale (Weeks 7–10)
 #### For Sacma SpA (C1 Gaia):
 1. Nominate specific B.Life Gaia article code for whole rotisserie chicken (approx. 1.2–1.5 kg bird).
 2. Disclose complete layer specification: kraft paper GSM, adhesive chemistry, NatureFlex film gauge.
-3. Supply food-contact Declaration of Compliance (DoC) for fatty foods at elevated temperatures (>80°C).
+3. Supply food-contact Declaration of Compliance (DoC) and supporting migration data covering hot fatty poultry contact per applicable EU and national food contact materials legislation.
 4. Provide published anti-fog performance data for the NatureFlex transparent window under hot condensation.
 5. Provide delivered price quotation for Romania at 25,000, 50,000, and 100,000 unit tiers.
 
 #### For BIOPAP Srl (C5 LC SI-14):
 1. Provide written clarification resolving the peak oven temperature conflict: 175°C / 60 min vs 185°C / 60 min.
 2. Nominate the exact transparent heat-sealing film SKU and roll width compatible with SI-14 trays and standard tray sealers.
-3. Supply complete DoC and overall/specific migration test results under hot-hold conditions (e.g. 90°C for 6 hours with food simulant D2 / vegetable oil).
+3. Supply complete DoC and proposed overall/specific migration protocol under hot-hold conditions (e.g. 6 hours at elevated holding temperatures with appropriate fatty food simulants) to confirm with an accredited laboratory.
 4. Confirm current Romanian distribution channel (verify status of 2021 partner ReVive or direct export terms).
 5. Supply delivered price quotation for SI-14 trays (per pallet/case) and compatible sealing film (per linear meter).

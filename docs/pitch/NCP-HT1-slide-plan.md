@@ -33,7 +33,7 @@
 - **Sub-headline:** *Physical sustainable packaging concepts backed by hard technical qualification gates and Romanian market reality.*
 - **Key Claims:**
   1. Physical packaging is the primary deliverable; PackShift software is the evidence-backed decision and demonstration layer.
-  2. Profi has already deployed recycled plastic in low-temperature packaging; high-temperature hot-deli food (180–250°C, ~6h hot hold) remains the unresolved retail packaging challenge.
+  2. Profi reportedly already has a working low-temperature solution using 100% recycled plastic; high-temperature hot-deli food (approx. 200–250°C requirement context, alongside the official brief's 180–190°C rotisserie context, and up to ~6h holding) remains the unresolved retail packaging challenge.
   3. Our core principle: **The correct sustainable packaging depends on product and workflow, and our system refuses to recommend packaging that fails hard technical requirements.**
 - **Visual / Evidence Anchor:**
   - Split visual: Physical packaging concept mockup (fibre whole-chicken bag + portion tray) alongside PackShift software decision screen.
@@ -47,11 +47,11 @@
 - **Purpose:** Ground the judges in the severe, multi-dimensional physical constraints of hot-food retail operations.
 - **Headline:** **The Real Challenge: Temperature, Grease, Visibility, and Holding Time**
 - **Key Claims:**
-  1. Low-temperature packaging can easily use 100% rPET; high-temperature rotisserie and oven deli packaging requires simultaneously satisfying temperature resistance, food-contact safety, grease barrier, transparent viewing, and ~6 hours holding.
+  1. Low-temperature packaging reportedly already has a working solution using 100% recycled plastic; high-temperature rotisserie and oven deli packaging requires simultaneously satisfying temperature resistance (approx. 200–250°C target context, alongside the official brief's 180–190°C rotisserie context), food-contact safety, grease barrier, transparent viewing, and ~6 hours holding.
   2. Over-simplification creates failure: Heavier rigid plastic boxes are not automatically green; multilayer laminates harm recyclability; bags can leak or fog.
   3. Operating temperature semantics are critical: **250°C oven exposure ≠ 6 hours at 250°C.** Direct bake-in vs. post-cook hot-fill represent two fundamentally distinct physical operating regimes.
 - **Visual / Evidence Anchor:**
-  - 5-factor constraint hexagon: Thermal resistance (180–250°C) • Food Contact / Grease Barrier • Transparent Viewing Window • ~6h Hot Holding • Virgin Plastic Elimination.
+  - 5-factor constraint hexagon: Thermal resistance (approx. 200–250°C target; 180–190°C rotisserie context) • Food Contact / Grease Barrier • Transparent Viewing Window • ~6h Hot Holding • Virgin Plastic Elimination.
   - Clear citation: Profi Challenge Canon & Mentor Clarification (VLD-MR1).
 - **Judge Criterion Supported:** Technical Feasibility (15%), Retail Practicality (15%).
 - **Demo Dependency:** Explains the operational requirements shown in the PackShift header.
@@ -64,7 +64,7 @@
 - **Key Claims:**
   1. Format divide: A whole rotisserie chicken (P1) requires a large-volume, grease-resistant, flexible or rigid format; portions (P2 wings/thighs, P3 potatoes/veg, P4 meat portions) require compact, sealable portion trays.
   2. Workflow divide: In `POST_COOK_HOT_HOLD_6H` (food cooked first, packaged hot, held up to 6h), renewable fibre architectures with cellulosic windows become viable.
-  3. In `LITERAL_OVEN_250C_THEN_HOLD` (packaging placed directly in an oven at 250°C), fibre and standard biopolymers fail; only high-temperature metal/specialist bodies survive.
+  3. In `LITERAL_OVEN_250C_THEN_HOLD` (packaging placed directly in an oven at 250°C), C2, C3, C4, and C5 are strictly BLOCKED by tested thermal limits; C1 Gaia remains unresolved pending numeric peak data; and C6-RO-H aluminium body surfaces as a high-temperature fallback with closure unresolved.
 - **Visual / Evidence Anchor:**
   - Matrix table diagram:
     - Rows: P1 Whole Chicken, P2 Wings/Thighs, P3 Potatoes/Vegetables, P4 Meat Portions.
@@ -80,7 +80,7 @@
 - **Key Claims:**
   1. We researched 6 physical candidate families: C1 Sacma Gaia (cellulose/paper), C2 Siralon 21 (nylon cook-in), C3 Cryovac Oven Ease (cook-in shrink), C4 Faerch CPET (rigid tray historical track), C5 BIOPAP LC SI-14 (cellulose tray + film), C6 Aluminium architecture.
   2. Every candidate must pass 6 non-compensable gates: Physical Fit, Food Contact, Thermal Envelope, Grease/Leak Resistance, Transparent Viewing, and Romania Procurement.
-  3. **Zero False Approvals:** Across all 48 evaluated context combinations in HTF-03, exactly **0 are fully qualified survivors** (28 QUALIFICATION REQUIRED, 20 BLOCKED). We never award a premature "winner" badge.
+  3. **Zero False Approvals:** None of the six researched candidate families / 48 evaluated context rows in the canonical HTF-03 dataset is fully qualified today (28 QUALIFICATION REQUIRED, 20 BLOCKED, 0 qualified survivors). We never award a premature "winner" badge.
 - **Visual / Evidence Anchor:**
   - The 6-Gate Funnel Graphic: Physical Fit → Food Contact → Thermal → Grease/Leak → Viewing → Procurement.
   - Gate status tally: 28 Qualification Required / 20 Blocked / 0 Fully Qualified.
@@ -95,7 +95,7 @@
 - **Key Claims:**
   1. **Demo Step 1 (P1 Post-Cook):** Select Whole Chicken + Post-Cook Holding. PackShift nominates **C1 Sacma Gaia** as the first qualification path (renewable paper/NatureFlex architecture), while clearly displaying `QUALIFICATION REQUIRED` because complete BOM, exact thermal limits, and delivered Romanian pricing remain to be confirmed.
   2. **Demo Step 2 (P2–P4 Post-Cook):** Switch to Portion Trays. PackShift selects **C5 BIOPAP LC SI-14**, supported by published 6h@90°C hot-hold evidence, while flagging that tray+film food-contact migration in store conditions still requires qualification.
-  3. **Demo Step 3 (Workflow Switch):** Switch from Post-Cook to `LITERAL_OVEN_250C_THEN_HOLD`. Instantly, C2, C3, C4, and C5 are `BLOCKED`. PackShift surfaces the **C6-RO-H aluminium oven-body** fallback, explicitly warning that transparent retail closure must be applied post-oven and is not yet qualified.
+  3. **Demo Step 3 (Workflow Switch):** Switch from Post-Cook to `LITERAL_OVEN_250C_THEN_HOLD`. Instantly, C2, C3, C4, and C5 evaluate to `BLOCKED` by tested thermal limits, while C1 Gaia remains unprioritized with thermal limits unresolved. PackShift surfaces the **C6-RO-H aluminium oven-body** fallback (Priority 2), explicitly warning that transparent retail closure cannot enter the oven, must be applied post-oven, and is not yet qualified.
 - **Visual / Evidence Anchor:**
   - Live PackShift UI interaction (or side-by-side screenshot carousel showing the post-cook vs 250°C oven state changes).
 - **Judge Criterion Supported:** User Experience (10%), Innovation (10%), Technical Feasibility (15%).
@@ -154,8 +154,8 @@
 - **Headline:** **The 8-Stage Qualification & Scale Roadmap**
 - **Key Claims:**
   1. **Immediate Next Steps (Weeks 1–4):** Confirm Profi's exact deli temperature profile; weigh 10 incumbent bags; dispatch targeted RFQs to Sacma (C1), BIOPAP (C5), and local converters.
-  2. **Validation Testing (Weeks 5–8):** Conduct EN 1186 / EN 13130 migration testing with hot fatty chicken; validate 6-hour grease/leak barrier and anti-fog transparency in an actual warming cabinet.
-  3. **Store Pilot & System Scalability:** Run a 2-store trial for P1 and P2 formats; scale PackShift to evaluate all hot-deli, bakery, and fresh-meat packaging SKUs across Profi's 1,600+ Romanian stores as EU PPWR packaging laws phase in.
+  2. **Validation Testing (Weeks 5–8):** Execute a proposed qualification plan with suppliers and accredited laboratories for overall and specific migration testing under fatty-food hot-fill conditions per applicable material frameworks, followed by 6-hour warming cabinet grease-barrier and anti-fog evaluation.
+  3. **Store Pilot & System Scalability:** Run a 2-store trial for P1 and P2 formats; scale PackShift to evaluate all hot-deli, bakery, and fresh-meat packaging SKUs across Profi's 1,600+ Romanian stores as EU Packaging and Packaging Waste Regulation (PPWR) recyclability and minimum post-consumer recycled content targets phase in.
 - **Visual / Evidence Anchor:**
   - 3-Phase Gantt / Flow Diagram: Phase 1: Operational Alignment & RFQ → Phase 2: Lab & Hot-Hold Validation → Phase 3: In-Store Deli Pilot & Digital Scaling.
 - **Judge Criterion Supported:** Scalability (10%), Business Viability (10%), Retail Practicality (15%).
