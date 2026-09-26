@@ -202,7 +202,7 @@ A failure on any hard gate results in composite outcome `BLOCKED`. High environm
 ### 6.5 Procurement Claim Safety
 - **`listing ≠ stock`:** `ROMANIA_DISTRIBUTOR_CURRENT` designates catalogue/order leads requiring stock/lead-time inquiry, not verified warehouse stock.
 - **`Quote required ≠ 0`:** Missing prices remain unquoted, never `0.00 RON`.
-- **Mentor Context:** The +10–15% cost tolerance is a commercial framing guideline, **NOT** an automatic pass threshold or procurement approval.
+- **Mentor Context:** The ~10–15% cost tolerance is commercial framing context only, **NOT** an automatic pass threshold or procurement approval. Because current Profi incumbent purchase cost is `UNKNOWN`, candidate costs cannot be claimed to "align" with or satisfy this tolerance until comparable incumbent commercial terms are established.
 
 ### 6.6 Forbidden Positive Claims Search
 A regex search across all active code (`backend/app/**`, `frontend/src/**`) confirmed:
@@ -255,11 +255,11 @@ The following 17 test cases are frozen as the formal acceptance criteria to be e
 | **HT2B-A07** | CONFLICT Resolution Policy | Inspect candidate cards and details for C5. | Both conflicting source claims displayed with `CONFLICT` qualifier. | One literature source chosen silently over the other. |
 | **HT2B-A08** | Procurement Transparency | Inspect procurement panels for Romanian candidates. | Distributor listings qualified with `listing ≠ stock` / `Catalogue Lead`. Missing price rendered as `"Quote Required"`. | Distributor listing presented as verified warehouse stock. |
 | **HT2B-A09** | C6 Anti-Leakage in UI | Switch between P1, P2, and Literal 250°C workflows. | P1 displays WePack (`C6-RO-W`); P2 displays E-ambalaj 729 (`C6-RO-P`); 250°C displays e-pui225 (`C6-RO-H`). No lid leakage to RO-H. | RO-P transparent lid shown as feature of RO-H. |
-| **HT2B-A10** | Stale Async Response Protection | Rapidly click from `POST_COOK` to `LITERAL_250C` while network is throttled. | Out-of-order response from previous selection is discarded via request generation counter. UI stays on 250°C. | Old post-cook response overwrites current 250°C screen. |
+| **HT2B-A10** | Stale Async Response Protection | Rapidly change product or workflow selection (e.g. from `POST_COOK` to `LITERAL_250C`) under throttled network conditions. | Stale or out-of-order async responses from previous selections are safely ignored or discarded; rendered UI consistently reflects the latest user selection. | A slower, out-of-order response from an earlier selection overwrites the active selection result. |
 | **HT2B-A11** | Backend 503 Fail-Closed Handling | Simulate backend 503 (e.g. missing evidence file). | UI displays clear, user-friendly service unavailable message with Retry button. Does NOT crash or fallback to legacy data. | App crashes (blank screen) or silently renders old Faerch data. |
 | **HT2B-A12** | 422 Client Error Handling | Simulate 422 validation response from backend. | Error handled gracefully with inline alert banner. | Unhandled Promise rejection / blank screen crash. |
 | **HT2B-A13** | Zero-Survivor Semantics | Inspect Decision Summary banner across all products. | Explicitly displays `Qualified Survivors: 0 / 6` and `QUALIFICATION REQUIRED`. | UI invents a winning candidate when 0 survivors exist. |
-| **HT2B-A14** | Forbidden Terminology Elimination | Inspect all user-visible strings, headers, cards, tooltips. | Zero occurrences of *"Winner"*, *"Best"*, *"Approved"*, *"Certified"*, *"Safe"*. Resolves historical `DEF-03`. | Any occurrence of forbidden words as positive candidate claims. |
+| **HT2B-A14** | Unsupported Positive Claims Elimination | Inspect all user-visible strings, headers, cards, tooltips. | No unsupported positive candidate claims (e.g. *"Winner"*, *"Best"*, *"Approved"*, *"Certified"*, *"Safe"*, *"Ready for deployment"*). Permitted only in truthful negative boundaries, qualification disclaimers, or evidence state explanations (e.g. "not approved", "requires safety qualification", "no winner available under current assumptions"). | Any user-visible claim presenting a candidate as an approved, certified, safe, or winning packaging solution. |
 | **HT2B-A15** | Responsive Layout Verification | Test viewport widths: `1440px` (desktop), `1024px` (tablet), `390px` (mobile). | Layout adapts smoothly; cards stack; no horizontal scrollbar or clipped text. | Horizontal overflow or broken layout on mobile. |
 | **HT2B-A16** | Accessibility (A11y) Verification | Test keyboard Tab navigation, focus states, screen reader ARIA labels. | All interactive controls keyboard accessible; visible focus rings; state communicated by text + badge, not color alone. | Unfocusable buttons, missing labels, color-only states. |
 | **HT2B-A17** | Legacy Modes Non-Regression | Navigate to `Comparison` and `Portfolio Selection` modes. | Existing scenario switching, virgin plastic rings, and portfolio evaluation continue functioning identically. | Broken Selection view, missing charts, or broken styling. |
@@ -282,7 +282,7 @@ To satisfy `APR-HT2B`, Denis must provide the following 5 DOM screenshots captur
 
 ## 11. Remaining UNKNOWN & External Evidence Gaps
 
-The software decision support system is fully validated, but cannot substitute for real-world physical tests and commercial supplier contracts:
+The backend runtime, canonical oracle, and automated regression layers are validated on the audited snapshot, while full end-to-end and browser acceptance remains pending `PUX-HT2R` / `APR-HT2B`. Furthermore, software evaluation cannot substitute for real-world physical tests and commercial supplier contracts:
 1. **Official Declarations of Compliance (DoC) & Migration Lab Reports:** EU 10/2011 overall and specific migration tests (Simulant D2 for fatty hot poultry) remain supplier obligations for all candidates.
 2. **Physical Seam & Grease Leak Testing:** Physical 6-hour holding tests under hot chicken fat and juices under modeled hot deli cabinet conditions (actual Profi display holding temperature `UNKNOWN`).
 3. **Physical Whole Chicken Fit:** Geometric fit checks for modeled 1.0–1.4 kg hot whole chickens in Gaia bags (actual Profi whole bird mass distribution `UNKNOWN`).
@@ -304,7 +304,7 @@ To prepare the team for hackathon judging and live Q&A, this table delineates wh
 | **Recyclability in Romania** | Monomaterial paper/cellulose and unlaminated aluminium identified; multilayers avoided. | Quantifies theoretical recyclability potential; distinguishes material design from waste reality. | Actual Romanian municipal sorting and organic composting infrastructure outcomes UNKNOWN. | *"Packaging materials are designed for recycling or composting, while real-world recovery depends on local Romanian municipal sorting capabilities."* |
 | **Transparent Viewing Closure** | E-ambalaj a-680681 OPS lid for C6-RO-P; Futamura NatureFlex window for C1. | Isolates transparent lids to specific configurations. Enforces non-leakage to RO-W or RO-H. | In-pack anti-fog behavior under high humidity and heat holding unverified. | *"Portion and bag configurations incorporate transparent viewing elements, with anti-fog performance subject to live display testing."* |
 | **Grease & Oil Barrier** | Koehler NexPlus OGR paper; BIOPAP cellulose barrier; Hostaphan PET film. | Evaluates barrier claims against hot chicken grease; blocks non-barrier formats. | Physical 6-hour hot fat seam leak testing unverified. | *"Candidates utilize specialized grease-resistant barriers, requiring physical seam-leak verification under hot poultry fat."* |
-| **+10–15% Cost Tolerance** | Romanian distributor catalogue prices captured (1.15–1.29 RON/pair, 0.37 RON for B3). | Integrates mentor tolerance as economic screening context; never treats it as automatic approval. | Actual Profi incumbent purchase cost and annual store volume UNKNOWN. European freight unquoted. | *"Candidate component costs align with mentor commercial guidance, while final financial impact requires Profi's confidential volume and incumbent pricing."* |
+| **+10–15% Cost Tolerance** | Romanian distributor catalogue prices captured (1.15–1.29 RON/pair, 0.37 RON for B3). | Integrates mentor tolerance as economic screening context only; preserves missing incumbent cost as `UNKNOWN` and refuses to invent savings or declare cost compliance. | Actual Profi incumbent purchase cost and annual store volume UNKNOWN. European freight unquoted. | *"Mentor ~10–15% cost tolerance serves as commercial context only; actual cost premium or compliance with this threshold cannot be calculated until comparable Profi incumbent unit cost and network volumes are known."* |
 | **Romania Availability** | Local distributors identified (E-ambalaj, La Habibi, Barleta) with active catalogue listings. | Tags status as `ROMANIA_DISTRIBUTOR_CURRENT` (`listing ≠ stock`), requiring formal quote. | Real warehouse inventory, MOQs, and delivery lead times unverified. | *"Local Romanian distributors offer active catalogue order leads, with commercial volume availability and delivery lead times subject to formal inquiry."* |
 
 ---
@@ -317,7 +317,7 @@ APR-HT2A HANDOFF
 Repository: Slave-of-Skynet/gigafood
 Branch: alisa/apr-ht2a-post-revert-acceptance
 Base SHA: 513e0867feaf1b3062c1c02e98d51f2eaa4f1f93
-Working HEAD: 513e0867feaf1b3062c1c02e98d51f2eaa4f1f93
+Working HEAD: 7eb246695fe22b91d62561a1af36c15a6bf8a2ba
 
 Current main drift from APR-HT1:
 - PR #38 impact: Reverted premature PR #37 UI changes. Deleted 10 Recommendation visual components (RecommendationView.tsx, DecisionSummary.tsx, etc.); restored HomePage.tsx to Comparison and Selection modes.
