@@ -453,10 +453,47 @@ def evaluate_portfolio(
             g2_items = [f"{c.candidate.label} requires evidence verification" for c in group2]
             summary_verdict = f"No candidate is currently recommendable for transition: {'; '.join(g2_items)} under the stated modeled operating context."
     else:
-        summary_verdict = (
-            f"{len(group1)} candidate(s) viable with calculable environmental savings. "
-            "Verification of operational premises required before QA advancement."
-        )
+        g1_positive = [
+            c for c in group1
+            if c.calculation.reduction_g is not None and c.calculation.reduction_g > 0
+        ]
+        g1_zero = [
+            c for c in group1
+            if c.calculation.reduction_g is not None and c.calculation.reduction_g == 0
+        ]
+        g1_negative = [
+            c for c in group1
+            if c.calculation.reduction_g is not None and c.calculation.reduction_g < 0
+        ]
+
+        if len(g1_positive) == len(group1):
+            summary_verdict = (
+                f"{len(group1)} candidate(s) viable with calculable environmental savings. "
+                "Verification of operational premises required before QA advancement."
+            )
+        elif len(g1_negative) == len(group1):
+            summary_verdict = (
+                f"{len(group1)} candidate(s) viable but do not reduce virgin plastic (virgin-plastic use increases). "
+                "Verification of operational premises required before QA advancement."
+            )
+        elif len(g1_zero) == len(group1):
+            summary_verdict = (
+                f"{len(group1)} candidate(s) viable with zero virgin-plastic reduction (no change in virgin-plastic use). "
+                "Verification of operational premises required before QA advancement."
+            )
+        else:
+            parts = []
+            if g1_positive:
+                parts.append(f"{len(g1_positive)} with calculable environmental savings")
+            if g1_zero:
+                parts.append(f"{len(g1_zero)} with zero virgin-plastic reduction")
+            if g1_negative:
+                parts.append(f"{len(g1_negative)} with increased virgin-plastic use")
+            breakdown = ", ".join(parts)
+            summary_verdict = (
+                f"{len(group1)} candidate(s) viable ({breakdown}). "
+                "Verification of operational premises required before QA advancement."
+            )
 
     return SelectionResponse(
         portfolio_id=portfolio.id,
