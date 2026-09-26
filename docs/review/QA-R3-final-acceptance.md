@@ -31,13 +31,25 @@ remote-tracking branch to exactly the contract's expected base:
 
 Created `alisa/qa-r3-final-acceptance` with
 `git switch -c alisa/qa-r3-final-acceptance origin/main`. HEAD and origin/main
-both resolve to that SHA, the PR #20 INT-R4 merge. No newer main commits needed
-reconciliation. No unrelated local work was discarded.
+both resolved to that SHA, the PR #20 INT-R4 merge. At QA-R3 execution start,
+no newer main commits required reconciliation: the audit branch was created from
+`985004e9b699f496d8a308001d6a46242e230fae`. After QA execution, `main` advanced
+before PR #23 review; that post-audit drift is reconciled separately below and is
+outside the executed QA-R3 acceptance scope. No unrelated local work was discarded.
 
 Only intended repository change: `docs/review/QA-R3-final-acceptance.md`.
 No runtime, evidence, canon, script, dependency-manifest or workflow edits.
-Dependency installation created ignored build/environment artifacts. No commit,
-push, PR, deployment or external message was performed.
+Dependency installation created ignored build/environment artifacts. During QA
+execution before handoff, no commit, push, PR, deployment or external message
+was performed.
+
+### Post-audit repository drift reconciliation
+
+- **FACT (repository drift):** After QA-R3 execution, `main` advanced from audited SHA `985004e9b699f496d8a308001d6a46242e230fae` to current `main` `efa806ae89f72056d48cb554fe43e2c12c60c36b` across four commits (PR #21 INT-R5 Economic Scenario and PR #22 epistemic semantics fixup).
+- **FACT (intervening surface changes):** The intervening work materially added INT-R5 Economic Scenario backend/service/domain functionality, calculation amplifier logic, API endpoints, test coverage, and frontend Economic Scenario UI components.
+- **BOUNDARY (unexercised surfaces):** Those post-audit surfaces were not exercised by QA-R3 and therefore receive no QA-R3 acceptance claim. They are not claimed to be defective merely because they were not audited.
+- **INFERENCE / PROJECT BRAIN RECONCILIATION:** QA-R3 remains valid historical QA evidence for its explicitly audited SHA (`985004e9b699f496d8a308001d6a46242e230fae`), but does not constitute acceptance of current `main` (`efa806ae89f72056d48cb554fe43e2c12c60c36b`). PR #23 remains a QA evidence/report PR, not a runtime fix or whole-current-main acceptance.
+- **STOP-11 CONTINUITY:** Project Brain reconciliation confirmed that `scripts/demo.py` is unchanged between the audited SHA (`985004e9b699f496d8a308001d6a46242e230fae`) and reviewed current `main` (`efa806ae89f72056d48cb554fe43e2c12c60c36b`), so STOP-11 remains applicable to current `main`. This narrow continuity finding does not extend QA-R3 acceptance to other post-audit product surfaces.
 
 ## 3. Scope and authority
 
@@ -311,11 +323,19 @@ external evidence questions, not facts established by passing software tests.
 **QA-R3 COMPLETE — STOP FOR PROJECT BRAIN REVIEW**
 
 Report completion is not full matrix execution or product acceptance. Do not
-freeze the core or proceed under DEP-R1 on the basis of this report. Project
-Brain should assign the bounded Selection-identity preflight fix, then rerun the
-adversarial identity case and complete all deferred browser/claim/POSIX checks.
+freeze the core or proceed under DEP-R1 on the basis of this report. This report
+documents historical QA evidence for audited SHA `985004e9b699f496d8a308001d6a46242e230fae`
+and does not constitute acceptance of post-audit current `main` (`efa806ae89f72056d48cb554fe43e2c12c60c36b`).
+
+The explicit downstream sequence required is:
+1. Preserve/merge QA-R3 as historical audit evidence after reconciliation (PR #23).
+2. Separately fix STOP-11 in the launcher (`scripts/demo.py`).
+3. Rerun the adversarial Selection identity case against the updated launcher.
+4. Resume deferred QA-R3 browser/mobile/recovery/claim checks.
+5. Additionally validate the newly introduced INT-R5 Economic Scenario surface before any whole-current-main acceptance or core freeze.
 
 Audited SHA: `985004e9b699f496d8a308001d6a46242e230fae`.
+Post-audit main reviewed: `efa806ae89f72056d48cb554fe43e2c12c60c36b`.
 Changed repository file: `docs/review/QA-R3-final-acceptance.md` only.
 Verification: 99 backend tests and frontend build passed; normal demo preflight
 passed; six independent probes executed; one reproducible hard STOP found.
