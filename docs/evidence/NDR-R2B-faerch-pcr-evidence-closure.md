@@ -1,11 +1,12 @@
 # NDR-R2B — Faerch Numeric PCR Evidence Closure
 ## Defensible Public Evidence Closure for Selection MVP Candidates A & B
 
-**Document Version:** 1.0.0
+**Document Version:** 1.1.0 (Targeted Evidence Reconciliation Revision)
 **Work Class:** AMPLIFIER / EVIDENCE RESEARCH / DECISION SUPPORT
 **Owner:** Mister Ressentiment (`@Mr-Ressentiment`)
 **Base Commit:** `20f50983bae76bae14b86d03fea4eea764801ee7` (`origin/main`)
 **Task Branch:** `mister-ressentiment/ndr-r2b-faerch-pcr-evidence`
+**Target Pull Request:** PR #16 (`Slave-of-Skynet/gigafood/pull/16`)
 **Primary Deliverable:** `docs/evidence/NDR-R2B-faerch-pcr-evidence-closure.md`
 **Target Repository:** `Slave-of-Skynet/gigafood`
 **Inspected Reference Documents:**
@@ -47,14 +48,14 @@ This investigation answered the central numeric evidence question posed by INT-R
 
 | Packaging Item | Article & Recipe | Investigated Material | Investigated Property | Authoritative Public Finding | Epistemic Verdict | Runtime Status Impact |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Candidate A** | Faerch C 2200-1L<br>Item `2200012097` | CPET Evolve<br>Recipe `6811` | Numeric PCR / Recycled Content Point Value | Manufacturer TDS (09-01-2023) explicitly withholds fluctuating percentage and directs buyers to Compliance/Sales. Corporate launch mentions "up to 70%" (ceiling) and "min 40% Tray rPET" (floor for UK/IE launch). | **`NON_POINT_EVIDENCE_ONLY`**<br>(PCR = `UNKNOWN`) | Calculation remains **`INSUFFICIENT_DATA`**.<br>Eligibility remains **`REVIEW_REQUIRED`** (unverified operational premises). |
-| **Candidate B** | Faerch K 2182-1G<br>Item `2182015004` | APET Clear<br>Recipe `7900` | Numeric PCR / Recycled Content Point Value | Manufacturer TDS (25-06-2025) explicitly withholds fluctuating percentage. No SKU-level point declaration exists in public domain. | **`NO_CURRENT_SKU_EVIDENCE_FOUND`**<br>(PCR = `UNKNOWN`) | Calculation remains **`INSUFFICIENT_DATA`**.<br>Eligibility remains **`BLOCKED`** ($70^\circ\text{C} < 95^\circ\text{C}$ demo requirement). |
-| **Candidate B (Secondary)** | Faerch K 2182-1G<br>Item `2182015004` | APET Clear<br>Recipe `7900` | Microwave Heating Suitability | Manufacturer TDS cooking field states verbatim: *"Not ovenable"*. No public sheet declares `microwave = true` or `microwave = false`. | **`UNKNOWN`**<br>(*Not ovenable* does not imply microwave capability) | Retains **`UNKNOWN`**.<br>Candidate B is already independently **`BLOCKED`** by service temperature. |
+| **Candidate A** | Faerch C 2200-1L<br>Item `2200012097` | CPET Evolve<br>Recipe `6811` | Numeric PCR / Recycled Content Point Value | Manufacturer-authored TDS hosted by Dayton Group (09-01-2023, Tier B) explicitly withholds fluctuating percentage and directs buyers to Compliance/Sales. Corporate launch mentions "up to 70%" (ceiling) and "min 40% Tray rPET" (floor for UK/IE launch). | **`NON_POINT_EVIDENCE_ONLY`**<br>(PCR = `UNKNOWN`) | Calculation remains **`INSUFFICIENT_DATA`**.<br>Eligibility remains **`REVIEW_REQUIRED`** (unverified operational premises). |
+| **Candidate B** | Faerch K 2182-1G<br>Item `2182015004` | APET Clear<br>Recipe `7900` | Numeric PCR / Recycled Content Point Value | Manufacturer-authored TDS hosted by H.C. Emballage (25-06-2025, Tier B) explicitly withholds fluctuating percentage. No applicable current SKU/recipe-level point value was found in the public sources covered by this research. | **`NO_CURRENT_SKU_EVIDENCE_FOUND`**<br>(PCR = `UNKNOWN`) | Calculation remains **`INSUFFICIENT_DATA`**.<br>Eligibility remains **`BLOCKED`** ($70^\circ\text{C} < 95^\circ\text{C}$ demo requirement). |
+| **Candidate B (Secondary)** | Faerch K 2182-1G<br>Item `2182015004` | APET Clear<br>Recipe `7900` | Microwave Heating Suitability | Manufacturer TDS cooking field states verbatim: *"Not ovenable"*. No located public sheet declares `microwave = true` or `microwave = false`. | **`UNKNOWN`**<br>(*Not ovenable* does not imply microwave capability) | Retains **`UNKNOWN`**.<br>Candidate B is already independently **`BLOCKED`** by service temperature in the demo context. |
 
 ### 1.3 Key Epistemic Conclusion
-Public evidence **does not support a deterministic numeric point value** for recycled content on either Candidate A (recipe `6811`) or Candidate B (recipe `7900`).
+No applicable current SKU/recipe-level point value was found in the public sources covered by this research for either Candidate A (recipe `6811`) or Candidate B (recipe `7900`).
 
-Faerch's official Technical Product Sheets explicitly disclose that post-consumer PET formulation fluctuates year-to-year and instruct clients to request annual third-party audited recipe declarations from Sales or Compliance.
+Faerch's official Technical Product Sheets explicitly disclose that post-consumer PET formulation fluctuates year-to-year and instruct clients to request annual recipe declarations from Sales or Compliance.
 
 **Therefore, PackShift's refusal to calculate virgin plastic reduction deltas for Candidate A and Candidate B is not a software omission, but an essential anti-greenwashing protection.**
 
@@ -138,10 +139,11 @@ General Policy & Historical Searches:
 
 ### 3.2 Primary Documents Retrieved & Inspected
 All primary PDF documents were retrieved and programmatically decoded at the stream and glyph level:
-1. **Faerch C 2200-1L Product Sheet (09-01-2023):** Retrieved from Dayton Group host. Decoded using embedded font CMap (CIDInit / Aspose-Identity-UCS). All 3 pages inspected.
-2. **Faerch K 2182-1G Product Sheet (25-06-2025):** Retrieved from HC host. Decoded using embedded Adobe UCS CMAPs across linearized page streams. All 3 pages inspected.
-3. **Faerch Corporate Launch Press Release (20-11-2024):** Fetched live from `faerch.com`. Full text analyzed.
-4. **Faerch Historical Product Sheet Appendix (07-09-2021):** Retrieved from Bunzl Ireland host (Doc ID 152408-SPECS). Form XObject stream 9 decoded via byte-shift algorithm.
+1. **Faerch C 2200-1L Product Sheet (09-01-2023):** Manufacturer-authored original document retrieved from Dayton Group host (Tier B). Decoded using embedded font CMap (CIDInit / Aspose-Identity-UCS). All 3 pages inspected.
+2. **Faerch K 2182-1G Product Sheet (25-06-2025):** Manufacturer-authored original document retrieved from HC host (Tier B). Decoded using embedded Adobe UCS CMAPs across linearized page streams. All 3 pages inspected.
+3. **Faerch Corporate Launch Press Release (20-11-2024):** Fetched live from `faerch.com` (Tier C). Full text analyzed.
+4. **Faerch Historical Product Sheet Appendix (07-09-2021):** Retrieved from Bunzl Ireland host (Doc ID 152408-SPECS, Tier B). Form XObject stream 9 decoded via byte-shift algorithm.
+5. **Faerch CPET Material Platform:** Fetched from `faerch.com/en/products/ready-meals/cpet` (Tier C).
 
 ---
 
@@ -163,7 +165,7 @@ Page 3 of the official Technical Product Sheet for item `2200012097` contains an
 
 > *"Recycled Content: Faerch is committed to full transparency when communicating recycled content, and has established third party auditing recycled PET (rPET) content on an annual basis. As recycled PET (rPET) content can fluctuate year to year, please contact your Compliance or Sales contact for the most up to date recycled PET (rPET) content figure for this recipe. For more information on why recycled content fluctuates year on year, or the ISO definitions of recycled PET (rPET), post-consumer content, and pre-consumer content, please see our documents “Recycled PET in Food Packaging” & “Recycled Content Declaration”"*
 
-**Finding:** The primary manufacturer datasheet deliberately **withholds** a static numeric recycled content fraction on the product sheet itself, acknowledging annual batch and supply fluctuations and requiring a private recipe declaration from Compliance/Sales.
+**Finding:** The located manufacturer datasheet deliberately **withholds** a static numeric recycled content fraction on the product sheet itself, acknowledging annual supply fluctuations and directing the customer to request an up-to-date declaration from Compliance/Sales for this recipe.
 
 ### 4.3 Evaluation of Corporate Press Release Claims
 In a global corporate release dated 20 November 2024 (*"Faerch launches chilled ready meal trays with minimum 40% Tray rPET content"*), Faerch makes two headline statements:
@@ -181,7 +183,7 @@ In a global corporate release dated 20 November 2024 (*"Faerch launches chilled 
 ### 4.4 Evaluation of Historical 2021 Recipe Tables
 Faerch's historical technical product sheet appendix dated 07-09-2021 (Bunzl 152408-SPECS) contained a table titled *"Post-consumer recycled content"*:
 - *"CPET Standard\* 69-75% PCR"* (with footnote: *"Dual colour applications will have a lower rPET percentage due to the complexity of the structure"*).
-- **Finding:** This historical document lists an unmapped range (`69-75%`), does not mention recipe `6811`, refers to "CPET Standard" rather than "CPET Evolve", and was superseded in 2023 when Faerch transitioned to annual recipe-specific disclosures.
+- **Finding:** Older generic/historical ranges were not applied because they are not mapped to the exact current SKU/recipe and do not provide a usable point value. Furthermore, the latest exact-SKU sheet located in this research is dated 09-01-2023 and explicitly states that recycled content fluctuates annually, so historical 2021 ranges cannot establish a current PCR point value.
 
 ### 4.5 Candidate A Evidence Ledger
 
@@ -197,17 +199,17 @@ Faerch's historical technical product sheet appendix dated 07-09-2021 (Bunzl 152
 | **Retrieval Date** | `2026-09-26` (Session verified) |
 | **Exact Scope** | Specific SKU (`2200012097`) and recipe (`6811`) |
 | **Recycled Content Statement** | *"As recycled PET (rPET) content can fluctuate year to year, please contact your Compliance or Sales contact for the most up to date recycled PET (rPET) content figure for this recipe."* |
-| **Numeric Form** | **NONE** (Deferred to private annual declaration) |
+| **Numeric Form** | **NONE** (Deferred to Sales/Compliance recipe declaration) |
 | **Metric Scope** | Not disclosed on sheet (refers to ISO PCR/PIR definitions) |
-| **Temporal Status** | Current specification (2023) |
-| **Source Strength Tier** | **Tier A** (Manufacturer technical datasheet) |
+| **Temporal Status** | The latest exact-SKU sheet located in this research is dated 09-01-2023. Because Faerch states that recycled content can fluctuate annually, the sheet does not establish a current 2026 PCR point value. |
+| **Source Strength Tier** | **Tier B** (Acceptable manufacturer-authored primary-document hosting; Dayton Group host) |
 | **Runtime Usability** | **NO** (Cannot populate numeric fraction; must remain `UNKNOWN`) |
-| **Reason** | Primary TDS intentionally does not publish a numeric point value. Extrapolating "up to 70%" or "minimum 40%" violates anti-greenwashing invariants. |
+| **Reason** | The located TDS does not publish a numeric point value. Extrapolating generic marketing ceilings ("up to 70%") or regional launch floors ("minimum 40% Tray rPET") violates anti-greenwashing invariants. |
 
 ### 4.6 RQ1–RQ4 Explicit Answers (Candidate A)
-- **RQ1 (Exact Point Value):** **NO.** No public source publishes a numeric point value applicable to item `2200012097` or recipe `6811`.
+- **RQ1 (Exact Point Value):** **NO.** No applicable current SKU/recipe-level point value was found in the public sources covered by this research for item `2200012097` or recipe `6811`.
 - **RQ2 (Recycled Content Scope):** Discovered marketing mentions distinguish `TOTAL_PCR` (corporate Evolve ceiling) from `TRAY_RPET` (closed-loop tray recyclate minimum). Neither provides a SKU point value.
-- **RQ3 (Temporal Applicability):** Datasheet is current (09-01-2023). Manufacturer explicitly declares that formulation varies annually. Historical 2021 tables are obsolete and unmapped.
+- **RQ3 (Temporal Applicability):** The latest exact-SKU sheet located in this research is dated 09-01-2023. Because Faerch states that recycled content fluctuates annually, the sheet does not establish a current 2026 PCR point value. Older generic/historical ranges were not applied because they are not mapped to the exact current SKU/recipe and do not provide a usable point value.
 - **RQ4 (Article Applicability):** The datasheet applies to the exact item `2200012097`. The "up to 70%" and "40% Tray rPET" statements apply only to generic technology platforms and regional launch programs.
 
 ### 4.7 Candidate A Research Conclusion
@@ -227,8 +229,8 @@ Current SKU/recipe PCR point value: UNKNOWN
 - **Datasheet Issue Date:** `25-06-2025`
 - **Tray Body Nominal Mass:** $21.48\text{ g} \pm 10\%$
 - **Nominal Capacity:** $895\text{ ml}$ (Dimensions: $180.1 \times 99.9 \times 75.9\text{ mm}$)
-- **Documented Thermal Envelope:** $-40^\circ\text{C}$ to $+70^\circ\text{C}$ ($T_{\max} = 70^\circ\text{C}$)
-- **Cooking Suitability Field:** **`Not ovenable`**
+- **Documented Thermal Envelope:** $-40^\circ\text{C}$ to $+70^\circ\text{C}$ ($T_{\max} = 70^\circ\text{C}$, documented directly on TDS)
+- **Cooking Suitability Field:** **`Not ovenable`** (documented directly on TDS)
 - **Component Boundary:** Rigid tray body only. Lids and sealing films excluded.
 
 ### 5.2 Recycled Content Statement on Official Datasheet
@@ -246,17 +248,16 @@ The investigation specifically targeted whether authoritative evidence establish
 1. **Datasheet Cooking Field:** Stated as *"Not ovenable"*.
    - In culinary and packaging terminology, "ovenable" refers to conventional radiant, fan, or convection ovens.
    - Denying conventional oven use does **not** logically or legally declare whether microwave reheating is acceptable or prohibited.
-2. **Material Platform Specifications (`faerch.com`):**
-   - Faerch specifies APET for frozen, chilled, and ambient applications up to $+70^\circ\text{C}$.
-   - Faerch specifies CPET (up to $+220^\circ\text{C}$) or PP (up to $+121^\circ\text{C}$) for microwave reheating.
-   - General packaging science warns that heating standard APET above $70^\circ\text{C}$ causes thermal softening and deformation.
+2. **Thermal Envelope Documented on TDS:**
+   - Candidate B TDS explicitly documents the thermal envelope as $-40^\circ\text{C}$ to $+70^\circ\text{C}$.
+   - General packaging science notes that heating standard APET above $70^\circ\text{C}$ causes thermal softening and dimensional distortion.
 3. **Format vs. Material Disambiguation:**
    - Distributor listings for tray geometry "2182-1G" produced in **Polypropylene (PP)** state "mikrobølgeovnsegnet" (microwave safe).
-   - This capability belongs to the PP material, **not** to APET clear item `2182015004`.
+   - This capability belongs to the PP material variant (which has $T_{\max} = 121^\circ\text{C}$), **not** to the APET clear item `2182015004`.
 4. **Epistemic Result:**
    - Because no manufacturer datasheet or declaration explicitly affirms `microwave = true` or explicitly states `microwave = false` for item `2182015004`, PackShift must record:
      $$\text{microwave\_capability} = \mathbf{UNKNOWN}$$
-   - **Crucially:** Candidate B is already independently and unequivocally **`BLOCKED`** under the demo context because its documented maximum service temperature ($70^\circ\text{C}$) violates the assumed $95^\circ\text{C}$ service temperature requirement ($70^\circ\text{C} < 95^\circ\text{C}$). The thermal constraint resolves the decision without needing to guess the microwave state.
+   - **Crucially:** Candidate B is already independently **`BLOCKED`** under the stated modeled $95^\circ\text{C}$ demo operating context because its documented maximum service temperature ($70^\circ\text{C}$) is below the assumed $95^\circ\text{C}$ requirement ($70^\circ\text{C} < 95^\circ\text{C}$). This thermal constraint resolves the decision without needing to guess or infer microwave capability.
 
 ### 5.4 Candidate B Evidence Ledger
 
@@ -274,15 +275,15 @@ The investigation specifically targeted whether authoritative evidence establish
 | **Recycled Content Statement** | *"As recycled PET (rPET) content can fluctuate year to year, please contact your Compliance or Sales contact for the most up to date recycled PET (rPET) content figure for this recipe."* |
 | **Numeric Form** | **NONE** (Withheld) |
 | **Metric Scope** | Not disclosed on sheet |
-| **Temporal Status** | Current specification (2025) |
-| **Source Strength Tier** | **Tier A** (Manufacturer technical datasheet) |
+| **Temporal Status** | The latest exact-SKU sheet located in this research is dated 25-06-2025. Because Faerch states that recycled content can fluctuate annually, the sheet does not establish a current 2026 PCR point value. |
+| **Source Strength Tier** | **Tier B** (Acceptable manufacturer-authored primary-document hosting; H.C. Emballage host) |
 | **Runtime Usability** | **NO** (Cannot populate numeric fraction; must remain `UNKNOWN`) |
-| **Reason** | No public SKU point value exists. Thermal limit ($70^\circ\text{C}$) independently blocks candidate under $95^\circ\text{C}$ demo context. |
+| **Reason** | No applicable current SKU/recipe-level point value was found in the public sources covered by this research. Documented maximum temperature (70°C) independently blocks the candidate under the stated modeled 95°C demo context. |
 
 ### 5.5 RQ1–RQ4 Explicit Answers (Candidate B)
-- **RQ1 (Exact Point Value):** **NO.** No public source publishes a numeric point value for item `2182015004` or recipe `7900`.
-- **RQ2 (Recycled Content Scope):** Material platform mentions that "the majority of APET contains rPET", but publishes no specific metric breakdown for recipe `7900`.
-- **RQ3 (Temporal Applicability):** Datasheet is current (25-06-2025). Supersedes any 2021 historical tables.
+- **RQ1 (Exact Point Value):** **NO.** No applicable current SKU/recipe-level point value was found in the public sources covered by this research for item `2182015004` or recipe `7900`.
+- **RQ2 (Recycled Content Scope):** Datasheet mentions that "the majority of APET contains rPET", but publishes no specific metric breakdown for recipe `7900`.
+- **RQ3 (Temporal Applicability):** The latest exact-SKU sheet located in this research is dated 25-06-2025. Because Faerch states that recycled content fluctuates annually, the sheet does not establish a current 2026 PCR point value. Older generic/historical ranges were not applied because they are not mapped to the exact current SKU/recipe and do not provide a usable point value.
 - **RQ4 (Article Applicability):** Datasheet applies directly to item `2182015004`.
 - **Microwave Finding:** Stated as "Not ovenable". Remains **`UNKNOWN`**.
 
@@ -291,7 +292,9 @@ The investigation specifically targeted whether authoritative evidence establish
 CANDIDATE B CONCLUSION: NO_CURRENT_SKU_EVIDENCE_FOUND
 Current SKU/recipe PCR point value: UNKNOWN
 Microwave capability: UNKNOWN
-Operational Status under 95°C Demo Context: BLOCKED (Documented 70°C < 95°C requirement)
+Operational Status under 95°C Demo Context: BLOCKED
+(Operational incompatibility for the evaluated 95°C context because documented 70°C < 95°C requirement;
+not a universal material verdict. Microwave remains UNKNOWN and is not required to establish the thermal block).
 ```
 
 ---
@@ -314,7 +317,7 @@ This research explicitly tested and rejected seven potential evidence substituti
 │                                                                        │
 │ TRAP C: 2021 Historical Appendix Bands ("69-75% PCR")                  │
 │ REJECTED: 2021 table from Bunzl 152408.                                │
-│ Reason: Unmapped range; superseded by 2023/2025 fluctuating disclosure│
+│ Reason: Unmapped range; superseded by 2023/2025 fluctuating disclosure │
 │                                                                        │
 │ TRAP D: PP Geometry Microwave Transfer to APET                         │
 │ REJECTED: Distributor listings declaring "2182-1G" microwave-safe.     │
@@ -342,18 +345,18 @@ This research explicitly tested and rejected seven potential evidence substituti
 > This analysis describes the architectural and runtime consequences of this research closure for the Integrator and future PRs. **NDR-R2B makes zero code, API, or data changes.**
 
 ### 7.1 If Candidate A Had Obtained a Defensible Point PCR
-If private evidence had established a verified point value (e.g. $0.62$ PCR):
+If a defensible, source-backed current SKU/recipe point value were established (e.g. $0.62$ PCR):
 - Environmental calculation: Would transition from `INSUFFICIENT_DATA` to `CALCULATED`.
   $$\text{virgin\_plastic}_{\text{candidate\_A}} = 21.38\text{ g} \times (1 - 0.62) = 8.12\text{ g}$$
   $$\Delta_{\text{reduction}} = 26.29\text{ g} - 8.12\text{ g} = 18.17\text{ g}\quad (69.1\%\text{ reduction})$$
 - Operational eligibility: Would **still remain `REVIEW_REQUIRED`**. Under PackShift's orthogonal decision architecture, operational premises (assumed 95°C service temperature, microwave reheating requirement) remain unverified demo assumptions. A calculable green saving never grants automatic operational approval.
 
 ### 7.2 If Candidate B Had Obtained a Defensible Point PCR
-If private evidence had established a verified point value for Candidate B:
+If a defensible, source-backed current SKU/recipe point value were established for Candidate B:
 - Environmental calculation: Would transition from `INSUFFICIENT_DATA` to `CALCULATED`.
-- Operational eligibility: Would **remain strictly `BLOCKED`**.
+- Operational eligibility: Would **remain strictly `BLOCKED`** under the evaluated context.
   $$\text{Documented } T_{\max} = 70^\circ\text{C} < \text{Assumed Requirement } 95^\circ\text{C}$$
-- Under no circumstances may an environmental calculation override an operational constraint failure. The software must prevent greenwashing from hiding physical container failure.
+- Under no circumstances may an environmental calculation override an operational constraint incompatibility. Candidate B is BLOCKED under the stated modeled 95°C operating context because its documented maximum temperature is 70°C. This is an operational incompatibility for that evaluated context, not a universal material/product verdict.
 
 ### 7.3 Actual State: Neither Candidate Has Public Point PCR
 Because public manufacturer evidence withholds static point values:
@@ -361,12 +364,13 @@ Because public manufacturer evidence withholds static point values:
 Candidate A (C 2200-1L):
 • Environmental Calculation: INSUFFICIENT_DATA (PCR unknown)
 • Operational Eligibility:   REVIEW_REQUIRED (Numerically satisfies 220°C >= 95°C & MW; premises unverified)
-• Human Next Action:         Request annual Recipe 6811 declaration from Faerch Sales/Compliance.
+• Human Next Action:         Request a current Recipe 6811 declaration from Faerch Sales or Compliance.
 
 Candidate B (K 2182-1G):
 • Environmental Calculation: INSUFFICIENT_DATA (PCR unknown)
 • Operational Eligibility:   BLOCKED (Documented 70°C < 95°C demo requirement)
-• Human Next Action:         Reject candidate for hot-food / microwave applications.
+• Human Next Action:         Treat candidate as BLOCKED for the evaluated 95°C operating context;
+                             evaluate for ambient/chilled applications where documented 70°C limit is respected.
 ```
 
 This outcome provides the exact demonstration posture required by INT-R2 and the GigaFood judging story: **PackShift visibly withholds calculation rather than hallucinating green claims.**
@@ -379,9 +383,9 @@ To transition Candidate A from `INSUFFICIENT_DATA` to `CALCULATED`, what exact d
 
 | Evidence Gap | Affected Candidate | Why It Precludes Calculation | Required Document to Close Gap | Required Document Content |
 | :--- | :--- | :--- | :--- | :--- |
-| **Recipe 6811 Recycled Content** | Candidate A (`2200012097`) | TDS withholds annual fluctuating percentage. | Faerch Recipe Declaration / Annual Compliance Certificate | Stated calendar year; explicit Recipe `6811`; third-party audited PCR point fraction (ISO 14021 / EN 15343). |
-| **Recipe 7900 Recycled Content** | Candidate B (`2182015004`) | 2025 TDS withholds fluctuating percentage. | Faerch Recipe Declaration for Recipe `7900` | Stated calendar year; explicit Recipe `7900`; audited PCR point fraction. |
-| **Candidate B Microwave Rating** | Candidate B (`2182015004`) | TDS only states "Not ovenable". | Faerch Technical Customer Service Statement | Explicit affirmation or denial of microwave reheating under defined power/duration. |
+| **Recipe 6811 Recycled Content** | Candidate A (`2200012097`) | Located TDS withholds annual fluctuating percentage. | Manufacturer-issued declaration for Recipe 6811 from Faerch Sales or Compliance | Stated calendar year or validity period; explicit Recipe `6811`; explicit point value for total PCR or total recycled content with clear metric scope. |
+| **Recipe 7900 Recycled Content** | Candidate B (`2182015004`) | Located 2025 TDS withholds fluctuating percentage. | Manufacturer-issued declaration for Recipe 7900 from Faerch Sales or Compliance | Stated calendar year or validity period; explicit Recipe `7900`; explicit point value for recycled content with clear metric scope. |
+| **Candidate B Microwave Rating** | Candidate B (`2182015004`) | TDS only states "Not ovenable". | Faerch Technical Customer Service Statement or product declaration | Explicit affirmation or denial of microwave reheating under defined conditions. |
 | **Complete Pack Sealing Film Mass** | All Articles (Baseline, A, B) | Datasheets represent open thermoformed tray bodies only. | Flexible Top Sealing Film Technical Datasheet | Film item number, material polymer formulation (PET/PE or PP), and basis weight ($g/m^2$). |
 
 ---
@@ -391,19 +395,19 @@ To transition Candidate A from `INSUFFICIENT_DATA` to `CALCULATED`, what exact d
 These 5 defense cards provide rapid (15–20 second) spoken or written answers for judges:
 
 ### Card 1: Why can't PackShift calculate Candidate A today?
-> *"Because Faerch's official technical product sheet deliberately does not publish a fixed recycled content percentage. The datasheet explicitly states that rPET content fluctuates year-to-year and directs customers to request an annual audited declaration for Recipe 6811. Calculating a virgin plastic reduction without that declaration would be an unevidenced green claim."*
+> *"Because Faerch's official technical product sheet deliberately does not publish a fixed recycled content percentage. The datasheet explicitly states that rPET content fluctuates year-to-year and directs customers to request an annual declaration for Recipe 6811. Calculating a virgin plastic reduction without that declaration would be an unevidenced green claim."*
 
 ### Card 2: Why is "up to 70%" not enough?
-> *"Because 'up to 70%' is an engineering ceiling from a 2019 marketing announcement, not a verified batch lot or point value. In packaging calculation, using a ceiling as a point input produces inflated, greenwashed savings. PackShift requires an actual point value."*
+> *"Because 'up to 70%' is an engineering ceiling from a corporate announcement, not an article-specific point value. In packaging calculation, using an upper ceiling as a deterministic point input produces inflated, greenwashed savings. PackShift requires an actual point value."*
 
 ### Card 3: Why doesn't 40% Tray rPET automatically mean PCR = 0.40?
 > *"Because Tray rPET measures only closed-loop tray-to-tray recyclate from post-consumer pots, tubs, and trays. Total PCR also includes bottle rPET. Furthermore, 'minimum 40%' was a regional launch commitment for the UK and Ireland chilled ready-meal market starting in 2025; it is a minimum threshold, not an article-level point value for Item 2200012097."*
 
 ### Card 4: Why can Candidate B be BLOCKED while its environmental calculation is unknown?
-> *"Because PackShift evaluates operational constraints independently from environmental calculations. Candidate B has a documented maximum service temperature of 70°C. In a ready-meal demonstration requiring 95°C hot filling or microwave reheating, Candidate B physically fails the thermal gate. That operational block is valid regardless of whether its recycled content is 0%, 50%, or 100%."*
+> *"Because PackShift evaluates operational constraints independently from environmental calculations. Candidate B has a documented maximum service temperature of 70°C. Under the stated modeled 95°C operating context, Candidate B is BLOCKED because its documented maximum temperature (70°C) is below the assumed 95°C requirement. This is an operational incompatibility for that evaluated context, not a universal material/product verdict. Microwave capability remains UNKNOWN and is not needed to establish the thermal block in the accepted demo context."*
 
 ### Card 5: What exact document would close each remaining evidence gap?
-> *"A dated, manufacturer-issued Declaration of Recycled Content for Recipe 6811 from Faerch Compliance, certifying third-party audited post-consumer resin content under EN 15343 or ISO 14021. Once provided, PackShift can instantly calculate deterministic virgin plastic."*
+> *"A dated, manufacturer-issued recipe declaration for Recipe 6811 from Faerch Sales or Compliance providing a current point value for recycled content with clear metric scope and temporal validity. Once provided, PackShift can calculate deterministic virgin plastic for this SKU."*
 
 ---
 
@@ -413,11 +417,11 @@ Every source URL cited below was retrieved, opened, and programmatically inspect
 
 | Source ID | Author / Host | Document / Reference | Direct Accessible URL | Retrieval Date | Key Attributed Fact |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **NDR-S1** | Faerch A/S / Dayton Group Oy | Technical Product Sheet: C 2200-1L Evolve CPET (Item `2200012097`, Recipe `6811`) | [`https://verkkokauppa.daytongroup.fi/...`](https://verkkokauppa.daytongroup.fi/PDF%20Files/Product%20Sheets/Faerch%20Trays/Faerch%20C%202200-1L%20Product%20sheet.pdf) | 2026-09-26 | $21.38\text{ g} \pm 10\%$, $1000\text{ ml}$, $-40^\circ\text{C}$ to $220^\circ\text{C}$, Cooking: *Oven/Microwave*. PCR withheld due to annual fluctuation. |
-| **NDR-S2** | Faerch A/S / H.C. Emballage | Technical Product Sheet: K 2182-1G Clear APET (Item `2182015004`, Recipe `7900`) | [`https://www.hc.dk/...`](https://www.hc.dk/.0/pp-static/prodimages/Datablade/datablad_140380.pdf) | 2026-09-26 | $21.48\text{ g} \pm 10\%$, $895\text{ ml}$, $-40^\circ\text{C}$ to $70^\circ\text{C}$, Cooking: *Not ovenable*. PCR withheld due to annual fluctuation. |
-| **NDR-S3** | Faerch A/S | Press Release (20.11.2024): Chilled ready meal trays with minimum 40% Tray rPET | [`https://www.faerch.com/...`](https://www.faerch.com/en/faerch-launches-chilled-ready-meal-trays-with-minimum-40-tray-rpet-content) | 2026-09-26 | Corporate launch: Evolve platform "allows for up to 70% post-consumer content"; Jan 2025 UK/IE launch guarantees "minimum 40% Tray rPET". |
-| **NDR-S4** | Faerch A/S / Bunzl Ireland | Historical Technical Product Sheet Appendix (07-09-2021, Doc 152408-SPECS) | [`https://www.bunzlireland.ie/...`](https://www.bunzlireland.ie/medias/sys_master/root/h56/hbb/8888294670366/152408-SPECS.pdf) | 2026-09-26 | Historical table: "CPET Standard\* 69-75% PCR", "APET Standard 82% PCR". Superseded; unmapped to current recipes. |
-| **NDR-S5** | Faerch A/S | Official Material Platform: APET Ready Meals | [`https://www.faerch.com/...`](https://www.faerch.com/en/products/ready-meals/cpet) | 2026-09-26 | APET thermal envelope $-40^\circ\text{C}$ to $+70^\circ\text{C}$; CPET specified for dual-ovenable/microwave applications. |
+| **NDR-S1** | Faerch A/S / Dayton Group Oy | Technical Product Sheet: C 2200-1L Evolve CPET (Item `2200012097`, Recipe `6811`) | [`https://verkkokauppa.daytongroup.fi/...`](https://verkkokauppa.daytongroup.fi/PDF%20Files/Product%20Sheets/Faerch%20Trays/Faerch%20C%202200-1L%20Product%20sheet.pdf) | 2026-09-26 | Tier B primary-document hosting. $21.38\text{ g} \pm 10\%$, $1000\text{ ml}$, $-40^\circ\text{C}$ to $220^\circ\text{C}$, Cooking: *Oven/Microwave*. PCR withheld due to annual fluctuation. |
+| **NDR-S2** | Faerch A/S / H.C. Emballage | Technical Product Sheet: K 2182-1G Clear APET (Item `2182015004`, Recipe `7900`) | [`https://www.hc.dk/...`](https://www.hc.dk/.0/pp-static/prodimages/Datablade/datablad_140380.pdf) | 2026-09-26 | Tier B primary-document hosting. $21.48\text{ g} \pm 10\%$, $895\text{ ml}$, $-40^\circ\text{C}$ to $70^\circ\text{C}$, Cooking: *Not ovenable*. Primary source for APET $-40^\circ\text{C}$ to $+70^\circ\text{C}$ thermal envelope and cooking restriction. PCR withheld due to annual fluctuation. |
+| **NDR-S3** | Faerch A/S | Press Release (20.11.2024): Chilled ready meal trays with minimum 40% Tray rPET | [`https://www.faerch.com/...`](https://www.faerch.com/en/faerch-launches-chilled-ready-meal-trays-with-minimum-40-tray-rpet-content) | 2026-09-26 | Tier C corporate release: Evolve platform "allows for up to 70% post-consumer content"; Jan 2025 UK/IE launch guarantees "minimum 40% Tray rPET". |
+| **NDR-S4** | Faerch A/S / Bunzl Ireland | Historical Technical Product Sheet Appendix (07-09-2021, Doc 152408-SPECS) | [`https://www.bunzlireland.ie/...`](https://www.bunzlireland.ie/medias/sys_master/root/h56/hbb/8888294670366/152408-SPECS.pdf) | 2026-09-26 | Tier B historical appendix: "CPET Standard\* 69-75% PCR", "APET Standard 82% PCR". Superseded; unmapped to current recipes. |
+| **NDR-S5** | Faerch A/S | Official Material Platform: CPET Ready Meals | [`https://www.faerch.com/...`](https://www.faerch.com/en/products/ready-meals/cpet) | 2026-09-26 | Tier C material platform: CPET thermal envelope $-40^\circ\text{C}$ to $+220^\circ\text{C}$; CPET specified for freezer-to-oven and freezer-to-microwave ready meal applications. |
 
 ---
 
