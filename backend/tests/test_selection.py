@@ -471,15 +471,22 @@ def test_decision_grouping_preserves_catalog_order_within_groups():
 
 
 def test_api_get_portfolios_list():
-    """Test GET /api/v1/portfolios returns list of curated portfolios."""
+    """Test GET /api/v1/portfolios returns list of curated portfolios as summary metadata (Fix 6 / INT-R2 D9)."""
     with TestClient(create_app()) as client:
         resp = client.get("/api/v1/portfolios")
         assert resp.status_code == 200
         data = resp.json()
         assert isinstance(data, list)
         assert len(data) >= 1
-        assert data[0]["id"] == "faerch-deli-trays"
-        assert data[0]["dataset_kind"] == "PUBLIC"
+        summary = data[0]
+        assert summary["id"] == "faerch-deli-trays"
+        assert summary["label"] == "Faerch Rigid Prepared-Food Trays"
+        assert summary["dataset_kind"] == "PUBLIC"
+        assert summary["baseline_label"] == "Faerch P 2226-1C Rectangular Tray (PP Grey)"
+        assert summary["candidate_count"] == 2
+        # Must return summary metadata rather than full candidate inventories
+        assert "candidates" not in summary
+        assert "baseline" not in summary
 
 
 def test_api_get_portfolio_default_evaluation():
@@ -562,3 +569,162 @@ def test_api_post_portfolio_evaluate_invalid_annual_units():
 
         resp2 = client.post("/api/v1/portfolios/faerch-deli-trays/evaluate", json={"annual_units": -500})
         assert resp2.status_code == 422
+
+
+# --- 5. Fix-Up Targeted Regression & Negative Tests (Fixes 1-7) ---
+
+
+def test_fix1_arithmetic_matches_acore_unrounded():
+    """Fix 1: Proves Selection and A-core arithmetic remain identical for non-trivial fractional inputs.
+    Domain/service calculations must not round numbers."""
+    from app.services.virgin_plastic import compare, virgin_plastic
+    from app.domain.packaging import Scenario
+
+    base = make_candidate_article("base-frac", "Base", mass=26.29, pcr=0.0)
+    cand = make_candidate_article("cand-frac", "Cand", mass=21.38, pcr=0.3333333333333333)
+
+    # A-core canonical
+    scenario = Scenario(id="scen-frac", label="Frac", current=base.package, candidate=cand.package)
+    comp = compare(scenario)
+
+    # Selection service
+    port = make_portfolio(base, [cand])
+    resp = evaluate_portfolio(port)
+    c_res = resp.candidates[0]
+
+    # Virgin calculations must match exactly
+    assert resp.baseline.virgin_plastic_g == virgin_plastic(base.package)
+    assert c_res.calculation.candidate_virgin_pack_g == virgin_plastic(cand.package)
+    assert c_res.calculation.current_virgin_pack_g == comp.current_virgin_pack_g
+    assert c_res.calculation.reduction_g == comp.reduction_g
+    assert c_res.calculation.reduction_pct == comp.reduction_pct
+
+
+def test_fix2_unstated_status_with_numeric_pcr_withheld():
+    """Fix 2: Point-Value Epistemic Guard.
+    When recycled_content_point_value_status is UNSTATED, numeric recycled_content_fraction
+    must NOT be used; calculation status must be INSUFFICIENT_DATA."""
+    base = make_candidate_article("base", "Baseline", mass=25.0, pcr=0.0)
+    # Contradictory evidence: status is UNSTATED, but fraction has 0.40
+    cand = make_candidate_article("cand-unstated-num", "Cand Unstated", mass=20.0, pcr=0.4, point_status="UNSTATED")
+    port = make_portfolio(base, [cand])
+
+    resp = evaluate_portfolio(port)
+    c_res = resp.candidates[0]
+
+    assert c_res.calculation.status == "INSUFFICIENT_DATA"
+    assert c_res.calculation.reduction_g is None
+    assert any("recycled_content_fraction" in f for f in c_res.calculation.missing_fields)
+
+
+def test_fix3a_baseline_missing_data_preserved_in_missing_fields():
+    """Fix 3a: Missing baseline calculation input must be represented in missing_fields."""
+    base_pkg = Package(
+        id="base-no-mass",
+        label="Base No Mass",
+        components=[make_component("tray", mass=None, pcr=0.0)],
+    )
+    base = CandidateArticle(
+        package=base_pkg,
+        metadata=SelectionMetadata(component_boundary="TRAY_BODY_ONLY", recycled_content_point_value_status="EXACT_POINT_VALUE"),
+    )
+    cand = make_candidate_article("cand", "Candidate", mass=20.0, pcr=0.2)
+    port = make_portfolio(base, [cand])
+
+    resp = evaluate_portfolio(port)
+    c_res = resp.candidates[0]
+
+    assert c_res.calculation.status == "INSUFFICIENT_DATA"
+    assert any("baseline.components." in f and "plastic_mass_g" in f for f in c_res.calculation.missing_fields)
+    assert c_res.next_action.action_code == "VERIFY_OPERATIONAL_PREMISES"
+    assert "baseline" in c_res.next_action.details.lower()
+
+
+def test_fix3b_candidate_mass_missing_routes_to_specification_evidence():
+    """Fix 3b: Candidate mass is missing -> missing_fields lists candidate mass, next action routes to capability/spec."""
+    base = make_candidate_article("base", "Baseline", mass=25.0, pcr=0.0)
+    cand = make_candidate_article("cand-no-mass", "Cand No Mass", mass=None, pcr=0.3, max_temp=120.0, mw_safe=True)
+    port = make_portfolio(base, [cand])
+
+    resp = evaluate_portfolio(port)
+    c_res = resp.candidates[0]
+
+    assert c_res.calculation.status == "INSUFFICIENT_DATA"
+    assert any("candidate.components." in f and "plastic_mass_g" in f for f in c_res.calculation.missing_fields)
+    assert c_res.next_action.action_code == "REQUEST_CAPABILITY_EVIDENCE"
+    assert "physical specification" in c_res.next_action.details.lower() or "candidate" in c_res.next_action.details.lower()
+
+
+
+def test_fix3c_missing_capability_with_missing_pcr_routes_to_capability():
+    """Fix 3c: Missing operational capability combined with missing PCR -> REQUEST_CAPABILITY_EVIDENCE
+    must remain reachable even if an environmental calculation gap also exists."""
+    base = make_candidate_article("base", "Baseline", mass=25.0, pcr=0.0)
+    # Cand has microwave unknown (None) when required, AND PCR is None (UNSTATED)
+    cand = make_candidate_article("cand-dual-gap", "Cand Dual Gap", mass=20.0, pcr=None, max_temp=120.0, mw_safe=None, point_status="UNSTATED")
+    port = make_portfolio(base, [cand], req_mw=True)
+
+    resp = evaluate_portfolio(port)
+    c_res = resp.candidates[0]
+
+    assert c_res.calculation.status == "INSUFFICIENT_DATA"
+    assert c_res.eligibility.status == "REVIEW_REQUIRED"
+    assert c_res.next_action.action_code == "REQUEST_CAPABILITY_EVIDENCE"
+
+
+def test_fix4_custom_boundary_defaults_to_asymmetric_boundary():
+    """Fix 4: CUSTOM component boundary defaults to ASYMMETRIC_BOUNDARY, not NOT_COMPARABLE."""
+    base = make_candidate_article("base", "Baseline", mass=25.0, pcr=0.0, boundary="TRAY_BODY_ONLY")
+    cand = make_candidate_article("cand-custom", "Custom Cand", mass=20.0, pcr=0.2, boundary="CUSTOM")
+    port = make_portfolio(base, [cand])
+
+    resp = evaluate_portfolio(port)
+    c_res = resp.candidates[0]
+
+    assert c_res.comparability.rating == "ASYMMETRIC_BOUNDARY"
+    assert c_res.comparability.rating != "NOT_COMPARABLE"
+    assert c_res.comparability.boundary_match is False
+    assert c_res.calculation.reduction_g is None
+
+
+def test_fix5_synthetic_summary_verdict_no_hardcoded_leakage():
+    """Fix 5: Synthetic portfolio proves summary_verdict does not mention Candidate A/B or thermal
+    when those facts are not present."""
+    base = make_candidate_article("base", "Baseline Bowl", mass=30.0, pcr=0.0)
+    cand1 = make_candidate_article("cand-alpha", "Alpha Box", mass=20.0, pcr=None, max_temp=100.0, mw_safe=True, point_status="NON_POINT_VALUE")
+    # cand2 blocked on microwave (not thermal!)
+    cand2 = make_candidate_article("cand-beta", "Beta Pouch", mass=15.0, pcr=0.5, max_temp=150.0, mw_safe=False)
+
+    port = make_portfolio(base, [cand1, cand2], req_temp=80.0, req_mw=True)
+    resp = evaluate_portfolio(port)
+
+    verdict = resp.summary_verdict
+    assert "Candidate A" not in verdict
+    assert "Candidate B" not in verdict
+    assert "thermal" not in verdict
+    assert "Alpha Box" in verdict
+    assert "Beta Pouch" in verdict
+    assert "microwave" in verdict
+
+
+def test_fix7_faerch_demo_portfolio_scopes_are_null():
+    """Fix 7: Verifies that in data/evidence/selection-portfolios.json, Candidate A and Candidate B
+    scopes are null, baseline has FAMILY_CLAIM, and Faerch default verdict communicates correct facts."""
+    with TestClient(create_app()) as client:
+        resp = client.get("/api/v1/portfolios/faerch-deli-trays")
+        assert resp.status_code == 200
+        data = resp.json()
+
+        assert data["baseline"]["metadata"]["recycled_content_scope"] == "FAMILY_CLAIM"
+
+        cand_a = next(c for c in data["candidates"] if c["candidate"]["id"] == "faerch-c-2200-1l")
+        assert cand_a["metadata"]["recycled_content_scope"] is None
+
+        cand_b = next(c for c in data["candidates"] if c["candidate"]["id"] == "faerch-k-2182-1g")
+        assert cand_b["metadata"]["recycled_content_scope"] is None
+
+        # Verify summary communicates CPET needs PCR evidence and APET is blocked
+        verdict = data["summary_verdict"]
+        assert "Faerch C 2200-1L Evolve CPET Tray" in verdict
+        assert "Faerch K 2182-1G Clear APET Tray" in verdict
+        assert "thermal incompatibility" in verdict

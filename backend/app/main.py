@@ -10,6 +10,7 @@ from app.domain.packaging import (
     Evidence,
     Health,
     Portfolio,
+    PortfolioSummary,
     Scenario,
     SelectionRequest,
     SelectionResponse,
@@ -70,12 +71,24 @@ def create_app(
 
     # --- Selection MVP Endpoints (INT-R2 D9 Additive Evolution) ---
 
-    @app.get("/api/v1/portfolios", response_model=list[Portfolio])
+    @app.get("/api/v1/portfolios", response_model=list[PortfolioSummary])
     def portfolios(request: Request):
         runtime = request.app.state.runtime
         if runtime.portfolios_error or not runtime.portfolios:
             raise HTTPException(503, detail="PORTFOLIOS_UNAVAILABLE")
-        return runtime.portfolios
+        return [
+            PortfolioSummary(
+                id=p.id,
+                label=p.label,
+                use_context=p.use_context,
+                dataset_kind=p.dataset_kind,
+                disclosure=p.disclosure,
+                baseline_label=p.baseline.package.label,
+                candidate_count=len(p.candidates),
+            )
+            for p in runtime.portfolios
+        ]
+
 
     @app.get("/api/v1/portfolios/{portfolio_id}", response_model=SelectionResponse)
     def portfolio_default(portfolio_id: str, request: Request):
