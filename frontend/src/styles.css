@@ -65,14 +65,88 @@ header,
   border-radius: 15px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px 60px;
+  gap: 16px;
+}
+
+.blk-lang {
+  max-width: 1400px;
+  width: 100%;
+  display: flex;
   justify-content: space-between;
-  padding: 12px 60px;
-  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: transparent;
+  border: none;
+}
+
+.lang-control-cluster {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.lang-scope-note {
+  font-size: 12px;
+  color: #032b06;
+  background: rgba(255, 255, 255, 0.78);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.lang-select {
+  background: rgba(255, 255, 255, 0.88);
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  padding: 4px 12px;
+  color: #1b2b06;
+  appearance: base-select;
+  outline: none;
+}
+
+.lang-select:hover {
+  color: #032b0670;
+  cursor: pointer;
+}
+
+.lang-select::picker(select) {
+  background: #538953;
+  cursor: pointer;
+  border: none;
+  appearance: base-select;
+  border-radius: 10px;
+}
+
+.lang-select::picker-icon {
+  display: none;
+}
+
+.lang {
+  background: #538953;
+  color: #032b06;
+  border: none;
+}
+
+.lang::checkmark {
+  display: none;
+}
+
+.lang:hover {
+  color: #032b0670;
+  cursor: pointer;
 }
 
 .brand-cluster {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .logo-img {
@@ -84,7 +158,7 @@ header,
 }
 
 .logo-log {
-  width: 260px;
+  width: 280px;
   max-width: 100%;
   height: auto;
   border: none;
@@ -93,26 +167,28 @@ header,
 }
 
 .nav-bar-sect {
-  font-size: 18px;
+  font-size: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
 }
 
 .btn-nav-bar {
   display: flex;
-  gap: 24px;
+  gap: 28px;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
 .desc-nav-bar,
 .log-in {
   text-decoration: none;
-  color: #28782e;
-  background: #ffffff;
-  padding: 8px 16px;
+  color: #032b06;
+  background: rgba(255, 255, 255, 0.88);
+  padding: 6px 14px;
   border: none;
   border-radius: 10px;
   display: flex;
@@ -122,8 +198,8 @@ header,
 
 .desc-nav-bar:hover,
 .log-in:hover {
-  color: #07330ad0;
-  background: #ffffff85;
+  color: #032b0670;
+  background: #ffffff;
   cursor: pointer;
 }
 
@@ -983,6 +1059,306 @@ button:focus-visible, summary:focus-visible, select:focus-visible, input:focus-v
 .scenario-form input, .scenario-form select { font: inherit; padding: 10px; border-radius: 8px; border: 2px solid #28782e; width: 100%; min-width: 0; }
 .scenario-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 @media (max-width: 640px) { .scenario-form { grid-template-columns: minmax(0, 1fr); } }
+
+/* PUX-GF-02 — Denis Latest Visual Delta Reconciliation */
+.mode-switch .scenario-pill {
+  background: rgba(15, 56, 20, 0.55);
+  color: #e6f4ea;
+  border: 2px solid rgba(237, 247, 238, 0.45);
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.mode-switch .scenario-pill.active {
+  background: #ffffff;
+  color: #032b06;
+  border-color: #032b06;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+}
+
+.all-products-board {
+  background: #538953b3;
+  border: none;
+  border-radius: 15px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.section-product-board {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.option-class {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.name-option-class {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 8px 0 4px;
+  padding-top: 12px;
+  padding-bottom: 14px;
+  width: 55%;
+  border-bottom: 2px solid #032b06;
+  font-size: 28px;
+  font-weight: 800;
+  color: #032b06;
+  overflow-wrap: anywhere;
+}
+
+.candidate-showcase-row {
+  display: flex;
+  gap: 28px;
+  align-items: stretch;
+  background: rgba(40, 85, 40, 0.12);
+  border-radius: 15px;
+  padding: 18px;
+  min-width: 0;
+}
+
+.picture-product {
+  flex: 0 0 270px;
+  max-width: 100%;
+  display: flex;
+}
+
+.img-product {
+  width: 270px;
+  max-width: 100%;
+  border: none;
+  border-radius: 15px;
+}
+
+.schematic-visual-card {
+  background: linear-gradient(160deg, #123524 0%, #1e4d2b 100%);
+  color: #f0fdf4;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  border: 2px solid #538953;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.picture-product.visual-BLOCKED .schematic-visual-card {
+  border-color: #ef4444;
+  background: linear-gradient(160deg, #3b1219 0%, #5c1922 100%);
+}
+
+.picture-product.visual-REVIEW_REQUIRED .schematic-visual-card {
+  border-color: #f59e0b;
+}
+
+.schematic-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.schematic-role-chip {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #dcfce7;
+}
+
+.schematic-boundary-chip {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(134, 239, 172, 0.2);
+  color: #bbf7d0;
+}
+
+.schematic-svg-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.schematic-svg {
+  width: 150px;
+  height: 108px;
+  max-width: 100%;
+}
+
+.schematic-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.schematic-spec-pill {
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 5px 8px;
+  border-radius: 8px;
+  color: #ffffff;
+  overflow-wrap: anywhere;
+}
+
+.schematic-cap-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.schematic-cap-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.28);
+  color: #bbf7d0;
+}
+
+.schematic-disclaimer {
+  font-size: 10.5px;
+  color: rgba(240, 253, 244, 0.78);
+  text-align: center;
+}
+
+.desc-product {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.name-product {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #123524;
+}
+
+.info-product {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-dark);
+  background: #f4fbf6;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(40, 120, 46, 0.22);
+  margin: 0;
+}
+
+.option-product {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.table-desc {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #166534;
+}
+
+.candidate-kicker,
+.judge-question-kicker {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #28782e;
+  margin-bottom: 4px;
+}
+
+.eligibility-status-pill {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.eligibility-status-pill.BLOCKED {
+  background: var(--blocked-bg);
+  color: var(--blocked-text);
+  border: 2px solid var(--blocked-border);
+}
+
+.eligibility-status-pill.REVIEW_REQUIRED {
+  background: var(--review-bg);
+  color: var(--review-text);
+  border: 2px solid var(--review-border);
+}
+
+.eligibility-status-pill.ELIGIBLE {
+  background: var(--eligible-bg);
+  color: var(--eligible-text);
+  border: 2px solid var(--eligible-border);
+}
+
+.selection-candidate.candidate-BLOCKED {
+  border-color: var(--blocked-border);
+  border-width: 3px;
+}
+
+.comparability-panel {
+  background: #f4fbf6;
+  border: 1px solid rgba(40, 120, 46, 0.25);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+@media (max-width: 1024px) {
+  .candidate-showcase-row {
+    flex-direction: column;
+  }
+
+  .picture-product,
+  .img-product {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .name-option-class {
+    width: 75%;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .all-products-board {
+    padding: 14px;
+  }
+
+  .candidate-showcase-row {
+    padding: 12px;
+    gap: 16px;
+  }
+
+  .name-option-class {
+    width: 95%;
+    font-size: 20px;
+  }
+
+  .blk-lang {
+    justify-content: center;
+  }
+}
 
 /* INT-R5 Economic Scenario Amplifier */
 .economic-scenario-section { margin-top: 8px; }
