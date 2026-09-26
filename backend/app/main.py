@@ -17,18 +17,31 @@ from app.domain.packaging import (
     SelectionRequest,
     SelectionResponse,
 )
+from app.domain.recommendation import (
+    RecommendationCandidatesResponse,
+    RecommendationEvaluationRequest,
+    RecommendationEvaluationResponse,
+    RecommendationProductsResponse,
+)
 from app.runtime.context import load_runtime
+from app.runtime.recommendation import (
+    RecommendationRuntime,
+    load_recommendation_runtime,
+)
 from app.services.economics import evaluate_economic_scenario
+from app.services.recommendation import evaluate_recommendation
 from app.services.selection import evaluate_portfolio
 from app.services.virgin_plastic import compare
 
 DEFAULT_EVIDENCE = Path(__file__).resolve().parents[2] / "data/evidence/demo-packaging.json"
 DEFAULT_PORTFOLIOS = Path(__file__).resolve().parents[2] / "data/evidence/selection-portfolios.json"
+DEFAULT_HTF03 = Path(__file__).resolve().parents[2] / "docs/evidence/htf-03"
 
 
 def create_app(
     evidence_path: Path | None = None,
     portfolios_path: Path | None = None,
+    htf03_path: Path | None = None,
 ) -> FastAPI:
     path = evidence_path if evidence_path is not None else Path(os.environ.get("GIGAFOOD_EVIDENCE_PATH", str(DEFAULT_EVIDENCE)))
     port_path = (
@@ -36,10 +49,16 @@ def create_app(
         if portfolios_path is not None
         else Path(os.environ.get("GIGAFOOD_PORTFOLIOS_PATH", str(DEFAULT_PORTFOLIOS)))
     )
+    h_path = (
+        htf03_path
+        if htf03_path is not None
+        else Path(os.environ.get("GIGAFOOD_HTF03_PATH", str(DEFAULT_HTF03)))
+    )
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         app.state.runtime = load_runtime(path, port_path)
+        app.state.recommendation_runtime = load_recommendation_runtime(h_path)
         yield
 
     app = FastAPI(title="PackShift API", version="0.1.0", lifespan=lifespan)
@@ -49,6 +68,12 @@ def create_app(
         if runtime.evidence is None:
             raise HTTPException(503, detail="EVIDENCE_UNAVAILABLE")
         return runtime.evidence
+
+    def get_recommendation_runtime(request: Request) -> RecommendationRuntime:
+        rt = getattr(request.app.state, "recommendation_runtime", None)
+        if rt is None or not rt.is_available:
+            raise HTTPException(503, detail="RECOMMENDATION_EVIDENCE_UNAVAILABLE")
+        return rt
 
     @app.get("/api/v1/health", response_model=Health, responses={503: {"model": Health}})
     def health(request: Request):
@@ -100,7 +125,6 @@ def create_app(
             for p in runtime.portfolios
         ]
 
-
     @app.get("/api/v1/portfolios/{portfolio_id}", response_model=SelectionResponse)
     def portfolio_default(portfolio_id: str, request: Request):
         runtime = request.app.state.runtime
@@ -120,6 +144,46 @@ def create_app(
         if portfolio is None:
             raise HTTPException(404, detail="PORTFOLIO_NOT_FOUND")
         return evaluate_portfolio(portfolio, body)
+
+    # --- Recommendation Runtime Endpoints (IGR-HT2 Additive API) ---
+
+    @app.get("/api/v1/recommendation/products", response_model=RecommendationProductsResponse)
+    def recommendation_products(request: Request):
+        rt = get_recommendation_runtime(request)
+        return RecommendationProductsResponse(
+            schema_version="htf03.recommendation.v1",
+            dataset_id=rt.dataset_id,
+            research_cut_off=rt.research_cut_off,
+            market=rt.market,
+            source_revision_hash=rt.source_revision_hash or "unknown",
+            products=rt.products,
+            workflows=rt.workflows,
+            default_product_id="P1",
+            default_workflow_id="POST_COOK_HOT_HOLD_6H",
+            effective_assumptions=list(rt.effective_assumptions),
+        )
+
+    @app.get("/api/v1/recommendation/candidates", response_model=RecommendationCandidatesResponse)
+    def recommendation_candidates(request: Request):
+        rt = get_recommendation_runtime(request)
+        return RecommendationCandidatesResponse(
+            schema_version="htf03.recommendation.v1",
+            dataset_id=rt.dataset_id,
+            research_cut_off=rt.research_cut_off,
+            market=rt.market,
+            source_revision_hash=rt.source_revision_hash or "unknown",
+            candidates=rt.candidates,
+            configurations=rt.configurations,
+            baselines=rt.baselines,
+            referenced_sources=rt.sources,
+            rendering_contract=rt.rendering_contract,
+            disclosures=list(rt.disclosures),
+        )
+
+    @app.post("/api/v1/recommendation/evaluate", response_model=RecommendationEvaluationResponse)
+    def recommendation_evaluate(body: RecommendationEvaluationRequest, request: Request):
+        rt = get_recommendation_runtime(request)
+        return evaluate_recommendation(rt, body)
 
     return app
 
