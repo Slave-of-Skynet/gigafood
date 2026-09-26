@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { format, OperationalRequirementsView, PackageView } from '../components/EvidenceDetails';
 import { SelectionView } from '../components/SelectionView';
 import { EconomicScenarioView } from '../components/EconomicScenarioView';
+import { RecommendationView } from '../components/RecommendationView';
 import { reductionRingStyle } from '../components/metricRing';
 import { api } from '../api/client';
 import type {
@@ -24,6 +25,7 @@ const CHROME_I18N: Record<
     subtitle: string;
     scopeNote: string;
     navOverview: string;
+    navRecommendation: string;
     navPortfolio: string;
     navCandidates: string;
   }
@@ -33,6 +35,7 @@ const CHROME_I18N: Record<
     subtitle: 'Packaging Transition Copilot',
     scopeNote: 'UI chrome: EN · Backend evidence & API enums remain canonical EN',
     navOverview: 'Overview',
+    navRecommendation: 'Recommendation Journey',
     navPortfolio: 'Portfolio & Baseline',
     navCandidates: 'Evaluated Candidates',
   },
@@ -41,6 +44,7 @@ const CHROME_I18N: Record<
     subtitle: 'Копилот перехода на устойчивую упаковку',
     scopeNote: 'Шапка UI: RU · Данные backend и доказательства остаются на каноническом EN',
     navOverview: 'Обзор (Overview)',
+    navRecommendation: 'Рекомендация (Recommendation)',
     navPortfolio: 'Портфель и база (Baseline)',
     navCandidates: 'Кандидаты (Candidates)',
   },
@@ -49,6 +53,7 @@ const CHROME_I18N: Record<
     subtitle: 'Copilot pentru tranziția ambalajelor',
     scopeNote: 'Interfață: MD · Dovezile și stările API rămân în EN canonic',
     navOverview: 'Prezentare (Overview)',
+    navRecommendation: 'Recomandare (Recommendation)',
     navPortfolio: 'Portofoliu & Bază',
     navCandidates: 'Candidați Evaluați',
   },
@@ -60,7 +65,7 @@ const formatNumberOnly = (value: number | null) =>
     : value.toLocaleString('en-US', { maximumFractionDigits: 2 });
 
 export function HomePage() {
-  const [mode, setMode] = useState<'comparison' | 'selection'>('selection');
+  const [mode, setMode] = useState<'recommendation' | 'selection' | 'comparison'>('recommendation');
   const [uiLang, setUiLang] = useState<UiLang>('en');
   const [attempt, setAttempt] = useState(0);
   const [selected, setSelected] = useState('');
@@ -170,6 +175,28 @@ export function HomePage() {
 
           <div className="nav-bar-sect">
             <nav
+              hidden={mode !== 'recommendation'}
+              className="btn-nav-bar"
+              aria-label="Recommendation Navigation"
+            >
+              <a href="#overview" className="desc-nav-bar">
+                {chrome.navOverview}
+              </a>
+              <a href="#recommendation-archetypes" className="desc-nav-bar">
+                Hot Food (P1–P4)
+              </a>
+              <a href="#recommendation-workflow" className="desc-nav-bar">
+                Workflow
+              </a>
+              <a href="#recommendation-summary" className="desc-nav-bar">
+                Decision Summary
+              </a>
+              <a href="#recommendation-candidates" className="desc-nav-bar">
+                Candidates
+              </a>
+            </nav>
+
+            <nav
               hidden={mode !== 'selection'}
               className="btn-nav-bar"
               aria-label="Selection Navigation"
@@ -249,11 +276,11 @@ export function HomePage() {
         <div className="mode-switch" role="group" aria-label="Product mode">
           <button
             type="button"
-            className={`scenario-pill ${mode === 'comparison' ? 'active' : ''}`}
-            aria-pressed={mode === 'comparison'}
-            onClick={() => setMode('comparison')}
+            className={`scenario-pill ${mode === 'recommendation' ? 'active' : ''}`}
+            aria-pressed={mode === 'recommendation'}
+            onClick={() => setMode('recommendation')}
           >
-            Comparison
+            Hot-Food Recommendation
           </button>
           <button
             type="button"
@@ -263,8 +290,17 @@ export function HomePage() {
           >
             Portfolio Selection
           </button>
+          <button
+            type="button"
+            className={`scenario-pill ${mode === 'comparison' ? 'active' : ''}`}
+            aria-pressed={mode === 'comparison'}
+            onClick={() => setMode('comparison')}
+          >
+            Comparison
+          </button>
         </div>
 
+        <RecommendationView visible={mode === 'recommendation'} />
         <SelectionView visible={mode === 'selection'} />
 
         <div className="comparison-mode" hidden={mode !== 'comparison'}>
