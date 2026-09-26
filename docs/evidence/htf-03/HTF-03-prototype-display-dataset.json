@@ -3271,70 +3271,49 @@
     {
       "product_id": "P1",
       "candidate_id": "C6",
+      "configuration_id": "C6-RO-W",
       "workflow": "POST_COOK_HOT_HOLD_6H",
       "gates": {
         "physical_fit": {
           "status": "QUALIFICATION_REQUIRED",
-          "reason": "Actual fill dimensions, mass, usable headspace and closing force not supplied. Selected RO-P is a portion tray; use separate RO-W/RO-H/EU reference for chicken.",
+          "reason": "C6-RO-W selects WePack 803261 body and 803262 lid for the local whole-chicken path. Actual chicken dimensions, usable headspace and closure fit are unverified.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S18"
           ]
         },
         "food_contact": {
           "status": "UNKNOWN",
-          "reason": "Exact selected complete-system fatty-food dossier absent.",
+          "reason": "Exact fatty-food contact/migration dossier for the C6-RO-W body/lid pair and intended holding conditions is absent.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S18"
           ]
         },
         "thermal_workflow": {
           "status": "UNKNOWN",
-          "reason": "Exact complete-system six-hour profile unknown.",
+          "reason": "No numerical body/lid thermal limits or complete six-hour holding profile is established for C6-RO-W.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S18"
           ]
         },
         "grease_leak": {
           "status": "UNKNOWN",
-          "reason": "No filled, sealed, six-hour grease/leak test.",
+          "reason": "No filled, sealed, six-hour grease/leak test for C6-RO-W.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S18"
           ]
         },
         "transparent_viewing": {
-          "status": "QUALIFICATION_REQUIRED",
-          "reason": "Clear concept/component identified; steam/anti-fog and post-oven use conditions require sample check.",
+          "status": "UNKNOWN",
+          "reason": "Material and transparency of C6-RO-W lid 803262 are not qualified.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S18"
           ]
         },
         "procurement": {
-          "status": "PASS",
-          "reason": "Domestic catalogue/order path exists for RO-P components; this gate is route feasibility only, not stock/fit approval.",
+          "status": "QUALIFICATION_REQUIRED",
+          "reason": "WePack lists the C6-RO-W body/lid pair locally, but lid material/transparency and the required hot-hold architecture remain unqualified. A paired listing is not a complete usable-system route.",
           "source_ids": [
-            "S20",
-            "S22",
-            "S23"
+            "S18"
           ]
         }
       },
@@ -3653,66 +3632,51 @@
     {
       "product_id": "P2",
       "candidate_id": "C6",
+      "configuration_id": "C6-RO-P",
       "workflow": "POST_COOK_HOT_HOLD_6H",
       "gates": {
         "physical_fit": {
           "status": "QUALIFICATION_REQUIRED",
-          "reason": "Actual fill dimensions, mass, usable headspace and closing force not supplied.",
+          "reason": "C6-RO-P selects e-7291/729 body and a-680681 lid. Cross-seller fit and actual portion dimensions, headspace and closing force are unverified.",
           "source_ids": [
-            "S18",
-            "S19",
             "S20",
-            "S22",
-            "S24"
+            "S22"
           ]
         },
         "food_contact": {
           "status": "UNKNOWN",
-          "reason": "Exact selected complete-system fatty-food dossier absent.",
+          "reason": "Exact fatty-food contact/migration dossier for the C6-RO-P body/lid pair and intended holding conditions is absent.",
           "source_ids": [
-            "S18",
-            "S19",
             "S20",
-            "S22",
-            "S24"
+            "S22"
           ]
         },
         "thermal_workflow": {
           "status": "UNKNOWN",
-          "reason": "Exact complete-system six-hour profile unknown.",
+          "reason": "No numerical thermal rating or complete six-hour profile is established for the C6-RO-P body and a-680681 lid.",
           "source_ids": [
-            "S18",
-            "S19",
             "S20",
-            "S22",
-            "S24"
+            "S22"
           ]
         },
         "grease_leak": {
           "status": "UNKNOWN",
-          "reason": "No filled, sealed, six-hour grease/leak test.",
+          "reason": "No filled, sealed, six-hour grease/leak test for the C6-RO-P component pair.",
           "source_ids": [
-            "S18",
-            "S19",
             "S20",
-            "S22",
-            "S24"
+            "S22"
           ]
         },
         "transparent_viewing": {
           "status": "QUALIFICATION_REQUIRED",
-          "reason": "Clear concept/component identified; steam/anti-fog and post-oven use conditions require sample check.",
+          "reason": "C6-RO-P lid a-680681 is listed as transparent; compatible fit, hot-hold temperature and steam/anti-fog performance are unverified.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S22"
           ]
         },
         "procurement": {
-          "status": "PASS",
-          "reason": "Domestic catalogue/order path exists for RO-P components; this gate is route feasibility only, not stock/fit approval.",
+          "status": "QUALIFICATION_REQUIRED",
+          "reason": "Domestic listings cover the nominated C6-RO-P components; a complete usable pair still requires cross-seller fit and hot-hold architecture qualification. Listings do not establish stock or complete-system approval.",
           "source_ids": [
             "S20",
             "S22",
@@ -4035,66 +3999,51 @@
     {
       "product_id": "P3",
       "candidate_id": "C6",
+      "configuration_id": "C6-RO-P",
       "workflow": "POST_COOK_HOT_HOLD_6H",
       "gates": {
         "physical_fit": {
           "status": "QUALIFICATION_REQUIRED",
-          "reason": "Actual fill dimensions, mass, usable headspace and closing force not supplied.",
+          "reason": "C6-RO-P selects e-7291/729 body and a-680681 lid. Cross-seller fit and actual portion dimensions, headspace and closing force are unverified.",
           "source_ids": [
-            "S18",
-            "S19",
             "S20",
-            "S22",
-            "S24"
+            "S22"
           ]
         },
         "food_contact": {
           "status": "UNKNOWN",
-          "reason": "Exact selected complete-system fatty-food dossier absent.",
+          "reason": "Exact fatty-food contact/migration dossier for the C6-RO-P body/lid pair and intended holding conditions is absent.",
           "source_ids": [
-            "S18",
-            "S19",
             "S20",
-            "S22",
-            "S24"
+            "S22"
           ]
         },
         "thermal_workflow": {
           "status": "UNKNOWN",
-          "reason": "Exact complete-system six-hour profile unknown.",
+          "reason": "No numerical thermal rating or complete six-hour profile is established for the C6-RO-P body and a-680681 lid.",
           "source_ids": [
-            "S18",
-            "S19",
             "S20",
-            "S22",
-            "S24"
+            "S22"
           ]
         },
         "grease_leak": {
           "status": "UNKNOWN",
-          "reason": "No filled, sealed, six-hour grease/leak test.",
+          "reason": "No filled, sealed, six-hour grease/leak test for the C6-RO-P component pair.",
           "source_ids": [
-            "S18",
-            "S19",
             "S20",
-            "S22",
-            "S24"
+            "S22"
           ]
         },
         "transparent_viewing": {
           "status": "QUALIFICATION_REQUIRED",
-          "reason": "Clear concept/component identified; steam/anti-fog and post-oven use conditions require sample check.",
+          "reason": "C6-RO-P lid a-680681 is listed as transparent; compatible fit, hot-hold temperature and steam/anti-fog performance are unverified.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S22"
           ]
         },
         "procurement": {
-          "status": "PASS",
-          "reason": "Domestic catalogue/order path exists for RO-P components; this gate is route feasibility only, not stock/fit approval.",
+          "status": "QUALIFICATION_REQUIRED",
+          "reason": "Domestic listings cover the nominated C6-RO-P components; a complete usable pair still requires cross-seller fit and hot-hold architecture qualification. Listings do not establish stock or complete-system approval.",
           "source_ids": [
             "S20",
             "S22",
@@ -4417,66 +4366,51 @@
     {
       "product_id": "P4",
       "candidate_id": "C6",
+      "configuration_id": "C6-RO-P",
       "workflow": "POST_COOK_HOT_HOLD_6H",
       "gates": {
         "physical_fit": {
           "status": "QUALIFICATION_REQUIRED",
-          "reason": "Actual fill dimensions, mass, usable headspace and closing force not supplied.",
+          "reason": "C6-RO-P selects e-7291/729 body and a-680681 lid. Cross-seller fit and actual portion dimensions, headspace and closing force are unverified.",
           "source_ids": [
-            "S18",
-            "S19",
             "S20",
-            "S22",
-            "S24"
+            "S22"
           ]
         },
         "food_contact": {
           "status": "UNKNOWN",
-          "reason": "Exact selected complete-system fatty-food dossier absent.",
+          "reason": "Exact fatty-food contact/migration dossier for the C6-RO-P body/lid pair and intended holding conditions is absent.",
           "source_ids": [
-            "S18",
-            "S19",
             "S20",
-            "S22",
-            "S24"
+            "S22"
           ]
         },
         "thermal_workflow": {
           "status": "UNKNOWN",
-          "reason": "Exact complete-system six-hour profile unknown.",
+          "reason": "No numerical thermal rating or complete six-hour profile is established for the C6-RO-P body and a-680681 lid.",
           "source_ids": [
-            "S18",
-            "S19",
             "S20",
-            "S22",
-            "S24"
+            "S22"
           ]
         },
         "grease_leak": {
           "status": "UNKNOWN",
-          "reason": "No filled, sealed, six-hour grease/leak test.",
+          "reason": "No filled, sealed, six-hour grease/leak test for the C6-RO-P component pair.",
           "source_ids": [
-            "S18",
-            "S19",
             "S20",
-            "S22",
-            "S24"
+            "S22"
           ]
         },
         "transparent_viewing": {
           "status": "QUALIFICATION_REQUIRED",
-          "reason": "Clear concept/component identified; steam/anti-fog and post-oven use conditions require sample check.",
+          "reason": "C6-RO-P lid a-680681 is listed as transparent; compatible fit, hot-hold temperature and steam/anti-fog performance are unverified.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S22"
           ]
         },
         "procurement": {
-          "status": "PASS",
-          "reason": "Domestic catalogue/order path exists for RO-P components; this gate is route feasibility only, not stock/fit approval.",
+          "status": "QUALIFICATION_REQUIRED",
+          "reason": "Domestic listings cover the nominated C6-RO-P components; a complete usable pair still requires cross-seller fit and hot-hold architecture qualification. Listings do not establish stock or complete-system approval.",
           "source_ids": [
             "S20",
             "S22",
@@ -4799,69 +4733,49 @@
     {
       "product_id": "P1",
       "candidate_id": "C6",
+      "configuration_id": "C6-RO-H",
       "workflow": "LITERAL_OVEN_250C_THEN_HOLD",
       "gates": {
         "physical_fit": {
           "status": "QUALIFICATION_REQUIRED",
-          "reason": "Actual fill dimensions, mass, usable headspace and closing force not supplied. Selected RO-P is a portion tray; use separate RO-W/RO-H/EU reference for chicken.",
+          "reason": "C6-RO-H selects the e-pui225 body. Actual fill dimensions/headspace and complete-pack fit cannot be qualified without an identified compatible transparent closure.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "food_contact": {
           "status": "UNKNOWN",
-          "reason": "Exact selected complete-system fatty-food dossier absent.",
+          "reason": "Exact intended-use fatty-food contact/migration dossier for C6-RO-H and its still-unresolved closure is absent.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "thermal_workflow": {
           "status": "UNKNOWN",
-          "reason": "RO-P rating unknown. Separate RO-H seller body 280 C / EU body 350 C are leads only; duration, closure and hot-hold unresolved.",
+          "reason": "C6-RO-H e-pui225 has a seller body-only 280 C claim. Duration at 250 C, compatible post-oven lid application temperature and the complete six-hour holding profile remain unqualified.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "grease_leak": {
           "status": "UNKNOWN",
-          "reason": "No filled, sealed, six-hour grease/leak test.",
+          "reason": "No filled, closed, six-hour grease/leak test for a complete C6-RO-H system; the closure is unresolved.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "transparent_viewing": {
-          "status": "QUALIFICATION_REQUIRED",
-          "reason": "Clear concept/component identified; steam/anti-fog and post-oven use conditions require sample check.",
+          "status": "UNKNOWN",
+          "reason": "No exact compatible transparent lid is identified for the C6-RO-H e-pui225 body.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "procurement": {
-          "status": "PASS",
-          "reason": "Domestic catalogue/order path exists for RO-P components; this gate is route feasibility only, not stock/fit approval.",
+          "status": "QUALIFICATION_REQUIRED",
+          "reason": "E-ambalaj lists the C6-RO-H e-pui225 body locally. A compatible transparent closure and the required oven-body/post-oven-lid/hold architecture are unqualified, so a complete-system Romania route is not established.",
           "source_ids": [
-            "S20",
-            "S22",
+            "S19",
             "S23"
           ]
         }
@@ -5181,69 +5095,49 @@
     {
       "product_id": "P2",
       "candidate_id": "C6",
+      "configuration_id": "C6-RO-H",
       "workflow": "LITERAL_OVEN_250C_THEN_HOLD",
       "gates": {
         "physical_fit": {
           "status": "QUALIFICATION_REQUIRED",
-          "reason": "Actual fill dimensions, mass, usable headspace and closing force not supplied.",
+          "reason": "C6-RO-H selects the e-pui225 body. Actual fill dimensions/headspace and complete-pack fit cannot be qualified without an identified compatible transparent closure.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "food_contact": {
           "status": "UNKNOWN",
-          "reason": "Exact selected complete-system fatty-food dossier absent.",
+          "reason": "Exact intended-use fatty-food contact/migration dossier for C6-RO-H and its still-unresolved closure is absent.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "thermal_workflow": {
           "status": "UNKNOWN",
-          "reason": "RO-P rating unknown. Separate RO-H seller body 280 C / EU body 350 C are leads only; duration, closure and hot-hold unresolved.",
+          "reason": "C6-RO-H e-pui225 has a seller body-only 280 C claim. Duration at 250 C, compatible post-oven lid application temperature and the complete six-hour holding profile remain unqualified.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "grease_leak": {
           "status": "UNKNOWN",
-          "reason": "No filled, sealed, six-hour grease/leak test.",
+          "reason": "No filled, closed, six-hour grease/leak test for a complete C6-RO-H system; the closure is unresolved.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "transparent_viewing": {
-          "status": "QUALIFICATION_REQUIRED",
-          "reason": "Clear concept/component identified; steam/anti-fog and post-oven use conditions require sample check.",
+          "status": "UNKNOWN",
+          "reason": "No exact compatible transparent lid is identified for the C6-RO-H e-pui225 body.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "procurement": {
-          "status": "PASS",
-          "reason": "Domestic catalogue/order path exists for RO-P components; this gate is route feasibility only, not stock/fit approval.",
+          "status": "QUALIFICATION_REQUIRED",
+          "reason": "E-ambalaj lists the C6-RO-H e-pui225 body locally. A compatible transparent closure and the required oven-body/post-oven-lid/hold architecture are unqualified, so a complete-system Romania route is not established.",
           "source_ids": [
-            "S20",
-            "S22",
+            "S19",
             "S23"
           ]
         }
@@ -5563,69 +5457,49 @@
     {
       "product_id": "P3",
       "candidate_id": "C6",
+      "configuration_id": "C6-RO-H",
       "workflow": "LITERAL_OVEN_250C_THEN_HOLD",
       "gates": {
         "physical_fit": {
           "status": "QUALIFICATION_REQUIRED",
-          "reason": "Actual fill dimensions, mass, usable headspace and closing force not supplied.",
+          "reason": "C6-RO-H selects the e-pui225 body. Actual fill dimensions/headspace and complete-pack fit cannot be qualified without an identified compatible transparent closure.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "food_contact": {
           "status": "UNKNOWN",
-          "reason": "Exact selected complete-system fatty-food dossier absent.",
+          "reason": "Exact intended-use fatty-food contact/migration dossier for C6-RO-H and its still-unresolved closure is absent.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "thermal_workflow": {
           "status": "UNKNOWN",
-          "reason": "RO-P rating unknown. Separate RO-H seller body 280 C / EU body 350 C are leads only; duration, closure and hot-hold unresolved.",
+          "reason": "C6-RO-H e-pui225 has a seller body-only 280 C claim. Duration at 250 C, compatible post-oven lid application temperature and the complete six-hour holding profile remain unqualified.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "grease_leak": {
           "status": "UNKNOWN",
-          "reason": "No filled, sealed, six-hour grease/leak test.",
+          "reason": "No filled, closed, six-hour grease/leak test for a complete C6-RO-H system; the closure is unresolved.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "transparent_viewing": {
-          "status": "QUALIFICATION_REQUIRED",
-          "reason": "Clear concept/component identified; steam/anti-fog and post-oven use conditions require sample check.",
+          "status": "UNKNOWN",
+          "reason": "No exact compatible transparent lid is identified for the C6-RO-H e-pui225 body.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "procurement": {
-          "status": "PASS",
-          "reason": "Domestic catalogue/order path exists for RO-P components; this gate is route feasibility only, not stock/fit approval.",
+          "status": "QUALIFICATION_REQUIRED",
+          "reason": "E-ambalaj lists the C6-RO-H e-pui225 body locally. A compatible transparent closure and the required oven-body/post-oven-lid/hold architecture are unqualified, so a complete-system Romania route is not established.",
           "source_ids": [
-            "S20",
-            "S22",
+            "S19",
             "S23"
           ]
         }
@@ -5945,69 +5819,49 @@
     {
       "product_id": "P4",
       "candidate_id": "C6",
+      "configuration_id": "C6-RO-H",
       "workflow": "LITERAL_OVEN_250C_THEN_HOLD",
       "gates": {
         "physical_fit": {
           "status": "QUALIFICATION_REQUIRED",
-          "reason": "Actual fill dimensions, mass, usable headspace and closing force not supplied.",
+          "reason": "C6-RO-H selects the e-pui225 body. Actual fill dimensions/headspace and complete-pack fit cannot be qualified without an identified compatible transparent closure.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "food_contact": {
           "status": "UNKNOWN",
-          "reason": "Exact selected complete-system fatty-food dossier absent.",
+          "reason": "Exact intended-use fatty-food contact/migration dossier for C6-RO-H and its still-unresolved closure is absent.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "thermal_workflow": {
           "status": "UNKNOWN",
-          "reason": "RO-P rating unknown. Separate RO-H seller body 280 C / EU body 350 C are leads only; duration, closure and hot-hold unresolved.",
+          "reason": "C6-RO-H e-pui225 has a seller body-only 280 C claim. Duration at 250 C, compatible post-oven lid application temperature and the complete six-hour holding profile remain unqualified.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "grease_leak": {
           "status": "UNKNOWN",
-          "reason": "No filled, sealed, six-hour grease/leak test.",
+          "reason": "No filled, closed, six-hour grease/leak test for a complete C6-RO-H system; the closure is unresolved.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "transparent_viewing": {
-          "status": "QUALIFICATION_REQUIRED",
-          "reason": "Clear concept/component identified; steam/anti-fog and post-oven use conditions require sample check.",
+          "status": "UNKNOWN",
+          "reason": "No exact compatible transparent lid is identified for the C6-RO-H e-pui225 body.",
           "source_ids": [
-            "S18",
-            "S19",
-            "S20",
-            "S22",
-            "S24"
+            "S19"
           ]
         },
         "procurement": {
-          "status": "PASS",
-          "reason": "Domestic catalogue/order path exists for RO-P components; this gate is route feasibility only, not stock/fit approval.",
+          "status": "QUALIFICATION_REQUIRED",
+          "reason": "E-ambalaj lists the C6-RO-H e-pui225 body locally. A compatible transparent closure and the required oven-body/post-oven-lid/hold architecture are unqualified, so a complete-system Romania route is not established.",
           "source_ids": [
-            "S20",
-            "S22",
+            "S19",
             "S23"
           ]
         }

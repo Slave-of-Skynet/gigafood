@@ -27,6 +27,42 @@ SAFETY = {"legal_food_contact_approval", "declaration_of_compliance", "migration
           "actual_grease_leak_test", "certification_number"}
 EPS = 1e-7
 
+# Gate evidence for the frozen HTF-03 configurations. Do not collect every source
+# recursively from a configuration: mass models contain other-SKU analogues that
+# cannot qualify its fit, heat limit, viewing component or procurement route.
+C6_GATE_SOURCES = {
+    "C6-RO-P": {
+        "physical_fit": {"S20", "S22"},
+        "food_contact": {"S20", "S22"},
+        "thermal_workflow": {"S20", "S22"},
+        "grease_leak": {"S20", "S22"},
+        "transparent_viewing": {"S22"},
+        "procurement": {"S20", "S22", "S23"},
+    },
+    "C6-RO-W": {name: {"S18"} for name in (
+        "physical_fit", "food_contact", "thermal_workflow", "grease_leak", "transparent_viewing", "procurement")},
+    "C6-RO-H": {
+        "physical_fit": {"S19"},
+        "food_contact": {"S19"},
+        "thermal_workflow": {"S19"},
+        "grease_leak": {"S19"},
+        "transparent_viewing": {"S19"},
+        "procurement": {"S19", "S23"},
+    },
+    "C6-EU": {
+        "physical_fit": {"S24", "S25"},
+        "food_contact": {"S24", "S25"},
+        "thermal_workflow": {"S24", "S25"},
+        "grease_leak": {"S24", "S25"},
+        "transparent_viewing": {"S25"},
+        "procurement": {"S24", "S25", "S26"},
+    },
+}
+# None of these snapshot configurations has both a complete Romania route and
+# the required physical/thermal architecture. A component listing cannot yield
+# procurement PASS. New qualifying evidence must explicitly revise this boundary.
+C6_INCOMPLETE_SYSTEMS = frozenset(C6_GATE_SOURCES)
+
 
 def walk(value, path="$", skip=()):
     yield path, value
@@ -88,6 +124,7 @@ def validate(data, display):
     smap = {s["source_id"]: s for s in sources}
     config_ids = [v.get("configuration_id") for v in data.get("configurations", [])]
     require(len(config_ids) == len(set(config_ids)), "configurations", "duplicate configuration IDs")
+    configurations = {v["configuration_id"]: v for v in data.get("configurations", [])}
     calcs = data.get("calculations", [])
     calcids = [c.get("calculation_id") for c in calcs]
     require(len(calcids) == len(set(calcids)), "calculations", "duplicate calculation IDs")
@@ -271,11 +308,47 @@ def validate(data, display):
         check_mass(b3, "B3")
         check_procurement(b3, "B3")
 
+    def check_c6_binding(row, path):
+        if row.get("candidate_id") != "C6":
+            return
+        config_id = row.get("configuration_id")
+        valid_id = isinstance(config_id, str) and config_id in configurations
+        require(valid_id, path, "C6 gate row needs a valid configuration_id")
+        if not valid_id:
+            return
+        require(configurations[config_id].get("parent_candidate_id") == "C6", path,
+                "selected configuration does not belong to C6")
+        require(config_id in C6_GATE_SOURCES, path, "configuration has no reviewed C6 gate source boundary")
+        if config_id not in C6_GATE_SOURCES:
+            return
+        workflow = row.get("workflow")
+        allowed_configs = set()
+        if workflow == "POST_COOK_HOT_HOLD_6H":
+            allowed_configs = {"C6-RO-W"} if row.get("product_id") == "P1" else {"C6-RO-P"}
+        elif workflow == "LITERAL_OVEN_250C_THEN_HOLD":
+            allowed_configs = {"C6-RO-H", "C6-EU"}
+        require(config_id in allowed_configs, path, "C6 configuration does not match the selected product/workflow path")
+        gates = row.get("gates", {})
+        require(set(gates) == set(C6_GATE_SOURCES[config_id]), path, "C6 requires the six named hard gates")
+        for name, gate in gates.items():
+            refs = gate.get("source_ids")
+            valid_refs = isinstance(refs, list) and bool(refs) and all(isinstance(s, str) for s in refs)
+            require(valid_refs, path + "." + name, "C6 gate requires configuration-scoped source IDs")
+            if valid_refs:
+                allowed = C6_GATE_SOURCES[config_id].get(name, set())
+                require(set(refs) <= allowed, path + "." + name,
+                        "gate source borrowed outside selected configuration/gate boundary: "
+                        + ", ".join(sorted(set(refs) - allowed)))
+        if config_id in C6_INCOMPLETE_SYSTEMS:
+            require(gates.get("procurement", {}).get("status") in {"QUALIFICATION_REQUIRED", "UNKNOWN"}, path,
+                    "incomplete C6 configuration cannot receive procurement PASS or another resolved result")
+
     rows = data.get("product_candidate_gates", [])
     tuples = {(r.get("product_id"), r.get("candidate_id"), r.get("workflow")) for r in rows}
     require(len(rows) == len(tuples) == 48, "gate_matrix", "must cover 4 products x 6 candidates x 2 workflows")
     for r in rows:
         path = "/".join((r["product_id"], r["candidate_id"], r["workflow"]))
+        check_c6_binding(r, path)
         require(len(r.get("gates", {})) == 6, path, "missing hard gate")
         failed = any(g.get("status") == "FAIL" for g in r.get("gates", {}).values())
         all_pass = all(g.get("status") == "PASS" for g in r.get("gates", {}).values())
@@ -284,6 +357,11 @@ def validate(data, display):
         if r.get("qualified_survivor") or r.get("approved_for_procurement"):
             require(all_pass, path, "unknown/failed gates promoted to qualified/approved")
         require(r.get("outcome") in {"RECOMMENDED UNDER CURRENT ASSUMPTIONS", "ALTERNATIVE", "QUALIFICATION REQUIRED", "BLOCKED"}, path, "invalid outcome")
+
+    require(display.get("product_candidate_gates") == rows, "display", "display gate matrix differs from canonical bindings/results")
+    for r in display.get("product_candidate_gates", []):
+        path = "display/" + "/".join((r["product_id"], r["candidate_id"], r["workflow"]))
+        check_c6_binding(r, path)
 
     # Display data must preserve value/state/policy, not merely look plausible on its own.
     canonical_fields = {}
@@ -362,6 +440,41 @@ def self_test(data, display):
     bad("unknown gates compensated", lambda d, u: d["product_candidate_gates"][0].update(qualified_survivor=True), "promoted to qualified")
     bad("UI central without interval", lambda d, u: u["candidates"][0]["estimated_pack_mass"].update(value=19.72), "display estimate missing interval")
     bad("UI scenario promotion", lambda d, u: u["candidates"][4]["scenario_details"][0].update(default_headline=True), "conditional comparison promoted")
+
+    def c6_row(packet, product="P1", workflow="LITERAL_OVEN_250C_THEN_HOLD"):
+        return next(r for r in packet["product_candidate_gates"] if
+                    (r["candidate_id"], r["product_id"], r["workflow"]) == ("C6", product, workflow))
+
+    bad("C6 missing configuration", lambda d, u: c6_row(d).pop("configuration_id"), "needs a valid configuration_id")
+    bad("C6 unknown configuration", lambda d, u: c6_row(d).update(configuration_id="C6-MISSING"), "needs a valid configuration_id")
+
+    def wrong_parent(d, u):
+        selected = c6_row(d)["configuration_id"]
+        next(c for c in d["configurations"] if c["configuration_id"] == selected)["parent_candidate_id"] = "C5"
+    bad("C6 wrong parent", wrong_parent, "does not belong to C6")
+    bad("C6 wrong workflow configuration", lambda d, u: c6_row(d).update(configuration_id="C6-RO-P"),
+        "does not match the selected product/workflow")
+
+    # Exercise each gate, not just procurement: even geometry/thermal analogue
+    # sources already present elsewhere in C6 cannot qualify the selected article.
+    for gate_name in C6_GATE_SOURCES["C6-RO-H"]:
+        bad("C6 borrowed " + gate_name, lambda d, u, name=gate_name:
+            c6_row(d)["gates"][name].update(source_ids=["S20", "S22"]), "gate source borrowed")
+
+    def borrowed_portion_pass(d, u):
+        row = c6_row(d)
+        assert row["configuration_id"] == "C6-RO-H"
+        row["gates"]["procurement"] = copy.deepcopy(c6_row(d, "P2", "POST_COOK_HOT_HOLD_6H")["gates"]["procurement"])
+        row["gates"]["procurement"]["status"] = "PASS"
+    bad("C6-RO-H procurement PASS borrowed from C6-RO-P", borrowed_portion_pass, "gate source borrowed")
+    # Keeping RO-H's own valid sources still cannot upgrade its body-only route.
+    bad("C6-RO-H body route promoted to complete PASS", lambda d, u: c6_row(d)["gates"]["procurement"].update(status="PASS"),
+        "incomplete C6 configuration cannot receive procurement PASS")
+    bad("C6 portion thermal analogue", lambda d, u: c6_row(d, "P2", "POST_COOK_HOT_HOLD_6H")["gates"]["thermal_workflow"].update(source_ids=["S24"]),
+        "gate source borrowed")
+    bad("C6 UI binding drift", lambda d, u: c6_row(u).update(configuration_id="C6-EU"), "display gate matrix differs")
+    bad("C6 UI borrowed procurement", lambda d, u: c6_row(u)["gates"]["procurement"].update(status="PASS",source_ids=["S20","S22","S23"]),
+        "gate source borrowed")
     # Positive control: C2 is an all-plastic model and all three metrics may be equal.
     c2 = next(c for c in data["candidates"] if c["candidate_id"] == "C2")["model_metrics"]
     assert c2["plastic_mass_g"]["value"] == c2["total_package_mass_g"]["value"]
