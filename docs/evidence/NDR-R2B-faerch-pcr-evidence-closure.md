@@ -1,10 +1,11 @@
 # NDR-R2B — Faerch Numeric PCR Evidence Closure
 ## Defensible Public Evidence Closure for Selection MVP Candidates A & B
 
-**Document Version:** 1.1.0 (Targeted Evidence Reconciliation Revision)
+**Document Version:** 1.2.0 (Current-Main Reconciliation Revision)
 **Work Class:** AMPLIFIER / EVIDENCE RESEARCH / DECISION SUPPORT
 **Owner:** Mister Ressentiment (`@Mr-Ressentiment`)
-**Base Commit:** `20f50983bae76bae14b86d03fea4eea764801ee7` (`origin/main`)
+**Base Commit:** `20f50983bae76bae14b86d03fea4eea764801ee7` (`origin/main` at research start)
+**Reconciled Main Commit:** `994e352adee7e5eb5e90dbb38aad6f4c3aa1223e` (`origin/main` with merged IGR-R2B Selection MVP)
 **Task Branch:** `mister-ressentiment/ndr-r2b-faerch-pcr-evidence`
 **Target Pull Request:** PR #16 (`Slave-of-Skynet/gigafood/pull/16`)
 **Primary Deliverable:** `docs/evidence/NDR-R2B-faerch-pcr-evidence-closure.md`
@@ -34,6 +35,29 @@
 > - `environmental calculation ≠ operational eligibility ≠ implementation approval`
 >
 > A negative research result (`NON_POINT_EVIDENCE_ONLY` or `NO_CURRENT_SKU_EVIDENCE_FOUND`) is an authoritative evidence closure, **not** a task failure. PackShift explicitly refuses to invent numbers, extrapolate marketing ceilings, or transform unknown values into zero.
+
+---
+
+## Current-main reconciliation
+
+**Original research base:**
+`20f50983bae76bae14b86d03fea4eea764801ee7`
+
+**Reconciled against current main:**
+`994e352adee7e5eb5e90dbb38aad6f4c3aa1223e`
+
+The merged IGR-R2B Selection MVP remains consistent with NDR-R2B:
+
+**Candidate A:**
+- `INSUFFICIENT_DATA` + `REVIEW_REQUIRED`
+- PCR point value unavailable
+
+**Candidate B:**
+- `INSUFFICIENT_DATA` + `BLOCKED` under the modeled 95°C context
+- PCR point value unavailable
+- Microwave capability remains `UNKNOWN`
+
+No runtime/data/shared-contract change is required by NDR-R2B.
 
 ---
 
@@ -250,7 +274,6 @@ The investigation specifically targeted whether authoritative evidence establish
    - Denying conventional oven use does **not** logically or legally declare whether microwave reheating is acceptable or prohibited.
 2. **Thermal Envelope Documented on TDS:**
    - Candidate B TDS explicitly documents the thermal envelope as $-40^\circ\text{C}$ to $+70^\circ\text{C}$.
-   - General packaging science notes that heating standard APET above $70^\circ\text{C}$ causes thermal softening and dimensional distortion.
 3. **Format vs. Material Disambiguation:**
    - Distributor listings for tray geometry "2182-1G" produced in **Polypropylene (PP)** state "mikrobølgeovnsegnet" (microwave safe).
    - This capability belongs to the PP material variant (which has $T_{\max} = 121^\circ\text{C}$), **not** to the APET clear item `2182015004`.
@@ -317,7 +340,9 @@ This research explicitly tested and rejected seven potential evidence substituti
 │                                                                        │
 │ TRAP C: 2021 Historical Appendix Bands ("69-75% PCR")                  │
 │ REJECTED: 2021 table from Bunzl 152408.                                │
-│ Reason: Unmapped range; superseded by 2023/2025 fluctuating disclosure │
+│ Reason: Unmapped historical range; not applicable as a current SKU/    │
+│ recipe point value, while later exact-SKU sheets state that recycled   │
+│ content fluctuates annually.                                           │
 │                                                                        │
 │ TRAP D: PP Geometry Microwave Transfer to APET                         │
 │ REJECTED: Distributor listings declaring "2182-1G" microwave-safe.     │
@@ -420,7 +445,7 @@ Every source URL cited below was retrieved, opened, and programmatically inspect
 | **NDR-S1** | Faerch A/S / Dayton Group Oy | Technical Product Sheet: C 2200-1L Evolve CPET (Item `2200012097`, Recipe `6811`) | [`https://verkkokauppa.daytongroup.fi/...`](https://verkkokauppa.daytongroup.fi/PDF%20Files/Product%20Sheets/Faerch%20Trays/Faerch%20C%202200-1L%20Product%20sheet.pdf) | 2026-09-26 | Tier B primary-document hosting. $21.38\text{ g} \pm 10\%$, $1000\text{ ml}$, $-40^\circ\text{C}$ to $220^\circ\text{C}$, Cooking: *Oven/Microwave*. PCR withheld due to annual fluctuation. |
 | **NDR-S2** | Faerch A/S / H.C. Emballage | Technical Product Sheet: K 2182-1G Clear APET (Item `2182015004`, Recipe `7900`) | [`https://www.hc.dk/...`](https://www.hc.dk/.0/pp-static/prodimages/Datablade/datablad_140380.pdf) | 2026-09-26 | Tier B primary-document hosting. $21.48\text{ g} \pm 10\%$, $895\text{ ml}$, $-40^\circ\text{C}$ to $70^\circ\text{C}$, Cooking: *Not ovenable*. Primary source for APET $-40^\circ\text{C}$ to $+70^\circ\text{C}$ thermal envelope and cooking restriction. PCR withheld due to annual fluctuation. |
 | **NDR-S3** | Faerch A/S | Press Release (20.11.2024): Chilled ready meal trays with minimum 40% Tray rPET | [`https://www.faerch.com/...`](https://www.faerch.com/en/faerch-launches-chilled-ready-meal-trays-with-minimum-40-tray-rpet-content) | 2026-09-26 | Tier C corporate release: Evolve platform "allows for up to 70% post-consumer content"; Jan 2025 UK/IE launch guarantees "minimum 40% Tray rPET". |
-| **NDR-S4** | Faerch A/S / Bunzl Ireland | Historical Technical Product Sheet Appendix (07-09-2021, Doc 152408-SPECS) | [`https://www.bunzlireland.ie/...`](https://www.bunzlireland.ie/medias/sys_master/root/h56/hbb/8888294670366/152408-SPECS.pdf) | 2026-09-26 | Tier B historical appendix: "CPET Standard\* 69-75% PCR", "APET Standard 82% PCR". Superseded; unmapped to current recipes. |
+| **NDR-S4** | Faerch A/S / Bunzl Ireland | Historical Technical Product Sheet Appendix (07-09-2021, Doc 152408-SPECS) | [`https://www.bunzlireland.ie/...`](https://www.bunzlireland.ie/medias/sys_master/root/h56/hbb/8888294670366/152408-SPECS.pdf) | 2026-09-26 | Tier B historical appendix: "CPET Standard\* 69-75% PCR", "APET Standard 82% PCR". Unmapped historical range; not applicable as a current SKU/recipe point value. |
 | **NDR-S5** | Faerch A/S | Official Material Platform: CPET Ready Meals | [`https://www.faerch.com/...`](https://www.faerch.com/en/products/ready-meals/cpet) | 2026-09-26 | Tier C material platform: CPET thermal envelope $-40^\circ\text{C}$ to $+220^\circ\text{C}$; CPET specified for freezer-to-oven and freezer-to-microwave ready meal applications. |
 
 ---
