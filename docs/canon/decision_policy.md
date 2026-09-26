@@ -1,5 +1,14 @@
 # PackShift — decision policy
 
+**TARGET_CONTRACT — INT-HTF-04A:** For the HTF-03 recommendation transition, use
+the [six-gate policy, evidence states and exact label mapping](../recon/INT-HTF-04A-canonical-runtime-transition.md#g4-bounded-recommendation-policy).
+No current HTF-03 record is a qualified survivor. Qualification work priority is
+separate from outcome; current UI outcomes remain QUALIFICATION REQUIRED or BLOCKED.
+Estimates retain full bounds and assumptions; B1-ESTIMATED and B3 must never become
+measured Profi facts. Failed/unknown gates cannot be offset by environmental metrics.
+The transition proposes shared semantics for Integrator acceptance, not a runtime
+change. Existing arithmetic and old Selection/economics behavior below remain protected.
+
 Product policy for CANON-01, **not an implemented API contract**. Authority and
 base: [challenge canon](challenge_canon.md). Implementation: [product canon](product_canon.md).
 
