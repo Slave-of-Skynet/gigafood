@@ -121,3 +121,138 @@ class Health(Contract):
     dataset_kind: str | None
     disclosure: str | None
     error: str | None
+
+
+# --- Selection MVP Models (INT-R2 Additive Domain Extension) ---
+
+ComponentBoundary = Literal[
+    "TRAY_BODY_ONLY",
+    "BODY_AND_FILM",
+    "HINGED_COMPLETE_PACK",
+    "BOTTLE_AND_CLOSURE",
+    "CUSTOM",
+]
+
+RecycledContentPointValueStatus = Literal[
+    "EXACT_POINT_VALUE",
+    "NON_POINT_VALUE",
+    "UNSTATED",
+]
+
+ComparabilityRating = Literal[
+    "STRONG",
+    "BOUNDED_WITH_QUALIFIER",
+    "ASYMMETRIC_BOUNDARY",
+    "NOT_COMPARABLE",
+]
+
+NextActionCode = Literal[
+    "REJECT_INCOMPATIBLE",
+    "REQUEST_PCR_EVIDENCE",
+    "REQUEST_CAPABILITY_EVIDENCE",
+    "VERIFY_OPERATIONAL_PREMISES",
+    "ADVANCE_TO_QA_REVIEW",
+]
+
+
+class SelectionMetadata(Contract):
+    """Additive metadata wrapper for Selection MVP candidates and baseline.
+    Preserves existing A-core Package models and evidence fixtures without modification."""
+    component_boundary: ComponentBoundary
+    recycled_content_point_value_status: RecycledContentPointValueStatus = "UNSTATED"
+    recycled_content_scope: str | None = None
+    evidence_date: str | None = None
+
+
+class CandidateArticle(Contract):
+    """Additive composition: pairs existing Package with Selection-specific metadata."""
+    package: Package
+    metadata: SelectionMetadata
+
+
+class ComparabilityAssessment(Contract):
+    rating: ComparabilityRating
+    boundary_match: bool
+    notes: list[str]
+
+
+class NextAction(Contract):
+    action_code: NextActionCode
+    summary: Text
+    details: Text
+
+
+class AnnualImpactResult(Contract):
+    annual_units: Annotated[int, Field(gt=0)]
+    annual_reduction_kg: float | None = None
+    annual_current_virgin_kg: float | None = None
+    annual_candidate_virgin_kg: float | None = None
+    status: Literal["CALCULATED", "INSUFFICIENT_DATA"]
+    is_actionable: bool
+    disclosure: Text
+
+
+class CalculationResult(Contract):
+    status: Literal["CALCULATED", "INSUFFICIENT_DATA"]
+    verification_state: Literal["INDICATIVE", "INSUFFICIENT_DATA"]
+    current_virgin_pack_g: float | None = None
+    candidate_virgin_pack_g: float | None = None
+    reduction_g: float | None = None
+    reduction_pct: float | None = None
+    missing_fields: list[str] = Field(default_factory=list)
+
+
+class EligibilityResult(Contract):
+    status: Literal["ELIGIBLE", "REVIEW_REQUIRED", "BLOCKED"]
+    constraints: list[ConstraintFinding] = Field(default_factory=list)
+
+
+class CandidateAssessment(Contract):
+    candidate: Package
+    metadata: SelectionMetadata
+    comparability: ComparabilityAssessment
+    calculation: CalculationResult
+    eligibility: EligibilityResult
+    annual_impact: AnnualImpactResult | None = None
+    next_action: NextAction
+
+
+class BaselineAssessment(Contract):
+    package: Package
+    metadata: SelectionMetadata
+    virgin_plastic_g: float | None
+    calculation_status: Literal["CALCULATED", "INSUFFICIENT_DATA"]
+
+
+class Portfolio(Contract):
+    id: Text
+    label: Text
+    use_context: Text
+    dataset_kind: Literal["ILLUSTRATIVE", "PUBLIC", "PROVIDER"]
+    disclosure: Text
+    baseline: CandidateArticle
+    candidates: Annotated[list[CandidateArticle], Field(min_length=1)]
+    default_operational_requirements: OperationalRequirements | None = None
+
+
+# --- API Request & Response Contracts ---
+
+
+class SelectionRequest(Contract):
+    use_context: Text | None = None
+    required_max_temperature_c: float | None = None
+    microwave_required: bool | None = None
+    annual_units: Annotated[int, Field(gt=0)] | None = None
+
+
+class SelectionResponse(Contract):
+    portfolio_id: Text
+    label: Text
+    dataset_kind: Literal["ILLUSTRATIVE", "PUBLIC", "PROVIDER"]
+    disclosure: Text
+    use_context: Text
+    operational_requirements: OperationalRequirements
+    annual_units_requested: int | None = None
+    baseline: BaselineAssessment
+    candidates: list[CandidateAssessment]
+    summary_verdict: Text

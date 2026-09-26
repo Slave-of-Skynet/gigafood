@@ -5,19 +5,37 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 
-from app.domain.packaging import Comparison, Evidence, Health, Scenario
+from app.domain.packaging import (
+    Comparison,
+    Evidence,
+    Health,
+    Portfolio,
+    Scenario,
+    SelectionRequest,
+    SelectionResponse,
+)
 from app.runtime.context import load_runtime
+from app.services.selection import evaluate_portfolio
 from app.services.virgin_plastic import compare
 
 DEFAULT_EVIDENCE = Path(__file__).resolve().parents[2] / "data/evidence/demo-packaging.json"
+DEFAULT_PORTFOLIOS = Path(__file__).resolve().parents[2] / "data/evidence/selection-portfolios.json"
 
 
-def create_app(evidence_path: Path | None = None) -> FastAPI:
+def create_app(
+    evidence_path: Path | None = None,
+    portfolios_path: Path | None = None,
+) -> FastAPI:
     path = evidence_path if evidence_path is not None else Path(os.environ.get("GIGAFOOD_EVIDENCE_PATH", str(DEFAULT_EVIDENCE)))
+    port_path = (
+        portfolios_path
+        if portfolios_path is not None
+        else Path(os.environ.get("GIGAFOOD_PORTFOLIOS_PATH", str(DEFAULT_PORTFOLIOS)))
+    )
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
-        app.state.runtime = load_runtime(path)
+        app.state.runtime = load_runtime(path, port_path)
         yield
 
     app = FastAPI(title="GigaFood A-core", version="0.1.0", lifespan=lifespan)
@@ -49,6 +67,35 @@ def create_app(evidence_path: Path | None = None) -> FastAPI:
         if scenario is None:
             raise HTTPException(404, detail="SCENARIO_NOT_FOUND")
         return compare(scenario)
+
+    # --- Selection MVP Endpoints (INT-R2 D9 Additive Evolution) ---
+
+    @app.get("/api/v1/portfolios", response_model=list[Portfolio])
+    def portfolios(request: Request):
+        runtime = request.app.state.runtime
+        if runtime.portfolios_error or not runtime.portfolios:
+            raise HTTPException(503, detail="PORTFOLIOS_UNAVAILABLE")
+        return runtime.portfolios
+
+    @app.get("/api/v1/portfolios/{portfolio_id}", response_model=SelectionResponse)
+    def portfolio_default(portfolio_id: str, request: Request):
+        runtime = request.app.state.runtime
+        if runtime.portfolios_error:
+            raise HTTPException(503, detail="PORTFOLIOS_UNAVAILABLE")
+        portfolio = next((p for p in runtime.portfolios if p.id == portfolio_id), None)
+        if portfolio is None:
+            raise HTTPException(404, detail="PORTFOLIO_NOT_FOUND")
+        return evaluate_portfolio(portfolio, None)
+
+    @app.post("/api/v1/portfolios/{portfolio_id}/evaluate", response_model=SelectionResponse)
+    def portfolio_evaluate(portfolio_id: str, body: SelectionRequest, request: Request):
+        runtime = request.app.state.runtime
+        if runtime.portfolios_error:
+            raise HTTPException(503, detail="PORTFOLIOS_UNAVAILABLE")
+        portfolio = next((p for p in runtime.portfolios if p.id == portfolio_id), None)
+        if portfolio is None:
+            raise HTTPException(404, detail="PORTFOLIO_NOT_FOUND")
+        return evaluate_portfolio(portfolio, body)
 
     return app
 
