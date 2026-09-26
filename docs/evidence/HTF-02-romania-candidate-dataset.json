@@ -1,0 +1,1934 @@
+{
+  "dataset_id": "HTF-02-romania-candidate-dataset",
+  "schema_version": "1.0.0-research-only",
+  "research_cut_off": "2026-09-26",
+  "runtime_integration_status": "OUT_OF_SCOPE_NOT_IMPLEMENTED",
+  "title": "Romania-ready hot-food packaging candidate evidence dataset",
+  "scope": {
+    "market": "Romania",
+    "sponsor": "Biomentorhub x Profi",
+    "primary_flow_hypothesis": "Food is cooked, transferred hot into a retail pack, held/displayed for up to approximately 6 hours, and sold.",
+    "primary_flow_hypothesis_status": "SPONSOR_CONFIRMATION_REQUIRED",
+    "strict_interpretation": "Peak oven exposure and hot-hold exposure are separate qualification conditions. A strong POST_COOK candidate is not rejected merely because it does not tolerate 250 C.",
+    "candidate_tracks_required": 8,
+    "candidate_tracks_present": 8,
+    "fully_qualified_candidates": 0,
+    "romanian_procurement_gate_passes": 0,
+    "complete_package_mass_records": 0,
+    "complete_virgin_plastic_mass_records": 0,
+    "romanian_public_price_records": 0,
+    "co2e_records": 0
+  },
+  "controlled_vocabularies": {
+    "application_modes": [
+      "POST_COOK",
+      "HOT_HOLD",
+      "COOK_IN",
+      "OVEN_BODY_ONLY",
+      "POST_OVEN_LID"
+    ],
+    "evidence_statuses": [
+      "PASS",
+      "PARTIAL_EVIDENCE",
+      "UNKNOWN",
+      "NOT_VERIFIED",
+      "FAIL"
+    ],
+    "procurement_statuses": [
+      "ROMANIA_LOCAL_STOCK",
+      "ROMANIA_DISTRIBUTOR_CONFIRMED",
+      "MANUFACTURER_DELIVERS_TO_ROMANIA",
+      "EU_SUPPLY_ROUTE_CONFIRMED",
+      "QUOTE_REQUIRED_ROMANIA",
+      "ROMANIA_AVAILABILITY_UNVERIFIED",
+      "NOT_AVAILABLE_ROMANIA"
+    ],
+    "ui_display_statuses": [
+      "DISPLAY_VERIFIED",
+      "DISPLAY_WITH_QUALIFIER",
+      "DO_NOT_DISPLAY_AS_FACT"
+    ]
+  },
+  "completeness": {
+    "mandatory_track_records": {
+      "value": 8,
+      "denominator": 8
+    },
+    "exact_selected_component_article_ids": {
+      "value": 5,
+      "definition": "Selected candidate components with an exact article/SKU: C4 body and lid, C5 body, C6 body and selected H26 lid. Excludes alternate lids, historical grades and rejected near-misses."
+    },
+    "alternate_exact_component_article_ids": {
+      "value": 1,
+      "definition": "C6 alternate H46 DPET lid 5023000000; it is explicitly non-stock and is not the selected closure."
+    },
+    "complete_systems_with_exact_component_identities": {
+      "value": 2,
+      "definition": "C4 and C6 have exact body and closure article identities; C4 is inactive and neither has a verified Romanian supply route."
+    },
+    "current_complete_system_identity_leads": {
+      "value": 1,
+      "definition": "C6 body plus H26 lid; Romanian orderability remains unverified."
+    },
+    "exact_unit_component_weights": {
+      "value": 2,
+      "definition": "C4 body and C6 body only. No selected closure has a verified unit mass."
+    },
+    "complete_package_weights": {
+      "value": 0
+    },
+    "public_price_records": {
+      "value": 3,
+      "definition": "Three exact-component EU retailer/distributor records; all are REFERENCE_PRICE_ONLY and none is a Romanian landed/B2B price."
+    },
+    "romanian_public_price_records": {
+      "value": 0
+    },
+    "industrial_moq_records": {
+      "value": 0,
+      "note": "Published pack/carton order units are not treated as negotiated industrial MOQ."
+    }
+  },
+  "candidates": [
+    {
+      "candidate_id": "B1",
+      "record_class": "INCUMBENT_OBSERVATION",
+      "required_track": "Actual Profi incumbent hot-food packaging",
+      "candidate_name": "Profi incumbent rotisserie/hot-food pack",
+      "overall_evidence_status": "UNKNOWN",
+      "decision": "STOP_IDENTITY_UNKNOWN",
+      "identity": {
+        "brand": "Profi",
+        "product_name": null,
+        "commercial_sku": null,
+        "configuration": null,
+        "complete_system_identity_status": "UNKNOWN",
+        "provider_evidence_status": "UNKNOWN",
+        "statement": "No provider evidence identifying the actual package material, format, supplier, component set or SKU was found. Generic Romanian rotisserie packs are not a proxy for the Profi incumbent."
+      },
+      "application_modes": [
+        {
+          "mode": "POST_COOK",
+          "status": "UNKNOWN",
+          "boundary": "Likely process relevance is not provider-confirmed packaging evidence."
+        },
+        {
+          "mode": "HOT_HOLD",
+          "status": "UNKNOWN",
+          "boundary": "No provider time/temperature or package evidence."
+        },
+        {
+          "mode": "COOK_IN",
+          "status": "UNKNOWN",
+          "boundary": "No evidence that the incumbent is used in cooking."
+        },
+        {
+          "mode": "OVEN_BODY_ONLY",
+          "status": "UNKNOWN",
+          "boundary": "Body identity is unknown."
+        },
+        {
+          "mode": "POST_OVEN_LID",
+          "status": "UNKNOWN",
+          "boundary": "Closure sequence and identity are unknown."
+        }
+      ],
+      "components": [],
+      "product_fit": {
+        "whole_chicken": "UNKNOWN",
+        "wings_thighs": "UNKNOWN",
+        "potatoes_vegetables": "UNKNOWN",
+        "prepared_meat": "UNKNOWN"
+      },
+      "thermal_claims": [],
+      "six_hour_hold": {
+        "status": "NOT_VERIFIED",
+        "temperature_c": null,
+        "duration_h": null,
+        "source_ids": []
+      },
+      "fcm_and_barrier": {
+        "system_status": "UNKNOWN",
+        "eu_doc_status": "UNKNOWN",
+        "grease_barrier_status": "UNKNOWN",
+        "leak_status": "UNKNOWN",
+        "source_ids": []
+      },
+      "bom_and_mass": {
+        "bom_status": "UNKNOWN",
+        "total_package_mass_g": null,
+        "plastic_mass_g": null,
+        "virgin_plastic_mass_g": null,
+        "renewable_fraction": null,
+        "recycled_fraction": null
+      },
+      "procurement": {
+        "status": "ROMANIA_AVAILABILITY_UNVERIFIED",
+        "country_basis": "The pack is an incumbent-observation track, but its supplier/article identity is unknown.",
+        "romanian_supplier": null,
+        "romanian_listing_url": null,
+        "source_ids": []
+      },
+      "commercial": {
+        "price_status": "QUOTE_REQUIRED",
+        "public_prices": [],
+        "moq": null,
+        "order_unit": null
+      },
+      "end_of_life_romania": {
+        "designed_for_recycling": "UNKNOWN",
+        "certified_recyclable": "UNKNOWN",
+        "collected": "UNKNOWN",
+        "sorted": "UNKNOWN",
+        "reprocessed": "UNKNOWN",
+        "compost_route": "UNKNOWN",
+        "source_ids": [
+          "HT2-S030",
+          "HT2-S031",
+          "HT2-S032"
+        ]
+      },
+      "environmental": {
+        "lca_or_epd_status": "NOT_VERIFIED",
+        "co2e_kg_per_functional_unit": null
+      },
+      "ui_display": {
+        "candidate_name": "DO_NOT_DISPLAY_AS_FACT",
+        "material": "DO_NOT_DISPLAY_AS_FACT",
+        "thermal": "DO_NOT_DISPLAY_AS_FACT",
+        "availability": "DO_NOT_DISPLAY_AS_FACT",
+        "price": "DO_NOT_DISPLAY_AS_FACT",
+        "safe_text": "Incumbent packaging identity: UNKNOWN pending Profi/provider evidence."
+      },
+      "gaps": [
+        "Provider photo or packaging specification tied to a store/date",
+        "Supplier and article/SKU",
+        "Complete BOM and component masses",
+        "Actual packing, holding and display profile",
+        "Incumbent delivered price and annual volume"
+      ],
+      "source_ids": [
+        "HT2-S001",
+        "HT2-S002"
+      ]
+    },
+    {
+      "candidate_id": "B2",
+      "record_class": "MARKET_REFERENCE",
+      "required_track": "Romanian or EU-to-Romania virgin-plastic rotisserie/hot-food bag",
+      "candidate_name": "Virgin-plastic rotisserie bag market reference",
+      "overall_evidence_status": "UNKNOWN",
+      "decision": "UNRESOLVED_HARD_GATE",
+      "identity": {
+        "brand": null,
+        "product_name": null,
+        "commercial_sku": null,
+        "configuration": null,
+        "complete_system_identity_status": "UNKNOWN",
+        "market_reference_label": "MARKET_REFERENCE",
+        "statement": "No exact all-plastic virgin-plastic rotisserie/hot-food bag with a Romanian listing or an explicit EU-to-Romania route was verified. Romanian paper-plus-PP products and US PET/CPP products are recorded only as near-misses."
+      },
+      "application_modes": [
+        {
+          "mode": "POST_COOK",
+          "status": "UNKNOWN",
+          "boundary": "Target application, but no qualifying exact product was found."
+        },
+        {
+          "mode": "HOT_HOLD",
+          "status": "UNKNOWN",
+          "boundary": "No qualifying exact product with a six-hour condition."
+        },
+        {
+          "mode": "COOK_IN",
+          "status": "UNKNOWN",
+          "boundary": "The target is a hot-food market reference, not automatically an oven bag."
+        },
+        {
+          "mode": "OVEN_BODY_ONLY",
+          "status": "UNKNOWN",
+          "boundary": "Bag target has no separate body."
+        },
+        {
+          "mode": "POST_OVEN_LID",
+          "status": "UNKNOWN",
+          "boundary": "Bag target has no separate post-oven lid."
+        }
+      ],
+      "components": [],
+      "product_fit": {
+        "whole_chicken": "UNKNOWN",
+        "wings_thighs": "UNKNOWN",
+        "potatoes_vegetables": "UNKNOWN",
+        "prepared_meat": "UNKNOWN"
+      },
+      "thermal_claims": [],
+      "six_hour_hold": {
+        "status": "NOT_VERIFIED",
+        "temperature_c": null,
+        "duration_h": null,
+        "source_ids": []
+      },
+      "fcm_and_barrier": {
+        "system_status": "UNKNOWN",
+        "eu_doc_status": "UNKNOWN",
+        "grease_barrier_status": "UNKNOWN",
+        "leak_status": "UNKNOWN",
+        "source_ids": []
+      },
+      "bom_and_mass": {
+        "bom_status": "UNKNOWN",
+        "total_package_mass_g": null,
+        "plastic_mass_g": null,
+        "virgin_plastic_mass_g": null,
+        "renewable_fraction": null,
+        "recycled_fraction": null
+      },
+      "procurement": {
+        "status": "ROMANIA_AVAILABILITY_UNVERIFIED",
+        "country_basis": "No qualifying exact all-plastic bag has positive Romanian territory, listing or delivery evidence.",
+        "romanian_supplier": null,
+        "romanian_listing_url": null,
+        "source_ids": [
+          "HT2-S003",
+          "HT2-S004",
+          "HT2-S005",
+          "HT2-S006"
+        ]
+      },
+      "commercial": {
+        "price_status": "QUOTE_REQUIRED",
+        "public_prices": [],
+        "moq": null,
+        "order_unit": null
+      },
+      "end_of_life_romania": {
+        "designed_for_recycling": "UNKNOWN",
+        "certified_recyclable": "UNKNOWN",
+        "collected": "UNKNOWN",
+        "sorted": "UNKNOWN",
+        "reprocessed": "UNKNOWN",
+        "compost_route": "UNKNOWN",
+        "source_ids": [
+          "HT2-S030",
+          "HT2-S031",
+          "HT2-S032"
+        ]
+      },
+      "environmental": {
+        "lca_or_epd_status": "NOT_VERIFIED",
+        "co2e_kg_per_functional_unit": null
+      },
+      "ui_display": {
+        "candidate_name": "DISPLAY_WITH_QUALIFIER",
+        "material": "DO_NOT_DISPLAY_AS_FACT",
+        "thermal": "DO_NOT_DISPLAY_AS_FACT",
+        "availability": "DO_NOT_DISPLAY_AS_FACT",
+        "price": "DO_NOT_DISPLAY_AS_FACT",
+        "safe_text": "MARKET_REFERENCE slot unresolved: no qualifying Romanian/EU-to-Romania all-plastic bag verified."
+      },
+      "gaps": [
+        "Exact all-plastic bag product/SKU",
+        "Virgin-plastic construction evidence",
+        "Romanian listing, distributor territory or delivery confirmation",
+        "Complete unit mass and price/MOQ",
+        "Six-hour hot-hold evidence"
+      ],
+      "source_ids": [
+        "HT2-S003",
+        "HT2-S004",
+        "HT2-S005",
+        "HT2-S006",
+        "HT2-S035"
+      ]
+    },
+    {
+      "candidate_id": "C1",
+      "record_class": "CANDIDATE",
+      "required_track": "Sacma B.Life Gaia",
+      "candidate_name": "Sacma B.Life Gaia rotisserie bag",
+      "overall_evidence_status": "PARTIAL_EVIDENCE",
+      "decision": "RETAIN_FOR_RFQ_POST_COOK_TRACK",
+      "identity": {
+        "brand": "Sacma B.Life",
+        "product_name": "Gaia",
+        "commercial_sku": null,
+        "configuration": "FSC grass-paper bag with NatureFlex cellulosic liner; transparent-window option",
+        "complete_system_identity_status": "PLATFORM_ONLY",
+        "statement": "Commercial platform identity and construction are supported, but no exact orderable size, gauge, article/SKU or printed configuration was public."
+      },
+      "application_modes": [
+        {
+          "mode": "POST_COOK",
+          "status": "PASS",
+          "boundary": "Manufacturer-supplied description expressly positions Gaia for hot cooked products including rotisserie chicken.",
+          "source_ids": [
+            "HT2-S008"
+          ]
+        },
+        {
+          "mode": "HOT_HOLD",
+          "status": "PARTIAL_EVIDENCE",
+          "boundary": "Hot-cabinet use is claimed; no numeric temperature or duration was public.",
+          "source_ids": [
+            "HT2-S008"
+          ]
+        },
+        {
+          "mode": "COOK_IN",
+          "status": "PARTIAL_EVIDENCE",
+          "boundary": "Oven use is claimed without a numeric maximum, duration, oven type, fill or exact SKU.",
+          "source_ids": [
+            "HT2-S008"
+          ]
+        },
+        {
+          "mode": "OVEN_BODY_ONLY",
+          "status": "UNKNOWN",
+          "boundary": "Gaia is an integrated bag rather than a separate body/lid architecture."
+        },
+        {
+          "mode": "POST_OVEN_LID",
+          "status": "UNKNOWN",
+          "boundary": "Gaia is an integrated bag rather than a post-applied lid system."
+        }
+      ],
+      "components": [
+        {
+          "component": "bag paper",
+          "article_id": null,
+          "material": "FSC-certified grass paper",
+          "unit_mass_g": null,
+          "source_ids": [
+            "HT2-S008"
+          ]
+        },
+        {
+          "component": "liner/window",
+          "article_id": null,
+          "material": "NatureFlex cellulosic film",
+          "unit_mass_g": null,
+          "source_ids": [
+            "HT2-S008"
+          ]
+        }
+      ],
+      "product_fit": {
+        "whole_chicken": "PARTIAL_EVIDENCE",
+        "wings_thighs": "PARTIAL_EVIDENCE",
+        "potatoes_vegetables": "NOT_VERIFIED",
+        "prepared_meat": "PARTIAL_EVIDENCE"
+      },
+      "thermal_claims": [
+        {
+          "component": "complete bag platform",
+          "temperature_c": null,
+          "duration_min": null,
+          "mode": "COOK_IN",
+          "oven_context": "Oven use claimed; numeric profile not published",
+          "fill_context": "Hot cooked chicken/rotisserie application",
+          "exact_grade_or_sku": null,
+          "status": "PARTIAL_EVIDENCE",
+          "source_ids": [
+            "HT2-S008"
+          ]
+        },
+        {
+          "component": "complete bag platform",
+          "temperature_c": -40,
+          "duration_min": null,
+          "mode": "POST_COOK",
+          "oven_context": "Freezing lower-bound test, not high-temperature evidence",
+          "fill_context": null,
+          "exact_grade_or_sku": null,
+          "status": "PARTIAL_EVIDENCE",
+          "source_ids": [
+            "HT2-S008"
+          ]
+        }
+      ],
+      "six_hour_hold": {
+        "status": "NOT_VERIFIED",
+        "temperature_c": null,
+        "duration_h": null,
+        "source_ids": []
+      },
+      "fcm_and_barrier": {
+        "system_status": "PARTIAL_EVIDENCE",
+        "eu_doc_status": "NOT_VERIFIED",
+        "grease_barrier_status": "PARTIAL_EVIDENCE",
+        "leak_status": "PARTIAL_EVIDENCE",
+        "claim_boundary": "Supplier-originated claims support grease- and liquid-resistance; no public exact complete-system DoC, migration report or six-hour filled-pack test was found.",
+        "source_ids": [
+          "HT2-S008"
+        ]
+      },
+      "bom_and_mass": {
+        "bom_status": "PARTIAL_EVIDENCE",
+        "total_package_mass_g": null,
+        "plastic_mass_g": null,
+        "virgin_plastic_mass_g": null,
+        "renewable_fraction": null,
+        "recycled_fraction": null,
+        "note": "Renewable construction is qualitatively supported; no complete mass BOM or final-pack renewable fraction is public."
+      },
+      "procurement": {
+        "status": "ROMANIA_AVAILABILITY_UNVERIFIED",
+        "country_basis": "Manufacturer RFQ/sample channels exist, but no exact SKU or explicit Romanian territory/delivery evidence was found.",
+        "romanian_supplier": null,
+        "romanian_listing_url": null,
+        "source_ids": [
+          "HT2-S007",
+          "HT2-S008"
+        ]
+      },
+      "commercial": {
+        "price_status": "QUOTE_REQUIRED",
+        "public_prices": [],
+        "moq": null,
+        "order_unit": null
+      },
+      "end_of_life_romania": {
+        "designed_for_recycling": "CLAIMED_PAPER_STREAM_DESIGN",
+        "certified_recyclable": "ATICELCA_CLAIMED_EXACT_PLATFORM_CERTIFICATE_NUMBER_NOT_PUBLIC",
+        "collected": "UNKNOWN",
+        "sorted": "UNKNOWN",
+        "reprocessed": "UNKNOWN",
+        "compost_route": "OK_COMPOST_HOME_CLAIMED_LOCAL_ROUTE_UNKNOWN",
+        "source_ids": [
+          "HT2-S008",
+          "HT2-S030",
+          "HT2-S036"
+        ]
+      },
+      "environmental": {
+        "lca_or_epd_status": "NOT_VERIFIED",
+        "co2e_kg_per_functional_unit": null
+      },
+      "ui_display": {
+        "candidate_name": "DISPLAY_VERIFIED",
+        "material": "DISPLAY_WITH_QUALIFIER",
+        "thermal": "DO_NOT_DISPLAY_AS_FACT",
+        "availability": "DO_NOT_DISPLAY_AS_FACT",
+        "price": "DO_NOT_DISPLAY_AS_FACT",
+        "safe_text": "Gaia is a commercial paper/NatureFlex rotisserie-bag platform; exact SKU, numeric heat limit and Romanian supply remain unverified."
+      },
+      "gaps": [
+        "Exact size/article, paper gsm, liner/window grade and thickness",
+        "Numeric high-temperature profile with time and oven context",
+        "Exact EU FCM dossier for paper, film, adhesive, inks and closure",
+        "Six-hour hold validation",
+        "Romanian route, quote, MOQ and lead time",
+        "Complete BOM/component masses and local EOL acceptance"
+      ],
+      "source_ids": [
+        "HT2-S007",
+        "HT2-S008"
+      ]
+    },
+    {
+      "candidate_id": "C2",
+      "record_class": "CANDIDATE",
+      "required_track": "Sirane Sira-Cook Siralon 21",
+      "candidate_name": "Sirane Sira-Cook Siralon 21",
+      "overall_evidence_status": "PARTIAL_EVIDENCE",
+      "decision": "RETAIN_FOR_RFQ_COOK_IN_TRACK",
+      "identity": {
+        "brand": "Sirane Sira-Cook",
+        "product_name": "Siralon 21",
+        "commercial_sku": null,
+        "configuration": "Clear heat-sealable nylon oven bag or flow-wrap material",
+        "complete_system_identity_status": "NAMED_GRADE_FORMAT_UNSPECIFIED",
+        "statement": "Siralon 21 is a current named grade/platform; no stock dimensions, gauge, closure configuration or orderable article number was public."
+      },
+      "application_modes": [
+        {
+          "mode": "POST_COOK",
+          "status": "PARTIAL_EVIDENCE",
+          "boundary": "Can pack/ship/retail/cook in the same package, but post-cook hot filling and six-hour display were not separately tested in public evidence.",
+          "source_ids": [
+            "HT2-S009"
+          ]
+        },
+        {
+          "mode": "HOT_HOLD",
+          "status": "NOT_VERIFIED",
+          "boundary": "Siralon 10 mentions hot-hold; that claim is not transferred to Siralon 21."
+        },
+        {
+          "mode": "COOK_IN",
+          "status": "PASS",
+          "boundary": "Named Siralon 21 grade is expressly ovenable for whole joints, poultry and fish up to 210 C; duration and exact format remain open.",
+          "source_ids": [
+            "HT2-S009"
+          ]
+        },
+        {
+          "mode": "OVEN_BODY_ONLY",
+          "status": "UNKNOWN",
+          "boundary": "Integrated flexible bag; no separate body."
+        },
+        {
+          "mode": "POST_OVEN_LID",
+          "status": "UNKNOWN",
+          "boundary": "Integrated flexible bag; no post-oven lid."
+        }
+      ],
+      "components": [
+        {
+          "component": "bag/flow-wrap",
+          "article_id": null,
+          "material": "nylon; exact layer/additive construction not public",
+          "unit_mass_g": null,
+          "source_ids": [
+            "HT2-S009"
+          ]
+        }
+      ],
+      "product_fit": {
+        "whole_chicken": "PARTIAL_EVIDENCE",
+        "wings_thighs": "PARTIAL_EVIDENCE",
+        "potatoes_vegetables": "NOT_VERIFIED",
+        "prepared_meat": "PARTIAL_EVIDENCE"
+      },
+      "thermal_claims": [
+        {
+          "component": "Siralon 21 bag/film grade",
+          "temperature_c": 210,
+          "duration_min": null,
+          "mode": "COOK_IN",
+          "oven_context": "Ovenable bag/flow-wrap; oven type not specified",
+          "fill_context": "Whole joints of meat, poultry or whole fish; vacuum capable",
+          "exact_grade_or_sku": "Siralon 21",
+          "status": "PASS",
+          "source_ids": [
+            "HT2-S009"
+          ]
+        }
+      ],
+      "six_hour_hold": {
+        "status": "NOT_VERIFIED",
+        "temperature_c": null,
+        "duration_h": null,
+        "source_ids": []
+      },
+      "fcm_and_barrier": {
+        "system_status": "PARTIAL_EVIDENCE",
+        "eu_doc_status": "NOT_VERIFIED",
+        "grease_barrier_status": "NOT_VERIFIED",
+        "leak_status": "PARTIAL_EVIDENCE",
+        "claim_boundary": "Manufacturer claims robust seals, good gas barrier, vacuum suitability and hot-fat absorption; exact EU DoC/migration and filled-pack leak protocols were not public.",
+        "source_ids": [
+          "HT2-S009"
+        ]
+      },
+      "bom_and_mass": {
+        "bom_status": "PARTIAL_EVIDENCE",
+        "total_package_mass_g": null,
+        "plastic_mass_g": null,
+        "virgin_plastic_mass_g": null,
+        "renewable_fraction": null,
+        "recycled_fraction": null,
+        "note": "Nylon family is identified; complete construction, additives, gauge, bag dimensions and mass are unknown."
+      },
+      "procurement": {
+        "status": "QUOTE_REQUIRED_ROMANIA",
+        "country_basis": "Current manufacturer page offers sample and technical-team requests, but no Romanian listing, distributor or delivery confirmation was found.",
+        "romanian_supplier": null,
+        "romanian_listing_url": null,
+        "source_ids": [
+          "HT2-S009"
+        ]
+      },
+      "commercial": {
+        "price_status": "QUOTE_REQUIRED",
+        "public_prices": [],
+        "moq": null,
+        "order_unit": null
+      },
+      "end_of_life_romania": {
+        "designed_for_recycling": "UNKNOWN",
+        "certified_recyclable": "UNKNOWN",
+        "collected": "UNKNOWN",
+        "sorted": "UNKNOWN",
+        "reprocessed": "UNKNOWN",
+        "compost_route": "UNKNOWN",
+        "source_ids": [
+          "HT2-S030",
+          "HT2-S031"
+        ]
+      },
+      "environmental": {
+        "lca_or_epd_status": "NOT_VERIFIED",
+        "co2e_kg_per_functional_unit": null
+      },
+      "ui_display": {
+        "candidate_name": "DISPLAY_VERIFIED",
+        "material": "DISPLAY_WITH_QUALIFIER",
+        "thermal": "DISPLAY_WITH_QUALIFIER",
+        "availability": "DO_NOT_DISPLAY_AS_FACT",
+        "price": "DO_NOT_DISPLAY_AS_FACT",
+        "safe_text": "Siralon 21 is a named clear nylon cook-in grade rated up to 210 C; duration, exact format and Romanian supply require supplier confirmation."
+      },
+      "gaps": [
+        "Exact stock/custom article, size, gauge, closure and mass",
+        "Time-at-210 C, oven type, fill and venting instructions",
+        "Six-hour hot-hold evidence",
+        "Current EU DoC, migration and NIAS dossier",
+        "Romanian quote, MOQ, lead time and samples",
+        "Practical Romanian collection/sorting/reprocessing route"
+      ],
+      "source_ids": [
+        "HT2-S009"
+      ]
+    },
+    {
+      "candidate_id": "C3",
+      "record_class": "CANDIDATE",
+      "required_track": "Exact EU/UK CRYOVAC Oven Ease without US-grade mixing",
+      "candidate_name": "CRYOVAC Oven Ease EMEA/UK platform",
+      "overall_evidence_status": "PARTIAL_EVIDENCE",
+      "decision": "STOP_CURRENT_GRADE_IDENTITY_UNKNOWN",
+      "identity": {
+        "brand": "CRYOVAC",
+        "product_name": "Oven Ease",
+        "commercial_sku": null,
+        "configuration": "EMEA/UK barrier vacuum shrink bags and thermoforming packaging",
+        "complete_system_identity_status": "CURRENT_PLATFORM_EXACT_GRADE_UNKNOWN",
+        "historical_grade_lead": "HC2440",
+        "historical_grade_use": "DISCOVERY_ONLY_NOT_CURRENT_QUALIFICATION",
+        "us_grade_data_use": "EXCLUDED",
+        "statement": "The current UK/EMEA platform is public, but no current exact grade/SKU was exposed. Historical European HC2440 and US numeric grade data are not treated as the current EU product."
+      },
+      "application_modes": [
+        {
+          "mode": "POST_COOK",
+          "status": "PARTIAL_EVIDENCE",
+          "boundary": "Retail/food-service applicability is claimed, but hot-fill and six-hour post-cook display are not separately qualified.",
+          "source_ids": [
+            "HT2-S010"
+          ]
+        },
+        {
+          "mode": "HOT_HOLD",
+          "status": "NOT_VERIFIED",
+          "boundary": "No current EMEA/UK exact-grade six-hour condition."
+        },
+        {
+          "mode": "COOK_IN",
+          "status": "PARTIAL_EVIDENCE",
+          "boundary": "Current EMEA/UK platform claims cook/reheat in-pack up to 220 C, but exact current grade and duration are not public.",
+          "source_ids": [
+            "HT2-S010"
+          ]
+        },
+        {
+          "mode": "OVEN_BODY_ONLY",
+          "status": "UNKNOWN",
+          "boundary": "Flexible bag/thermoforming platform; no selected separate body."
+        },
+        {
+          "mode": "POST_OVEN_LID",
+          "status": "UNKNOWN",
+          "boundary": "No selected post-oven lid configuration."
+        }
+      ],
+      "components": [
+        {
+          "component": "barrier vacuum shrink bag or rollstock",
+          "article_id": null,
+          "material": "exact EMEA/UK multilayer construction not public",
+          "unit_mass_g": null,
+          "source_ids": [
+            "HT2-S010"
+          ]
+        }
+      ],
+      "product_fit": {
+        "whole_chicken": "PARTIAL_EVIDENCE",
+        "wings_thighs": "PARTIAL_EVIDENCE",
+        "potatoes_vegetables": "PARTIAL_EVIDENCE",
+        "prepared_meat": "PARTIAL_EVIDENCE"
+      },
+      "thermal_claims": [
+        {
+          "component": "current EMEA/UK Oven Ease platform",
+          "temperature_c": 220,
+          "duration_min": null,
+          "mode": "COOK_IN",
+          "oven_context": "Hot air, steam, water, convection or microwave cooking",
+          "fill_context": "Fish, meat cuts, poultry, bacon, sandwiches, bread/rolls and vegetables",
+          "exact_grade_or_sku": null,
+          "status": "PARTIAL_EVIDENCE",
+          "source_ids": [
+            "HT2-S010"
+          ]
+        }
+      ],
+      "excluded_thermal_claims": [
+        {
+          "region": "US",
+          "temperature_c": 204,
+          "duration_h": 4,
+          "reason": "US product data must not be transferred to an unidentified EMEA/UK grade."
+        }
+      ],
+      "six_hour_hold": {
+        "status": "NOT_VERIFIED",
+        "temperature_c": null,
+        "duration_h": null,
+        "source_ids": []
+      },
+      "fcm_and_barrier": {
+        "system_status": "PARTIAL_EVIDENCE",
+        "eu_doc_status": "NOT_VERIFIED",
+        "grease_barrier_status": "NOT_VERIFIED",
+        "leak_status": "PARTIAL_EVIDENCE",
+        "claim_boundary": "Current EMEA/UK platform claims hermetic, leak-resistant and oxygen-barrier performance. Exact-grade EU DoC, migration and seal validation are not public.",
+        "source_ids": [
+          "HT2-S010"
+        ]
+      },
+      "bom_and_mass": {
+        "bom_status": "UNKNOWN",
+        "total_package_mass_g": null,
+        "plastic_mass_g": null,
+        "virgin_plastic_mass_g": null,
+        "renewable_fraction": null,
+        "recycled_fraction": null
+      },
+      "procurement": {
+        "status": "ROMANIA_AVAILABILITY_UNVERIFIED",
+        "country_basis": "A UK/EMEA product page is not evidence of an exact Romanian supply route, and no current exact grade/SKU was identified.",
+        "romanian_supplier": null,
+        "romanian_listing_url": null,
+        "source_ids": [
+          "HT2-S010",
+          "HT2-S011"
+        ]
+      },
+      "commercial": {
+        "price_status": "QUOTE_REQUIRED",
+        "public_prices": [],
+        "moq": null,
+        "order_unit": null
+      },
+      "end_of_life_romania": {
+        "designed_for_recycling": "UNKNOWN",
+        "certified_recyclable": "UNKNOWN",
+        "collected": "UNKNOWN",
+        "sorted": "UNKNOWN",
+        "reprocessed": "UNKNOWN",
+        "compost_route": "UNKNOWN",
+        "source_ids": [
+          "HT2-S030",
+          "HT2-S031"
+        ]
+      },
+      "environmental": {
+        "lca_or_epd_status": "NOT_VERIFIED",
+        "co2e_kg_per_functional_unit": null
+      },
+      "ui_display": {
+        "candidate_name": "DISPLAY_WITH_QUALIFIER",
+        "material": "DO_NOT_DISPLAY_AS_FACT",
+        "thermal": "DISPLAY_WITH_QUALIFIER",
+        "availability": "DO_NOT_DISPLAY_AS_FACT",
+        "price": "DO_NOT_DISPLAY_AS_FACT",
+        "safe_text": "Current EMEA/UK Oven Ease platform claims in-pack cooking to 220 C; exact current grade, duration and Romanian route are unresolved."
+      },
+      "gaps": [
+        "Current EMEA/UK grade and orderable SKU",
+        "Exact construction, gauge, format and unit mass",
+        "Current-grade time-at-temperature and six-hour hold",
+        "Current EU DoC/migration/NIAS documents",
+        "Romanian distributor/delivery confirmation, quote, MOQ and lead time",
+        "Romanian practical EOL route"
+      ],
+      "source_ids": [
+        "HT2-S010",
+        "HT2-S011"
+      ]
+    },
+    {
+      "candidate_id": "C4",
+      "record_class": "CANDIDATE",
+      "required_track": "Faerch Evolve C 2227-2AB / 2227022094 plus exact transparent closure",
+      "candidate_name": "Faerch C 2227-2AB Evolve CPET plus K 5227-4 APET lid",
+      "overall_evidence_status": "PARTIAL_EVIDENCE",
+      "decision": "NOT_CURRENTLY_ORDERABLE_AS_SPECIFIED",
+      "identity": {
+        "brand": "Faerch",
+        "product_name": "C 2227-2AB Evolve CPET",
+        "commercial_sku": "2227022094",
+        "configuration": "Two-compartment Evolve CPET tray plus transparent K 5227-4 APET lid 5227005011",
+        "complete_system_identity_status": "EXACT_COMPONENTS_IDENTIFIED_BODY_INACTIVE",
+        "statement": "Exact body and compatible clear lid identities are established, but the exact body article is marked Inactive by Faerch. No silent replacement is made."
+      },
+      "application_modes": [
+        {
+          "mode": "POST_COOK",
+          "status": "PARTIAL_EVIDENCE",
+          "boundary": "Tray geometry and ready-meal use are relevant; exact hot-fill/hold system testing is not public.",
+          "source_ids": [
+            "HT2-S012",
+            "HT2-S013"
+          ]
+        },
+        {
+          "mode": "HOT_HOLD",
+          "status": "NOT_VERIFIED",
+          "boundary": "No six-hour body-plus-lid condition."
+        },
+        {
+          "mode": "COOK_IN",
+          "status": "PARTIAL_EVIDENCE",
+          "boundary": "Body has an oven temperature range; the selected APET lid is not qualified for the body oven step.",
+          "source_ids": [
+            "HT2-S012"
+          ]
+        },
+        {
+          "mode": "OVEN_BODY_ONLY",
+          "status": "PASS",
+          "boundary": "Exact body article temperature range is -40 C to 220 C; duration and filled-pack oven context remain unverified.",
+          "source_ids": [
+            "HT2-S012"
+          ]
+        },
+        {
+          "mode": "POST_OVEN_LID",
+          "status": "PARTIAL_EVIDENCE",
+          "boundary": "Exact compatible transparent APET lid is commercially listed, but post-oven application temperature, seal/leak performance and unit mass are not public.",
+          "source_ids": [
+            "HT2-S013"
+          ]
+        }
+      ],
+      "components": [
+        {
+          "component": "body",
+          "article_id": "2227022094",
+          "product_name": "C 2227-2AB Evolve CPET",
+          "material": "Evolve CPET",
+          "unit_mass_g": 51.56,
+          "mass_status": "DISPLAY_VERIFIED",
+          "commercial_status": "INACTIVE",
+          "capacity_ml": 1005,
+          "dimensions_mm": {
+            "length": 227,
+            "width": 178,
+            "height": 43
+          },
+          "recycled_content_fraction_range": {
+            "min": 0.69,
+            "max": 0.75,
+            "scope": "exact body article only"
+          },
+          "source_ids": [
+            "HT2-S012"
+          ]
+        },
+        {
+          "component": "transparent lid",
+          "article_id": "5227005011",
+          "product_name": "K 5227-4",
+          "material": "APET",
+          "unit_mass_g": null,
+          "mass_status": "UNKNOWN",
+          "commercial_status": "EU_RETAILER_LISTED",
+          "case_count": 372,
+          "dimensions_mm": {
+            "length": 232,
+            "width": 183,
+            "height": 16
+          },
+          "source_ids": [
+            "HT2-S013"
+          ]
+        }
+      ],
+      "product_fit": {
+        "whole_chicken": "FAIL",
+        "wings_thighs": "PARTIAL_EVIDENCE",
+        "potatoes_vegetables": "PARTIAL_EVIDENCE",
+        "prepared_meat": "PARTIAL_EVIDENCE"
+      },
+      "thermal_claims": [
+        {
+          "component": "body 2227022094",
+          "temperature_min_c": -40,
+          "temperature_c": 220,
+          "duration_min": null,
+          "mode": "OVEN_BODY_ONLY",
+          "oven_context": "Exact article operating range; duration/oven type not published",
+          "fill_context": "Ready-meal tray; exact food fill not published",
+          "exact_grade_or_sku": "2227022094",
+          "status": "PASS",
+          "source_ids": [
+            "HT2-S012"
+          ]
+        },
+        {
+          "component": "lid 5227005011",
+          "temperature_c": null,
+          "duration_min": null,
+          "mode": "POST_OVEN_LID",
+          "oven_context": "No oven use claimed",
+          "fill_context": null,
+          "exact_grade_or_sku": "5227005011",
+          "status": "NOT_VERIFIED",
+          "source_ids": [
+            "HT2-S013"
+          ]
+        }
+      ],
+      "six_hour_hold": {
+        "status": "NOT_VERIFIED",
+        "temperature_c": null,
+        "duration_h": null,
+        "source_ids": []
+      },
+      "fcm_and_barrier": {
+        "system_status": "PARTIAL_EVIDENCE",
+        "eu_doc_status": "PARTIAL_EVIDENCE",
+        "grease_barrier_status": "NOT_VERIFIED",
+        "leak_status": "NOT_VERIFIED",
+        "claim_boundary": "A retailer links lid food-safety/product sheets, but no complete exact tray-plus-lid application dossier or six-hour leak/barrier test was verified.",
+        "source_ids": [
+          "HT2-S012",
+          "HT2-S013"
+        ]
+      },
+      "bom_and_mass": {
+        "bom_status": "INCOMPLETE_CLOSURE_MASS",
+        "total_package_mass_g": null,
+        "plastic_mass_g": null,
+        "known_component_mass_g": 51.56,
+        "known_component_mass_scope": "body only; must not be presented as complete plastic or package mass",
+        "virgin_plastic_mass_g": null,
+        "renewable_fraction": null,
+        "recycled_fraction": null,
+        "body_recycled_fraction_range": {
+          "min": 0.69,
+          "max": 0.75,
+          "scope": "exact body article only; not complete package"
+        }
+      },
+      "procurement": {
+        "status": "NOT_AVAILABLE_ROMANIA",
+        "country_basis": "The exact body article is marked Inactive. The exact lid is listed by a Danish retailer, but that does not restore the complete specified system or prove Romania delivery.",
+        "romanian_supplier": null,
+        "romanian_listing_url": null,
+        "source_ids": [
+          "HT2-S012",
+          "HT2-S013"
+        ]
+      },
+      "commercial": {
+        "price_status": "REFERENCE_PRICE_ONLY",
+        "public_prices": [
+          {
+            "component": "lid 5227005011",
+            "amount": 655,
+            "currency": "DKK",
+            "basis": "372 lids, ex VAT, Danish retailer",
+            "unit_price": 1.7607526882,
+            "unit_price_calculation": "655 / 372",
+            "romania_basis": false,
+            "exact_component": true,
+            "source_ids": [
+              "HT2-S013"
+            ]
+          }
+        ],
+        "moq": null,
+        "order_unit": {
+          "component": "lid 5227005011",
+          "quantity": 372,
+          "unit": "lids",
+          "meaning": "retail carton/order unit, not negotiated industrial MOQ"
+        }
+      },
+      "end_of_life_romania": {
+        "designed_for_recycling": "BODY_MANUFACTURER_CLAIM_LID_SYSTEM_NOT_ASSESSED",
+        "certified_recyclable": "UNKNOWN",
+        "collected": "UNKNOWN",
+        "sorted": "UNKNOWN",
+        "reprocessed": "UNKNOWN",
+        "compost_route": "UNKNOWN",
+        "source_ids": [
+          "HT2-S012",
+          "HT2-S030",
+          "HT2-S033",
+          "HT2-S034"
+        ]
+      },
+      "environmental": {
+        "lca_or_epd_status": "NOT_VERIFIED_FOR_EXACT_COMPLETE_SYSTEM",
+        "co2e_kg_per_functional_unit": null
+      },
+      "ui_display": {
+        "candidate_name": "DISPLAY_WITH_QUALIFIER",
+        "material": "DISPLAY_WITH_QUALIFIER",
+        "thermal": "DISPLAY_WITH_QUALIFIER",
+        "availability": "DISPLAY_WITH_QUALIFIER",
+        "price": "DISPLAY_WITH_QUALIFIER",
+        "safe_text": "Exact Evolve body 2227022094 is inactive; body-only mass/PCR/temperature and separate compatible-lid evidence must not be shown as a qualified current complete system."
+      },
+      "gaps": [
+        "Written discontinuation/replacement response from Faerch",
+        "Current orderable replacement may not be substituted without exact evidence",
+        "Lid unit mass and post-oven application limit",
+        "Complete system DoC/migration/seal/leak/hold dossier",
+        "Romanian route and complete-system quote",
+        "Practical Romanian CPET/APET tray collection, sorting and reprocessing"
+      ],
+      "source_ids": [
+        "HT2-S012",
+        "HT2-S013"
+      ]
+    },
+    {
+      "candidate_id": "C5",
+      "record_class": "CANDIDATE",
+      "required_track": "BIOPAP LC plus compatible clear film",
+      "candidate_name": "BIOPAP Easy Catering SI-14 plus compostable clear sealing film",
+      "overall_evidence_status": "PARTIAL_EVIDENCE",
+      "decision": "RETAIN_FOR_RFQ_HOT_HOLD_TRACK",
+      "identity": {
+        "brand": "BIOPAP",
+        "product_name": "Easy Catering SI-14",
+        "commercial_sku": "SI-14",
+        "configuration": "1240 ml BIOPAP LC-technology tray plus manufacturer-compatible transparent compostable sealing film",
+        "complete_system_identity_status": "EXACT_BODY_FILM_SKU_UNKNOWN",
+        "statement": "SI-14 body identity is exact. BIOPAP supports a compatible transparent compostable film as a system component, but no exact film SKU, gauge, reel specification or mass was public."
+      },
+      "application_modes": [
+        {
+          "mode": "POST_COOK",
+          "status": "PASS",
+          "boundary": "Exact SI-14 is sold for catering/ready meals and top sealing; filled-pack sponsor validation remains required.",
+          "source_ids": [
+            "HT2-S014",
+            "HT2-S015",
+            "HT2-S016"
+          ]
+        },
+        {
+          "mode": "HOT_HOLD",
+          "status": "PARTIAL_EVIDENCE",
+          "boundary": "BIOPAP LC family/system states 6 h at 90 C or 5 h at 100 C. Public evidence does not explicitly bind SI-14 plus a named film SKU to that claim.",
+          "source_ids": [
+            "HT2-S017"
+          ]
+        },
+        {
+          "mode": "COOK_IN",
+          "status": "PARTIAL_EVIDENCE",
+          "boundary": "BIOPAP LC family states conventional oven to 185 C for 60 min. Exact SI-14 plus unnamed clear film is not separately qualified as a closed cook-in pack.",
+          "source_ids": [
+            "HT2-S016"
+          ]
+        },
+        {
+          "mode": "OVEN_BODY_ONLY",
+          "status": "PARTIAL_EVIDENCE",
+          "boundary": "LC family thermal evidence is relevant; exact SI-14 technical sheet is still required.",
+          "source_ids": [
+            "HT2-S016"
+          ]
+        },
+        {
+          "mode": "POST_OVEN_LID",
+          "status": "PARTIAL_EVIDENCE",
+          "boundary": "Transparent compostable sealing film is a supported system component, but exact film identity and hot-application profile are absent.",
+          "source_ids": [
+            "HT2-S018"
+          ]
+        }
+      ],
+      "components": [
+        {
+          "component": "body",
+          "article_id": "SI-14",
+          "product_name": "BIOPAP Easy Catering SI-14",
+          "material": "cellulose-based BIOPAP LC-technology composite; exact full construction not public",
+          "unit_mass_g": null,
+          "capacity_ml": 1240,
+          "dimensions_mm": {
+            "length": 190,
+            "width": 247,
+            "height": 37
+          },
+          "case_count": 780,
+          "source_ids": [
+            "HT2-S014",
+            "HT2-S015",
+            "HT2-S016"
+          ]
+        },
+        {
+          "component": "transparent sealing film",
+          "article_id": null,
+          "product_name": "BIOPAP compostable transparent sealing film",
+          "material": "compostable film; exact polymer/grade not public",
+          "unit_mass_g": null,
+          "source_ids": [
+            "HT2-S018"
+          ]
+        }
+      ],
+      "product_fit": {
+        "whole_chicken": "NOT_VERIFIED",
+        "wings_thighs": "PARTIAL_EVIDENCE",
+        "potatoes_vegetables": "PARTIAL_EVIDENCE",
+        "prepared_meat": "PARTIAL_EVIDENCE"
+      },
+      "thermal_claims": [
+        {
+          "component": "BIOPAP LC tray family relevant to SI-14 technology",
+          "temperature_c": 185,
+          "duration_min": 60,
+          "mode": "OVEN_BODY_ONLY",
+          "oven_context": "Traditional oven for cooking or reheating",
+          "fill_context": "Catering food; exact SI-14 fill not specified",
+          "exact_grade_or_sku": null,
+          "status": "PARTIAL_EVIDENCE",
+          "source_ids": [
+            "HT2-S016"
+          ]
+        },
+        {
+          "component": "BIOPAP LC hot-meal system",
+          "temperature_c": 90,
+          "duration_min": 360,
+          "mode": "HOT_HOLD",
+          "oven_context": "Hot meal contact/storage",
+          "fill_context": "Hot meal delivery/collective catering",
+          "exact_grade_or_sku": null,
+          "status": "PARTIAL_EVIDENCE",
+          "source_ids": [
+            "HT2-S017"
+          ]
+        },
+        {
+          "component": "BIOPAP LC hot-meal system",
+          "temperature_c": 100,
+          "duration_min": 300,
+          "mode": "HOT_HOLD",
+          "oven_context": "Hot meal contact/storage",
+          "fill_context": "Hot meal delivery/collective catering",
+          "exact_grade_or_sku": null,
+          "status": "PARTIAL_EVIDENCE",
+          "source_ids": [
+            "HT2-S017"
+          ]
+        }
+      ],
+      "six_hour_hold": {
+        "status": "PARTIAL_EVIDENCE",
+        "temperature_c": 90,
+        "duration_h": 6,
+        "boundary": "Exact public claim is for BIOPAP LC trays/system; exact SI-14 plus named film SKU is not explicit.",
+        "source_ids": [
+          "HT2-S017"
+        ]
+      },
+      "fcm_and_barrier": {
+        "system_status": "PARTIAL_EVIDENCE",
+        "eu_doc_status": "PARTIAL_EVIDENCE",
+        "grease_barrier_status": "PARTIAL_EVIDENCE",
+        "leak_status": "PARTIAL_EVIDENCE",
+        "claim_boundary": "Manufacturer describes humidity/fat resistance, hermetic sealing and migration-supported hot-meal suitability for LC systems. Body DoC cannot qualify an unidentified film, ink, adhesive or exact seal configuration.",
+        "source_ids": [
+          "HT2-S016",
+          "HT2-S017",
+          "HT2-S018"
+        ]
+      },
+      "bom_and_mass": {
+        "bom_status": "INCOMPLETE_BODY_AND_FILM_MASS",
+        "total_package_mass_g": null,
+        "plastic_mass_g": null,
+        "virgin_plastic_mass_g": null,
+        "renewable_fraction": null,
+        "recycled_fraction": null,
+        "note": "Renewable/cellulose positioning is supported qualitatively; complete composition and mass fractions are not public."
+      },
+      "procurement": {
+        "status": "QUOTE_REQUIRED_ROMANIA",
+        "country_basis": "Exact SI-14 is orderable from an Estonian distributor and the film system is commercial, but no Romanian listing, territory or delivery confirmation was found for the complete configuration.",
+        "romanian_supplier": null,
+        "romanian_listing_url": null,
+        "source_ids": [
+          "HT2-S015",
+          "HT2-S018"
+        ]
+      },
+      "commercial": {
+        "price_status": "REFERENCE_PRICE_ONLY",
+        "public_prices": [
+          {
+            "component": "SI-14 body",
+            "amount": 251.79,
+            "currency": "EUR",
+            "basis": "780 trays per pack, including VAT, Estonian distributor",
+            "unit_price": 0.3228076923,
+            "unit_price_calculation": "251.79 / 780",
+            "romania_basis": false,
+            "exact_component": true,
+            "source_ids": [
+              "HT2-S015"
+            ]
+          }
+        ],
+        "moq": null,
+        "order_unit": {
+          "component": "SI-14 body",
+          "quantity": 780,
+          "unit": "trays",
+          "meaning": "public distributor pack/order unit, not negotiated industrial MOQ"
+        }
+      },
+      "end_of_life_romania": {
+        "designed_for_recycling": "MANUFACTURER_CLAIM_PAPER_RECYCLING_ROUTE_NOT_LOCALLY_VERIFIED",
+        "certified_recyclable": "UNKNOWN_FOR_COMPLETE_PRINTED_SYSTEM",
+        "collected": "UNKNOWN",
+        "sorted": "UNKNOWN",
+        "reprocessed": "UNKNOWN",
+        "compost_route": "CERTIFIED_COMPOSTABILITY_CLAIM_LOCAL_COLLECTION_AND_PROCESSING_UNKNOWN",
+        "source_ids": [
+          "HT2-S014",
+          "HT2-S016",
+          "HT2-S030",
+          "HT2-S036"
+        ]
+      },
+      "environmental": {
+        "lca_or_epd_status": "NOT_VERIFIED_FOR_EXACT_COMPLETE_SYSTEM",
+        "co2e_kg_per_functional_unit": null
+      },
+      "ui_display": {
+        "candidate_name": "DISPLAY_WITH_QUALIFIER",
+        "material": "DISPLAY_WITH_QUALIFIER",
+        "thermal": "DISPLAY_WITH_QUALIFIER",
+        "availability": "DO_NOT_DISPLAY_AS_FACT",
+        "price": "DISPLAY_WITH_QUALIFIER",
+        "safe_text": "SI-14 is an exact 1240 ml tray; 185 C/60 min and 6 h/90 C are LC-family/system claims, while the compatible clear-film SKU and Romanian route remain unresolved."
+      },
+      "gaps": [
+        "Exact transparent film SKU, composition, gauge, reel width/yield and unit area mass",
+        "Exact SI-14 unit mass and complete package BOM",
+        "Written confirmation binding SI-14 plus film to 185 C/60 min and 6 h/90 C conditions",
+        "Complete EU FCM dossier and seal/leak/anti-fog validation",
+        "Romanian distributor/delivery, quote, MOQ and lead time",
+        "Romanian paper or organics operator acceptance"
+      ],
+      "source_ids": [
+        "HT2-S014",
+        "HT2-S015",
+        "HT2-S016",
+        "HT2-S017",
+        "HT2-S018"
+      ]
+    },
+    {
+      "candidate_id": "C6",
+      "record_class": "CANDIDATE",
+      "required_track": "Exact orderable aluminium body plus post-oven transparent lid",
+      "candidate_name": "Plus Pack READY2COOK 1896 ml aluminium body plus H26 clear DPET lid",
+      "overall_evidence_status": "PARTIAL_EVIDENCE",
+      "decision": "RETAIN_FOR_RFQ_OVEN_BODY_POST_OVEN_LID_TRACK",
+      "identity": {
+        "brand": "Plus Pack READY2COOK",
+        "product_name": "RECT.1896ML.HANDLES plus LID DPET AF RECT. H26MM CL.BAG",
+        "commercial_sku": "0192110201 + 5023100000",
+        "configuration": "1896 ml aluminium body used in oven/grill, followed by post-oven application of a 300 x 200 x 26 mm clear DPET lid",
+        "complete_system_identity_status": "EXACT_COMPONENTS_IDENTIFIED_ROMANIA_ROUTE_UNKNOWN",
+        "alternate_lid": {
+          "article_id": "5023000000",
+          "description": "H46 clear DPET lid",
+          "status": "NON_STOCK_NOT_SELECTED"
+        },
+        "statement": "Exact body and selected compatible H26 lid identities are established. The lid is not claimed oven-safe; this is explicitly an OVEN_BODY_ONLY plus POST_OVEN_LID sequence."
+      },
+      "application_modes": [
+        {
+          "mode": "POST_COOK",
+          "status": "PASS",
+          "boundary": "Architecture supports packing or presentation after cooking, subject to filled-pack and closure validation.",
+          "source_ids": [
+            "HT2-S019",
+            "HT2-S020"
+          ]
+        },
+        {
+          "mode": "HOT_HOLD",
+          "status": "NOT_VERIFIED",
+          "boundary": "No exact body-plus-H26-lid six-hour condition."
+        },
+        {
+          "mode": "COOK_IN",
+          "status": "FAIL",
+          "boundary": "The selected transparent DPET lid is not qualified for oven cooking; do not present the closed configuration as cook-in."
+        },
+        {
+          "mode": "OVEN_BODY_ONLY",
+          "status": "PASS",
+          "boundary": "Exact aluminium body TDS supports oven/grill and -40 C to 350 C; no public exposure duration is given.",
+          "source_ids": [
+            "HT2-S019"
+          ]
+        },
+        {
+          "mode": "POST_OVEN_LID",
+          "status": "PARTIAL_EVIDENCE",
+          "boundary": "Exact H26 clear DPET lid is listed as compatible. Maximum application/product temperature, snap/seal integrity and unit mass are not public.",
+          "source_ids": [
+            "HT2-S019",
+            "HT2-S020"
+          ]
+        }
+      ],
+      "components": [
+        {
+          "component": "body",
+          "article_id": "0192110201",
+          "product_name": "RECT.1896ML.HANDLES",
+          "material": "aluminium",
+          "unit_mass_g": 31,
+          "mass_tolerance_fraction": 0.1,
+          "capacity_ml": 1896,
+          "dimensions_mm": {
+            "length": 293,
+            "width": 193,
+            "height": 45
+          },
+          "case_count": 400,
+          "recycled_content_fraction": 0.38,
+          "recycled_content_scope": "Calculated average secondary-production aluminium share based on supplier data for the preceding two calendar years; not stated as PCR and not a complete-package fraction.",
+          "food_restriction": "Avoid direct contact with strongly acidic or salty food.",
+          "source_ids": [
+            "HT2-S019"
+          ]
+        },
+        {
+          "component": "selected transparent lid",
+          "article_id": "5023100000",
+          "product_name": "LID DPET AF RECT. H26MM CL.BAG",
+          "material": "clear DPET",
+          "unit_mass_g": null,
+          "carton_gross_weight_kg": 6.984,
+          "carton_gross_weight_use": "LOGISTICS_ONLY_NOT_UNIT_MASS",
+          "case_count": 200,
+          "dimensions_mm": {
+            "length": 300,
+            "width": 200,
+            "height": 26
+          },
+          "source_ids": [
+            "HT2-S020"
+          ]
+        }
+      ],
+      "product_fit": {
+        "whole_chicken": "NOT_VERIFIED",
+        "wings_thighs": "PARTIAL_EVIDENCE",
+        "potatoes_vegetables": "PARTIAL_EVIDENCE",
+        "prepared_meat": "PARTIAL_EVIDENCE"
+      },
+      "thermal_claims": [
+        {
+          "component": "body 0192110201",
+          "temperature_min_c": -40,
+          "temperature_c": 350,
+          "duration_min": null,
+          "mode": "OVEN_BODY_ONLY",
+          "oven_context": "Freezer, microwave, oven and grill",
+          "fill_context": "Avoid strongly acidic or salty food; exact sponsor recipe not qualified",
+          "exact_grade_or_sku": "0192110201",
+          "status": "PASS",
+          "source_ids": [
+            "HT2-S019"
+          ]
+        },
+        {
+          "component": "lid 5023100000",
+          "temperature_c": null,
+          "duration_min": null,
+          "mode": "POST_OVEN_LID",
+          "oven_context": "No oven-use claim; apply after oven only",
+          "fill_context": "Maximum food/application temperature not public",
+          "exact_grade_or_sku": "5023100000",
+          "status": "NOT_VERIFIED",
+          "source_ids": [
+            "HT2-S020"
+          ]
+        }
+      ],
+      "six_hour_hold": {
+        "status": "NOT_VERIFIED",
+        "temperature_c": null,
+        "duration_h": null,
+        "source_ids": []
+      },
+      "fcm_and_barrier": {
+        "system_status": "PARTIAL_EVIDENCE",
+        "eu_doc_status": "PARTIAL_EVIDENCE",
+        "grease_barrier_status": "PARTIAL_EVIDENCE",
+        "leak_status": "NOT_VERIFIED",
+        "claim_boundary": "Body TDS includes material/use information and a food-chemistry restriction. Compatible-lid identity does not prove complete-system migration, hot application, leak, stacking or six-hour performance.",
+        "source_ids": [
+          "HT2-S019",
+          "HT2-S020"
+        ]
+      },
+      "bom_and_mass": {
+        "bom_status": "INCOMPLETE_LID_MASS",
+        "total_package_mass_g": null,
+        "plastic_mass_g": null,
+        "known_component_mass_g": 31,
+        "known_component_mass_scope": "aluminium body only; not package mass and not plastic mass",
+        "virgin_plastic_mass_g": null,
+        "renewable_fraction": null,
+        "recycled_fraction": null,
+        "body_recycled_content_fraction": 0.38,
+        "body_recycled_content_scope": "average secondary aluminium content; complete-package fraction unknown"
+      },
+      "procurement": {
+        "status": "QUOTE_REQUIRED_ROMANIA",
+        "country_basis": "Exact current body and compatible H26 lid have manufacturer/distributor records in the EU, but no explicit Romanian listing, territory or delivery confirmation was found.",
+        "romanian_supplier": null,
+        "romanian_listing_url": null,
+        "source_ids": [
+          "HT2-S019",
+          "HT2-S020",
+          "HT2-S023"
+        ]
+      },
+      "commercial": {
+        "price_status": "REFERENCE_PRICE_ONLY",
+        "public_prices": [
+          {
+            "component": "body 0192110201",
+            "amount": 595.25,
+            "currency": "DKK",
+            "basis": "100 bodies, Danish distributor",
+            "unit_price": 5.9525,
+            "unit_price_calculation": "595.25 / 100",
+            "romania_basis": false,
+            "exact_component": true,
+            "source_ids": [
+              "HT2-S023"
+            ]
+          }
+        ],
+        "moq": null,
+        "order_unit": {
+          "body_manufacturer_carton": 400,
+          "lid_manufacturer_carton": 200,
+          "distributor_body_pack": 100,
+          "meaning": "published logistics/order units, not negotiated industrial MOQ"
+        },
+        "excluded_price_leads": [
+          {
+            "component": "300 x 200 x 26 mm transparent PET lid",
+            "amount": 353.76,
+            "currency": "DKK",
+            "basis": "100 lids, Danish distributor",
+            "reason_excluded": "Distributor OEM is 5024100200, not selected H26 article 5023100000; geometry alone is insufficient.",
+            "source_ids": [
+              "HT2-S037"
+            ]
+          }
+        ]
+      },
+      "end_of_life_romania": {
+        "designed_for_recycling": "BODY_MONO_MATERIAL_CLAIM_LID_SEPARATION_REQUIRED_SYSTEM_NOT_ASSESSED",
+        "certified_recyclable": "UNKNOWN",
+        "collected": "UNKNOWN",
+        "sorted": "UNKNOWN",
+        "reprocessed": "UNKNOWN",
+        "compost_route": "UNKNOWN",
+        "source_ids": [
+          "HT2-S019",
+          "HT2-S030",
+          "HT2-S031"
+        ]
+      },
+      "environmental": {
+        "lca_or_epd_status": "NOT_VERIFIED_FOR_EXACT_COMPLETE_SYSTEM",
+        "co2e_kg_per_functional_unit": null
+      },
+      "ui_display": {
+        "candidate_name": "DISPLAY_VERIFIED",
+        "material": "DISPLAY_WITH_QUALIFIER",
+        "thermal": "DISPLAY_WITH_QUALIFIER",
+        "availability": "DO_NOT_DISPLAY_AS_FACT",
+        "price": "DISPLAY_WITH_QUALIFIER",
+        "safe_text": "Exact aluminium body is oven/grill rated to 350 C; exact clear DPET lid is post-oven only. Lid unit mass, six-hour hold and Romanian supply are unverified."
+      },
+      "gaps": [
+        "Written Plus Pack confirmation of Romania delivery and current orderability",
+        "H26 lid net unit mass and maximum food/application temperature",
+        "Complete body-plus-lid DoC/migration and closure/leak/stack validation",
+        "Six-hour hot-hold evidence",
+        "Whole-chicken dimensional fit; 45 mm body plus 26 mm lid may be too shallow and must be trialled",
+        "Romanian quote, industrial MOQ, lead time and freight",
+        "Romanian collection/sorting/reprocessing acceptance for greasy aluminium body and separated DPET lid"
+      ],
+      "source_ids": [
+        "HT2-S019",
+        "HT2-S020",
+        "HT2-S021",
+        "HT2-S022",
+        "HT2-S023",
+        "HT2-S037"
+      ]
+    }
+  ],
+  "near_misses": [
+    {
+      "near_miss_id": "B2-NM-01",
+      "name": "Barleta PUNGA 18*7*35 ROTISERIE MEDIE",
+      "article_id": "128002",
+      "romania_status": "ROMANIA_LOCAL_STOCK",
+      "observed_price": {
+        "amount": 377.52,
+        "currency": "RON",
+        "basis": "1000 bags, VAT included"
+      },
+      "reason_excluded": "Paper KAPP 40+20 laminated with polypropylene; not the required all-plastic virgin-plastic market-reference bag.",
+      "source_ids": [
+        "HT2-S003"
+      ]
+    },
+    {
+      "near_miss_id": "B2-NM-02",
+      "name": "Punga Rotiserie & Pui Grill 18 x 7 x 35 cm",
+      "article_id": null,
+      "romania_status": "ROMANIA_LOCAL_STOCK",
+      "observed_price": {
+        "amount": 0.54,
+        "currency": "RON",
+        "basis": "per bag, VAT included"
+      },
+      "reason_excluded": "Romanian paper rotisserie bag; not the required all-plastic virgin-plastic bag.",
+      "source_ids": [
+        "HT2-S004"
+      ]
+    },
+    {
+      "near_miss_id": "B2-NM-03",
+      "name": "Inno-Pak Rotisserie Bag",
+      "article_id": "267301952",
+      "romania_status": "ROMANIA_AVAILABILITY_UNVERIFIED",
+      "reason_excluded": "Exact stock anti-fog PET/CPP bag, but only a US route was found and no Romania/EU-to-Romania evidence was verified.",
+      "source_ids": [
+        "HT2-S005"
+      ]
+    },
+    {
+      "near_miss_id": "B2-NM-04",
+      "name": "Inno-Pak Large Rotisserie Bag",
+      "article_id": "265895105",
+      "romania_status": "ROMANIA_AVAILABILITY_UNVERIFIED",
+      "reason_excluded": "Exact stock anti-fog PET/CPP bag, but only a US route was found and no Romania/EU-to-Romania evidence was verified.",
+      "source_ids": [
+        "HT2-S005"
+      ]
+    },
+    {
+      "near_miss_id": "B2-NM-05",
+      "name": "EUROPACK Cutie Pui Rotisor C",
+      "article_id": "AV6",
+      "romania_status": "ROMANIA_LOCAL_STOCK",
+      "reason_excluded": "Romanian PP/OPS container set rather than the required B2 bag. Its +120 C ceiling also does not establish a six-hour hold.",
+      "source_ids": [
+        "HT2-S035"
+      ]
+    }
+  ],
+  "regulatory_context": {
+    "status": "CONTEXT_NOT_PRODUCT_APPROVAL",
+    "required_dossier": [
+      "Regulation EC 1935/2004 complete-system safety, traceability and labelling",
+      "Regulation EC 2023/2006 GMP",
+      "Regulation EU 10/2011 for every plastic component and intended-use migration conditions",
+      "Regulation EU 2022/1616 where recycled plastic is used for food contact",
+      "Regulation EU 2024/3190 bisphenol/BPA compliance",
+      "Regulation EU 2025/40 PPWR including applicable PFAS documentation",
+      "Current DoC/migration/NIAS evidence for body, lid/film/window, inks, adhesives, coatings, anti-fog and labels"
+    ],
+    "source_ids": [
+      "HT2-S024",
+      "HT2-S025",
+      "HT2-S026",
+      "HT2-S027",
+      "HT2-S028",
+      "HT2-S029"
+    ]
+  },
+  "source_index": [
+    {
+      "source_id": "HT2-S001",
+      "source_type": "PROVIDER_WEB_PAGE",
+      "title": "Profi chicken nutrition page",
+      "url": "https://www.profi.ro/practic/sfaturi/diverse/cate-calorii-are-carnea-de-pui-valori-nutritionale/",
+      "use": "Provider source reviewed for Profi chicken/rotisserie context; it does not identify actual packaging."
+    },
+    {
+      "source_id": "HT2-S002",
+      "source_type": "THIRD_PARTY_CONTEXT",
+      "title": "Romania discussion mentioning half rotisserie chicken at Profi",
+      "url": "https://www.reddit.com/r/Romania/comments/vp2303/atunci_c%C3%A2nd_descoperi_profi/",
+      "use": "Context that rotisserie chicken is sold; prohibited as evidence of actual packaging."
+    },
+    {
+      "source_id": "HT2-S003",
+      "source_type": "ROMANIAN_RETAILER",
+      "title": "Barleta rotisserie bag 18 x 7 x 35 cm",
+      "url": "https://magazin.barleta.ro/produs/punga-rotiserie-medie-18-x-7-x-35-cm-1000-buc/",
+      "use": "Romanian in-stock SKU 128002, price, count and paper-plus-PP composition; B2 near-miss only."
+    },
+    {
+      "source_id": "HT2-S004",
+      "source_type": "ROMANIAN_RETAILER",
+      "title": "Punga Rotiserie & Pui Grill 18 x 7 x 35 cm",
+      "url": "https://pungihartie.com/punga-mare-rotiserie-18-x-7-x-35-cm",
+      "use": "Romanian stock and price for a paper rotisserie bag; B2 near-miss only."
+    },
+    {
+      "source_id": "HT2-S005",
+      "source_type": "MANUFACTURER",
+      "title": "Inno-Pak Rotisserie Chicken Bags",
+      "url": "https://www.innopak.com/products/rotisserie-chicken-bags/",
+      "use": "Exact PET/CPP stock bag identities and case counts; no Romanian/EU route."
+    },
+    {
+      "source_id": "HT2-S006",
+      "source_type": "US_SUPPLIER",
+      "title": "Universal Plastic Rotisserie Chicken Bag",
+      "url": "https://www.universalplastic.com/products/rotisserie-chicken-bag",
+      "use": "Exact PET+CPP reference and US commercial context; no Romanian/EU route."
+    },
+    {
+      "source_id": "HT2-S007",
+      "source_type": "MANUFACTURER",
+      "title": "Sacma glued flat-bottom bags",
+      "url": "https://sacmaspa.it/en/glued-bags/",
+      "use": "Sacma format/customisation and RFQ context; does not expose exact Gaia SKU."
+    },
+    {
+      "source_id": "HT2-S008",
+      "source_type": "SUPPLIER_SUBMITTED_TRADE_PRESS",
+      "title": "Sacma B.Life Gaia compostable ovenable bag",
+      "url": "https://www.packworld.com/leaders-new/business-drivers-specialty/sustainability/product/22884843/sacma-spa-compostable-ovenable-bag-for-rotisserie",
+      "use": "Gaia construction, rotisserie application, leak/grease/high-temperature claims and certification claims; no numeric thermal profile."
+    },
+    {
+      "source_id": "HT2-S009",
+      "source_type": "MANUFACTURER",
+      "title": "Sira-Cook Siralon oven bags and films",
+      "url": "https://sirane.com/product/oven-bags-and-ovenable-films-nylon/",
+      "use": "Current Siralon 21 identity, nylon/clarity/barrier/vacuum claims, poultry uses and 210 C ceiling."
+    },
+    {
+      "source_id": "HT2-S010",
+      "source_type": "MANUFACTURER_EMEA_UK",
+      "title": "CRYOVAC Oven Ease Bags",
+      "url": "https://www.sealedair.com/uk/products/food-packaging/vacuum-shrink-bags/food-service-ovenable-shrink-bags",
+      "use": "Current EMEA/UK platform, up-to-220 C claim, oven contexts, applications and barrier/leak claims; no current exact grade."
+    },
+    {
+      "source_id": "HT2-S011",
+      "source_type": "HISTORICAL_TRADE_PRESS",
+      "title": "Sealed Air launches Oven Ease vacuum bag",
+      "url": "https://www.packagingnews.co.uk/news/markets/food/sealed-air-launches-oven-ease-vacuum-bag-28-06-2010",
+      "use": "Historical European grade HC2440 discovery only; not evidence of current availability."
+    },
+    {
+      "source_id": "HT2-S012",
+      "source_type": "MANUFACTURER_EXACT_ARTICLE",
+      "title": "Faerch C 2227-2AB Evolve CPET 2227022094",
+      "url": "https://www.faerch.com/da/produkt/c-2227-2ab-evolve-cpet/2227022094",
+      "use": "Exact body identity, inactive status, mass, capacity, dimensions, temperature and 69-75% exact-body PCR claim."
+    },
+    {
+      "source_id": "HT2-S013",
+      "source_type": "EU_DISTRIBUTOR_EXACT_ARTICLE",
+      "title": "Faerch K 5227-4 transparent APET lid 5227005011",
+      "url": "https://www.mml.dk/laag-til-plastbakker-2227-flat-372stk-kar-klar-a-pet",
+      "use": "Exact compatible lid identity, dimensions, case count, stock and Danish price; no unit mass or Romanian route."
+    },
+    {
+      "source_id": "HT2-S014",
+      "source_type": "CERTIFIER_DIRECTORY",
+      "title": "BPI BIOPAP product directory",
+      "url": "https://products.bpiworld.org/companies/biopap-srl",
+      "use": "Exact SI-14 component identity and certified component listing; BPI scope is not EU FCM or Romanian compost acceptance."
+    },
+    {
+      "source_id": "HT2-S015",
+      "source_type": "EU_DISTRIBUTOR_EXACT_ARTICLE",
+      "title": "BIOPAP Easy Catering SI-14, 780 per pack",
+      "url": "https://mixpack.ee/en/product/biopap-easy-catering-si-14-pakis-780-tk/",
+      "use": "Exact SI-14 capacity, pack count, dimensions and Estonian reference price."
+    },
+    {
+      "source_id": "HT2-S016",
+      "source_type": "MANUFACTURER",
+      "title": "BIOPAP product lines",
+      "url": "https://www.biopap.com/en/product-lines/",
+      "use": "LC family oven evidence to 185 C for 60 min and Easy Catering SI-14 family identity; family claim remains qualified."
+    },
+    {
+      "source_id": "HT2-S017",
+      "source_type": "MANUFACTURER",
+      "title": "BIOPAP sustainable collective-catering system",
+      "url": "https://www.biopap.com/en/product-lines/compostable-efficient-and-safe-packaging-solutions-for-sustainable-collective-catering/",
+      "use": "LC hot-meal system claim of 5 h at 100 C or 6 h at 90 C and co-developed sealing film context."
+    },
+    {
+      "source_id": "HT2-S018",
+      "source_type": "MANUFACTURER",
+      "title": "BIOPAP Easy System",
+      "url": "https://www.biopap.com/en/sealing-systems/biopap-trays-thermo-sealing-system-with-film-and-modular-mould/",
+      "use": "Transparent compostable sealing film and hermetic system compatibility; exact film SKU and mass absent."
+    },
+    {
+      "source_id": "HT2-S019",
+      "source_type": "MANUFACTURER_TDS_EXACT_ARTICLE",
+      "title": "Plus Pack RECT.1896ML.HANDLES 0192110201 technical data sheet",
+      "url": "https://assets.ccntr.pbsnetwork.eu/assets/5790002196140/ts_dk_1731903_00_iss_28062021.pdf",
+      "use": "Exact body identity, 31 g mass, dimensions/capacity, -40 to 350 C, average 38% secondary aluminium, carton data, food restriction and matching lid references."
+    },
+    {
+      "source_id": "HT2-S020",
+      "source_type": "MANUFACTURER_EXACT_ARTICLE",
+      "title": "Plus Pack H26 clear DPET lid 5023100000",
+      "url": "https://pluspack.com/product/lid-dpet-af-rect-h26mm-clbag-3/",
+      "use": "Exact selected lid identity, dimensions, material, compatibility, carton count and gross logistics weight; gross weight is not unit mass."
+    },
+    {
+      "source_id": "HT2-S021",
+      "source_type": "MANUFACTURER_EXACT_ARTICLE_ADVERSARIAL",
+      "title": "Plus Pack H46 clear DPET lid 5023000000",
+      "url": "https://pluspack.com/product/lid-dpet-af-rect-h46mm-clbag/",
+      "use": "Alternate exact compatible lid and explicit non-stock status; excluded from selected configuration."
+    },
+    {
+      "source_id": "HT2-S022",
+      "source_type": "MANUFACTURER_CORPORATE",
+      "title": "Plus Pack",
+      "url": "https://www.pluspack.com/",
+      "use": "General Europe supply context only; insufficient to prove Romanian delivery for exact articles."
+    },
+    {
+      "source_id": "HT2-S023",
+      "source_type": "EU_DISTRIBUTOR_EXACT_ARTICLE",
+      "title": "Antalis Denmark Plus Pack body 0192110201",
+      "url": "https://www.antalis.dk/eshop/fodevareemballage-og-bordaekning/bakker-fodevarer/foliebakker-ready2cook-pdp-hq16491/sku-687194",
+      "use": "Exact OEM 0192110201, Danish stock, 100-pack, 3.06 kg pack weight and 595.25 DKK reference price; no Romanian basis."
+    },
+    {
+      "source_id": "HT2-S024",
+      "source_type": "EU_REGULATION",
+      "title": "Regulation EC 1935/2004",
+      "url": "https://eur-lex.europa.eu/eli/reg/2004/1935/oj",
+      "use": "EU FCM framework; not product approval."
+    },
+    {
+      "source_id": "HT2-S025",
+      "source_type": "EU_REGULATION",
+      "title": "Regulation EC 2023/2006",
+      "url": "https://eur-lex.europa.eu/eli/reg/2006/2023/oj",
+      "use": "EU FCM GMP framework; not product approval."
+    },
+    {
+      "source_id": "HT2-S026",
+      "source_type": "EU_REGULATION",
+      "title": "Regulation EU 10/2011 consolidated",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A32011R0010",
+      "use": "Plastic FCM DoC and migration context; OM conditions are not package service-temperature evidence."
+    },
+    {
+      "source_id": "HT2-S027",
+      "source_type": "EU_REGULATION",
+      "title": "Regulation EU 2022/1616",
+      "url": "https://eur-lex.europa.eu/eli/reg/2022/1616/oj",
+      "use": "Recycled plastic FCM context; generic PCR is not exact-process compliance."
+    },
+    {
+      "source_id": "HT2-S028",
+      "source_type": "EU_REGULATION",
+      "title": "Regulation EU 2024/3190",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/3190/oj",
+      "use": "BPA/other bisphenol restrictions context."
+    },
+    {
+      "source_id": "HT2-S029",
+      "source_type": "EU_REGULATION",
+      "title": "Regulation EU 2025/40 PPWR",
+      "url": "https://eur-lex.europa.eu/eli/reg/2025/40/oj/eng",
+      "use": "Packaging and PFAS context; not product approval or local recyclability proof."
+    },
+    {
+      "source_id": "HT2-S030",
+      "source_type": "AUTHORITY_ROMANIA",
+      "title": "EEA Romania municipal and packaging waste profile 2025",
+      "url": "https://www.eea.europa.eu/en/topics/in-depth/waste-and-recycling/municipal-and-packaging-waste-management-country-profiles-2025/ro-municipal-waste-factsheet.pdf/@@download/file",
+      "use": "Romanian national system context; does not prove exact-pack acceptance."
+    },
+    {
+      "source_id": "HT2-S031",
+      "source_type": "EU_STATISTICS",
+      "title": "Eurostat packaging waste statistics",
+      "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Packaging_waste_statistics",
+      "use": "Romanian aggregate packaging recycling context; not material/format acceptance."
+    },
+    {
+      "source_id": "HT2-S032",
+      "source_type": "ROMANIAN_SCHEME_OPERATOR",
+      "title": "RetuRO consumer FAQ",
+      "url": "https://returosgr.ro/en/faqs-consumers",
+      "use": "Romanian DRS scope; hot-food trays, bags and lids are outside the evidenced beverage DRS."
+    },
+    {
+      "source_id": "HT2-S033",
+      "source_type": "INDUSTRY_ASSOCIATION",
+      "title": "Petcore Europe PET thermoforms conference",
+      "url": "https://www.petcore-europe.org/webinars-petcore-europe/657-thermoforms-conference-2025-pet-thermoforms-circularity-how-can-collection-and-sorting-of-pet-thermoforms-be-improved.html",
+      "use": "European PET thermoform collection/sorting improvement context; not Romanian acceptance."
+    },
+    {
+      "source_id": "HT2-S034",
+      "source_type": "RECYCLER_ROMANIA",
+      "title": "ALPLA Romania PET recycling plant",
+      "url": "https://www.alpla.com/en/newsroom/news/production-starts-new-pet-recycling-plant-romania",
+      "use": "Romanian food-grade rPET capacity context, described as bottle-focused; not greasy tray/lid acceptance."
+    },
+    {
+      "source_id": "HT2-S035",
+      "source_type": "ROMANIAN_RETAILER",
+      "title": "EUROPACK AV6 rotisserie chicken container",
+      "url": "https://ambalaje-alimente.ro/produs/cutie-av6/",
+      "use": "Romanian local PP/OPS container, price and +120 C ceiling; B2 near-miss because it is not a bag."
+    },
+    {
+      "source_id": "HT2-S036",
+      "source_type": "EU_AUTHORITY",
+      "title": "EU harmonised packaging standards page",
+      "url": "https://single-market-economy.ec.europa.eu/single-market/goods/european-standards/harmonised-standards/packaging-and-packaging-waste_en",
+      "use": "EN 13432 context; certification does not prove Romanian collection or composting acceptance."
+    },
+    {
+      "source_id": "HT2-S037",
+      "source_type": "EU_DISTRIBUTOR_EXACT_ARTICLE_ADVERSARIAL",
+      "title": "Antalis Denmark 300 x 200 x 26 mm PET lid OEM 5024100200",
+      "url": "https://www.antalis.dk/eshop/fodevareemballage-og-bordaekning/bakker-fodevarer/foliebakker-ready2cook-pdp-hq16491/sku-687107",
+      "use": "Shows that the visually/geometry-matched 353.76 DKK lid is OEM 5024100200, not selected article 5023100000; excluded as a selected-lid price."
+    }
+  ]
+}
