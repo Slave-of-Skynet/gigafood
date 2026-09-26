@@ -57,7 +57,7 @@ This protocol focuses on the three primary packaging candidates established in c
 Under no circumstances may digital tools, software calculations, or engineering protocols substitute for statutory regulatory approvals or physical validation:
 - **Software is:** Evidence scoping, operational decision support, and demonstration.
 - **Software is NOT:** Food-contact certification, legal compliance approval, Declaration of Compliance (DoC) verification, procurement authorization, or production release.
-- **Physical engineering tests do NOT independently prove:** Legal food-contact compliance, overall or specific chemical migration compliance under EU 10/2011, absence of Non-Intentionally Added Substances (NIAS), PFAS compliance, microbiological shelf-life safety, or organoleptic food safety.
+- **Physical engineering tests do NOT independently prove:** Legal food-contact compliance, overall or specific chemical migration compliance under EU 10/2011, NIAS risk assessment and toxicological safety, PFAS statutory compliance, microbiological shelf-life safety, or organoleptic food safety.
 - **Qualification Priority means:** Work order for physical and desk investigation. It does NOT mean overall winner, approved packaging, or procurement award.
 
 ### 1.4 Critical Epistemic Taxonomy
@@ -201,7 +201,7 @@ To systematically de-risk and qualify packaging candidates without conflating de
   - Exact manufacturer article code / SKU (not family name).
   - Complete Bill of Materials (BOM): body substrate, inner coating, barrier layer, viewing window/film, adhesives, and closures.
   - Published technical data sheets (TDS) detailing nominal dimensions, volume, mass, and operating temperature envelope.
-  - Supplier written confirmation of recycled content percentage, certified renewable content basis, and chemical barrier chemistry (PFAS-free).
+  - Supplier written confirmation of recycled content percentage, certified renewable content basis, and chemical barrier chemistry (compliance with applicable PFAS restrictions; proposed zero-PFAS barrier criterion: `PROPOSED QUALIFICATION / PROCUREMENT CRITERION — OWNER DECISION REQUIRED`).
 - **Exit Criteria:** Candidate cannot progress to Q1 if the physical system boundary is ambiguous or incomplete.
 
 #### Q1 — Physical Sample & Dimensional Audit
@@ -227,9 +227,9 @@ To systematically de-risk and qualify packaging candidates without conflating de
 - **Objective:** Establish formal regulatory compliance under European and Romanian food-contact legislation.
 - **Mandatory Requirements:**
   - Written Declaration of Compliance (DoC) referencing Regulation (EC) No 1935/2004, Regulation (EC) No 2023/2006 (GMP), and applicable material frameworks (Regulation (EU) No 10/2011 for plastics/coatings, BfR / national decrees for paper/board, and CoE resolutions for metals).
-  - Certified laboratory overall migration limit (OML < 10 mg/dm²; statutory limit under Regulation (EU) No 10/2011) test results.
+  - For plastic layers/components within the scope of Regulation (EU) No 10/2011, verify that overall migration does not exceed 10 mg/dm² (certified laboratory test results), together with applicable specific-migration requirements. For paper/board, aluminium, coatings, adhesives, and other material classes, apply the relevant material-specific food-contact regulatory framework and supplier/laboratory compliance dossier (paper, aluminium, and other non-plastic materials do not automatically inherit plastic-specific OML limits).
   - Certified specific migration limit (SML) testing under fatty food conditions using **Food Simulant D2 (vegetable oil)** or approved alternative fat simulant at exposure conditions matching intended high-temperature contact.
-  - Screening confirmation for Non-Intentionally Added Substances (NIAS) and certified absence of intentionally added PFAS/fluorinated chemical treatments.
+  - Compliance with applicable European and national PFAS restrictions and food-contact packaging concentration limits (`FACT / EXTERNAL_EVIDENCE_REQUIRED`), alongside NIAS risk assessment and supporting analytical / supplier dossier appropriate to the exact material, food-contact use, and applicable framework (`EXTERNAL_EVIDENCE_REQUIRED`). Verification of the absence of intentionally added PFAS / fluorinated chemical treatments is a `PROPOSED QUALIFICATION / PROCUREMENT CRITERION — OWNER DECISION REQUIRED` (or `ENGINEERING_RECOMMENDATION`), not a universal statutory requirement.
 - **Exit Criteria:** Formal review and sign-off by responsible QA/regulatory compliance stakeholders. Bench tests cannot substitute for Q3.
 
 #### Q4 — Retail Logistics & Operational Trial
@@ -407,10 +407,11 @@ Evaluate the NatureFlex window during Protocol C holding:
 ### 5.6 Protocol F: Food-Contact Regulatory Verification (Domain C)
 1. **Supplier Dossier Audit:** Require Sacma S.p.A. to supply a formal Declaration of Compliance (DoC) covering the exact bag SKU referencing Regulation (EC) No 1935/2004, Regulation (EC) No 2023/2006, and applicable material frameworks (Regulation (EU) No 10/2011 for plastics/coatings, BfR Recommendation XXXVI for paper/board, and relevant national decrees; `EXTERNAL_EVIDENCE_REQUIRED`).
 2. **Migration Testing Specifications:**
+   - For plastic layers/components within the scope of Regulation (EU) No 10/2011, verify that overall migration does not exceed 10 mg/dm², together with applicable specific-migration requirements. For paper/board, apply BfR Recommendation XXXVI and national food-contact decrees (paper substrate does not automatically inherit plastic-specific OML limits).
    - Specific and overall migration test certificates must specify **Food Simulant D2** (vegetable oil) or approved alternative fat simulant (e.g. 95% ethanol where permissible under EN/ISO food contact standards).
    - Testing exposure conditions (contact time and temperature) must be established in accordance with applicable statutory test matrices for high-temperature fatty food contact matching actual hot-holding conditions, verified by accredited testing laboratory dossiers.
    - Verify compliance with applicable Specific Migration Limits (SML) for authorized substances, plasticizers, slip agents, and printing ink components.
-3. **PFAS-Free Verification:** Require certified supplier declaration or accredited laboratory compliance dossier confirming the absence of intentionally added per- and polyfluoroalkyl substances (PFAS) and compliance with applicable European and national restrictions (e.g., Regulation (EC) No 1907/2006 REACH restrictions, national food contact safety thresholds, and certified absence of fluorinated chemical barrier treatments; `EXTERNAL_EVIDENCE_REQUIRED`).
+3. **PFAS & NIAS Regulatory Dossier:** Require certified supplier declaration or accredited laboratory compliance dossier confirming compliance with applicable European and national PFAS restrictions and food-contact packaging concentration limits (e.g., Regulation (EC) No 1907/2006 REACH restrictions and national food-contact limits; `EXTERNAL_EVIDENCE_REQUIRED`), alongside a NIAS risk assessment and supporting analytical/supplier dossier appropriate to the exact material, food-contact use, and applicable framework. Verification of the absence of intentionally added PFAS / fluorinated chemical barrier treatments is a `PROPOSED QUALIFICATION / PROCUREMENT CRITERION — OWNER DECISION REQUIRED` (`ENGINEERING_RECOMMENDATION`), not a universal statutory requirement.
 
 ---
 
@@ -626,17 +627,19 @@ Every physical protocol step must map back directly to the six canonical gates d
 │                   │ fatty-food migration dossiers for exact articles: UNKNOWN.                          │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
 │ Remaining Gap     │ Specific Declaration of Compliance (DoC); Overall/Specific Migration testing under  │
-│                   │ Simulant D2 at high heat; PFAS chemical barrier screening.                          │
+│                   │ Simulant D2 at high heat; applicable PFAS compliance and NIAS risk dossier.         │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
 │ Required Test     │ Protocol 5.6 (C1), 6.2 (C5), 7.2 (C6). Certified lab analytical testing.           │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
 │ Observable Result │ Written DoC referencing EC 1935/2004 and applicable material frameworks (EU 10/2011 │
-│                   │ for plastics/coatings, BfR / national decrees for paper/board); OML/SML limits      │
-│                   │ satisfied; supplier/lab certified absence of intentionally added PFAS and NIAS.     │
+│                   │ for plastics/coatings where overall migration does not exceed 10 mg/dm², BfR /      │
+│                   │ national decrees for paper/board); applicable PFAS compliance evidence plus NIAS    │
+│                   │ risk assessment and supporting analytical/supplier dossier.                         │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
 │ Verifying Party   │ Accredited Testing Laboratory + Retail QA/Compliance team (`PROPOSED PILOT DESIGN`).│
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
-│ Failure Condition │ Missing DoC; migration limit exceedance; presence of intentional PFAS; banned NIAS. │
+│ Failure Condition │ Missing DoC; applicable migration limit exceedance; regulatory PFAS restriction     │
+│                   │ violation or failure of proposed zero-PFAS criterion (if adopted); unassessed NIAS. │
 └───────────────────┴─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -1003,7 +1006,7 @@ To execute this qualification protocol in the physical world, the following phas
 ├──────────────┼───────────────────────────────────┼─────────────────────────────────────┤
 │ Phase 4      │ Laboratory Compliance Audit       │ Q3 Regulatory Dossier               │
 │ (Weeks 7–8)  │ • Collect certified supplier DoCs │ • Certified Simulant D2 test reports│
-│              │ • Independent lab migration audit │ • PFAS-free formal declaration      │
+│              │ • Independent lab migration audit │ • PFAS compliance & NIAS risk audit │
 ├──────────────┼───────────────────────────────────┼─────────────────────────────────────┤
 │ Phase 5      │ Operational Store Trial & Pilot   │ Q4–Q5 Commercial Store Pilot        │
 │ (Weeks 9–12) │ • Install tray sealer in test deli│ • Deli associate workflow audit     │
@@ -1053,7 +1056,7 @@ To execute this qualification protocol in the physical world, the following phas
       ┌────────────────────────────────────────────────────────────────────────────────────────┐
       │ • Secure formal Declarations of Compliance (DoC) under EU 10/2011 and EC 1935/2004.    │
       │ • Validate fatty food specific migration limits (Simulant D2) at high heat.            │
-      │ • Confirm zero intentionally added PFAS / fluorinated grease-proofing chemicals.       │
+      │ • Confirm statutory PFAS compliance & NIAS dossier (proposed zero-PFAS criterion).     │
       └────────────────────────────────────────────────────────────────────────────────────────┘
                                                   │
                                                   ▼
@@ -1074,6 +1077,7 @@ To execute this qualification protocol in the physical world, the following phas
 
 ====================================================================================================
   KEY COMPETITIVE ADVANTAGE: PackShift provides Profi with a scientifically defensible roadmap
-  grounded in real physics, avoiding greenwashing and ensuring total food-contact regulatory safety.
+  grounded in evidence and physical qualification, reducing greenwashing risk and defining
+  a clear path toward verified food-contact regulatory compliance.
 ====================================================================================================
 ```
