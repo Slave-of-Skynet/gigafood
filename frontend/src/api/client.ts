@@ -7,6 +7,10 @@ import type {
   PortfolioSummary,
   SelectionRequest,
   SelectionResponse,
+  RecommendationProductsResponse,
+  RecommendationCandidatesResponse,
+  RecommendationEvaluationRequest,
+  RecommendationEvaluationResponse,
 } from './contracts';
 
 async function request<T>(path: string, signal: AbortSignal, body?: unknown): Promise<T> {
@@ -33,4 +37,14 @@ export const api = {
   portfolio: (id: string, signal: AbortSignal) => request<SelectionResponse>(`portfolios/${encodeURIComponent(id)}`, signal),
   evaluatePortfolio: (id: string, body: SelectionRequest, signal: AbortSignal) =>
     request<SelectionResponse>(`portfolios/${encodeURIComponent(id)}/evaluate`, signal, body),
+  recommendationProducts: (signal: AbortSignal) =>
+    request<RecommendationProductsResponse>('recommendation/products', signal),
+  recommendationCandidates: (signal: AbortSignal) =>
+    request<RecommendationCandidatesResponse>('recommendation/candidates', signal),
+  evaluateRecommendation: (body: RecommendationEvaluationRequest, signal: AbortSignal) =>
+    request<RecommendationEvaluationResponse>('recommendation/evaluate', signal, body),
+  getRecommendationProducts: (signal: AbortSignal) =>
+    request<RecommendationProductsResponse>('recommendation/products', signal),
+  getRecommendationCandidates: (signal: AbortSignal) =>
+    request<RecommendationCandidatesResponse>('recommendation/candidates', signal),
 };

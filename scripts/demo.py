@@ -9,9 +9,10 @@ import subprocess
 import sys
 import tempfile
 import time
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
 from urllib.parse import quote
-from urllib.request import urlopen
+from urllib.request import Request, urlopen
+
 
 ROOT = Path(__file__).resolve().parents[1]
 API = "http://127.0.0.1:8000"
@@ -75,6 +76,52 @@ def validate_selection_presentation_identity(expected_portfolios, summaries, eva
     validate_selection_evaluation(evaluation, expected_portfolios[0])
 
 
+def validate_recommendation_runtime(api_url):
+    # 1. Products
+    products_resp = read_json(f"{api_url}/api/v1/recommendation/products")
+    require(len(products_resp.get("products", [])) == 4, f"Expected 4 products, got {len(products_resp.get('products', []))}")
+    require(len(products_resp.get("workflows", [])) == 2, f"Expected 2 workflows, got {len(products_resp.get('workflows', []))}")
+    require("source_revision_hash" in products_resp, "source_revision_hash missing in products response")
+
+    # 2. Candidates
+    candidates_resp = read_json(f"{api_url}/api/v1/recommendation/candidates")
+    require(len(candidates_resp.get("candidates", [])) == 6, f"Expected 6 candidates, got {len(candidates_resp.get('candidates', []))}")
+    require(len(candidates_resp.get("configurations", [])) == 4, f"Expected 4 configurations, got {len(candidates_resp.get('configurations', []))}")
+    require(len(candidates_resp.get("baselines", [])) == 3, f"Expected 3 baselines, got {len(candidates_resp.get('baselines', []))}")
+    candidates_json_str = json.dumps(candidates_resp)
+    require("material_only_co2e_kg" not in candidates_json_str, "Leak detected: material_only_co2e_kg found in candidates response")
+
+    # 3. Evaluation positive (P1 post-cook) -> C1 is first qualification path
+    req_body = {"product_id": "P1", "workflow_id": "POST_COOK_HOT_HOLD_6H"}
+    req = Request(
+        f"{api_url}/api/v1/recommendation/evaluate",
+        data=json.dumps(req_body).encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+    )
+    with urlopen(req, timeout=5) as response:
+        require(response.status == 200, f"Expected 200 for evaluate, got {response.status}")
+        eval_resp = json.load(response)
+
+    eval_json_str = json.dumps(eval_resp)
+    require("material_only_co2e_kg" not in eval_json_str, "Leak detected: material_only_co2e_kg found in evaluate response")
+    first_cand = eval_resp.get("recommendation", {}).get("first_qualification_candidate_id")
+    require(first_cand == "C1", f"Expected first qualification candidate to be C1, got {first_cand}")
+
+    # 4. Evaluation 422 on invalid configuration (P1 + C6-RO-P)
+    invalid_req_body = {"product_id": "P1", "workflow_id": "POST_COOK_HOT_HOLD_6H", "configuration_id": "C6-RO-P"}
+    invalid_req = Request(
+        f"{api_url}/api/v1/recommendation/evaluate",
+        data=json.dumps(invalid_req_body).encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+    )
+    try:
+        with urlopen(invalid_req, timeout=5) as response:
+            raise RuntimeError(f"Expected HTTP 422 for invalid C6 config, got {response.status}")
+    except HTTPError as e:
+        require(e.code == 422, f"Expected HTTP 422 for invalid C6 config, got {e.code}")
+
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true', help='Start, preflight, then stop both services.')
@@ -136,10 +183,12 @@ def main():
         first_id = summaries[0]['id']
         evaluation = read_json(API + '/api/v1/portfolios/' + quote(first_id, safe=''))
         validate_selection_evaluation(evaluation, expected_portfolios[0])
+        validate_recommendation_runtime(API)
         wait_http(UI, processes)
         require(read_json(UI + '/api/v1/health') == health, "Frontend API proxy did not reach the demo backend.")
         require(all(p.poll() is None for p in processes), "A demo process exited; demo NOT READY.")
-        print(f"PACKSHIFT DEMO READY\nA-core: READY / PUBLIC\nSelection: READY / {len(summaries)} portfolio(s)\nEvaluation: {first_id} / {len(evaluation['candidates'])} candidates\nAPI: {API}\nUI:  {UI}", flush=True)
+        print(f"PACKSHIFT DEMO READY\nA-core: READY / PUBLIC\nSelection: READY / {len(summaries)} portfolio(s)\nEvaluation: {first_id} / {len(evaluation['candidates'])} candidates\nRecommendation: READY / 4 products, 6 candidates\nAPI: {API}\nUI:  {UI}", flush=True)
+
         if args.check:
             print("Preflight-only check complete; stopping both services.", flush=True)
         else:

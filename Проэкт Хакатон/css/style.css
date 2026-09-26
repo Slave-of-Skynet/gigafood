@@ -875,9 +875,41 @@ header {
     gap: 8px;
 }
 
+.cert-pdf-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.cert-tab-btn {
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(18, 53, 36, 0.22);
+    background: #ffffff;
+    color: #123524;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.cert-tab-btn:hover {
+    border-color: #16a34a;
+    background: #f0fdf4;
+}
+
+.cert-tab-btn.active {
+    background: #15803d;
+    color: #ffffff;
+    border-color: #15803d;
+    box-shadow: 0 4px 10px rgba(21, 128, 61, 0.25);
+}
+
 .cert-pdf-embed {
     width: 100%;
-    height: 410px;
+    height: 430px;
     border: 1px solid #94a3b8;
     border-radius: 10px;
     background: #ffffff;
