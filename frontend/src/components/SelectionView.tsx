@@ -3,7 +3,11 @@ import type { FormEvent } from 'react';
 import { api } from '../api/client';
 import type {
   CandidateAssessment,
+  ComparabilityRating,
+  ComponentBoundary,
+  EligibilityStatus,
   PortfolioSummary,
+  RecycledContentPointValueStatus,
   SelectionMetadata,
   SelectionRequest,
   SelectionResponse,
@@ -20,13 +24,207 @@ const formatNumberOnly = (value: number | null) =>
   value === null
     ? 'N/A'
     : value.toLocaleString('en-US', { maximumFractionDigits: 2 });
+type CalculationGapReason =
+  | 'BOUNDARY_MISMATCH'
+  | 'MISSING_MASS'
+  | 'MISSING_OR_NON_POINT_PCR'
+  | 'GENERIC_INCOMPLETE';
 
 // Presentation of the backend delta's sign only; all arithmetic stays on the server.
-function deltaMeaning(value: number | null) {
-  if (value === null) return 'Evidence required — delta N/A';
-  if (value > 0) return 'Virgin-plastic reduction';
+function deltaMeaning(
+  value: number | null,
+  gapReason?: CalculationGapReason | null
+) {
+  if (value === null) {
+    if (gapReason === 'BOUNDARY_MISMATCH') {
+      return 'Cannot calculate delta — package scopes differ (delta N/A)';
+    }
+    if (gapReason === 'MISSING_MASS') {
+      return 'Cannot calculate yet — required package mass missing (delta N/A)';
+    }
+    return 'Cannot calculate yet — required numeric evidence missing (delta N/A)';
+  }
+  if (value > 0) return 'Reduces virgin plastic';
   if (value === 0) return 'No change — zero virgin-plastic reduction';
-  return 'Virgin-plastic use increases';
+  return 'Increases virgin-plastic use';
+}
+
+function componentBoundaryLabel(boundary: ComponentBoundary) {
+  switch (boundary) {
+    case 'TRAY_BODY_ONLY':
+      return 'Tray body only';
+    case 'BODY_AND_FILM':
+      return 'Container body and film';
+    case 'HINGED_COMPLETE_PACK':
+      return 'Complete hinged pack';
+    case 'BOTTLE_AND_CLOSURE':
+      return 'Bottle and closure';
+    case 'CUSTOM':
+      return 'Custom component boundary';
+  }
+}
+
+function recycledEvidenceLabel(status: RecycledContentPointValueStatus) {
+  switch (status) {
+    case 'EXACT_POINT_VALUE':
+      return 'Exact numeric value available';
+    case 'NON_POINT_VALUE':
+      return 'Non-exact claim only';
+    case 'UNSTATED':
+      return 'Numeric value not stated';
+  }
+}
+
+function recycledEvidenceExplanation(status: RecycledContentPointValueStatus) {
+  switch (status) {
+    case 'EXACT_POINT_VALUE':
+      return 'A specific numeric recycled-content fraction is stated for the represented component.';
+    case 'NON_POINT_VALUE':
+      return 'Only a range or marketing ceiling (such as “up to 70%”) is available. Because an “up to” claim is not a precise point value, PackShift refuses to guess a number for the deterministic calculation.';
+    case 'UNSTATED':
+      return 'The required numeric recycled-content evidence is not available in the source documentation. PackShift never treats missing recycled content as 0%.';
+  }
+}
+
+function comparabilityLabel(rating: ComparabilityRating) {
+  switch (rating) {
+    case 'STRONG':
+      return 'Strong comparison';
+    case 'BOUNDED_WITH_QUALIFIER':
+      return 'Bounded comparison';
+    case 'ASYMMETRIC_BOUNDARY':
+      return 'Different component boundaries';
+    case 'NOT_COMPARABLE':
+      return 'Not comparable';
+  }
+}
+
+function eligibilityHeadline(status: EligibilityStatus) {
+  switch (status) {
+    case 'BLOCKED':
+      return '⛔ Blocked — incompatible with operating requirements';
+    case 'REVIEW_REQUIRED':
+      return '⚠️ Review required';
+    case 'ELIGIBLE':
+      return '✓ Eligible under modeled requirements';
+  }
+}
+
+function detectCalculationGapReason(
+  data: CandidateAssessment
+): CalculationGapReason | null {
+  const { calculation: calc, comparability, metadata } = data;
+  if (calc.status === 'CALCULATED') {
+    return null;
+  }
+
+  // Precedence 1 — Component boundary mismatch
+  if (
+    calc.missing_fields.includes('component_boundary_mismatch') ||
+    !comparability.boundary_match ||
+    comparability.rating === 'ASYMMETRIC_BOUNDARY'
+  ) {
+    return 'BOUNDARY_MISMATCH';
+  }
+
+  // Precedence 2 — Missing physical package mass/specification
+  if (calc.missing_fields.some((f) => f.includes('plastic_mass_g'))) {
+    return 'MISSING_MASS';
+  }
+
+  // Precedence 3 — Missing/non-point recycled-content evidence
+  if (
+    calc.missing_fields.some((f) => f.includes('recycled_content_fraction')) ||
+    metadata.recycled_content_point_value_status === 'NON_POINT_VALUE' ||
+    metadata.recycled_content_point_value_status === 'UNSTATED'
+  ) {
+    return 'MISSING_OR_NON_POINT_PCR';
+  }
+
+  // Precedence 4 — Generic conservative fallback
+  return 'GENERIC_INCOMPLETE';
+}
+
+function missingMassScope(
+  missingFields: string[]
+): 'baseline' | 'candidate' | 'both' | 'general' {
+  const hasBaseline = missingFields.some(
+    (f) => f.startsWith('baseline.') && f.includes('plastic_mass_g')
+  );
+  const hasCandidate = missingFields.some(
+    (f) => f.startsWith('candidate.') && f.includes('plastic_mass_g')
+  );
+  if (hasBaseline && hasCandidate) return 'both';
+  if (hasBaseline) return 'baseline';
+  if (hasCandidate) return 'candidate';
+  return 'general';
+}
+
+function calculationSummaryText(data: CandidateAssessment): string {
+  const { calculation: calc } = data;
+  if (calc.status === 'CALCULATED') {
+    return calc.verification_state === 'INDICATIVE'
+      ? 'Calculated from available numeric evidence (indicative arithmetic — not implementation approval or verified operational evidence)'
+      : 'Calculated from available numeric evidence';
+  }
+
+  const reason = detectCalculationGapReason(data);
+  switch (reason) {
+    case 'BOUNDARY_MISMATCH':
+      return 'Calculation withheld — baseline and candidate represent different component boundaries (scopes not comparable)';
+    case 'MISSING_MASS': {
+      const massScope = missingMassScope(calc.missing_fields);
+      if (massScope === 'candidate') {
+        return 'Calculation withheld — candidate package mass is missing (missing ≠ 0)';
+      }
+      if (massScope === 'baseline') {
+        return 'Calculation withheld — baseline package mass is missing (missing ≠ 0)';
+      }
+      return 'Calculation withheld — required package mass is missing (missing ≠ 0)';
+    }
+    case 'MISSING_OR_NON_POINT_PCR':
+      return 'Calculation withheld — exact numeric evidence is missing (missing ≠ 0)';
+    case 'GENERIC_INCOMPLETE':
+    default:
+      return 'Calculation withheld — required evidence for comparable transition is incomplete (missing ≠ 0)';
+  }
+}
+
+function calculationGapExplanation(data: CandidateAssessment): string {
+  const { calculation: calc, metadata } = data;
+  if (calc.status === 'CALCULATED') {
+    return 'The arithmetic is computed from represented component inputs, but this is not implementation approval or fully verified operational evidence.';
+  }
+
+  const reason = detectCalculationGapReason(data);
+  switch (reason) {
+    case 'BOUNDARY_MISMATCH':
+      return 'Transition delta is withheld because the baseline and candidate represent different component boundaries. PackShift does not subtract non-equivalent package scopes.';
+    case 'MISSING_MASS': {
+      const massScope = missingMassScope(calc.missing_fields);
+      if (massScope === 'candidate') {
+        return 'Calculation is withheld because candidate package mass specification is missing. PackShift never assumes missing data equals zero.';
+      }
+      if (massScope === 'baseline') {
+        return 'Calculation is withheld because baseline package mass specification is missing. PackShift never assumes missing data equals zero.';
+      }
+      if (massScope === 'both') {
+        return 'Calculation is withheld because required baseline and candidate package mass specifications are missing. PackShift never assumes missing data equals zero.';
+      }
+      return 'Calculation is withheld because a required package/component mass is missing. PackShift never assumes missing data equals zero.';
+    }
+    case 'MISSING_OR_NON_POINT_PCR':
+      if (metadata.recycled_content_point_value_status === 'NON_POINT_VALUE') {
+        return 'Only a range or marketing ceiling such as “up to 70%” is available. That is not an exact point value, so PackShift refuses to guess a deterministic number (missing ≠ 0).';
+      }
+      if (metadata.recycled_content_point_value_status === 'UNSTATED') {
+        return 'The required numeric recycled-content value is not stated. Missing evidence is not treated as 0%.';
+      }
+      return 'Calculation is withheld because required recycled-content evidence is missing. PackShift never treats missing recycled content as 0%.';
+    case 'GENERIC_INCOMPLETE':
+    default:
+      return 'Calculation is withheld because required evidence for a comparable numeric transition is incomplete. PackShift never assumes missing data equals zero.';
+  }
 }
 
 function Metadata({ data }: { data: SelectionMetadata }) {
@@ -34,11 +232,19 @@ function Metadata({ data }: { data: SelectionMetadata }) {
     <dl className="selection-metadata">
       <div>
         <dt>Component boundary</dt>
-        <dd>{data.component_boundary}</dd>
+        <dd>
+          {componentBoundaryLabel(data.component_boundary)}{' '}
+          <span className="tech-enum-inline">({data.component_boundary})</span>
+        </dd>
       </div>
       <div>
         <dt>Recycled-content evidence</dt>
-        <dd>{data.recycled_content_point_value_status}</dd>
+        <dd>
+          {recycledEvidenceLabel(data.recycled_content_point_value_status)}{' '}
+          <span className="tech-enum-inline">
+            ({data.recycled_content_point_value_status})
+          </span>
+        </dd>
       </div>
       <div>
         <dt>Evidence scope</dt>
@@ -54,6 +260,7 @@ function Metadata({ data }: { data: SelectionMetadata }) {
 
 function CandidateCard({ data }: { data: CandidateAssessment }) {
   const { calculation: calc, eligibility, annual_impact: annual } = data;
+  const gapReason = detectCalculationGapReason(data);
   const primaryComponentsSummary = data.candidate.components
     .map((c) => `${c.id}: ${c.material}`)
     .join(' · ');
@@ -81,13 +288,16 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
               <h3 className="name-product section-title">{data.candidate.label}</h3>
             </div>
             <div className="epistemic-badges">
-              <span className="epistemic-badge">{data.metadata.component_boundary}</span>
+              <span className="epistemic-badge">
+                {componentBoundaryLabel(data.metadata.component_boundary)} ·{' '}
+                <small>{data.metadata.component_boundary}</small>
+              </span>
               <span className={`eligibility-status-pill ${eligibility.status}`}>
                 {eligibility.status === 'BLOCKED'
                   ? '⛔ BLOCKED'
                   : eligibility.status === 'REVIEW_REQUIRED'
-                  ? '⚠️ REVIEW_REQUIRED'
-                  : '✓ ELIGIBLE'}
+                  ? '⚠️ Review required'
+                  : '✓ Eligible'}
               </span>
             </div>
           </div>
@@ -95,14 +305,23 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
           <p className="info-product">
             <strong>Use context:</strong> {data.candidate.use_context ?? 'Not specified'} ·{' '}
             <strong>Represented components:</strong> {primaryComponentsSummary} ·{' '}
-            <strong>Recycled-content status:</strong>{' '}
-            {data.metadata.recycled_content_point_value_status}
+            <strong>Recycled-content evidence:</strong>{' '}
+            {recycledEvidenceLabel(data.metadata.recycled_content_point_value_status)}{' '}
+            <span className="tech-enum-inline">
+              ({data.metadata.recycled_content_point_value_status})
+            </span>
           </p>
 
           <div className="option-product">
-            <h4 className="table-desc">
-              Characteristic Comparison · {calc.status} ({calc.verification_state})
-            </h4>
+            <div className="comparison-heading-group">
+              <h4 className="table-desc">Virgin-plastic comparison</h4>
+              <p className="comparison-human-sub">
+                {calculationSummaryText(data)}
+              </p>
+              <small className="tech-enum-trace">
+                Technical state: {calc.status} · {calc.verification_state}
+              </small>
+            </div>
 
             <div className="circles-list">
               <div className="stat-circle-wrapper">
@@ -188,10 +407,10 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
         <section className="exec-card selection-environment">
           <span className="judge-question-kicker">Does it reduce virgin plastic?</span>
           <h4>Environmental result</h4>
-          <strong>{deltaMeaning(calc.reduction_g)}</strong>
-          <span>
-            {calc.status} · {calc.verification_state}
-          </span>
+          <strong>{deltaMeaning(calc.reduction_g, gapReason)}</strong>
+          <p className="axis-human-note">
+            {calculationGapExplanation(data)}
+          </p>
           <dl className="selection-metadata">
             <div>
               <dt>Current virgin plastic</dt>
@@ -208,7 +427,10 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
               </dd>
             </div>
           </dl>
-          <small>Represented components only. CALCULATED ≠ VERIFIED.</small>
+          <small className="tech-enum-trace">
+            Represented components only · CALCULATED ≠ VERIFIED · Technical state:{' '}
+            {calc.status} · {calc.verification_state}
+          </small>
         </section>
 
         <section className={`eligibility-banner ${eligibility.status}`}>
@@ -216,14 +438,17 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
             Can we use it in this operating context?
           </span>
           <h4>Operational eligibility</h4>
-          <strong>{eligibility.status}</strong>
+          <strong>{eligibilityHeadline(eligibility.status)}</strong>
           <p>
             {eligibility.status === 'BLOCKED'
-              ? 'Incompatible with the stated modeled operating context. Environmental benefit does not override this block.'
+              ? 'Incompatible with the stated modeled operating requirements. Environmental benefit does not override this operational block.'
               : eligibility.status === 'REVIEW_REQUIRED'
-              ? 'Evidence or verification required; unknown capability is not proven incompatibility.'
-              : 'Meets evaluated thermal / microwave constraints. Still requires human QA review.'}
+              ? 'Evidence or human verification is required before confirming compatibility; an unknown capability is not proven incompatibility.'
+              : 'Passes the bounded evaluated thermal and microwave requirements. Still requires human QA and food-safety review.'}
           </p>
+          <small className="tech-enum-trace">
+            Technical state: {eligibility.status}
+          </small>
         </section>
 
         <section className="exec-card next-action">
@@ -232,42 +457,66 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
           </span>
           <h4>Next action</h4>
           <strong>{data.next_action.summary}</strong>
-          <small>{data.next_action.action_code}</small>
           <p>{data.next_action.details}</p>
+          <small className="tech-enum-trace">
+            Action code: {data.next_action.action_code}
+          </small>
         </section>
       </div>
 
       <section className="comparability-panel" aria-label="Comparability">
-        <h4>Comparability · {data.comparability.rating}</h4>
+        <span className="judge-question-kicker">Comparison scope</span>
+        <h4>{comparabilityLabel(data.comparability.rating)}</h4>
         {data.comparability.notes.map((note, i) => (
           <p key={i}>{note}</p>
         ))}
+        <small className="tech-enum-trace">
+          Technical state: {data.comparability.rating}
+        </small>
       </section>
 
-      {calc.missing_fields.length > 0 ? (
+      {calc.status === 'INSUFFICIENT_DATA' || calc.missing_fields.length > 0 ? (
         <div className="selection-evidence-gap" role="alert">
           <span className="judge-question-kicker">What evidence is missing?</span>
           <strong>Evidence required — missing ≠ 0</strong>
-          <ul>
-            {calc.missing_fields.map((field) => (
-              <li key={field}>{field}</li>
-            ))}
-          </ul>
           <p>
-            Recycled-content point value:{' '}
-            {data.metadata.recycled_content_point_value_status}. An “up to” marketing
-            ceiling is not an exact recycled fraction.
+            <strong>Why no number is shown:</strong>{' '}
+            {calculationGapExplanation(data)}
           </p>
+          {calc.missing_fields.length > 0 && (
+            <ul>
+              {calc.missing_fields.map((field) => (
+                <li key={field}>{field}</li>
+              ))}
+            </ul>
+          )}
+          <small className="tech-enum-trace">
+            Recycled-content evidence:{' '}
+            {recycledEvidenceLabel(
+              data.metadata.recycled_content_point_value_status
+            )}{' '}
+            ({data.metadata.recycled_content_point_value_status})
+          </small>
         </div>
       ) : (
         <div className="comparability-panel">
           <span className="judge-question-kicker">What evidence is missing?</span>
-          <strong>No missing fields for represented components</strong>
+          <strong>No missing numeric fields for represented components</strong>
           <p>
-            Recycled-content point value:{' '}
-            {data.metadata.recycled_content_point_value_status} · Verification state:{' '}
-            {calc.verification_state} (CALCULATED ≠ VERIFIED).
+            {recycledEvidenceExplanation(
+              data.metadata.recycled_content_point_value_status
+            )}{' '}
+            The arithmetic is computed from represented inputs, but this is not
+            implementation approval (CALCULATED ≠ VERIFIED).
           </p>
+          <small className="tech-enum-trace">
+            Recycled-content evidence:{' '}
+            {recycledEvidenceLabel(
+              data.metadata.recycled_content_point_value_status
+            )}{' '}
+            ({data.metadata.recycled_content_point_value_status}) · Verification
+            state: {calc.verification_state}
+          </small>
         </div>
       )}
 
@@ -278,12 +527,12 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
             className={`constraint-card ${finding.status}`}
           >
             <strong>
-              {finding.status === 'BLOCKED' ? '⛔ ' : '⚠️ '}
-              {finding.status} · {finding.constraint_id}
+              {finding.status === 'BLOCKED' ? '⛔ Blocked' : '⚠️ Review required'} ·{' '}
+              {finding.constraint_id}
             </strong>
             <p>{finding.reason}</p>
-            <small>
-              {finding.verification_state}
+            <small className="tech-enum-trace">
+              Technical state: {finding.status} · {finding.verification_state}
               {finding.source_reference ? ` · Source: ${finding.source_reference}` : ''}
             </small>
           </div>
@@ -295,13 +544,20 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
           className={`annual-impact ${annual.is_actionable ? '' : 'non-actionable'}`}
           aria-label="Hypothetical annual impact"
         >
-          <h4>Hypothetical annual impact · {annual.status}</h4>
+          <h4>
+            Hypothetical annual impact ·{' '}
+            {annual.status === 'CALCULATED'
+              ? 'Calculated from hypothetical volume'
+              : gapReason === 'BOUNDARY_MISMATCH'
+              ? 'Calculation withheld (scopes differ)'
+              : 'Calculation withheld (missing evidence)'}
+          </h4>
           <strong>
             {annual.is_actionable
               ? 'Available for scenario review — not implementation approval'
               : 'THEORETICAL / NON-ACTIONABLE'}
           </strong>
-          <p>{deltaMeaning(annual.annual_reduction_kg)}</p>
+          <p>{deltaMeaning(annual.annual_reduction_kg, gapReason)}</p>
           <dl className="selection-metadata">
             <div>
               <dt>User-supplied annual units</dt>
@@ -325,11 +581,14 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
             </div>
           </dl>
           <p className="disclosure-banner">{annual.disclosure}</p>
+          <small className="tech-enum-trace">
+            Technical state: {annual.status}
+          </small>
         </section>
       )}
 
       <details>
-        <summary>Candidate evidence and provenance</summary>
+        <summary>Technical evidence and provenance</summary>
         <Metadata data={data.metadata} />
         <PackageView
           title="Candidate"
@@ -504,17 +763,18 @@ export function SelectionView({ visible }: { visible: boolean }) {
                 </div>
 
                 <label className="scenario-label" htmlFor="scenario-context">
-                  Operating context
+                  Scenario notes (not evaluated)
                   <input
                     id="scenario-context"
                     value={context}
                     onChange={(event) => setContext(event.target.value)}
-                    placeholder="Optional description"
+                    placeholder="Optional context notes (not evaluated)"
                     aria-describedby="context-help"
                   />
                   <small id="context-help">
-                    Description only. Eligibility is evaluated from the
-                    structured temperature and microwave requirements.
+                    Optional notes for this scenario. These notes are shown for
+                    context only. Eligibility is evaluated from the structured
+                    temperature and microwave fields below.
                   </small>
                 </label>
 
@@ -620,7 +880,7 @@ export function SelectionView({ visible }: { visible: boolean }) {
                 >
                   <div className="section-header">
                     <h3 className="section-title">
-                      Portfolio Context & Baseline Assessment
+                      Portfolio Decision Context & Baseline
                     </h3>
                     <span className={`dataset-badge ${result.data.dataset_kind}`}>
                       Dataset: {result.data.dataset_kind}
@@ -629,10 +889,21 @@ export function SelectionView({ visible }: { visible: boolean }) {
 
                   <p className="disclosure-banner">{result.data.disclosure}</p>
 
-                  <h3>Effective backend context</h3>
+                  {/* UX-9: First-screen narrative hierarchy — What PackShift concluded first */}
+                  <div className="selection-verdict">
+                    <strong>What PackShift concluded</strong>
+                    <p>{result.data.summary_verdict}</p>
+                  </div>
+                  <small>
+                    Backend decision grouping, not a global ranking. No result
+                    grants implementation approval.
+                  </small>
+
+                  <h3>Modeled decision context</h3>
                   <p>
-                    <strong>Use context:</strong> {result.data.use_context} ·{' '}
-                    {result.data.candidates.length} candidates
+                    <strong>Scenario context / notes (not evaluated by gate):</strong>{' '}
+                    {result.data.use_context} · {result.data.candidates.length}{' '}
+                    candidates
                   </p>
 
                   <OperationalRequirementsView
@@ -645,15 +916,6 @@ export function SelectionView({ visible }: { visible: boolean }) {
                       ? 'Not supplied · per-unit assessment'
                       : format(result.data.annual_units_requested, '')}
                   </p>
-
-                  <div className="selection-verdict">
-                    <strong>Assessment summary</strong>
-                    <p>{result.data.summary_verdict}</p>
-                  </div>
-                  <small>
-                    Backend decision grouping, not a global ranking. No result
-                    grants implementation approval.
-                  </small>
 
                   <section className="selection-baseline">
                     <div className="candidate-showcase-row">
@@ -676,11 +938,16 @@ export function SelectionView({ visible }: { visible: boolean }) {
                             )}
                           </strong>{' '}
                           virgin plastic ·{' '}
-                          {result.data.baseline.calculation_status}
+                          {result.data.baseline.calculation_status === 'CALCULATED'
+                            ? 'Calculated from represented components'
+                            : 'Insufficient numeric data'}{' '}
+                          <span className="tech-enum-inline">
+                            ({result.data.baseline.calculation_status})
+                          </span>
                         </p>
                         <Metadata data={result.data.baseline.metadata} />
                         <details>
-                          <summary>Baseline evidence and provenance</summary>
+                          <summary>Baseline technical evidence and provenance</summary>
                           <PackageView
                             title="Current"
                             data={result.data.baseline.package}

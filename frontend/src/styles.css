@@ -1367,3 +1367,10 @@ button:focus-visible, summary:focus-visible, select:focus-visible, input:focus-v
 .economic-results-container { display: flex; flex-direction: column; gap: 18px; margin-top: 12px; }
 .economic-blocked-alert { margin-bottom: 8px; }
 @media (max-width: 640px) { .economic-inputs-grid { grid-template-columns: 1fr; } }
+
+/* P0-UX — Judge-Facing Selection Copy Pass */
+.comparison-heading-group { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+.comparison-human-sub { margin: 0; font-size: 13.5px; font-weight: 700; color: var(--text-dark); }
+.axis-human-note { margin-top: 6px; font-size: 13.5px; color: var(--text-dark); }
+.tech-enum-trace { display: block; margin-top: 8px; font-size: 12px; color: var(--text-muted); font-weight: 600; }
+.tech-enum-inline { font-size: 12px; color: var(--text-muted); font-weight: 600; }
