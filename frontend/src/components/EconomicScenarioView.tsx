@@ -23,15 +23,22 @@ const formatDeltaCurrency = (val: number | null): string => {
   return `€0.00 / year`;
 };
 
+const formatFirstYearDeltaCurrency = (val: number | null): string => {
+  if (val === null) return 'N/A';
+  if (val > 0) return `+€${val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  if (val < 0) return `-€${Math.abs(val).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  return `€0.00`;
+};
+
 const formatKg = (val: number | null): string => {
   if (val === null) return 'N/A';
   return `${val.toLocaleString('en-US', { maximumFractionDigits: 1 })} kg / year`;
 };
 
 export function EconomicScenarioView({ scenarioId, scenarioLabel, comparison }: Props) {
-  const [annualUnits, setAnnualUnits] = useState('1000000');
-  const [currentCost, setCurrentCost] = useState('0.120');
-  const [candidateCost, setCandidateCost] = useState('0.135');
+  const [annualUnits, setAnnualUnits] = useState('');
+  const [currentCost, setCurrentCost] = useState('');
+  const [candidateCost, setCandidateCost] = useState('');
   const [transitionCost, setTransitionCost] = useState('');
   const [validation, setValidation] = useState('');
   const [evaluating, setEvaluating] = useState(false);
@@ -249,7 +256,7 @@ export function EconomicScenarioView({ scenarioId, scenarioLabel, comparison }: 
               <div className={`exec-card ${isBlocked ? 'blocked-card' : ''}`}>
                 <span className="exec-kicker">First-Year Transition Impact</span>
                 <div className="exec-main-value">
-                  <span>{formatDeltaCurrency(result.first_year_cost_delta_eur)}</span>
+                  <span>{formatFirstYearDeltaCurrency(result.first_year_cost_delta_eur)}</span>
                 </div>
                 <span className="exec-meta">
                   Includes {formatCurrency(result.one_time_transition_cost_eur)} one-time transition cost

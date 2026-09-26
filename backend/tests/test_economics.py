@@ -269,3 +269,48 @@ def test_api_scenario_economics_validation_errors(bad_body):
             json=bad_body,
         )
         assert resp.status_code == 422
+
+
+def test_economic_scenario_rejects_non_finite_inputs():
+    """Non-finite inputs (inf, nan) are strictly rejected by contract allow_inf_nan=False."""
+    with pytest.raises(ValueError):
+        EconomicScenarioRequest(
+            annual_units=1_000,
+            current_cost_eur_per_unit=float("inf"),
+            candidate_cost_eur_per_unit=0.20,
+        )
+
+    with pytest.raises(ValueError):
+        EconomicScenarioRequest(
+            annual_units=1_000,
+            current_cost_eur_per_unit=0.10,
+            candidate_cost_eur_per_unit=float("nan"),
+        )
+
+    with pytest.raises(ValueError):
+        EconomicScenarioRequest(
+            annual_units=1_000,
+            current_cost_eur_per_unit=0.10,
+            candidate_cost_eur_per_unit=0.20,
+            one_time_transition_cost_eur=float("inf"),
+        )
+
+
+def test_economic_scenario_case_a_with_transition_cost():
+    """Case A with €50k transition cost: annual delta = +€15k, first-year total delta = +€65k."""
+    with TestClient(create_app(PUBLIC_EVIDENCE_PATH)) as client:
+        scenario = next(
+            s for s in client.app.state.runtime.evidence.scenarios
+            if s.id == "cchbc-500ml-rpet-transition"
+        )
+        req = EconomicScenarioRequest(
+            annual_units=1_000_000,
+            current_cost_eur_per_unit=0.120,
+            candidate_cost_eur_per_unit=0.135,
+            one_time_transition_cost_eur=50_000.0,
+        )
+        res = evaluate_economic_scenario(scenario, req)
+        assert res.annual_cost_delta_eur == 15_000.0
+        assert res.first_year_cost_delta_eur == 65_000.0
+        assert res.annual_virgin_plastic_reduction_kg == 19_500.0
+        assert math.isclose(res.incremental_cost_per_kg_avoided_eur, 0.769230769, rel_tol=1e-5)
