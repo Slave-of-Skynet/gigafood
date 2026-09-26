@@ -72,6 +72,8 @@ Every requirement, test condition, parameter, and observation throughout this pr
 | `ENGINEERING_RECOMMENDATION` | Technical suggestions, best-practice methodologies, or test steps proposed by Team SoS engineers. | Cannot be cited as statutory requirements or official challenge rules. |
 | `UNKNOWN` | Operational, dimensional, chemical, or commercial parameters that are currently unmeasured, unconfirmed, or absent. | Must remain explicit; non-compensatory; cannot be defaulted to zero or assumed safe. |
 | `EXTERNAL_EVIDENCE_REQUIRED` | Necessary verification dossiers, migration reports, or distributor quotations that must be obtained from external third parties. | Identifies mandatory blockers preventing pilot progression. |
+| `PROPOSED THRESHOLD — OWNER DECISION REQUIRED` | Numerical test criteria, pass/fail thresholds, or clearances proposed by engineering without direct canonical source IDs or statutory mandates. | Must be explicitly labeled as proposed thresholds requiring formal client / owner confirmation. |
+| `PROPOSED PILOT DESIGN / ILLUSTRATIVE OPERATIONAL ASSUMPTIONS` | Sizing models for trial rollout (store counts, trial duration, lead times, batch quantities, and stakeholder roles) developed to illustrate practical implementation. | Must not be presented as approved commercial realities of the Profi store network. |
 
 ---
 
@@ -205,10 +207,10 @@ To systematically de-risk and qualify packaging candidates without conflating de
 #### Q1 — Physical Sample & Dimensional Audit
 - **Objective:** Obtain physical packaging specimens and verify dimensional compatibility against real-world retail food portions.
 - **Mandatory Requirements:**
-  - Receipt of minimum 20 physical samples from verified production runs.
-  - High-precision physical weighing (0.01 g resolution) of empty components (body, window/film, lid) across 10 distinct samples to replace modeled estimates.
+  - Receipt of minimum 20 physical samples from verified production runs (`ENGINEERING_RECOMMENDATION / PROPOSED PILOT DESIGN`).
+  - High-precision physical weighing (0.01 g resolution; `ENGINEERING_RECOMMENDATION`) of empty components (body, window/film, lid) across 10 distinct samples (`ENGINEERING_RECOMMENDATION`) to replace modeled estimates.
   - Physical dimensional audit (length, width, depth, gusset expansion, flange width) with calibrated calipers.
-  - Cold and warm physical fit-check with whole rotisserie chicken (1.0–1.4 kg test range) and hot deli portions.
+  - Cold and warm physical fit-check with whole rotisserie chicken (1.0–1.4 kg test range; `MODELED_TEST_ASSUMPTION`) and hot deli portions.
   - Assessment of closure snap-fit, heat-seal flange flatness, and initial handling ergonomics.
 - **Exit Criteria:** Component compatibility verified; usable volume and headspace confirmed sufficient for food containment without seam tension.
 
@@ -216,7 +218,7 @@ To systematically de-risk and qualify packaging candidates without conflating de
 - **Objective:** Execute standardized, repeatable physical challenge tests evaluating thermal resistance, hot-holding endurance, hot-fat barrier integrity, steam management, and transparent visibility.
 - **Mandatory Requirements:**
   - Execution of Protocol Section 5 (C1), Section 6 (C5), or Section 7 (C6).
-  - Continuous hot-holding challenge (up to 6 hours at modeled 85–95°C cabinet conditions) using actual rotisserie chicken or calibrated food-grade hot-fat surrogates.
+  - Continuous hot-holding challenge (up to 6 hours [`MENTOR_CLARIFICATION`] at modeled 85–95°C [`MODELED_TEST_CONDITION`] cabinet conditions) using actual rotisserie chicken or calibrated food-grade hot-fat surrogates.
   - Timed inspection of grease strike-through, seam delamination, liquid pooling, and structural softening.
   - Transparent viewing evaluation: anti-fog performance, steam droplet coalescence, and window clarity over the entire 6-hour holding duration.
 - **Exit Criteria:** Zero gross structural failure, zero external grease pooling, and sustained product visibility across test replicates.
@@ -224,27 +226,27 @@ To systematically de-risk and qualify packaging candidates without conflating de
 #### Q3 — Laboratory Regulatory Compliance
 - **Objective:** Establish formal regulatory compliance under European and Romanian food-contact legislation.
 - **Mandatory Requirements:**
-  - Written Declaration of Compliance (DoC) referencing Regulation (EC) No 1935/2004, Regulation (EC) No 2023/2006 (GMP), and Regulation (EU) No 10/2011 (plastics) or national paper resolutions.
-  - Certified laboratory overall migration limit (OML < 10 mg/dm²) test results.
-  - Certified specific migration limit (SML) testing under fatty food conditions using **Food Simulant D2 (vegetable oil)** or 95% ethanol at temperature and time profiles reflecting the intended high-temperature contact.
+  - Written Declaration of Compliance (DoC) referencing Regulation (EC) No 1935/2004, Regulation (EC) No 2023/2006 (GMP), and applicable material frameworks (Regulation (EU) No 10/2011 for plastics/coatings, BfR / national decrees for paper/board, and CoE resolutions for metals).
+  - Certified laboratory overall migration limit (OML < 10 mg/dm²; statutory limit under Regulation (EU) No 10/2011) test results.
+  - Certified specific migration limit (SML) testing under fatty food conditions using **Food Simulant D2 (vegetable oil)** or approved alternative fat simulant at exposure conditions matching intended high-temperature contact.
   - Screening confirmation for Non-Intentionally Added Substances (NIAS) and certified absence of intentionally added PFAS/fluorinated chemical treatments.
-- **Exit Criteria:** Formal review and sign-off by responsible Profi QA/regulatory compliance officers. Bench tests cannot substitute for Q3.
+- **Exit Criteria:** Formal review and sign-off by responsible QA/regulatory compliance stakeholders. Bench tests cannot substitute for Q3.
 
 #### Q4 — Retail Logistics & Operational Trial
-- **Objective:** Validate packaging performance within the store operational workflow, kitchen packing line, and distributor supply chain.
+- **Objective:** Validate packaging performance within the store operational workflow, kitchen packing line, and distributor supply chain (`PROPOSED PILOT DESIGN`).
 - **Mandatory Requirements:**
   - Written commercial quotation covering delivered unit costs in Romania (RON, VAT-qualified, freight-qualified).
   - Supplier written confirmation of industrial minimum order quantities (MOQ), commercial stock availability, and production lead times.
-  - Packing line trial in a live or simulated Profi deli counter: packing speed, worker burn safety, sealing machine cycle time (for C5 film), and closure reliability during peak hours.
-  - Consumer transport simulation: carrying packed hot food in consumer shopping bags for 30 minutes; evaluation of grease containment, steam venting, and package rigidity.
+  - Packing line trial in a live or simulated Profi deli counter: packing speed, worker burn safety, sealing machine cycle time (for C5 film), and closure reliability during peak hours (`PROPOSED PILOT DESIGN`).
+  - Consumer transport simulation: carrying packed hot food in consumer shopping bags for 30 minutes (`MODELED_TEST_CONDITION`); evaluation of grease containment, steam venting, and package rigidity.
 - **Exit Criteria:** In-store operational packing approved by store operations; supply chain continuity verified.
 
 #### Q5 — Controlled Retail Store Pilot Release
-- **Objective:** Authorize and execute a bounded, supervised retail pilot in a limited number of Profi stores.
+- **Objective:** Authorize and execute a bounded, supervised retail pilot in a limited number of Profi stores (`PROPOSED PILOT DESIGN`).
 - **Mandatory Requirements:**
   - Successful closure of stages Q0 through Q4.
-  - Formal joint sign-off by Profi Head of QA, Lead Packaging Buyer, and Deli Operations Director.
-  - Execution confined to 3–5 designated retail stores under active monitoring for 14–30 days.
+  - `PROPOSED PILOT DESIGN`: Formal joint sign-off by relevant retail stakeholders (e.g., QA / Food Safety Lead, Packaging Procurement, and Store Operations). Specific job titles and approval chains are illustrative operational assumptions subject to Profi corporate governance.
+  - `ILLUSTRATIVE OPERATIONAL ASSUMPTIONS`: Scope initially modeled for 3–5 retail trial stores under active monitoring for 14–30 days (parameters subject to operational alignment with store management).
   - Daily customer feedback, store associate waste logs, and unsellable leakage incident tracking.
 - **Exit Criteria:** Pilot completion with leakage failure rates below agreed commercial thresholds and validated customer acceptance.
 
@@ -267,16 +269,16 @@ To prevent catastrophic thermal failure and regulatory misclassification, this p
 ├──────┬────────────────────────────────┬────────────────────────┬───────────────────────┤
 │ Domain│ Operational Phase              │ Target Conditions      │ Governing Invariant   │
 ├──────┼────────────────────────────────┼────────────────────────┼───────────────────────┤
-│  A   │ Peak / Oven Cooking Exposure   │ 200–250°C              │ Transient cooking;    │
-│      │                                │ (15–60 min)            │ Oven body only!       │
+│  A   │ Peak / Oven Cooking Exposure   │ 200–250°C [MENTOR]     │ Transient cooking;    │
+│      │                                │ 15–60 min [MODELED]    │ Oven body only!       │
 ├──────┼────────────────────────────────┼────────────────────────┼───────────────────────┤
 │  B   │ Post-Cook Hot Holding          │ Modeled 85–95°C        │ Long-term display;    │
-│      │                                │ (up to 6 hours)        │ Full pack + grease!   │
+│      │                                │ up to 6h [MENTOR]      │ Full pack + grease!   │
 ├──────┼────────────────────────────────┼────────────────────────┼───────────────────────┤
 │  C   │ Direct Food Contact & Migration│ Hot food interface     │ Chemical migration;   │
-│      │                                │ (Simulant D2)          │ Substrate + coating!  │
+│      │                                │ (Simulant D2 [STAT])   │ Substrate + coating!  │
 ├──────┼────────────────────────────────┼────────────────────────┼───────────────────────┤
-│  D   │ Retail Customer Display        │ Ambient to 65°C        │ Visual clarity;       │
+│  D   │ Retail Customer Display        │ Ambient to 65°C [MODEL]│ Visual clarity;       │
 │      │                                │ (Consumer transit)     │ Anti-fog & handling!  │
 └──────┴────────────────────────────────┴────────────────────────┴───────────────────────┘
 ```
@@ -285,7 +287,7 @@ To prevent catastrophic thermal failure and regulatory misclassification, this p
 1. **Domain A — Peak / Oven Exposure:**
    - `MENTOR_CLARIFICATION`: 200–250°C oven reheating or cooking context.
    - `UNKNOWN`: Whether Profi standard operating procedure (SOP) allows in-pack baking or mandates rotisserie cooking outside the package.
-   - `FACT`: Polymeric transparent films, windows, and closures (PET, PP, NatureFlex, APET) melt, degrade, or severely warp at 250°C.
+   - `CANONICAL_STATUS`: No selected transparent closure is currently evidenced or qualified for the C6-RO-H 250°C workflow; transparent components in the current candidate pool (e.g., NatureFlex, standard PET/PP/APET) have documented continuous temperature limits well below this operating point.
    - `RULE`: No transparent closure may enter a 250°C oven unless specifically certified. In Domain A, testing evaluates the container body only.
 2. **Domain B — Post-Cook Hot Holding:**
    - `MENTOR_CLARIFICATION`: Up to approximately 6 hours packaging condition without affecting safety/quality.
@@ -294,7 +296,7 @@ To prevent catastrophic thermal failure and regulatory misclassification, this p
    - `RULE`: Domain B requires the complete, sealed/closed packaging assembly containing hot chicken and liquid fat.
 3. **Domain C — Food-Contact Duration & Matrix:**
    - `FACT`: High temperature accelerates plasticizer, monomer, and chemical additive migration into fatty food.
-   - `RULE`: Proof of thermal survival (no melting) does NOT establish chemical food contact safety. Compliance requires certified migration testing under Domain C conditions.
+   - `RULE`: Proof of thermal survival (absence of gross visual distortion) does NOT establish chemical food contact safety. Compliance requires certified migration testing under Domain C conditions.
 4. **Domain D — Retail Shelf / Display Duration:**
    - `MENTOR_CLARIFICATION`: Transparent viewing window/lid is required so consumers can visually inspect the food on the shelf.
    - `UNKNOWN`: Exact acceptable visible window area and consumer anti-fog tolerance.
@@ -307,9 +309,12 @@ Current virgin plastic reduction calculations in HTF-03 rely on modeled estimate
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
 │                        COMPONENT MASS WEIGHING PROTOCOL                                │
 ├────────────────────────────────────────────────────────────────────────────────────────┤
-│ 1. Apparatus: Calibrated laboratory analytical balance (accuracy ±0.01 g).            │
-│ 2. Conditioning: Samples conditioned at 23°C ± 2°C and 50% ± 5% RH for 24 hours.      │
-│ 3. Sample Size: 10 individual, randomly selected complete package units per candidate. │
+│ 1. Apparatus: Calibrated laboratory analytical balance (accuracy ±0.01 g;              │
+│    ENGINEERING_RECOMMENDATION).                                                        │
+│ 2. Conditioning: Samples conditioned at 23°C ± 2°C and 50% ± 5% RH for 24 hours        │
+│    (STANDARD_LAB_CONDITION / ISO 187).                                                │
+│ 3. Sample Size: 10 individual, randomly selected complete package units per candidate │
+│    (ENGINEERING_RECOMMENDATION).                                                       │
 │ 4. Measurement Procedure:                                                              │
 │    a. Weigh complete empty assembled package (M_total).                                │
 │    b. Disassemble package: cleanly separate body, window/film, lid, and clips.        │
@@ -328,7 +333,7 @@ Current virgin plastic reduction calculations in HTF-03 rely on modeled estimate
 ### 4.3 Incumbent Baseline Packaging Measurement Opportunity
 If physical access to Profi's current rotisserie chicken packaging (`B1`) becomes available during retail engagement, the team must execute the following non-intrusive capture:
 - **`OBSERVED_EVIDENCE` Capture:**
-  - Empty package tare mass (mean of 5 units).
+  - Empty package tare mass (mean of 5 units; `ENGINEERING_RECOMMENDATION`).
   - Dimensions (length, width, gusset/depth, film gauge).
   - Material identification via resin recycling identification codes (RIC) or Fourier-Transform Infrared (FTIR) spectroscopy.
   - Visual photo documentation of print, seals, and vents.
@@ -358,41 +363,41 @@ If physical access to Profi's current rotisserie chicken packaging (`B1`) become
    - Inner liner: Record exact cellulose grade, supplier, and barrier coating chemistry.
    - Transparent window: Confirm NatureFlex grade (e.g., NVO, NK, or NE), gauge (nominal $\mu m$), and surface treatment.
    - Adhesives & Inks: Record water-based/compostable adhesive specifications and printing ink compliance with EN 13432.
-3. **Mass & Dimension Baseline:** Measure empty bag tare mass across 10 units. Measure flat width, side gusset depth, and total height.
+3. **Mass & Dimension Baseline:** Measure empty bag tare mass across 10 units (`ENGINEERING_RECOMMENDATION`). Measure flat width, side gusset depth, and total height.
 
 ### 5.2 Protocol B: Whole-Chicken Physical Fit & Headspace Verification
 - `MODELED_TEST_ASSUMPTION`: Whole rotisserie chicken test mass distribution of **1.0 to 1.4 kg** (hot cooked bird). Actual Profi bird weight distribution remains `UNKNOWN`.
 - **Fit & Ergonomic Procedure:**
-  1. Procure 5 whole roasted chickens freshly cooked to an internal core temperature $\ge 85^\circ\text{C}$.
+  1. Procure 5 whole roasted chickens (`ENGINEERING_RECOMMENDATION`) freshly cooked to an internal core temperature $\ge 85^\circ\text{C}$ (`MODELED_TEST_CONDITION`).
   2. Measure bird geometry: length, breast width, height.
   3. **Insertion Test:** A test operator wearing food-service safety gloves inserts the hot bird into the Gaia bag using standard rotisserie tongs. Record insertion duration (seconds) and any bag tearing or gusset snagging.
-  4. **Headspace & Closure:** Fold or seal the top closure per manufacturer design. Measure residual vertical headspace (minimum 30 mm required above bird). Verify bag does not contact the top closure under tension.
+  4. **Headspace & Closure:** Fold or seal the top closure per manufacturer design. Measure residual vertical headspace (minimum 30 mm required above bird; `MODELED_TEST_CONDITION / PROPOSED THRESHOLD — OWNER DECISION REQUIRED`). Verify bag does not contact the top closure under tension.
   5. **Window Contact:** Inspect whether the hot, greasy chicken skin directly presses against the NatureFlex window. Record percentage of window area in direct skin contact.
-  6. **Fat Pooling Headspace:** Verify that the bottom gusset expands fully flat to create a stable base. Inspect volume capacity for accumulated free fat/juices (minimum 100 ml liquid containment without overflowing).
-  7. **Carry & Handle Strength:** Pick up the sealed, hot package by its handle/top fold. Suspend for 5 minutes. Inspect handle deformation, paper stretching, and tear propagation.
+  6. **Fat Pooling Headspace:** Verify that the bottom gusset expands fully flat to create a stable base. Inspect volume capacity for accumulated free fat/juices (minimum 100 ml liquid containment without overflowing; `MODELED_TEST_CONDITION / PROPOSED THRESHOLD — OWNER DECISION REQUIRED`).
+  7. **Carry & Handle Strength:** Pick up the sealed, hot package by its handle/top fold. Suspend for 5 minutes (`MODELED_TEST_CONDITION`). Inspect handle deformation, paper stretching, and tear propagation.
 
 ### 5.3 Protocol C: Continuous Hot-Holding Challenge (Domain B)
 - `MODELED_TEST_CONDITION`: Hot holding cabinet maintained at **85°C to 95°C** (air temperature) at 30–50% RH.
 - `MENTOR_CLARIFICATION`: Holding duration of **up to 6 hours**.
 - **Holding Matrix & Procedure:**
-  1. Prepare 3 replicate Gaia bags containing freshly roasted chickens (1.2 kg ± 0.1 kg, core temp $\ge 85^\circ\text{C}$).
-  2. Prepare 2 control Gaia bags containing 150 ml of food-grade vegetable oil + 50 ml water heated to 90°C (liquid challenge).
+  1. Prepare 3 replicate Gaia bags containing freshly roasted chickens (1.2 kg ± 0.1 kg, core temp $\ge 85^\circ\text{C}$; `MODELED_TEST_CONDITION`).
+  2. Prepare 2 control Gaia bags containing 150 ml of food-grade vegetable oil + 50 ml water heated to 90°C (liquid challenge; `MODELED_TEST_CONDITION`).
   3. Place all 5 packages upright onto standard retail wire shelving inside the preheated 85–95°C holding cabinet.
-  4. Maintain continuous holding for **6 hours (360 minutes)**. Record cabinet temperature continuously via calibrated thermocouples.
-  5. Inspect at timed intervals: $T = 30\text{ min}$, $T = 60\text{ min}$, $T = 120\text{ min}$, $T = 240\text{ min}$, $T = 360\text{ min}$.
+  4. Maintain continuous holding for **6 hours (360 minutes)** (`MENTOR_CLARIFICATION`). Record cabinet temperature continuously via calibrated thermocouples.
+  5. Inspect at timed intervals: $T = 30\text{ min}$, $T = 60\text{ min}$, $T = 120\text{ min}$, $T = 240\text{ min}$, $T = 360\text{ min}$ (`MODELED_TEST_CONDITION`).
 
 ### 5.4 Protocol D: Grease & Hot-Fat Leakage Protocol
 Inspect the packages under Protocol C at each inspection interval for the following failure modes:
 1. **Substrate Strike-Through:** Visual and tactile inspection of paper outer surface. Record any grease spotting, darkening, or oil saturation ($cm^2$ stained).
 2. **Bottom Gusset Seam Integrity:** Inspect the bottom transverse heat-seal/fold. Place clean white absorbent blotter paper beneath the bag. Record any oil droplet transfer onto the blotter paper.
 3. **Window-Paper Lamination Seam:** Inspect the bonded perimeter between the NatureFlex window and the paper body. Verify absence of adhesive delamination or oil weeping along the seam edges.
-4. **Handling Rigidity Post-Hold:** At $T = 360\text{ min}$, remove the bag from the cabinet. Lift by the handle and tilt $30^\circ$. Record any paper softening, structural collapse, or liquid breakthrough.
-- `PROPOSED_ENGINEERING_CRITERION`: Zero liquid droplet leakage onto blotter paper at 6 hours. (Marked: *ACCEPTANCE THRESHOLD — OWNER DECISION REQUIRED*).
+4. **Handling Rigidity Post-Hold:** At $T = 360\text{ min}$, remove the bag from the cabinet. Lift by the handle and tilt $30^\circ$ (`MODELED_TEST_CONDITION`). Record any paper softening, structural collapse, or liquid breakthrough.
+- `PROPOSED THRESHOLD — OWNER DECISION REQUIRED`: Zero liquid droplet leakage onto blotter paper at 6 hours (holding duration: `MENTOR_CLARIFICATION`).
 
 ### 5.5 Protocol E: Window Transparency & Anti-Fog Evaluation
 Evaluate the NatureFlex window during Protocol C holding:
-1. **Visibility Rating:** Can the chicken breast, skin browning, and seasoning be clearly inspected through the window from a distance of 0.5 meters?
-2. **Condensation Behavior:** Record condensation state:
+1. **Visibility Rating:** Can the chicken breast, skin browning, and seasoning be clearly inspected through the window from a distance of 0.5 meters (`MODELED_TEST_CONDITION`)?
+2. **Condensation Behavior:** Record condensation state (`ENGINEERING_RECOMMENDATION` scale):
    - *Class 1:* Clear, no visible moisture droplets.
    - *Class 2:* Thin, transparent micro-droplet film; product fully visible.
    - *Class 3:* Coarse droplets; partial optical distortion; product recognizable.
@@ -400,12 +405,12 @@ Evaluate the NatureFlex window during Protocol C holding:
 3. **Thermal Distortion:** Inspect whether the NatureFlex film wrinkles, sags, shrinks, or delaminates from the paper border under hot steam.
 
 ### 5.6 Protocol F: Food-Contact Regulatory Verification (Domain C)
-1. **Supplier Dossier Audit:** Require Sacma S.p.A. to supply a formal Declaration of Compliance (DoC) covering the exact bag SKU.
+1. **Supplier Dossier Audit:** Require Sacma S.p.A. to supply a formal Declaration of Compliance (DoC) covering the exact bag SKU referencing Regulation (EC) No 1935/2004, Regulation (EC) No 2023/2006, and applicable material frameworks (Regulation (EU) No 10/2011 for plastics/coatings, BfR Recommendation XXXVI for paper/board, and relevant national decrees; `EXTERNAL_EVIDENCE_REQUIRED`).
 2. **Migration Testing Specifications:**
-   - Specific and overall migration test certificates must specify **Food Simulant D2** (vegetable oil).
-   - Test exposure conditions must meet or exceed actual contact conditions (minimum test condition: 2 hours at 100°C or 10 days at 40°C with screening at 60°C).
-   - Verify specific migration limits (SML) for plasticizers, slip agents, and photoinitiators.
-3. **PFAS-Free Verification:** Require written laboratory certification that paper grease-proofing does not utilize per- and polyfluoroalkyl substances (PFAS / organic fluorine $< 50\text{ ppm}$).
+   - Specific and overall migration test certificates must specify **Food Simulant D2** (vegetable oil) or approved alternative fat simulant (e.g. 95% ethanol where permissible under EN/ISO food contact standards).
+   - Testing exposure conditions (contact time and temperature) must be established in accordance with applicable statutory test matrices for high-temperature fatty food contact matching actual hot-holding conditions, verified by accredited testing laboratory dossiers.
+   - Verify compliance with applicable Specific Migration Limits (SML) for authorized substances, plasticizers, slip agents, and printing ink components.
+3. **PFAS-Free Verification:** Require certified supplier declaration or accredited laboratory compliance dossier confirming the absence of intentionally added per- and polyfluoroalkyl substances (PFAS) and compliance with applicable European and national restrictions (e.g., Regulation (EC) No 1907/2006 REACH restrictions, national food contact safety thresholds, and certified absence of fluorinated chemical barrier treatments; `EXTERNAL_EVIDENCE_REQUIRED`).
 
 ---
 
@@ -431,10 +436,10 @@ Evaluate the NatureFlex window during Protocol C holding:
    - Record reel width (mm), film thickness ($\mu m$), oxygen transmission rate (OTR), and water vapor transmission rate (WVTR).
 3. **Heat-Sealer Calibration:**
    - Tooling: Calibrated tray sealing machine equipped with CNC aluminum sealing head matching the SI-14 rim contour.
-   - Parameter Optimization: Establish documented sealing parameters:
-     - Sealing Temperature: $T_\text{seal} \in [140^\circ\text{C}, 175^\circ\text{C}]$.
-     - Sealing Dwell Time: $t_\text{dwell} \in [1.0\text{ s}, 2.5\text{ s}]$.
-     - Sealing Pressure: $P_\text{seal} \in [4\text{ bar}, 6\text{ bar}]$.
+    - Parameter Optimization: Establish documented sealing parameters (`SUPPLIER_GUIDELINES / ENGINEERING_RECOMMENDATION`):
+      - Sealing Temperature: $T_\text{seal} \in [140^\circ\text{C}, 175^\circ\text{C}]$.
+      - Sealing Dwell Time: $t_\text{dwell} \in [1.0\text{ s}, 2.5\text{ s}]$.
+      - Sealing Pressure: $P_\text{seal} \in [4\text{ bar}, 6\text{ bar}]$.
 
 ### 6.2 Protocol B: 175°C vs. 185°C Thermal Conflict Resolution
 - `FACT`: Canonical dataset registers open conflict `D08` / `C01`: 175°C / 60 min (`S08`, `S16`) vs. 185°C / 60 min (`S07`).
@@ -444,7 +449,7 @@ Evaluate the NatureFlex window during Protocol C holding:
   3. **DO NOT** execute oven cooking tests at 250°C. C5 is BLOCKED for `LITERAL_OVEN_250C`.
 - **Resolution Procedure:**
   - Submit formal technical inquiry to BIOPAP Technical Directorate requesting written clarification of the certified maximum temperature and duration for tray `PCTSI14000LC31019` when sealed with the nominated film.
-  - Until written clarification is received, the operational safety envelope must remain constrained to the lower documented bound: **$\le 175^\circ\text{C}$ for $\le 60\text{ minutes}$**.
+  - Until written clarification is received, the operational safety envelope must remain constrained to the lower documented bound: **$\le 175^\circ\text{C}$ for $\le 60\text{ minutes}$** (`OBSERVED_EVIDENCE` `S08`, `S16`).
 
 ### 6.3 Protocol C: Portion Fit & Headspace Verification (P2, P3, P4)
 - `UNKNOWN`: Profi exact portion recipe masses and serving volumes.
@@ -453,8 +458,8 @@ Evaluate the NatureFlex window during Protocol C holding:
   - **P3 (Hot Potatoes / Vegetables):** Roasted rosemary potato wedges (~300–400 g).
   - **P4 (Meat Portions):** Sliced roasted pork or chicken breast with gravy/sauce (~300–400 g).
 - **Procedure:**
-  1. Fill separate SI-14 trays with hot P2, P3, and P4 food portions at $85^\circ\text{C}$.
-  2. Measure fill height against tray depth (37 mm). Verify a minimum **5 mm vertical clearance** between the top of the food and the top sealing rim.
+  1. Fill separate SI-14 trays with hot P2, P3, and P4 food portions at $85^\circ\text{C}$ (`MODELED_TEST_CONDITION`).
+  2. Measure fill height against tray depth (37 mm; `OBSERVED_EVIDENCE` `S10`). Verify a minimum **5 mm vertical clearance** between the top of the food and the top sealing rim (`MODELED_TEST_CONDITION / PROPOSED THRESHOLD — OWNER DECISION REQUIRED`).
   3. Inspect food contact with the film. Sharp wing bone tips must not puncture or exert upward pressure against the taut film lid.
   4. Seal trays using calibrated parameters. Verify hermetic, continuous perimeter seal along the entire rim flange.
 
@@ -462,13 +467,13 @@ Evaluate the NatureFlex window during Protocol C holding:
 - `OBSERVED_EVIDENCE`: BIOPAP publishes an LC family claim of **6 hours at 90°C** (`S09`).
 - `RULE`: The family claim does not qualify the exact SI-14 tray + nominated film + hot chicken grease system. This test validates the assembled system.
 - **Procedure:**
-  1. Prepare 6 sealed SI-14 trays:
-     - 2 trays with P2 (greasy chicken wings + 20 ml free liquid fat).
+  1. Prepare 6 sealed SI-14 trays (`ENGINEERING_RECOMMENDATION` sample size):
+     - 2 trays with P2 (greasy chicken wings + 20 ml free liquid fat; `MODELED_TEST_CONDITION`).
      - 2 trays with P3 (steaming roasted potatoes).
      - 2 trays with P4 (meat portions in hot savory gravy).
-  2. Place all 6 sealed trays into a holding cabinet preheated to **90°C ± 2°C** for **6 hours (360 minutes)**.
-  3. **Pressure & Steam Behavior:** Observe film profile at $T = 15\text{ min}$, $30\text{ min}$, $60\text{ min}$. Does steam pressure cause excessive ballooning (dome expansion $> 25\text{ mm}$)? Does the film vent steam naturally through micro-porosity, or is mechanical micro-perforation required?
-  4. **Seal Delamination & Creep:** Inspect the seal boundary every 60 minutes. Record any peel delamination, corner lift, or liquid fat channeling through the seal seam.
+  2. Place all 6 sealed trays into a holding cabinet preheated to **90°C ± 2°C** (`MODELED_TEST_CONDITION`) for **6 hours (360 minutes)** (`MENTOR_CLARIFICATION`).
+  3. **Pressure & Steam Behavior:** Observe film profile at $T = 15\text{ min}$, $30\text{ min}$, $60\text{ min}$ (`MODELED_TEST_CONDITION`). Does steam pressure cause excessive ballooning (dome expansion $> 25\text{ mm}$; `ENGINEERING_RECOMMENDATION / PROPOSED THRESHOLD — OWNER DECISION REQUIRED`)? Does the film vent steam naturally through micro-porosity, or is mechanical micro-perforation required?
+  4. **Seal Delamination & Creep:** Inspect the seal boundary every 60 minutes (`MODELED_TEST_CONDITION`). Record any peel delamination, corner lift, or liquid fat channeling through the seal seam.
   5. **Tray Softening & Base Warping:** At $T = 360\text{ min}$, inspect the cellulose tray base. Measure sagging when lifted by the rim. Does the bottom soften or deform under hot chicken grease and gravy?
 
 ### 6.5 Protocol E: Hot-Fat Grease Penetration & Barrier Testing
@@ -477,7 +482,7 @@ Evaluate the NatureFlex window during Protocol C holding:
 3. **Corner Stress Analysis:** Cellulose pulp trays are vulnerable at corner draw radii. Inspect the 4 corner radii with magnifying optical inspection for grease seepage or structural thinning.
 
 ### 6.6 Protocol F: Film Transparency, Anti-Fog & Opening Ergonomics
-1. **Optical Inspection:** Inspect product clarity through the clear film at $T = 1\text{ h}$, $2\text{ h}$, $4\text{ h}$, and $6\text{ h}$. Record anti-fog class (Class 1 to Class 4 per Section 5.5).
+1. **Optical Inspection:** Inspect product clarity through the clear film at $T = 1\text{ h}$, $2\text{ h}$, $4\text{ h}$, and $6\text{ h}$ (`MODELED_TEST_CONDITION`). Record anti-fog class (Class 1 to Class 4 per Section 5.5).
 2. **Condensation Droplet Coalescence:** Verify whether condensation forms a continuous transparent water sheet (anti-fog success) or obstructing light-scattering droplets.
 3. **Peel & Open Ergonomics:** At $T = 360\text{ min}$, test opening by a simulated consumer:
    - Grip corner peel tab. Measure manual pull force required to initiate and complete peeling.
@@ -509,23 +514,23 @@ To prevent cross-configuration corruption, the following boundaries are absolute
 
 ### 7.2 Protocol A: Body Identity & Material Verification
 1. **Tare Mass & Alloy Confirmation:**
-   - Weigh 10 empty `e-pui225` container bodies on analytical balance.
-   - Request written material declaration from E-ambalaj / manufacturer confirming aluminium alloy designation (e.g., Alloy 8011 / 3003) and temper.
-   - Confirm food-grade lubricant type (e.g., FDA-approved synthetic or vegetable oil lubricant $< 50\text{ mg}/m^2$).
-2. **Geometric Audit:** Measure outer dimensions, base dimensions, depth (90 mm), and horizontal rim/flange curl geometry.
+   - Weigh 10 empty `e-pui225` container bodies on analytical balance (`ENGINEERING_RECOMMENDATION`).
+   - Request written material declaration from E-ambalaj / manufacturer confirming aluminium alloy designation (e.g., Alloy 8011 / 3003; `EXTERNAL_EVIDENCE_REQUIRED`) and temper.
+   - Confirm food-grade lubricant specification and compliance dossier (certified food-contact compliant forming lubricant conforming to applicable food-contact regulations e.g. Regulation (EC) No 1935/2004, CoE Resolution on metals and alloys, and supplier technical specification; `EXTERNAL_EVIDENCE_REQUIRED`).
+2. **Geometric Audit:** Measure outer dimensions, base dimensions, depth (90 mm; `OBSERVED_EVIDENCE` `S19`), and horizontal rim/flange curl geometry.
 
 ### 7.3 Protocol B: Literal 250°C Oven Thermal Exposure Challenge (Domain A)
 - `FACT`: Literal oven workflow specifies target **250°C**.
 - `RULE`: This test evaluates container **body only** (`OVEN_BODY_ONLY`). No plastic lid or window may enter the oven.
 - **Procedure:**
-  1. Preheat commercial convection bake oven to **250°C ± 3°C** (air temperature).
-  2. Prepare 3 `e-pui225` containers loaded with raw marinated chicken (1.2 kg bird) + 50 ml oil/seasoning.
+  1. Preheat commercial convection bake oven to **250°C ± 3°C** (`MODELED_TEST_CONDITION` / `MENTOR_CLARIFICATION` air temperature).
+  2. Prepare 3 `e-pui225` containers (`ENGINEERING_RECOMMENDATION`) loaded with raw marinated chicken (1.2 kg bird) + 50 ml oil/seasoning (`MODELED_TEST_CONDITION`).
   3. Insert loaded open containers onto oven baking racks.
-  4. Bake at continuous **250°C** for **45 minutes** (representative retail roasting cycle).
+  4. Bake at continuous **250°C** for **45 minutes** (`MODELED_TEST_CONDITION` representative retail roasting cycle).
   5. Measure and record:
      - Ambient oven air temperature (continuous thermocouple log).
      - Container outer sidewall temperature.
-     - Food core temperature at completion ($\ge 85^\circ\text{C}$).
+     - Food core temperature at completion ($\ge 85^\circ\text{C}$; `MODELED_TEST_CONDITION`).
   6. **Physical Observations Post-Bake:**
      - Container structural deformation or base buckling under 1.2 kg food load.
      - Rim/flange curl distortion or twisting (critical: rim warping will destroy post-oven lid seal).
@@ -540,29 +545,30 @@ To prevent cross-configuration corruption, the following boundaries are absolute
 │                        C6-RO-H CLOSURE ENGINEERING OPTIONS                             │
 ├────────────────────────────────┬───────────────────────────────────────────────────────┤
 │ Option 1: Complete Oven Lid    │ Transparent closure remains on pack during 250°C oven.│
-│ (Currently UNQUALIFIED)        │ Status: BLOCKED. Zero commercial transparent polymers  │
-│                                │ endure 250°C without melting/thermal decomposition.   │
+│ (Currently UNQUALIFIED)        │ Status: BLOCKED. No selected transparent closure is   │
+│                                │ currently evidenced/qualified for the C6-RO-H 250°C  │
+│                                │ workflow.                                            │
 ├────────────────────────────────┼───────────────────────────────────────────────────────┤
 │ Option 2: Two-Stage Workflow   │ Body only in 250°C oven -> remove -> cool food        │
-│ (Operational Engineering Path) │ below 85°C -> snap on transparent clear plastic lid.  │
+│ (Operational Engineering Path) │ below 85°C [MODELED] -> snap on clear plastic lid.    │
 │                                │ Status: INVESTIGATION. Requires validated retail SOP. │
 └────────────────────────────────┴───────────────────────────────────────────────────────┘
 ```
 
 > [!WARNING]
 > **Engineering Options are NOT Approved Profi SOPs:**
-> Option 2 is an **engineering research path**, not an approved Profi operational procedure. It cannot be presented as a qualified solution until store operational teams validate the cooling delay, association burn hazards, and food hygiene risks during post-oven lidding.
+> Option 2 is an **engineering research path**, not an approved Profi operational procedure. It cannot be presented as a qualified solution until store operational teams validate the cooling delay, associate burn hazards, and food hygiene risks during post-oven lidding.
 
 #### Option 2 Qualification Protocol (Two-Stage Post-Oven Capping):
 1. Upon removal of container from 250°C oven, monitor food surface temperature cooling curve.
-2. When surface temperature drops below **85°C** (target temperature safe for high-heat clear plastic lids), align a candidate transparent lid (to be sourced matching 255 × 195 mm rim).
+2. When surface temperature drops below **85°C** (`MODELED_TEST_CONDITION` target temperature safe for high-heat clear plastic lids), align a candidate transparent lid (to be sourced matching 255 × 195 mm rim).
 3. Apply lid: test manual snap-fit engagement around the rim curl.
-4. Measure lid dimensional stability: does residual radiant heat from the aluminium rim warp, shrink, or melt the plastic lid rim?
-5. Inspect optical clarity and anti-fog performance when capped over 80°C steaming food.
+4. Measure lid dimensional stability: does residual radiant heat from the aluminium rim warp, shrink, or deform the plastic lid rim?
+5. Inspect optical clarity and anti-fog performance when capped over 80°C steaming food (`MODELED_TEST_CONDITION`).
 
 ### 7.5 Protocol D: Post-Oven Hot Holding (Domain B)
-1. Transfer the two-stage assembled C6-RO-H pack (baked aluminium body + post-oven transparent lid) into the **85–95°C holding cabinet**.
-2. Hold for **6 hours (360 minutes)**.
+1. Transfer the two-stage assembled C6-RO-H pack (baked aluminium body + post-oven transparent lid) into the **85–95°C holding cabinet** (`MODELED_TEST_CONDITION`).
+2. Hold for **6 hours (360 minutes)** (`MENTOR_CLARIFICATION`).
 3. Inspect for:
    - Bottom aluminium pinhole leakage (inspect for salt/acid corrosion pitting from hot chicken seasoning).
    - Lid retention: does the lid remain securely snapped onto the rim curl during retail display handling?
@@ -604,8 +610,9 @@ Every physical protocol step must map back directly to the six canonical gates d
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
 │ Observable Result │ Free headspace $\ge 30\text{ mm}$ (bag) or $\ge 5\text{ mm}$ (tray); zero bone       │
 │                   │ punctures; secure closure without mechanical stress.                                │
+│                   │ (PROPOSED THRESHOLD — OWNER DECISION REQUIRED)                                      │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
-│ Verifying Party   │ Profi Store Operations Lead + SoS Test Engineers.                                   │
+│ Verifying Party   │ Store Operations representative + Test Engineers (`PROPOSED PILOT DESIGN`).         │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
 │ Failure Condition │ Inability to close bag/tray; food protrusion; puncture of window/film; seam tear.   │
 └───────────────────┴─────────────────────────────────────────────────────────────────────────────────────┘
@@ -623,10 +630,11 @@ Every physical protocol step must map back directly to the six canonical gates d
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
 │ Required Test     │ Protocol 5.6 (C1), 6.2 (C5), 7.2 (C6). Certified lab analytical testing.           │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
-│ Observable Result │ Written DoC referencing EU 10/2011 & EC 1935/2004; OML < 10 mg/dm²; SMLs satisfied; │
-│                   │ total fluorine < 50 ppm.                                                            │
+│ Observable Result │ Written DoC referencing EC 1935/2004 and applicable material frameworks (EU 10/2011 │
+│                   │ for plastics/coatings, BfR / national decrees for paper/board); OML/SML limits      │
+│                   │ satisfied; supplier/lab certified absence of intentionally added PFAS and NIAS.     │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
-│ Verifying Party   │ Certified Analytical Testing Laboratory + Profi Regulatory Compliance QA.           │
+│ Verifying Party   │ Accredited Testing Laboratory + Retail QA/Compliance team (`PROPOSED PILOT DESIGN`).│
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
 │ Failure Condition │ Missing DoC; migration limit exceedance; presence of intentional PFAS; banned NIAS. │
 └───────────────────┴─────────────────────────────────────────────────────────────────────────────────────┘
@@ -643,12 +651,12 @@ Every physical protocol step must map back directly to the six canonical gates d
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
 │ Required Test     │ Protocol 5.3 (C1 6h hold), 6.4 (C5 6h hold), 7.3 (C6-RO-H 250°C oven bake).        │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
-│ Observable Result │ No polymer melting; no seam separation; no thermal shrinkage; structural integrity  │
-│                   │ maintained throughout full operating duration.                                      │
+│ Observable Result │ No substrate/coating degradation; no seam separation; no thermal shrinkage;         │
+│                   │ structural integrity maintained throughout full operating duration.                 │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
-│ Verifying Party   │ Test Laboratory / Internal Bench Testing Engineers.                                 │
+│ Verifying Party   │ Test Laboratory / Bench Testing Engineers (`PROPOSED PILOT DESIGN`).                │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
-│ Failure Condition │ Melting/charring of substrate; opening of heat-seals; collapse of container walls.  │
+│ Failure Condition │ Thermal degradation/charring of substrate; opening of heat-seals; wall collapse.    │
 └───────────────────┴─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -664,9 +672,10 @@ Every physical protocol step must map back directly to the six canonical gates d
 │ Required Test     │ Protocol 5.4 (C1), 6.5 (C5), 7.5 (C6). Continuous 6h hot-fat holding challenge.     │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
 │ Observable Result │ Zero oil droplet breakthrough onto absorbent blotter paper after 6 hours holding    │
-│                   │ at 85–95°C.                                                                         │
+│                   │ at 85–95°C. (PROPOSED THRESHOLD — OWNER DECISION REQUIRED; holding temp: MODELED,   │
+│                   │ duration: MENTOR_CLARIFICATION).                                                    │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
-│ Verifying Party   │ Bench Test Engineers.                                                               │
+│ Verifying Party   │ Bench Test Engineers (`PROPOSED PILOT DESIGN`).                                     │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
 │ Failure Condition │ Liquid fat leaking onto outer surfaces, display shelves, or consumer hands.         │
 └───────────────────┴─────────────────────────────────────────────────────────────────────────────────────┘
@@ -684,11 +693,12 @@ Every physical protocol step must map back directly to the six canonical gates d
 │ Required Test     │ Protocol 5.5 (C1), 6.6 (C5), 7.4 (C6). Visual fogging classification over 6 hours.  │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
 │ Observable Result │ Product details and browning clearly distinguishable from 0.5 m (Anti-fog Class 1-2)│
-│                   │ throughout full 6-hour holding period.                                              │
+│                   │ throughout full 6-hour holding period. (PROPOSED THRESHOLD — OWNER DECISION REQ.)   │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
-│ Verifying Party   │ Retail Merchandising QA / Test Engineers.                                           │
+│ Verifying Party   │ Merchandising QA / Test Engineers (`PROPOSED PILOT DESIGN`).                        │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
 │ Failure Condition │ Opaque white fogging (Class 4) obscuring product for > 30 minutes; window sagging.  │
+│                   │ (PROPOSED THRESHOLD — OWNER DECISION REQUIRED)                                      │
 └───────────────────┴─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -703,12 +713,15 @@ Every physical protocol step must map back directly to the six canonical gates d
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
 │ Required Test     │ Execution of Request for Quotation (RFQ) per HTF-03 Procurement Packet.             │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
-│ Observable Result │ Written quotation with fixed pricing in RON, defined lead times $\le 10$ days, and  │
-│                   │ agreed trial MOQ.                                                                   │
+│ Observable Result │ Written quotation with fixed pricing in RON, delivery lead time, and trial MOQ      │
+│                   │ compatible with pilot requirements (PROPOSED PILOT ASSUMPTIONS: lead time           │
+│                   │ $\le 10$ business days or agreed pilot schedule, acceptable trial MOQ).             │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
-│ Verifying Party   │ Profi Packaging Procurement Category Manager.                                       │
+│ Verifying Party   │ Packaging Procurement stakeholder (`PROPOSED PILOT DESIGN`).                        │
 ├───────────────────┼─────────────────────────────────────────────────────────────────────────────────────┤
-│ Failure Condition │ Unobtainable article; excessive lead times (> 8 weeks); prohibitive MOQ (> 100k).   │
+│ Failure Condition │ Unobtainable article; lead times incompatible with trial schedule; prohibitive MOQ  │
+│                   │ for pilot validation (ILLUSTRATIVE THRESHOLD: lead time > 8 wks or MOQ > 100k       │
+│                   │ — subject to commercial procurement decision).                                      │
 └───────────────────┴─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -731,19 +744,19 @@ STANDARD TEST PROCEDURE: STP-HTF-01 (HOT-FAT CONTINUOUS DISPLAY HOLDING)
    Option A (Real Food): Freshly roasted seasoned rotisserie chicken or portions.
    Option B (Standardized Surrogate): Food-grade refined canola oil (85% w/w) +
    water (15% w/w) containing 1.0% sodium chloride and 0.5% oleic acid to simulate
-   hot poultry fat/moisture chemistry.
+   hot poultry fat/moisture chemistry (MODELED_TEST_CONDITION / ENGINEERING_RECOMMENDATION).
 
 3. TEST CONDITIONS:
    - Holding Environment: Forced-convection heated display cabinet.
-   - Temperature Profile: Continuous 90°C ± 2°C (thermocouple verified).
-   - Test Duration: 6.0 hours (360 minutes).
-   - Sample Size: Minimum n = 5 complete assembled packaging units.
+   - Temperature Profile: Continuous 90°C ± 2°C (MODELED_TEST_CONDITION, thermocouple verified).
+   - Test Duration: 6.0 hours (360 minutes; MENTOR_CLARIFICATION).
+   - Sample Size: Minimum n = 5 complete assembled packaging units (ENGINEERING_RECOMMENDATION).
 
 4. PARAMETERS TO LOG:
    - Pre-test tare mass of dry package (g).
    - Food/surrogate mass loaded (g) and initial core temperature (°C).
    - Ambient cabinet air temperature and humidity at 15-minute intervals.
-   - Periodic strike-through and leak inspection at T = 30, 60, 120, 240, 360 min.
+   - Periodic strike-through and leak inspection at T = 30, 60, 120, 240, 360 min (MODELED_TEST_CONDITION).
    - Post-test blotter paper weight change (Δg oil leakage).
 ================================================================================
 ```
@@ -816,18 +829,18 @@ To ensure physical safety, protect equipment, and prevent spurious testing, the 
 │ Code    │ Trigger Event                 │ Mandatory Immediate Action                   │
 ├─────────┼───────────────────────────────┼──────────────────────────────────────────────┤
 │ STOP-01 │ Thermal Ignition / Smoke      │ Abort test; de-energize oven; trigger safety.│
-│ STOP-02 │ Severe Substrate Melting      │ Abort test; record thermal failure; cool.    │
+│ STOP-02 │ Severe Substrate Melting/Flow │ Abort test; record thermal failure; cool.    │
 │ STOP-03 │ Gross Liquid Fat Dumping      │ Abort test; container unviable for hot food. │
 │ STOP-04 │ Structural Collapse Under Load│ Abort test; packaging walls buckling.        │
-│ STOP-05 │ Severe Toxic / Chemical Odor  │ Abort test; potential polymer decomposition. │
+│ STOP-05 │ Severe Toxic / Chemical Odor  │ Abort test; potential substrate breakdown.   │
 │ STOP-06 │ Identity Ambiguity on Sample  │ Halt testing; cannot test unverified BOM.    │
 └─────────┴───────────────────────────────┴──────────────────────────────────────────────┘
 ```
 
 #### Detailed Stop Trigger Specifications:
 1. **STOP-01 (Thermal Ignition / Smoke):** Any emission of smoke, visible smoldering, or flame from paper, cellulosic liners, or polymer coatings during oven or cabinet exposure. *Result: Instant FAIL on Gate 3.*
-2. **STOP-02 (Severe Melting / Decomposition):** Visual dripping, liquid pooling, or hole formation caused by polymer melting (e.g., attempting to expose PET/PP lids to 250°C). *Result: Instant FAIL on Gate 3.*
-3. **STOP-03 (Gross Liquid Fat Dumping):** Sudden seam burst, catastrophic bottom rupture, or liquid leakage $> 5\text{ ml}$ spilling onto equipment. *Result: Instant FAIL on Gate 4.*
+2. **STOP-02 (Severe Melting / Thermal Degradation):** Visual dripping, liquid pooling, or hole formation caused by substrate/polymer melting or thermal breakdown under oven/holding exposure. *Result: Instant FAIL on Gate 3.*
+3. **STOP-03 (Gross Liquid Fat Dumping):** Sudden seam burst, catastrophic bottom rupture, or liquid leakage $> 5\text{ ml}$ spilling onto equipment (`PROPOSED THRESHOLD — OWNER DECISION REQUIRED`). *Result: Instant FAIL on Gate 4.*
 4. **STOP-04 (Structural Collapse):** Severe softening of cellulose tray or paper bag causing the container to fold in half or drop its contents when lifted. *Result: Instant FAIL on Gate 1 & Gate 4.*
 5. **STOP-05 (Chemical / Plasticizer Off-Gassing):** Release of pungent acrid chemical fumes upon heating. *Result: Instant FAIL on Gate 2; quarantine samples for lab analysis.*
 6. **STOP-06 (Identity Ambiguity):** Physical samples received do not match published manufacturer SKU, or supplier refuses to disclose substrate layers. *Action: Quarantine samples; do not generate invalid empirical data.*
@@ -871,7 +884,7 @@ The table below maps the current canonical state against the physical testing mi
 To maintain absolute integrity across team reporting:
 - A candidate reaches **"Ready for Physical Bench Test"** only upon verified completion of Stage Q1.
 - A candidate reaches **"Ready for Regulatory QA Review"** only upon verified completion of Stage Q2.
-- A candidate reaches **"Ready for Bounded Store Pilot"** only upon formal sign-off of Stage Q4.
+- A candidate reaches **"Ready for Bounded Store Pilot"** only upon formal sign-off of Stage Q4 (`PROPOSED PILOT DESIGN`).
 - **Strict Invariant:** These engineering milestones do **NOT** modify canonical PackShift database records, runtime API responses, or frontend decision screens until formal ingestion and Integrator acceptance.
 
 ---
@@ -881,32 +894,39 @@ To maintain absolute integrity across team reporting:
 When physical testing is executed under this protocol, empirical results must feed back into the PackShift digital architecture following strict governance:
 
 ```
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│                        PACKSHIFT EVIDENCE INGESTION PIPELINE                           │
-├────────────────────────┬───────────────────────────────────────┬───────────────────────┤
-│ Physical Test Output   │ Target PackShift Evidence Field       │ Ingestion Governance  │
-├────────────────────────┼───────────────────────────────────────┼───────────────────────┤
-│ Measured Component Mass│ `CandidateMetrics.total_package_mass` │ Replace ESTIMATED     │
-│ (Protocol 4.2)         │ `CandidateMetrics.virgin_plastic_mass`│ with OBSERVED_VERIFIED│
-├────────────────────────┼───────────────────────────────────────┼───────────────────────┤
-│ 6-Hour Grease Leakage  │ `product_candidate_gates[].gates`     │ Update Gate 4 status  │
-│ (Protocol 5.4 / 6.5)   │ `.grease_leak.status`                 │ from UNKNOWN to PASS  │
-├────────────────────────┼───────────────────────────────────────┼───────────────────────┤
-│ Anti-Fog Performance   │ `product_candidate_gates[].gates`     │ Update Gate 5 status  │
-│ (Protocol 5.5 / 6.6)   │ `.transparent_viewing.status`         │ from UNKNOWN to PASS  │
-├────────────────────────┼───────────────────────────────────────┼───────────────────────┤
-│ Certified Supplier DoC │ `product_candidate_gates[].gates`     │ Update Gate 2 status  │
-│ (Protocol 5.6 / 6.2)   │ `.food_contact.status`                │ from UNKNOWN to PASS  │
-├────────────────────────┼───────────────────────────────────────┼───────────────────────┤
-│ Written Commercial RFQ │ `ProcurementDetails.romania_unit_price`│ Replace UNKNOWN with  │
-│ (HTF-03 Packet)        │ `ProcurementDetails.current_stock`    │ OBSERVED_VERIFIED     │
-└────────────────────────┴───────────────────────────────────────┴───────────────────────┘
+┌───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                       PACKSHIFT EVIDENCE INGESTION PIPELINE                                       │
+├────────────────────────┬─────────────────────────────────────────┬────────────────────────────────────────────────┤
+│ Physical Test Output   │ Target PackShift Evidence Field         │ Ingestion Governance                           │
+├────────────────────────┼─────────────────────────────────────────┼────────────────────────────────────────────────┤
+│ Measured Component Mass│ `CandidateMetrics.total_package_mass_g` │ Supplies empirical mass measurements;          │
+│ (Protocol 4.2)         │ `CandidateMetrics.virgin_plastic_mass_g`│ transitions `state` from `ESTIMATED` to        │
+│                        │                                         │ `OBSERVED_VERIFIED` upon canonical dataset     │
+│                        │                                         │ regeneration.                                  │
+├────────────────────────┼─────────────────────────────────────────┼────────────────────────────────────────────────┤
+│ 6-Hour Grease Leakage  │ `product_candidate_gates[].gates`       │ Supplies empirical leakage test dossier for    │
+│ (Protocol 5.4 / 6.5)   │ `.grease_leak`                          │ formal Gate 4 reassessment during canonical    │
+│                        │                                         │ ingestion; does NOT directly force PASS.       │
+├────────────────────────┼─────────────────────────────────────────┼────────────────────────────────────────────────┤
+│ Anti-Fog Performance   │ `product_candidate_gates[].gates`       │ Supplies empirical optical evaluation dossier  │
+│ (Protocol 5.5 / 6.6)   │ `.transparent_viewing`                  │ for formal Gate 5 reassessment during canonical│
+│                        │                                         │ ingestion; does NOT directly force PASS.       │
+├────────────────────────┼─────────────────────────────────────────┼────────────────────────────────────────────────┤
+│ Certified Supplier DoC │ `product_candidate_gates[].gates`       │ Supplies certified statutory compliance dossier│
+│ (Protocol 5.6 / 6.2)   │ `.food_contact`                         │ for formal Gate 2 reassessment during canonical│
+│                        │                                         │ ingestion; does NOT directly force PASS.       │
+├────────────────────────┼─────────────────────────────────────────┼────────────────────────────────────────────────┤
+│ Written Commercial RFQ │ `ProcurementDetails.romania_unit_price` │ Supplies verified commercial terms;            │
+│ (HTF-03 Packet)        │ `ProcurementDetails.current_stock`      │ transitions `state` from `UNKNOWN` to          │
+│                        │                                         │ `OBSERVED_VERIFIED` upon canonical dataset     │
+│                        │                                         │ regeneration; supports Gate 6 reassessment.   │
+└────────────────────────┴─────────────────────────────────────────┴────────────────────────────────────────────────┘
 ```
 
-### Ingestion Rules:
-1. Every new data point must create a new unique source ID (`SRC-XXX`) referencing the physical Test Record ID (`TR-...`), certified laboratory report number, or supplier quotation document.
-2. The runtime hash (`source_revision_hash`) must be recomputed deterministically across canonical and display JSON snapshots.
-3. Automated regression suites (`validate_htf03.py --self-test` and `test_acceptance_oracle.py`) must pass with zero defects prior to merge.
+### Ingestion Rules & Epistemic Decoupling:
+1. **No Direct Runtime Mutation:** Physical test execution does NOT directly write to runtime models or unilaterally update gate statuses to `PASS`. Test records provide verifiable empirical dossiers submitted for formal canonical evaluation.
+2. **Canonical Audit Trail:** Every new empirical data point must create a new unique source ID (`SRC-XXX`) referencing the physical Test Record ID (`TR-...`), certified laboratory report number, or supplier quotation document.
+3. **Deterministic Reassessment:** Gate status transitions (e.g. from `QUALIFICATION REQUIRED` to `PASS` or `FAIL`) and overall recommendation outcomes occur strictly through formal canonical snapshot regeneration (`HTF-03-canonical-packaging-dataset.json`), deterministic re-hashing (`source_revision_hash`), automated regression validation (`validate_htf03.py --self-test` and acceptance tests), and formal Integrator acceptance.
 
 ---
 
@@ -937,7 +957,7 @@ This protocol enforces strict, hard-coded rejection against ten fatal packaging 
 │       │ inventory, commercial stock, and immediate delivery readiness.         │ procurement gate remains UNKNOWN│
 ├───────┼────────────────────────────────────────────────────────────────────────┼─────────────────────────────────┤
 │ NG-06 │ High renewable or recycled content cited as justification to overlook  │ REJECT. Environmental scores    │
-│       │ a hard technical failure (e.g. melting at 250°C or leaking fat).       │ cannot compensate for Gate FAIL.│
+│       │ a hard technical failure (e.g. thermal failure at 250°C or fat leak).  │ cannot compensate for Gate FAIL.│
 ├───────┼────────────────────────────────────────────────────────────────────────┼─────────────────────────────────┤
 │ NG-07 │ Technical data from European candidate (Plus Pack C6-EU 350°C) leaked   │ REJECT. Configurations are      │
 │       │ into local Romanian configuration (e-pui225 C6-RO-H).                  │ isolated; zero data leakage.    │
@@ -958,6 +978,10 @@ This protocol enforces strict, hard-coded rejection against ten fatal packaging 
 ## 14. Execution Checklist & Phased Roadmap
 
 To execute this qualification protocol in the physical world, the following phased sequence must be respected:
+
+> [!NOTE]
+> **Illustrative Operational Assumptions:**
+> The roadmap phases (Weeks 1–12), sample batch sizes (n = 20–25), store trial scope (3–5 stores), and trial durations (14–30 days) represent a **PROPOSED PILOT DESIGN** and **ILLUSTRATIVE OPERATIONAL ASSUMPTIONS**. Actual delivery schedules, physical sample volumes, store selection, and operational approvals remain subject to commercial supplier agreements and Profi retail management alignment.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
@@ -983,17 +1007,17 @@ To execute this qualification protocol in the physical world, the following phas
 ├──────────────┼───────────────────────────────────┼─────────────────────────────────────┤
 │ Phase 5      │ Operational Store Trial & Pilot   │ Q4–Q5 Commercial Store Pilot        │
 │ (Weeks 9–12) │ • Install tray sealer in test deli│ • Deli associate workflow audit     │
-│              │ • 30-day supervised store trial   │ • Profi QA & Procurement sign-off   │
+│              │ • 30-day supervised store trial   │ • Retail QA & Procurement sign-off  │
 └──────────────┴───────────────────────────────────┴─────────────────────────────────────┘
 ```
 
 ### Protocol Execution Checklist for Test Engineers:
 - [ ] Verify exact sample SKU matches frozen Q0 BOM prior to unpacking.
-- [ ] Zero balance and record tare masses of all individual components across 10 units.
+- [ ] Zero balance and record tare masses of all individual components across 10 units (`ENGINEERING_RECOMMENDATION`).
 - [ ] Verify oven calibration using external independent dual thermocouples before Domain A tests.
-- [ ] Verify hot-holding cabinet air temperature continuously at 90°C ± 2°C.
-- [ ] Ensure white absorbent blotter paper is replaced and weighed at each 60-minute interval.
-- [ ] Photograph anti-fog appearance at 0.5 m distance at every inspection interval.
+- [ ] Verify hot-holding cabinet air temperature continuously at 90°C ± 2°C (`MODELED_TEST_CONDITION`).
+- [ ] Ensure white absorbent blotter paper is replaced and weighed at each 60-minute interval (`MODELED_TEST_CONDITION`).
+- [ ] Photograph anti-fog appearance at 0.5 m distance (`MODELED_TEST_CONDITION`) at every inspection interval.
 - [ ] Log every observed anomaly immediately on Form `TR-HTF-01`.
 - [ ] Never declare a candidate "approved" or "qualified" upon bench test completion.
 
@@ -1041,11 +1065,11 @@ To execute this qualification protocol in the physical world, the following phas
       └────────────────────────────────────────────────────────────────────────────────────────┘
                                                   │
                                                   ▼
-      STAGE 5: CONTROLLED 30-DAY RETAIL STORE PILOT (Weeks 11 to 14)
+      STAGE 5: CONTROLLED RETAIL STORE PILOT (Weeks 11 to 14 — PROPOSED PILOT DESIGN)
       ┌────────────────────────────────────────────────────────────────────────────────────────┐
-      │ • Supervised rollout in 3–5 high-volume Profi hot food deli counters.                  │
+      │ • Supervised rollout in 3–5 high-volume Profi hot food deli counters (illustrative).   │
       │ • Real-world tracking: zero package leaks, positive customer viewing, verified waste.  │
-      │ • Final human decision: Profi QA & Procurement sign-off for nationwide supply contract.│
+      │ • Final human decision: Retail QA & Procurement sign-off for supply agreement.         │
       └────────────────────────────────────────────────────────────────────────────────────────┘
 
 ====================================================================================================
