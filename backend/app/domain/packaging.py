@@ -267,3 +267,33 @@ class SelectionResponse(Contract):
     baseline: BaselineAssessment
     candidates: list[CandidateAssessment]
     summary_verdict: Text
+
+
+# --- INT-R5 Economic Scenario Models ---
+
+
+class EconomicScenarioRequest(Contract):
+    annual_units: Annotated[int, Field(gt=0)]
+    current_cost_eur_per_unit: Annotated[float, Field(ge=0)]
+    candidate_cost_eur_per_unit: Annotated[float, Field(ge=0)]
+    one_time_transition_cost_eur: Annotated[float, Field(ge=0)] | None = None
+
+
+class EconomicScenarioResponse(Contract):
+    scenario_id: Text
+    annual_units: int
+    current_cost_eur_per_unit: float
+    candidate_cost_eur_per_unit: float
+    one_time_transition_cost_eur: float | None = None
+    current_annual_spend_eur: float
+    candidate_annual_spend_eur: float
+    annual_cost_delta_eur: float
+    first_year_cost_delta_eur: float | None = None
+    annual_virgin_plastic_reduction_kg: float | None = None
+    incremental_cost_per_kg_avoided_eur: float | None = None
+    environmental_status: Literal["CALCULATED", "INSUFFICIENT_DATA"]
+    eligibility_status: Literal["ELIGIBLE", "REVIEW_REQUIRED", "BLOCKED"]
+    origin: Literal["CALCULATED"] = "CALCULATED"
+    input_origin: Literal["USER_PROVIDED"] = "USER_PROVIDED"
+    verification_state: Literal["NOT_VERIFIED"] = "NOT_VERIFIED"
+    disclosure: Text
