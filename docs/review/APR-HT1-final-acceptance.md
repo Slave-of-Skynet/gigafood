@@ -74,23 +74,29 @@ Evaluated against the official AgriFood challenge judging criteria:
 Reconciled against domain input from the 11:19 Descript clarification, strictly separating **Explicit Mentor Clarifications** from **Modeled Validation Scenarios, Regulatory Requirements & Technical Gates**:
 
 ### 5.1 Explicit Mentor Clarifications
-- **M01 Virgin Plastic Reduction (`MENTOR_CLARIFICATION`):** `ESTIMATED`. Modeled scenarios show reduction potential, but physical masses remain unmeasured. C5 range crosses zero (-67.6% to +82.1%).
-- **M07 Transparent Viewing (`MENTOR_CLARIFICATION`):** `OBSERVED_VERIFIED` (Components). Clear windows/lids included in all paths; anti-fog performance requires validation.
+- **M01 Virgin Plastic Reduction (`MENTOR_CLARIFICATION`):** `ESTIMATED`. Incumbent rotisserie bag defined as 100% virgin plastic; modeled scenarios show reduction potential, but physical masses remain unmeasured. C5 range crosses zero (-67.6% to +82.1%).
+- **M02 200–250°C Oven Context (`MENTOR_CLARIFICATION`):** `OBSERVED_VERIFIED` (Seller claim). Mentor articulated 200–250°C oven reheating/cooking context; the in-pack baking stress workflow (`LITERAL_OVEN_250C_THEN_HOLD`) is an engineering stress scenario. C6-RO-H (e-pui225) body offers 280°C seller claim; duration and compatible clear lid unverified; C2/C3/C4/C5 fail thermally.
+- **M04 Up to 6 Hours Holding (`MENTOR_CLARIFICATION`):** `OBSERVED_VERIFIED` (Family). Mentor stated hot holding duration of up to 6 hours; holding temperature (85–95°C) is a modeled test condition (actual Profi display temp UNKNOWN). Tested against BIOPAP 6h/90°C LC family claim; exact SI-14 tray + film + chicken fat combination must be qualified.
+- **M06 Grease & Oil Barrier Requirement (`MENTOR_CLARIFICATION`):** `UNKNOWN`. Mentor articulated need for robust grease and oil barrier for hot chicken; specific physical 6-hour seam and substrate leak test protocol under hot fat is technical validation.
+- **M07 Transparent Viewing (`MENTOR_CLARIFICATION`):** `OBSERVED_VERIFIED` (Components). Clear windows/lids included in all paths for customer inspection; anti-fog performance requires validation.
 - **M08 Small Portions Differentiation (`MENTOR_CLARIFICATION`):** `QUALIFICATION_REQUIRED`. BIOPAP LC SI-14 tray + clear film is primary qualification lead for P2–P4 deli portions.
-- **M09 Whole Chicken Format (`MENTOR_CLARIFICATION`):** `QUALIFICATION_REQUIRED`. Flexible windowed bag (Gaia C1) prioritized over rigid box to solve sizing and storage constraints.
-- **M10 Recyclability in Romania (`MENTOR_CLARIFICATION`):** `OBSERVED_VERIFIED` (Design). Packaging concept must reflect real-world Romanian municipal waste and grease contamination.
+- **M09 Whole Chicken Format (`MENTOR_CLARIFICATION`):** `QUALIFICATION_REQUIRED`. Flexible windowed bag (Gaia C1) prioritized over rigid box to solve sizing and storage constraints; modeled 1.0–1.4 kg hot chicken sizing is an engineering test assumption.
+- **M10 Recyclability Requirement (`MENTOR_CLARIFICATION`):** `OBSERVED_VERIFIED` (Design). Mentor specified packaging concept must be recyclable; real-world Romanian sorting, collection, and recycling infrastructure reality for greasy packaging is an open research question (UNKNOWN).
 - **M11 Avoid Problematic Multilayers (`MENTOR_CLARIFICATION`):** `OBSERVED_VERIFIED`. Excluded unrecyclable metallized laminates in favor of monomaterials and paper.
-- **M12 Cost Practicality / +10–15% (`MENTOR_CLARIFICATION`):** `ASSUMED` (Context). +10–15% cost delta integrated as context, not an automatic pass threshold.
+- **M12 Cost Practicality / +10–15% Context (`MENTOR_CLARIFICATION`):** `ASSUMED` (Context). +10–15% cost delta integrated as context, not an automatic pass threshold; 1,700 stores retail network volume scaling is a modeled economic scenario.
 - **M14 Formal Certificates & Evidence (`MENTOR_CLARIFICATION`):** `OBSERVED_VERIFIED`. Company evaluates feasibility based on formal certificates and DoCs; tracked as required next actions.
-- **M15 Romania Procurement Routes (`MENTOR_CLARIFICATION`):** `OBSERVED_VERIFIED` (Catalogue Listings). Local Romanian distributors identified as current catalogue/order leads (listing ≠ stock); verified stock requires inquiry.
 
-### 5.2 Modeled Validation Scenarios, Regulatory Requirements & Technical Gates
-- **M02 200–250°C Oven Stress Context (`MODELED_VALIDATION_SCENARIO`):** `OBSERVED_VERIFIED` (Seller claim). In-pack baking stress scenario; C6-RO-H (e-pui225) body offers 280°C seller claim; duration and compatible clear lid unverified; C2/C3/C4/C5 fail thermally.
-- **M03 Rotisserie Outside Pack (`MODELED_VALIDATION_SCENARIO`):** `ASSUMED`. Operational baseline assuming rotisserie cooking outside package, then hot transfer to packaging for display.
-- **M04 Up to 6 Hours Holding (`MODELED_VALIDATION_SCENARIO`):** `OBSERVED_VERIFIED` (Family). Deli display shelf-life test based on retail display targets & BIOPAP 6h/90°C LC family claim; exact SI-14 tray + film + chicken fat combination must be qualified.
+### 5.2 Modeled Validation Scenarios, Regulatory Requirements, Research & Technical Gates
+- **M02 LITERAL_OVEN_250C_THEN_HOLD Workflow (`MODELED_WORKFLOW`):** Engineering stress-test scenario evaluating in-pack baking up to 250°C; C2/C3/C4/C5 fail thermally; C6-RO-H fallback.
+- **M03 Rotisserie Outside Pack SOP (`OPERATIONAL_ASSUMPTION`):** `ASSUMED`. Operational baseline assuming rotisserie cooking outside package, then hot transfer to packaging for display.
+- **M04 85–95°C Display Holding Condition (`MODELED_TEST_CONDITION`):** Hot deli display holding temperature range modeled for shelf-life testing (actual Profi display temp UNKNOWN).
 - **M05 Food Contact Safety (`REGULATORY_REQUIREMENT`):** `UNKNOWN`. Mandatory legal compliance under EU 10/2011; Declaration of Compliance (DoC) and fatty food migration testing (Simulant D2) remain supplier obligations.
-- **M06 Grease & Oil Barrier (`TECHNICAL_VALIDATION`):** `UNKNOWN`. Physical 6-hour seam and substrate leak testing under modeled hot display conditions.
+- **M06 Physical Seam & Fat Leak Test Protocol (`TECHNICAL_VALIDATION`):** `UNKNOWN`. Physical 6-hour seam and substrate leak testing under modeled hot display conditions.
+- **M09 Modeled 1.0–1.4 kg Whole Chicken Sizing (`MODELED_TEST_ASSUMPTION`):** Engineering sizing test assumptions (actual Profi bird mass and fat accumulation headroom UNKNOWN).
+- **M10 Romanian Municipal Recovery Reality (`RESEARCH_INVESTIGATION`):** `UNKNOWN`. Local municipal collection, sorting, and organic/paper recycling capabilities for post-consumer food packaging in Romania.
+- **M12 Modeled 1,700 Stores Network Scale (`MODELED_ECONOMIC_SCENARIO`):** Volume scaling scenario for economic modeling (actual Profi store count and contract volumes UNKNOWN).
 - **M13 Composition & Layer Transparency (`TECHNICAL_DISCLOSURE`):** `OBSERVED_VERIFIED` / `UNKNOWN`. Substrate layers and film gauges documented; proprietary adhesives unknown.
+- **M15 Romania Procurement Routes (`HTF-03_RESEARCH` / `PROCUREMENT_EVIDENCE`):** `OBSERVED_VERIFIED` (Catalogue Listings). Market research identified local Romanian distributors (E-ambalaj, La Habibi, Barleta) as current catalogue/order leads (listing ≠ stock); verified stock, lead times, and commercial terms require inquiry.
 
 ---
 
@@ -290,8 +296,8 @@ Challenge coverage:
 - Presentation (5%): SUPPORTED
 
 Mentor & scenario coverage:
-- 8 explicit mentor clarifications reconciled (concept, bag format, viewing, virgin plastic, +10-15% tolerance, recycling, multilayers, evidence)
-- 7 modeled validation scenarios and technical gates separated (200-250 C stress, 6h holding, rotisserie SOP, DoC, grease, BOM, retail scale)
+- 11 explicit mentor clarifications reconciled (concept, virgin plastic definition, 200–250°C oven context, up to 6h holding, grease/oil barrier, viewing window, portions, bag format over box, recyclable requirement, avoid unrecyclable multilayers, +10–15% cost context, formal certificates)
+- Modeled validation scenarios, research & technical gates separated (250°C in-pack workflow, 85–95°C holding condition, rotisserie SOP, DoC EU 10/2011, seam leak test protocol, 1.0–1.4 kg sizing, Romanian recovery reality UNKNOWN, 1,700 stores scale, BOM disclosure, Romania procurement routes research)
 
 P1 POST_COOK: C1 Gaia (qualification_priority=1, outcome=QUALIFICATION REQUIRED, 0 survivors)
 P1 LITERAL_250: C6-RO-H (qualification_priority=2, outcome=QUALIFICATION REQUIRED, C2-C5 BLOCKED)
