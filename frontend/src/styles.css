@@ -983,3 +983,11 @@ button:focus-visible, summary:focus-visible, select:focus-visible, input:focus-v
 .scenario-form input, .scenario-form select { font: inherit; padding: 10px; border-radius: 8px; border: 2px solid #28782e; width: 100%; min-width: 0; }
 .scenario-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 @media (max-width: 640px) { .scenario-form { grid-template-columns: minmax(0, 1fr); } }
+
+/* INT-R5 Economic Scenario Amplifier */
+.economic-scenario-section { margin-top: 8px; }
+.economic-inputs-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; grid-column: 1 / -1; }
+.validation-alert { color: #b91c1c; background: #fef2f2; border: 1px solid #f87171; padding: 10px 14px; border-radius: 8px; font-weight: 600; margin: 12px 0 0; }
+.economic-results-container { display: flex; flex-direction: column; gap: 18px; margin-top: 12px; }
+.economic-blocked-alert { margin-bottom: 8px; }
+@media (max-width: 640px) { .economic-inputs-grid { grid-template-columns: 1fr; } }

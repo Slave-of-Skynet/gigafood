@@ -105,3 +105,30 @@ export interface SelectionResponse {
   annual_units_requested: number | null; baseline: BaselineAssessment;
   candidates: CandidateAssessment[]; summary_verdict: string;
 }
+
+export interface EconomicScenarioRequest {
+  annual_units: number;
+  current_cost_eur_per_unit: number;
+  candidate_cost_eur_per_unit: number;
+  one_time_transition_cost_eur?: number | null;
+}
+
+export interface EconomicScenarioResponse {
+  scenario_id: string;
+  annual_units: number;
+  current_cost_eur_per_unit: number;
+  candidate_cost_eur_per_unit: number;
+  one_time_transition_cost_eur: number | null;
+  current_annual_spend_eur: number;
+  candidate_annual_spend_eur: number;
+  annual_cost_delta_eur: number;
+  first_year_cost_delta_eur: number | null;
+  annual_virgin_plastic_reduction_kg: number | null;
+  incremental_cost_per_kg_avoided_eur: number | null;
+  environmental_status: 'CALCULATED' | 'INSUFFICIENT_DATA';
+  eligibility_status: EligibilityStatus;
+  origin: 'CALCULATED';
+  input_origin: 'USER_PROVIDED';
+  verification_state: 'NOT_VERIFIED';
+  disclosure: string;
+}

@@ -67,9 +67,36 @@ This is a local development demo, not a deployment.
 | `GET /api/v1/health` | A-core evidence availability only |
 | `GET /api/v1/scenarios` | Scenario evidence and identity |
 | `GET /api/v1/scenarios/{id}/comparison` | A-core comparison |
+| `POST /api/v1/scenarios/{id}/economics` | Hypothetical economic scenario assessment |
 | `GET /api/v1/portfolios` | Independent Selection discovery |
 | `GET /api/v1/portfolios/{id}` | Default portfolio assessment |
 | `POST /api/v1/portfolios/{id}/evaluate` | Assessment with optional request overrides / annual units |
+
+### Comparison Economic Scenario walkthrough
+
+In **Comparison mode**, below Environmental Impact, PackShift provides a bounded **Economic Scenario** evaluator for testing retail business viability alongside environmental impact.
+
+1. Select **Case A** (`cchbc-500ml-rpet-transition`). Enter hypothetical parameters:
+   - Annual units: `1000000`
+   - Current packaging cost: `0.120` (€/unit)
+   - Candidate packaging cost: `0.135` (€/unit)
+   - One-time transition cost: blank (or optional, e.g. `50000`)
+2. Click **Evaluate economic scenario**:
+   - Current annual spend: `€120,000.00`
+   - Candidate annual spend: `€135,000.00`
+   - Annual packaging-cost delta: `+€15,000.00 / year` (additional packaging cost)
+   - Annual virgin plastic avoided: `19,500.0 kg / year` (≈ 19.5 t/year)
+   - Economic delta per kg avoided: `+0.77 €/kg`
+3. Switch to **Case B** (`deli-pp-to-rpet-transition`) and evaluate economics (e.g. `500000` units, `0.20` vs `0.18` €/unit):
+   - Candidate is operationally `BLOCKED` (70°C < 95°C).
+   - Even though the economics show packaging savings (`-€10,000 / year`), PackShift prominently marks the results: **`⛔ THEORETICAL / NON-ACTIONABLE`**. Operational eligibility remains visually dominant; economic attractiveness never overrides operational incompatibility.
+
+**Epistemic boundary:**
+- Prices, volumes, and transition costs are strictly `USER_PROVIDED` / `NOT_VERIFIED` scenario inputs.
+- Values are not actual Profi economics, commercial terms, or procurement commitments.
+- This is packaging-cost scenario arithmetic, not a full ROI/TCO/LCA engine.
+- Operationally BLOCKED candidates remain non-actionable even if economic arithmetic appears attractive.
+
 
 Open **Portfolio Selection** (default mode). Inspect PUBLIC / not-Profi disclosure,
 baseline, candidates, comparability, environmental result, operational eligibility

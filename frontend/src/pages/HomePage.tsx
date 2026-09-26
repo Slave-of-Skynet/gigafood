@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { format, OperationalRequirementsView, PackageView } from '../components/EvidenceDetails';
 import { SelectionView } from '../components/SelectionView';
+import { EconomicScenarioView } from '../components/EconomicScenarioView';
 import { api } from '../api/client';
 import type {
   Comparison,
@@ -91,6 +92,9 @@ export function HomePage() {
               </a>
               <a href="#impact" className="desc-nav-bar">
                 Impact
+              </a>
+              <a href="#economics" className="desc-nav-bar">
+                Economics
               </a>
               <a href="#eligibility" className="desc-nav-bar">
                 Eligibility
@@ -614,6 +618,13 @@ export function HomePage() {
                     </div>
                   )}
                 </section>
+
+                {/* INT-R5 Economic Scenario Amplifier Section */}
+                <EconomicScenarioView
+                  scenarioId={result.data.scenario.id}
+                  scenarioLabel={result.data.scenario.label}
+                  comparison={result.data}
+                />
 
                 {/* Why? / Constraints & Operational Requirements Section */}
                 <section
