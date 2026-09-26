@@ -46,7 +46,7 @@ export function DecisionSummary({
             {hasFirstPath
               ? `Кандидат №1 для внедрения: ${firstPathAssessment?.candidate_name || recommendation.first_qualification_candidate_id}`
               : isLiteralOven
-              ? 'При 250°C в печи: C6 Алюминиевый жаропрочный лоток (Резервный путь)'
+              ? 'Peak Oven 250°C: No Priority 1 Qualification Path · C6-RO-H High-Temp Fallback'
               : 'Результаты отбора упаковки'}
           </h2>
         </div>

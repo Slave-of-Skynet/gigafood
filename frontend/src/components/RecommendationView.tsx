@@ -239,7 +239,7 @@ export function RecommendationView({ visible }: RecommendationViewProps) {
                 <div className="no-first-path-inner">
                   <span className="icon-warn">⚠️</span>
                   <div>
-                    <strong>No Priority 1 Winner Available for Literal 250°C Oven Path</strong>
+                    <strong>No Priority 1 Qualification Path Available for Literal 250°C Oven Path</strong>
                     <p>
                       All polymer, biopolymer, and paper-window solutions (C2, C3, C4, C5) are hard-blocked
                       due to heat limits below 250°C. C1 Sacma Gaia remains an unprioritized alternative.
