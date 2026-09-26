@@ -4,6 +4,7 @@ import type {
   PackagingConfiguration,
   SourceReference,
 } from '../api/contracts';
+import { EvidenceStateBadge } from './EvidenceStateBadge';
 import { GateMatrix } from './GateMatrix';
 import { MetricField } from './MetricField';
 import { NextActions } from './NextActions';
@@ -161,10 +162,13 @@ export function CandidateRecommendationCard({
             ℹ️
           </span>
           <div className="warning-body">
-            <strong>BIOPAP Thermal Conflict & 6-Hour Boundary:</strong>
+            <div className="biopap-conflict-header" style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '6px' }}>
+              <strong>BIOPAP Thermal Conflict & 6-Hour Boundary:</strong>
+              <EvidenceStateBadge state="CONFLICT" qualifier="175°C vs 185°C (60 min)" className="biopap-conflict-badge" />
+            </div>
             <span>
-              {' '}
-              Competing technical sources state <strong>175°C vs 185°C</strong> (CONFLICT).
+              Competing technical sources state <strong>175°C vs 185°C (60 min)</strong>.
+              Neither value is silently selected as canonical truth.
               6 hours @ 90°C is family-level claim evidence, NOT exact-system validation for Profi fatty poultry.
               Exact tray + heat-seal film combination must undergo physical laboratory qualification.
             </span>

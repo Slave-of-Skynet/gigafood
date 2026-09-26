@@ -15,14 +15,14 @@ const WORKFLOW_METADATA: Record<
     label: 'Post-Cook Hot Holding Scenario',
     badge: 'Standard Hot-Bar Workflow',
     tempDimension: '85–95°C (MODELED TEST CONDITION — actual Profi display temperature UNKNOWN)',
-    holdDimension: 'Up to 6 hours continuous hold in heated cabinet (MODELED TEST CONDITION — actual Profi hold duration UNKNOWN)',
+    holdDimension: 'Up to 6 hours holding requirement (mentor-confirmed challenge operating requirement)',
     summary: 'Food is cooked in rotisserie/combi oven prior to packaging; packaging only undergoes post-cook hot holding.',
   },
   LITERAL_OVEN_250C_THEN_HOLD: {
     label: 'Literal 250°C Oven Cycle + Holding Scenario',
     badge: 'High-Temperature Workflow',
     tempDimension: '250°C peak oven cooking exposure',
-    holdDimension: 'Followed by holding phase (85–95°C modeled test condition — actual Profi display temperature UNKNOWN, up to 6 hours)',
+    holdDimension: 'Followed by holding phase: up to 6 hours holding requirement; 85–95°C is a MODELED TEST CONDITION and actual Profi display temperature remains UNKNOWN',
     summary: 'Food is cooked or reheated directly inside the package at up to 250°C, then held on heated display.',
   },
 };
@@ -104,7 +104,7 @@ export function WorkflowSelector({
               <strong>Post-cook hot hold boundary:</strong>
               <span>
                 {' '}
-                Research/test envelope uses 85–95°C (MODELED TEST CONDITION — actual Profi display temperature UNKNOWN) for up to 6 hours.
+                Up to 6 hours holding requirement (mentor-confirmed challenge operating requirement); 85–95°C is a MODELED TEST CONDITION and actual Profi display temperature remains UNKNOWN.
                 Because food is packaged after cooking, packaging is NOT exposed to 250°C oven heat in this scenario.
                 Full 6-hour holding performance with fatty poultry remains subject to physical qualification.
               </span>

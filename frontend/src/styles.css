@@ -2298,6 +2298,14 @@ button:focus-visible, summary:focus-visible, select:focus-visible, input:focus-v
   color: #78350f;
 }
 
+.biopap-conflict-badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border: 1px solid #f87171;
+  border-radius: 6px;
+  font-weight: 800;
+}
+
 .c6-callout {
   background: #eff6ff;
   border: 1px solid #60a5fa;
