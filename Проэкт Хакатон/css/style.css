@@ -769,7 +769,7 @@ header {
    Модальное окно официального сертификата / Паспорта TDS (#certModal)
    ========================================================================== */
 .cert-modal-card {
-    max-width: 780px;
+    max-width: 900px;
     border-color: #f59e0b;
     background: #fffdf9;
 }
@@ -846,7 +846,7 @@ header {
     background: #f1f5f9;
     color: #123524;
     font-weight: 800;
-    width: 38%;
+    width: 36%;
 }
 
 .cert-doc-table td {
@@ -854,22 +854,52 @@ header {
     font-weight: 600;
 }
 
+.cert-pdf-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 10px 12px;
+}
+
+.cert-pdf-label {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #123524;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.cert-pdf-embed {
+    width: 100%;
+    height: 410px;
+    border: 1px solid #94a3b8;
+    border-radius: 10px;
+    background: #ffffff;
+}
+
 .cert-doc-actions {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    margin-top: 6px;
+    margin-top: 4px;
 }
 
 .cert-ext-link {
     flex: 1;
+    min-width: 210px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     padding: 12px 16px;
     border-radius: 12px;
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 800;
     text-decoration: none;
     background: linear-gradient(135deg, #15803d 0%, #22c55e 100%);
@@ -880,6 +910,15 @@ header {
 
 .cert-ext-link:hover {
     background: linear-gradient(135deg, #16a34a 0%, #4ade80 100%);
+}
+
+.cert-ext-link.secondary {
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.22);
+}
+
+.cert-ext-link.secondary:hover {
+    background: #1e293b;
 }
 
 .cert-print-btn {

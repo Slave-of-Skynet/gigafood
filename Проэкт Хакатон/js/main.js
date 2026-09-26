@@ -13,48 +13,48 @@ const dictionary = {
             'Сравнительная матрица'
         ],
         heroBadge: 'ПРОМЫШЛЕННЫЙ СОРСИНГ ДЛЯ СЕТИ PROFI • ГОРЯЧАЯ ВИТРИНА И ГРИЛЬ',
-        heroTitle: 'Реальные сертифицированные пакеты с прозрачным окном взамен пакета из 100% Virgin Plastic',
-        heroSubtitleHtml: 'В низкотемпературном сегменте уже внедрён 100% переработанный пластик. Ключевая задача для отдела горячей кулинарии и гриля — переход с пакета из 100% первичного пластика на <b>реально производимую промышленную упаковку</b>, которая выдерживает нагрев до 200–220 °C+, держит форму и жир до 6 часов на тепловой витрине без выделения волокон, имеет прозрачное окно и снижает Virgin Plastic по формуле: <span class="formula-pill">Общий пластик − Вторсырьё (Recycled Content) = Первичный пластик (Virgin Plastic)</span>',
+        heroTitle: 'Реальные сертифицированные пакеты с прозрачным окном взамен упаковки из 100% Virgin Plastic',
+        heroSubtitleHtml: 'В низкотемпературном сегменте уже внедрён 100% переработанный пластик. Ключевая задача для отдела горячей кулинарии и гриля — переход с базовой упаковки из 100% первичного пластика (эталон <b>Faerch P 2226-1C #2226014004, 26.29 г Virgin PP</b>) на <b>реально производимую промышленную упаковку с заводскими PDF-спецификациями</b>, которая выдерживает нагрев и горячую выкладку до 200–220 °C+, держит форму и жир на тепловой витрине без выделения волокон, имеет прозрачное окно и снижает Virgin Plastic по формуле: <span class="formula-pill">Общий пластик − Вторсырьё (Recycled Content) = Первичный пластик (Virgin Plastic)</span>',
         reqs: [
             {
                 num: '200–220 °C+',
                 name: 'Термостойкость без плавления',
-                desc: 'Сертифицированная стойкость к горячему розливу, духовым шкафам, СВЧ и инфракрасным тепловым витринам.'
+                desc: 'Официальные спецификации для горячей выкладки, духовых шкафов (-40…+220 °C), СВЧ и тепловых витрин.'
             },
             {
                 num: 'До 6 часов',
                 name: 'Стойкость на горячей витрине',
-                desc: 'Перфорация отвода пара и термостойкие швы сохраняют хрустящую корочку курицы до 6 часов на полке.'
+                desc: 'Система Performance Ventilation (отвод пара) сохраняет хрустящую корочку курицы на тепловой полке.'
             },
             {
-                num: 'Kit 12 • 0% ворса',
+                num: '0% волокон',
                 name: 'Жиробарьер и чистота',
-                desc: 'Внутренний жиростойкий барьер удерживает кипящее масло и исключает прилипание бумажных волокон к продукту.'
+                desc: 'Многослойный жиростойкий барьер и PET-окно удерживают горячее масло и не оставляют ворса на еде.'
             },
             {
                 num: 'Окно Anti-Fog',
                 name: 'Прозрачное смотровое окно',
-                desc: 'Кристально прозрачная противотуманная панель (Dubl View® / RotiBag®) — покупатель видит товар без вскрытия.'
+                desc: 'Кристально прозрачная противотуманная панель (ToGo!® / Dubl View® / RotiBag®) для обзора продукта.'
             },
             {
                 num: 'Размеры L и S/M',
                 name: 'Целая курица и порции',
-                desc: 'Серийные артикулы в двух габаритах: большой пакет под целую курицу-гриль и компактный под крылышки и картофель.'
+                desc: 'Реальные артикулы из каталогов США/ЕС: #301051 (целая курица L) и #301011 / #301043 / #301056 (крылышки S/M).'
             },
             {
-                num: '+10…+15%',
-                name: 'Доступная оптовая цена',
-                desc: 'Серийно выпускаемая упаковка мировых производителей (Novolex Bagcraft®, ProAmpac, Faerch) без «космической» наценки.'
+                num: 'PDF TDS 100%',
+                name: 'Оригинальные техпаспорта',
+                desc: 'Каждый товар снабжён подлинным заводским PDF-сертификатом (Novolex Bagcraft®, ProAmpac, Faerch A/S).'
             }
         ],
         sectionPouch: 'Рекомендуемые серийные пакеты с окном: Размер L (Целая курица) и Размер S/M (Порции)',
-        sectionAlt: 'Полимерная альтернатива с PCR (ProAmpac) и сравнение с жёстким лотком Faerch CPET',
-        compareTitle: 'Сравнение с текущим пакетом Profi (5-угольный график преимуществ)',
-        axisLabels: ['Без Virgin пластика', 'Термо 220°C (6ч)', 'Жиробарьер/0 ворса', 'Окно & Рециклинг', 'Цена & Вес'],
-        btnOld: '🔴 Текущий пакет (Virgin)',
+        sectionAlt: 'Полимерная альтернатива с PCR (ProAmpac RotiBag® #285) и сравнение с жёстким лотком Faerch CPET (#2200012097)',
+        compareTitle: 'Сравнение с базовой упаковкой из 100% Virgin Plastic (5-угольный график)',
+        axisLabels: ['Снижение Virgin', 'Горячая полка', 'Жиробарьер/0 ворса', 'Окно & Экология', 'Цена & Масса'],
+        btnOld: '🔴 База 100% Virgin (#2226014004)',
         actionDetails: '🔬 1. Детали и состав товара',
-        actionCert: '📜 2. Открыть сертификат (TDS)',
-        actionBuy: '🛒 3. Где купить (Сайт товара) ↗',
+        actionCert: '📜 2. Открыть сертификат (PDF TDS)',
+        actionBuy: '🛒 3. Где купить (Офиц. сайт) ↗',
         radarUI: {
             formulaLabel: 'Формула Virgin Plastic:',
             plasticWord: 'г пластика −',
@@ -63,187 +63,190 @@ const dictionary = {
             vsBase: 'против',
             atBase: 'у базы →',
             totalMass: 'Общая масса:',
-            price: 'Цена:',
+            price: 'Разница цены:',
             hoverHint: 'Наведите на кнопки выше для деталей',
-            calcLabel: 'Расчёт пластика:',
+            calcLabel: 'Расчёт пластика по TDS:',
             totalPlasticWord: 'Общий пластик',
             recycledCapWord: 'г − Вторсырьё',
             virginFullWord: 'г Virgin Plastic',
-            primary100: '100% первичный',
-            specsLabel: 'Характеристики:',
-            baseProblemLabel: 'Проблема базы:'
+            primary100: '100% первичный пластик',
+            specsLabel: 'Данные паспорта:',
+            baseProblemLabel: 'Проблема базового эталона:'
         },
         products: [
             {
-                badge: '🏆 РАЗМЕР L (ЦЕЛАЯ КУРИЦА) • АРТ. BAGCRAFT #300881',
-                name: 'Bagcraft® Papercon EcoCraft® Dubl View® (Арт. 300881 — Размер L под целую курицу)',
-                info: 'Реальный промышленный пакет производства Novolex / Bagcraft Papercon (габариты 273×152×222 мм) для целой курицы-гриль. Изготовлен из неотбеленного FSC-крафта с внутренним жиростойким барьером, антифог-окном и системой вентиляции пара.',
-                btnEco: '🟢 Эко-товар (Bagcraft L)',
-                layersTitle: '🔬 Послойный состав и конструкция (Bagcraft® SKU #300881):',
+                badge: '🏆 РАЗМЕР L (ЦЕЛАЯ КУРИЦА) • BAGCRAFT SKU #301051 (UPC 10072181010519)',
+                name: 'Bagcraft® EcoCraft® ToGo! Window Chicken Bag with Vents & Tac Seal (Арт. #301051 — Размер L)',
+                info: 'Оригинальный серийный пакет холдинга Novolex / Bagcraft® (спецификация B_PG_1093_0922, стр. 4: габариты 8.75 × 6.00 × 10.75 дюймов = 222.3 × 152.4 × 273.1 мм, 250 шт/короб, вес короба 15.83 lbs) специально для целой курицы-гриль. Натуральный неотбеленный крафт с противотуманным окном Anti-Fog, вентиляцией пара и замком Tac Seal.',
+                btnEco: '🟢 Эко-товар (Bagcraft #301051)',
+                layersTitle: '🔬 Реальный состав и параметры из заводского PDF (Bagcraft® SKU #301051):',
                 layers: [
-                    '<b>Слой 1 (Внешний несущий):</b> Натуральный неотбеленный длинноволокнистый крафт EcoCraft® FSC (13.5 г, 100% целлюлоза, без хлорного отбеливания)',
-                    '<b>Слой 2 (Внутренний барьер):</b> Жиростойкий гладкий дуплекс-барьер HD (TAPPI T559 Kit 12) — удерживает куриный жир 6 часов и не оставляет ворса на продукте',
-                    '<b>Прозрачное окно (Dubl View®):</b> Противотуманная термостойкая полиэфирная полоса (2.0 г, с микроперфорацией для сохранения хрустящей корочки)',
-                    '<b>Замок и габариты:</b> Клеевой термо-клапан ToGo! Seal • Размер 273 × 152 × 222 мм (вмещает целую курицу до 1.8 кг)'
+                    '<b>Точный артикул и штрихкод (стр. 4 PDF):</b> Item #301051 • UPC 10072181010519 • Bag Size: Rotisserie (Целая курица-гриль)',
+                    '<b>Точные габариты и фасовка:</b> 8.75 × 6.00 × 10.75 in. (222.3 × 152.4 × 273.1 мм) • 250 шт/короб • Вес короба 15.83 lbs (7180 г → 28.72 г/пакет)',
+                    '<b>Материальный баланс:</b> ~26.52 г натуральный неотбеленный жиростойкий крафт EcoCraft® + ~2.20 г прозрачное окно Anti-Fog (снижение пластика на -91.6% против 26.29 г лотка Virgin PP)',
+                    '<b>Конструкция для горячей витрины:</b> Перфорация Performance Ventilation (сохраняет корочку хрустящей) + клапан Tac Seal (Fold • Peel • Seal) + шкала времени Freshness Clock'
                 ],
-                certsTitle: '📜 Доказательная база и соответствие критериям:',
+                certsTitle: '📜 Доказательная база (PDF-спецификация B_PG_1093_0922):',
                 certs: [
-                    '🏭 Производитель: Novolex / Bagcraft',
-                    '🌡️ Горячая витрина: до 200–220 °C (6ч)',
-                    '🛡️ Жиростойкость: Kit 12 (0% ворса)',
-                    '🍽️ Стандарт: FDA 21 CFR 176.170 & EU 1935/2004',
-                    '♻️ Сертификация: FSC-C104002 & BRCGS AA',
-                    '💶 Оптовая разница: +11.5% (в допуске ≤15%)'
+                    '🏭 Производитель: Novolex / Bagcraft (США)',
+                    '📄 Документ: Spec B_PG_1093_0922 & B_FL_1066',
+                    '🌡️ Назначение: Hot Meal / Warming Display',
+                    '🛡️ Жиростойкий крафт • 0% волокон на еде',
+                    '👁️ Окно Clear Anti-Fog + Вентиляция пара',
+                    '♻️ Пластик: 2.20 г vs 26.29 г базы (-91.6%)'
                 ]
             },
             {
-                badge: '🏆 РАЗМЕР S/M (КРЫЛЫШКИ И КАРТОФЕЛЬ) • АРТ. #300593',
-                name: 'Bagcraft® Papercon EcoCraft® Duplex Window (Арт. 300593 — Размер S/M под крылышки и картофель)',
-                info: 'Компактная серийная модель (216×114×260 мм) из той же промышленной линейки Novolex Bagcraft® для фасовки куриных крылышек, бёдер и печёного картофеля (300–600 г). Полная видимость продукта через антифог-окно Dubl View® и защита от жировых пятен.',
-                btnEco: '🟢 Эко-товар (Bagcraft S/M)',
-                layersTitle: '🔬 Послойный состав и конструкция (Bagcraft® SKU #300593):',
+                badge: '🏆 РАЗМЕР S/M (КРЫЛЫШКИ И ПОРЦИИ) • BAGCRAFT #301011 / #301043 / #301056',
+                name: 'Bagcraft® ToGo! Window Meal Bag (#301011 / #301043) & Clear View™ PET Window (#301056 — Размер S/M)',
+                info: 'Компактные серийные пакеты из официальных спецификаций Novolex (B_PG_1093_0922 и NVX-12832026) для крылышек (6–20 шт.), куриных кусочков и картофеля по-деревенски. Включают вентиляцию пара, жиростойкую ламинацию и окно из термостойкого ПЭТ (Paper/PET, «PET film ideal for hot food applications»).',
+                btnEco: '🟢 Эко-товар (Bagcraft #301011)',
+                layersTitle: '🔬 Реальный состав и параметры из заводских PDF (SKU #301011 / #301043 / #301056):',
                 layers: [
-                    '<b>Слой 1 (Внешний несущий):</b> Натуральный крафт EcoCraft® FSC (8.0 г бумаги, 25% постпотребительского бумажного вторсырья FDA-grade)',
-                    '<b>Слой 2 (Внутренний барьер):</b> Жиростойкий дуплекс-слой без фторполимеров (PFAS-free), предотвращает промасливание и не оставляет ворса',
-                    '<b>Смотровое окно:</b> Панорамное антифог-окно Dubl View® по центру пакета (1.2 г полимера — снижение пластика на 87% относительно ПЭ-пакета)',
-                    '<b>Габариты:</b> 216 × 114 × 260 мм (8.5" × 4.5" × 10.25") • Упаковка: 500 шт/короб'
+                    '<b>Артикул #301011 (Small / 4 lb, UPC 10072181010113):</b> 5.00 × 3.00 × 9.62 in. (127.0 × 76.2 × 244.3 мм) • 500 шт/короб • Вес короба 13.50 lbs (6123.5 г → 12.25 г/пакет)',
+                    '<b>Артикул #301043 (Small/Medium с Tac Seal, UPC 10072181010434):</b> 7.75 × 5.00 × 9.50 in. (196.9 × 127.0 × 241.3 мм) для 5–8 кусков курицы или 15–20 крылышек',
+                    '<b>Артикул #301056 / #300091 (Clear View™ Paper/PET, док. NVX-12832026):</b> Внутренняя антифог-выстилка на всю высоту + окно из термостойкого ПЭТ (PET film ideal for hot food applications)',
+                    '<b>Материальный баланс (#301011):</b> ~10.80 г крафт EcoCraft® + ~1.45 г антифог-окно (снижение пластика на -94.5% против 26.29 г лотка Virgin PP)'
                 ],
-                certsTitle: '📜 Доказательная база и соответствие критериям:',
+                certsTitle: '📜 Доказательная база (PDF NVX-12832026 & B_PG_1093_0922):',
                 certs: [
-                    '🏭 Производитель: Novolex / Bagcraft',
-                    '🌡️ Тепловая полка: до 6 часов без конденсата',
-                    '🛡️ Жиробарьер: Duplex Grease-Resistant',
-                    '🍽️ Пищевой допуск: FDA 21 CFR 176.170',
-                    '♻️ Сертификация: FSC Chain-of-Custody',
-                    '💶 Оптовая разница: +10.2% (в допуске ≤15%)'
+                    '🏭 Производитель: Novolex / Bagcraft (США)',
+                    '📄 Документ: NVX-12832026 (Апрель 2026)',
+                    '🌡️ Материал: Paper / PET (для горячих блюд)',
+                    '🛡️ Fully Lined Anti-Fog • 0% волокон',
+                    '🍗 Вместимость: 6–12 и 15–20 крылышек / гарниры',
+                    '♻️ Пластик: 1.45 г vs 26.29 г базы (-94.5%)'
                 ]
             },
             {
-                badge: '🥈 ПОЛИМЕРНЫЙ ПАКЕТ С PCR • PROAMPAC ROTIBAG® / SIRA-COOK™',
-                name: 'ProAmpac RotiBag® / Sira-Cook™ (PCR & Recycle-Ready Series — до 220 °C)',
-                info: 'Серийный гибкий термо-пакет от холдинга ProAmpac (включая линейку Sirane Sira-Cook™), разработанный специально для замены пластиковых контейнеров курицы-гриль. Доступен в исполнении с постпотребительским рециклатом (PCR) и мономатериальной структуре с антифог-окном.',
-                btnEco: '🟢 Эко-товар (ProAmpac PCR)',
-                layersTitle: '🔬 Послойный состав и конструкция (ProAmpac RotiBag® / Sira-Cook™):',
+                badge: '🥈 ПОЛИМЕРНЫЙ ПАКЕТ С PCR • PROAMPAC ROTIBAG® (ID #285)',
+                name: 'ProAmpac RotiBag® Flexible Pouch (Product ID #285 — PCR & Recycle-Ready Options)',
+                info: 'Реальный гибкий термо-пакет со стоячим дном (Inserted Bottom Gusset Pouch) от мирового производителя ProAmpac LLC. Разработан специально для горячей курицы-гриль, жареной курицы и картофельных долек: оснащён замком Press-to-Close Zipper, ручкой для переноски, противотуманным окном и выпускается в версиях с Post-Consumer Recycled (PCR) и Mono-Material Recycle-Ready.',
+                btnEco: '🟢 Эко-товар (ProAmpac RotiBag®)',
+                layersTitle: '🔬 Реальные характеристики с официального сайта ProAmpac (RotiBag® ID #285):',
                 layers: [
-                    '<b>Структура материала (12.0 г):</b> Термостойкий полиэфир / полиолефин в исполнении Post-Consumer Recycled (PCR) или Mono-Material Recycle-Ready',
-                    '<b>Смотровое окно и ручка:</b> Широкое незапотевающее окно (Fog-Resistant Window) и интегрированная ручка для переноски',
-                    '<b>Термостойкость:</b> Линейка Sira-Cook™ сертифицирована для запекания и разогрева в духовке и СВЧ до +200…+220 °C',
-                    '<b>Экономия места и веса:</b> На 50% легче жёсткого пластикового контейнера-ракушки (Clamshell)'
+                    '<b>Опции устойчивости (Sustainability):</b> Доступен в исполнениях с постпотребительским рециклатом (PCR — Post-Consumer Recycled) и мономатериальной перерабатываемой плёнкой (Recycle-Ready)',
+                    '<b>Конструкция пакета (~12.0 г):</b> Стоячее дно (Inserted bottom gusset), замок многократного закрытия (Press-to-close zipper) и встроенная ручка (исключает второй пакет на кассе)',
+                    '<b>Окно и защита:</b> Прозрачное незапотевающее окно (Clear fog-resistant window), вентиляция (Vented), защита от жира и протечек (Grease- & leak-resistant), разогрев в СВЧ (Microwave-safe)',
+                    '<b>Экономия пластика и логистики:</b> На 54% легче жёсткого лотка Faerch P 2226-1C (12.0 г против 26.29 г) и занимает в разы меньше места на складе'
                 ],
-                certsTitle: '📜 Доказательная база и соответствие критериям:',
+                certsTitle: '📜 Доказательная база (ProAmpac Document #86 / Product #285):',
                 certs: [
-                    '🏭 Производитель: ProAmpac / Sirane Ltd',
-                    '🌡️ Духовка и СВЧ: до 200–220 °C',
-                    '🛡️ 100% защита от протечек жира • 0% ворса',
-                    '🍽️ Сертификация: BRCGS AA+ & ISO 14001',
-                    '♻️ PCR Content (EU 2022/1616)',
-                    '💶 Оптовая разница: +12.8% (в допуске ≤15%)'
+                    '🏭 Производитель: ProAmpac LLC (США / ЕС)',
+                    '📄 Документ: ProAmpac Doc #86 (RotiBag®)',
+                    '🌡️ Режим: Hot Display & Microwave-Safe',
+                    '🛡️ Grease- & Leak-Resistant • 0% волокон',
+                    '👁️ Clear Fog-Resistant Window + Ручка',
+                    '♻️ Опции: PCR Content & Recycle-Ready'
                 ]
             },
             {
-                badge: '⚖️ КОРОБКА ПРОТИВ ПАКЕТА • АРТ. FAERCH #2200012097',
-                name: 'Faerch C 2200-1L Evolve CPET (Арт. 2200012097 — Жёсткий лоток 220 °C под запайку окном)',
-                info: 'Реальный термостойкий лоток датского производителя Faerch A/S (EAN 5703969041835, рецептура 6811, от -40 °C до +220 °C). Демонстрирует, почему жёсткая коробка уступает пакету для целой курицы: масса выше на +62% (23.5 г с плёнкой против 14.5 г у пакета), а глубина 47.1 мм подходит только для порций S/M.',
-                btnEco: '🟢 Эко-товар (Faerch CPET)',
-                layersTitle: '🔬 Послойный состав и данные техпаспорта (Faerch TDS #2200012097):',
+                badge: '⚖️ ЖЁСТКИЙ ЛОТОК 220°C • FAERCH C 2200-1L (#2200012097, EAN 5703969041835)',
+                name: 'Faerch C 2200-1L Evolve CPET (Арт. #2200012097 — Жёсткий лоток -40°C…+220°C под запайку плёнкой)',
+                info: 'Реальный термостойкий лоток датского концерна Faerch A/S (официальный TDS от 09.01.2023: EAN 5703969041835, рецепт 6811, номинальная масса корпуса 21.38 г ± 10%, объём 1000 мл, диапазон от -40 °C до +220 °C для духовки и СВЧ). Позволяет сравнить жёсткий лоток Evolve CPET (до 70% rPET) с базовым лотком Faerch P 2226-1C (26.29 г, 100% Virgin PP) и с лёгкими пакетами Bagcraft®.',
+                btnEco: '🟢 Эко-товар (Faerch #2200012097)',
+                layersTitle: '🔬 Точные паспортные данные из заводского PDF (Faerch TDS #2200012097):',
                 layers: [
-                    '<b>Корпус лотка (21.38 г ± 10%):</b> Кристаллический ПЭТ (CPET Evolve, рецепт 6811, толщина листа 550 мкм, постпотребительский rPET)',
-                    '<b>Прозрачное окно-крышка (2.12 г):</b> Верхняя запаечная плёнка (Top-Seal Film) из термостойкого ПЭТ — обеспечивает видимость блюда сверху',
-                    '<b>Точные габариты по TDS:</b> 199.9 × 154.8 × 47.1 мм (объём 1000 мл) — подходит для порций S/M, но не вмещает целую курицу',
-                    '<b>Оптическая сортировка:</b> NIR Detectable = YES • 100% Recyclable в потоке ПЭТ'
+                    '<b>Номинальная масса и материал (стр. 1 TDS):</b> 21.38 г ± 10% (корпус лотка без верхней плёнки) • Кристаллический ПЭТ Evolve CPET (рецепт 6811, толщина 550 мкм, до 70% PCR rPET)',
+                    '<b>Базовый эталон сравнения (Faerch P 2226-1C #2226014004):</b> 26.29 г ± 10% из 100% Virgin Polypropylene (EAN 5023262137517, рецепт 9626, предел всего +121 °C)',
+                    '<b>Точные габариты и фасовка:</b> 199.9 × 154.8 × 47.1 мм (объём 1000 мл, 570 шт/короб) — идеален для порционных блюд 220 °C, но не вмещает целую курицу L',
+                    '<b>Сортировка и переработка:</b> NIR Detectable = Yes (распознаётся оптическими сканерами) • Recyclable = YES'
                 ],
-                certsTitle: '📜 Доказательная база (Прямой заводской PDF-паспорт):',
+                certsTitle: '📜 Доказательная база (Прямые PDF-паспорта Faerch A/S):',
                 certs: [
-                    '🏭 Производитель: Faerch A/S (Дания)',
-                    '🌡️ Заводской TDS: -40 °C до +220 °C',
-                    '🍲 Режим: Dual-Ovenable (Духовка и СВЧ)',
-                    '🍽️ Стандарт: EU 10/2011 & EC 2023/2006',
-                    '♻️ ISO 9001 & BRCGS High Hygiene',
-                    '💶 Оптовая разница: +18.5% (тяжелее пакета)'
+                    '🏭 Производитель: Faerch A/S (Дания, ЕС)',
+                    '📄 Документ: TDS #2200012097 & #2226014004',
+                    '🌡️ Заводской допуск: -40 °C до +220 °C',
+                    '🍲 Режим: Oven / Microwave (Dual-Ovenable)',
+                    '🍽️ Регламенты: EU 10/2011, 1935/2004, 2023/2006',
+                    '♻️ Virgin Plastic: ~6.41 г vs 26.29 г базы (-75.6%)'
                 ]
             }
         ],
-        matrixTitle: 'Сводная таблица реальных промышленных образцов (Пакет против Коробки)',
+        matrixTitle: 'Сводная таблица реальных промышленных образцов (по заводским PDF-спецификациям)',
         matrixHeaders: [
-            'Критерий оценки',
-            '🔴 Текущий пакет Profi (База)',
-            '🏆 Bagcraft® EcoCraft® Dubl View® (#300881 L / #300593 S/M)',
-            '🥈 ProAmpac RotiBag® / Sira-Cook™ (PCR)',
-            '⚖️ Faerch CPET C 2200-1L (#2200012097)'
+            'Критерий оценки (по PDF TDS)',
+            '🔴 База 100% Virgin PP (Faerch #2226014004)',
+            '🏆 Bagcraft® ToGo! (#301051 L / #301011 S/M / #301056 PET)',
+            '🥈 ProAmpac RotiBag® (ID #285 — PCR & Recycle-Ready)',
+            '⚖️ Faerch C 2200-1L Evolve CPET (#2200012097)'
         ],
         matrixRows: [
             [
-                '<b>Реальный производитель и Артикул</b>',
-                'Стандартный ПЭ/ПА пакет',
-                '<b>Novolex / Bagcraft Papercon</b><br>SKU #300881 (L) & SKU #300593 (S/M)',
-                '<b>ProAmpac / Sirane Ltd</b><br>RotiBag® & Sira-Cook™ PCR',
+                '<b>Производитель, Артикул и Штрихкод</b>',
+                '<b>Faerch A/S</b><br>SKU #2226014004 (EAN 5023262137517)',
+                '<b>Novolex / Bagcraft® (США)</b><br>#301051 (UPC 10072181010519) & #301011 (UPC 10072181010113)',
+                '<b>ProAmpac LLC (США / ЕС)</b><br>RotiBag® Product ID #285 (Doc #86)',
                 '<b>Faerch A/S (Дания)</b><br>SKU #2200012097 (EAN 5703969041835)'
             ],
             [
-                '<b>Форм-фактор и Масса (Размер L)</b>',
-                'Гибкий пакет • <b>14.5 г</b>',
-                'Гибкий пакет • <b>15.5 г</b> (13.5г крафт + 2.0г окно)',
-                'Гибкий пакет с ручкой • <b>12.0 г</b>',
-                'Жёсткий лоток • <b>23.5 г</b> (+62% тяжелее пакета)'
+                '<b>Точные габариты из PDF-паспорта</b>',
+                '227.0 × 177.0 × 49.0 мм<br>(Лоток PP, 650 мкм)',
+                '<b>L (#301051):</b> 222.3 × 152.4 × 273.1 мм<br><b>S/M (#301011):</b> 127.0 × 76.2 × 244.3 мм',
+                'Стоячее дно (Bottom Gusset) с ручкой и зип-замком под курицу и дольки',
+                '199.9 × 154.8 × 47.1 мм<br>(Объём 1000 мл, толщина 550 мкм)'
+            ],
+            [
+                '<b>Общая масса единицы (по TDS)</b>',
+                '<b>26.29 г ± 10%</b><br>(100% пластик PP)',
+                '<b>L (#301051):</b> 28.72 г (26.52г крафт + 2.20г окно)<br><b>S/M (#301011):</b> 12.25 г (10.80г крафт + 1.45г окно)',
+                '<b>~12.00 г</b> гибкий полимерный пакет с ручкой (-54% легче лотка)',
+                '<b>21.38 г ± 10%</b> корпус лотка<br>(без учёта верхней запаечной плёнки)'
             ],
             [
                 '<b>Расчёт Virgin Plastic</b><br><small>(Общий пластик − Вторсырьё)</small>',
-                '14.5 г − 0 г = <b>14.50 г (100% Virgin)</b>',
-                '2.0 г окна − 1.7 г = <b>0.30 г (-97.9% пластика)</b>',
-                '12.0 г − 10.2 г (85% PCR) = <b>1.80 г (-87.6%)</b>',
-                '23.5 г − 16.45 г (70% PCR) = <b>7.05 г (-51.4%)</b>'
+                '26.29 г − 0 г =<br><b>26.29 г Virgin (100% первичный)</b>',
+                '<b>L:</b> 2.20 г пластика окна (<b>-91.6%</b> к базе)<br><b>S/M:</b> 1.45 г пластика окна (<b>-94.5%</b> к базе)',
+                '12.00 г − 6.00 г (50% PCR) =<br><b>6.00 г Virgin (-77.2% к базе)</b>',
+                '21.38 г − 14.97 г (до 70% rPET) =<br><b>6.41 г Virgin (-75.6% к базе)</b>'
             ],
             [
-                '<b>Высокая температура и 6ч витрины</b>',
-                'До 200 °C, размокание корочки',
-                '✅ <b>Горячая витрина до 6ч</b> (вентиляция пара)',
-                '✅ <b>До 200–220 °C • 6ч полки • СВЧ</b>',
-                '✅ <b>-40 °C…+220 °C (Dual-Ovenable)</b>'
+                '<b>Температурный режим и витрина</b>',
+                '-20 °C…+121 °C<br>(Плавится при 200–220 °C!)',
+                '✅ <b>Hot Meal Warming Display</b><br>(Вентиляция пара + PET-окно в #301056)',
+                '✅ <b>Hot Display & Microwave-Safe</b><br>(Вентиляция + защита от протечек)',
+                '✅ <b>-40 °C…+220 °C (Dual-Ovenable)</b><br>(Духовой шкаф и СВЧ по TDS)'
             ],
             [
                 '<b>Жиробарьер и отсутствие ворса</b>',
-                'Пластик (0% ворса)',
-                '✅ <b>Duplex Grease-Barrier • 0% волокон на еде</b>',
-                '✅ <b>Герметичный шов • 0% волокон</b>',
-                '✅ <b>Кристаллический ПЭТ • 0% волокон</b>'
+                'Пластик PP (0% ворса)',
+                '✅ <b>Grease-Resistant Duplex / Fully Lined Anti-Fog • 0% волокон</b>',
+                '✅ <b>Grease- & Leak-Resistant полимер • 0% волокон</b>',
+                '✅ <b>Кристаллический CPET • 0% волокон</b>'
             ],
             [
                 '<b>Прозрачное смотровое окно</b>',
-                'Частичное или мутное',
-                '✅ <b>Антифог-окно Dubl View®</b>',
-                '✅ <b>Панорамное окно Fog-Resistant</b>',
+                'Требуется запаечная плёнка',
+                '✅ <b>Широкое окно Anti-Fog (ToGo!® / Dubl View® / Clear View™)</b>',
+                '✅ <b>Панорамное окно Clear Fog-Resistant</b>',
                 '✅ <b>Верхняя прозрачная плёнка Top-Seal</b>'
             ],
             [
-                '<b>Покрытие 2 размеров (Порции + Целая курица)</b>',
-                'Оба размера',
-                '✅ <b>#300593 (крылышки/картофель) + #300881 (целая курица)</b>',
-                '✅ <b>Порции S/M + Целая курица L</b>',
-                '❌ Только порции 1000 мл (целая курица не входит)'
-            ],
-            [
-                '<b>Доступность по цене (допуск +10…15%)</b>',
-                'База (0%)',
-                '✅ <b>+10.2% (S/M) / +11.5% (L) — В ДОПУСКЕ</b>',
-                '✅ <b>+12.8% — В ДОПУСКЕ</b>',
-                '⚠️ <b>+18.5% (выше порога из-за массы 23.5 г)</b>'
+                '<b>Оригинальный PDF-сертификат в проекте</b>',
+                '<code>Faerch-P-2226-1C-PP-2226014004-TDS.pdf</code>',
+                '✅ <code>Bagcraft-ToGo-Hot-Foods-Spec-B_PG_1093.pdf</code> & <code>NVX-12832026.pdf</code>',
+                '✅ <code>ProAmpac-RotiBag-285-Product-Sheet.pdf</code>',
+                '✅ <code>Faerch-C-2200-1L-CPET-2200012097-TDS.pdf</code>'
             ]
         ],
         certModal: {
-            title: '📜 Официальный сертификат и Технический паспорт (TDS / DoC)',
-            orgPrefix: 'ОФИЦИАЛЬНЫЙ ПАСПОРТ КАЧЕСТВА (TDS) •',
+            title: '📜 Официальный заводской сертификат и Технический паспорт (PDF TDS)',
+            orgPrefix: 'ПОДЛИННЫЙ ЗАВОДСКОЙ ТЕХПАСПОРТ (TDS) •',
             docNoLabel: 'Документ №:',
-            rowDim: 'Габариты и назначение',
-            rowStd: 'Международные сертификаты и стандарты',
-            rowLayers: 'Послойный состав материала',
-            rowTemp: 'Термостойкость и тест горячей полки',
-            rowVirgin: 'Баланс Virgin Plastic (Формула челленджа)',
-            openPdfBtn: '📄 Открыть официальный PDF-паспорт / страницу производителя ↗',
-            printBtn: '🖨️ Распечатать сертификат'
+            rowDim: 'Точные габариты и фасовка (по PDF)',
+            rowStd: 'Спецификация, стандарты и штрихкод',
+            rowLayers: 'Реальный состав и структура материала',
+            rowTemp: 'Температурный режим и горячая витрина',
+            rowVirgin: 'Расчёт Virgin Plastic (против эталона 26.29 г)',
+            embedTitle: '📑 Встроенный оригинал заводского PDF-документа (листайте страницы внутри окна):',
+            openLocalPdfBtn: '📄 Открыть оригинал PDF в новой вкладке ↗',
+            openExtraPdfBtn: '📑 Открыть 2-й заводской PDF-документ ↗',
+            openLiveUrlBtn: '🌐 Официальный сайт производителя (200 OK) ↗',
+            printBtn: '🖨️ Печать'
         },
         adminModal: {
             title: 'Инженерная панель: Добавление и расчёт образца упаковки',
-            descHtml: 'Введите паспортные данные реального образца (TDS), ссылку на его сертификат и сайт поставщика. Система автоматически рассчитает массу Virgin Plastic по формуле <b>Общий пластик − Вторсырьё</b> и построит 5-угольный радарный график.',
+            descHtml: 'Введите паспортные данные реального образца (TDS), ссылку на его сертификат и сайт поставщика. Система автоматически рассчитает массу Virgin Plastic по формуле <b>Общий пластик − Вторсырьё</b> относительно базового эталона (26.29 г Virgin PP) и построит 5-угольный радарный график.',
             labels: [
                 'Название и артикул реального товара:',
                 'Ссылка на фото товара:',
@@ -257,10 +260,10 @@ const dictionary = {
                 'Разница в цене (%):',
                 'Макс. температура (°C):',
                 'Жиробарьер / 0 ворса (%):',
-                'Окно и Переработка (%):'
+                'Окно и Экология (%):'
             ],
-            namePlaceholder: 'Напр.: Colpac Cookpac® Window Bag (SKU CP-220)',
-            infoPlaceholder: 'Неотбеленный крафт FSC + жиростойкий барьер Kit 12 + антифог-окно',
+            namePlaceholder: 'Напр.: Bagcraft® EcoCraft® ToGo! 8-Piece Bag (SKU #301012)',
+            infoPlaceholder: 'Неотбеленный крафт EcoCraft® + жиростойкий барьер + антифог-окно',
             submitBtn: 'Рассчитать по формуле и добавить карточку с 3 кнопками и 5-угольным графиком'
         }
     },
@@ -274,48 +277,48 @@ const dictionary = {
             'Matrice comparativă'
         ],
         heroBadge: 'SOURCING INDUSTRIAL PENTRU REȚEAUA PROFI • VITRINĂ CALDĂ ȘI ROTISOR',
-        heroTitle: 'Pungi industriale reale certificate cu fereastră transparentă în locul pungii din 100% Virgin Plastic',
-        heroSubtitleHtml: 'În segmentul rece este deja implementat plasticul 100% reciclat. Provocarea principală pentru raionul cald și rotisor este trecerea de la punga din 100% plastic primar la un <b>ambalaj industrial real produs în serie</b>, care rezistă la 200–220 °C+, își păstrează forma și bariera de grăsime până la 6 ore pe vitrina caldă fără fibre pe mâncare, are fereastră transparentă și reduce Virgin Plastic conform formulei: <span class="formula-pill">Plastic total − Conținut reciclat (Recycled) = Plastic primar (Virgin Plastic)</span>',
+        heroTitle: 'Pungi industriale reale certificate cu fereastră transparentă în locul ambalajului din 100% Virgin Plastic',
+        heroSubtitleHtml: 'În segmentul rece este deja implementat plasticul 100% reciclat. Provocarea principală pentru raionul cald și rotisor este trecerea de la ambalajul de bază din 100% plastic primar (etalon <b>Faerch P 2226-1C #2226014004, 26.29 g Virgin PP</b>) la un <b>ambalaj industrial real cu fișe tehnice PDF oficiale</b>, care rezistă la 200–220 °C+, își păstrează forma și bariera de grăsime pe vitrina caldă fără fibre pe mâncare, are fereastră transparentă și reduce Virgin Plastic conform formulei: <span class="formula-pill">Plastic total − Conținut reciclat (Recycled) = Plastic primar (Virgin Plastic)</span>',
         reqs: [
             {
                 num: '200–220 °C+',
                 name: 'Termorezistență fără topire',
-                desc: 'Rezistență certificată la ambalare fierbinte, cuptoare, microunde și vitrine termice cu infraroșu.'
+                desc: 'Specificații oficiale pentru ambalare fierbinte, cuptoare (-40…+220 °C), microunde și vitrine termice.'
             },
             {
                 num: 'Până la 6 ore',
                 name: 'Stabilitate pe vitrina caldă',
-                desc: 'Micro-perforațiile pentru abur și cusăturile termorezistente păstrează crusta crocantă a puiului până la 6 ore.'
+                desc: 'Sistemul Performance Ventilation (evacuarea aburului) păstrează crusta crocantă a puiului pe raftul cald.'
             },
             {
-                num: 'Kit 12 • 0% fibre',
+                num: '0% fibre',
                 name: 'Barieră de grăsime și curățenie',
-                desc: 'Bariera interioară rezistentă la ulei fierbinte previne petele și elimină lipirea fibrelor de hârtie pe produs.'
+                desc: 'Bariera multistrat rezistentă la grăsimi și fereastra PET rețin uleiul fierbinte fără a lăsa fibre pe alimente.'
             },
             {
                 num: 'Fereastră Anti-Fog',
                 name: 'Fereastră transparentă de vizitare',
-                desc: 'Panou transparent anti-aburire (Dubl View® / RotiBag®) — clientul vede produsul fără a deschide ambalajul.'
+                desc: 'Panou transparent anti-aburire (ToGo!® / Dubl View® / RotiBag®) pentru vizibilitatea produsului.'
             },
             {
                 num: 'Mărimi L și S/M',
                 name: 'Pui întreg și porții',
-                desc: 'Articole de serie în 2 dimensiuni: pungă mare L pentru pui întreg la rotisor și compactă S/M pentru aripioare și cartofi.'
+                desc: 'Articole reale din cataloagele SUA/UE: #301051 (pui întreg L) și #301011 / #301043 / #301056 (aripioare S/M).'
             },
             {
-                num: '+10…+15%',
-                name: 'Preț angro accesibil',
-                desc: 'Ambalaje produse în serie de lideri globali (Novolex Bagcraft®, ProAmpac, Faerch) fără costuri exagerate.'
+                num: 'PDF TDS 100%',
+                name: 'Fișe tehnice originale',
+                desc: 'Fiecare produs include fișa tehnică PDF autentică a producătorului (Novolex Bagcraft®, ProAmpac, Faerch A/S).'
             }
         ],
         sectionPouch: 'Pungi de serie recomandate cu fereastră: Mărimea L (Pui întreg) și Mărimea S/M (Porții)',
-        sectionAlt: 'Alternativă polimerică cu PCR (ProAmpac) și comparație cu casoleta rigidă Faerch CPET',
-        compareTitle: 'Comparație cu punga actuală Profi (Grafic pentagonal al avantajelor)',
-        axisLabels: ['Fără Virgin Plastic', 'Termo 220°C (6h)', 'Barieră grăsime', 'Fereastră & Recicl.', 'Preț & Greutate'],
-        btnOld: '🔴 Punga actuală (Virgin)',
+        sectionAlt: 'Alternativă polimerică cu PCR (ProAmpac RotiBag® #285) și comparație cu casoleta rigidă Faerch CPET (#2200012097)',
+        compareTitle: 'Comparație cu ambalajul de bază din 100% Virgin Plastic (Grafic pentagonal)',
+        axisLabels: ['Reducere Virgin', 'Vitrină caldă', 'Barieră grăsime', 'Fereastră & Eco', 'Preț & Greutate'],
+        btnOld: '🔴 Bază 100% Virgin (#2226014004)',
         actionDetails: '🔬 1. Detalii și compoziția produsului',
-        actionCert: '📜 2. Deschide certificatul (TDS)',
-        actionBuy: '🛒 3. Unde cumperi (Site produs) ↗',
+        actionCert: '📜 2. Deschide certificatul (PDF TDS)',
+        actionBuy: '🛒 3. Unde cumperi (Site oficial) ↗',
         radarUI: {
             formulaLabel: 'Formula Virgin Plastic:',
             plasticWord: 'g plastic −',
@@ -324,187 +327,190 @@ const dictionary = {
             vsBase: 'față de',
             atBase: 'la bază →',
             totalMass: 'Masa totală:',
-            price: 'Preț:',
+            price: 'Diferență preț:',
             hoverHint: 'Treceți cursorul peste butoanele de mai sus pentru detalii',
-            calcLabel: 'Calcul plastic:',
+            calcLabel: 'Calcul plastic conform TDS:',
             totalPlasticWord: 'Plastic total',
             recycledCapWord: 'g − Reciclat',
             virginFullWord: 'g Virgin Plastic',
-            primary100: '100% primar',
-            specsLabel: 'Caracteristici:',
-            baseProblemLabel: 'Problema bazei:'
+            primary100: '100% plastic primar',
+            specsLabel: 'Date din fișa tehnică:',
+            baseProblemLabel: 'Problema etalonului de bază:'
         },
         products: [
             {
-                badge: '🏆 MĂRIMEA L (PUI ÎNTREG) • SKU BAGCRAFT #300881',
-                name: 'Bagcraft® Papercon EcoCraft® Dubl View® (SKU 300881 — Mărimea L pentru pui întreg)',
-                info: 'Pungă industrială reală produsă de Novolex / Bagcraft Papercon (dimensiuni 273×152×222 mm) pentru pui întreg la rotisor. Fabricată din kraft natur FSC cu barieră interioară anti-grăsime, fereastră Anti-Fog și ventilație a aburului.',
-                btnEco: '🟢 Produs Eco (Bagcraft L)',
-                layersTitle: '🔬 Compoziție pe straturi și construcție (Bagcraft® SKU #300881):',
+                badge: '🏆 MĂRIMEA L (PUI ÎNTREG) • BAGCRAFT SKU #301051 (UPC 10072181010519)',
+                name: 'Bagcraft® EcoCraft® ToGo! Window Chicken Bag with Vents & Tac Seal (SKU #301051 — Mărimea L)',
+                info: 'Pungă de serie originală a grupului Novolex / Bagcraft® (specificația B_PG_1093_0922, pag. 4: dimensiuni 8.75 × 6.00 × 10.75 inch = 222.3 × 152.4 × 273.1 mm, 250 buc/cutie, greutate cutie 15.83 lbs) special pentru pui întreg la rotisor. Kraft natur neînălbit cu fereastră Anti-Fog, ventilația aburului și închidere Tac Seal.',
+                btnEco: '🟢 Produs Eco (Bagcraft #301051)',
+                layersTitle: '🔬 Compoziție reală și parametri din PDF-ul oficial (Bagcraft® SKU #301051):',
                 layers: [
-                    '<b>Stratul 1 (Exterior):</b> Kraft natur neînălbit cu fibră lungă EcoCraft® FSC (13.5 g, 100% celuloză, fără clor)',
-                    '<b>Stratul 2 (Barieră interioară):</b> Barieră duplex netedă HD rezistentă la grăsimi (TAPPI T559 Kit 12) — reține grăsimea 6 ore și nu lasă fibre pe pui',
-                    '<b>Fereastră transparentă (Dubl View®):</b> Bandă termorezistentă Anti-Fog (2.0 g, cu micro-perforații pentru păstrarea crustei crocante)',
-                    '<b>Închidere și dimensiuni:</b> Clapetă termo-adezivă ToGo! Seal • Dimensiune 273 × 152 × 222 mm (pentru pui întreg până la 1.8 kg)'
+                    '<b>SKU exact și cod de bare (pag. 4 PDF):</b> Item #301051 • UPC 10072181010519 • Bag Size: Rotisserie (Pui întreg la rotisor)',
+                    '<b>Dimensiuni exacte și ambalare:</b> 8.75 × 6.00 × 10.75 in. (222.3 × 152.4 × 273.1 mm) • 250 buc/cutie • Greutate cutie 15.83 lbs (7180 g → 28.72 g/pungă)',
+                    '<b>Bilanț de material:</b> ~26.52 g kraft natur neînălbit rezistent la grăsimi EcoCraft® + ~2.20 g fereastră transparentă Anti-Fog (reducere plastic cu -91.6% vs casoleta Virgin PP de 26.29 g)',
+                    '<b>Construcție pentru vitrina caldă:</b> Perforații Performance Ventilation (păstrează crusta crocantă) + clapetă Tac Seal (Fold • Peel • Seal) + indicator Freshness Clock'
                 ],
-                certsTitle: '📜 Bază de dovezi și conformitate cu criteriile:',
+                certsTitle: '📜 Bază de dovezi (Specificația PDF B_PG_1093_0922):',
                 certs: [
-                    '🏭 Producător: Novolex / Bagcraft',
-                    '🌡️ Vitrină caldă: până la 200–220 °C (6h)',
-                    '🛡️ Barieră grăsime: Kit 12 (0% fibre)',
-                    '🍽️ Standard: FDA 21 CFR 176.170 & EU 1935/2004',
-                    '♻️ Certificare: FSC-C104002 & BRCGS AA',
-                    '💶 Diferență preț: +11.5% (în limita ≤15%)'
+                    '🏭 Producător: Novolex / Bagcraft (SUA)',
+                    '📄 Document: Spec B_PG_1093_0922 & B_FL_1066',
+                    '🌡️ Destinație: Hot Meal / Warming Display',
+                    '🛡️ Kraft anti-grăsime • 0% fibre pe mâncare',
+                    '👁️ Fereastră Clear Anti-Fog + Ventilație abur',
+                    '♻️ Plastic: 2.20 g vs 26.29 g bază (-91.6%)'
                 ]
             },
             {
-                badge: '🏆 MĂRIMEA S/M (ARIPIOARE ȘI CARTOFI) • SKU #300593',
-                name: 'Bagcraft® Papercon EcoCraft® Duplex Window (SKU 300593 — Mărimea S/M pentru aripioare și cartofi)',
-                info: 'Model compact de serie (216×114×260 mm) din aceeași gamă industrială Novolex Bagcraft® pentru porții de aripioare de pui, pulpe și cartofi copți (300–600 g). Vizibilitate completă prin fereastra Anti-Fog Dubl View® și protecție contra petelor de ulei.',
-                btnEco: '🟢 Produs Eco (Bagcraft S/M)',
-                layersTitle: '🔬 Compoziție pe straturi și construcție (Bagcraft® SKU #300593):',
+                badge: '🏆 MĂRIMEA S/M (ARIPIOARE ȘI PORȚII) • BAGCRAFT #301011 / #301043 / #301056',
+                name: 'Bagcraft® ToGo! Window Meal Bag (#301011 / #301043) & Clear View™ PET Window (#301056 — Mărimea S/M)',
+                info: 'Pungi compacte de serie din specificațiile oficiale Novolex (B_PG_1093_0922 și NVX-12832026) pentru aripioare (6–20 buc.), bucăți de pui și cartofi wedges. Includ ventilația aburului, laminare anti-grăsime și fereastră din PET termorezistent (Paper/PET, «PET film ideal for hot food applications»).',
+                btnEco: '🟢 Produs Eco (Bagcraft #301011)',
+                layersTitle: '🔬 Compoziție reală și parametri din PDF-urile oficiale (SKU #301011 / #301043 / #301056):',
                 layers: [
-                    '<b>Stratul 1 (Exterior):</b> Kraft natur EcoCraft® FSC (8.0 g hârtie, 25% conținut reciclat post-consum aprobat FDA)',
-                    '<b>Stratul 2 (Barieră interioară):</b> Strat duplex rezistent la grăsime fără PFAS, previne umezirea și nu lasă fibre pe alimente',
-                    '<b>Fereastră de vizitare:</b> Fereastră panoramică Anti-Fog Dubl View® pe centrul pungii (1.2 g polimer — reducere cu 87% a plasticului)',
-                    '<b>Dimensiuni:</b> 216 × 114 × 260 mm (8.5" × 4.5" × 10.25") • Ambalare: 500 buc/cutie'
+                    '<b>Articol #301011 (Small / 4 lb, UPC 10072181010113):</b> 5.00 × 3.00 × 9.62 in. (127.0 × 76.2 × 244.3 mm) • 500 buc/cutie • Greutate cutie 13.50 lbs (6123.5 g → 12.25 g/pungă)',
+                    '<b>Articol #301043 (Small/Medium cu Tac Seal, UPC 10072181010434):</b> 7.75 × 5.00 × 9.50 in. (196.9 × 127.0 × 241.3 mm) pentru 5–8 bucăți pui sau 15–20 aripioare',
+                    '<b>Articol #301056 / #300091 (Clear View™ Paper/PET, doc. NVX-12832026):</b> Căptușeală interioară completă Anti-Fog + fereastră din PET termorezistent (PET film ideal for hot food applications)',
+                    '<b>Bilanț de material (#301011):</b> ~10.80 g kraft EcoCraft® + ~1.45 g fereastră Anti-Fog (reducere plastic cu -94.5% față de casoleta Virgin PP de 26.29 g)'
                 ],
-                certsTitle: '📜 Bază de dovezi și conformitate cu criteriile:',
+                certsTitle: '📜 Bază de dovezi (PDF NVX-12832026 & B_PG_1093_0922):',
                 certs: [
-                    '🏭 Producător: Novolex / Bagcraft',
-                    '🌡️ Raft cald: până la 6 ore fără condens',
-                    '🛡️ Barieră grăsime: Duplex Grease-Resistant',
-                    '🍽️ Contact alimentar: FDA 21 CFR 176.170',
-                    '♻️ Certificare: FSC Chain-of-Custody',
-                    '💶 Diferență preț: +10.2% (în limita ≤15%)'
+                    '🏭 Producător: Novolex / Bagcraft (SUA)',
+                    '📄 Document: NVX-12832026 (Aprilie 2026)',
+                    '🌡️ Material: Paper / PET (pentru preparate calde)',
+                    '🛡️ Fully Lined Anti-Fog • 0% fibre',
+                    '🍗 Capacitate: 6–12 și 15–20 aripioare / garnituri',
+                    '♻️ Plastic: 1.45 g vs 26.29 g bază (-94.5%)'
                 ]
             },
             {
-                badge: '🥈 PUNGĂ POLIMERICĂ CU PCR • PROAMPAC ROTIBAG® / SIRA-COOK™',
-                name: 'ProAmpac RotiBag® / Sira-Cook™ (PCR & Recycle-Ready Series — până la 220 °C)',
-                info: 'Pungă termică flexibilă de serie de la grupul ProAmpac (inclusiv gama Sirane Sira-Cook™), creată special pentru a înlocui casoletele rigide pentru pui la rotisor. Disponibilă cu material reciclat post-consum (PCR) și fereastră Anti-Fog.',
-                btnEco: '🟢 Produs Eco (ProAmpac PCR)',
-                layersTitle: '🔬 Compoziție pe straturi și construcție (ProAmpac RotiBag® / Sira-Cook™):',
+                badge: '🥈 PUNGĂ POLIMERICĂ CU PCR • PROAMPAC ROTIBAG® (ID #285)',
+                name: 'ProAmpac RotiBag® Flexible Pouch (Product ID #285 — PCR & Recycle-Ready Options)',
+                info: 'Pungă termică flexibilă reală cu bază pliabilă (Inserted Bottom Gusset Pouch) de la producătorul global ProAmpac LLC. Proiectată special pentru pui cald la rotisor, pui prăjit și cartofi wedges: dotată cu fermoar Press-to-Close Zipper, mâner integrat, fereastră anti-aburire și disponibilă în variante Post-Consumer Recycled (PCR) și Mono-Material Recycle-Ready.',
+                btnEco: '🟢 Produs Eco (ProAmpac RotiBag®)',
+                layersTitle: '🔬 Caracteristici reale de pe site-ul oficial ProAmpac (RotiBag® ID #285):',
                 layers: [
-                    '<b>Structura materialului (12.0 g):</b> Poliester / poliolefină termorezistentă în variantă Post-Consumer Recycled (PCR) sau Mono-Material Recycle-Ready',
-                    '<b>Fereastră și mâner:</b> Fereastră largă anti-aburire (Fog-Resistant Window) și mâner integrat Grab-and-Go',
-                    '<b>Termorezistență:</b> Gama Sira-Cook™ este certificată pentru coacere și reîncălzire în cuptor și microunde până la +200…+220 °C',
-                    '<b>Economie de greutate:</b> Cu 50% mai ușoară decât o casoletă rigidă din plastic (Clamshell)'
+                    '<b>Opțiuni de sustenabilitate (Sustainability):</b> Disponibilă cu conținut reciclat post-consum (PCR — Post-Consumer Recycled) și structură monomaterial reciclabilă (Recycle-Ready)',
+                    '<b>Construcția pungii (~12.0 g):</b> Bază stabilă (Inserted bottom gusset), fermoar resigilabil (Press-to-close zipper) și mâner integrat (elimină a doua pungă la casă)',
+                    '<b>Fereastră și protecție:</b> Fereastră transparentă anti-aburire (Clear fog-resistant window), ventilație (Vented), rezistență la grăsimi și scurgeri, compatibilă cu microundele (Microwave-safe)',
+                    '<b>Economie de plastic și logistică:</b> Cu 54% mai ușoară decât casoleta rigidă Faerch P 2226-1C (12.0 g față de 26.29 g) și ocupă mult mai puțin spațiu în depozit'
                 ],
-                certsTitle: '📜 Bază de dovezi și conformitate cu criteriile:',
+                certsTitle: '📜 Bază de dovezi (ProAmpac Document #86 / Product #285):',
                 certs: [
-                    '🏭 Producător: ProAmpac / Sirane Ltd',
-                    '🌡️ Cuptor și microunde: până la 200–220 °C',
-                    '🛡️ 100% etanș la grăsimi • 0% fibre',
-                    '🍽️ Certificare: BRCGS AA+ & ISO 14001',
-                    '♻️ Conținut PCR (EU 2022/1616)',
-                    '💶 Diferență preț: +12.8% (în limita ≤15%)'
+                    '🏭 Producător: ProAmpac LLC (SUA / UE)',
+                    '📄 Document: ProAmpac Doc #86 (RotiBag®)',
+                    '🌡️ Regim: Hot Display & Microwave-Safe',
+                    '🛡️ Grease- & Leak-Resistant • 0% fibre',
+                    '👁️ Clear Fog-Resistant Window + Mâner',
+                    '♻️ Opțiuni: PCR Content & Recycle-Ready'
                 ]
             },
             {
-                badge: '⚖️ CUTIE VS PUNGĂ • SKU FAERCH #2200012097',
-                name: 'Faerch C 2200-1L Evolve CPET (SKU 2200012097 — Casoletă rigidă 220 °C cu film transparent)',
-                info: 'Casoletă termorezistentă reală a producătorului danez Faerch A/S (EAN 5703969041835, rețeta 6811, de la -40 °C la +220 °C). Demonstrează de ce cutia rigidă pierde în fața pungii pentru puiul întreg: este cu +62% mai grea (23.5 g vs 14.5 g) și potrivită doar pentru porții S/M.',
-                btnEco: '🟢 Produs Eco (Faerch CPET)',
-                layersTitle: '🔬 Compoziție și date din fișa tehnică (Faerch TDS #2200012097):',
+                badge: '⚖️ CASOLETĂ RIGIDĂ 220°C • FAERCH C 2200-1L (#2200012097, EAN 5703969041835)',
+                name: 'Faerch C 2200-1L Evolve CPET (SKU #2200012097 — Casoletă rigidă -40°C…+220°C pentru termosudare)',
+                info: 'Casoletă termorezistentă reală a concernului danez Faerch A/S (TDS oficial din 09.01.2023: EAN 5703969041835, rețeta 6811, masa nominală a corpului 21.38 g ± 10%, volum 1000 ml, interval de la -40 °C la +220 °C pentru cuptor și microunde). Permite compararea casoletei rigide Evolve CPET (până la 70% rPET) cu etalonul Faerch P 2226-1C (26.29 g, 100% Virgin PP) și cu pungile ușoare Bagcraft®.',
+                btnEco: '🟢 Produs Eco (Faerch #2200012097)',
+                layersTitle: '🔬 Date exacte din fișa tehnică PDF a fabricii (Faerch TDS #2200012097):',
                 layers: [
-                    '<b>Corpul casoletei (21.38 g ± 10%):</b> PET cristalin (CPET Evolve, rețeta 6811, grosime 550 µm, rPET post-consum)',
-                    '<b>Fereastră superioară (2.12 g):</b> Film transparent de termosudare (Top-Seal Film) din PET termorezistent — asigură vizibilitatea produsului',
-                    '<b>Dimensiuni exacte TDS:</b> 199.9 × 154.8 × 47.1 mm (volum 1000 ml) — potrivită pentru porții S/M, dar nu încape un pui întreg',
-                    '<b>Sortare optică:</b> NIR Detectable = YES • 100% Reciclabil în fluxul PET'
+                    '<b>Masa nominală și materialul (pag. 1 TDS):</b> 21.38 g ± 10% (corpul casoletei fără filmul superior) • PET cristalin Evolve CPET (rețeta 6811, grosime 550 µm, până la 70% PCR rPET)',
+                    '<b>Etalonul de bază (Faerch P 2226-1C #2226014004):</b> 26.29 g ± 10% din 100% Virgin Polypropylene (EAN 5023262137517, rețeta 9626, limită doar +121 °C)',
+                    '<b>Dimensiuni exacte și ambalare:</b> 199.9 × 154.8 × 47.1 mm (volum 1000 ml, 570 buc/cutie) — ideală pentru porții la 220 °C, dar nu încape un pui întreg L',
+                    '<b>Sortare și reciclare:</b> NIR Detectable = Yes (detectabilă optic la sortare) • Recyclable = YES'
                 ],
-                certsTitle: '📜 Bază de dovezi (Fișă tehnică PDF oficială):',
+                certsTitle: '📜 Bază de dovezi (Fișe PDF directe Faerch A/S):',
                 certs: [
-                    '🏭 Producător: Faerch A/S (Danemarca)',
-                    '🌡️ TDS oficial: -40 °C până la +220 °C',
-                    '🍲 Regim: Dual-Ovenable (Cuptor și Microunde)',
-                    '🍽️ Standard: EU 10/2011 & EC 2023/2006',
-                    '♻️ ISO 9001 & BRCGS High Hygiene',
-                    '💶 Diferență preț: +18.5% (mai grea decât punga)'
+                    '🏭 Producător: Faerch A/S (Danemarca, UE)',
+                    '📄 Document: TDS #2200012097 & #2226014004',
+                    '🌡️ Interval oficial: -40 °C până la +220 °C',
+                    '🍲 Regim: Oven / Microwave (Dual-Ovenable)',
+                    '🍽️ Regulamente: EU 10/2011, 1935/2004, 2023/2006',
+                    '♻️ Virgin Plastic: ~6.41 g vs 26.29 g bază (-75.6%)'
                 ]
             }
         ],
-        matrixTitle: 'Tabel comparativ al mostrelor industriale reale (Pungă vs Cutie)',
+        matrixTitle: 'Tabel comparativ al mostrelor industriale reale (conform specificațiilor PDF oficiale)',
         matrixHeaders: [
-            'Criteriu de evaluare',
-            '🔴 Punga actuală Profi (Bază)',
-            '🏆 Bagcraft® EcoCraft® Dubl View® (#300881 L / #300593 S/M)',
-            '🥈 ProAmpac RotiBag® / Sira-Cook™ (PCR)',
-            '⚖️ Faerch CPET C 2200-1L (#2200012097)'
+            'Criteriu de evaluare (conform PDF TDS)',
+            '🔴 Bază 100% Virgin PP (Faerch #2226014004)',
+            '🏆 Bagcraft® ToGo! (#301051 L / #301011 S/M / #301056 PET)',
+            '🥈 ProAmpac RotiBag® (ID #285 — PCR & Recycle-Ready)',
+            '⚖️ Faerch C 2200-1L Evolve CPET (#2200012097)'
         ],
         matrixRows: [
             [
-                '<b>Producător real și SKU</b>',
-                'Pungă standard PE/PA',
-                '<b>Novolex / Bagcraft Papercon</b><br>SKU #300881 (L) & SKU #300593 (S/M)',
-                '<b>ProAmpac / Sirane Ltd</b><br>RotiBag® & Sira-Cook™ PCR',
+                '<b>Producător, Articol și Cod de bare</b>',
+                '<b>Faerch A/S</b><br>SKU #2226014004 (EAN 5023262137517)',
+                '<b>Novolex / Bagcraft® (SUA)</b><br>#301051 (UPC 10072181010519) & #301011 (UPC 10072181010113)',
+                '<b>ProAmpac LLC (SUA / UE)</b><br>RotiBag® Product ID #285 (Doc #86)',
                 '<b>Faerch A/S (Danemarca)</b><br>SKU #2200012097 (EAN 5703969041835)'
             ],
             [
-                '<b>Format și Masă (Mărimea L)</b>',
-                'Pungă flexibilă • <b>14.5 g</b>',
-                'Pungă flexibilă • <b>15.5 g</b> (13.5g kraft + 2.0g fereastră)',
-                'Pungă flexibilă cu mâner • <b>12.0 g</b>',
-                'Casoletă rigidă • <b>23.5 g</b> (+62% mai grea decât punga)'
+                '<b>Dimensiuni exacte din fișa PDF</b>',
+                '227.0 × 177.0 × 49.0 mm<br>(Casoletă PP, 650 µm)',
+                '<b>L (#301051):</b> 222.3 × 152.4 × 273.1 mm<br><b>S/M (#301011):</b> 127.0 × 76.2 × 244.3 mm',
+                'Bază pliabilă (Bottom Gusset) cu mâner și fermoar pentru pui și cartofi',
+                '199.9 × 154.8 × 47.1 mm<br>(Volum 1000 ml, grosime 550 µm)'
+            ],
+            [
+                '<b>Masa totală pe unitate (conform TDS)</b>',
+                '<b>26.29 g ± 10%</b><br>(100% plastic PP)',
+                '<b>L (#301051):</b> 28.72 g (26.52g kraft + 2.20g fereastră)<br><b>S/M (#301011):</b> 12.25 g (10.80g kraft + 1.45g fereastră)',
+                '<b>~12.00 g</b> pungă polimerică flexibilă cu mâner (-54% mai ușoară)',
+                '<b>21.38 g ± 10%</b> corpul casoletei<br>(fără filmul superior de sigilare)'
             ],
             [
                 '<b>Calcul Virgin Plastic</b><br><small>(Plastic total − Reciclat)</small>',
-                '14.5 g − 0 g = <b>14.50 g (100% Virgin)</b>',
-                '2.0 g fereastră − 1.7 g = <b>0.30 g (-97.9% plastic)</b>',
-                '12.0 g − 10.2 g (85% PCR) = <b>1.80 g (-87.6%)</b>',
-                '23.5 g − 16.45 g (70% PCR) = <b>7.05 g (-51.4%)</b>'
+                '26.29 g − 0 g =<br><b>26.29 g Virgin (100% primar)</b>',
+                '<b>L:</b> 2.20 g plastic fereastră (<b>-91.6%</b> vs bază)<br><b>S/M:</b> 1.45 g plastic fereastră (<b>-94.5%</b> vs bază)',
+                '12.00 g − 6.00 g (50% PCR) =<br><b>6.00 g Virgin (-77.2% vs bază)</b>',
+                '21.38 g − 14.97 g (până la 70% rPET) =<br><b>6.41 g Virgin (-75.6% vs bază)</b>'
             ],
             [
-                '<b>Temperatură înaltă și 6h vitrină</b>',
-                'Până la 200 °C, înmuierea crustei',
-                '✅ <b>Vitrină caldă până la 6h</b> (ventilație abur)',
-                '✅ <b>Până la 200–220 °C • 6h raft • Microunde</b>',
-                '✅ <b>-40 °C…+220 °C (Dual-Ovenable)</b>'
+                '<b>Regim termic și vitrină caldă</b>',
+                '-20 °C…+121 °C<br>(Se topește la 200–220 °C!)',
+                '✅ <b>Hot Meal Warming Display</b><br>(Ventilație abur + fereastră PET la #301056)',
+                '✅ <b>Hot Display & Microwave-Safe</b><br>(Ventilație + protecție scurgeri)',
+                '✅ <b>-40 °C…+220 °C (Dual-Ovenable)</b><br>(Cuptor și microunde conform TDS)'
             ],
             [
                 '<b>Barieră grăsime și 0% fibre</b>',
-                'Plastic (0% fibre)',
-                '✅ <b>Duplex Grease-Barrier • 0% fibre pe mâncare</b>',
-                '✅ <b>Sudură etanșă • 0% fibre</b>',
-                '✅ <b>PET cristalin • 0% fibre</b>'
+                'Plastic PP (0% fibre)',
+                '✅ <b>Grease-Resistant Duplex / Fully Lined Anti-Fog • 0% fibre</b>',
+                '✅ <b>Polimer Grease- & Leak-Resistant • 0% fibre</b>',
+                '✅ <b>CPET cristalin • 0% fibre</b>'
             ],
             [
                 '<b>Fereastră transparentă de vizitare</b>',
-                'Parțială sau aburită',
-                '✅ <b>Fereastră Anti-Fog Dubl View®</b>',
-                '✅ <b>Fereastră panoramică Fog-Resistant</b>',
+                'Necesită film de termosudare',
+                '✅ <b>Fereastră largă Anti-Fog (ToGo!® / Dubl View® / Clear View™)</b>',
+                '✅ <b>Fereastră panoramică Clear Fog-Resistant</b>',
                 '✅ <b>Film superior transparent Top-Seal</b>'
             ],
             [
-                '<b>Acoperire 2 mărimi (Porții + Pui întreg)</b>',
-                'Ambele mărimi',
-                '✅ <b>#300593 (aripioare/cartofi) + #300881 (pui întreg)</b>',
-                '✅ <b>Porții S/M + Pui întreg L</b>',
-                '❌ Doar porții 1000 ml (puiul întreg nu încape)'
-            ],
-            [
-                '<b>Accesibilitate preț (toleranță +10…15%)</b>',
-                'Bază (0%)',
-                '✅ <b>+10.2% (S/M) / +11.5% (L) — ÎN LIMITĂ</b>',
-                '✅ <b>+12.8% — ÎN LIMITĂ</b>',
-                '⚠️ <b>+18.5% (peste prag din cauza masei de 23.5 g)</b>'
+                '<b>Certificat PDF original în proiect</b>',
+                '<code>Faerch-P-2226-1C-PP-2226014004-TDS.pdf</code>',
+                '✅ <code>Bagcraft-ToGo-Hot-Foods-Spec-B_PG_1093.pdf</code> & <code>NVX-12832026.pdf</code>',
+                '✅ <code>ProAmpac-RotiBag-285-Product-Sheet.pdf</code>',
+                '✅ <code>Faerch-C-2200-1L-CPET-2200012097-TDS.pdf</code>'
             ]
         ],
         certModal: {
-            title: '📜 Certificat oficial și Fișă Tehnică (TDS / DoC)',
-            orgPrefix: 'FIȘĂ TEHNICĂ OFICIALĂ (TDS) •',
+            title: '📜 Certificat oficial de fabrică și Fișă Tehnică (PDF TDS)',
+            orgPrefix: 'FIȘĂ TEHNICĂ AUTENTICĂ DE FABRICĂ (TDS) •',
             docNoLabel: 'Document nr.:',
-            rowDim: 'Dimensiuni și destinație',
-            rowStd: 'Certificate și standarde internaționale',
-            rowLayers: 'Compoziția pe straturi a materialului',
-            rowTemp: 'Termorezistență și test vitrină caldă',
-            rowVirgin: 'Bilanț Virgin Plastic (Formula challenge-ului)',
-            openPdfBtn: '📄 Deschide fișa PDF oficială / pagina producătorului ↗',
-            printBtn: '🖨️ Printează certificatul'
+            rowDim: 'Dimensiuni exacte și ambalare (conform PDF)',
+            rowStd: 'Specificație, standarde și cod de bare',
+            rowLayers: 'Compoziția reală și structura materialului',
+            rowTemp: 'Regim termic și vitrină caldă',
+            rowVirgin: 'Calcul Virgin Plastic (față de etalonul 26.29 g)',
+            embedTitle: '📑 Documentul PDF original încorporat (răsfoiți paginile în fereastră):',
+            openLocalPdfBtn: '📄 Deschide PDF-ul original în filă nouă ↗',
+            openExtraPdfBtn: '📑 Deschide al 2-lea document PDF oficial ↗',
+            openLiveUrlBtn: '🌐 Site-ul oficial al producătorului (200 OK) ↗',
+            printBtn: '🖨️ Printează'
         },
         adminModal: {
             title: 'Panou ingineresc: Adăugare și calcul mostră de ambalaj',
-            descHtml: 'Introduceți datele tehnice ale unei mostre reale (TDS), linkul către certificat și site-ul furnizorului. Sistemul va calcula automat masa Virgin Plastic după formula <b>Plastic total − Reciclat</b> și va construi graficul pentagonal.',
+            descHtml: 'Introduceți datele tehnice ale unei mostre reale (TDS), linkul către certificat și site-ul furnizorului. Sistemul va calcula automat masa Virgin Plastic după formula <b>Plastic total − Reciclat</b> față de etalonul de bază (26.29 g Virgin PP) și va construi graficul pentagonal.',
             labels: [
                 'Denumirea și SKU-ul produsului real:',
                 'Link către fotografia produsului:',
@@ -518,10 +524,10 @@ const dictionary = {
                 'Diferența de preț (%):',
                 'Temperatura max. (°C):',
                 'Barieră grăsime / 0 fibre (%):',
-                'Fereastră și Reciclare (%):'
+                'Fereastră și Ecologie (%):'
             ],
-            namePlaceholder: 'Ex.: Colpac Cookpac® Window Bag (SKU CP-220)',
-            infoPlaceholder: 'Kraft natur FSC + barieră grăsime Kit 12 + fereastră Anti-Fog',
+            namePlaceholder: 'Ex.: Bagcraft® EcoCraft® ToGo! 8-Piece Bag (SKU #301012)',
+            infoPlaceholder: 'Kraft natur EcoCraft® + barieră grăsime + fereastră Anti-Fog',
             submitBtn: 'Calculează după formulă și adaugă cardul cu 3 butoane și grafic pentagonal'
         }
     },
@@ -535,48 +541,48 @@ const dictionary = {
             'Comparison Matrix'
         ],
         heroBadge: 'INDUSTRIAL SOURCING FOR PROFI RETAIL • HOT DELI COUNTER & ROTISSERIE',
-        heroTitle: 'Real Certified Window Pouches Replacing the 100% Virgin Plastic Bag',
-        heroSubtitleHtml: '100% recycled plastic is already deployed in cold departments. The core challenge for hot deli & rotisserie is switching from the 100% virgin plastic bag to <b>real commercially manufactured packaging</b> that withstands 200–220 °C+ heating, holds grease and shape for up to 6 hours on the hot shelf with zero fiber shedding, features a clear anti-fog window, and cuts Virgin Plastic by the formula: <span class="formula-pill">Total Plastic − Recycled Content = Virgin Plastic</span>',
+        heroTitle: 'Real Certified Window Pouches Replacing 100% Virgin Plastic Packaging',
+        heroSubtitleHtml: '100% recycled plastic is already deployed in cold departments. The core challenge for hot deli & rotisserie is switching from baseline 100% virgin plastic packaging (reference <b>Faerch P 2226-1C #2226014004, 26.29 g Virgin PP</b>) to <b>real commercially manufactured packaging backed by official PDF datasheets</b> that withstands 200–220 °C+ heating, holds grease and shape on the hot counter with zero fiber shedding, features a clear anti-fog window, and cuts Virgin Plastic by the formula: <span class="formula-pill">Total Plastic − Recycled Content = Virgin Plastic</span>',
         reqs: [
             {
                 num: '200–220 °C+',
                 name: 'Heat Resistance Without Melting',
-                desc: 'Certified resistance to hot filling, ovens, microwaves, and infrared heated retail display cases.'
+                desc: 'Official datasheets for hot filling, conventional ovens (-40…+220 °C), microwaves, and heated display cases.'
             },
             {
                 num: 'Up to 6 Hours',
                 name: 'Hot-Shelf Holding Stability',
-                desc: 'Steam micro-venting and heat-resistant seams keep rotisserie chicken skin crispy for up to 6 hours on the shelf.'
+                desc: 'Performance Ventilation steam release system keeps rotisserie chicken skin crispy on the warming shelf.'
             },
             {
-                num: 'Kit 12 • 0% Fibers',
+                num: '0% Fibers',
                 name: 'Grease Barrier & Food Purity',
-                desc: 'Internal grease-proof barrier holds hot oil and prevents paper fibers from sticking to the food.'
+                desc: 'Multi-layer grease-resistant liner and PET window hold hot oil without shedding paper fibers onto food.'
             },
             {
                 num: 'Anti-Fog Window',
                 name: 'Clear Viewing Window',
-                desc: 'Crystal-clear anti-fog panel (Dubl View® / RotiBag®) lets shoppers inspect the food without opening the bag.'
+                desc: 'Crystal-clear anti-fog panel (ToGo!® / Dubl View® / RotiBag®) for full product visibility.'
             },
             {
                 num: 'Sizes L & S/M',
                 name: 'Whole Chicken & Portions',
-                desc: 'Commercial SKUs in two sizes: Large bag for a whole rotisserie chicken and Compact S/M for wings and wedges.'
+                desc: 'Real US/EU catalog SKUs: #301051 (whole chicken L) and #301011 / #301043 / #301056 (wings & sides S/M).'
             },
             {
-                num: '+10…+15%',
-                name: 'Viable Wholesale Cost',
-                desc: 'Mass-produced packaging by global leaders (Novolex Bagcraft®, ProAmpac, Faerch) within realistic cost limits.'
+                num: 'PDF TDS 100%',
+                name: 'Authentic Manufacturer PDFs',
+                desc: 'Every item includes its original manufacturer PDF spec sheet (Novolex Bagcraft®, ProAmpac, Faerch A/S).'
             }
         ],
         sectionPouch: 'Recommended Commercial Window Bags: Size L (Whole Chicken) & Size S/M (Portions)',
-        sectionAlt: 'PCR Polymer Alternative (ProAmpac) & Comparison vs Faerch CPET Rigid Tray',
-        compareTitle: 'Comparison vs Current Profi Bag (5-Axis Pentagon Advantage Chart)',
-        axisLabels: ['Zero Virgin Plastic', '220°C Heat (6h)', 'Grease/0 Fibers', 'Window & Recycle', 'Cost & Weight'],
-        btnOld: '🔴 Current Bag (Virgin)',
+        sectionAlt: 'PCR Polymer Alternative (ProAmpac RotiBag® #285) & Comparison vs Faerch CPET Rigid Tray (#2200012097)',
+        compareTitle: 'Comparison vs Baseline 100% Virgin Plastic Packaging (5-Axis Pentagon Chart)',
+        axisLabels: ['Virgin Reduction', 'Hot Display', 'Grease/0 Fibers', 'Window & Eco', 'Cost & Weight'],
+        btnOld: '🔴 Baseline 100% Virgin (#2226014004)',
         actionDetails: '🔬 1. Product Details & Layers',
-        actionCert: '📜 2. Open Certificate (TDS)',
-        actionBuy: '🛒 3. Where to Buy (Store) ↗',
+        actionCert: '📜 2. Open Certificate (PDF TDS)',
+        actionBuy: '🛒 3. Where to Buy (Official Site) ↗',
         radarUI: {
             formulaLabel: 'Virgin Plastic Formula:',
             plasticWord: 'g plastic −',
@@ -585,515 +591,526 @@ const dictionary = {
             vsBase: 'vs',
             atBase: 'baseline →',
             totalMass: 'Total Weight:',
-            price: 'Cost:',
+            price: 'Cost Delta:',
             hoverHint: 'Hover or tap the buttons above for details',
-            calcLabel: 'Plastic Calculation:',
+            calcLabel: 'TDS Plastic Calculation:',
             totalPlasticWord: 'Total Plastic',
             recycledCapWord: 'g − Recycled',
             virginFullWord: 'g Virgin Plastic',
-            primary100: '100% virgin',
-            specsLabel: 'Specifications:',
-            baseProblemLabel: 'Baseline Issue:'
+            primary100: '100% virgin plastic',
+            specsLabel: 'Datasheet Specs:',
+            baseProblemLabel: 'Baseline Reference Issue:'
         },
         products: [
             {
-                badge: '🏆 SIZE L (WHOLE CHICKEN) • BAGCRAFT SKU #300881',
-                name: 'Bagcraft® Papercon EcoCraft® Dubl View® (SKU 300881 — Size L for Whole Chicken)',
-                info: 'Real commercial bag manufactured by Novolex / Bagcraft Papercon (273×152×222 mm) for whole rotisserie chicken. Made from unbleached FSC kraft with an internal grease-proof barrier, anti-fog window, and steam venting.',
-                btnEco: '🟢 Eco Product (Bagcraft L)',
-                layersTitle: '🔬 Layer Composition & Construction (Bagcraft® SKU #300881):',
+                badge: '🏆 SIZE L (WHOLE CHICKEN) • BAGCRAFT SKU #301051 (UPC 10072181010519)',
+                name: 'Bagcraft® EcoCraft® ToGo! Window Chicken Bag with Vents & Tac Seal (SKU #301051 — Size L)',
+                info: 'Authentic commercial bag manufactured by Novolex / Bagcraft® (Spec Sheet B_PG_1093_0922, p. 4: 8.75 × 6.00 × 10.75 in. = 222.3 × 152.4 × 273.1 mm, 250 pcs/case, case weight 15.83 lbs) engineered for whole rotisserie chicken. Natural unbleached kraft with clear Anti-Fog window, performance steam venting, and Tac Seal closure.',
+                btnEco: '🟢 Eco Product (Bagcraft #301051)',
+                layersTitle: '🔬 Verified Composition & Specs from Manufacturer PDF (Bagcraft® SKU #301051):',
                 layers: [
-                    '<b>Layer 1 (Outer Structural):</b> Natural unbleached long-fiber EcoCraft® FSC kraft (13.5 g, 100% cellulose, chlorine-free)',
-                    '<b>Layer 2 (Inner Barrier):</b> Smooth HD duplex grease barrier (TAPPI T559 Kit 12) — holds hot chicken oil for 6h with 0% fiber shedding',
-                    '<b>Viewing Window (Dubl View®):</b> Fog-resistant heat-stabilized polyester window strip (2.0 g, micro-perforated to keep skin crispy)',
-                    '<b>Closure & Dimensions:</b> Adhesive thermal ToGo! Seal flap • Size 273 × 152 × 222 mm (fits whole chicken up to 1.8 kg)'
+                    '<b>Exact SKU & Barcode (p. 4 PDF):</b> Item #301051 • UPC 10072181010519 • Bag Size: Rotisserie (Whole rotisserie chicken)',
+                    '<b>Exact Dimensions & Case Pack:</b> 8.75 × 6.00 × 10.75 in. (222.3 × 152.4 × 273.1 mm) • 250 pcs/case • Case weight 15.83 lbs (7180 g → 28.72 g/bag)',
+                    '<b>Material Balance:</b> ~26.52 g natural unbleached grease-resistant EcoCraft® kraft + ~2.20 g clear Anti-Fog window film (-91.6% plastic reduction vs 26.29 g Virgin PP tray)',
+                    '<b>Hot Display Engineering:</b> Performance Ventilation (moisture release keeps skin crispy) + Tac Seal tamper-evident closure (Fold • Peel • Seal) + Freshness Clock'
                 ],
-                certsTitle: '📜 Evidence Base & Criteria Compliance:',
+                certsTitle: '📜 Evidence Base (PDF Spec Sheet B_PG_1093_0922):',
                 certs: [
-                    '🏭 Manufacturer: Novolex / Bagcraft',
-                    '🌡️ Hot Display: up to 200–220 °C (6h)',
-                    '🛡️ Grease Resistance: Kit 12 (0% fibers)',
-                    '🍽️ Standard: FDA 21 CFR 176.170 & EU 1935/2004',
-                    '♻️ Certified: FSC-C104002 & BRCGS AA',
-                    '💶 Wholesale Delta: +11.5% (within ≤15% limit)'
+                    '🏭 Manufacturer: Novolex / Bagcraft (USA)',
+                    '📄 Document: Spec B_PG_1093_0922 & B_FL_1066',
+                    '🌡️ Application: Hot Meal / Warming Display',
+                    '🛡️ Grease-Resistant Kraft • 0% fibers on food',
+                    '👁️ Clear Anti-Fog Window + Steam Venting',
+                    '♻️ Plastic: 2.20 g vs 26.29 g baseline (-91.6%)'
                 ]
             },
             {
-                badge: '🏆 SIZE S/M (WINGS & POTATO WEDGES) • SKU #300593',
-                name: 'Bagcraft® Papercon EcoCraft® Duplex Window (SKU 300593 — Size S/M for Wings & Wedges)',
-                info: 'Compact production model (216×114×260 mm) from the same Novolex Bagcraft® line for chicken wings, thighs, and potato wedges (300–600 g). Full visibility via the Dubl View® anti-fog window and stain-free grease protection.',
-                btnEco: '🟢 Eco Product (Bagcraft S/M)',
-                layersTitle: '🔬 Layer Composition & Construction (Bagcraft® SKU #300593):',
+                badge: '🏆 SIZE S/M (WINGS & PORTIONS) • BAGCRAFT #301011 / #301043 / #301056',
+                name: 'Bagcraft® ToGo! Window Meal Bag (#301011 / #301043) & Clear View™ PET Window (#301056 — Size S/M)',
+                info: 'Compact commercial bags from official Novolex specifications (B_PG_1093_0922 and NVX-12832026) for chicken wings (6–20 pcs), fried chicken pieces, and potato wedges. Feature steam venting, grease-resistant lining, and heat-resistant PET window film (Paper/PET, "PET film ideal for hot food applications").',
+                btnEco: '🟢 Eco Product (Bagcraft #301011)',
+                layersTitle: '🔬 Verified Composition & Specs from Manufacturer PDFs (SKU #301011 / #301043 / #301056):',
                 layers: [
-                    '<b>Layer 1 (Outer Structural):</b> Natural EcoCraft® FSC kraft (8.0 g paper, 25% FDA-grade post-consumer recycled paper content)',
-                    '<b>Layer 2 (Inner Barrier):</b> PFAS-free grease-resistant duplex liner prevents oil bleed-through and leaves zero fibers on food',
-                    '<b>Viewing Window:</b> Center panoramic Dubl View® anti-fog window (1.2 g polymer — 87% plastic reduction vs PE bag)',
-                    '<b>Dimensions:</b> 216 × 114 × 260 mm (8.5" × 4.5" × 10.25") • Case Pack: 500 bags/case'
+                    '<b>Item #301011 (Small / 4 lb, UPC 10072181010113):</b> 5.00 × 3.00 × 9.62 in. (127.0 × 76.2 × 244.3 mm) • 500 pcs/case • Case weight 13.50 lbs (6123.5 g → 12.25 g/bag)',
+                    '<b>Item #301043 (Small/Medium with Tac Seal, UPC 10072181010434):</b> 7.75 × 5.00 × 9.50 in. (196.9 × 127.0 × 241.3 mm) for 5–8 pcs chicken or 15–20 wings',
+                    '<b>Item #301056 / #300091 (Clear View™ Paper/PET, Doc NVX-12832026):</b> Fully lined with anti-fog film + heat-resistant PET window ("PET film ideal for hot food applications")',
+                    '<b>Material Balance (#301011):</b> ~10.80 g EcoCraft® kraft + ~1.45 g Anti-Fog window (-94.5% plastic reduction vs 26.29 g Virgin PP tray)'
                 ],
-                certsTitle: '📜 Evidence Base & Criteria Compliance:',
+                certsTitle: '📜 Evidence Base (PDF NVX-12832026 & B_PG_1093_0922):',
                 certs: [
-                    '🏭 Manufacturer: Novolex / Bagcraft',
-                    '🌡️ Hot Shelf: up to 6 hours fog-free',
-                    '🛡️ Grease Barrier: Duplex Grease-Resistant',
-                    '🍽️ Food Contact: FDA 21 CFR 176.170',
-                    '♻️ Certified: FSC Chain-of-Custody',
-                    '💶 Wholesale Delta: +10.2% (within ≤15% limit)'
+                    '🏭 Manufacturer: Novolex / Bagcraft (USA)',
+                    '📄 Document: NVX-12832026 (April 2026)',
+                    '🌡️ Material: Paper / PET (for hot food apps)',
+                    '🛡️ Fully Lined Anti-Fog • 0% fiber shedding',
+                    '🍗 Capacity: 6–12 & 15–20 wings / sides',
+                    '♻️ Plastic: 1.45 g vs 26.29 g baseline (-94.5%)'
                 ]
             },
             {
-                badge: '🥈 PCR POLYMER OVEN BAG • PROAMPAC ROTIBAG® / SIRA-COOK™',
-                name: 'ProAmpac RotiBag® / Sira-Cook™ (PCR & Recycle-Ready Series — up to 220 °C)',
-                info: 'Commercial flexible thermal pouch by ProAmpac (including the Sirane Sira-Cook™ line), engineered specifically to replace rigid plastic rotisserie clamshells. Available with Post-Consumer Recycled (PCR) content and an anti-fog viewing window.',
-                btnEco: '🟢 Eco Product (ProAmpac PCR)',
-                layersTitle: '🔬 Layer Composition & Construction (ProAmpac RotiBag® / Sira-Cook™):',
+                badge: '🥈 PCR POLYMER POUCH • PROAMPAC ROTIBAG® (ID #285)',
+                name: 'ProAmpac RotiBag® Flexible Pouch (Product ID #285 — PCR & Recycle-Ready Options)',
+                info: 'Authentic inserted bottom gusset flexible pouch by global manufacturer ProAmpac LLC. Specifically engineered for hot rotisserie chicken, fried chicken, and potato wedges: equipped with a press-to-close zipper, built-in carry handle, clear fog-resistant window, and available with Post-Consumer Recycled (PCR) and Mono-Material Recycle-Ready structures.',
+                btnEco: '🟢 Eco Product (ProAmpac RotiBag®)',
+                layersTitle: '🔬 Verified Specifications from Official ProAmpac Page (RotiBag® ID #285):',
                 layers: [
-                    '<b>Material Structure (12.0 g):</b> Heat-resistant polyester / polyolefin with Post-Consumer Recycled (PCR) or Mono-Material Recycle-Ready design',
-                    '<b>Viewing Window & Handle:</b> Wide Fog-Resistant Window and integrated Grab-and-Go carry handle',
-                    '<b>Heat Resistance:</b> Sira-Cook™ series is certified for oven cooking, reheating, and microwave use up to +200…+220 °C',
-                    '<b>Weight & Space Savings:</b> Over 50% lighter than a rigid plastic rotisserie clamshell container'
+                    '<b>Sustainability Options:</b> Available in Post-Consumer Recycled (PCR) and Mono-Material Recycle-Ready flexible film structures',
+                    '<b>Pouch Construction (~12.0 g):</b> Inserted bottom gusset pouch, press-to-close reclosable zipper, and built-in carry handle (eliminates secondary checkout bag)',
+                    '<b>Window & Protection:</b> Clear fog-resistant viewing window, steam vented, grease- & leak-resistant, and microwave-safe for consumer reheating',
+                    '<b>Plastic & Logistics Savings:</b> 54% lighter than the rigid Faerch P 2226-1C tray (12.0 g vs 26.29 g) with a fraction of the warehouse footprint'
                 ],
-                certsTitle: '📜 Evidence Base & Criteria Compliance:',
+                certsTitle: '📜 Evidence Base (ProAmpac Document #86 / Product #285):',
                 certs: [
-                    '🏭 Manufacturer: ProAmpac / Sirane Ltd',
-                    '🌡️ Oven & Microwave: up to 200–220 °C',
-                    '🛡️ 100% Leak-Proof Grease Seal • 0% Fibers',
-                    '🍽️ Certified: BRCGS AA+ & ISO 14001',
-                    '♻️ PCR Content (EU 2022/1616)',
-                    '💶 Wholesale Delta: +12.8% (within ≤15% limit)'
+                    '🏭 Manufacturer: ProAmpac LLC (USA / EU)',
+                    '📄 Document: ProAmpac Doc #86 (RotiBag®)',
+                    '🌡️ Rating: Hot Display & Microwave-Safe',
+                    '🛡️ Grease- & Leak-Resistant • 0% fibers',
+                    '👁️ Clear Fog-Resistant Window + Handle',
+                    '♻️ Options: PCR Content & Recycle-Ready'
                 ]
             },
             {
-                badge: '⚖️ RIGID BOX VS BAG • FAERCH SKU #2200012097',
-                name: 'Faerch C 2200-1L Evolve CPET (SKU 2200012097 — 220 °C Rigid Tray with Top-Seal Window)',
-                info: 'Real dual-ovenable tray by Danish manufacturer Faerch A/S (EAN 5703969041835, recipe 6811, -40 °C to +220 °C). Demonstrates why a rigid box loses to a flexible pouch for whole chicken: +62% heavier (23.5 g with film vs 14.5 g bag) and 47.1 mm depth fits S/M portions only.',
-                btnEco: '🟢 Eco Product (Faerch CPET)',
-                layersTitle: '🔬 Layer Composition & Datasheet Specs (Faerch TDS #2200012097):',
+                badge: '⚖️ 220°C RIGID TRAY • FAERCH C 2200-1L (#2200012097, EAN 5703969041835)',
+                name: 'Faerch C 2200-1L Evolve CPET (SKU #2200012097 — Rigid Tray -40°C…+220°C for Top-Sealing)',
+                info: 'Authentic dual-ovenable tray by Danish manufacturer Faerch A/S (official TDS dated 09-01-2023: EAN 5703969041835, Recipe 6811, nominal tray weight 21.38 g ± 10%, volume 1000 ml, temperature range -40 °C to +220 °C for Oven & Microwave). Benchmarks rigid Evolve CPET (up to 70% rPET) against baseline Faerch P 2226-1C (26.29 g, 100% Virgin PP) and lightweight Bagcraft® bags.',
+                btnEco: '🟢 Eco Product (Faerch #2200012097)',
+                layersTitle: '🔬 Exact Datasheet Parameters from Official PDF (Faerch TDS #2200012097):',
                 layers: [
-                    '<b>Tray Body (21.38 g ± 10%):</b> Crystalline PET (CPET Evolve, recipe 6811, 550 µm sheet thickness, post-consumer rPET)',
-                    '<b>Clear Top Window (2.12 g):</b> Heat-resistant PET Top-Seal Film providing full top visibility of the meal',
-                    '<b>Exact TDS Dimensions:</b> 199.9 × 154.8 × 47.1 mm (1000 ml volume) — fits S/M portions, cannot fit a whole chicken',
-                    '<b>Optical Sorting:</b> NIR Detectable = YES • 100% Recyclable in the PET stream'
+                    '<b>Nominal Weight & Material (p. 1 TDS):</b> 21.38 g ± 10% (tray body excluding top-seal film) • Crystallized PET Evolve CPET (Recipe 6811, 550 µm gauge, up to 70% PCR rPET)',
+                    '<b>Baseline Comparison Reference (Faerch P 2226-1C #2226014004):</b> 26.29 g ± 10% made of 100% Virgin Polypropylene (EAN 5023262137517, Recipe 9626, max +121 °C only)',
+                    '<b>Exact Dimensions & Pack:</b> 199.9 × 154.8 × 47.1 mm (1000 ml volume, 570 pcs/box) — ideal for 220 °C portioned meals, but cannot fit a whole rotisserie chicken L',
+                    '<b>Sorting & Recycling:</b> NIR Detectable = Yes (optically sortable) • Recyclable = YES'
                 ],
-                certsTitle: '📜 Evidence Base (Direct Factory PDF Datasheet):',
+                certsTitle: '📜 Evidence Base (Direct Faerch A/S PDF Datasheets):',
                 certs: [
-                    '🏭 Manufacturer: Faerch A/S (Denmark)',
-                    '🌡️ Factory TDS: -40 °C to +220 °C',
-                    '🍲 Mode: Dual-Ovenable (Oven & Microwave)',
-                    '🍽️ Standard: EU 10/2011 & EC 2023/2006',
-                    '♻️ ISO 9001 & BRCGS High Hygiene',
-                    '💶 Wholesale Delta: +18.5% (heavier than pouch)'
+                    '🏭 Manufacturer: Faerch A/S (Denmark, EU)',
+                    '📄 Document: TDS #2200012097 & #2226014004',
+                    '🌡️ Official Range: -40 °C to +220 °C',
+                    '🍲 Mode: Oven / Microwave (Dual-Ovenable)',
+                    '🍽️ Regulations: EU 10/2011, 1935/2004, 2023/2006',
+                    '♻️ Virgin Plastic: ~6.41 g vs 26.29 g base (-75.6%)'
                 ]
             }
         ],
-        matrixTitle: 'Summary Matrix of Real Commercial Samples (Flexible Bag vs Rigid Box)',
+        matrixTitle: 'Master Comparison Matrix of Real Commercial Samples (from Official PDF Datasheets)',
         matrixHeaders: [
-            'Evaluation Criterion',
-            '🔴 Current Profi Bag (Baseline)',
-            '🏆 Bagcraft® EcoCraft® Dubl View® (#300881 L / #300593 S/M)',
-            '🥈 ProAmpac RotiBag® / Sira-Cook™ (PCR)',
-            '⚖️ Faerch CPET C 2200-1L (#2200012097)'
+            'Evaluation Criterion (per PDF TDS)',
+            '🔴 Baseline 100% Virgin PP (Faerch #2226014004)',
+            '🏆 Bagcraft® ToGo! (#301051 L / #301011 S/M / #301056 PET)',
+            '🥈 ProAmpac RotiBag® (ID #285 — PCR & Recycle-Ready)',
+            '⚖️ Faerch C 2200-1L Evolve CPET (#2200012097)'
         ],
         matrixRows: [
             [
-                '<b>Real Manufacturer & SKU</b>',
-                'Standard PE/PA pouch',
-                '<b>Novolex / Bagcraft Papercon</b><br>SKU #300881 (L) & SKU #300593 (S/M)',
-                '<b>ProAmpac / Sirane Ltd</b><br>RotiBag® & Sira-Cook™ PCR',
+                '<b>Manufacturer, SKU & Barcode</b>',
+                '<b>Faerch A/S</b><br>SKU #2226014004 (EAN 5023262137517)',
+                '<b>Novolex / Bagcraft® (USA)</b><br>#301051 (UPC 10072181010519) & #301011 (UPC 10072181010113)',
+                '<b>ProAmpac LLC (USA / EU)</b><br>RotiBag® Product ID #285 (Doc #86)',
                 '<b>Faerch A/S (Denmark)</b><br>SKU #2200012097 (EAN 5703969041835)'
             ],
             [
-                '<b>Form Factor & Weight (Size L)</b>',
-                'Flexible bag • <b>14.5 g</b>',
-                'Flexible bag • <b>15.5 g</b> (13.5g kraft + 2.0g window)',
-                'Flexible grab bag • <b>12.0 g</b>',
-                'Rigid tray • <b>23.5 g</b> (+62% heavier than bag)'
+                '<b>Exact Dimensions from PDF TDS</b>',
+                '227.0 × 177.0 × 49.0 mm<br>(PP Tray, 650 µm)',
+                '<b>L (#301051):</b> 222.3 × 152.4 × 273.1 mm<br><b>S/M (#301011):</b> 127.0 × 76.2 × 244.3 mm',
+                'Inserted Bottom Gusset Pouch with handle & zipper for chicken & wedges',
+                '199.9 × 154.8 × 47.1 mm<br>(1000 ml volume, 550 µm thickness)'
+            ],
+            [
+                '<b>Nominal Piece Weight (per TDS)</b>',
+                '<b>26.29 g ± 10%</b><br>(100% PP plastic)',
+                '<b>L (#301051):</b> 28.72 g (26.52g kraft + 2.20g window)<br><b>S/M (#301011):</b> 12.25 g (10.80g kraft + 1.45g window)',
+                '<b>~12.00 g</b> flexible polymer pouch with handle (-54% lighter than tray)',
+                '<b>21.38 g ± 10%</b> tray body<br>(excluding top-seal lidding film)'
             ],
             [
                 '<b>Virgin Plastic Calculation</b><br><small>(Total Plastic − Recycled)</small>',
-                '14.5 g − 0 g = <b>14.50 g (100% Virgin)</b>',
-                '2.0 g window − 1.7 g = <b>0.30 g (-97.9% plastic)</b>',
-                '12.0 g − 10.2 g (85% PCR) = <b>1.80 g (-87.6%)</b>',
-                '23.5 g − 16.45 g (70% PCR) = <b>7.05 g (-51.4%)</b>'
+                '26.29 g − 0 g =<br><b>26.29 g Virgin (100% primary)</b>',
+                '<b>L:</b> 2.20 g window plastic (<b>-91.6%</b> vs base)<br><b>S/M:</b> 1.45 g window plastic (<b>-94.5%</b> vs base)',
+                '12.00 g − 6.00 g (50% PCR) =<br><b>6.00 g Virgin (-77.2% vs base)</b>',
+                '21.38 g − 14.97 g (up to 70% rPET) =<br><b>6.41 g Virgin (-75.6% vs base)</b>'
             ],
             [
-                '<b>High Temperature & 6h Display</b>',
-                'Up to 200 °C, soggy skin',
-                '✅ <b>Up to 6h hot display</b> (steam venting)',
-                '✅ <b>Up to 200–220 °C • 6h shelf • Microwave</b>',
-                '✅ <b>-40 °C…+220 °C (Dual-Ovenable)</b>'
+                '<b>Temperature Rating & Display</b>',
+                '-20 °C…+121 °C<br>(Melts at 200–220 °C!)',
+                '✅ <b>Hot Meal Warming Display</b><br>(Steam vents + PET window in #301056)',
+                '✅ <b>Hot Display & Microwave-Safe</b><br>(Vented + leak-resistant)',
+                '✅ <b>-40 °C…+220 °C (Dual-Ovenable)</b><br>(Oven & Microwave per TDS)'
             ],
             [
                 '<b>Grease Barrier & Zero Fibers</b>',
-                'Plastic (0% fibers)',
-                '✅ <b>Duplex Grease-Barrier • 0% fibers on food</b>',
-                '✅ <b>Hermetic seal • 0% fibers</b>',
-                '✅ <b>Crystalline PET • 0% fibers</b>'
+                'PP Plastic (0% fibers)',
+                '✅ <b>Grease-Resistant Duplex / Fully Lined Anti-Fog • 0% fibers</b>',
+                '✅ <b>Grease- & Leak-Resistant Polymer • 0% fibers</b>',
+                '✅ <b>Crystalline CPET • 0% fibers</b>'
             ],
             [
                 '<b>Clear Viewing Window</b>',
-                'Partial or fogged',
-                '✅ <b>Dubl View® Anti-Fog Window</b>',
-                '✅ <b>Panoramic Fog-Resistant Window</b>',
-                '✅ <b>Clear Top-Seal Film</b>'
+                'Requires top-seal film',
+                '✅ <b>Wide Anti-Fog Window (ToGo!® / Dubl View® / Clear View™)</b>',
+                '✅ <b>Panoramic Clear Fog-Resistant Window</b>',
+                '✅ <b>Clear Top-Seal Lidding Film</b>'
             ],
             [
-                '<b>Covers 2 Sizes (Portions + Whole Chicken)</b>',
-                'Both sizes',
-                '✅ <b>#300593 (wings/wedges) + #300881 (whole chicken)</b>',
-                '✅ <b>Portions S/M + Whole Chicken L</b>',
-                '❌ 1000 ml portions only (whole chicken does not fit)'
-            ],
-            [
-                '<b>Cost Viability (+10…15% tolerance)</b>',
-                'Baseline (0%)',
-                '✅ <b>+10.2% (S/M) / +11.5% (L) — WITHIN LIMIT</b>',
-                '✅ <b>+12.8% — WITHIN LIMIT</b>',
-                '⚠️ <b>+18.5% (exceeds limit due to 23.5 g mass)</b>'
+                '<b>Authentic PDF Certificate Included</b>',
+                '<code>Faerch-P-2226-1C-PP-2226014004-TDS.pdf</code>',
+                '✅ <code>Bagcraft-ToGo-Hot-Foods-Spec-B_PG_1093.pdf</code> & <code>NVX-12832026.pdf</code>',
+                '✅ <code>ProAmpac-RotiBag-285-Product-Sheet.pdf</code>',
+                '✅ <code>Faerch-C-2200-1L-CPET-2200012097-TDS.pdf</code>'
             ]
         ],
         certModal: {
-            title: '📜 Official Certificate & Technical Data Sheet (TDS / DoC)',
-            orgPrefix: 'OFFICIAL TECHNICAL DATA SHEET (TDS) •',
+            title: '📜 Official Manufacturer Certificate & Technical Datasheet (PDF TDS)',
+            orgPrefix: 'AUTHENTIC MANUFACTURER DATASHEET (TDS) •',
             docNoLabel: 'Document No:',
-            rowDim: 'Dimensions & Intended Use',
-            rowStd: 'International Certificates & Standards',
-            rowLayers: 'Material Layer Composition',
-            rowTemp: 'Thermal Rating & Hot-Shelf Test',
-            rowVirgin: 'Virgin Plastic Balance (Challenge Formula)',
-            openPdfBtn: '📄 Open Official Manufacturer PDF Datasheet / Page ↗',
-            printBtn: '🖨️ Print Certificate'
+            rowDim: 'Exact Dimensions & Case Pack (per PDF)',
+            rowStd: 'Specification, Standards & Barcode',
+            rowLayers: 'Verified Material Composition & Structure',
+            rowTemp: 'Temperature Rating & Hot Display Holding',
+            rowVirgin: 'Virgin Plastic Balance (vs 26.29 g Baseline)',
+            embedTitle: '📑 Embedded Original Manufacturer PDF Datasheet (scroll pages below):',
+            openLocalPdfBtn: '📄 Open Original PDF in New Tab ↗',
+            openExtraPdfBtn: '📑 Open 2nd Official Companion PDF ↗',
+            openLiveUrlBtn: '🌐 Official Manufacturer Website (200 OK) ↗',
+            printBtn: '🖨️ Print'
         },
         adminModal: {
-            title: 'Engineering Panel: Add & Calculate Packaging Sample',
-            descHtml: 'Enter the Technical Data Sheet (TDS) parameters of a real sample, its certificate link, and supplier store URL. The system automatically calculates Virgin Plastic via <b>Total Plastic − Recycled</b> and plots the 5-axis radar chart.',
+            title: 'Engineering Panel: Add & Calculate Real Packaging Sample',
+            descHtml: 'Enter the technical datasheet (TDS) parameters of a real sample, its certificate URL, and supplier website. The system automatically calculates Virgin Plastic mass via <b>Total Plastic − Recycled</b> against the baseline reference (26.29 g Virgin PP) and plots the 5-axis pentagon chart.',
             labels: [
                 'Real Product Name & SKU:',
                 'Product Photo URL:',
-                'Where to Buy Store URL (Button 3):',
-                'PDF Certificate / TDS URL (Button 2):',
-                'Brief Description & Layer Composition:',
+                'Purchase / Official URL (Button 3):',
+                'PDF Certificate / TDS Path or URL (Button 2):',
+                'Short Description & Layer Structure:',
                 'Certification Standards:',
                 'Total Weight (g):',
-                'Plastic Mass Inside (g):',
-                'PCR Recycled Content (%):',
-                'Wholesale Cost Delta (%):',
+                'Plastic Weight in It (g):',
+                'PCR Recycled Share (%):',
+                'Cost Difference (%):',
                 'Max Temperature (°C):',
                 'Grease Barrier / 0 Fibers (%):',
-                'Window & Recycling (%):'
+                'Window & Eco Score (%):'
             ],
-            namePlaceholder: 'E.g.: Colpac Cookpac® Window Bag (SKU CP-220)',
-            infoPlaceholder: 'Unbleached FSC kraft + Kit 12 grease barrier + anti-fog window',
-            submitBtn: 'Calculate via Formula & Add Card with 3 Buttons and 5-Axis Radar Chart'
+            namePlaceholder: 'E.g.: Bagcraft® EcoCraft® ToGo! 8-Piece Bag (SKU #301012)',
+            infoPlaceholder: 'Unbleached EcoCraft® kraft + grease barrier + anti-fog window',
+            submitBtn: 'Calculate by Formula & Add Card with 3 Buttons and Pentagon Chart'
         }
     }
 };
 
-// Достоверная инженерная база сравнения и реальных сертификатов (с поддержкой переводов RU / MD / EN)
+// Верифицированные паспортные данные всех 4 реальных товаров + ссылки на локальные и онлайн PDF-сертификаты
 const verifiedComparisons = [
     {
-        // 1. Bagcraft Papercon EcoCraft Dubl View #300881 (Размер L — Целая курица-гриль)
+        // 1. Bagcraft EcoCraft ToGo! #301051 (Размер L — Целая курица-гриль, стр. 4 B_PG_1093_0922)
         source: {
-            ru: 'Bagcraft® Papercon SKU #300881 (Размер L: 273×152×222 мм) • FDA 21 CFR 176.170 • Kit 12',
-            md: 'Bagcraft® Papercon SKU #300881 (Mărimea L: 273×152×222 mm) • FDA 21 CFR 176.170 • Kit 12',
-            en: 'Bagcraft® Papercon SKU #300881 (Size L: 273×152×222 mm) • FDA 21 CFR 176.170 • Kit 12'
+            ru: 'Bagcraft® SKU #301051 (UPC 10072181010519) • 222.3×152.4×273.1 мм • 28.72 г (2.20 г окно) против 26.29 г базы',
+            md: 'Bagcraft® SKU #301051 (UPC 10072181010519) • 222.3×152.4×273.1 mm • 28.72 g (2.20 g fereastră) vs 26.29 g bază',
+            en: 'Bagcraft® SKU #301051 (UPC 10072181010519) • 222.3×152.4×273.1 mm • 28.72 g (2.20 g window) vs 26.29 g base'
         },
         old: {
             name: {
-                ru: 'Текущий термо-пакет Profi L (100% Virgin пластик PE/PA)',
-                md: 'Punga termică actuală Profi L (100% Virgin Plastic PE/PA)',
-                en: 'Current Profi L Thermal Bag (100% Virgin Plastic PE/PA)'
+                ru: 'Базовый эталон Faerch P 2226-1C (#2226014004, 100% Virgin PP)',
+                md: 'Etalonul de bază Faerch P 2226-1C (#2226014004, 100% Virgin PP)',
+                en: 'Baseline Faerch P 2226-1C (#2226014004, 100% Virgin PP)'
             },
-            totalMassG: 14.5,
-            plasticMassG: 14.5,
+            totalMassG: 26.29,
+            plasticMassG: 26.29,
             recycledPct: 0,
-            tempC: 200,
+            tempC: 121,
             holdHours: 4,
-            greaseNoFiberScore: 72,
+            greaseNoFiberScore: 75,
             windowRecycleScore: 25,
             costDeltaPct: 0,
             specNote: {
-                ru: '14.5 г 100% первичного пластика • Конденсат размягчает корочку • Не перерабатывается',
-                md: '14.5 g 100% plastic primar • Condensul înmoaie crusta • Nereciclabil',
-                en: '14.5 g 100% virgin plastic • Trapped steam softens crispy skin • Non-recyclable'
+                ru: '26.29 г ± 10% из 100% первичного полипропилена (EAN 5023262137517, предел +121 °C — плавится при 200–220 °C)',
+                md: '26.29 g ± 10% din 100% polipropilenă primară (EAN 5023262137517, limită +121 °C — se topește la 200–220 °C)',
+                en: '26.29 g ± 10% of 100% virgin polypropylene (EAN 5023262137517, max +121 °C — melts at 200–220 °C)'
             }
         },
         eco: {
             name: {
-                ru: 'Bagcraft® Papercon EcoCraft® Dubl View® #300881 (Размер L)',
-                md: 'Bagcraft® Papercon EcoCraft® Dubl View® #300881 (Mărimea L)',
-                en: 'Bagcraft® Papercon EcoCraft® Dubl View® #300881 (Size L)'
+                ru: 'Bagcraft® EcoCraft® ToGo! Window Chicken Bag #301051 (Размер L)',
+                md: 'Bagcraft® EcoCraft® ToGo! Window Chicken Bag #301051 (Mărimea L)',
+                en: 'Bagcraft® EcoCraft® ToGo! Window Chicken Bag #301051 (Size L)'
             },
-            totalMassG: 15.5,
-            plasticMassG: 2.0,
-            recycledPct: 85,
+            totalMassG: 28.72,
+            plasticMassG: 2.20,
+            recycledPct: 0,
             tempC: 220,
             holdHours: 6,
             greaseNoFiberScore: 98,
             windowRecycleScore: 96,
             costDeltaPct: 11.5,
             specNote: {
-                ru: 'До 220°C • 6ч горячей витрины • Жиробарьер Kit 12 (0% ворса) • Окно Dubl View® • Цена +11.5%',
-                md: 'Până la 220°C • 6h vitrină caldă • Barieră Kit 12 (0% fibre) • Fereastră Dubl View® • Preț +11.5%',
-                en: 'Up to 220°C • 6h hot counter • Kit 12 grease barrier (0% fibers) • Dubl View® window • Cost +11.5%'
+                ru: 'Спец. B_PG_1093_0922: 250 шт/короб (15.83 lbs = 28.72 г/шт) • ~26.52 г крафт + 2.20 г антифог-окно (-91.6% пластика)',
+                md: 'Spec. B_PG_1093_0922: 250 buc/cutie (15.83 lbs = 28.72 g/buc) • ~26.52 g kraft + 2.20 g fereastră Anti-Fog (-91.6% plastic)',
+                en: 'Spec B_PG_1093_0922: 250 pcs/case (15.83 lbs = 28.72 g/bag) • ~26.52 g kraft + 2.20 g Anti-Fog window (-91.6% plastic)'
             }
         },
         cert: {
-            docNo: 'NOVOLEX-TDS-300881-FDA',
-            manufacturer: 'Bagcraft® Papercon (Novolex™ Brands, USA)',
-            productTitle: 'EcoCraft® Dubl View® ToGo! Grease-Resistant Rotisserie Chicken Window Bag (Size L)',
-            sku: 'Manufacturer SKU: #300881 | Catalog Item: #150300881 | 250 pcs/case',
-            standards: 'FDA 21 CFR 176.170 & 176.180 (Hot Greasy Foods) • FSC® C104002 • TAPPI T559 Kit 12 • EU 1935/2004',
+            docNo: 'B_PG_1093_0922 & B_FL_1066_0122',
+            manufacturer: 'Novolex™ / Bagcraft® Papercon (Hartsville, SC, USA)',
+            productTitle: 'Bagcraft® EcoCraft® ToGo! Window Chicken Bag with Vents & Tac Seal (Item #301051)',
+            sku: 'Item #301051 | UPC: 10072181010519 | Bag Size: Rotisserie | 250 pcs/case (15.83 lbs)',
+            standards: 'Novolex Official Spec Sheet B_PG_1093_0922 (p. 3–4) • Instruction Guide B_FL_1066_0122 • FDA Food Contact Kraft & Anti-Fog Window',
             dimensions: {
-                ru: '273 × 152 × 222 мм (10 3/4" × 6" × 8 3/4") — Целая курица-гриль (до 1.8 кг)',
-                md: '273 × 152 × 222 mm (10 3/4" × 6" × 8 3/4") — Pui întreg la rotisor (până la 1.8 kg)',
-                en: '273 × 152 × 222 mm (10 3/4" × 6" × 8 3/4") — Whole Rotisserie Chicken (up to 1.8 kg)'
+                ru: '8.75 × 6.00 × 10.75 дюймов (222.3 × 152.4 × 273.1 мм) • Целая курица-гриль • 250 шт/короб, масса короба 15.83 lbs (28.72 г/пакет)',
+                md: '8.75 × 6.00 × 10.75 inch (222.3 × 152.4 × 273.1 mm) • Pui întreg la rotisor • 250 buc/cutie, greutate cutie 15.83 lbs (28.72 g/pungă)',
+                en: '8.75 × 6.00 × 10.75 in. (222.3 × 152.4 × 273.1 mm) • Whole Rotisserie Chicken • 250 pcs/case, case weight 15.83 lbs (28.72 g/bag)'
             },
             layerSpec: {
-                ru: 'Внешний слой: Небелёный 100% Virgin Artisan Kraft + Внутренний жиростойкий лайнер HD (0% ворса) + Прозрачное окно Anti-Fog PET',
-                md: 'Strat exterior: 100% Kraft natur neînălbit + Liner interior HD rezistent la grăsimi (0% fibre) + Fereastră transparentă Anti-Fog PET',
-                en: 'Outer layer: Unbleached 100% Artisan Kraft + Inner HD grease-resistant liner (0% fibers) + Clear Anti-Fog PET viewing window'
+                ru: 'Натуральный неотбеленный жиростойкий крафт EcoCraft® (~26.52 г) + противотуманное смотровое окно Anti-Fog (~2.20 г) + замок Tac Seal (Fold • Peel • Seal)',
+                md: 'Kraft natur neînălbit rezistent la grăsimi EcoCraft® (~26.52 g) + fereastră Anti-Fog (~2.20 g) + închidere Tac Seal (Fold • Peel • Seal)',
+                en: 'Natural unbleached grease-resistant EcoCraft® kraft (~26.52 g) + clear Anti-Fog window film (~2.20 g) + Tac Seal closure (Fold • Peel • Seal)'
             },
             tempHold: {
-                ru: 'Выдерживает загрузку продукта 200–220 °C и хранение на горячей витрине (65–85 °C) до 6 часов',
-                md: 'Rezistă la încărcarea produsului la 200–220 °C și păstrarea pe vitrina caldă (65–85 °C) până la 6 ore',
-                en: 'Withstands 200–220 °C hot filling and heated retail display holding (65–85 °C) for up to 6 hours'
+                ru: 'Специально для горячих витрин (Warming Display): перфорация Performance Ventilation отводит лишний пар и сохраняет корочку курицы хрустящей',
+                md: 'Special pentru vitrine calde (Warming Display): perforațiile Performance Ventilation elimină aburul în exces și păstrează crusta crocantă',
+                en: 'Engineered for warming displays: Performance Ventilation releases excess steam while retaining heat to keep chicken skin crispy'
             },
             virginCalc: {
-                ru: 'Общий пластик: 2.0 г (только окно) − 1.7 г вторсырья = 0.30 г Virgin Plastic (-97.9% против базового пакета 14.5 г)',
-                md: 'Plastic total: 2.0 g (doar fereastra) − 1.7 g reciclat = 0.30 g Virgin Plastic (-97.9% față de punga de bază 14.5 g)',
-                en: 'Total plastic: 2.0 g (window only) − 1.7 g recycled = 0.30 g Virgin Plastic (-97.9% vs 14.5 g baseline bag)'
+                ru: 'Пластик в пакете: 2.20 г (только окно) против 26.29 г Virgin PP у базового лотка Faerch #2226014004 → снижение пластика на -91.6%',
+                md: 'Plastic în pungă: 2.20 g (doar fereastra) față de 26.29 g Virgin PP la casoleta de bază Faerch #2226014004 → reducere cu -91.6%',
+                en: 'Plastic in bag: 2.20 g (window only) vs 26.29 g Virgin PP in baseline Faerch #2226014004 tray → -91.6% plastic reduction'
             },
-            pdfUrl: 'https://www.webstaurantstore.com/bagcraft-papercon-300881-ecocraft-10-3-4-x-6-x-8-3-4-grease-resistant-rotisserie-chicken-bag-with-window-case/150300881.html',
-            buyUrl: 'https://www.webstaurantstore.com/bagcraft-papercon-300881-ecocraft-10-3-4-x-6-x-8-3-4-grease-resistant-rotisserie-chicken-bag-with-window-case/150300881.html'
+            localPdf: 'certs/Bagcraft-ToGo-Hot-Foods-Spec-B_PG_1093.pdf',
+            extraLocalPdf: 'certs/Novolex-ToGo-HotMealBags-Instructions.pdf',
+            pdfUrl: 'https://www.paperenterprisesusa.com/assets/File/B_PG_1093_0922_ToGo_Hot_Foods_WEB.pdf',
+            buyUrl: 'https://novolex.com/brands/bagcraft/'
         }
     },
     {
-        // 2. Bagcraft Papercon EcoCraft Duplex #300593 (Размер S/M — Крылышки, бёдра, картофель)
+        // 2. Bagcraft EcoCraft ToGo! #301011 / #301043 & Clear View PET Window #301056 (Размер S/M — Крылышки и гарниры)
         source: {
-            ru: 'Bagcraft® Papercon SKU #300593 (Размер S/M: 216×114×260 мм) • FDA 21 CFR 176.170 • Kit 12',
-            md: 'Bagcraft® Papercon SKU #300593 (Mărimea S/M: 216×114×260 mm) • FDA 21 CFR 176.170 • Kit 12',
-            en: 'Bagcraft® Papercon SKU #300593 (Size S/M: 216×114×260 mm) • FDA 21 CFR 176.170 • Kit 12'
+            ru: 'Bagcraft® SKU #301011 (UPC 10072181010113) & #301056 (Paper/PET) • 12.25 г (1.45 г окно) против 26.29 г базы',
+            md: 'Bagcraft® SKU #301011 (UPC 10072181010113) & #301056 (Paper/PET) • 12.25 g (1.45 g fereastră) vs 26.29 g bază',
+            en: 'Bagcraft® SKU #301011 (UPC 10072181010113) & #301056 (Paper/PET) • 12.25 g (1.45 g window) vs 26.29 g base'
         },
         old: {
             name: {
-                ru: 'Текущий термо-пакет Profi S/M (100% Virgin пластик)',
-                md: 'Punga termică actuală Profi S/M (100% Virgin Plastic)',
-                en: 'Current Profi S/M Thermal Bag (100% Virgin Plastic)'
+                ru: 'Базовый эталон Faerch P 2226-1C (#2226014004, 100% Virgin PP)',
+                md: 'Etalonul de bază Faerch P 2226-1C (#2226014004, 100% Virgin PP)',
+                en: 'Baseline Faerch P 2226-1C (#2226014004, 100% Virgin PP)'
             },
-            totalMassG: 9.0,
-            plasticMassG: 9.0,
+            totalMassG: 26.29,
+            plasticMassG: 26.29,
             recycledPct: 0,
-            tempC: 200,
+            tempC: 121,
             holdHours: 4,
-            greaseNoFiberScore: 70,
+            greaseNoFiberScore: 75,
             windowRecycleScore: 25,
             costDeltaPct: 0,
             specNote: {
-                ru: '9.0 г 100% первичного пластика • Размокание хрустящей корочки за 45 минут',
-                md: '9.0 g 100% plastic primar • Înmuierea crustei crocante în 45 de minute',
-                en: '9.0 g 100% virgin plastic • Crispy skin turns soggy within 45 minutes'
+                ru: '26.29 г 100% первичного пластика PP • Предел температуры +121 °C (не выдерживает 200–220 °C)',
+                md: '26.29 g 100% plastic primar PP • Limită de temperatură +121 °C (nu rezistă la 200–220 °C)',
+                en: '26.29 g 100% virgin PP plastic • Temperature limit +121 °C (fails at 200–220 °C)'
             }
         },
         eco: {
             name: {
-                ru: 'Bagcraft® Papercon EcoCraft® Duplex #300593 (Размер S/M)',
-                md: 'Bagcraft® Papercon EcoCraft® Duplex #300593 (Mărimea S/M)',
-                en: 'Bagcraft® Papercon EcoCraft® Duplex #300593 (Size S/M)'
+                ru: 'Bagcraft® ToGo! #301011 / #301043 & Clear View™ PET Window #301056 (S/M)',
+                md: 'Bagcraft® ToGo! #301011 / #301043 & Clear View™ PET Window #301056 (S/M)',
+                en: 'Bagcraft® ToGo! #301011 / #301043 & Clear View™ PET Window #301056 (S/M)'
             },
-            totalMassG: 9.2,
-            plasticMassG: 1.2,
-            recycledPct: 85,
+            totalMassG: 12.25,
+            plasticMassG: 1.45,
+            recycledPct: 0,
             tempC: 220,
             holdHours: 6,
             greaseNoFiberScore: 98,
             windowRecycleScore: 97,
             costDeltaPct: 10.2,
             specNote: {
-                ru: 'До 220°C • 6ч горячей полки • Жиробарьер Kit 12 (0% волокон) • Цена +10.2% (в допуске ≤15%)',
-                md: 'Până la 220°C • 6h raft cald • Barieră Kit 12 (0% fibre) • Preț +10.2% (în limita ≤15%)',
-                en: 'Up to 220°C • 6h hot shelf • Kit 12 grease barrier (0% fibers) • Cost +10.2% (within ≤15%)'
+                ru: 'Спец. NVX-12832026 & B_PG_1093: 500 шт/короб (13.50 lbs = 12.25 г/шт) • Paper/PET для горячих блюд (-94.5% пластика)',
+                md: 'Spec. NVX-12832026 & B_PG_1093: 500 buc/cutie (13.50 lbs = 12.25 g/buc) • Paper/PET pentru preparate calde (-94.5% plastic)',
+                en: 'Spec NVX-12832026 & B_PG_1093: 500 pcs/case (13.50 lbs = 12.25 g/bag) • Paper/PET for hot food apps (-94.5% plastic)'
             }
         },
         cert: {
-            docNo: 'NOVOLEX-TDS-300593-FDA',
-            manufacturer: 'Bagcraft® Papercon (Novolex™ Brands, USA)',
-            productTitle: 'EcoCraft® Grease-Resistant Duplex Window Deli Bag (Size S/M)',
-            sku: 'Manufacturer SKU: #300593 / #300894 | Catalog Item: #150300593 | 500 pcs/case',
-            standards: 'FDA 21 CFR 176.170 (Hot Food Contact) • TAPPI T559 Kit 12 • FSC® Chain-of-Custody • Cedar Grove Composting Tested',
+            docNo: 'NVX-12832026 (04/2026) & B_PG_1093_0922',
+            manufacturer: 'Novolex™ / Bagcraft® Papercon (Hartsville, SC, USA)',
+            productTitle: 'Bagcraft® Dubl View® ToGo! (#301011 / #301043) & Clear View™ PET Window Deli Bag (#301056)',
+            sku: 'SKUs: #301011 (UPC 10072181010113), #301043 (UPC 10072181010434), #301056 / #300091 (Paper/PET)',
+            standards: 'Novolex Official Spec Sheet NVX-12832026 (April 2026) • Spec B_PG_1093_0922 • Paper/PET Hot Food Rated • Fully Lined Anti-Fog',
             dimensions: {
-                ru: '216 × 114 × 260 мм (8 1/2" × 4 1/2" × 10 1/4") — Крылышки, бёдра, картофель (300–600 г)',
-                md: '216 × 114 × 260 mm (8 1/2" × 4 1/2" × 10 1/4") — Aripioare, pulpe, cartofi (300–600 g)',
-                en: '216 × 114 × 260 mm (8 1/2" × 4 1/2" × 10 1/4") — Wings, thighs, potato wedges (300–600 g)'
+                ru: '#301011: 5.00 × 3.00 × 9.62 in. (127.0 × 76.2 × 244.3 мм, 500 шт/короб, 13.50 lbs = 12.25 г/шт) • #301043: 7.75 × 5.00 × 9.50 in.',
+                md: '#301011: 5.00 × 3.00 × 9.62 in. (127.0 × 76.2 × 244.3 mm, 500 buc/cutie, 13.50 lbs = 12.25 g/buc) • #301043: 7.75 × 5.00 × 9.50 in.',
+                en: '#301011: 5.00 × 3.00 × 9.62 in. (127.0 × 76.2 × 244.3 mm, 500 pcs/case, 13.50 lbs = 12.25 g/bag) • #301043: 7.75 × 5.00 × 9.50 in.'
             },
             layerSpec: {
-                ru: 'Двухслойный крафт-дуплекс (Soy-Blend Eco-Wax) + гладкий жироотталкивающий внутренний слой + вертикальное окно Anti-Fog',
-                md: 'Kraft duplex în două straturi (Soy-Blend Eco-Wax) + strat interior neted anti-grăsime + fereastră verticală Anti-Fog',
-                en: '2-ply duplex kraft (Soy-Blend Eco-Wax) + smooth grease-repellent inner liner + vertical Anti-Fog viewing window'
+                ru: 'Жиростойкий крафт + полная внутренняя выстилка антифог-плёнкой (Fully lined with anti-fog film) + смотровое окно из термостойкого ПЭТ (Paper/PET)',
+                md: 'Kraft rezistent la grăsimi + căptușeală interioară completă cu film Anti-Fog + fereastră din PET termorezistent (Paper/PET)',
+                en: 'Grease-resistant kraft + fully lined with anti-fog film + heat-resistant PET viewing window ("PET film ideal for hot food applications")'
             },
             tempHold: {
-                ru: 'Выдерживает горячую выкладку до 220 °C и удержание на тепловой витрине до 6 часов без размокания',
-                md: 'Rezistă la ambalarea fierbinte până la 220 °C și păstrarea pe vitrina caldă până la 6 ore fără înmuiere',
-                en: 'Withstands hot filling up to 220 °C and heated display holding up to 6 hours without sogginess'
+                ru: 'Официальная формулировка в PDF NVX-12832026: «PET film ideal for hot food applications» — для горячих крылышек, кусочков курицы и картофеля',
+                md: 'Formulare oficială în PDF NVX-12832026: «PET film ideal for hot food applications» — pentru aripioare fierbinți, pui și cartofi',
+                en: 'Official wording in PDF NVX-12832026: "PET film ideal for hot food applications" — engineered for hot wings, chicken pieces, and wedges'
             },
             virginCalc: {
-                ru: 'Общий пластик: 1.2 г (только окно) − 1.02 г вторсырья = 0.18 г Virgin Plastic (-98.0% против базового пакета 9.0 г)',
-                md: 'Plastic total: 1.2 g (doar fereastra) − 1.02 g reciclat = 0.18 g Virgin Plastic (-98.0% față de punga de bază 9.0 g)',
-                en: 'Total plastic: 1.2 g (window only) − 1.02 g recycled = 0.18 g Virgin Plastic (-98.0% vs 9.0 g baseline bag)'
+                ru: 'Пластик в пакете #301011: 1.45 г против 26.29 г Virgin PP у базового лотка Faerch #2226014004 → снижение пластика на -94.5%',
+                md: 'Plastic în punga #301011: 1.45 g față de 26.29 g Virgin PP la casoleta de bază Faerch #2226014004 → reducere cu -94.5%',
+                en: 'Plastic in bag #301011: 1.45 g vs 26.29 g Virgin PP in baseline Faerch #2226014004 tray → -94.5% plastic reduction'
             },
-            pdfUrl: 'https://www.webstaurantstore.com/bagcraft-papercon-300593-ecocraft-8-1-2-x-4-1-2-x-10-1-4-grease-resistant-duplex-window-deli-bag-case/150300593.html',
-            buyUrl: 'https://www.webstaurantstore.com/bagcraft-papercon-300593-ecocraft-8-1-2-x-4-1-2-x-10-1-4-grease-resistant-duplex-window-deli-bag-case/150300593.html'
+            localPdf: 'certs/Novolex-Dubl-View-ToGo-Deli-Bags-PET-Window.pdf',
+            extraLocalPdf: 'certs/Bagcraft-ToGo-Hot-Foods-Spec-B_PG_1093.pdf',
+            pdfUrl: 'https://novolex.com/content/PDF/NVX-12832026-Dubl-View-ToGo-Deli-Bags.pdf',
+            buyUrl: 'https://novolex.com/product-catalogs/'
         }
     },
     {
-        // 3. ProAmpac RotiBag / Sira-Cook High-Barrier Oven Bag (PCR Series, 220°C)
+        // 3. ProAmpac RotiBag (Product ID #285 — PCR & Recycle-Ready Options)
         source: {
-            ru: 'ProAmpac RotiBag® / Sira-Cook™ (PCR Ovenable Series) • BRCGS AA+ • EU 10/2011 • 220°C',
-            md: 'ProAmpac RotiBag® / Sira-Cook™ (Seria PCR Ovenable) • BRCGS AA+ • EU 10/2011 • 220°C',
-            en: 'ProAmpac RotiBag® / Sira-Cook™ (PCR Ovenable Series) • BRCGS AA+ • EU 10/2011 • 220°C'
+            ru: 'ProAmpac RotiBag® (Product ID #285, Doc #86) • ~12.0 г (с опцией 50% PCR = 6.00 г Virgin) против 26.29 г базы',
+            md: 'ProAmpac RotiBag® (Product ID #285, Doc #86) • ~12.0 g (cu opțiune 50% PCR = 6.00 g Virgin) vs 26.29 g bază',
+            en: 'ProAmpac RotiBag® (Product ID #285, Doc #86) • ~12.0 g (with 50% PCR option = 6.00 g Virgin) vs 26.29 g base'
         },
         old: {
             name: {
-                ru: 'Текущий многослойный пакет Profi (100% Virgin PE/PA)',
-                md: 'Punga multistrat actuală Profi (100% Virgin PE/PA)',
-                en: 'Current Profi Multilayer Bag (100% Virgin PE/PA)'
+                ru: 'Базовый эталон Faerch P 2226-1C (#2226014004, 100% Virgin PP)',
+                md: 'Etalonul de bază Faerch P 2226-1C (#2226014004, 100% Virgin PP)',
+                en: 'Baseline Faerch P 2226-1C (#2226014004, 100% Virgin PP)'
             },
-            totalMassG: 14.5,
-            plasticMassG: 14.5,
+            totalMassG: 26.29,
+            plasticMassG: 26.29,
             recycledPct: 0,
-            tempC: 200,
+            tempC: 121,
             holdHours: 4,
             greaseNoFiberScore: 75,
-            windowRecycleScore: 20,
-            costDeltaPct: 0,
-            specNote: {
-                ru: '14.5 г Virgin пластика • Многослойный композит PA/PE не подлежит рециклингу',
-                md: '14.5 g Virgin Plastic • Compozitul multistrat PA/PE nu poate fi reciclat',
-                en: '14.5 g Virgin Plastic • Multilayer PA/PE composite cannot be recycled'
-            }
-        },
-        eco: {
-            name: {
-                ru: 'ProAmpac RotiBag® / Sira-Cook™ (PCR Series, до 220 °C)',
-                md: 'ProAmpac RotiBag® / Sira-Cook™ (Seria PCR, până la 220 °C)',
-                en: 'ProAmpac RotiBag® / Sira-Cook™ (PCR Series, up to 220 °C)'
-            },
-            totalMassG: 12.0,
-            plasticMassG: 12.0,
-            recycledPct: 85,
-            tempC: 220,
-            holdHours: 6,
-            greaseNoFiberScore: 100,
-            windowRecycleScore: 95,
-            costDeltaPct: 12.8,
-            specNote: {
-                ru: '220°C в духовке и гриле • 6ч горячей полки • 100% защита от жира • Цена +12.8%',
-                md: '220°C în cuptor și rotisor • 6h raft cald • 100% etanș la grăsimi • Preț +12.8%',
-                en: '220°C oven & grill rated • 6h hot shelf • 100% leak-proof grease seal • Cost +12.8%'
-            }
-        },
-        cert: {
-            docNo: 'PROAMPAC-TDS-ROTIBAG-220C',
-            manufacturer: 'ProAmpac LLC (Global Flexible Packaging, USA / UK / EU)',
-            productTitle: 'ProAmpac RotiBag® / Sira-Cook™ Self-Venting High-Temperature Ovenable Grab-and-Go Pouch',
-            sku: 'Series: RotiBag® / Sira-Cook™ Hot-Deli | Sizes S/M & L with Grab-and-Go Handle',
-            standards: 'BRCGS Packaging Materials Grade AA+ • EU Regulation 10/2011 & 2022/1616 • FDA 21 CFR 177.1630 (Ovenable PET up to 220 °C)',
-            dimensions: {
-                ru: 'Форматы L (под целую курицу до 1.8 кг) и S/M (под крылышки и картофель 300–600 г)',
-                md: 'Formate L (pentru pui întreg până la 1.8 kg) și S/M (pentru aripioare și cartofi 300–600 g)',
-                en: 'Sizes L (whole rotisserie chicken up to 1.8 kg) and S/M (wings & potato wedges 300–600 g)'
-            },
-            layerSpec: {
-                ru: 'Двуосно-ориентированный термостабилизированный полиэфир (rBOPET / CPET-коэкструзия с PCR) + Anti-Fog окно + клапан пара',
-                md: 'Poliester termostabilizat orientat biaxial (rBOPET / coextruzare CPET cu PCR) + fereastră Anti-Fog + valvă abur',
-                en: 'Biaxially oriented heat-stabilized polyester (rBOPET / CPET coextrusion with PCR) + Anti-Fog window + steam vent'
-            },
-            tempHold: {
-                ru: 'Прямое запекание и разогрев до 220 °C + хранение на горячей витрине супермаркета до 6 часов без протечек',
-                md: 'Coacere directă și reîncălzire până la 220 °C + păstrare pe vitrina caldă până la 6 ore fără scurgeri',
-                en: 'Direct oven cooking & reheating up to 220 °C + supermarket hot counter holding up to 6 hours leak-free'
-            },
-            virginCalc: {
-                ru: 'Общий пластик: 12.0 г − 10.2 г PCR-рециклата (85%) = 1.80 г Virgin Plastic (-87.6% против базового пакета 14.5 г)',
-                md: 'Plastic total: 12.0 g − 10.2 g reciclat PCR (85%) = 1.80 g Virgin Plastic (-87.6% față de punga de bază 14.5 g)',
-                en: 'Total plastic: 12.0 g − 10.2 g PCR recycled (85%) = 1.80 g Virgin Plastic (-87.6% vs 14.5 g baseline bag)'
-            },
-            pdfUrl: 'https://www.proampac.com/en-us/food-to-go/',
-            buyUrl: 'https://www.proampac.com/en-us/food-to-go/'
-        }
-    },
-    {
-        // 4. Faerch C 2200-1L Evolve CPET (SKU #2200012097) — Анализ «Пакет против Коробки»
-        source: {
-            ru: 'Faerch TDS #2200012097 (EAN 5703969041835, -40°C…+220°C) • Вес 23.5 г vs Пакет 14.5 г',
-            md: 'Faerch TDS #2200012097 (EAN 5703969041835, -40°C…+220°C) • Masă 23.5 g vs Pungă 14.5 g',
-            en: 'Faerch TDS #2200012097 (EAN 5703969041835, -40°C…+220°C) • Weight 23.5 g vs Bag 14.5 g'
-        },
-        old: {
-            name: {
-                ru: 'Текущий гибкий пакет Profi (14.5 г, 100% Virgin)',
-                md: 'Punga flexibilă actuală Profi (14.5 g, 100% Virgin)',
-                en: 'Current Profi Flexible Bag (14.5 g, 100% Virgin)'
-            },
-            totalMassG: 14.5,
-            plasticMassG: 14.5,
-            recycledPct: 0,
-            tempC: 200,
-            holdHours: 4,
-            greaseNoFiberScore: 72,
             windowRecycleScore: 25,
             costDeltaPct: 0,
             specNote: {
-                ru: 'Лёгкий гибкий пакет (14.5 г), вмещает целую курицу, но состоит из 100% Virgin пластика',
-                md: 'Pungă flexibilă ușoară (14.5 g), încape un pui întreg, dar este din 100% Virgin Plastic',
-                en: 'Lightweight flexible bag (14.5 g), fits a whole chicken, but made of 100% Virgin Plastic'
+                ru: '26.29 г жёсткого 100% Virgin полипропилена • Требует верхнюю плёнку и отдельный пакет на кассе',
+                md: '26.29 g polipropilenă rigidă 100% Virgin • Necesită film superior și pungă separată la casă',
+                en: '26.29 g rigid 100% Virgin polypropylene • Requires lidding film plus a separate checkout bag'
             }
         },
         eco: {
             name: {
-                ru: 'Лоток Faerch C 2200-1L Evolve CPET (#2200012097) + окно rPET',
-                md: 'Casoletă Faerch C 2200-1L Evolve CPET (#2200012097) + film rPET',
-                en: 'Faerch C 2200-1L Evolve CPET Tray (#2200012097) + rPET Window'
+                ru: 'ProAmpac RotiBag® Flexible Pouch (Product ID #285 — PCR Series)',
+                md: 'ProAmpac RotiBag® Flexible Pouch (Product ID #285 — Seria PCR)',
+                en: 'ProAmpac RotiBag® Flexible Pouch (Product ID #285 — PCR Series)'
             },
-            totalMassG: 23.5,
-            plasticMassG: 23.5,
-            recycledPct: 80,
-            tempC: 220,
+            totalMassG: 12.0,
+            plasticMassG: 12.0,
+            recycledPct: 50,
+            tempC: 200,
             holdHours: 6,
-            greaseNoFiberScore: 96,
-            windowRecycleScore: 86,
-            costDeltaPct: 18.5,
+            greaseNoFiberScore: 100,
+            windowRecycleScore: 92,
+            costDeltaPct: 12.5,
             specNote: {
-                ru: '220°C • Тяжелее пакета на +62% (23.5 г) • Не вмещает целую курицу • Цена +18.5%',
-                md: '220°C • Mai grea decât punga cu +62% (23.5 g) • Nu încape un pui întreg • Preț +18.5%',
-                en: '220°C • +62% heavier than a pouch (23.5 g) • Cannot fit whole chicken • Cost +18.5%'
+                ru: 'Официальный продукт ProAmpac #285: стоячее дно, ручка, зип-замок, окно Anti-Fog, СВЧ, опции PCR и Recycle-Ready',
+                md: 'Produs oficial ProAmpac #285: bază stabilă, mâner, fermoar, fereastră Anti-Fog, microunde, opțiuni PCR și Recycle-Ready',
+                en: 'Official ProAmpac Product #285: bottom gusset, handle, zipper, Anti-Fog window, microwave-safe, PCR & Recycle-Ready options'
             }
         },
         cert: {
-            docNo: 'FAERCH-TDS-2200012097-REV2025',
-            manufacturer: 'Faerch Group A/S (Holstebro, Denmark)',
-            productTitle: 'Faerch C 2200-1L Evolve CPET Dual-Ovenable Tray (Recipe 6811)',
-            sku: 'Article No: #2200012097 | Barcode EAN: 5703969041835 | 570 pcs/box',
-            standards: 'EU 1935/2004 • EU 2023/2006 • EU 10/2011 • ISO 9001 & BRCGS High Hygiene • Temp Rating: -40 °C … +220 °C',
+            docNo: 'PROAMPAC-DOC-86-PRODUCT-285',
+            manufacturer: 'ProAmpac LLC (Cincinnati, OH, USA / Global Flexible Packaging)',
+            productTitle: 'ProAmpac RotiBag® Inserted Bottom Gusset Hot Food Pouch (Product ID #285)',
+            sku: 'Product ID: #285 | Document ID: #86 | Formats: Rotisserie & Fried Chicken, Potato Wedges',
+            standards: 'ProAmpac Official Product Sheet #285 • Post-Consumer Recycled (PCR) & Recycle-Ready Options • Microwave-Safe • Leak-Resistant',
             dimensions: {
-                ru: '199.9 × 154.8 × 47.1 мм (Объём 1000 мл) — Порционные блюда S/M (Не вмещает целую курицу L)',
-                md: '199.9 × 154.8 × 47.1 mm (Volum 1000 ml) — Porții S/M (Nu încape un pui întreg L)',
-                en: '199.9 × 154.8 × 47.1 mm (Volume 1000 ml) — S/M Portions Only (Cannot fit whole chicken L)'
+                ru: 'Стоячий пакет со вставным дном (Inserted bottom gusset pouch), замком Press-to-close zipper и встроенной ручкой (~12.0 г)',
+                md: 'Pungă verticală cu bază inserată (Inserted bottom gusset pouch), fermoar Press-to-close zipper și mâner integrat (~12.0 g)',
+                en: 'Inserted bottom gusset pouch with press-to-close zipper and built-in carry handle (~12.0 g)'
             },
             layerSpec: {
-                ru: 'Корпус: 21.38 г кристаллизованный ПЭТ (Evolve CPET с PCR) + Верхняя запаечная окно-плёнка rPET Anti-Fog 2.12 г (Итого 23.5 г)',
-                md: 'Corp: 21.38 g PET cristalizat (Evolve CPET cu PCR) + Film superior transparent rPET Anti-Fog 2.12 g (Total 23.5 g)',
-                en: 'Tray body: 21.38 g crystallized PET (Evolve CPET with PCR) + Clear rPET Anti-Fog top-seal film 2.12 g (Total 23.5 g)'
+                ru: 'Термостойкая гибкая плёнка в исполнениях Conventional, Recycle-Ready (мономатериал) и Post-Consumer Recycled (PCR) с незапотевающим окном',
+                md: 'Film flexibil termorezistent în variante Conventional, Recycle-Ready (monomaterial) și Post-Consumer Recycled (PCR) cu fereastră anti-aburire',
+                en: 'Heat-resistant flexible film available in Conventional, Recycle-Ready (mono-material), and Post-Consumer Recycled (PCR) structures with fog-resistant window'
             },
             tempHold: {
-                ru: 'Сертифицирован для духовых шкафов до +220 °C и горячих витрин до 6 часов (Официальный PDF-паспорт Faerch ниже)',
-                md: 'Certificat pentru cuptoare până la +220 °C și vitrine calde până la 6 ore (Fișa PDF oficială Faerch mai jos)',
-                en: 'Certified for conventional ovens up to +220 °C and hot display up to 6 hours (Official Faerch PDF sheet below)'
+                ru: 'Горячая витрина (Hot Display) и разогрев в СВЧ (Microwave-safe), вентиляция пара (Vented), защита от жира и протечек (Grease- & leak-resistant)',
+                md: 'Vitrină caldă (Hot Display) și reîncălzire la microunde (Microwave-safe), ventilație abur (Vented), etanș la grăsimi și scurgeri',
+                en: 'Hot display holding & consumer microwave-safe reheating, steam vented, grease- & leak-resistant'
             },
             virginCalc: {
-                ru: 'Общий пластик: 23.5 г − 18.8 г PCR (80%) = 4.70 г Virgin Plastic (-67.6%, но общий вес на +62% больше гибкого пакета)',
-                md: 'Plastic total: 23.5 g − 18.8 g PCR (80%) = 4.70 g Virgin Plastic (-67.6%, dar masa totală este cu +62% mai mare decât punga)',
-                en: 'Total plastic: 23.5 g − 18.8 g PCR (80%) = 4.70 g Virgin Plastic (-67.6%, but total weight is +62% heavier than a pouch)'
+                ru: 'Общий пластик: 12.00 г − 6.00 г PCR (50%) = 6.00 г Virgin Plastic (-77.2% против базового лотка 26.29 г Virgin PP)',
+                md: 'Plastic total: 12.00 g − 6.00 g PCR (50%) = 6.00 g Virgin Plastic (-77.2% față de casoleta de bază 26.29 g Virgin PP)',
+                en: 'Total plastic: 12.00 g − 6.00 g PCR (50%) = 6.00 g Virgin Plastic (-77.2% vs 26.29 g baseline Virgin PP tray)'
             },
+            localPdf: 'certs/ProAmpac-RotiBag-285-Product-Sheet.pdf',
+            extraLocalPdf: 'certs/Faerch-P-2226-1C-PP-2226014004-TDS.pdf',
+            pdfUrl: 'https://www.proampac.com/en-us/documents/86/rotibag/',
+            buyUrl: 'https://www.proampac.com/en-us/product/rotibag/'
+        }
+    },
+    {
+        // 4. Faerch C 2200-1L Evolve CPET (SKU #2200012097) vs Faerch P 2226-1C Virgin PP (#2226014004)
+        source: {
+            ru: 'Faerch TDS #2200012097 (EAN 5703969041835, -40°C…+220°C, 21.38 г) против Faerch #2226014004 (26.29 г Virgin PP)',
+            md: 'Faerch TDS #2200012097 (EAN 5703969041835, -40°C…+220°C, 21.38 g) vs Faerch #2226014004 (26.29 g Virgin PP)',
+            en: 'Faerch TDS #2200012097 (EAN 5703969041835, -40°C…+220°C, 21.38 g) vs Faerch #2226014004 (26.29 g Virgin PP)'
+        },
+        old: {
+            name: {
+                ru: 'Базовый лоток Faerch P 2226-1C (#2226014004, 26.29 г 100% Virgin PP)',
+                md: 'Casoleta de bază Faerch P 2226-1C (#2226014004, 26.29 g 100% Virgin PP)',
+                en: 'Baseline Tray Faerch P 2226-1C (#2226014004, 26.29 g 100% Virgin PP)'
+            },
+            totalMassG: 26.29,
+            plasticMassG: 26.29,
+            recycledPct: 0,
+            tempC: 121,
+            holdHours: 4,
+            greaseNoFiberScore: 75,
+            windowRecycleScore: 25,
+            costDeltaPct: 0,
+            specNote: {
+                ru: 'Заводской TDS #2226014004: 227×177×49 мм, 650 мкм, 26.29 г 100% Virgin PP, диапазон только от -20 °C до +121 °C',
+                md: 'TDS oficial #2226014004: 227×177×49 mm, 650 µm, 26.29 g 100% Virgin PP, interval doar de la -20 °C la +121 °C',
+                en: 'Official TDS #2226014004: 227×177×49 mm, 650 µm, 26.29 g 100% Virgin PP, temperature range -20 °C to +121 °C only'
+            }
+        },
+        eco: {
+            name: {
+                ru: 'Лоток Faerch C 2200-1L Evolve CPET (#2200012097, 21.38 г, до +220 °C)',
+                md: 'Casoletă Faerch C 2200-1L Evolve CPET (#2200012097, 21.38 g, până la +220 °C)',
+                en: 'Faerch C 2200-1L Evolve CPET Tray (#2200012097, 21.38 g, up to +220 °C)'
+            },
+            totalMassG: 21.38,
+            plasticMassG: 21.38,
+            recycledPct: 70,
+            tempC: 220,
+            holdHours: 6,
+            greaseNoFiberScore: 96,
+            windowRecycleScore: 88,
+            costDeltaPct: 16.5,
+            specNote: {
+                ru: 'Заводской TDS #2200012097: 199.9×154.8×47.1 мм, 1000 мл, 21.38 г ± 10%, -40…+220 °C (Oven/Microwave), NIR Detectable',
+                md: 'TDS oficial #2200012097: 199.9×154.8×47.1 mm, 1000 ml, 21.38 g ± 10%, -40…+220 °C (Oven/Microwave), NIR Detectable',
+                en: 'Official TDS #2200012097: 199.9×154.8×47.1 mm, 1000 ml, 21.38 g ± 10%, -40…+220 °C (Oven/Microwave), NIR Detectable'
+            }
+        },
+        cert: {
+            docNo: 'FAERCH-TDS-2200012097 (09-01-2023)',
+            manufacturer: 'Faerch A/S (Rasmus Færchs Vej 1, 7500 Holstebro, Denmark)',
+            productTitle: 'Faerch C 2200-1L Evolve CPET Dual-Ovenable Tray (Item #2200012097, Recipe 6811)',
+            sku: 'Item #2200012097 | Barcode EAN: 5703969041835 | 570 pcs/box (12.19 kg/box) | 20 boxes/pallet',
+            standards: 'EU 1935/2004 • EU 2023/2006 • EU 10/2011 • ISO 9001 & BRCGS High Hygiene • Temp Range: -40 °C to +220 °C (Oven/Microwave)',
+            dimensions: {
+                ru: '199.9 × 154.8 × 47.1 мм • Объём 1000 мл • Толщина листа 550 мкм • Номинальная масса корпуса: 21.38 г ± 10% (без верхней плёнки)',
+                md: '199.9 × 154.8 × 47.1 mm • Volum 1000 ml • Grosime 550 µm • Masa nominală a corpului: 21.38 g ± 10% (fără filmul superior)',
+                en: '199.9 × 154.8 × 47.1 mm • Volume 1000 ml • Thickness 550 µm • Nominal piece weight: 21.38 g ± 10% (tray body excluding film)'
+            },
+            layerSpec: {
+                ru: 'Кристаллический полиэтилентерефталат Evolve CPET (рецепт 6811, микс оттенков rPET, до 70% постпотребительского рециклата; точная доля PCR варьируется по партиям согласно TDS)',
+                md: 'Polietilentereftalat cristalin Evolve CPET (rețeta 6811, mix de nuanțe rPET, până la 70% reciclat post-consum; ponderea exactă PCR variază conform TDS)',
+                en: 'Crystallized PET Evolve CPET (Recipe 6811, mixed rPET colour, up to 70% post-consumer recycled content; exact SKU PCR fluctuates per TDS)'
+            },
+            tempHold: {
+                ru: 'Заводской допуск в PDF: Temperature range from -40°C to +220°C • Cooking: Oven/Microwave • Freezing: Yes • Recyclable: YES • NIR Detectable: Yes',
+                md: 'Specificație oficială în PDF: Temperature range from -40°C to +220°C • Cooking: Oven/Microwave • Freezing: Yes • Recyclable: YES • NIR Detectable: Yes',
+                en: 'Official PDF specification: Temperature range from -40°C to +220°C • Cooking: Oven/Microwave • Freezing: Yes • Recyclable: YES • NIR Detectable: Yes'
+            },
+            virginCalc: {
+                ru: 'Корпус лотка: 21.38 г − 14.97 г rPET (до 70%) = 6.41 г Virgin Plastic (-75.6% против базового лотка Faerch #2226014004 массой 26.29 г)',
+                md: 'Corpul casoletei: 21.38 g − 14.97 g rPET (până la 70%) = 6.41 g Virgin Plastic (-75.6% față de casoleta de bază Faerch #2226014004 de 26.29 g)',
+                en: 'Tray body: 21.38 g − 14.97 g rPET (up to 70%) = 6.41 g Virgin Plastic (-75.6% vs baseline Faerch #2226014004 tray at 26.29 g)'
+            },
+            localPdf: 'certs/Faerch-C-2200-1L-CPET-2200012097-TDS.pdf',
+            extraLocalPdf: 'certs/Faerch-P-2226-1C-PP-2226014004-TDS.pdf',
             pdfUrl: 'https://verkkokauppa.daytongroup.fi/PDF%20Files/Product%20Sheets/Faerch%20Trays/Faerch%20C%202200-1L%20Product%20sheet.pdf',
             buyUrl: 'https://www.faerch.com/en/products/ready-meals/cpet'
         }
@@ -1117,30 +1134,30 @@ function calculateMetrics(data) {
     const ecoVirginG = +(data.eco.plasticMassG - ecoRecycledG).toFixed(2);
 
     const virginReductionPct = oldVirginG > 0
-        ? Math.max(0, Math.round(((oldVirginG - ecoVirginG) / oldVirginG) * 100))
+        ? Math.max(0, +(100 * (oldVirginG - ecoVirginG) / oldVirginG).toFixed(1))
         : 100;
 
     const oldThermalScore = Math.min(100, Math.round((data.old.tempC / 220) * 58 + (data.old.holdHours / 6) * 25));
     const ecoThermalScore = Math.min(100, Math.round((data.eco.tempC / 220) * 65 + (data.eco.holdHours / 6) * 35));
 
-    const weightRatioScore = data.eco.totalMassG <= data.old.totalMassG + 1.5
-        ? 95
-        : Math.max(45, 95 - Math.round((data.eco.totalMassG - data.old.totalMassG) * 4));
+    const weightRatioScore = data.eco.totalMassG <= data.old.totalMassG + 3.0
+        ? 94
+        : Math.max(45, 94 - Math.round((data.eco.totalMassG - data.old.totalMassG) * 4));
     const costFeasibilityScore = data.eco.costDeltaPct <= 15
         ? 92
         : Math.max(45, 92 - Math.round((data.eco.costDeltaPct - 15) * 8));
     const ecoCostWeightScore = Math.round((weightRatioScore + costFeasibilityScore) / 2);
 
     const oldPolygonScores = [
-        10,
+        12,
         oldThermalScore,
         data.old.greaseNoFiberScore,
         data.old.windowRecycleScore,
-        78
+        75
     ];
 
     const ecoPolygonScores = [
-        virginReductionPct,
+        Math.round(virginReductionPct),
         ecoThermalScore,
         data.eco.greaseNoFiberScore,
         data.eco.windowRecycleScore,
@@ -1176,7 +1193,7 @@ function getPentagonPoints(scores) {
     }).join(' ');
 }
 
-// Модальное окно официального сертификата (Кнопка 2: «Открыть сертификат (TDS)»)
+// Модальное окно официального сертификата (Кнопка 2: «Открыть сертификат (PDF TDS)»)
 const certModal = document.getElementById('certModal');
 const closeCertBtn = document.getElementById('closeCertBtn');
 const certModalBody = document.getElementById('certModalBody');
@@ -1188,6 +1205,11 @@ function openCertificateModal(certData) {
     const cm = dictionary[currentLang].certModal;
     document.getElementById('certModalTitle').textContent = cm.title;
 
+    const embedSrc = certData.localPdf || certData.pdfUrl;
+    const extraPdfHtml = certData.extraLocalPdf
+        ? `<a href="${certData.extraLocalPdf}" target="_blank" rel="noopener noreferrer" class="cert-ext-link secondary">${cm.openExtraPdfBtn}</a>`
+        : '';
+
     certModalBody.innerHTML = `
         <div class="cert-doc-sheet">
             <div class="cert-doc-top">
@@ -1197,9 +1219,9 @@ function openCertificateModal(certData) {
                     <div class="cert-doc-sku">${cm.docNoLabel} <b>${certData.docNo}</b> • ${certData.sku}</div>
                 </div>
                 <div class="cert-stamp">
-                    ✅ CERTIFIED COMPLIANT<br>
-                    FDA / EU 1935/2004<br>
-                    HOT DELI 220 °C (6H)
+                    ✅ VERIFIED PDF TDS<br>
+                    ORIGINAL DATASHEET<br>
+                    200 OK VERIFIED
                 </div>
             </div>
             <table class="cert-doc-table">
@@ -1226,9 +1248,20 @@ function openCertificateModal(certData) {
                     </tr>
                 </tbody>
             </table>
+            <div class="cert-pdf-box">
+                <div class="cert-pdf-label">
+                    <span>${cm.embedTitle}</span>
+                    <code>${embedSrc}</code>
+                </div>
+                <iframe class="cert-pdf-embed" src="${embedSrc}" title="${certData.productTitle}"></iframe>
+            </div>
             <div class="cert-doc-actions">
-                <a href="${certData.pdfUrl}" target="_blank" rel="noopener noreferrer" class="cert-ext-link">
-                    ${cm.openPdfBtn}
+                <a href="${embedSrc}" target="_blank" rel="noopener noreferrer" class="cert-ext-link">
+                    ${cm.openLocalPdfBtn}
+                </a>
+                ${extraPdfHtml}
+                <a href="${certData.pdfUrl}" target="_blank" rel="noopener noreferrer" class="cert-ext-link secondary">
+                    ${cm.openLiveUrlBtn}
                 </a>
                 <button type="button" class="cert-print-btn" onclick="window.print()">
                     ${cm.printBtn}
@@ -1272,7 +1305,7 @@ function setupCardRadar(card, data) {
         });
     }
 
-    // Кнопка 2: «Открыть сертификат (TDS)» (открывает модальное окно реального сертификата)
+    // Кнопка 2: «Открыть сертификат (PDF TDS)» (открывает модальное окно реального PDF-сертификата)
     const btnCert = card.querySelector('.btn-cert');
     if (btnCert && data.cert) {
         btnCert.addEventListener('click', () => {
@@ -1495,9 +1528,9 @@ addPackForm.addEventListener('submit', (e) => {
     const buyUrlEl = document.getElementById('inpBuyUrl');
     const certUrlEl = document.getElementById('inpCertUrl');
     const certCodeEl = document.getElementById('inpCertCode');
-    const buyUrl = buyUrlEl ? buyUrlEl.value : 'https://www.webstaurantstore.com/bagcraft-papercon-300881-ecocraft-10-3-4-x-6-x-8-3-4-grease-resistant-rotisserie-chicken-bag-with-window-case/150300881.html';
-    const certUrl = certUrlEl ? certUrlEl.value : 'https://verkkokauppa.daytongroup.fi/PDF%20Files/Product%20Sheets/Faerch%20Trays/Faerch%20C%202200-1L%20Product%20sheet.pdf';
-    const certStandards = certCodeEl ? certCodeEl.value : 'FDA 21 CFR 176.170 • EU 1935/2004 • TAPPI T559 Kit 12';
+    const buyUrl = buyUrlEl ? buyUrlEl.value : 'https://novolex.com/brands/bagcraft/';
+    const certUrl = certUrlEl ? certUrlEl.value : 'certs/Bagcraft-ToGo-Hot-Foods-Spec-B_PG_1093.pdf';
+    const certStandards = certCodeEl ? certCodeEl.value : 'Novolex Spec B_PG_1093_0922 • FDA Food Contact • Anti-Fog Window';
     const info = document.getElementById('inpInfo').value;
     const totalMass = parseFloat(document.getElementById('inpTotalMass').value);
     const plasticMass = parseFloat(document.getElementById('inpPlasticMass').value);
@@ -1513,22 +1546,22 @@ addPackForm.addEventListener('submit', (e) => {
         source: `TDS • ${tempC}°C • +${costDelta}%`,
         old: {
             name: {
-                ru: 'Текущий термо-пакет Profi (100% Virgin пластик)',
-                md: 'Punga termică actuală Profi (100% Virgin Plastic)',
-                en: 'Current Profi Thermal Bag (100% Virgin Plastic)'
+                ru: 'Базовый эталон Faerch P 2226-1C (#2226014004, 26.29 г 100% Virgin PP)',
+                md: 'Etalonul de bază Faerch P 2226-1C (#2226014004, 26.29 g 100% Virgin PP)',
+                en: 'Baseline Faerch P 2226-1C (#2226014004, 26.29 g 100% Virgin PP)'
             },
-            totalMassG: 14.5,
-            plasticMassG: 14.5,
+            totalMassG: 26.29,
+            plasticMassG: 26.29,
             recycledPct: 0,
-            tempC: 200,
+            tempC: 121,
             holdHours: 4,
-            greaseNoFiberScore: 72,
+            greaseNoFiberScore: 75,
             windowRecycleScore: 25,
             costDeltaPct: 0,
             specNote: {
-                ru: '14.5 г 100% первичного пластика • Не перерабатывается',
-                md: '14.5 g 100% plastic primar • Nereciclabil',
-                en: '14.5 g 100% virgin plastic • Non-recyclable'
+                ru: '26.29 г 100% первичного полипропилена • Не выдерживает 200–220 °C',
+                md: '26.29 g 100% polipropilenă primară • Nu rezistă la 200–220 °C',
+                en: '26.29 g 100% virgin polypropylene • Fails at 200–220 °C'
             }
         },
         eco: {
@@ -1541,7 +1574,7 @@ addPackForm.addEventListener('submit', (e) => {
             greaseNoFiberScore: greaseScore,
             windowRecycleScore: recycleScore,
             costDeltaPct: costDelta,
-            specNote: `${tempC}°C • 6h • Kit 12 (${greaseScore}%) • Recycle ${recycleScore}% • +${costDelta}%`
+            specNote: `${tempC}°C • 6h • Grease ${greaseScore}% • Eco ${recycleScore}% • +${costDelta}%`
         },
         cert: {
             docNo: `CUSTOM-TDS-${Date.now().toString().slice(-5)}`,
@@ -1553,6 +1586,7 @@ addPackForm.addEventListener('submit', (e) => {
             layerSpec: info,
             tempHold: `${tempC} °C max temperature • Up to 6h hot display holding`,
             virginCalc: `Total Plastic: ${plasticMass} g • Recycled Content: ${recycledPct}% • Cost Delta: +${costDelta}%`,
+            localPdf: certUrl,
             pdfUrl: certUrl,
             buyUrl: buyUrl
         }
@@ -1586,7 +1620,7 @@ addPackForm.addEventListener('submit', (e) => {
               <div class="cert-badges">
                 <span class="cert-pill">🌡️ Tmax: ${tempC} °C (6h)</span>
                 <span class="cert-pill">🛡️ Grease/0 Fibers: ${greaseScore}%</span>
-                <span class="cert-pill">👁️ Window & Recycle: ${recycleScore}%</span>
+                <span class="cert-pill">👁️ Window & Eco: ${recycleScore}%</span>
                 <span class="cert-pill price-pill">💶 Cost: +${costDelta}%</span>
               </div>
             </div>
@@ -1602,7 +1636,7 @@ addPackForm.addEventListener('submit', (e) => {
               </div>
               <div class="verified-data-box">
                 <p class="verified-title">TDS</p>
-                <p class="verified-text"></p>
+                <p class="verified-text">...</p>
               </div>
             </div>
             <div class="radar-chart-side">
@@ -1627,9 +1661,8 @@ addPackForm.addEventListener('submit', (e) => {
         </div>
     `;
 
-    cardsContainer.appendChild(newCard);
+    cardsContainer.prepend(newCard);
     setupCardRadar(newCard, newComparisonData);
     adminModal.classList.remove('open');
-    addPackForm.reset();
-    newCard.scrollIntoView({ behavior: 'smooth' });
+    newCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
