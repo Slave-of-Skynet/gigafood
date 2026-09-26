@@ -20,8 +20,10 @@ Resolve conflicts in this order; a lower level never silently overrides a higher
 7. AI `INFERENCE` or `RECOMMENDATION`.
 
 Unestablished facts remain `UNKNOWN`. These are documentation labels, not new API enums.
-Implementation observations in this canon refer to `main` at
-`a1b938d0784bb36779172d26a80c053d6d05e56a` (merged NDR-01, PR #1).
+Historical CANON-01 observations used `a1b938d0784bb36779172d26a80c053d6d05e56a`.
+VLD-MR1 reconciliation (2026-09-26) inspects committed base
+`e6b326317d11663a401ba4288c27f05853c10d15`; see the
+[source ledger and decision packet](../recon/VLD-MR1-post-mentor-reconciliation.md).
 
 ## Official challenge
 
@@ -36,8 +38,9 @@ packaging traceability, waste monitoring, packaging-selection decision support,
 lifecycle assessment, and tools auditing packaging and recommending options with
 lower virgin plastic and higher recycled content.
 
-**TEAM_DECISION / challenge fit:** PackShift's digital decision-support product is
-directly within the official scope.
+**TEAM_DECISION / challenge fit:** PackShift's digital decision-support capability
+remains within official scope. After VLD-MR1 it supports the primary physical
+high-temperature packaging concept; official digital eligibility is not withdrawn.
 
 **OFFICIAL_REQUIREMENT — design considerations:** Food safety and product quality;
 shelf life; retail logistics and supply-chain compatibility; economic feasibility
@@ -66,8 +69,9 @@ sustainability reports and relevant technologies are explicitly permitted.
 | User experience | 10% |
 | Quality of presentation | 5% |
 
-**TEAM_DECISION:** Optimize for a working, defensible vertical slice with visible
-environmental calculation, operational constraints, provenance and safe failure behavior.
+**TEAM_DECISION:** Anchor the judging narrative in a defensible physical packaging
+concept, supported by a working evidence layer with environmental calculation,
+scoped operational constraints, provenance and safe failure behavior.
 
 ## Optional Hot Food annex
 
@@ -87,7 +91,7 @@ structures, and competitive cost.
 **UNKNOWN:** Is packaging inside the oven? Does 250°C mean oven air, packaging
 surface, or food-contact temperature? Is six hours in-store hot holding,
 transport/takeaway, or total shelf life after packaging? Neither requirement has
-been solved or reinterpreted. Resolve these if Hot Food becomes a solution/demo anchor;
+been solved or reinterpreted. These are now critical for the chosen team anchor;
 see [mentor Q5](open_questions.md#mentor-questions).
 
 ## Mentor clarification and data response
@@ -101,6 +105,53 @@ annual volumes, unit costs, supplier composition, or Profi-specific savings. Use
 public manufacturer/regulatory evidence where available. Synthetic values remain
 `ILLUSTRATIVE`; public sourced values remain `PUBLIC`; neither is `PROVIDER`.
 Public-resource permission does not answer the judging evidence-standard question.
+
+## Post-mentor clarification — VLD-MR1
+
+Recorded 2026-09-26 from the Human Integrator's supplied VLD-MR1 session account,
+section 3; original session date/transcript UNKNOWN. This is an attributed mentor
+clarification, not independently verified manufacturer evidence or an amendment to
+the official brief. Source details: [VLD-MR1](../recon/VLD-MR1-post-mentor-reconciliation.md#basis-and-source-ledger).
+
+**OFFICIAL_REQUIREMENT:** Multiple packaging/circular/digital directions remain
+allowed; Hot Food remains an optional official example.
+
+**MENTOR_CLARIFICATION:** Low-temperature packaging reportedly already has a working
+solution using 100% recycled plastic. Profi's unresolved practical focus for this
+team is high-temperature packaging. That account does not supply a SKU, BOM or
+verified complete-package recycled fraction.
+
+**MENTOR_CLARIFICATION — practical requirements:**
+
+- Food safety / food-contact suitability, recyclability, grease/oil barrier,
+  approximately 200–250°C resistance and approximately 6 h holding/shelf condition.
+- Transparent viewing window so consumers can inspect food on shelf: a physical
+  qualification requirement, not cosmetic UX.
+- Small portions (potatoes, wings, thighs or similar) and a significantly larger
+  whole-chicken package. Exact dimensions and volumes are not supplied.
+- Minimize environmental impact; recycled content is desirable for plastic and
+  non-plastic materials are allowed. Paper/cardboard must remain recyclable and
+  grease-resistant; problematic multilayers that harm recyclability are undesirable.
+  A heavier rigid plastic box is not automatically environmentally preferable.
+- Approximately +10–15% packaging cost premium could be acceptable for a genuinely
+  more sustainable solution. This is a practical tolerance, not procurement approval,
+  a contract, an automatic threshold or evidence of actual prices.
+- Strong candidate evidence for composition/layers, high-temperature suitability,
+  absence of melting/degradation under the intended conditions and food safety;
+  preferably formal manufacturer certificates, declarations, datasheets or equivalent.
+- Physical sustainable packaging and technical/practical feasibility are the primary
+  desired deliverable. Software / website / app is a supporting demonstration layer.
+
+**UNKNOWN — ASK MENTOR:** Does 200–250°C describe oven air, package surface, direct
+food contact, a short peak or continuous exposure; for how long at maximum? What
+exactly does 6 h mean? Can a bounded process/variant satisfy the intended use, or
+must one system cover all processes? Do not infer “250°C for 6 h”. The official
+annex's 180–190°C rotisserie context remains recorded above, not silently replaced.
+
+**TEAM_DECISION:** Team SoS adopts sustainable high-temperature physical packaging
+as its primary solution/demo anchor. PackShift is the evidence-backed decision and
+demonstration layer. Preserve useful software; select no material or supplier in
+VLD-MR1 and do not describe planned qualification dimensions as implemented.
 
 Continue with [product canon](product_canon.md), [decision policy](decision_policy.md)
 and [open questions](open_questions.md).

@@ -1,7 +1,16 @@
 # PackShift architecture
 
-Product boundary: A-core current → candidate comparison plus curated Selection
-portfolio evaluation, prioritizing virgin-plastic reduction. Results are evidence-aware decision support, not approval to implement.
+**TEAM_DECISION — VLD-MR1:** The primary proposed solution is a sustainable physical
+high-temperature food-packaging concept for Profi. PackShift supports its evidence
+and demonstration; virgin-plastic reduction remains important alongside feasibility.
+
+## Current committed architecture
+
+**OBSERVED_IMPLEMENTATION**, inspected at
+`e6b326317d11663a401ba4288c27f05853c10d15`: A-core current → candidate comparison,
+curated Selection portfolio evaluation and hypothetical Comparison economics.
+Results are evidence-aware decision support, not approval to implement. Post-mentor
+qualification extensions below are planned, not present in this committed runtime.
 
 ```text
 versioned evidence JSON
@@ -25,8 +34,10 @@ versioned evidence JSON
   hypothetical annual impact. No global ranking or optimizer.
 - `backend/app/runtime/context.py`: independently validates scenario and portfolio
   startup snapshots; a portfolio failure does not disable valid A-core evidence.
-- `backend/app/main.py`: application factory, lifespan, five GET routes and one
-  stateless POST evaluation route (no persistence).
+- `backend/app/services/economics.py`: hypothetical packaging-cost/volume and optional
+  transition-cost arithmetic, reusing comparison; no actual Profi price evidence.
+- `backend/app/main.py`: application factory, lifespan, five GET routes and two
+  stateless POST evaluation routes (Selection and economics; no persistence).
   A separate routes module adds no value at this size.
 - `data/evidence/demo-packaging.json`: schema v1.0, two explicitly synthetic scenarios.
 - `data/evidence/public-packaging.json`: NDR-01 public evidence, two source-attributed
@@ -49,6 +60,7 @@ versioned evidence JSON
 | `GET /api/v1/health` | 200 Health: READY, evidence version/kind/disclosure | 503 Health: UNAVAILABLE |
 | `GET /api/v1/scenarios` | 200 Evidence including current/candidate inputs | 503 detail EVIDENCE_UNAVAILABLE |
 | `GET /api/v1/scenarios/{id}/comparison` | 200 Comparison with source scenario and constraints | 404 SCENARIO_NOT_FOUND; 503 EVIDENCE_UNAVAILABLE |
+| `POST /api/v1/scenarios/{id}/economics` | 200 EconomicScenarioResponse (hypothetical inputs/results) | 422 invalid request; 404 SCENARIO_NOT_FOUND; 503 EVIDENCE_UNAVAILABLE |
 | `GET /api/v1/portfolios` | 200 list of PortfolioSummary | 503 PORTFOLIOS_UNAVAILABLE |
 | `GET /api/v1/portfolios/{id}` | 200 SelectionResponse with default requirements | 404 PORTFOLIO_NOT_FOUND; 503 PORTFOLIOS_UNAVAILABLE |
 | `POST /api/v1/portfolios/{id}/evaluate` | 200 SelectionResponse | 422 invalid request; 404 unknown ID; 503 unavailable pack |
@@ -111,7 +123,7 @@ non-BLOCKED actionability are unchanged. No value grants implementation approval
 
 ## Non-goals and extension
 
-No global ranking/optimization, actual Profi annual impact, costs, LCA/CO2, legal certification, risk or
+No global ranking/optimization, actual Profi annual impact or costs, full ROI/TCO, LCA/CO2, legal certification, risk or
 sustainability score, database/ORM, accounts, Docker, external APIs, ingestion framework,
 LLM/ML, supplier integration, PDF extraction, deployment or final visual design.
 Future ranking would require a separate contract
@@ -128,3 +140,46 @@ Igor: runtime/service; Nicolae: evidence; Denis: comparison UI; Alisa: acceptanc
 Vladimir: shared contracts/integration/demo. Changes to domain, mirrored TypeScript,
 schema/version, formulas, API or dependencies need Human Integrator coordination.
 TypeScript types are a manual mirror, not runtime payload validators or generated bindings.
+
+## Post-mentor target direction / planned extension
+
+**TARGET_DIRECTION**, not an implemented schema:
+
+```text
+Physical packaging candidate + bounded intended use
+  → composition/layers and full component boundaries
+  → environmental evidence (including plastic mass/recycled content)
+  → technical qualification evidence:
+      thermal exposure + holding duration + grease/oil barrier
+      + food contact + recyclability + transparent viewing window
+  → format feasibility: small portions + whole chicken
+  → business feasibility: scoped costs / premium scenarios
+  → PackShift requirement coverage, provenance, uncertainty, blockers and next actions
+```
+
+The mentor's approximately 200–250°C and 6 h targets need exposure and holding
+definitions; they do not mean six hours at 250°C. Current `max_temperature_c` /
+`microwave_safe` cannot represent those conditions. Food-contact advisory findings
+are outside current eligibility aggregation. A current `ELIGIBLE` is not proof of
+full high-temperature suitability, a recyclable window or format fit.
+
+`Component.plastic_mass_g` / `recycled_content_fraction` describe plastic-bearing
+components. General composition, non-plastic materials, windows, coatings and joins
+need a research-informed representation. Do not reinterpret plastic mass as total
+material mass, fabricate zero/positive inputs or treat an empty inventory as a
+verified plastic-free package. Preserve the existing formula and unknown semantics.
+
+Reuse FastAPI/React, strict loader, provenance, deterministic calculation, Selection
+structure, economic scenarios, CI/tests and launcher. Future domain, mirrored
+TypeScript, evidence JSON, gate/Selection semantics and presentation need coordinated
+changes. No detailed schema, enum, API route, migration/version or material choice is
+approved here. The current packs and 95°C/microwave demo remain bounded examples,
+demoted from the primary judging flow.
+
+NDR-HT1 research, IGR-HT1 conceptual design and PUX-HT1 recon/design may begin in
+parallel. Candidate facts, use-scope clarification and Integrator decisions gate
+final contract approval; VDR evidence and IGR-HT2 implementation follow that contract,
+then UI integration, APR-HT1 claims review and VLD-DEMO1 end-to-end reconciliation.
+See [VLD-MR1](recon/VLD-MR1-post-mentor-reconciliation.md) for the requirement matrix,
+shared-surface impact, UNKNOWN blockers and exact handoff graph. No runtime/data
+changes are part of this architecture reconciliation.
