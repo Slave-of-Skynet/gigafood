@@ -14,6 +14,7 @@ import type {
 } from '../api/contracts';
 import { format, OperationalRequirementsView, PackageView } from './EvidenceDetails';
 import { ProductVisual } from './ProductVisual';
+import { reductionRingStyle } from './metricRing';
 
 type Load<T> =
   | { state: 'loading' }
@@ -378,6 +379,7 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
 
               <div className="stat-circle-wrapper">
                 <div
+                  style={reductionRingStyle(calc.reduction_pct, eligibility.status === 'BLOCKED')}
                   className={`stat-circle ${
                     calc.reduction_pct === null
                       ? 'missing-ring'
@@ -386,7 +388,7 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
                       : calc.reduction_pct <= 0
                       ? 'nonpositive-ring'
                       : 'candidate-ring'
-                  }`}
+                  } ${calc.reduction_pct !== null && calc.reduction_pct >= 0 ? 'progress-ring' : ''}`}
                 >
                   <span className="circle-num">
                     {calc.reduction_pct === null
