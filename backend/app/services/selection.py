@@ -1,4 +1,3 @@
-from math import fsum
 from typing import Annotated
 
 from app.domain.packaging import (
@@ -23,7 +22,7 @@ from app.domain.packaging import (
     Scenario,
     TemperatureInput,
 )
-from app.services.virgin_plastic import compare
+from app.services.virgin_plastic import compare, virgin_plastic
 
 
 def calculate_article_virgin_plastic(
@@ -31,29 +30,21 @@ def calculate_article_virgin_plastic(
     metadata: SelectionMetadata,
 ) -> tuple[float | None, list[str]]:
     """Calculates virgin plastic for an individual package under selection epistemic rules.
-    If recycled_content_point_value_status is NON_POINT_VALUE or any required value is None,
-    the calculation is withheld (None)."""
+    Recycled-content numeric values may be used ONLY when recycled_content_point_value_status
+    is EXACT_POINT_VALUE. If UNSTATED or NON_POINT_VALUE, calculation is withheld."""
     missing_fields: list[str] = []
 
     for c in package.components:
         if c.plastic_mass_g.value is None:
             missing_fields.append(f"components.{c.id}.plastic_mass_g")
-        if c.recycled_content_fraction.value is None:
+        if c.recycled_content_fraction.value is None or metadata.recycled_content_point_value_status != "EXACT_POINT_VALUE":
             missing_fields.append(f"components.{c.id}.recycled_content_fraction")
 
-    if metadata.recycled_content_point_value_status == "NON_POINT_VALUE":
-        if not any("recycled_content_fraction" in f for f in missing_fields):
-            missing_fields.append("recycled_content_fraction_non_point_value")
+    if metadata.recycled_content_point_value_status != "EXACT_POINT_VALUE" or missing_fields:
         return None, missing_fields
 
-    if missing_fields:
-        return None, missing_fields
-
-    virgin = fsum(
-        c.plastic_mass_g.value * (1.0 - c.recycled_content_fraction.value)  # type: ignore[operator]
-        for c in package.components
-    )
-    return round(virgin, 4), []
+    # Reuse canonical virgin_plastic arithmetic from app.services.virgin_plastic (unrounded)
+    return virgin_plastic(package), []
 
 
 def assess_comparability(
@@ -65,23 +56,15 @@ def assess_comparability(
     cand_bound = candidate.metadata.component_boundary
 
     if base_bound != cand_bound:
-        if base_bound == "CUSTOM" or cand_bound == "CUSTOM":
-            rating: ComparabilityRating = "NOT_COMPARABLE"
-            notes = [
-                f"Packaging formats are structurally non-comparable: baseline boundary is {base_bound}, "
-                f"candidate boundary is {cand_bound}."
-            ]
-        else:
-            rating = "ASYMMETRIC_BOUNDARY"
-            notes = [
-                f"Component boundary mismatch: baseline is {base_bound}, candidate is {cand_bound}. "
-                "Transition delta is withheld."
-            ]
+        # Default safe rating for differing component boundaries (including CUSTOM)
+        rating: ComparabilityRating = "ASYMMETRIC_BOUNDARY"
+        notes = [
+            f"Component boundary mismatch: baseline is {base_bound}, candidate is {cand_bound}. "
+            "Transition delta is withheld."
+        ]
         return ComparabilityAssessment(rating=rating, boundary_match=False, notes=notes)
 
     # Boundaries match
-    # Check if capacity/volume is unstated or differs substantially
-    # In public datasheets like Faerch P 2226-1C, volume is omitted/unknown
     rating = "BOUNDED_WITH_QUALIFIER"
     notes = [
         "Common component boundary matched. Comparison is bounded: baseline nominal volume is unstated "
@@ -93,10 +76,13 @@ def assess_comparability(
 def calculate_transition_delta(
     baseline_virgin_g: float | None,
     candidate_virgin_g: float | None,
+    baseline_missing: list[str],
     candidate_missing: list[str],
     comparability: ComparabilityAssessment,
 ) -> CalculationResult:
-    """Computes virgin plastic reduction delta and percentage under epistemic guards."""
+    """Computes virgin plastic reduction delta and percentage under epistemic guards without rounding."""
+    missing_fields = [f"baseline.{f}" for f in baseline_missing] + [f"candidate.{f}" for f in candidate_missing]
+
     if not comparability.boundary_match:
         return CalculationResult(
             status="INSUFFICIENT_DATA",
@@ -105,7 +91,7 @@ def calculate_transition_delta(
             candidate_virgin_pack_g=candidate_virgin_g,
             reduction_g=None,
             reduction_pct=None,
-            missing_fields=candidate_missing + ["component_boundary_mismatch"],
+            missing_fields=missing_fields + ["component_boundary_mismatch"],
         )
 
     if baseline_virgin_g is None or candidate_virgin_g is None:
@@ -116,14 +102,15 @@ def calculate_transition_delta(
             candidate_virgin_pack_g=candidate_virgin_g,
             reduction_g=None,
             reduction_pct=None,
-            missing_fields=candidate_missing,
+            missing_fields=missing_fields,
         )
 
-    reduction_g = round(baseline_virgin_g - candidate_virgin_g, 4)
+    # Unrounded float arithmetic (rounding is presentation/display-only)
+    reduction_g = baseline_virgin_g - candidate_virgin_g
     if baseline_virgin_g == 0:
         reduction_pct = None
     else:
-        reduction_pct = round((reduction_g / baseline_virgin_g) * 100.0, 4)
+        reduction_pct = (reduction_g / baseline_virgin_g) * 100.0
 
     return CalculationResult(
         status="CALCULATED",
@@ -172,32 +159,60 @@ def determine_next_action(
             details=f"Do not advance this candidate for the stated modeled operating context. Violated constraint: {reasons}. Modify requirements or evaluate alternative candidate.",
         )
 
+    # Operational capability unknown check must remain reachable even if calculation gaps exist
+    unknown_capability = any(
+        c.constraint_id in ("thermal-envelope-incompatibility", "thermal-envelope-verification", "microwave-reheating-incompatibility", "microwave-reheating-verification")
+        and "not established" in c.reason.lower()
+        for c in eligibility.constraints
+    )
+    if unknown_capability:
+        return NextAction(
+            action_code="REQUEST_CAPABILITY_EVIDENCE",
+            summary="Request operational capability evidence",
+            details="Operational capability is not established for required constraints. Request verified technical datasheet affirming required operational performance.",
+        )
+
     if calculation.status == "INSUFFICIENT_DATA":
-        if not comparability.boundary_match:
+        has_cand_mass_gap = any("candidate.components." in f and "plastic_mass_g" in f for f in calculation.missing_fields)
+        has_baseline_gap = any(f.startswith("baseline.") for f in calculation.missing_fields)
+        has_boundary_gap = "component_boundary_mismatch" in calculation.missing_fields
+        has_cand_pcr_gap = (
+            any("candidate.components." in f and "recycled_content_fraction" in f for f in calculation.missing_fields)
+            or candidate.metadata.recycled_content_point_value_status != "EXACT_POINT_VALUE"
+        )
+
+        if has_cand_mass_gap:
+            return NextAction(
+                action_code="REQUEST_CAPABILITY_EVIDENCE",
+                summary="Request packaging specification evidence",
+                details=f"Calculation withheld due to missing candidate physical specification: {', '.join(calculation.missing_fields)}. Request complete technical datasheet from manufacturer.",
+            )
+        if has_baseline_gap:
+            return NextAction(
+                action_code="VERIFY_OPERATIONAL_PREMISES",
+                summary="Verify baseline packaging specifications",
+                details=f"Calculation withheld due to missing baseline evidence: {', '.join(calculation.missing_fields)}. Verify current packaging article specifications.",
+            )
+        if has_boundary_gap:
             return NextAction(
                 action_code="VERIFY_OPERATIONAL_PREMISES",
                 summary="Establish common component boundary",
                 details=f"Component boundaries differ between baseline and candidate ({'; '.join(comparability.notes)}). Establish a source-backed common component boundary before evaluating transition delta.",
             )
+        if has_cand_pcr_gap:
+            return NextAction(
+                action_code="REQUEST_PCR_EVIDENCE",
+                summary="Request SKU/recipe recycled-content declaration",
+                details="Calculation withheld. Request current SKU/recipe recycled-content declaration with provenance from manufacturer for candidate components before calculating virgin plastic delta.",
+            )
+
         return NextAction(
-            action_code="REQUEST_PCR_EVIDENCE",
-            summary="Request SKU/recipe recycled-content declaration",
-            details="Calculation withheld. Request current SKU/recipe recycled-content declaration with provenance from manufacturer for candidate components before calculating virgin plastic delta.",
+            action_code="VERIFY_OPERATIONAL_PREMISES",
+            summary="Verify evidence completeness",
+            details=f"Calculation withheld due to incomplete evidence: {', '.join(calculation.missing_fields)}.",
         )
 
     # calculation is CALCULATED
-    capability_review_needed = any(
-        c.constraint_id in ("thermal-envelope-incompatibility", "microwave-reheating-incompatibility")
-        and "not established" in c.reason.lower()
-        for c in eligibility.constraints
-    )
-    if capability_review_needed:
-        return NextAction(
-            action_code="REQUEST_CAPABILITY_EVIDENCE",
-            summary="Request operational capability evidence",
-            details="Environmental delta available, but candidate capability is not established. Request verified technical datasheet affirming required operational performance.",
-        )
-
     if eligibility.status == "REVIEW_REQUIRED":
         pct_str = f" / {calculation.reduction_pct:g}%" if calculation.reduction_pct is not None else ""
         return NextAction(
@@ -218,11 +233,14 @@ def calculate_annual_impact(
     calculation: CalculationResult,
     eligibility: EligibilityResult,
 ) -> AnnualImpactResult | None:
-    """Calculates linear annual virgin plastic impact if annual_units is supplied (INT-R2 D3/§10)."""
+    """Calculates linear annual virgin plastic impact if annual_units is supplied (INT-R2 D3/§10). Unrounded."""
     if annual_units is None:
         return None
 
-    disclosure_base = "Hypothetical scenario based on user-supplied volume. Not actual Profi purchase volume, commercial commitment, or verified retail impact."
+    disclosure_base = (
+        "Hypothetical scenario based on user-supplied volume. Not actual Profi purchase volume, "
+        "commercial commitment, or verified retail impact."
+    )
 
     if calculation.status == "INSUFFICIENT_DATA":
         return AnnualImpactResult(
@@ -235,19 +253,19 @@ def calculate_annual_impact(
             disclosure=disclosure_base,
         )
 
-    # calculation is CALCULATED
+    # calculation is CALCULATED - unrounded arithmetic
     ann_red = (
-        round((calculation.reduction_g * annual_units) / 1000.0, 4)
+        (calculation.reduction_g * annual_units) / 1000.0
         if calculation.reduction_g is not None
         else None
     )
     ann_curr = (
-        round((calculation.current_virgin_pack_g * annual_units) / 1000.0, 4)
+        (calculation.current_virgin_pack_g * annual_units) / 1000.0
         if calculation.current_virgin_pack_g is not None
         else None
     )
     ann_cand = (
-        round((calculation.candidate_virgin_pack_g * annual_units) / 1000.0, 4)
+        (calculation.candidate_virgin_pack_g * annual_units) / 1000.0
         if calculation.candidate_virgin_pack_g is not None
         else None
     )
@@ -349,6 +367,7 @@ def evaluate_portfolio(
         calc_result = calculate_transition_delta(
             baseline_assessment.virgin_plastic_g,
             cand_virgin,
+            base_missing,
             cand_missing,
             comparability,
         )
@@ -391,18 +410,48 @@ def evaluate_portfolio(
 
     ordered_candidates = group1 + group2 + group3
 
-    # 4. Generate summary verdict
+    # 4. Generate dynamic summary verdict (INT-R2 D7 / Defect 5: zero hardcoded candidate labels/facts)
     if not group1:
         if group2 and group3:
+            g2_items: list[str] = []
+            for c in group2:
+                if c.next_action.action_code == "REQUEST_PCR_EVIDENCE":
+                    g2_items.append(f"{c.candidate.label} requires a current SKU/recipe recycled-content declaration with provenance")
+                elif c.next_action.action_code == "REQUEST_CAPABILITY_EVIDENCE":
+                    g2_items.append(f"{c.candidate.label} requires operational capability evidence")
+                else:
+                    g2_items.append(f"{c.candidate.label} requires evidence verification")
+
+            g3_items: list[str] = []
+            for c in group3:
+                blocked_reasons = [cf.constraint_id for cf in c.eligibility.constraints if cf.status == "BLOCKED"]
+                if any("thermal" in r for r in blocked_reasons):
+                    reason_str = "thermal incompatibility"
+                elif any("microwave" in r for r in blocked_reasons):
+                    reason_str = "microwave incompatibility"
+                else:
+                    reason_str = "operational incompatibility"
+                g3_items.append(f"{c.candidate.label} is blocked by {reason_str}")
+
             summary_verdict = (
-                "No candidate is currently recommendable for transition: Candidate A requires a current "
-                "SKU/recipe recycled-content declaration with provenance, while Candidate B is blocked by "
-                "thermal incompatibility under the stated modeled operating context."
+                f"No candidate is currently recommendable for transition: {', '.join(g2_items)}, while "
+                f"{', '.join(g3_items)} under the stated modeled operating context."
             )
         elif group3:
-            summary_verdict = "All candidates are operationally blocked for the stated operating context."
+            g3_items = []
+            for c in group3:
+                blocked_reasons = [cf.constraint_id for cf in c.eligibility.constraints if cf.status == "BLOCKED"]
+                if any("thermal" in r for r in blocked_reasons):
+                    reason_str = "thermal incompatibility"
+                elif any("microwave" in r for r in blocked_reasons):
+                    reason_str = "microwave incompatibility"
+                else:
+                    reason_str = "operational incompatibility"
+                g3_items.append(f"{c.candidate.label} is blocked by {reason_str}")
+            summary_verdict = f"All candidates are operationally blocked ({'; '.join(g3_items)}) under the stated modeled operating context."
         else:
-            summary_verdict = "No candidate is currently recommendable: SKU-level evidence declarations are required."
+            g2_items = [f"{c.candidate.label} requires evidence verification" for c in group2]
+            summary_verdict = f"No candidate is currently recommendable for transition: {'; '.join(g2_items)} under the stated modeled operating context."
     else:
         summary_verdict = (
             f"{len(group1)} candidate(s) viable with calculable environmental savings. "

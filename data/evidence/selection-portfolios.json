@@ -118,7 +118,7 @@
         "metadata": {
           "component_boundary": "TRAY_BODY_ONLY",
           "recycled_content_point_value_status": "NON_POINT_VALUE",
-          "recycled_content_scope": "TRAY_RPET",
+          "recycled_content_scope": null,
           "evidence_date": "2023-01-09"
         }
       },
@@ -176,7 +176,7 @@
         "metadata": {
           "component_boundary": "TRAY_BODY_ONLY",
           "recycled_content_point_value_status": "UNSTATED",
-          "recycled_content_scope": "TOTAL_PCR",
+          "recycled_content_scope": null,
           "evidence_date": "2025-06-25"
         }
       }

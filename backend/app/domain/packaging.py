@@ -235,7 +235,18 @@ class Portfolio(Contract):
     default_operational_requirements: OperationalRequirements | None = None
 
 
+class PortfolioSummary(Contract):
+    id: Text
+    label: Text
+    use_context: Text
+    dataset_kind: Literal["ILLUSTRATIVE", "PUBLIC", "PROVIDER"]
+    disclosure: Text
+    baseline_label: Text
+    candidate_count: int
+
+
 # --- API Request & Response Contracts ---
+
 
 
 class SelectionRequest(Contract):
