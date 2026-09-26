@@ -258,6 +258,12 @@ def test_truth_table_p07_complete_numeric_negative_environmental_delta():
     assert c_res.annual_impact.annual_reduction_kg == -5.0
     assert c_res.annual_impact.is_actionable is True
 
+    # STOP-01 / IGR-R2C: Negative delta must never be described as environmental savings
+    assert "savings" not in resp.summary_verdict
+    assert "saving" not in resp.summary_verdict.lower()
+    assert "do not reduce virgin plastic" in resp.summary_verdict
+    assert "virgin-plastic use increases" in resp.summary_verdict
+
 
 # --- 2. Negative & Edge Truth Table Tests (N-01 to N-12) ---
 
@@ -728,3 +734,114 @@ def test_fix7_faerch_demo_portfolio_scopes_are_null():
         assert "Faerch C 2200-1L Evolve CPET Tray" in verdict
         assert "Faerch K 2182-1G Clear APET Tray" in verdict
         assert "thermal incompatibility" in verdict
+
+
+# --- 8. Negative Environmental Delta Summary Integrity Regression Suite (IGR-R2C / QA-R2A STOP-01: R1 to R5) ---
+
+
+def test_r1_negative_delta_summary_verdict_truthful():
+    """R1: Candidate with valid CALCULATED negative delta (reduction_g < 0).
+    Must never be described as providing environmental savings; must communicate that virgin-plastic use increases."""
+    base = make_candidate_article("base", "Baseline", mass=20.0, pcr=0.0)
+    cand = make_candidate_article("cand-heavy", "Heavier Candidate", mass=25.0, pcr=0.0, max_temp=120.0, mw_safe=True)
+    port = make_portfolio(base, [cand], req_temp=95.0, req_mw=True)
+
+    resp = evaluate_portfolio(port, SelectionRequest(annual_units=1000))
+    c_res = resp.candidates[0]
+
+    assert c_res.calculation.status == "CALCULATED"
+    assert c_res.calculation.reduction_g == -5.0
+    assert c_res.calculation.reduction_g < 0
+
+    verdict = resp.summary_verdict
+    assert "environmental savings" not in verdict
+    assert "saving" not in verdict.lower()
+    assert "do not reduce virgin plastic" in verdict
+    assert "virgin-plastic use increases" in verdict
+    assert "Verification of operational premises required before QA advancement." in verdict
+
+
+def test_r2_zero_delta_summary_verdict_not_called_saving():
+    """R2: Valid CALCULATED zero delta (reduction_g == 0).
+    Must not be described as providing environmental savings; must communicate zero reduction."""
+    base = make_candidate_article("base", "Baseline", mass=20.0, pcr=0.0)
+    cand = make_candidate_article("cand-identical", "Identical Mass Candidate", mass=20.0, pcr=0.0, max_temp=120.0, mw_safe=True)
+    port = make_portfolio(base, [cand], req_temp=95.0, req_mw=True)
+
+    resp = evaluate_portfolio(port)
+    c_res = resp.candidates[0]
+
+    assert c_res.calculation.status == "CALCULATED"
+    assert c_res.calculation.reduction_g == 0.0
+
+    verdict = resp.summary_verdict
+    assert "environmental savings" not in verdict
+    assert "saving" not in verdict.lower()
+    assert "zero virgin-plastic reduction" in verdict
+    assert "no change in virgin-plastic use" in verdict
+    assert "Verification of operational premises required before QA advancement." in verdict
+
+
+def test_r3_positive_delta_summary_verdict_truthful():
+    """R3: Valid CALCULATED positive delta (reduction_g > 0).
+    Must still receive truthful positive wording regarding environmental savings."""
+    base = make_candidate_article("base", "Baseline", mass=25.0, pcr=0.0)
+    cand = make_candidate_article("cand-light", "Lighter Candidate", mass=20.0, pcr=0.2, max_temp=120.0, mw_safe=True)
+    port = make_portfolio(base, [cand], req_temp=95.0, req_mw=True)
+
+    resp = evaluate_portfolio(port)
+    c_res = resp.candidates[0]
+
+    assert c_res.calculation.status == "CALCULATED"
+    assert c_res.calculation.reduction_g > 0
+
+    verdict = resp.summary_verdict
+    assert "1 candidate(s) viable with calculable environmental savings." in verdict
+    assert "Verification of operational premises required before QA advancement." in verdict
+
+
+def test_r4_mixed_group1_summary_verdict_distinguishes_outcomes():
+    """R4: Mixed Group 1 portfolio containing at least one positive candidate and one zero/negative candidate.
+    Summary must not describe all calculated candidates collectively as environmental savings."""
+    base = make_candidate_article("base", "Baseline", mass=20.0, pcr=0.0)
+    # cand1 has positive reduction (20g baseline vs 16g candidate -> +4g)
+    cand1 = make_candidate_article("cand-pos", "Positive Candidate", mass=16.0, pcr=0.0, max_temp=120.0, mw_safe=True)
+    # cand2 has zero reduction (20g vs 20g -> 0g)
+    cand2 = make_candidate_article("cand-zero", "Zero Delta Candidate", mass=20.0, pcr=0.0, max_temp=120.0, mw_safe=True)
+    # cand3 has negative reduction (20g vs 25g -> -5g)
+    cand3 = make_candidate_article("cand-neg", "Negative Delta Candidate", mass=25.0, pcr=0.0, max_temp=120.0, mw_safe=True)
+
+    # 4a: Positive + Negative
+    port_pos_neg = make_portfolio(base, [cand1, cand3], req_temp=95.0, req_mw=True)
+    resp_pn = evaluate_portfolio(port_pos_neg)
+    v_pn = resp_pn.summary_verdict
+    assert "2 candidate(s) viable with calculable environmental savings" not in v_pn
+    assert "2 candidate(s) viable (1 with calculable environmental savings, 1 with increased virgin-plastic use)." in v_pn
+
+    # 4b: Positive + Zero
+    port_pos_zero = make_portfolio(base, [cand1, cand2], req_temp=95.0, req_mw=True)
+    resp_pz = evaluate_portfolio(port_pos_zero)
+    v_pz = resp_pz.summary_verdict
+    assert "2 candidate(s) viable with calculable environmental savings" not in v_pz
+    assert "2 candidate(s) viable (1 with calculable environmental savings, 1 with zero virgin-plastic reduction)." in v_pz
+
+    # 4c: Positive + Zero + Negative (full triad)
+    port_all = make_portfolio(base, [cand1, cand2, cand3], req_temp=95.0, req_mw=True)
+    resp_all = evaluate_portfolio(port_all)
+    v_all = resp_all.summary_verdict
+    assert "3 candidate(s) viable with calculable environmental savings" not in v_all
+    assert "3 candidate(s) viable (1 with calculable environmental savings, 1 with zero virgin-plastic reduction, 1 with increased virgin-plastic use)." in v_all
+
+
+def test_r5_default_faerch_portfolio_summary_verdict_unchanged():
+    """R5: Default Faerch portfolio (Candidate A in Group 2, Candidate B in Group 3).
+    Existing safe no-recommendation behavior must remain unchanged in substance."""
+    with TestClient(create_app()) as client:
+        resp = client.get("/api/v1/portfolios/faerch-deli-trays")
+        assert resp.status_code == 200
+        data = resp.json()
+
+        verdict = data["summary_verdict"]
+        assert verdict.startswith("No candidate is currently recommendable for transition:")
+        assert "Faerch C 2200-1L Evolve CPET Tray requires a current SKU/recipe recycled-content declaration with provenance" in verdict
+        assert "Faerch K 2182-1G Clear APET Tray is blocked by thermal incompatibility under the stated modeled operating context." in verdict
