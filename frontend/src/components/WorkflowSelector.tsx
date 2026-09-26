@@ -14,14 +14,14 @@ export function WorkflowSelector({
   disabled = false,
 }: WorkflowSelectorProps) {
   return (
-    <section className="workflow-selector-deck" aria-label="Select Operational Workflow">
+    <section className="workflow-selector-deck" id="recommendation-workflow" aria-label="Select Operational Workflow">
       <div className="selector-title-row">
         <div>
-          <span className="control-step-tag">Step 2 · Thermal Workflow</span>
-          <h2 className="control-section-heading">Select Operational Workflow & Thermal Requirements</h2>
+          <span className="control-step-tag">Шаг 2 · Температурный режим</span>
+          <h2 className="control-section-heading">Как блюдо готовится и выкладывается в магазине?</h2>
         </div>
         <span className="current-workflow-badge">
-          Workflow: <strong>{selectedWorkflowId}</strong>
+          Режим: <strong>{selectedWorkflowId === 'POST_COOK_HOT_HOLD_6H' ? 'Тепловая витрина 65–85°C' : 'Печь 250°C + витрина'}</strong>
         </span>
       </div>
 
@@ -41,14 +41,22 @@ export function WorkflowSelector({
             >
               <div className="workflow-card-header">
                 <span className="workflow-temp-chip">
-                  {isPostCook ? '🔥 65–85°C Hot Hold' : '⚡ 250°C Peak Oven'}
+                  {isPostCook ? '🔥 65–85°C · Тепловая витрина 6ч' : '⚡ 250°C · Запекание в печи'}
                 </span>
-                <span className="workflow-status-tag">{wf.status}</span>
+                <span className="workflow-status-tag">
+                  {isPostCook ? 'Основной режим Profi' : 'Экстремальный тест'}
+                </span>
               </div>
 
               <div className="workflow-card-body">
-                <strong className="workflow-title-text">{wf.name}</strong>
-                <p className="workflow-desc-text">{wf.description}</p>
+                <strong className="workflow-title-text">
+                  {isPostCook ? 'Витрина подогрева (65–85°C, до 6 часов)' : 'Запекание в печи (до 250°C) + выкладка'}
+                </strong>
+                <p className="workflow-desc-text">
+                  {isPostCook
+                    ? 'Горячее блюдо фасуется после гриля и сохраняет тепло на тепловой витрине самообслуживания Profi для покупателей.'
+                    : 'Блюдо допекается прямо в упаковке в ротационной печи при 250°C, а затем поступает на витрину подогрева. Большинство био-материалов здесь не выдерживают!'}
+                </p>
                 <div className="workflow-modes-pills">
                   {wf.modes.map((m) => (
                     <span key={m} className="mode-pill">
@@ -60,7 +68,7 @@ export function WorkflowSelector({
 
               {isSelected && (
                 <div className="workflow-active-indicator">
-                  <span>Active Evaluation Workflow</span>
+                  <span>Выбранный режим оценки</span>
                 </div>
               )}
             </button>
@@ -68,7 +76,7 @@ export function WorkflowSelector({
         })}
       </div>
 
-      {/* Mandatory Workflow Assumption & Thermal Boundary Disclosures (Sections 12 & 13) */}
+      {/* Mandatory Workflow Assumption & Thermal Boundary Disclosures */}
       <div className="workflow-assumption-banner" role="note">
         {selectedWorkflowId === 'POST_COOK_HOT_HOLD_6H' && (
           <div className="assumption-alert post-cook-alert">
@@ -76,11 +84,11 @@ export function WorkflowSelector({
               ⚠️
             </span>
             <div className="alert-content">
-              <strong>Working workflow assumption:</strong>
+              <strong>Параметры витрины сети Profi:</strong>
               <span>
                 {' '}
-                Actual Profi store process still requires operational confirmation. 6-hour holding at
-                65–85°C is an evaluation target, not yet lab-verified for all candidates.
+                Хранение горячих блюд при 65–85°C до 6 часов — рабочий стандарт кулинарии Profi.
+                Упаковка должна выдерживать конденсат и горячий птичий жир без размягчения дна.
               </span>
             </div>
           </div>
@@ -92,13 +100,11 @@ export function WorkflowSelector({
               🔥
             </span>
             <div className="alert-content">
-              <strong>Thermal boundary distinction:</strong>
+              <strong>Границы термостойкости (Важно для жюри):</strong>
               <span>
                 {' '}
-                250°C applies exclusively to the peak cooking oven cycle. Hot holding is a separate
-                6-hour requirement at 65–85°C (<strong>NEVER 250°C continuous for 6 hours</strong>).
-                For aluminium packaging, oven body rating does not confer thermal tolerance to
-                unqualified transparent lids.
+                250°C действует только на этапе запекания в печи (не 6 часов подряд при 250°C).
+                Все биополимеры и бумага с тонкими окнами здесь блокируются. У алюминиевых лотков жаростойкость 280°C касается только металла, но не прозрачных пластиковых крышек!
               </span>
             </div>
           </div>

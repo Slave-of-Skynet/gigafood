@@ -2505,3 +2505,154 @@ button:focus-visible, summary:focus-visible, select:focus-visible, input:focus-v
     font-size: 12.5px;
   }
 }
+
+/* ==========================================================================
+   Pitch Presentation & Simplified Hackathon UX Styles
+   ========================================================================== */
+
+.brand-header-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brand-name {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.brand-sub-badge {
+  color: #86efac;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hero-value-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 12px 0;
+}
+
+.hero-value-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  background: #f4faf3;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+  box-shadow: 0 1px 3px rgba(22, 101, 52, 0.06);
+}
+
+.policy-disclosure-details {
+  margin-top: 14px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: rgba(24, 63, 48, 0.04);
+  border: 1px dashed rgba(24, 63, 48, 0.2);
+}
+
+.policy-disclosure-summary {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-dark);
+  cursor: pointer;
+}
+
+.friendly-brand-text {
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.friendly-type-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.candidate-highlight-chip {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 700;
+  color: #166534;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin: 4px 0 6px 0;
+}
+
+.candidate-raw-spec-details {
+  margin-top: 4px;
+}
+
+.raw-spec-summary {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.raw-spec-content {
+  margin-top: 6px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  font-size: 12px;
+  color: #475569;
+  line-height: 1.45;
+}
+
+/* Accordions on Candidate Cards */
+.candidate-details-accordions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.card-foldable-detail {
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #fafbfb;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.card-foldable-detail[open] {
+  border-color: #cbd5e1;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(18, 53, 36, 0.04);
+}
+
+.foldable-detail-summary {
+  padding: 12px 18px;
+  font-size: 13.5px;
+  color: var(--text-dark);
+  cursor: pointer;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.foldable-detail-summary:hover {
+  background: #f1f5f9;
+}
+
+.foldable-detail-content {
+  padding: 16px 18px;
+  border-top: 1px solid #e2e8f0;
+}

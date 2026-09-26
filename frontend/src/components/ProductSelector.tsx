@@ -12,28 +12,28 @@ const PRODUCT_VISUAL_META: Record<
   { label: string; icon: string; portionSize: string; example: string }
 > = {
   P1: {
-    label: 'Whole Rotisserie Chicken',
+    label: 'Целая курица-гриль',
     icon: '🍗',
-    portionSize: '1.0–1.3 kg whole bird',
-    example: 'Pui la rotisor întreg',
+    portionSize: '1.0–1.3 кг · тушка',
+    example: 'Profi: Pui la rotisor întreg',
   },
   P2: {
-    label: 'Chicken Wings & Thighs',
+    label: 'Крылышки и бедра',
     icon: '🍖',
-    portionSize: '6–20 pcs / 350–600 g',
-    example: 'Aripioare & pulpe rumenite',
+    portionSize: '350–600 г · 6–20 шт.',
+    example: 'Profi: Aripioare & pulpe rumenite',
   },
   P3: {
-    label: 'Hot Potatoes & Vegetables',
+    label: 'Картофель и гарниры',
     icon: '🥔',
-    portionSize: '250–450 g side portion',
-    example: 'Cartofi wedges & legume coapte',
+    portionSize: '250–450 г · порция',
+    example: 'Profi: Cartofi wedges & legume',
   },
   P4: {
-    label: 'Prepared Hot Meat Portions',
+    label: 'Горячие мясные блюда',
     icon: '🥩',
-    portionSize: '300–500 g hot meal',
-    example: 'Ceafă, șnițel & friptură caldă',
+    portionSize: '300–500 г · порция',
+    example: 'Profi: Ceafă, șnițel & friptură',
   },
 };
 
@@ -44,14 +44,14 @@ export function ProductSelector({
   disabled = false,
 }: ProductSelectorProps) {
   return (
-    <section className="product-selector-deck" aria-label="Select Food Archetype">
+    <section className="product-selector-deck" id="recommendation-archetypes" aria-label="Select Food Archetype">
       <div className="selector-title-row">
         <div>
-          <span className="control-step-tag">Step 1 · Hot Food Archetype</span>
-          <h2 className="control-section-heading">Select Food Product to Package</h2>
+          <span className="control-step-tag">Шаг 1 · Выбор блюда</span>
+          <h2 className="control-section-heading">Какое горячее блюдо упаковываем?</h2>
         </div>
         <span className="selected-product-badge">
-          Current target: <strong>{selectedProductId}</strong>
+          Выбрано: <strong>{PRODUCT_VISUAL_META[selectedProductId]?.label || selectedProductId}</strong>
         </span>
       </div>
 
@@ -89,7 +89,7 @@ export function ProductSelector({
 
               {isSelected && (
                 <div className="selected-active-marker">
-                  <span>Selected Target</span>
+                  <span>Выбрано для оценки</span>
                 </div>
               )}
             </button>

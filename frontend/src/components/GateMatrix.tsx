@@ -7,33 +7,33 @@ interface GateMatrixProps {
 
 const GATE_METADATA: Record<GateName, { title: string; subtitle: string; icon: string }> = {
   physical_fit: {
-    title: 'Physical Fit',
-    subtitle: 'Dimensional capacity & geometry',
+    title: 'Размер и объем',
+    subtitle: 'Вместимость под порцию блюда',
     icon: '📐',
   },
   food_contact: {
-    title: 'Food Contact',
-    subtitle: 'EU migration & organoleptic suitability',
+    title: 'Пищевой контакт (EU)',
+    subtitle: 'Нормы миграции веществ в пищу',
     icon: '🍽️',
   },
   thermal_workflow: {
-    title: 'Thermal Workflow',
-    subtitle: 'Cooking, reheating & 6h hot hold',
+    title: 'Температурный режим',
+    subtitle: 'Стойкость на витрине 85°C или в печи 250°C',
     icon: '🌡️',
   },
   grease_leak: {
-    title: 'Grease / Leak',
-    subtitle: 'Hot oil retention & 0% fiber shedding',
+    title: 'Стойкость к жиру',
+    subtitle: 'Барьер против горячего масла и соуса',
     icon: '🛡️',
   },
   transparent_viewing: {
-    title: 'Transparent Viewing',
-    subtitle: 'Customer inspection window / lid',
+    title: 'Прозрачное окно',
+    subtitle: 'Визуальный обзор продукта для покупателя',
     icon: '👁️',
   },
   procurement: {
-    title: 'Romania Procurement',
-    subtitle: 'Local route & industrial availability',
+    title: 'Закупка в Румынии',
+    subtitle: 'Официальный склад и дистрибьютор в RO',
     icon: '🇷🇴',
   },
 };
@@ -52,22 +52,22 @@ export function GateMatrix({ gates, compact = false }: GateMatrixProps) {
     switch (status) {
       case 'PASS':
         return {
-          text: 'PASS',
+          text: '✅ Пройдено',
           className: 'gate-badge-pass',
         };
       case 'QUALIFICATION_REQUIRED':
         return {
-          text: 'QUALIFICATION REQUIRED',
+          text: '🧪 Требует теста',
           className: 'gate-badge-caution',
         };
       case 'UNKNOWN':
         return {
-          text: 'UNKNOWN (Evidence missing)',
+          text: '❓ Нет замера',
           className: 'gate-badge-unknown',
         };
       case 'FAIL':
         return {
-          text: 'FAIL (Blocking gate)',
+          text: '⛔ Блокировка',
           className: 'gate-badge-fail',
         };
       default:

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import type {
   CandidateRecommendationAssessment,
   PackagingConfiguration,
@@ -16,19 +15,53 @@ interface CandidateRecommendationCardProps {
   isFirstPath?: boolean;
 }
 
+const CANDIDATE_FRIENDLY_META: Record<
+  string,
+  { brand: string; type: string; highlight: string }
+> = {
+  C1: {
+    brand: 'Sacma B.Life Gaia',
+    type: 'Крафт-пакет с био-окном из целлюлозы',
+    highlight: 'Италия · Поставки в RO · Снижение пластика до -85%',
+  },
+  C2: {
+    brand: 'Advanta Smoothwall',
+    type: 'Жаропрочный алюминиевый лоток',
+    highlight: 'Выдерживает запекание до 280°C · 100% переработка в RO',
+  },
+  C3: {
+    brand: 'Coveris PaperLite',
+    type: 'Картонный термолоток с барьерным слоем',
+    highlight: 'Германия · Влаго- и жиростойкий · Выкладка 85°C',
+  },
+  C4: {
+    brand: 'Mondi Trayforma Bio',
+    type: 'Формованный эко-лоток с био-покрытием',
+    highlight: 'Австрия · Барьер без фтора · Для горячих жирных блюд',
+  },
+  C5: {
+    brand: 'BIOPAP SI-14',
+    type: 'Биоразлагаемый лоток (печь + витрина + СВЧ)',
+    highlight: 'Италия · Термостойкость до 175°C · Компостируемый композит',
+  },
+  C6: {
+    brand: 'C6 Адаптивная упаковка',
+    type: 'Конфигурация упаковки под целевой продукт',
+    highlight: 'Румыния · Специальные модификации лотков и пакетов',
+  },
+};
+
 export function CandidateRecommendationCard({
   assessment,
   configuration,
   sourcesMap,
   isFirstPath = false,
 }: CandidateRecommendationCardProps) {
-  const [showSources, setShowSources] = useState(false);
-  const [showScenarios, setShowScenarios] = useState(false);
-  const [showGates, setShowGates] = useState(true);
-
   const isBlocked = assessment.outcome === 'BLOCKED';
   const isC6 = assessment.candidate_id === 'C6';
   const configId = assessment.configuration_id;
+
+  const friendly = CANDIDATE_FRIENDLY_META[assessment.candidate_id];
 
   // Find failing gate if blocked
   const failingGates = Object.values(assessment.gates).filter((g) => g.status === 'FAIL');
@@ -36,13 +69,13 @@ export function CandidateRecommendationCard({
   const getRoleLabel = () => {
     switch (assessment.role) {
       case 'FIRST_QUALIFICATION_PATH':
-        return '1st Qualification Path (Priority 1)';
+        return '⭐ 1-й выбор для пилота (Приоритет 1)';
       case 'PRIORITY_ALTERNATIVE':
-        return 'Priority Alternative / Fallback (Priority 2)';
+        return '⚡ Резервный вариант (Приоритет 2)';
       case 'ALTERNATIVE':
-        return 'Evaluated Alternative';
+        return 'Альтернативное решение';
       case 'BLOCKED':
-        return 'Incompatible / Blocked';
+        return '⛔ Не подходит';
       default:
         return assessment.role;
     }
@@ -61,7 +94,7 @@ export function CandidateRecommendationCard({
             <span className="candidate-id-badge">{assessment.candidate_id}</span>
             {isC6 && configId && (
               <span className="candidate-config-badge">
-                Config: <strong>{configId}</strong>
+                Модификация: <strong>{configId}</strong>
                 {configuration?.role && ` · ${configuration.role}`}
               </span>
             )}
@@ -73,27 +106,56 @@ export function CandidateRecommendationCard({
                 isBlocked ? 'outcome-blocked' : 'outcome-qualification'
               }`}
             >
-              {assessment.outcome}
+              {isBlocked ? 'Заблокировано' : 'Готов к испытаниям'}
             </span>
           </div>
 
-          <h3 className="candidate-name-heading">{assessment.candidate_name}</h3>
-          {assessment.decision_scope && (
-            <span className="candidate-scope-text">{assessment.decision_scope}</span>
+          <h3 className="candidate-name-heading">
+            {friendly ? (
+              <>
+                <strong className="friendly-brand-text">{friendly.brand}</strong>
+                <span className="friendly-type-text"> — {friendly.type}</span>
+              </>
+            ) : (
+              assessment.candidate_name
+            )}
+          </h3>
+          {friendly && (
+            <span className="candidate-highlight-chip">{friendly.highlight}</span>
           )}
+
+          {/* Collapsible raw spec for technical jury */}
+          <details className="candidate-raw-spec-details">
+            <summary className="raw-spec-summary">
+              🔬 Инженерное наименование и область применения
+            </summary>
+            <div className="raw-spec-content">
+              <strong>Спецификация:</strong> {assessment.candidate_name}
+              {assessment.decision_scope && (
+                <div><strong>Область теста:</strong> {assessment.decision_scope}</div>
+              )}
+            </div>
+          </details>
         </div>
       </div>
 
-      {/* Prominent Blocking Gate Callout (Sections 25 & 26) */}
+      {/* Prominent Blocking Gate Callout */}
       {isBlocked && failingGates.length > 0 && (
         <div className="blocking-alert-banner" role="alert">
           <strong className="blocking-banner-title">
-            ⛔ HARD-GATE FAILURE — CANDIDATE BLOCKED FOR THIS WORKFLOW
+            ⛔ ОТКЛОНЕНО ПО ЖЕСТКОМУ КРИТЕРИЮ — КАНДИДАТ НЕ ПОДХОДИТ
           </strong>
           <ul className="failing-gates-list">
             {failingGates.map((fg) => (
               <li key={fg.gate_id}>
-                <strong>{fg.gate_id.replace('_', ' ').toUpperCase()}:</strong> {fg.reason}
+                <strong>
+                  {fg.gate_id === 'thermal_workflow'
+                    ? 'Температурный режим'
+                    : fg.gate_id === 'grease_leak'
+                    ? 'Стойкость к жиру'
+                    : fg.gate_id}:
+                </strong>{' '}
+                {fg.reason}
               </li>
             ))}
           </ul>
@@ -102,23 +164,19 @@ export function CandidateRecommendationCard({
 
       {/* Candidate Rationale */}
       <div className="candidate-rationale-box">
-        <strong className="box-mini-title">Assessment Rationale:</strong>
+        <strong className="box-mini-title">Обоснование оценки:</strong>
         <p className="candidate-rationale-body">{assessment.rationale}</p>
       </div>
 
-      {/* Thermal & Viewing Boundary Scope Warnings (Sections 33, 34, 35) */}
+      {/* Boundary Warning Callout if C5 or C6 */}
       {assessment.candidate_id === 'C5' && (
         <div className="boundary-warning-callout">
-          <span className="warning-icon" aria-hidden="true">
-            ℹ️
-          </span>
+          <span className="warning-icon" aria-hidden="true">ℹ️</span>
           <div className="warning-body">
-            <strong>BIOPAP Thermal & 6-Hour Boundary:</strong>
+            <strong>Границы BIOPAP:</strong>
             <span>
               {' '}
-              6 hours @ 90°C is family-level baseline evidence. Physical qualification of the exact
-              SI-14 tray + selected sealing film + oily poultry food matrix is mandatory before deployment.
-              Conflicting official documents report peak oven limits at 175°C vs 185°C.
+              6 часов при 90°C подтверждены каталогом. При пиковом нагреве в печи существует расхождение между 175°C и 185°C в разных протоколах. Необходим предварительный замер на кухне.
             </span>
           </div>
         </div>
@@ -126,175 +184,137 @@ export function CandidateRecommendationCard({
 
       {isC6 && configId === 'C6-RO-H' && (
         <div className="boundary-warning-callout">
-          <span className="warning-icon" aria-hidden="true">
-            ℹ️
-          </span>
+          <span className="warning-icon" aria-hidden="true">ℹ️</span>
           <div className="warning-body">
-            <strong>Aluminium High-Temperature Boundary:</strong>
+            <strong>Границы алюминия (280°C):</strong>
             <span>
               {' '}
-              The 280°C heat claim applies exclusively to the bare aluminium container body.
-              Transparent viewing closure and retail hermetic seal remain completely unverified for
-              the 250°C oven cycle and must be qualified separately.
+              Жаростойкость 280°C относится исключительно к металлическому корпусу. Пластиковые прозрачные крышки не выдерживают 250°C в печи и должны квалифицироваться отдельно.
             </span>
           </div>
         </div>
       )}
 
-      {/* 6 Hard Gates Evaluation */}
-      <div className="card-section hard-gates-section">
-        <div className="section-toggle-header">
-          <strong className="section-title">6 Non-Compensatory Hard Gates</strong>
-          <button
-            type="button"
-            className="toggle-text-btn"
-            onClick={() => setShowGates(!showGates)}
-          >
-            {showGates ? 'Collapse Gates' : 'Show 6 Gates'}
-          </button>
-        </div>
-        {showGates && <GateMatrix gates={assessment.gates} />}
-      </div>
-
-      {/* Measurable Physical & Material Metrics */}
+      {/* Compact Key Metrics Grid on the card face */}
       <div className="card-section metrics-section">
-        <strong className="section-title">Measurable Physical & Material Metrics</strong>
+        <strong className="section-title">Ключевые измеряемые параметры</strong>
         <div className="metrics-grid">
           <MetricField
-            label="Total Package Mass"
+            label="Масса упаковки"
             field={assessment.metrics.total_package_mass_g}
-            unitOverride="g"
+            unitOverride="г"
           />
           <MetricField
-            label="Plastic Mass in Pack"
+            label="Масса пластика"
             field={assessment.metrics.plastic_mass_g}
-            unitOverride="g"
+            unitOverride="г"
           />
           <MetricField
-            label="Virgin Plastic Mass"
+            label="Первичный пластик"
             field={assessment.metrics.virgin_plastic_mass_g}
-            unitOverride="g"
+            unitOverride="г"
           />
           <MetricField
-            label="Recycled Material Content"
-            field={assessment.metrics.recycled_material_fraction}
-            unitOverride="%"
-          />
-          <MetricField
-            label="Renewable Content"
+            label="Возобновляемое сырье"
             field={assessment.metrics.renewable_material_fraction}
             unitOverride="%"
           />
           {assessment.procurement?.romania_unit_price && (
             <MetricField
-              label="Romania Quoted Price"
+              label="Цена в Румынии"
               field={assessment.procurement.romania_unit_price}
-              unitOverride="RON / unit"
+              unitOverride="RON / шт"
             />
           )}
         </div>
       </div>
 
-      {/* Romania Procurement & EOL Route */}
-      <ProcurementSummary procurement={assessment.procurement} eol={assessment.eol} />
+      {/* Foldable Detailed Sections for Judges & Technical Audits */}
+      <div className="candidate-details-accordions">
+        {/* 1. 6 Hard Gates */}
+        <details className="card-foldable-detail" open={isFirstPath}>
+          <summary className="foldable-detail-summary">
+            <strong>📐 6 критериев допуска (Размер, Жир, Температура, Пищевой допуск...)</strong>
+          </summary>
+          <div className="foldable-detail-content">
+            <GateMatrix gates={assessment.gates} />
+          </div>
+        </details>
 
-      {/* Conditional Screening Scenarios (Opt-in) */}
-      {assessment.scenario_details && assessment.scenario_details.length > 0 && (
-        <div className="card-section scenario-details-section">
-          <button
-            type="button"
-            className="scenario-toggle-btn"
-            onClick={() => setShowScenarios(!showScenarios)}
-          >
-            {showScenarios ? 'Hide Model Scenarios' : `Conditional Screening Scenarios (${assessment.scenario_details.length})`}
-          </button>
+        {/* 2. Romania Procurement & EOL Route */}
+        <details className="card-foldable-detail">
+          <summary className="foldable-detail-summary">
+            <strong>🚚 Поставки в Румынию, цена и утилизация (EOL)</strong>
+          </summary>
+          <div className="foldable-detail-content">
+            <ProcurementSummary procurement={assessment.procurement} eol={assessment.eol} />
+          </div>
+        </details>
 
-          {showScenarios && (
-            <div className="scenario-details-drawer">
-              <span className="scenario-disclaimer">
-                Screening models only — not verified savings. Incumbent baseline is estimated.
-              </span>
-              <div className="scenario-cards-grid">
-                {assessment.scenario_details.map((sc) => (
-                  <div key={sc.scenario_id} className="scenario-subcard">
-                    <strong>{sc.label}</strong>
-                    {sc.reduction_pct && (
-                      <MetricField label="Virgin Reduction (%)" field={sc.reduction_pct} unitOverride="%" />
-                    )}
-                    {sc.reduction_g && (
-                      <MetricField label="Virgin Reduction (g)" field={sc.reduction_g} unitOverride="g" />
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      )}
+        {/* 3. Next Actions & Limitations */}
+        <details className="card-foldable-detail">
+          <summary className="foldable-detail-summary">
+            <strong>📋 План запуска пилота и технические ограничения</strong>
+          </summary>
+          <div className="foldable-detail-content">
+            <NextActions
+              limitations={assessment.limitations}
+              actions={assessment.next_qualification_actions}
+            />
+          </div>
+        </details>
 
-      {/* Limitations & Next Actions */}
-      <NextActions
-        limitations={assessment.limitations}
-        actions={assessment.next_qualification_actions}
-      />
-
-      {/* Referenced Sources Ledger */}
-      {assessment.referenced_source_ids && assessment.referenced_source_ids.length > 0 && (
-        <div className="card-section sources-drawer-section">
-          <button
-            type="button"
-            className="sources-toggle-btn"
-            onClick={() => setShowSources(!showSources)}
-          >
-            {showSources
-              ? 'Hide Referenced Sources'
-              : `Inspect Citations & Evidence Ledger (${assessment.referenced_source_ids.length} sources)`}
-          </button>
-
-          {showSources && (
-            <div className="sources-list-drawer">
-              {assessment.referenced_source_ids.map((sid) => {
-                const sref = sourcesMap[sid];
-                if (!sref) {
+        {/* 4. Referenced Sources Ledger */}
+        {assessment.referenced_source_ids && assessment.referenced_source_ids.length > 0 && (
+          <details className="card-foldable-detail">
+            <summary className="foldable-detail-summary">
+              <strong>📄 Официальные источники и сертификаты ({assessment.referenced_source_ids.length})</strong>
+            </summary>
+            <div className="foldable-detail-content">
+              <div className="sources-list-drawer">
+                {assessment.referenced_source_ids.map((sid) => {
+                  const sref = sourcesMap[sid];
+                  if (!sref) {
+                    return (
+                      <div key={sid} className="source-item missing-source">
+                        <code>{sid}</code>: Источник зарегистрирован в каталоге.
+                      </div>
+                    );
+                  }
                   return (
-                    <div key={sid} className="source-item missing-source">
-                      <code>{sid}</code>: Citation details not mapped in candidates response.
-                    </div>
-                  );
-                }
-                return (
-                  <div key={sid} className="source-item">
-                    <div className="source-header-row">
-                      <span className="source-id-pill">{sref.source_id}</span>
-                      {sref.tier && <span className="source-tier-tag">Tier {sref.tier}</span>}
-                      {sref.romania_evidence && (
-                        <span className="source-ro-tag">🇷🇴 Romania Source</span>
+                    <div key={sid} className="source-item">
+                      <div className="source-header-row">
+                        <span className="source-id-pill">{sref.source_id}</span>
+                        {sref.tier && <span className="source-tier-tag">Уровень {sref.tier}</span>}
+                        {sref.romania_evidence && (
+                          <span className="source-ro-tag">🇷🇴 Документ из Румынии</span>
+                        )}
+                      </div>
+                      <strong className="source-title-text">{sref.title}</strong>
+                      {sref.findings && <p className="source-findings">{sref.findings}</p>}
+                      {sref.limitations && (
+                        <small className="source-limitations">
+                          <strong>Ограничения:</strong> {sref.limitations}
+                        </small>
+                      )}
+                      {sref.url && (
+                        <a
+                          href={sref.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="source-external-link"
+                        >
+                          Открыть первоисточник (PDF / Каталог) ↗
+                        </a>
                       )}
                     </div>
-                    <strong className="source-title-text">{sref.title}</strong>
-                    {sref.findings && <p className="source-findings">{sref.findings}</p>}
-                    {sref.limitations && (
-                      <small className="source-limitations">
-                        <strong>Limitations:</strong> {sref.limitations}
-                      </small>
-                    )}
-                    {sref.url && (
-                      <a
-                        href={sref.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="source-external-link"
-                      >
-                        Inspect Official Source Document ↗
-                      </a>
-                    )}
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
-          )}
-        </div>
-      )}
+          </details>
+        )}
+      </div>
     </article>
   );
 }

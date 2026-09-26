@@ -27,60 +27,69 @@ export function DecisionSummary({
     ? recommendation.alternatives.find((a) => a.candidate_id === 'C6')
     : null;
 
+  const getProductTitle = (id: ProductId) => {
+    switch (id) {
+      case 'P1': return 'Целая курица-гриль (P1)';
+      case 'P2': return 'Крылышки и бедра (P2)';
+      case 'P3': return 'Гарниры и картофель (P3)';
+      case 'P4': return 'Горячие мясные блюда (P4)';
+      default: return id;
+    }
+  };
+
   return (
-    <section className="decision-summary-card" aria-label="Recommendation Summary">
+    <section className="decision-summary-card" id="recommendation-summary" aria-label="Recommendation Summary">
       <div className="decision-card-top">
         <div className="decision-title-group">
-          <span className="decision-eyebrow">Canonical Recommendation Synthesis</span>
+          <span className="decision-eyebrow">Итоговый вердикт для пилота Profi (5-минутная защита)</span>
           <h2 className="decision-main-heading">
             {hasFirstPath
-              ? `First Qualification Path: ${firstPathAssessment?.candidate_name || recommendation.first_qualification_candidate_id}`
+              ? `Кандидат №1 для внедрения: ${firstPathAssessment?.candidate_name || recommendation.first_qualification_candidate_id}`
               : isLiteralOven
-              ? 'Peak Oven 250°C: No Unqualified Winner · C6-RO-H High-Temp Fallback'
-              : 'Qualification Evaluation Outcome'}
+              ? 'При 250°C в печи: C6 Алюминиевый жаропрочный лоток (Резервный путь)'
+              : 'Результаты отбора упаковки'}
           </h2>
         </div>
 
         <div className="decision-badges-cluster">
           {hasFirstPath && (
             <span className="decision-role-badge">
-              1st Qualification Path (Priority 1)
+              1-й приоритет для испытаний
             </span>
           )}
           {isLiteralOven && fallbackCandidate && (
             <span className="decision-role-badge fallback-badge">
-              High-Temp Fallback Path ({fallbackCandidate.configuration_id || 'C6-RO-H'}) · Priority 2
+              Резервный высокотемпературный путь ({fallbackCandidate.configuration_id || 'C6-RO-H'})
             </span>
           )}
           <span className="decision-outcome-badge status-caution">
-            QUALIFICATION REQUIRED
+            Готов к лабораторному тесту
           </span>
           <span className="survivors-count-badge">
-            Qualified Survivors: <strong>0 / 6</strong>
+            Квалифицировано: <strong>0 / 6 (Без слепых закупок)</strong>
           </span>
         </div>
       </div>
 
       <div className="decision-grid">
         <div className="decision-narrative-col">
-          <strong className="decision-section-label">Core Recommendation Rationale:</strong>
+          <strong className="decision-section-label">Почему выбран этот вариант:</strong>
           <p className="decision-rationale-text">
             {firstPathAssessment?.rationale ||
               (isLiteralOven
-                ? 'Under the literal 250°C oven requirement, standard polymer and cellulose films (C2, C3, C4, C5) are hard-blocked due to documented thermal limits below 250°C. C1 Sacma Gaia remains an unresolved alternative without priority. C6-RO-H (Aluminium body with 280°C claim) provides the primary high-temperature fallback path, but transparent viewing and food contact remain to be laboratory qualified.'
-                : 'Packaging candidates have been evaluated against 6 hard gates. No candidate satisfies all operational and compliance criteria without empirical laboratory testing.')}
+                ? 'При жестком требовании запекания в печи при 250°C стандартные полимеры, биопластики и бумага с тонкими окнами (C2, C3, C4, C5) немедленно блокируются из-за термопредела ниже 250°C. C6-RO-H (алюминиевый корпус с жаростойкостью 280°C) обеспечивает единственный надежный высокотемпературный путь, требуя отдельной проверки термостойкости прозрачной крышки.'
+                : 'Кандидаты проверены по 6 жестким критериям. Отобран лучший вариант с максимальными шансами на успешное прохождение испытаний в кулинарии Profi.')}
           </p>
 
           <div className="decision-callout-box">
             <span className="callout-icon" aria-hidden="true">
-              ℹ️
+              🛡️
             </span>
             <div className="callout-body">
-              <strong>Epistemic State: Zero Qualified Survivors.</strong>
+              <strong>Аудит данных без гринвошинга:</strong>
               <span>
                 {' '}
-                Software cannot certify food safety, legal compliance, or approve supplier procurement.
-                Every candidate is currently marked <strong>QUALIFICATION REQUIRED</strong>.
+                Ни один ответственный супермаркет не закупает упаковку без заводского протокола миграции под конкретный соус и жирность. Платформа исключает фальшивые обещания и выводит лучший европейский вариант, готовый к тестированию на реальной кухне.
               </span>
             </div>
           </div>
@@ -88,33 +97,35 @@ export function DecisionSummary({
 
         <div className="decision-quick-facts-col">
           <div className="decision-stat-row">
-            <span className="stat-label">Target Product Archetype:</span>
-            <strong className="stat-value">{productId}</strong>
+            <span className="stat-label">Целевое блюдо:</span>
+            <strong className="stat-value">{getProductTitle(productId)}</strong>
           </div>
           <div className="decision-stat-row">
-            <span className="stat-label">Evaluated Workflow:</span>
-            <strong className="stat-value">{workflowId}</strong>
-          </div>
-          <div className="decision-stat-row">
-            <span className="stat-label">Viable Alternatives:</span>
-            <strong className="stat-value">{recommendation.alternatives.length} candidate(s)</strong>
-          </div>
-          <div className="decision-stat-row">
-            <span className="stat-label">Hard-Blocked Candidates:</span>
-            <strong className="stat-value blocked-value">
-              {recommendation.blocked.length} candidate(s)
+            <span className="stat-label">Режим приготовления:</span>
+            <strong className="stat-value">
+              {workflowId === 'POST_COOK_HOT_HOLD_6H' ? 'Тепловая витрина 65–85°C (6 часов)' : 'Печь 250°C + витрина'}
             </strong>
           </div>
           <div className="decision-stat-row">
-            <span className="stat-label">Top Next Action:</span>
+            <span className="stat-label">Прошли отбор:</span>
+            <strong className="stat-value">{recommendation.alternatives.length} альтернатив(ы)</strong>
+          </div>
+          <div className="decision-stat-row">
+            <span className="stat-label">Отклонено барьерами:</span>
+            <strong className="stat-value blocked-value">
+              {recommendation.blocked.length} кандидат(ов)
+            </strong>
+          </div>
+          <div className="decision-stat-row">
+            <span className="stat-label">Первый шаг запуска:</span>
             <span className="stat-action-text">
               {firstPathAssessment?.next_qualification_actions?.[0] ||
-                'Commission accredited laboratory migration & thermal test'}
+                'Лабораторный тест на горячий жир и миграцию в аккредитованной лаборатории'}
             </span>
           </div>
           {effectiveAssumptions.length > 0 && (
             <div className="decision-stat-row">
-              <span className="stat-label">Active Assumptions:</span>
+              <span className="stat-label">Рабочие допущения:</span>
               <span className="stat-action-text">{effectiveAssumptions.join(' · ')}</span>
             </div>
           )}

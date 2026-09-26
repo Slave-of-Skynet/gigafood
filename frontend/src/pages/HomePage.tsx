@@ -23,6 +23,7 @@ const CHROME_I18N: Record<
   {
     eyebrow: string;
     subtitle: string;
+    heroDesc: string;
     scopeNote: string;
     navOverview: string;
     navRecommendation: string;
@@ -30,32 +31,35 @@ const CHROME_I18N: Record<
     navCandidates: string;
   }
 > = {
-  en: {
-    eyebrow: 'Evidence-Aware Decision Support',
-    subtitle: 'Packaging Transition Copilot',
-    scopeNote: 'UI chrome: EN · Backend evidence & API enums remain canonical EN',
-    navOverview: 'Overview',
-    navRecommendation: 'Recommendation Journey',
-    navPortfolio: 'Portfolio & Baseline',
-    navCandidates: 'Evaluated Candidates',
-  },
   ru: {
-    eyebrow: 'Поддержка решений на основе доказательств',
-    subtitle: 'Копилот перехода на устойчивую упаковку',
-    scopeNote: 'Шапка UI: RU · Данные backend и доказательства остаются на каноническом EN',
-    navOverview: 'Обзор (Overview)',
-    navRecommendation: 'Рекомендация (Recommendation)',
-    navPortfolio: 'Портфель и база (Baseline)',
-    navCandidates: 'Кандидаты (Candidates)',
+    eyebrow: 'Хакатон 2026 · Пилотный проект для сети супермаркетов Profi',
+    subtitle: 'Переход на экологичную упаковку горячих блюд',
+    heroDesc: 'Быстрый подбор и квалификация европейской эко-упаковки (Sacma, BIOPAP, Advanta) для 4 категорий горячего стола. Проверка по 6 жестким критериям качества и реальным поставкам в Румынии.',
+    scopeNote: 'Интерфейс: RU · Доказательства: канонический EN',
+    navOverview: 'Главная',
+    navRecommendation: 'Рекомендации',
+    navPortfolio: 'Портфель решений',
+    navCandidates: 'Кандидаты',
+  },
+  en: {
+    eyebrow: 'Hackathon 2026 · Pilot for Profi Supermarket Chain',
+    subtitle: 'Sustainable Hot-Food Packaging Transition',
+    heroDesc: 'Rapidly evaluate and qualify real European eco-packaging (Sacma, BIOPAP, Advanta) for 4 hot-food categories. Screened against 6 strict quality & thermal gates with verified Romania B2B procurement.',
+    scopeNote: 'UI: EN · Evidence: Canonical EN',
+    navOverview: 'Overview',
+    navRecommendation: 'Recommendation',
+    navPortfolio: 'Portfolio',
+    navCandidates: 'Candidates',
   },
   md: {
-    eyebrow: 'Suport decizional bazat pe dovezi',
-    subtitle: 'Copilot pentru tranziția ambalajelor',
-    scopeNote: 'Interfață: MD · Dovezile și stările API rămân în EN canonic',
-    navOverview: 'Prezentare (Overview)',
-    navRecommendation: 'Recomandare (Recommendation)',
-    navPortfolio: 'Portofoliu & Bază',
-    navCandidates: 'Candidați Evaluați',
+    eyebrow: 'Hackathon 2026 · Proiect pilot pentru rețeaua Profi',
+    subtitle: 'Tranziția la ambalaje sustenabile pentru mâncare caldă',
+    heroDesc: 'Selecție rapidă și calificare pentru ambalaje ecologice europene (Sacma, BIOPAP, Advanta) pentru 4 categorii calde. Verificare după 6 criterii stricte și achiziții reale în România.',
+    scopeNote: 'Interfață: MD · Dovezi: EN canonic',
+    navOverview: 'Prezentare',
+    navRecommendation: 'Recomandare',
+    navPortfolio: 'Portofoliu',
+    navCandidates: 'Candidați',
   },
 };
 
@@ -129,48 +133,14 @@ export function HomePage() {
     <>
       <header className="header-project">
         <div className="nav-bar">
-          <div className="blk-lang">
-            <div className="runtime-pill">
-              <span
-                className={`pulse-dot ${
-                  runtime.state === 'ready' ? '' : 'offline'
-                }`}
-              />
-              <span>
-                {runtime.state === 'ready'
-                  ? `A-core: ${runtime.data.health.status} · ${runtime.data.evidence.dataset_kind}`
-                  : runtime.state === 'loading'
-                  ? 'Checking runtime…'
-                  : 'A-core unavailable'}
-              </span>
-            </div>
-
-            <div className="lang-control-cluster">
-              <span className="lang-scope-note">{chrome.scopeNote}</span>
-              <select
-                name="lang"
-                aria-label="Header UI language"
-                className="lang-select"
-                value={uiLang}
-                onChange={(e) => setUiLang(e.target.value as UiLang)}
-              >
-                <option value="en" className="lang">
-                  EN
-                </option>
-                <option value="ru" className="lang">
-                  RU
-                </option>
-                <option value="md" className="lang">
-                  MD
-                </option>
-              </select>
-            </div>
-          </div>
-
           <div className="brand-cluster">
             <a href="#overview" className="logo-img" aria-label="PackShift Home">
               <img src="/logo.png" alt="PackShift" className="logo-log" />
             </a>
+            <div className="brand-header-text">
+              <strong className="brand-name">PackShift</strong>
+              <span className="brand-sub-badge">Profi Pilot</span>
+            </div>
           </div>
 
           <div className="nav-bar-sect">
@@ -183,16 +153,16 @@ export function HomePage() {
                 {chrome.navOverview}
               </a>
               <a href="#recommendation-archetypes" className="desc-nav-bar">
-                Hot Food (P1–P4)
+                Блюда (P1–P4)
               </a>
               <a href="#recommendation-workflow" className="desc-nav-bar">
-                Workflow
+                Режим
               </a>
               <a href="#recommendation-summary" className="desc-nav-bar">
-                Decision Summary
+                Решение
               </a>
               <a href="#recommendation-candidates" className="desc-nav-bar">
-                Candidates
+                Кандидаты
               </a>
             </nav>
 
@@ -218,24 +188,53 @@ export function HomePage() {
               aria-label="Primary Navigation"
             >
               <a href="#overview" className="desc-nav-bar">
-                Overview
+                {chrome.navOverview}
               </a>
               <a href="#impact" className="desc-nav-bar">
-                Impact
+                Экология
               </a>
               <a href="#economics" className="desc-nav-bar">
-                Economics
+                Экономика
               </a>
               <a href="#eligibility" className="desc-nav-bar">
-                Eligibility
+                Соответствие
               </a>
               <a href="#packages" className="desc-nav-bar">
-                Packaging
+                Логистика
               </a>
               <a href="#evidence" className="desc-nav-bar">
-                Evidence
+                Источники
               </a>
             </nav>
+          </div>
+
+          <div className="blk-lang">
+            <div className="runtime-pill" title="A-core status">
+              <span
+                className={`pulse-dot ${
+                  runtime.state === 'ready' ? '' : 'offline'
+                }`}
+              />
+              <span>{runtime.state === 'ready' ? 'Ready' : 'Checking…'}</span>
+            </div>
+
+            <select
+              name="lang"
+              aria-label="Header UI language"
+              className="lang-select"
+              value={uiLang}
+              onChange={(e) => setUiLang(e.target.value as UiLang)}
+            >
+              <option value="ru" className="lang">
+                RU
+              </option>
+              <option value="en" className="lang">
+                EN
+              </option>
+              <option value="md" className="lang">
+                MD
+              </option>
+            </select>
           </div>
         </div>
       </header>
@@ -249,28 +248,33 @@ export function HomePage() {
               </div>
               <h1 className="hero-title">PackShift</h1>
               <p className="hero-subtitle">{chrome.subtitle}</p>
-              <p className="hero-description">
-                Evaluate packaging transitions and portfolios. Measure
-                virgin-plastic change, test bounded operating-context scenarios,
-                and see the evidence and uncertainty behind each result.
-              </p>
+              <p className="hero-description">{chrome.heroDesc}</p>
             </div>
           </div>
 
-          <div className="policy-guard-banner">
-            <span>
-              <strong>Decision support only:</strong> Food safety, shelf life,
-              comprehensive operational suitability and legal compliance are{' '}
-              <strong>NOT VERIFIED</strong>. Environmental calculation ≠
-              candidate eligibility ≠ implementation approval.
-            </span>
-            <div className="axiom-chips">
-              <span className="axiom-chip">CALCULATED ≠ VERIFIED</span>
-              <span className="axiom-chip">SOURCE_AVAILABLE ≠ VERIFIED</span>
-              <span className="axiom-chip">missing ≠ 0</span>
-              <span className="axiom-chip">PUBLIC ≠ PROVIDER</span>
-            </div>
+          <div className="hero-value-chips">
+            <span className="hero-value-chip">🌱 Реальные эко-материалы (TRL 8–9)</span>
+            <span className="hero-value-chip">🇷🇴 Поставки в Румынию и цены в RON</span>
+            <span className="hero-value-chip">⚖️ 6 жестких барьеров качества</span>
+            <span className="hero-value-chip">🚫 Без гринвошинга</span>
           </div>
+
+          <details className="policy-disclosure-details">
+            <summary className="policy-disclosure-summary">
+              ℹ️ Методология верификации данных и правила честности (для жюри)
+            </summary>
+            <div className="policy-guard-banner">
+              <span>
+                <strong>Инструмент поддержки решений:</strong> программный расчет экологического следа не заменяет лабораторные испытания на пищевую миграцию и санитарные протоколы. Все кандидаты имеют статус <strong>ТРЕБУЕТСЯ КВАЛИФИКАЦИЯ</strong>.
+              </span>
+              <div className="axiom-chips">
+                <span className="axiom-chip">CALCULATED ≠ VERIFIED</span>
+                <span className="axiom-chip">SOURCE_AVAILABLE ≠ VERIFIED</span>
+                <span className="axiom-chip">missing ≠ 0</span>
+                <span className="axiom-chip">PUBLIC ≠ PROVIDER</span>
+              </div>
+            </div>
+          </details>
         </section>
 
         <div className="mode-switch" role="group" aria-label="Product mode">
@@ -280,7 +284,7 @@ export function HomePage() {
             aria-pressed={mode === 'recommendation'}
             onClick={() => setMode('recommendation')}
           >
-            Hot-Food Recommendation
+            🎯 Рекомендатор упаковки (Live Pilot)
           </button>
           <button
             type="button"
@@ -288,7 +292,7 @@ export function HomePage() {
             aria-pressed={mode === 'selection'}
             onClick={() => setMode('selection')}
           >
-            Portfolio Selection
+            📊 Анализ портфеля
           </button>
           <button
             type="button"
@@ -296,7 +300,7 @@ export function HomePage() {
             aria-pressed={mode === 'comparison'}
             onClick={() => setMode('comparison')}
           >
-            Comparison
+            💰 Экономика и сценарии
           </button>
         </div>
 
