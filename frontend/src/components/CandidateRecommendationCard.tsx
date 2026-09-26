@@ -69,9 +69,9 @@ export function CandidateRecommendationCard({
   const getRoleLabel = () => {
     switch (assessment.role) {
       case 'FIRST_QUALIFICATION_PATH':
-        return '⭐ 1-й выбор для пилота (Приоритет 1)';
+        return '⭐ Рекомендуемый выбор для пилота';
       case 'PRIORITY_ALTERNATIVE':
-        return '⚡ Резервный вариант (Приоритет 2)';
+        return '⚡ Резервный вариант';
       case 'ALTERNATIVE':
         return 'Альтернативное решение';
       case 'BLOCKED':
@@ -91,11 +91,9 @@ export function CandidateRecommendationCard({
       <div className="candidate-card-header">
         <div className="candidate-identity-group">
           <div className="candidate-tags-row">
-            <span className="candidate-id-badge">{assessment.candidate_id}</span>
-            {isC6 && configId && (
+            {isC6 && (
               <span className="candidate-config-badge">
-                Модификация: <strong>{configId}</strong>
-                {configuration?.role && ` · ${configuration.role}`}
+                Адаптивная термостойкая упаковка{configuration?.role ? ` (${configuration.role})` : ''}
               </span>
             )}
             <span className={`candidate-role-badge role-${assessment.role.toLowerCase()}`}>
@@ -234,7 +232,7 @@ export function CandidateRecommendationCard({
         {/* 1. 6 Hard Gates */}
         <details className="card-foldable-detail" open={isFirstPath}>
           <summary className="foldable-detail-summary">
-            <strong>📐 6 критериев допуска (Размер, Жир, Температура, Пищевой допуск...)</strong>
+            <strong>📐 Проверка критериев допуска</strong>
           </summary>
           <div className="foldable-detail-content">
             <GateMatrix gates={assessment.gates} />
@@ -268,7 +266,7 @@ export function CandidateRecommendationCard({
         {assessment.referenced_source_ids && assessment.referenced_source_ids.length > 0 && (
           <details className="card-foldable-detail">
             <summary className="foldable-detail-summary">
-              <strong>📄 Официальные источники и сертификаты ({assessment.referenced_source_ids.length})</strong>
+              <strong>📄 Официальные источники и сертификаты</strong>
             </summary>
             <div className="foldable-detail-content">
               <div className="sources-list-drawer">

@@ -213,13 +213,13 @@ export function RecommendationView({ visible }: RecommendationViewProps) {
           {/* 3. Primary Candidate Section (First Qualification Path or High-Temp Fallback) */}
           <section className="results-group primary-path-group" aria-label="First Qualification Path">
             <div className="group-header">
-              <span className="group-tag">Primary Investigation Focus</span>
+              <span className="group-tag">Основной фокус</span>
               <h3 className="group-heading">
                 {firstPathAssessment
-                  ? 'First Packaging Path Worth Qualifying (Priority 1)'
+                  ? 'Рекомендуемый вариант для пилота'
                   : selectedWorkflowId === 'LITERAL_OVEN_250C_THEN_HOLD'
-                  ? 'High-Temperature Fallback Architecture (Priority 2)'
-                  : 'Candidate Under Evaluation'}
+                  ? 'Резервный жаростойкий вариант'
+                  : 'Кандидат на оценке'}
               </h3>
             </div>
 
@@ -239,12 +239,11 @@ export function RecommendationView({ visible }: RecommendationViewProps) {
                 <div className="no-first-path-inner">
                   <span className="icon-warn">⚠️</span>
                   <div>
-                    <strong>No Priority 1 Qualification Path Available for Literal 250°C Oven Path</strong>
+                    <strong>Нет прямого решения для запекания в печи при 250°C</strong>
                     <p>
-                      All polymer, biopolymer, and paper-window solutions (C2, C3, C4, C5) are hard-blocked
-                      due to heat limits below 250°C. C1 Sacma Gaia remains an unprioritized alternative.
-                      C6-RO-H (Aluminium bare body) serves as a high-temperature fallback path (Priority 2),
-                      requiring separate qualification of food-contact coatings and transparent closures.
+                      При экстремальной температуре 250°C стандартные полимеры, биопластики и бумага с тонкими окнами
+                      блокируются по термопределу. Алюминиевый корпус служит резервным путем, требующим отдельной
+                      квалификации пищевых покрытий и жаропрочных крышек.
                     </p>
                   </div>
                 </div>
@@ -256,13 +255,13 @@ export function RecommendationView({ visible }: RecommendationViewProps) {
           {alternativeAssessments.length > 0 && (
             <section className="results-group alternatives-group" aria-label="Viable Alternatives">
               <div className="group-header">
-                <span className="group-tag">Candidate Landscape</span>
+                <span className="group-tag">Альтернативы</span>
                 <h3 className="group-heading">
-                  Viable Alternatives Requiring Qualification ({alternativeAssessments.length})
+                  Допустимые альтернативные варианты
                 </h3>
                 <p className="group-desc">
-                  These solutions satisfy basic thermal holding or material constraints but still require
-                  empirical laboratory verification for food contact, seal integrity, or store workflow.
+                  Данные варианты соответствуют температурным нормам витрины, но требуют стандартной
+                  санитарной верификации перед запуском в магазинах.
                 </p>
               </div>
 
@@ -286,13 +285,13 @@ export function RecommendationView({ visible }: RecommendationViewProps) {
           {blockedAssessments.length > 0 && (
             <section className="results-group blocked-group" aria-label="Blocked Candidates">
               <div className="group-header">
-                <span className="group-tag blocked-tag">Hard-Gate Rejections</span>
+                <span className="group-tag blocked-tag">Не прошли проверку</span>
                 <h3 className="group-heading">
-                  Incompatible & Hard-Blocked Candidates ({blockedAssessments.length})
+                  Кандидаты, не прошедшие проверку
                 </h3>
                 <p className="group-desc">
-                  These candidates fail at least one non-compensatory hard gate (e.g. thermal limit below oven cycle
-                  or dimensional incompatibility with the selected hot-food portion).
+                  Эти варианты не подходят по ключевым критериям (например, недостаточная термостойкость для печи
+                  или несоответствие объему порции).
                 </p>
               </div>
 
@@ -315,8 +314,8 @@ export function RecommendationView({ visible }: RecommendationViewProps) {
           {/* 6. Baseline Incumbent Context (Section 40) */}
           <section className="results-group baselines-group" aria-label="Incumbent Baselines Context">
             <div className="group-header">
-              <span className="group-tag">Reference Baselines</span>
-              <h3 className="group-heading">Profi Incumbent vs Market References</h3>
+              <span className="group-tag">Базовое сравнение</span>
+              <h3 className="group-heading">Текущая упаковка Profi и рыночные аналоги</h3>
             </div>
 
             <div className="baselines-cards-grid">
@@ -351,7 +350,7 @@ export function RecommendationView({ visible }: RecommendationViewProps) {
           {/* 7. Mandatory Disclosures & Epistemic Guardrails (Section 86) */}
           <footer className="recommendation-disclosures-footer">
             <div className="disclosures-inner">
-              <strong className="disclosures-title">⚖️ Mandatory Product Governance & Legal Disclosures:</strong>
+              <strong className="disclosures-title">⚖️ Обязательные правила валидации данных и соответствие нормам:</strong>
               <ul className="disclosures-list">
                 {evaluation.disclosures.map((d, idx) => (
                   <li key={idx}>{d}</li>

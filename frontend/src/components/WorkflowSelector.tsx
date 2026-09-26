@@ -17,7 +17,7 @@ export function WorkflowSelector({
     <section className="workflow-selector-deck" id="recommendation-workflow" aria-label="Select Operational Workflow">
       <div className="selector-title-row">
         <div>
-          <span className="control-step-tag">Шаг 2 · Температурный режим</span>
+          <span className="control-step-tag">Температурный режим</span>
           <h2 className="control-section-heading">Как блюдо готовится и выкладывается в магазине?</h2>
         </div>
         <span className="current-workflow-badge">

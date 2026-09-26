@@ -153,7 +153,7 @@ export function HomePage() {
                 {chrome.navOverview}
               </a>
               <a href="#recommendation-archetypes" className="desc-nav-bar">
-                Блюда (P1–P4)
+                Блюда
               </a>
               <a href="#recommendation-workflow" className="desc-nav-bar">
                 Режим

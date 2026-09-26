@@ -29,10 +29,10 @@ export function DecisionSummary({
 
   const getProductTitle = (id: ProductId) => {
     switch (id) {
-      case 'P1': return 'Целая курица-гриль (P1)';
-      case 'P2': return 'Крылышки и бедра (P2)';
-      case 'P3': return 'Гарниры и картофель (P3)';
-      case 'P4': return 'Горячие мясные блюда (P4)';
+      case 'P1': return 'Целая курица-гриль';
+      case 'P2': return 'Крылышки и бедра';
+      case 'P3': return 'Гарниры и картофель';
+      case 'P4': return 'Горячие мясные блюда';
       default: return id;
     }
   };
@@ -44,9 +44,9 @@ export function DecisionSummary({
           <span className="decision-eyebrow">Итоговый вердикт для пилота Profi (5-минутная защита)</span>
           <h2 className="decision-main-heading">
             {hasFirstPath
-              ? `Кандидат №1 для внедрения: ${firstPathAssessment?.candidate_name || recommendation.first_qualification_candidate_id}`
+              ? `Рекомендуемый вариант для внедрения: ${firstPathAssessment?.candidate_name || recommendation.first_qualification_candidate_id}`
               : isLiteralOven
-              ? 'Peak Oven 250°C: No Priority 1 Qualification Path · C6-RO-H High-Temp Fallback'
+              ? 'Запекание в печи 250°C: Резервный жаростойкий вариант'
               : 'Результаты отбора упаковки'}
           </h2>
         </div>
@@ -54,19 +54,19 @@ export function DecisionSummary({
         <div className="decision-badges-cluster">
           {hasFirstPath && (
             <span className="decision-role-badge">
-              1-й приоритет для испытаний
+              Рекомендуемый выбор для испытаний
             </span>
           )}
           {isLiteralOven && fallbackCandidate && (
             <span className="decision-role-badge fallback-badge">
-              Резервный высокотемпературный путь ({fallbackCandidate.configuration_id || 'C6-RO-H'})
+              Резервный высокотемпературный вариант
             </span>
           )}
           <span className="decision-outcome-badge status-caution">
             Готов к лабораторному тесту
           </span>
           <span className="survivors-count-badge">
-            Квалифицировано: <strong>0 / 6 (Без слепых закупок)</strong>
+            Требуется квалификация (без слепых закупок)
           </span>
         </div>
       </div>

@@ -47,7 +47,7 @@ export function ProductSelector({
     <section className="product-selector-deck" id="recommendation-archetypes" aria-label="Select Food Archetype">
       <div className="selector-title-row">
         <div>
-          <span className="control-step-tag">Шаг 1 · Выбор блюда</span>
+          <span className="control-step-tag">Выбор блюда</span>
           <h2 className="control-section-heading">Какое горячее блюдо упаковываем?</h2>
         </div>
         <span className="selected-product-badge">
@@ -75,7 +75,6 @@ export function ProductSelector({
               aria-pressed={isSelected}
             >
               <div className="product-card-top">
-                <span className="product-id-tag">{prod.product_id}</span>
                 <span className="product-icon" aria-hidden="true">
                   {meta.icon}
                 </span>

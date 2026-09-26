@@ -87,7 +87,7 @@ export function MetricField({
             className="provenance-toggle-btn"
             onClick={() => setExpanded(!expanded)}
           >
-            {expanded ? 'Hide sources' : `Sources (${field.source_ids.length})`}
+            {expanded ? 'Скрыть источники' : 'Источники'}
           </button>
           {expanded && (
             <div className="provenance-details-drawer">
