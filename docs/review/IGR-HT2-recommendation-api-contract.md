@@ -39,7 +39,7 @@
 Task **IGR-HT2** delivers the production-ready recommendation runtime based on the canonical snapshot `HTF-03-canonical-packaging-dataset.json`. It is purely additive:
 - Existing Selection (`/api/v1/portfolios/**`), Economics (`/api/v1/scenarios/**/economics`), and Health (`/api/v1/health`) endpoints are completely untouched and operational.
 - New endpoints are isolated under `/api/v1/recommendation/**`.
-- Provenance integrity: Every recommendation payload carries the SHA256 revision hash of `HTF-03-canonical-packaging-dataset.json`.
+- Provenance integrity: Every recommendation payload carries the deterministic composite SHA256 revision hash of canonical and prototype-display datasets (`canonical:<sha>;display:<sha>`).
 - Typed TypeScript interfaces and client methods are available in `frontend/src/api/contracts.ts` and `frontend/src/api/client.ts`.
 
 ---
@@ -54,7 +54,7 @@ Retrieves available product archetypes and thermal workflows with their baseline
 - `dataset_id`: `"HTF-03-canonical-packaging"`
 - `research_cut_off`: `"2026-09-26"`
 - `market`: `"Romania"`
-- `source_revision_hash`: SHA256 of canonical dataset
+- `source_revision_hash`: Deterministic composite SHA256 of canonical + prototype-display datasets
 - `products`: List of 4 product archetypes (`P1`, `P2`, `P3`, `P4`)
 - `workflows`: List of 2 workflow definitions (`POST_COOK_HOT_HOLD_6H`, `LITERAL_OVEN_250C_THEN_HOLD`)
 - `default_product_id`: `"P1"`
@@ -69,7 +69,8 @@ Retrieves the full catalog of candidate packaging systems, specialized configura
 - `configurations`: List of 4 C6 configurations (`C6-RO-P`, `C6-RO-W`, `C6-RO-H`, `C6-EU`).
 - `baselines`: List of 3 incumbent baselines (`B1`, `B2`, `B3`).
 - `referenced_sources`: Mapping of `source_id` to `SourceReference` (url, tier, findings, limitations).
-- `rendering_contract`: UI formatting directives (badge styles, confidence labels).
+- `rendering_contract`: Typed, allowlisted UI formatting directives (`RenderingContract` model: badge styles, confidence labels, precision defaults).
+
 
 ### 2.3 POST `/api/v1/recommendation/evaluate`
 Evaluates a specific product archetype and workflow combination.

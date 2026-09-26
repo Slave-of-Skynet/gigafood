@@ -1,5 +1,5 @@
 from typing import Annotated, Any, Literal
-from pydantic import Field
+from pydantic import Field, field_validator
 from app.domain._contract import Contract
 
 EpistemicState = Literal[
@@ -122,6 +122,33 @@ class HardGate(Contract):
     status: GateStatus
     reason: str
     source_ids: list[str] = Field(default_factory=list)
+
+
+class CanonicalGateRecord(Contract):
+    status: GateStatus
+    reason: Annotated[str, Field(min_length=1)]
+    source_ids: list[str] = Field(default_factory=list)
+
+    @field_validator("reason")
+    @classmethod
+    def validate_reason_non_empty(cls, v: str) -> str:
+        if not v.strip():
+            raise ValueError("Gate reason must be a non-empty string")
+        return v
+
+
+class CanonicalGateRow(Contract):
+    product_id: ProductId
+    candidate_id: CandidateId
+    workflow: WorkflowId
+    configuration_id: ConfigurationId | None = None
+    gates: dict[GateName, CanonicalGateRecord]
+    outcome: Literal["QUALIFICATION REQUIRED", "BLOCKED"]
+    approved_for_procurement: Literal[False] = False
+    qualified_survivor: Literal[False] = False
+    qualification_priority: int | None = None
+    decision_scope: str | None = None
+
 
 
 class ProductDecisionSummary(Contract):
@@ -309,6 +336,22 @@ class RecommendationProductsResponse(Contract):
     effective_assumptions: list[str] = Field(default_factory=list)
 
 
+class RenderingContract(Contract):
+    always_show: list[str] = Field(default_factory=list)
+    estimated_prefix: str
+    unknown_label: str
+    use_null_as_zero: bool
+    round_mass_decimals: int
+    round_percentage_decimals: int
+    hide_central_without_range: bool
+    hide_unknown_numeric: bool
+    automatic_procurement_approval: bool
+    default_benefit_badge: str
+    gating: str
+    material_carbon: str
+    estimated_baseline: str
+
+
 class RecommendationCandidatesResponse(Contract):
     schema_version: str = "htf03.recommendation.v1"
     dataset_id: str = "HTF-03-canonical-packaging"
@@ -319,8 +362,9 @@ class RecommendationCandidatesResponse(Contract):
     configurations: list[PackagingConfiguration]
     baselines: list[BaselineSummary]
     referenced_sources: dict[str, SourceReference]
-    rendering_contract: dict[str, Any] = Field(default_factory=dict)
+    rendering_contract: RenderingContract
     disclosures: list[str] = Field(default_factory=list)
+
 
 
 class RecommendationEvaluationRequest(Contract):
