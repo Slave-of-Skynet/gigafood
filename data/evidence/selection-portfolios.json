@@ -1,0 +1,205 @@
+[
+  {
+    "id": "faerch-deli-trays",
+    "label": "Faerch Rigid Prepared-Food Trays",
+    "use_context": "Single-portion hot prepared food microwave reheating",
+    "dataset_kind": "PUBLIC",
+    "disclosure": "PUBLIC-EVIDENCE SELECTION DEMO — NOT PROFI PROVIDER DATA. Faerch A/S technical product sheets (2021-2025). Decision-support model, not implementation approval.",
+    "baseline": {
+      "package": {
+        "id": "faerch-p-2226-1c",
+        "label": "Faerch P 2226-1C Rectangular Tray (PP Grey)",
+        "food_contact": true,
+        "use_context": "Single-portion hot prepared food container (microwave reheating)",
+        "capabilities": {
+          "max_temperature_c": {
+            "value": 121.0,
+            "provenance": {
+              "origin": "MANUFACTURER_SUPPLIED",
+              "verification_state": "SOURCE_AVAILABLE",
+              "source_reference": "Faerch A/S Technical Product Sheet (Item 2226014004, 2021-09-07)",
+              "note": "Rated for temperature range -20°C to +121°C."
+            }
+          },
+          "microwave_safe": {
+            "value": true,
+            "provenance": {
+              "origin": "MANUFACTURER_SUPPLIED",
+              "verification_state": "SOURCE_AVAILABLE",
+              "source_reference": "Faerch A/S Technical Product Sheet (Item 2226014004, 2021-09-07)",
+              "note": "Cooking suitability explicitly affirmed for Microwave."
+            }
+          }
+        },
+        "components": [
+          {
+            "id": "tray-body",
+            "material": "Polypropylene (PP Grey, Recipe 9626)",
+            "plastic_mass_g": {
+              "value": 26.29,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "Faerch A/S Technical Product Sheet (Item 2226014004, 2021-09-07)",
+                "note": "Nominal piece weight 26.29 g ±10% (tray body only; sealing film excluded)."
+              }
+            },
+            "recycled_content_fraction": {
+              "value": 0.0,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "Faerch PP Material Platform Claim",
+                "note": "Faerch policy confirms food-grade PP is produced from 100% virgin material (family-level claim)."
+              }
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "component_boundary": "TRAY_BODY_ONLY",
+        "recycled_content_point_value_status": "EXACT_POINT_VALUE",
+        "recycled_content_scope": "FAMILY_CLAIM",
+        "evidence_date": "2021-09-07"
+      }
+    },
+    "candidates": [
+      {
+        "package": {
+          "id": "faerch-c-2200-1l",
+          "label": "Faerch C 2200-1L Evolve CPET Tray",
+          "food_contact": true,
+          "use_context": "Single-portion hot prepared food container (dual-ovenable/microwave)",
+          "capabilities": {
+            "max_temperature_c": {
+              "value": 220.0,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "Faerch A/S Technical Product Sheet (Item 2200012097, 2023-01-09)",
+                "note": "Rated for temperature range -40°C to +220°C."
+              }
+            },
+            "microwave_safe": {
+              "value": true,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "Faerch A/S Technical Product Sheet (Item 2200012097, 2023-01-09)",
+                "note": "Cooking suitability affirmed for Oven/Microwave."
+              }
+            }
+          },
+          "components": [
+            {
+              "id": "tray-body",
+              "material": "CPET Evolve (Recipe 6811)",
+              "plastic_mass_g": {
+                "value": 21.38,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "Faerch A/S Technical Product Sheet (Item 2200012097, 2023-01-09)",
+                  "note": "Nominal piece weight 21.38 g ±10% (tray body only; sealing film excluded). 1000 ml nominal volume."
+                }
+              },
+              "recycled_content_fraction": {
+                "value": null,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "INSUFFICIENT_DATA",
+                  "source_reference": "Faerch A/S Technical Product Sheet (Item 2200012097, 2023-01-09)",
+                  "note": "Recycled PET content fluctuates; datasheet defers to sales/compliance declaration for recipe 6811. 'Up to 70%' is marketing ceiling, not article point value."
+                }
+              }
+            }
+          ]
+        },
+        "metadata": {
+          "component_boundary": "TRAY_BODY_ONLY",
+          "recycled_content_point_value_status": "NON_POINT_VALUE",
+          "recycled_content_scope": "TRAY_RPET",
+          "evidence_date": "2023-01-09"
+        }
+      },
+      {
+        "package": {
+          "id": "faerch-k-2182-1g",
+          "label": "Faerch K 2182-1G Clear APET Tray",
+          "food_contact": true,
+          "use_context": "Single-portion chilled prepared food container (not ovenable)",
+          "capabilities": {
+            "max_temperature_c": {
+              "value": 70.0,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "Faerch A/S Technical Product Sheet (Item 2182015004, 2025-06-25)",
+                "note": "Rated for temperature range -40°C to +70°C. Documented 70°C ceiling."
+              }
+            },
+            "microwave_safe": {
+              "value": null,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "NOT_VERIFIED",
+                "source_reference": "Faerch A/S Technical Product Sheet (Item 2182015004, 2025-06-25)",
+                "note": "TDS states 'Not ovenable'; microwave capability is unstated/unknown."
+              }
+            }
+          },
+          "components": [
+            {
+              "id": "tray-body",
+              "material": "APET Clear (Recipe 7900)",
+              "plastic_mass_g": {
+                "value": 21.48,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "Faerch A/S Technical Product Sheet (Item 2182015004, 2025-06-25)",
+                  "note": "Nominal piece weight 21.48 g ±10% (tray body only; sealing film excluded). 895 ml nominal volume."
+                }
+              },
+              "recycled_content_fraction": {
+                "value": null,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "INSUFFICIENT_DATA",
+                  "source_reference": "Faerch A/S Technical Product Sheet (Item 2182015004, 2025-06-25)",
+                  "note": "Recycled content unstated on TDS; customer must request current recipe declaration."
+                }
+              }
+            }
+          ]
+        },
+        "metadata": {
+          "component_boundary": "TRAY_BODY_ONLY",
+          "recycled_content_point_value_status": "UNSTATED",
+          "recycled_content_scope": "TOTAL_PCR",
+          "evidence_date": "2025-06-25"
+        }
+      }
+    ],
+    "default_operational_requirements": {
+      "max_temperature_c": {
+        "value": 95.0,
+        "provenance": {
+          "origin": "ASSUMED",
+          "verification_state": "NOT_VERIFIED",
+          "source_reference": "demo:prepared-food-hot-fill",
+          "note": "Demonstration operating requirement: hot filling / reheating up to 95°C for prepared hot food; hypothetical demo scenario assumption, not Profi provider requirement."
+        }
+      },
+      "microwave_safe": {
+        "value": true,
+        "provenance": {
+          "origin": "ASSUMED",
+          "verification_state": "NOT_VERIFIED",
+          "source_reference": "demo:prepared-food-microwave",
+          "note": "Demonstration operating requirement: microwave reheating suitability; hypothetical demo scenario assumption, not Profi provider requirement."
+        }
+      }
+    }
+  }
+]
