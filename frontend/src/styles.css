@@ -975,3 +975,11 @@ button:focus-visible, summary:focus-visible, select:focus-visible, input:focus-v
 
 .exec-delta-badge.nonpositive { background: #f3f4f6; color: #374151; }
 .stat-circle.nonpositive-ring { border-color: #6b7280; background: #f3f4f6; }
+
+.scenario-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.scenario-form-heading, .scenario-actions { grid-column: 1 / -1; }
+.scenario-form-heading h3, .scenario-form-heading p { margin: 0 0 8px; }
+.scenario-form .scenario-label { min-width: 0; }
+.scenario-form input, .scenario-form select { font: inherit; padding: 10px; border-radius: 8px; border: 2px solid #28782e; width: 100%; min-width: 0; }
+.scenario-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+@media (max-width: 640px) { .scenario-form { grid-template-columns: minmax(0, 1fr); } }

@@ -69,6 +69,10 @@ export function HomePage() {
     return () => controller.abort();
   }, [selected, runtime]);
 
+  const requirementsNotModeled = result.state === 'ready' &&
+    !result.data.scenario.operational_requirements?.max_temperature_c &&
+    !result.data.scenario.operational_requirements?.microwave_safe;
+
   const retry = () => setAttempt((n) => n + 1);
 
   return (
@@ -126,10 +130,9 @@ export function HomePage() {
               <h1 className="hero-title">PackShift</h1>
               <p className="hero-subtitle">Packaging Transition Copilot</p>
               <p className="hero-description">
-                Compare packaging transitions. Measure virgin-plastic reduction
-                from explicit component masses and recycled content. Check
-                bounded operational constraints. See the evidence provenance and
-                uncertainty behind every conclusion.
+                Evaluate packaging transitions and portfolios. Measure virgin-plastic
+                change, test bounded operating-context scenarios, and see the
+                evidence and uncertainty behind each result.
               </p>
             </div>
           </div>
@@ -337,7 +340,9 @@ export function HomePage() {
                       {result.data.eligibility_status === 'BLOCKED'
                         ? 'Candidate incompatible with evaluated operating context.'
                         : result.data.eligibility_status === 'REVIEW_REQUIRED'
-                        ? 'Evidence / verification insufficient to confirm operational compatibility.'
+                        ? requirementsNotModeled
+                          ? 'Operating requirements not modeled; review is required.'
+                          : 'Evidence / verification insufficient to confirm operational compatibility.'
                         : 'Meets evaluated runtime constraints (not implementation approval).'}
                     </span>
                   </div>
@@ -373,8 +378,7 @@ export function HomePage() {
                         {result.data.eligibility_status ===
                           'REVIEW_REQUIRED' && (
                           <span>
-                            ⚠️ REVIEW REQUIRED — UNVERIFIED OPERATIONAL
-                            CONSTRAINTS
+                            ⚠️ REVIEW REQUIRED — {requirementsNotModeled ? 'OPERATING REQUIREMENTS NOT MODELED' : 'UNVERIFIED OPERATIONAL CONSTRAINTS'}
                           </span>
                         )}
                         {result.data.eligibility_status === 'ELIGIBLE' && (
@@ -388,6 +392,11 @@ export function HomePage() {
                         or rollout approval
                       </span>
                     </div>
+
+                    {result.data.eligibility_status === 'REVIEW_REQUIRED' && requirementsNotModeled && (
+                      <p>No explicit thermal or microwave requirements are defined for this scenario,
+                        so PackShift does not infer operational eligibility. Review is required before advancing the candidate.</p>
+                    )}
 
                     {result.data.eligibility_status === 'BLOCKED' && (
                       <div role="alert" className="blocking-alert-box">
