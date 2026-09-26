@@ -62,6 +62,10 @@ numerical calculation inputs do not fabricate an operational incompatibility.
 Demonstrated incompatibilities yield `BLOCKED`. Unmodeled or unverified requirements
 yield `REVIEW_REQUIRED`. Generic `food-contact-suitability` remains an advisory finding.
 
+**OBSERVED_IMPLEMENTATION — SELECTION:** Portfolio assessments combine comparability,
+calculation, independent eligibility and evidence-aware next action. Deterministic
+grouping is implemented; global ranking and automatic approval are absent.
+
 ## Future ranking guard
 
 **TEAM_DECISION:** No future ranking should order candidates purely by virgin-plastic
@@ -75,7 +79,17 @@ No scoring formula, new enum or schema is frozen here.
 **TEAM_DECISION:** No annual Profi plastic savings without real sourced volume.
 Per-unit reductions are defensible only within the sourced input/component scope.
 Hypothetical volume can support an explicitly labelled hypothetical scenario, never
-actual Profi impact. **OBSERVED_IMPLEMENTATION:** There is deliberately no annual-impact field.
+actual Profi impact.
+
+**OBSERVED_IMPLEMENTATION:** Selection supports optional positive integer
+`annual_units` supplied by the user and returns `AnnualImpactResult` with signed
+annual kg values, status, `is_actionable` and disclosure. Missing calculation
+evidence produces N/A. BLOCKED calculated annual results are theoretical /
+non-actionable. Positive reduction may be called a saving; zero is no change;
+negative means virgin-plastic use increases. INT-R3-F1 corrects disclosure wording
+for BLOCKED zero/negative results without changing arithmetic or actionability.
+Actual Profi annual volume/impact remains UNKNOWN — ASK MENTOR. The backend
+`is_actionable` flag never grants QA, procurement or implementation approval.
 
 **TEAM_DECISION:** The bounded operational eligibility gate evaluates only explicitly
 modeled technical dimensions (thermal, microwave). Product output never grants

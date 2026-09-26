@@ -50,3 +50,58 @@ export interface Health {
   status: 'READY' | 'UNAVAILABLE'; evidence_version: string | null; dataset_kind: string | null;
   disclosure: string | null; error: string | null;
 }
+
+export type ComponentBoundary = 'TRAY_BODY_ONLY' | 'BODY_AND_FILM' | 'HINGED_COMPLETE_PACK' | 'BOTTLE_AND_CLOSURE' | 'CUSTOM';
+export type RecycledContentPointValueStatus = 'EXACT_POINT_VALUE' | 'NON_POINT_VALUE' | 'UNSTATED';
+export type ComparabilityRating = 'STRONG' | 'BOUNDED_WITH_QUALIFIER' | 'ASYMMETRIC_BOUNDARY' | 'NOT_COMPARABLE';
+export type NextActionCode = 'REJECT_INCOMPATIBLE' | 'REQUEST_PCR_EVIDENCE' | 'REQUEST_CAPABILITY_EVIDENCE' | 'VERIFY_OPERATIONAL_PREMISES' | 'ADVANCE_TO_QA_REVIEW';
+export interface SelectionMetadata {
+  component_boundary: ComponentBoundary;
+  recycled_content_point_value_status: RecycledContentPointValueStatus;
+  recycled_content_scope: string | null;
+  evidence_date: string | null;
+}
+export interface CandidateArticle { package: Package; metadata: SelectionMetadata }
+export interface ComparabilityAssessment {
+  rating: ComparabilityRating; boundary_match: boolean; notes: string[];
+}
+export interface NextAction { action_code: NextActionCode; summary: string; details: string }
+export interface AnnualImpactResult {
+  annual_units: number; annual_reduction_kg: number | null;
+  annual_current_virgin_kg: number | null; annual_candidate_virgin_kg: number | null;
+  status: Comparison['status']; is_actionable: boolean; disclosure: string;
+}
+export interface CalculationResult {
+  status: Comparison['status']; verification_state: Comparison['verification_state'];
+  current_virgin_pack_g: number | null; candidate_virgin_pack_g: number | null;
+  reduction_g: number | null; reduction_pct: number | null; missing_fields: string[];
+}
+export interface EligibilityResult { status: EligibilityStatus; constraints: ConstraintFinding[] }
+export interface CandidateAssessment {
+  candidate: Package; metadata: SelectionMetadata; comparability: ComparabilityAssessment;
+  calculation: CalculationResult; eligibility: EligibilityResult;
+  annual_impact: AnnualImpactResult | null; next_action: NextAction;
+}
+export interface BaselineAssessment {
+  package: Package; metadata: SelectionMetadata; virgin_plastic_g: number | null;
+  calculation_status: Comparison['status'];
+}
+export interface Portfolio {
+  id: string; label: string; use_context: string; dataset_kind: Evidence['dataset_kind'];
+  disclosure: string; baseline: CandidateArticle; candidates: CandidateArticle[];
+  default_operational_requirements?: OperationalRequirements | null;
+}
+export interface PortfolioSummary {
+  id: string; label: string; use_context: string; dataset_kind: Evidence['dataset_kind'];
+  disclosure: string; baseline_label: string; candidate_count: number;
+}
+export interface SelectionRequest {
+  use_context?: string | null; required_max_temperature_c?: number | null;
+  microwave_required?: boolean | null; annual_units?: number | null;
+}
+export interface SelectionResponse {
+  portfolio_id: string; label: string; dataset_kind: Evidence['dataset_kind'];
+  disclosure: string; use_context: string; operational_requirements: OperationalRequirements;
+  annual_units_requested: number | null; baseline: BaselineAssessment;
+  candidates: CandidateAssessment[]; summary_verdict: string;
+}
