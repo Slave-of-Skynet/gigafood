@@ -71,9 +71,10 @@ def create_app(
 
     def get_recommendation_runtime(request: Request) -> RecommendationRuntime:
         rt = getattr(request.app.state, "recommendation_runtime", None)
-        if rt is None or not rt.is_available:
+        if rt is None or not rt.is_available or rt.rendering_contract is None:
             raise HTTPException(503, detail="RECOMMENDATION_EVIDENCE_UNAVAILABLE")
         return rt
+
 
     @app.get("/api/v1/health", response_model=Health, responses={503: {"model": Health}})
     def health(request: Request):

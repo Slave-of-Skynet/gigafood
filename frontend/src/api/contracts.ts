@@ -436,6 +436,22 @@ export interface RecommendationProductsResponse {
   effective_assumptions: string[];
 }
 
+export interface RenderingContract {
+  always_show: string[];
+  estimated_prefix: string;
+  unknown_label: string;
+  use_null_as_zero: boolean;
+  round_mass_decimals: number;
+  round_percentage_decimals: number;
+  hide_central_without_range: boolean;
+  hide_unknown_numeric: boolean;
+  automatic_procurement_approval: boolean;
+  default_benefit_badge: string;
+  gating: string;
+  material_carbon: string;
+  estimated_baseline: string;
+}
+
 export interface RecommendationCandidatesResponse {
   schema_version: string;
   dataset_id: string;
@@ -446,9 +462,10 @@ export interface RecommendationCandidatesResponse {
   configurations: PackagingConfiguration[];
   baselines: BaselineSummary[];
   referenced_sources: Record<string, SourceReference>;
-  rendering_contract: Record<string, unknown>;
+  rendering_contract: RenderingContract;
   disclosures: string[];
 }
+
 
 export interface RecommendationEvaluationRequest {
   product_id: string;

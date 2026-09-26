@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 import hashlib
+import itertools
 import json
 import logging
 from pathlib import Path
@@ -23,6 +24,7 @@ from app.domain.recommendation import (
     ProductDecisionSummary,
     ProductId,
     ProcurementDetails,
+    RenderingContract,
     ScenarioDetail,
     SourceReference,
     ThermalClaim,
@@ -32,6 +34,67 @@ from app.domain.recommendation import (
 )
 
 logger = logging.getLogger(__name__)
+
+class RuntimeSnapshotValidationError(Exception):
+    """Raised when the HTF-03 canonical or display dataset violates fail-closed invariants."""
+    pass
+
+
+ACCEPTED_C6_CONTEXT_BINDINGS: dict[tuple[str, str], str] = {
+    ("P1", "POST_COOK_HOT_HOLD_6H"): "C6-RO-W",
+    ("P2", "POST_COOK_HOT_HOLD_6H"): "C6-RO-P",
+    ("P3", "POST_COOK_HOT_HOLD_6H"): "C6-RO-P",
+    ("P4", "POST_COOK_HOT_HOLD_6H"): "C6-RO-P",
+    ("P1", "LITERAL_OVEN_250C_THEN_HOLD"): "C6-RO-H",
+    ("P2", "LITERAL_OVEN_250C_THEN_HOLD"): "C6-RO-H",
+    ("P3", "LITERAL_OVEN_250C_THEN_HOLD"): "C6-RO-H",
+    ("P4", "LITERAL_OVEN_250C_THEN_HOLD"): "C6-RO-H",
+}
+
+REQUIRED_GATES: set[str] = {
+    "physical_fit",
+    "food_contact",
+    "thermal_workflow",
+    "grease_leak",
+    "transparent_viewing",
+    "procurement",
+}
+
+FORBIDDEN_PROJECTION_KEYS: set[str] = {
+    "material_only_co2e_kg",
+    "eco_score",
+    "carbon_score",
+}
+
+
+def collect_source_ids(obj: Any) -> set[str]:
+    res: set[str] = set()
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            if k == "source_ids" and isinstance(v, list):
+                for sid in v:
+                    if isinstance(sid, str) and sid:
+                        res.add(sid)
+            else:
+                res.update(collect_source_ids(v))
+    elif isinstance(obj, list):
+        for item in obj:
+            res.update(collect_source_ids(item))
+    return res
+
+
+def scan_for_forbidden_keys(obj: Any, path: str = "$") -> None:
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            if k in FORBIDDEN_PROJECTION_KEYS:
+                raise RuntimeSnapshotValidationError(
+                    f"Forbidden key '{k}' found at {path}.{k}"
+                )
+            scan_for_forbidden_keys(v, f"{path}.{k}")
+    elif isinstance(obj, list):
+        for i, item in enumerate(obj):
+            scan_for_forbidden_keys(item, f"{path}[{i}]")
+
 
 DISCLOSURES = [
     "Software cannot certify food safety, legal compliance, or approve procurement.",
@@ -93,6 +156,8 @@ class RecommendationRuntime:
     is_available: bool
     error: str | None
     source_revision_hash: str | None = None
+    canonical_hash: str | None = None
+    display_hash: str | None = None
     dataset_id: str = "HTF-03-canonical-packaging"
     research_cut_off: str = "2026-09-26"
     market: str = "Romania"
@@ -108,24 +173,182 @@ class RecommendationRuntime:
     candidates_by_id: dict[str, CandidateSummary] = field(default_factory=dict)
     products_by_id: dict[str, ProductArchetype] = field(default_factory=dict)
     workflows_by_id: dict[str, WorkflowDefinition] = field(default_factory=dict)
-    rendering_contract: dict[str, Any] = field(default_factory=dict)
+    rendering_contract: RenderingContract | None = None
     disclosures: list[str] = field(default_factory=lambda: list(DISCLOSURES))
     effective_assumptions: list[str] = field(default_factory=lambda: list(EFFECTIVE_ASSUMPTIONS))
+
+
+def validate_runtime_snapshot(
+    data: dict[str, Any],
+    display_data: dict[str, Any],
+    runtime: RecommendationRuntime,
+) -> None:
+    # 1. P1-P4, 2 workflows, C1-C6, 4 C6 configurations, B1-B3
+    product_ids = {a.get("product_id") for a in data.get("product_archetypes", [])}
+    if product_ids != {"P1", "P2", "P3", "P4"}:
+        raise RuntimeSnapshotValidationError(
+            f"Expected product archetypes P1-P4, got {product_ids}"
+        )
+
+    workflow_ids = {w.workflow_id for w in runtime.workflows}
+    if workflow_ids != {"POST_COOK_HOT_HOLD_6H", "LITERAL_OVEN_250C_THEN_HOLD"}:
+        raise RuntimeSnapshotValidationError(
+            f"Expected workflows POST_COOK_HOT_HOLD_6H, LITERAL_OVEN_250C_THEN_HOLD, got {workflow_ids}"
+        )
+
+    candidate_ids = {c.get("candidate_id") for c in data.get("candidates", [])}
+    if candidate_ids != {f"C{i}" for i in range(1, 7)}:
+        raise RuntimeSnapshotValidationError(
+            f"Expected candidates C1-C6, got {candidate_ids}"
+        )
+
+    configuration_ids = {c.get("configuration_id") for c in data.get("configurations", [])}
+    if configuration_ids != {"C6-RO-P", "C6-RO-W", "C6-RO-H", "C6-EU"}:
+        raise RuntimeSnapshotValidationError(
+            f"Expected configurations C6-RO-P, C6-RO-W, C6-RO-H, C6-EU, got {configuration_ids}"
+        )
+
+    baseline_ids = {b.get("baseline_id") for b in data.get("baselines", [])}
+    if baseline_ids != {"B1", "B2", "B3"}:
+        raise RuntimeSnapshotValidationError(
+            f"Expected baselines B1, B2, B3, got {baseline_ids}"
+        )
+
+    # 2. Exactly 48 evaluated gate rows
+    gate_rows = data.get("product_candidate_gates", [])
+    if len(gate_rows) != 48:
+        raise RuntimeSnapshotValidationError(
+            f"Expected exactly 48 evaluated gate rows, got {len(gate_rows)}"
+        )
+
+    expected_tuples = set(
+        itertools.product(
+            {"P1", "P2", "P3", "P4"},
+            {"POST_COOK_HOT_HOLD_6H", "LITERAL_OVEN_250C_THEN_HOLD"},
+            {f"C{i}" for i in range(1, 7)},
+        )
+    )
+    actual_tuples = {(r.get("product_id"), r.get("workflow"), r.get("candidate_id")) for r in gate_rows}
+    if actual_tuples != expected_tuples:
+        raise RuntimeSnapshotValidationError(
+            f"Gate rows do not cover all 48 combinations: missing {expected_tuples - actual_tuples}"
+        )
+
+    # 3. Canonical matrix outcome distribution: exactly 28 QUALIFICATION REQUIRED, 20 BLOCKED
+    qual_count = sum(1 for r in gate_rows if r.get("outcome") == "QUALIFICATION REQUIRED")
+    blocked_count = sum(1 for r in gate_rows if r.get("outcome") == "BLOCKED")
+    if qual_count != 28 or blocked_count != 20:
+        raise RuntimeSnapshotValidationError(
+            f"Expected 28 QUALIFICATION REQUIRED and 20 BLOCKED rows, got {qual_count} and {blocked_count}"
+        )
+
+    # 4. Zero qualified_survivor and approved_for_procurement
+    for r in gate_rows:
+        if r.get("qualified_survivor") is True:
+            raise RuntimeSnapshotValidationError(
+                f"Gate row {r.get('product_id')}/{r.get('candidate_id')}/{r.get('workflow')} has qualified_survivor=True"
+            )
+        if r.get("approved_for_procurement") is True:
+            raise RuntimeSnapshotValidationError(
+                f"Gate row {r.get('product_id')}/{r.get('candidate_id')}/{r.get('workflow')} has approved_for_procurement=True"
+            )
+
+    for d in data.get("product_decisions", []):
+        if d.get("approved_for_procurement") is True:
+            raise RuntimeSnapshotValidationError(
+                f"Product decision for {d.get('product_id')} has approved_for_procurement=True"
+            )
+
+    # 5. Fail gate must have outcome BLOCKED; Unresolved cannot be qualified_survivor; All 6 gates present
+    for r in gate_rows:
+        gates = r.get("gates", {})
+        if set(gates.keys()) != REQUIRED_GATES:
+            raise RuntimeSnapshotValidationError(
+                f"Gate row {r.get('product_id')}/{r.get('candidate_id')}/{r.get('workflow')} missing required gates"
+            )
+        has_fail = any(isinstance(g, dict) and g.get("status") == "FAIL" for g in gates.values())
+        if has_fail and r.get("outcome") != "BLOCKED":
+            raise RuntimeSnapshotValidationError(
+                f"Gate row with FAIL gate has outcome {r.get('outcome')} instead of BLOCKED"
+            )
+        all_pass = all(isinstance(g, dict) and g.get("status") == "PASS" for g in gates.values())
+        if not all_pass and r.get("qualified_survivor") is True:
+            raise RuntimeSnapshotValidationError(
+                f"Gate row with unresolved/failed gates has qualified_survivor=True"
+            )
+
+    # 6. C6 configuration binding matches accepted context matrix
+    for r in gate_rows:
+        if r.get("candidate_id") == "C6":
+            ctx = (r.get("product_id"), r.get("workflow"))
+            expected_cfg = ACCEPTED_C6_CONTEXT_BINDINGS.get(ctx)
+            if r.get("configuration_id") != expected_cfg:
+                raise RuntimeSnapshotValidationError(
+                    f"C6 binding mismatch for {ctx}: expected {expected_cfg}, got {r.get('configuration_id')}"
+                )
+
+    # 7. C6-EU does not get a fabricated evaluated row
+    for r in gate_rows:
+        if r.get("configuration_id") == "C6-EU":
+            raise RuntimeSnapshotValidationError("C6-EU has a fabricated evaluated gate row")
+
+    # 8. Referenced source IDs are not dangling
+    smap = {s["source_id"] for s in data.get("sources", []) if "source_id" in s}
+    all_referenced = collect_source_ids(data) | collect_source_ids(display_data)
+    dangling = all_referenced - smap
+    if dangling:
+        raise RuntimeSnapshotValidationError(f"Dangling referenced source IDs found: {dangling}")
+
+    # 9. Gate matrix in display matches canonical
+    if display_data.get("product_candidate_gates") != gate_rows:
+        raise RuntimeSnapshotValidationError("Display dataset gate rows differ from canonical gate rows")
+
+    # 10. Forbidden carbon/eco fields do not enter application/API projection
+    for cand in runtime.candidates:
+        scan_for_forbidden_keys(cand.model_dump())
+    for cfg in runtime.configurations:
+        scan_for_forbidden_keys(cfg.model_dump())
+    if runtime.rendering_contract is not None:
+        scan_for_forbidden_keys(runtime.rendering_contract.model_dump())
+
 
 
 def load_recommendation_runtime(htf03_dir: Path) -> RecommendationRuntime:
     canonical_path = htf03_dir / "HTF-03-canonical-packaging-dataset.json"
     display_path = htf03_dir / "HTF-03-prototype-display-dataset.json"
 
-    if not canonical_path.is_file():
-        logger.error("HTF-03 canonical dataset missing: %s", canonical_path)
-        return RecommendationRuntime(is_available=False, error="RECOMMENDATION_EVIDENCE_UNAVAILABLE")
+    if not canonical_path.is_file() or not display_path.is_file():
+        logger.error(
+            "HTF-03 canonical or display dataset missing: canonical=%s, display=%s",
+            canonical_path.is_file(),
+            display_path.is_file(),
+        )
+        return RecommendationRuntime(
+            is_available=False, error="RECOMMENDATION_EVIDENCE_UNAVAILABLE"
+        )
 
     try:
-        raw_bytes = canonical_path.read_bytes()
-        source_revision_hash = hashlib.sha256(raw_bytes).hexdigest()
-        data = json.loads(raw_bytes.decode("utf-8"))
-        display_data = json.loads(display_path.read_text(encoding="utf-8")) if display_path.is_file() else {}
+        canonical_bytes = canonical_path.read_bytes()
+        display_bytes = display_path.read_bytes()
+
+        canonical_sha = hashlib.sha256(canonical_bytes).hexdigest()
+        display_sha = hashlib.sha256(display_bytes).hexdigest()
+        composite_hasher = hashlib.sha256()
+        composite_hasher.update(
+            f"canonical:{canonical_sha};display:{display_sha}".encode("utf-8")
+        )
+        source_revision_hash = composite_hasher.hexdigest()
+
+        data = json.loads(canonical_bytes.decode("utf-8"))
+        display_data = json.loads(display_bytes.decode("utf-8"))
+
+        rendering_contract_raw = display_data.get("rendering_contract")
+        if not isinstance(rendering_contract_raw, dict):
+            raise RuntimeSnapshotValidationError(
+                "rendering_contract missing or not a dict in display dataset"
+            )
+        rendering_contract = RenderingContract.model_validate(rendering_contract_raw)
+
 
         # 1. Sources
         sources_map: dict[str, SourceReference] = {}
@@ -409,10 +632,12 @@ def load_recommendation_runtime(htf03_dir: Path) -> RecommendationRuntime:
             if c == "C6" and "configuration_id" in r:
                 c6_gate_rows[(p, w, r["configuration_id"])] = r
 
-        return RecommendationRuntime(
+        runtime = RecommendationRuntime(
             is_available=True,
             error=None,
             source_revision_hash=source_revision_hash,
+            canonical_hash=canonical_sha,
+            display_hash=display_sha,
             dataset_id=data.get("dataset_id", "HTF-03-canonical-packaging"),
             research_cut_off=data.get("research_cut_off", "2026-09-26"),
             market=data.get("market", "Romania"),
@@ -428,9 +653,25 @@ def load_recommendation_runtime(htf03_dir: Path) -> RecommendationRuntime:
             candidates_by_id=candidates_by_id,
             products_by_id=products_by_id,
             workflows_by_id=workflows_by_id,
-            rendering_contract=display_data.get("rendering_contract", {}),
+            rendering_contract=rendering_contract,
         )
 
-    except (OSError, UnicodeError, ValidationError, json.JSONDecodeError, KeyError) as err:
-        logger.error("Failed to load HTF-03 recommendation runtime (%s): %s", type(err).__name__, err)
-        return RecommendationRuntime(is_available=False, error="RECOMMENDATION_EVIDENCE_UNAVAILABLE")
+        validate_runtime_snapshot(data, display_data, runtime)
+        return runtime
+
+    except (
+        OSError,
+        UnicodeError,
+        ValidationError,
+        json.JSONDecodeError,
+        KeyError,
+        RuntimeSnapshotValidationError,
+    ) as err:
+        logger.error(
+            "Failed to load HTF-03 recommendation runtime (%s): %s",
+            type(err).__name__,
+            err,
+        )
+        return RecommendationRuntime(
+            is_available=False, error="RECOMMENDATION_EVIDENCE_UNAVAILABLE"
+        )

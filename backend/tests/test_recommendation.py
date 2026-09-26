@@ -300,3 +300,225 @@ def test_unavailable_recommendation_runtime(tmp_path: Path):
         health = unavail_client.get("/api/v1/health")
         assert health.status_code == 200
         assert health.json()["status"] == "READY"
+
+
+def make_mutated_htf03(
+    tmp_path: Path,
+    mutate_canonical=None,
+    mutate_display=None,
+    omit_display: bool = False,
+    omit_canonical: bool = False,
+) -> Path:
+    target_dir = tmp_path / "htf03_mutated"
+    target_dir.mkdir(parents=True, exist_ok=True)
+    canonical_src = DEFAULT_HTF03 / "HTF-03-canonical-packaging-dataset.json"
+    display_src = DEFAULT_HTF03 / "HTF-03-prototype-display-dataset.json"
+
+    if not omit_canonical:
+        data = json.loads(canonical_src.read_text(encoding="utf-8"))
+        if mutate_canonical:
+            mutate_canonical(data)
+        (target_dir / "HTF-03-canonical-packaging-dataset.json").write_text(
+            json.dumps(data), encoding="utf-8"
+        )
+
+    if not omit_display:
+        disp_data = json.loads(display_src.read_text(encoding="utf-8"))
+        if mutate_display:
+            mutate_display(disp_data)
+        (target_dir / "HTF-03-prototype-display-dataset.json").write_text(
+            json.dumps(disp_data), encoding="utf-8"
+        )
+
+    return target_dir
+
+
+def test_negative_missing_display_dataset(tmp_path: Path):
+    mut_dir = make_mutated_htf03(tmp_path, omit_display=True)
+    app = create_app(DEFAULT_EVIDENCE, DEFAULT_PORTFOLIOS, mut_dir)
+    with TestClient(app) as test_client:
+        res = test_client.get("/api/v1/recommendation/products")
+        assert res.status_code == 503
+        assert res.json()["detail"] == "RECOMMENDATION_EVIDENCE_UNAVAILABLE"
+
+
+def test_negative_missing_gate_row(tmp_path: Path):
+    def mut_canon(data):
+        data["product_candidate_gates"].pop(0)
+
+    mut_dir = make_mutated_htf03(tmp_path, mutate_canonical=mut_canon)
+    app = create_app(DEFAULT_EVIDENCE, DEFAULT_PORTFOLIOS, mut_dir)
+    with TestClient(app) as test_client:
+        res = test_client.get("/api/v1/recommendation/products")
+        assert res.status_code == 503
+        assert res.json()["detail"] == "RECOMMENDATION_EVIDENCE_UNAVAILABLE"
+
+
+def test_negative_unresolved_candidate_marked_qualified_survivor(tmp_path: Path):
+    def mut_canon(data):
+        data["product_candidate_gates"][0]["qualified_survivor"] = True
+
+    mut_dir = make_mutated_htf03(tmp_path, mutate_canonical=mut_canon)
+    app = create_app(DEFAULT_EVIDENCE, DEFAULT_PORTFOLIOS, mut_dir)
+    with TestClient(app) as test_client:
+        res = test_client.post(
+            "/api/v1/recommendation/evaluate",
+            json={"product_id": "P1", "workflow_id": "POST_COOK_HOT_HOLD_6H"},
+        )
+        assert res.status_code == 503
+        assert res.json()["detail"] == "RECOMMENDATION_EVIDENCE_UNAVAILABLE"
+
+
+def test_negative_inconsistent_fail_outcome(tmp_path: Path):
+    def mut_canon(data):
+        for r in data["product_candidate_gates"]:
+            if any(g.get("status") == "FAIL" for g in r.get("gates", {}).values()):
+                r["outcome"] = "QUALIFICATION REQUIRED"
+                break
+
+    mut_dir = make_mutated_htf03(tmp_path, mutate_canonical=mut_canon)
+    app = create_app(DEFAULT_EVIDENCE, DEFAULT_PORTFOLIOS, mut_dir)
+    with TestClient(app) as test_client:
+        res = test_client.get("/api/v1/recommendation/candidates")
+        assert res.status_code == 503
+        assert res.json()["detail"] == "RECOMMENDATION_EVIDENCE_UNAVAILABLE"
+
+
+def test_negative_wrong_c6_configuration_binding(tmp_path: Path):
+    def mut_canon(data):
+        for r in data["product_candidate_gates"]:
+            if (
+                r.get("candidate_id") == "C6"
+                and r.get("product_id") == "P1"
+                and r.get("workflow") == "POST_COOK_HOT_HOLD_6H"
+            ):
+                r["configuration_id"] = "C6-RO-P"
+                break
+
+    mut_dir = make_mutated_htf03(tmp_path, mutate_canonical=mut_canon)
+    app = create_app(DEFAULT_EVIDENCE, DEFAULT_PORTFOLIOS, mut_dir)
+    with TestClient(app) as test_client:
+        res = test_client.get("/api/v1/recommendation/products")
+        assert res.status_code == 503
+        assert res.json()["detail"] == "RECOMMENDATION_EVIDENCE_UNAVAILABLE"
+
+
+def test_negative_c6_eu_fabricated_gate_row(tmp_path: Path):
+    def mut_canon(data):
+        for r in data["product_candidate_gates"]:
+            if r.get("candidate_id") == "C6":
+                r["configuration_id"] = "C6-EU"
+                break
+
+    mut_dir = make_mutated_htf03(tmp_path, mutate_canonical=mut_canon)
+    app = create_app(DEFAULT_EVIDENCE, DEFAULT_PORTFOLIOS, mut_dir)
+    with TestClient(app) as test_client:
+        res = test_client.get("/api/v1/recommendation/products")
+        assert res.status_code == 503
+        assert res.json()["detail"] == "RECOMMENDATION_EVIDENCE_UNAVAILABLE"
+
+
+def test_negative_dangling_source_id(tmp_path: Path):
+    def mut_canon(data):
+        c1 = data["candidates"][0]
+        c1["exact_metrics"]["total_package_mass_g"]["source_ids"] = ["SRC-NON-EXISTENT-999"]
+
+    mut_dir = make_mutated_htf03(tmp_path, mutate_canonical=mut_canon)
+    app = create_app(DEFAULT_EVIDENCE, DEFAULT_PORTFOLIOS, mut_dir)
+    with TestClient(app) as test_client:
+        res = test_client.get("/api/v1/recommendation/candidates")
+        assert res.status_code == 503
+        assert res.json()["detail"] == "RECOMMENDATION_EVIDENCE_UNAVAILABLE"
+
+
+def test_display_input_changes_runtime_revision(tmp_path: Path):
+    from app.runtime.recommendation import load_recommendation_runtime
+
+    orig_rt = load_recommendation_runtime(DEFAULT_HTF03)
+    assert orig_rt.is_available is True
+    orig_hash = orig_rt.source_revision_hash
+
+    def mut_disp(disp):
+        disp["rendering_contract"]["estimated_prefix"] = "~"
+
+    mut_dir = make_mutated_htf03(tmp_path, mutate_display=mut_disp)
+    mut_rt = load_recommendation_runtime(mut_dir)
+    assert mut_rt.is_available is True
+    mut_hash = mut_rt.source_revision_hash
+
+    assert orig_hash != mut_hash
+    assert len(mut_hash) == 64
+
+
+def test_forbidden_raw_projection_content_rejected(tmp_path: Path):
+    def mut_disp(disp):
+        disp["rendering_contract"]["unauthorized_injected_field"] = "bad"
+
+    mut_dir = make_mutated_htf03(tmp_path, mutate_display=mut_disp)
+    app = create_app(DEFAULT_EVIDENCE, DEFAULT_PORTFOLIOS, mut_dir)
+    with TestClient(app) as test_client:
+        res = test_client.get("/api/v1/recommendation/candidates")
+        assert res.status_code == 503
+        assert res.json()["detail"] == "RECOMMENDATION_EVIDENCE_UNAVAILABLE"
+
+
+def test_full_48_row_canonical_parity(client: TestClient):
+    canonical_file = DEFAULT_HTF03 / "HTF-03-canonical-packaging-dataset.json"
+    canonical_data = json.loads(canonical_file.read_text(encoding="utf-8"))
+    canonical_rows = {
+        (r["product_id"], r["workflow"], r["candidate_id"]): r
+        for r in canonical_data["product_candidate_gates"]
+    }
+    assert len(canonical_rows) == 48
+
+    products = ["P1", "P2", "P3", "P4"]
+    workflows = ["POST_COOK_HOT_HOLD_6H", "LITERAL_OVEN_250C_THEN_HOLD"]
+    expected_gates = [
+        "physical_fit",
+        "food_contact",
+        "thermal_workflow",
+        "grease_leak",
+        "transparent_viewing",
+        "procurement",
+    ]
+
+    total_evaluated_rows = 0
+    for pid in products:
+        for wfid in workflows:
+            resp = client.post(
+                "/api/v1/recommendation/evaluate",
+                json={"product_id": pid, "workflow_id": wfid},
+            )
+            assert resp.status_code == 200
+            eval_data = resp.json()
+            assessments = eval_data["assessments"]
+            assert len(assessments) == 6
+
+            for ass in assessments:
+                cid = ass["candidate_id"]
+                key = (pid, wfid, cid)
+                assert key in canonical_rows, f"Missing key {key} in canonical rows"
+                canon = canonical_rows[key]
+
+                # Parity checks
+                assert ass["outcome"] == canon["outcome"], f"Outcome mismatch for {key}"
+                assert ass["qualified_survivor"] is False
+                assert ass["approved_for_procurement"] is False
+                assert canon.get("qualified_survivor") is False or canon.get("qualified_survivor") is None
+                assert canon.get("approved_for_procurement") is False or canon.get("approved_for_procurement") is None
+
+                if cid == "C6":
+                    assert ass["configuration_id"] == canon["configuration_id"], f"Configuration ID mismatch for {key}"
+                else:
+                    assert ass["configuration_id"] is None
+
+                # Gate-level parity
+                for gname in expected_gates:
+                    assert gname in ass["gates"], f"Missing gate {gname} for {key}"
+                    assert gname in canon["gates"], f"Missing canonical gate {gname} for {key}"
+                    assert ass["gates"][gname]["status"] == canon["gates"][gname]["status"], f"Gate {gname} status mismatch for {key}"
+                    assert ass["gates"][gname]["gate_id"] == gname
+
+                total_evaluated_rows += 1
+
+    assert total_evaluated_rows == 48
