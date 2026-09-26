@@ -31,7 +31,7 @@ This document establishes the **independent acceptance oracle** for the GigaFood
 All evaluations and acceptance assertions must follow strict precedence:
 1. **Official AgriFood Challenge Brief / Rules (`OFFICIAL_REQUIREMENT`):** Virgin plastic reduction, high temperature, grease resistance, circularity.
 2. **Explicit Mentor Clarifications (`MENTOR_CLARIFICATION`):** 11:19 Descript transcript: Physical concept is primary deliverable; high-temperature rotisserie focus; packaging bags preferred over rigid boxes; transparent window required; sizing for whole chicken vs portions; +10–15% cost tolerance is acceptable context; evidence/certificates required; domestic availability.
-3. **Team Integrator Decisions (`TEAM_DECISION`):** Architecture freeze, scope bounding, fail-closed policy.
+3. **Team Integrator Decisions & Modeled Validation Scenarios (`TEAM_DECISION`):** Architecture freeze, scope bounding, fail-closed policy, modeled validation scenarios (6-hour hot holding at 85–95°C, 200–250°C thermal inversion stress test, 1.0–1.4 kg hot bird sizing test assumption, retail network volume scaling).
 4. **Accepted Transition Gate (`INT-HTF-04A`):** Six-gate model, C6 binding matrix, baseline segregation, additive recommendation API target.
 5. **HTF-03 Canonical Evidence (`CANONICAL_EVIDENCE`):** `docs/evidence/htf-03/**` datasets and ledgers.
 6. **Current Implementation (`OBSERVED_IMPLEMENTATION`):** Code in `backend/` and `frontend/`. Implementation cannot override higher-level canon.

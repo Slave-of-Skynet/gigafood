@@ -69,24 +69,28 @@ Evaluated against the official AgriFood challenge judging criteria:
 
 ---
 
-## 5. Mentor Requirement Coverage
+## 5. Mentor Clarification & Modeled Validation Scenario Coverage
 
-Reconciled against the 15 specific points from the 11:19 Descript clarification:
-- **M01 Virgin Plastic Reduction:** `ESTIMATED`. Modeled scenarios show reduction potential, but physical masses remain unmeasured. C5 range crosses zero (-67.6% to +82.1%).
-- **M02 200–250°C Oven Context:** `OBSERVED_VERIFIED` (Seller claim). C6-RO-H (e-pui225) body offers 280°C seller claim; duration and compatible clear lid unverified. C2/C3/C4/C5 fail thermally.
-- **M03 180–190°C Rotisserie Context:** `ASSUMED`. Primary workflow assumes rotisserie cooking outside package, then hot transfer to packaging for display.
-- **M04 Up to 6 Hours Holding:** `OBSERVED_VERIFIED` (Family). BIOPAP documents 6h/90°C holding claim for LC family; exact SI-14 tray + film + chicken fat combination must be qualified. Seam integrity under modeled 85–95°C holding conditions (actual Profi display temp UNKNOWN) unverified.
-- **M05 Food Contact Safety:** `UNKNOWN`. Declaration of Compliance (DoC) and fatty food migration testing (Simulant D2) remain supplier obligations.
-- **M06 Grease & Oil Barrier:** `UNKNOWN`. Chicken fat and juices require physical 6-hour seam and substrate leak testing under modeled hot display conditions.
-- **M07 Transparent Viewing:** `OBSERVED_VERIFIED` (Components). Clear windows/lids included in all paths; anti-fog performance requires validation.
-- **M08 Small Portions:** `QUALIFICATION_REQUIRED`. BIOPAP LC SI-14 tray + clear film is primary qualification lead for P2–P4.
-- **M09 Whole Chicken:** `QUALIFICATION_REQUIRED`. Flexible windowed bag (Gaia C1) prioritized over rigid box to solve sizing and storage constraints (modeled 1.0–1.4 kg hot whole bird test scenario; actual Profi chicken mass distribution UNKNOWN).
-- **M10 Recyclability in Romania:** `OBSERVED_VERIFIED` (Design). Materials designed for recycling/composting, but real-world recovery depends on municipal infrastructure and grease contamination.
-- **M11 Avoid Problematic Multilayers:** `OBSERVED_VERIFIED`. Excluded unrecyclable metallized laminates in favor of monomaterials and paper.
-- **M12 Cost Practicality / +10–15%:** `ASSUMED` (Context). +10–15% cost delta integrated as context, not an automatic pass threshold. Commercial volume quotations for retail store network scale (modeled 1,700 stores scenario) required.
-- **M13 Composition & Layer Transparency:** `OBSERVED_VERIFIED` / `UNKNOWN`. Substrate layers and film gauges documented; proprietary adhesives unknown.
-- **M14 Formal Certificates & Evidence:** `OBSERVED_VERIFIED`. 35 cited sources tracked; lab certificates tracked as required next actions.
-- **M15 Romania Procurement Routes:** `OBSERVED_VERIFIED` (Catalogue Listings). Local Romanian distributors identified as current catalogue/order leads (listing ≠ stock); verified stock and lead times require inquiry.
+Reconciled against domain input from the 11:19 Descript clarification, strictly separating **Explicit Mentor Clarifications** from **Modeled Validation Scenarios, Regulatory Requirements & Technical Gates**:
+
+### 5.1 Explicit Mentor Clarifications
+- **M01 Virgin Plastic Reduction (`MENTOR_CLARIFICATION`):** `ESTIMATED`. Modeled scenarios show reduction potential, but physical masses remain unmeasured. C5 range crosses zero (-67.6% to +82.1%).
+- **M07 Transparent Viewing (`MENTOR_CLARIFICATION`):** `OBSERVED_VERIFIED` (Components). Clear windows/lids included in all paths; anti-fog performance requires validation.
+- **M08 Small Portions Differentiation (`MENTOR_CLARIFICATION`):** `QUALIFICATION_REQUIRED`. BIOPAP LC SI-14 tray + clear film is primary qualification lead for P2–P4 deli portions.
+- **M09 Whole Chicken Format (`MENTOR_CLARIFICATION`):** `QUALIFICATION_REQUIRED`. Flexible windowed bag (Gaia C1) prioritized over rigid box to solve sizing and storage constraints.
+- **M10 Recyclability in Romania (`MENTOR_CLARIFICATION`):** `OBSERVED_VERIFIED` (Design). Packaging concept must reflect real-world Romanian municipal waste and grease contamination.
+- **M11 Avoid Problematic Multilayers (`MENTOR_CLARIFICATION`):** `OBSERVED_VERIFIED`. Excluded unrecyclable metallized laminates in favor of monomaterials and paper.
+- **M12 Cost Practicality / +10–15% (`MENTOR_CLARIFICATION`):** `ASSUMED` (Context). +10–15% cost delta integrated as context, not an automatic pass threshold.
+- **M14 Formal Certificates & Evidence (`MENTOR_CLARIFICATION`):** `OBSERVED_VERIFIED`. Company evaluates feasibility based on formal certificates and DoCs; tracked as required next actions.
+- **M15 Romania Procurement Routes (`MENTOR_CLARIFICATION`):** `OBSERVED_VERIFIED` (Catalogue Listings). Local Romanian distributors identified as current catalogue/order leads (listing ≠ stock); verified stock requires inquiry.
+
+### 5.2 Modeled Validation Scenarios, Regulatory Requirements & Technical Gates
+- **M02 200–250°C Oven Stress Context (`MODELED_VALIDATION_SCENARIO`):** `OBSERVED_VERIFIED` (Seller claim). In-pack baking stress scenario; C6-RO-H (e-pui225) body offers 280°C seller claim; duration and compatible clear lid unverified; C2/C3/C4/C5 fail thermally.
+- **M03 Rotisserie Outside Pack (`MODELED_VALIDATION_SCENARIO`):** `ASSUMED`. Operational baseline assuming rotisserie cooking outside package, then hot transfer to packaging for display.
+- **M04 Up to 6 Hours Holding (`MODELED_VALIDATION_SCENARIO`):** `OBSERVED_VERIFIED` (Family). Deli display shelf-life test based on retail display targets & BIOPAP 6h/90°C LC family claim; exact SI-14 tray + film + chicken fat combination must be qualified.
+- **M05 Food Contact Safety (`REGULATORY_REQUIREMENT`):** `UNKNOWN`. Mandatory legal compliance under EU 10/2011; Declaration of Compliance (DoC) and fatty food migration testing (Simulant D2) remain supplier obligations.
+- **M06 Grease & Oil Barrier (`TECHNICAL_VALIDATION`):** `UNKNOWN`. Physical 6-hour seam and substrate leak testing under modeled hot display conditions.
+- **M13 Composition & Layer Transparency (`TECHNICAL_DISCLOSURE`):** `OBSERVED_VERIFIED` / `UNKNOWN`. Substrate layers and film gauges documented; proprietary adhesives unknown.
 
 ---
 
@@ -211,7 +215,7 @@ Strict isolation enforced across the four configurations:
   - `GET /api/v1/recommendation/products` returns **`404 Not Found`**.
   - `GET /api/v1/recommendation/candidates` returns **`404 Not Found`**.
   - `POST /api/v1/recommendation/evaluate` returns **`404 Not Found`**.
-  - Verified in automated test `test_blackbox_recommendation_api_absence_fails_closed`.
+  - Inspected in automated test `test_target_recommendation_api_surface_status` (route absence observed as `UNVERIFIED`; does not assert 404 == PASS).
   - **Observation:** Target routes are currently unmounted on `main` (recorded as an implementation dependency / `UNVERIFIED` observation). A 404 from unmounted nonexistent routes does not prove that the recommendation subsystem fails closed.
   - **Target Subsystem Contracts (upon integration):**
     - Missing/unavailable evidence snapshot must return **`503 RECOMMENDATION_EVIDENCE_UNAVAILABLE`**.
@@ -285,8 +289,9 @@ Challenge coverage:
 - UX (10%): PARTIALLY SUPPORTED (Evidence/design SUPPORTED; runtime UI UNVERIFIED)
 - Presentation (5%): SUPPORTED
 
-Mentor coverage:
-- 15/15 mentor requirements represented and reconciled
+Mentor & scenario coverage:
+- 8 explicit mentor clarifications reconciled (concept, bag format, viewing, virgin plastic, +10-15% tolerance, recycling, multilayers, evidence)
+- 7 modeled validation scenarios and technical gates separated (200-250 C stress, 6h holding, rotisserie SOP, DoC, grease, BOM, retail scale)
 
 P1 POST_COOK: C1 Gaia (qualification_priority=1, outcome=QUALIFICATION REQUIRED, 0 survivors)
 P1 LITERAL_250: C6-RO-H (qualification_priority=2, outcome=QUALIFICATION REQUIRED, C2-C5 BLOCKED)

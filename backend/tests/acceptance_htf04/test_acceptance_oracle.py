@@ -369,18 +369,26 @@ def test_virgin_plastic_reduction_bounds_preservation(canonical_data):
 
 def test_target_recommendation_api_surface_status(api_client):
     """
-    Verify current runtime implementation state against INT-HTF-04A Section H:
-    - The frozen target recommendation surface:
+    Verify existing baseline endpoints remain intact and inspect the mounting state
+    of the target recommendation surface (INT-HTF-04A Section H) without asserting
+    that a 404 response constitutes a pass condition for recommendation behavior:
+    - Target surface:
         GET  /api/v1/recommendation/products
         GET  /api/v1/recommendation/candidates
         POST /api/v1/recommendation/evaluate
-      is currently NOT yet integrated on main @ e067764.
-    - This absence is recorded as UNVERIFIED (implementation pending under Igor / Packet A).
-    - Unmounted routes return 404; this records route absence only and is NOT evidence
-      that the future target recommendation API fails closed (target failure semantics
-      under INT-HTF-04A Section H are 503 RECOMMENDATION_EVIDENCE_UNAVAILABLE).
-    - Reference endpoints (/api/v1/health, /api/v1/portfolios) remain intact.
+    - Reference endpoints (/api/v1/health, /api/v1/portfolios) remain functional.
+    - Unmounted routes returning 404 is an implementation observation (UNVERIFIED),
+      not an assertion of fail-closed safety (target semantics are 503 on unavailable
+      snapshot and 422 on unsupported context).
     """
+    # 1. Existing reference routes remain functional
+    health_res = api_client.get("/api/v1/health")
+    assert health_res.status_code in (200, 503)
+
+    portfolios_res = api_client.get("/api/v1/portfolios")
+    assert portfolios_res.status_code in (200, 503)
+
+    # 2. Probe target recommendation surface status (observation only; do NOT assert 404 == PASS)
     target_routes = [
         ("GET", "/api/v1/recommendation/products"),
         ("GET", "/api/v1/recommendation/candidates"),
@@ -392,12 +400,8 @@ def test_target_recommendation_api_surface_status(api_client):
             res = api_client.get(route)
         else:
             res = api_client.post(route, json={"product_id": "P1", "workflow_id": "POST_COOK_HOT_HOLD_6H"})
-        # Currently unmounted on main
-        assert res.status_code == 404, f"Target route {route} unexpectedly mounted before integration: {res.status_code}"
-
-    # Existing reference routes remain functional
-    health_res = api_client.get("/api/v1/health")
-    assert health_res.status_code in (200, 503)
-
-    portfolios_res = api_client.get("/api/v1/portfolios")
-    assert portfolios_res.status_code in (200, 503)
+        # When unmounted on main, 404 is an observation of route absence; when mounted,
+        # it must follow the INT-HTF-04A transport contract (200, 422, 503).
+        # We explicitly do NOT assert res.status_code == 404 as a pass condition.
+        if res.status_code != 404:
+            assert res.status_code in (200, 422, 503), f"Unexpected status {res.status_code} for target route {route}"
