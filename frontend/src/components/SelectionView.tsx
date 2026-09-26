@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 import { api } from '../api/client';
-import type { CandidateAssessment, PortfolioSummary, SelectionMetadata, SelectionResponse } from '../api/contracts';
+import type { CandidateAssessment, PortfolioSummary, SelectionMetadata, SelectionRequest, SelectionResponse } from '../api/contracts';
 import { format, OperationalRequirementsView, PackageView } from './EvidenceDetails';
 
 type Load<T> = { state: 'loading' } | { state: 'error'; message: string } | { state: 'ready'; data: T };
@@ -101,7 +101,10 @@ export function SelectionView({ visible }: { visible: boolean }) {
   const [portfolios, setPortfolios] = useState<Load<PortfolioSummary[]>>({ state: 'loading' });
   const [selected, setSelected] = useState('');
   const [volume, setVolume] = useState('');
-  const [submitted, setSubmitted] = useState<number | null>(null);
+  const [context, setContext] = useState('');
+  const [temperature, setTemperature] = useState('');
+  const [microwave, setMicrowave] = useState('default');
+  const [submitted, setSubmitted] = useState<SelectionRequest | null>(null);
   const [validation, setValidation] = useState('');
   const [evaluationAttempt, setEvaluationAttempt] = useState(0);
   const [result, setResult] = useState<Load<SelectionResponse>>({ state: 'loading' });
@@ -126,7 +129,7 @@ export function SelectionView({ visible }: { visible: boolean }) {
     setResult({ state: 'loading' });
     const request = submitted === null
       ? api.portfolio(selected, controller.signal)
-      : api.evaluatePortfolio(selected, { annual_units: submitted }, controller.signal);
+      : api.evaluatePortfolio(selected, submitted, controller.signal);
     request.then((data) => {
       if (!controller.signal.aborted) setResult({ state: 'ready', data });
     }).catch((error) => {
@@ -142,9 +145,25 @@ export function SelectionView({ visible }: { visible: boolean }) {
       setValidation('Enter a positive whole number within the supported integer range.');
       return;
     }
+    const degrees = Number(temperature);
+    if (temperature.trim() && !Number.isFinite(degrees)) {
+      setValidation('Enter a finite numeric temperature in °C, or leave it blank for the portfolio default.');
+      return;
+    }
+    const request: SelectionRequest = {};
+    if (context.trim()) request.use_context = context.trim();
+    if (temperature.trim()) request.required_max_temperature_c = degrees;
+    if (microwave !== 'default') request.microwave_required = microwave === 'required';
+    if (volume.trim()) request.annual_units = units;
     setValidation('');
     setResult({ state: 'loading' });
-    setSubmitted(volume.trim() ? units : null);
+    setSubmitted(request);
+    setEvaluationAttempt((n) => n + 1);
+  }
+
+  function resetScenario() {
+    setContext(''); setTemperature(''); setMicrowave('default'); setVolume('');
+    setSubmitted(null); setValidation(''); setResult({ state: 'loading' });
     setEvaluationAttempt((n) => n + 1);
   }
 
@@ -168,22 +187,39 @@ export function SelectionView({ visible }: { visible: boolean }) {
           <label className="scenario-label">Select portfolio
             <select className="scenario-select" value={selected} onChange={(event) => {
               setResult({ state: 'loading' }); setSelected(event.target.value);
-              setVolume(''); setSubmitted(null); setValidation('');
+              resetScenario();
             }}>
               {portfolios.data.map((p) => <option key={p.id} value={p.id}>{p.label} · {p.candidate_count} candidates</option>)}
             </select>
           </label>
-          <form onSubmit={evaluate} className="annual-form">
-            <label className="scenario-label" htmlFor="annual-units">Hypothetical annual units
-              <input id="annual-units" type="number" min="1" step="1" max={Number.MAX_SAFE_INTEGER} value={volume} onChange={(event) => setVolume(event.target.value)} placeholder="Optional · e.g. 100000" aria-describedby="volume-disclosure" />
+          <form onSubmit={evaluate} className="scenario-form" noValidate>
+            <div className="scenario-form-heading">
+              <h3>User-supplied scenario</h3>
+              <p>Not a verified Profi requirement. Blank fields and “Use portfolio default” inherit the committed portfolio assumptions.</p>
+            </div>
+            <label className="scenario-label" htmlFor="scenario-context">Operating context
+              <input id="scenario-context" value={context} onChange={(event) => setContext(event.target.value)} placeholder="Optional description" aria-describedby="context-help" />
+              <small id="context-help">Description only. Eligibility is evaluated from the structured temperature and microwave requirements.</small>
             </label>
-            <button type="submit" className="scenario-pill">Evaluate scenario</button>
-            <button type="button" className="scenario-pill" onClick={() => {
-              setVolume(''); setSubmitted(null); setValidation('');
-              setResult({ state: 'loading' }); setEvaluationAttempt((n) => n + 1);
-            }}>Clear annual volume</button>
+            <label className="scenario-label" htmlFor="scenario-temperature">Required maximum temperature (°C)
+              <input id="scenario-temperature" type="text" inputMode="decimal" value={temperature} onChange={(event) => setTemperature(event.target.value)} placeholder="Optional · e.g. 60" />
+            </label>
+            <label className="scenario-label" htmlFor="scenario-microwave">Microwave reheating
+              <select id="scenario-microwave" className="scenario-select" value={microwave} onChange={(event) => setMicrowave(event.target.value)}>
+                <option value="default">Use portfolio default</option>
+                <option value="required">Required</option>
+                <option value="not-required">Not required in this scenario</option>
+              </select>
+            </label>
+            <label className="scenario-label" htmlFor="annual-units">Hypothetical annual units
+              <input id="annual-units" type="text" inputMode="numeric" value={volume} onChange={(event) => setVolume(event.target.value)} placeholder="Optional · e.g. 100000" aria-describedby="volume-disclosure" />
+              <small id="volume-disclosure">User-supplied hypothetical volume. Not actual Profi volume or measured impact. Leave blank for per-unit assessment.</small>
+            </label>
+            <div className="scenario-actions">
+              <button type="submit" className="scenario-pill">Evaluate scenario</button>
+              <button type="button" className="scenario-pill" onClick={resetScenario}>Reset to portfolio defaults</button>
+            </div>
           </form>
-          <small id="volume-disclosure">User-supplied hypothetical volume. Not actual Profi volume or measured impact. Leave blank for per-unit assessment.</small>
           {validation && <p role="alert">{validation}</p>}
         </section>
         {result.state === 'loading' && <div className="status-panel" role="status">Evaluating portfolio…</div>}
@@ -197,19 +233,20 @@ export function SelectionView({ visible }: { visible: boolean }) {
               <span className={`dataset-badge ${result.data.dataset_kind}`}>Dataset: {result.data.dataset_kind}</span>
             </div>
             <p className="disclosure-banner">{result.data.disclosure}</p>
+            <h3>Effective backend context</h3>
             <p><strong>Use context:</strong> {result.data.use_context} · {result.data.candidates.length} candidates</p>
+            <OperationalRequirementsView requirements={result.data.operational_requirements} />
+            <p><strong>Hypothetical annual units:</strong> {result.data.annual_units_requested === null ? 'Not supplied · per-unit assessment' : format(result.data.annual_units_requested, '')}</p>
             <div className="selection-verdict"><strong>Assessment summary</strong><p>{result.data.summary_verdict}</p></div>
             <small>Backend decision grouping, not a global ranking. No result grants implementation approval.</small>
             <section className="selection-baseline">
               <h3>Baseline · {result.data.baseline.package.label}</h3>
               <p><strong>{format(result.data.baseline.virgin_plastic_g, 'g/unit')}</strong> virgin plastic · {result.data.baseline.calculation_status}</p>
               <Metadata data={result.data.baseline.metadata} />
-              <details><summary>Baseline evidence and modeled operating requirements</summary>
-                <OperationalRequirementsView requirements={result.data.operational_requirements} />
+              <details><summary>Baseline evidence and provenance</summary>
                 <PackageView title="Current" data={result.data.baseline.package} />
               </details>
             </section>
-            {result.data.annual_units_requested !== null && <p>Evaluated with {format(result.data.annual_units_requested, '')} hypothetical annual units.</p>}
           </section>
           {result.data.candidates.map((candidate) => <CandidateCard key={candidate.candidate.id} data={candidate} />)}
         </div>}
