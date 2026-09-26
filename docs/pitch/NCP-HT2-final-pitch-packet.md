@@ -1,14 +1,14 @@
 # NCP-HT2 — Final Judge Narrative, Pitch Packet & Synchronization Master
 
-**Document class:** AUTHORITATIVE PITCH PACKET / SLIDE ARCHITECTURE / SPOKEN SCRIPTS / DEMO SYNCHRONIZATION  
-**Contract:** NCP-HT2 — Final Judge Narrative, Demo & Evidence Synchronization  
-**Owner:** Mr-Ressentiment (Nicolae)  
-**Role:** Pitch / Presentation / Data Narrative / Claim-Evidence Synchronization  
-**Target Repository:** `Slave-of-Skynet/gigafood`  
-**Working Branch:** `nicolae/ncp-ht2-final-judge-narrative`  
-**Verified Base SHA:** `513e0867feaf1b3062c1c02e98d51f2eaa4f1f93` (`origin/main`)  
-**Canonical Evidence Baseline:** `docs/evidence/htf-03/**`  
-**Execution Date:** 2026-09-27  
+**Document class:** AUTHORITATIVE PITCH PACKET / SLIDE ARCHITECTURE / SPOKEN SCRIPTS / DEMO SYNCHRONIZATION
+**Contract:** NCP-HT2 — Final Judge Narrative, Demo & Evidence Synchronization (Claim-Safety Reconciliation)
+**Owner:** Mr-Ressentiment (Nicolae)
+**Role:** Pitch / Presentation / Data Narrative / Claim-Evidence Synchronization
+**Target Repository:** `Slave-of-Skynet/gigafood`
+**Working Branch:** `nicolae/ncp-ht2-final-judge-narrative`
+**Verified Base SHA:** `513e0867feaf1b3062c1c02e98d51f2eaa4f1f93` (`origin/main`)
+**Canonical Evidence Baseline:** `docs/evidence/htf-03/**`
+**Execution Date:** 2026-09-27
 
 ---
 
@@ -26,38 +26,38 @@
 
 ## 1. The Core Thesis
 
-> **The primary solution is a sustainable physical packaging transition for Profi hot food.**  
+> **The primary solution is a sustainable physical packaging transition for Profi hot food.**
 > **PackShift is the evidence-backed decision and demonstration layer** that shows which physical concepts are worth qualifying, why they are not yet approved, and what evidence must be obtained next.
 
 We do **NOT** present a software-first pitch. Software does not hold a rotisserie chicken, seal in hot fat, prevent steam condensation, or satisfy EU food-contact migration laws.
 
 ## 2. Core Operational Axioms
 
-1. **Physical Challenge First:** The challenge is physical: replacing an unmeasured, 100% virgin plastic rotisserie bag with a sustainable packaging system that survives retail hot-food constraints.
-2. **Six Non-Compensatory Technical Gates:** Every candidate must simultaneously satisfy:
+1. **Physical Challenge First:** The challenge is physical: evaluating transitions from an unmeasured, 100% virgin plastic rotisserie bag to sustainable physical packaging concepts capable of surviving retail hot-food constraints.
+2. **Six Non-Compensatory Technical Gates:** Every candidate must be evaluated against:
    - **Physical Fit** (packaging volume, geometry, headspace, closures)
-   - **Food Contact** (EU 10/2011, Framework 1935/2004, fatty-food migration, DoC)
+   - **Food Contact** (EU 10/2011, Framework 1935/2004, fatty-food migration, finished-system DoC)
    - **Thermal Envelope** (exposure temperature and duration compatibility)
-   - **Grease / Leak Resistance** (6-hour containment under hot poultry fat)
+   - **Grease / Leak Resistance** (containment under hot poultry fat)
    - **Transparent Viewing** (customer visibility into hot display)
    - **Romania Procurement** (delivered Romanian supply route and pricing)
-   *Rule: Environmental benefit cannot compensate for a hard technical failure.* A material that fails the thermal gate is **BLOCKED**, regardless of virgin plastic savings.
+   *Rule: Environmental benefit cannot compensate for a hard technical gate failure.* A material that exceeds thermal limits evaluates to **BLOCKED**. Where critical food-contact, grease resistance, or procurement evidence is missing or UNKNOWN, the status evaluates to **QUALIFICATION REQUIRED**, never approved.
 3. **Zero False Approvals (0 Qualified Survivors):** Across all 6 candidate families, 4 product archetypes, 2 workflows, and 48 evaluated context rows:
    - **28 QUALIFICATION REQUIRED**
    - **20 BLOCKED**
    - **0 QUALIFIED SURVIVORS**
-   - **0 PROCUREMENT APPROVALS**  
-   We did not fabricate a winner in 48 hours. A hackathon team cannot responsibly certify food contact or store safety. Refusing to declare a false winner is our primary proof of engineering integrity.
+   - **0 PROCUREMENT APPROVALS**
+   We did not fabricate a winner in 48 hours. A hackathon team cannot responsibly certify food contact or store safety. Refusing to declare a false winner demonstrates engineering integrity.
 4. **Distinct Physical Qualification Paths:**
    - **Whole Chicken (`P1`) / Post-Cook Hot Hold:** Prioritise **C1 Sacma B.Life Gaia** (Priority 1 qualification path; renewable kraft paper + NatureFlex cellulosic transparent window).
    - **Portions (`P2`–`P4`) / Post-Cook Hot Hold:** Prioritise **C5 BIOPAP LC SI-14** (Priority 1 qualification path; compostable cellulose tray + transparent sealing film; family-level 6h@90°C hot-hold evidence).
-   - **Literal 250°C Workflow:** Standard polymers and cellulose fail (`C2`–`C5` **BLOCKED**; `C1` unprioritized/unresolved). System surfaces **C6-RO-H aluminium body** as a **Priority 2 High-Temperature Fallback Qualification Path** (with explicit disclosure that no selected transparent closure is qualified for 250°C and clear lid remains a post-oven component).
+   - **Literal 250°C Workflow:** Standard polymers and cellulose fail (`C2`–`C5` **BLOCKED**; `C1` unprioritized/unresolved). System surfaces **C6-RO-H aluminium body** as a **Priority 2 High-Temperature Fallback Qualification Path** (with explicit disclosure that **no selected transparent closure is qualified for 250°C** and clear lid remains a post-oven component).
 5. **Temperature Exposure Semantics:**
-   $$\text{250°C oven cooking} \neq \text{6 hours at 250°C}$$
-   We strictly separate peak cooking exposure (up to 250°C in combi/rotisserie oven) from in-store hot holding (up to 6 hours at 65–85°C / 70–90°C cabinet temperature).
+   $$\text{250°C peak oven cooking} \neq \text{holding at high temperature}$$
+   We strictly separate peak cooking exposure (up to 250°C in combi/rotisserie oven) from in-store hot holding (actual Profi holding temperature = **UNKNOWN**; **85–95°C is an explicitly labeled modeled validation condition**; not 65–85°C or 70–90°C as facts).
 6. **Epistemic Discipline:**
    - Actual Profi incumbent mass, unit price, volume, and store network volume = **UNKNOWN**.
-   - Virgin plastic reduction for C5 BIOPAP spans from **−67.6% to +82.1%** (central +52.5%). Because the range crosses zero, **no reduction can be guaranteed** until exact film and incumbent package are weighed.
+   - Virgin plastic reduction for C5 BIOPAP spans from **−67.6% to +82.1%** (central +52.5%). Because the range crosses zero, **no reduction can be guaranteed** until exact film and incumbent package are measured.
    - Sourcing listings $\neq$ warehouse stock.
    - Mentor $+10\text{--}15\%$ cost tolerance is a **commercial design context**, not procurement approval.
 
@@ -80,7 +80,7 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
 | **5** | **Physical Qualification Paths: C1, C5 & C6 Fallback** | 3-column physical roadmap: Whole Chicken (C1), Portions (C5), High-Temp Fallback (C6) | 1:50–2:15 (25s) | Technical feasibility (15%), Retail practicality (15%) |
 | **DEMO** | **PackShift Decision Engine Live Demonstration** | Synchronized software demonstration (TARGET or FALLBACK path) | 2:15–3:25 (70s) | User experience (10%), Innovation (10%), Feasibility (15%) |
 | **6** | **Environmental Impact: Virgin Plastic Priority & Honest Bounded Truth** | B1-ESTIMATED vs C5 plastic budget range (−68% to +82%) vs C4 rigid mass warning | 3:25–3:55 (30s) | Environmental impact / Virgin plastic priority (25%) |
-| **7** | **Romanian Commercial Reality: Local Sourcing Truth & Cost Limits** | Romanian market pricing (B3 0.37 RON vs C6 1.15–1.29 RON) + Mentor +10–15% context | 3:55–4:20 (25s) | Business viability (10%), Scalability (10%) |
+| **7** | **Romanian Commercial Reality: Local Sourcing Truth & Cost Limits** | Romanian market pricing (B3 0.37 RON vs C6-RO-P 1.15–1.29 RON) + Mentor +10–15% context | 3:55–4:20 (25s) | Business viability (10%), Scalability (10%) |
 | **8** | **From Physical Concept to Store Pilot** | 6-step qualification roadmap: Sample → Fit → 6h Hold/Grease → DoC → Quote → Pilot | 4:20–4:45 (25s) | Scalability (10%), Retail practicality (15%) |
 | **CLOSE** | **Closing Argument & Transition to Q&A** | Definitive summary: "Evidence-backed physical transition, zero greenwashing" | 4:45–5:00 (15s) | Presentation (5%), Feasibility (15%) |
 
@@ -104,24 +104,24 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
   - Do NOT say: *"We built an AI platform that solves packaging"* or *"We built an app that recommends the best package."*
   - Do NOT say: *"Profi verified that cold packaging is 100% solved"* (frame as mentor clarification).
 - **Likely Judge Interruption:** *"Why are you showing software if this is a packaging challenge?"*
-- **One-Line Recovery Answer:** *"Software cannot hold a chicken; our deliverable is the physical packaging concept (C1 Gaia and C5 BIOPAP), and PackShift is the decision layer proving why they survive operational gates."*
+- **One-Line Recovery Answer:** *"Software cannot hold a chicken; our deliverable is the physical packaging concept (C1 Gaia and C5 BIOPAP), and PackShift is the decision layer evaluating candidate evidence against operational gates."*
 
 ---
 
 ### Slide 2: The High-Temperature Hot-Food Problem
-- **Slide Goal:** Establish the extreme physical difficulty of hot food; separate 250°C oven cooking from 6h holding.
+- **Slide Goal:** Establish the extreme physical difficulty of hot food; separate 250°C oven cooking from hot holding.
 - **Headline:** **Why Hot Food is Hard: Temperature, Grease, Visibility, and Time**
 - **What to Show:**
   - Multi-dimensional retail constraint diagram:
     1. Thermal Envelope (approx. 200–250°C oven context; 180–190°C rotisserie context)
-    2. Holding Duration (up to approx. 6 hours at 65–85°C display temperature)
-    3. Food Contact Safety (EU 10/2011, Framework 1935/2004, fatty-food migration)
+    2. Holding Duration (up to approx. 6 hours; actual Profi holding temperature = UNKNOWN; 85–95°C modeled validation condition)
+    3. Food Contact Safety (EU 10/2011, Framework 1935/2004, fatty-food migration, DoC)
     4. Grease & Oil Resistance (hot poultry fat containment)
     5. Transparent Viewing Window (shoppers must see the food; anti-fog requirement)
     6. Product Formats (1.0–1.3 kg whole chicken vs small deli portions)
-  - Critical Callout Box: **$\text{250°C peak oven cooking} \neq \text{6 hours holding at 250°C}$.**
+  - Critical Callout Box: **$\text{250°C peak oven cooking} \neq \text{holding at high temperature}$. Actual holding temperature is UNKNOWN; 85–95°C modeled validation condition.**
 - **What to Say:**
-  > *"Why has hot food remained unresolved? Because you must satisfy six brutal retail constraints simultaneously. You need heat resistance up to 250°C in an oven, grease barrier against boiling poultry fat, food contact compliance, and up to six hours of heated display.*
+  > *"Why has hot food remained unresolved? Because you must satisfy six brutal retail constraints simultaneously. You need heat resistance up to 250°C in an oven, grease barrier against hot poultry fat, food contact compliance, and up to six hours of heated display.*
   >
   > *Crucially, shoppers demand a transparent window—nobody buys rotisserie chicken blindly. Yet standard bio-plastics melt at hot temperatures, and heavy plastic containers defeat the environmental mission.*
   >
@@ -130,7 +130,7 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
   - Do NOT say: *"The package must survive 250°C for 6 hours."*
   - Do NOT claim that high temperature resistance automatically equals food safety.
 - **Likely Judge Interruption:** *"Does the packaging actually go into the 250°C oven?"*
-- **One-Line Recovery Answer:** *"That depends on store workflow: rotisserie chickens are roasted first and packed hot (65–85°C hold), but if Profi requires in-pack 250°C baking, our system evaluates that as a separate high-temperature stress workflow."*
+- **One-Line Recovery Answer:** *"That depends on store workflow: rotisserie chickens are roasted first and packed hot (actual holding temperature UNKNOWN; 85–95°C modeled validation condition), but if Profi requires in-pack 250°C baking, our system evaluates that as a separate high-temperature stress workflow."*
 
 ---
 
@@ -146,14 +146,14 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
     5. **C5 BIOPAP LC SI-14:** Compostable cellulose tray + transparent compostable sealing film (1,240 ml).
     6. **C6 Aluminium Architecture:** Aluminium container body + transparent closure (Romanian listings & EU reference).
 - **What to Say:**
-  > *"We conducted exhaustive market research across six distinct physical packaging families—from Italian cellulosic paper bags and compostable catering trays, to high-temperature nylon cook-in films, rigid CPET, and Romanian aluminium systems.*
+  > *"We conducted extensive market research across six distinct physical packaging families—from Italian cellulosic paper bags and compostable catering trays, to high-temperature nylon cook-in films, rigid CPET, and Romanian aluminium systems.*
   >
   > *We did not look for marketing slogans. We gathered technical datasheets, material declarations, temperature limits, and local Romanian distribution listings for each family."*
 - **What NOT to Say:**
   - Do NOT spend equal presentation time on all six (focus on C1, C5, and C6 fallback).
   - Do NOT call any candidate "the winner" or "production ready."
 - **Likely Judge Interruption:** *"Why did you include CPET or nylon if they are plastics?"*
-- **One-Line Recovery Answer:** *"They serve as essential technical comparators: testing them proved that high PCR in heavy rigid plastic (C4) still uses four times more virgin plastic than a lightweight bag."*
+- **One-Line Recovery Answer:** *"They serve as essential technical comparators: evaluating them showed that high PCR in heavy rigid plastic (C4) still uses four times more virgin plastic than our modeled bag scenario."*
 
 ---
 
@@ -173,7 +173,7 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
 - **What to Say:**
   > *"Here is our core engineering differentiator. PackShift evaluates packaging against six strict, non-compensatory gates: Physical Fit, Food Contact, Thermal Envelope, Grease Resistance, Transparent Viewing, and Romanian Procurement.*
   >
-  > *Our rule is absolute: an environmental metric cannot compensate for a technical failure. If a material melts or lacks food-contact certification, it is BLOCKED.*
+  > *Our rule is absolute: an environmental metric cannot compensate for a technical failure. If a material exceeds thermal limits or fails a physical gate, it evaluates to BLOCKED; where critical food-contact migration or grease barrier evidence is missing or UNKNOWN, it evaluates to QUALIFICATION REQUIRED, never approved.*
   >
   > *Across 48 evaluated combinations, our canonical result is: 28 require physical qualification, 20 are technically blocked, and exactly ZERO are qualified survivors today.*
   >
@@ -193,13 +193,13 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
   - 3-Column Architecture:
     1. **P1 Whole Chicken / Post-Cook:** **C1 Sacma Gaia** (Priority 1 Qualification Path)
        - *Architecture:* Renewable paper + NatureFlex cellulosic window bag.
-       - *Gaps to Qualify:* Exact size/BOM, physical whole-chicken fit, fatty-food migration DoC, 6h hot grease leak test, anti-fog clarity, delivered Romanian pricing.
+       - *Gaps to Qualify:* Exact size/BOM, physical whole-chicken fit, finished-system fatty-food migration DoC, 6h hot grease leak test, anti-fog clarity, delivered Romanian pricing.
     2. **P2–P4 Deli Portions / Post-Cook:** **C5 BIOPAP LC SI-14** (Priority 1 Qualification Path)
        - *Architecture:* Cellulose tray (1,240 ml) + transparent compostable heat-seal film.
-       - *Gaps to Qualify:* Tray+film system food-contact DoC, resolve 175°C vs 185°C datasheet conflict, verify 6h@90°C hot fat barrier, Romanian commercial supply contract.
+       - *Gaps to Qualify:* Tray+film system food-contact DoC, resolve 175°C vs 185°C datasheet conflict, verify 6h@90°C hot fat barrier on nominated system, Romanian commercial supply contract.
     3. **Literal 250°C Oven Cycle:** **C6-RO-H Aluminium Body** (Priority 2 High-Temp Fallback)
        - *Architecture:* Heavy-gauge aluminium oven body (280°C seller claim).
-       - *Gaps to Qualify:* Body $\neq$ complete package; **no selected transparent closure is qualified for 250°C**; clear lid applied post-oven; +210–249% cost premium over market bag.
+       - *Gaps to Qualify:* Body $\neq$ complete package; **no selected transparent closure is qualified for 250°C**; clear lid applied post-oven; complete finished system pricing unconfirmed (e-pui225 body listed at 1.43 RON incl. VAT without clear closure; portion pricing of +210–249% applies strictly to C6-RO-P against B3, not C6-RO-H).
 - **What to Say:**
   > *"Because physical packaging depends on format, our solution provides three clear paths:*
   >
@@ -207,10 +207,11 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
   >
   > *For Portioned Sides like wings and roasted potatoes, our first qualification path is **BIOPAP LC SI-14**—a compostable cellulose tray backed by family-level hot-hold evidence up to six hours at 90°C.*
   >
-  > *If Profi requires literal 250°C in-pack oven baking, polymers and cellulose are blocked. The system surfaces the **C6-RO-H aluminium body** as a Priority 2 fallback. But we do not hide the catch: no transparent closure survives 250°C. The clear lid must be applied after baking, and unit costs are triple conventional packaging."*
+  > *If Profi requires literal 250°C in-pack oven baking, candidates C2 through C5 evaluate to BLOCKED, C1 Gaia remains unresolved, and the **C6-RO-H aluminium body** serves as a Priority 2 fallback. But we do not hide the catch: no selected transparent closure is qualified for 250°C. The clear lid must be applied after baking, and complete system pricing remains unconfirmed."*
 - **What NOT to Say:**
   - Do NOT say C6 is a complete 250°C transparent package.
-  - Do NOT ignore the BIOPAP 175°C vs 185°C conflict.
+  - Do NOT say "only aluminium survives 250°C".
+  - Do NOT transfer C6-RO-P +210–249% cost deltas to C6-RO-H.
 - **Likely Judge Interruption:** *"Why not use a rigid box for the whole chicken?"*
 - **One-Line Recovery Answer:** *"A rigid whole-chicken box adds severe tare weight, increases transport volume, and requires 1,800–2,200 ml capacity, multiplying virgin material mass."*
 
@@ -222,24 +223,25 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
 - **What to Show:**
   - Official Challenge Formula:
     $$\text{Virgin Plastic} = \text{Plastic Mass} \times (1 - \text{Recycled Content Fraction})$$
-  - Baseline Reality: Profi incumbent bag (`B1`) is 100% virgin plastic (mentor clarification), but exact mass is unmeasured. Modeled engineering scenario (`B1-ESTIMATED`) = 2.59–12.46 g (central 6.50 g).
+  - Baseline Reality: Profi incumbent bag (`B1`) is 100% virgin plastic (mentor clarification), but exact mass is unmeasured and UNKNOWN. Modeled engineering scenario (`B1-ESTIMATED`) = 2.59–12.46 g (central 6.50 g).
   - C5 BIOPAP Virgin Plastic Reduction Range:
     - **−67.6% to +82.1% (central +52.5%)**
     - Callout: *Range crosses zero. No reduction is guaranteed until exact film gauge and incumbent mass are measured.*
   - Cautionary Lesson (C4 Faerch CPET):
-    - Rigid container with 69–75% body PCR still contains **25.3–54.1 g of virgin plastic** due to 73 g total mass—**4 to 8 times more plastic** than a simple 6.5 g incumbent bag!
+    - Whole-pack model results in **25.3–54.1 g of virgin plastic** (central 36.2 g) due to 73 g total mass; even against the upper bound of the modeled bag scenario (B1-ESTIMATED: 2.59–12.46 g, central 6.50 g; actual Profi incumbent mass is UNKNOWN), a rigid CPET tray substantially increases virgin plastic use. High PCR alone in a heavy rigid container does not guarantee a sustainable transition.
 - **What to Say:**
   > *"The official challenge's top priority is virgin plastic reduction. We follow the exact official formula: virgin plastic equals plastic mass times one minus recycled fraction.*
   >
-  > *Profi's incumbent bag is effectively 100% virgin plastic, but its exact mass is confidential. We built a conservative engineering model—B1-ESTIMATED—at 2.6 to 12.5 grams.*
+  > *Profi's incumbent bag is effectively 100% virgin plastic, but its exact mass is confidential and UNKNOWN. We built a conservative engineering model—B1-ESTIMATED—at 2.6 to 12.5 grams.*
   >
   > *Look at our C5 BIOPAP model: if the cellulose tray is plastic-free and we treat the entire sealing film as virgin plastic, the central reduction is 52.5%. But the full engineering interval spans from MINUS 67.6% to PLUS 82.1%.*
   >
   > *Why does it cross zero? Because if the sealing film is thick and the incumbent bag is lightweight, virgin plastic use could increase! We refuse to advertise the 52% headline without disclosing that the range crosses zero.*
   >
-  > *Furthermore, C4 CPET taught us that a 75% recycled rigid tray still uses 36 grams of virgin plastic—four times more plastic than the bag it replaces. Lightweight fibre architecture, not heavy recycled plastic, is the true reduction path."*
+  > *Furthermore, C4 CPET demonstrates that a 75% recycled rigid tray still uses 25 to 54 grams of virgin plastic—substantially higher than our modeled bag scenario. Lightweight fibre architecture, not heavy recycled plastic, is the true reduction path."*
 - **What NOT to Say:**
   - Do NOT say: *"BIOPAP reduces plastic by 52.5%"* without stating that the range crosses zero.
+  - Do NOT compare C4 as a factual multiple of an "actual 6.5g bag" (B1 actual is UNKNOWN; 6.5g is central B1-ESTIMATED model).
   - Do NOT substitute carbon/LCA percentages for virgin plastic reduction.
 - **Likely Judge Interruption:** *"Why didn't you do a full lifecycle assessment (LCA)?"*
 - **One-Line Recovery Answer:** *"A material-only carbon factor is not a cradle-to-grave LCA; we prioritized the challenge's number-one criterion—virgin plastic reduction—and avoided greenwashing with incomplete LCA numbers."*
@@ -247,13 +249,13 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
 ---
 
 ### Slide 7: Romanian Commercial Reality: Local Sourcing Truth & Cost Limits
-- **Slide Goal:** Ground commercial feasibility in Romanian supply chain facts; separate listing from stock; analyze mentor +10–15% cost context honestly.
+- **Slide Goal:** Ground commercial feasibility in Romanian supply chain facts; separate listing from stock; analyze mentor +10–15% cost context honestly without making ungrounded Profi affordability claims.
 - **Headline:** **Romanian Procurement Reality: Local Market Pricing vs Cost Ceilings**
 - **What to Show:**
   - Unit Cost Comparison Chart:
     - Conventional Romanian Rotisserie Bag (`B3 Barleta 128002`): **0.37026 RON incl. VAT** (market reference, NOT Profi baseline).
-    - Local Aluminium Portion Pair (`C6-RO-P` 729 tray + clear lid): **1.1485–1.2915 RON incl. VAT** (+210.2% to +248.8% vs B3).
-    - Mentor Cost Tolerance Context Line: **+10% to +15% over incumbent** (context, NOT approval).
+    - Local Aluminium Portion Pair (`C6-RO-P` 729 tray + clear lid): **1.1485–1.2915 RON incl. VAT** (+210.2% to +248.8% vs B3). *(Explicitly scoped to C6-RO-P portion pair; does not apply to C6-RO-H).*
+    - Mentor Cost Tolerance Context Line: **+10% to +15% over incumbent** (commercial context, NOT procurement approval; Profi incumbent price UNKNOWN).
   - Procurement Maturity Badges:
     - `ROMANIA_DISTRIBUTOR_CURRENT`: C6 local listings (listing $\neq$ stock; physical fit unverified).
     - `QUOTE_REQUIRED_ROMANIA`: C1 Gaia, C2 Siralon, C3 Oven Ease (direct factory RFQs required).
@@ -261,13 +263,14 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
 - **What to Say:**
   > *"We did not stop at European brochures. We investigated real Romanian procurement channels.*
   >
-  > *A conventional Romanian rotisserie market bag—B3 Barleta—costs 0.37 RON including VAT. If Profi purchases locally listed aluminium portion pairs, the cost is 1.15 to 1.29 RON. That is a 210% to 249% cost increase.*
+  > *A conventional Romanian rotisserie market bag—B3 Barleta—costs 0.37 RON including VAT. If Profi purchases locally listed aluminium portion pairs (C6-RO-P), the cost is 1.15 to 1.29 RON. That is a 210% to 249% cost increase against the B3 market benchmark. (Note that this premium applies strictly to portion pair C6-RO-P, not C6-RO-H).*
   >
-  > *The mentor indicated that approximately +10 to 15% could be commercially acceptable for a genuinely sustainable solution. Therefore, aluminium cannot be the primary commercial choice—it is a costly high-temperature fallback.*
+  > *The mentor indicated that approximately +10 to 15% could be commercially acceptable context for a genuinely sustainable solution. However, because Profi's actual incumbent cost remains confidential and UNKNOWN, we cannot make an affordability determination against Profi's budget.*
   >
   > *For our preferred fibre candidates, Gaia and BIOPAP, direct factory RFQs must be executed to confirm volume case pricing. We do not invent Profi unit costs or claim fictitious savings."*
 - **What NOT to Say:**
   - Do NOT say: *"Profi approved a 15% price increase"* or *"Our solution costs within budget."*
+  - Do NOT say: *"Aluminium is unaffordable for Profi"* without actual incumbent price.
   - Do NOT call B3 Barleta "Profi's current packaging."
   - Do NOT treat online catalogue listings as guaranteed warehouse stock.
 - **Likely Judge Interruption:** *"Can Profi actually buy Sacma Gaia in Romania tomorrow?"*
@@ -288,7 +291,7 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
   >
   > *PackShift is not an AI black box or an e-commerce catalog. It is a deterministic decision engine that links physical candidate data, retail workflows, and non-compensatory gates.*
   >
-  > *It proves why a material that looks green on paper must be blocked if it cannot survive store physics, and it recalculates qualification priority the instant store operating conditions change.*
+  > *It demonstrates why a material that looks green on paper must be blocked if it cannot satisfy operational gates, and it recalculates qualification priority the instant store operating conditions change.*
   >
   > *Let’s look at PackShift live."*
 - **What NOT to Say:**
@@ -305,17 +308,17 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
   - 6-Stage Qualification Flow:
     1. **Exact Sample Procurement:** Receive nominated Gaia bags, BIOPAP SI-14 trays, and clear films.
     2. **Physical Fit & Headspace:** Measure bird geometry (1.0–1.3 kg), closure sealing, and shelf footprint.
-    3. **Store Hot-Hold & Grease Test:** 6 hours at 65–85°C with hot fatty chicken; evaluate seam leaks and window anti-fog.
-    4. **Food Contact & Migration DoC:** Verify supplier Declarations of Compliance and fatty-food migration testing (Simulant D2) under EU 10/2011 & Framework 1935/2004.
+    3. **Store Hot-Hold & Grease Test:** 6 hours under modeled 85–95°C validation condition with hot fatty chicken (actual Profi holding temperature = UNKNOWN); evaluate seam leaks and window anti-fog.
+    4. **Food Contact & Migration DoC:** Exact selected-system Declarations of Compliance and fatty-food migration testing (Simulant D2) under EU 10/2011 & Framework 1935/2004 remain unresolved and required.
     5. **Delivered Romanian Pricing:** Confirm commercial case pricing and lead times via pre-drafted RFQs.
     6. **Bounded Store Pilot:** Execute a controlled 2-store trial before network-wide rollout.
   - Concluding Callout: *"From marketing guesswork to evidence-backed physical transition."*
 - **What to Say:**
   > *"To take Profi from hackathon concept to commercial pilot, we defined a 6-stage qualification protocol:*
   >
-  > *First, order physical candidate samples. Second, test physical fit with 1.0 to 1.3 kg rotisserie chickens. Third, run 6-hour warming cabinet trials at 65 to 85°C to test hot fat containment and anti-fog visibility.*
+  > *First, order physical candidate samples. Second, test physical fit with 1.0 to 1.3 kg rotisserie chickens. Third, run 6-hour warming cabinet trials under modeled 85 to 95°C validation conditions (actual store temperature UNKNOWN) to test hot fat containment and anti-fog visibility.*
   >
-  > *Fourth, obtain formal Declarations of Compliance and fatty-food migration certificates under EU 10/2011. Fifth, lock in delivered Romanian volume pricing. Sixth, launch a controlled 2-store trial.*
+  > *Fourth, obtain exact finished-system Declarations of Compliance and fatty-food migration certificates under EU 10/2011, which remain unresolved today. Fifth, establish delivered Romanian volume pricing. Sixth, launch a controlled 2-store trial.*
   >
   > *Judges: we don't ask Profi to trust an unverified green claim. We showed what is known, what remains unknown, and the exact qualification roadmap to follow.*
   >
@@ -334,7 +337,7 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
 
 > *"Profi reportedly already has a working low-temperature solution using 100% recycled plastic, but high-temperature hot food remains an unresolved physical packaging challenge.*
 >
-> *We developed a physical packaging transition supported by **PackShift**—an evidence-backed decision layer. For whole chicken, we qualify **Sacma Gaia** paper bags first; for portions, **BIOPAP** cellulose trays. If store operations demand literal 250°C oven exposure, polymers and cellulose are blocked, and an aluminium body surfaces as a high-temperature fallback.*
+> *We developed a physical packaging transition supported by **PackShift**—an evidence-backed decision layer. For whole chicken, we qualify **Sacma Gaia** paper bags first; for portions, **BIOPAP** cellulose trays. If store operations demand literal 250°C oven exposure, polymer and cellulose candidates evaluate to BLOCKED, C1 remains unresolved, and an aluminium body surfaces as a high-temperature fallback.*
 >
 > *Across 48 evaluated contexts, exactly zero candidates are qualified today. PackShift doesn’t sell green illusions—it tells Profi what to qualify next, and what evidence is required before procurement."*
 
@@ -344,7 +347,7 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
 
 > *"Our technical foundation is a strict, non-compensatory 6-gate model: Physical Fit, Food Contact, Thermal Envelope, Grease Resistance, Transparent Viewing, and Romania Procurement. An environmental delta cannot compensate for a hard gate failure.*
 >
-> *We explicitly separate 250°C peak oven exposure from 6 hours of hot holding. For BIOPAP, our virgin plastic model spans −67.6% to +82.1%, honestly disclosing that the range crosses zero until the barrier film is weighed.*
+> *We strictly separate 250°C peak oven cooking from in-store hot holding (actual Profi holding temperature = UNKNOWN; 85–95°C modeled validation condition). For BIOPAP, our virgin plastic model spans −67.6% to +82.1%, honestly disclosing that the range crosses zero until the barrier film is weighed.*
 >
 > *PackShift is decision support, not certification. It gives QA and procurement an auditable qualification protocol from sample testing to fatty-food migration compliance."*
 
@@ -364,7 +367,7 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
 >
 > *First, **the right package depends strictly on format and workflow.** For a whole rotisserie chicken packed after cooking, the first qualification path is **Sacma Gaia**—a renewable paper and NatureFlex cellulosic window bag. For portioned sides like wings and roasted potatoes, the first qualification path is **BIOPAP LC SI-14**, a compostable cellulose tray backed by family-level hot-hold testing up to six hours at 90°C.*
 >
-> *Second, **workflows dictate survival.** If Profi cooks food inside the packaging at a literal 250°C, C2 through C5 evaluate to BLOCKED due to published thermal limits, while Gaia remains unresolved. The system surfaces an aluminium body fallback (C6-RO-H), while noting that no transparent closure is qualified for 250°C and clear lids must be applied post-oven.*
+> *Second, **workflows dictate survival.** If Profi cooks food inside the packaging at a literal 250°C, C2 through C5 evaluate to BLOCKED due to published thermal limits, while Gaia remains unresolved. The system surfaces an aluminium body fallback (C6-RO-H), while noting that no selected transparent closure is qualified for 250°C and clear lids must be applied post-oven.*
 >
 > *Third, **we refuse to greenwash.** On BIOPAP, under our conservative material model, virgin plastic reduction spans from −68% to +82%. Because that interval crosses zero, we tell Profi honestly: no reduction is guaranteed until the exact sealing film is measured.*
 >
@@ -408,18 +411,18 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
 >
 > *Look at our C5 BIOPAP model: against B1-ESTIMATED, its virgin plastic reduction spans from −67.6% to +82.1%. Why does it cross zero? Because until the exact barrier film is nominated and weighed, a heavy film could use more plastic than a lightweight incumbent bag. We refuse to advertise the central 52% reduction without disclosing that the range crosses zero.*
 >
-> *Meanwhile, C4 Faerch CPET proves that high recycled content (up to 75% body PCR) in a heavy 73-gram rigid container still results in 25 to 54 grams of virgin plastic—four times more plastic than a simple bag. High PCR alone does not guarantee sustainability.*
+> *Meanwhile, C4 Faerch CPET demonstrates that high recycled content (up to 75% body PCR) in a heavy 73-gram rigid container still results in 25 to 54 grams of virgin plastic—substantially higher than our modeled bag scenario. High PCR alone does not guarantee sustainability.*
 >
-> *We also evaluated Romanian procurement reality. A conventional Romanian rotisserie market bag (B3 Barleta) costs 0.37 RON. Sourcing locally listed aluminium portion pairs costs 1.15 to 1.29 RON—over 200% more expensive. While the mentor noted an acceptable premium of approximately +10–15% for genuine sustainability, aluminium is a technical fallback, not our preferred commercial path. For Gaia and BIOPAP, direct supplier RFQs are required to establish landed Romanian pricing."*
+> *We also evaluated Romanian procurement reality. A conventional Romanian rotisserie market bag (B3 Barleta) costs 0.37 RON. Sourcing locally listed aluminium portion pairs (C6-RO-P) costs 1.15 to 1.29 RON—over 200% more than the conventional B3 market benchmark (this premium applies strictly to portion pair C6-RO-P, not C6-RO-H). While the mentor noted an acceptable premium of approximately +10–15% as commercial context for genuine sustainability, whether any candidate is within Profi's budget cannot be determined because Profi's incumbent purchase price remains confidential and UNKNOWN. For Gaia and BIOPAP, direct supplier RFQs are required to establish landed Romanian pricing."*
 
 ### Part 5: Qualification Roadmap & Closing [4:20 – 4:50]
 > *"To ensure Profi can take immediate action, we prepared an actionable qualification roadmap:*
 >
-> *Step 1: Order physical samples of Gaia bags and BIOPAP SI-14 trays.*  
-> *Step 2: Weigh 10 incumbent Profi bags and verify chicken sizing.*  
-> *Step 3: Dispatch pre-drafted technical RFQs to Sacma and BIOPAP.*  
-> *Step 4: Execute fatty-food migration testing under EU 10/2011 with accredited laboratories.*  
-> *Step 5: Run 6-hour warming cabinet trials for seam leakage and anti-fog clarity.*  
+> *Step 1: Order physical samples of Gaia bags and BIOPAP SI-14 trays.*
+> *Step 2: Weigh 10 incumbent Profi bags and verify chicken sizing.*
+> *Step 3: Dispatch pre-drafted technical RFQs to Sacma and BIOPAP.*
+> *Step 4: Execute fatty-food migration testing under EU 10/2011 with accredited laboratories.*
+> *Step 5: Run 6-hour warming cabinet trials for seam leakage and anti-fog clarity.*
 > *Step 6: Launch a controlled 2-store customer pilot.*
 >
 > *Judges: we don't ask Profi to trust an unverified green claim. We show what is known, what remains unknown, and the exact qualification roadmap to follow.*
@@ -430,12 +433,12 @@ We do **NOT** present a software-first pitch. Software does not hold a rotisseri
 
 # D. Demo Narration (TARGET Path)
 
-> **DEMO ENVIRONMENT STATUS:**  
-> **TARGET DEMO — Pending PUX-HT2R verification / merge to main.**  
-> Inspected against Denis' implementation on `origin/denis/pux-ht2r-canonical-recommendation-ux` (`158abd5f`).  
+> **DEMO ENVIRONMENT STATUS:**
+> **TARGET DEMO — Pending PUX-HT2R verification / merge to main.**
+> Inspected against Denis' implementation on `origin/denis/pux-ht2r-canonical-recommendation-ux` (`158abd5f`).
 > *If Denis' branch is not merged at presentation time, see Section G for the FALLBACK DEMO on current main.*
 
-**Target Demo Duration:** 70 seconds  
+**Target Demo Duration:** 70 seconds
 **Operator Sync:** Operator drives live UI clicks; Presenter delivers synchronized spoken narration.
 
 ```text
@@ -454,7 +457,8 @@ Ensures "Stage B · Operational Workflow" is set to "Post-Cook Hot Holding Scena
 
 PRESENTER:
 "We start with Product P1: Whole Rotisserie Chicken under our primary assumed workflow:
-Post-Cook Hot Holding, where chicken is roasted on spits, packed hot, and held up to six hours."
+Post-Cook Hot Holding, where chicken is roasted on spits and packed hot
+(actual Profi holding temperature = UNKNOWN; 85–95°C modeled validation condition)."
 
 [0:20 – 0:40]
 OPERATOR ACTION:
@@ -467,7 +471,7 @@ PRESENTER:
 Gaia combines renewable paper with a NatureFlex cellulosic transparent window.
 Crucially, look at the status badge: it does NOT say 'APPROVED' or 'WINNER'.
 It says 'QUALIFICATION REQUIRED', and qualified survivors show exactly 0 out of 6.
-PackShift refuses false approvals because physical bird fit, fatty-food migration DoC,
+PackShift refuses false approvals because physical bird fit, finished-system fatty-food migration DoC,
 and delivered Romanian pricing remain to be qualified by the supplier."
 
 [0:40 – 0:55]
@@ -480,7 +484,7 @@ PRESENTER:
 Instantly, PackShift switches the First Qualification Path to BIOPAP LC SI-14—
 a compostable cellulose tray backed by published family hot-hold evidence up to six hours at 90°C.
 Notice the open conflict badge: PackShift transparently flags the 175°C versus 185°C datasheet conflict,
-and requires tray-plus-film migration testing before store pilot."
+and requires finished tray-plus-film migration testing before store pilot."
 
 [0:55 – 1:10]
 OPERATOR ACTION:
@@ -494,8 +498,8 @@ If Profi specifies in-pack cooking at a literal 250°C oven cycle, we switch the
 The environmental story does not override physics: candidates with tested limits below 250°C—
 Siralon, Oven Ease, CPET, and BIOPAP—are immediately BLOCKED.
 The system surfaces the C6-RO-H Aluminium Body as a Priority 2 high-temperature fallback.
-Even here, PackShift prevents false claims: it explicitly flags that no transparent closure
-survives 250°C, and clear lids must be applied post-oven.
+Even here, PackShift prevents false claims: it explicitly flags that no selected transparent closure
+is qualified for 250°C, and clear lids must be applied post-oven.
 PackShift rejects green illusions—it gives Profi the truth."
 ```
 
@@ -503,11 +507,11 @@ PackShift rejects green illusions—it gives Profi the truth."
 
 For every demo step, ensure the presenter addresses all four dimensions:
 
-| Step | What is Visible? | What Does it Prove? | What Does it NOT Prove? | Why Does the Judge Care? |
+| Step | What is Visible? | What Does it Demonstrate? | What Does it NOT Establish? | Why Does the Judge Care? |
 |---|---|---|---|---|
-| **Step 1 (P1 Post-Cook)** | C1 Gaia card; `First Qualification Path · Priority 1`; `QUALIFICATION REQUIRED`; `Qualified Survivors: 0 / 6`. | PackShift prioritises renewable fibre packaging for whole chicken without fabricating approval. | Does NOT prove food-contact certification, fatty-food leak resistance, or store readiness. | Proves the software refuses premature green marketing and enforces evidence discipline. |
-| **Step 2 (P2 Portions)** | Dynamic switch to C5 BIOPAP SI-14; 6h@90°C family evidence; 175°C vs 185°C conflict badge. | Packaging selection is format-dependent; cellulose trays suit deli portions; system surfaces datasheet conflicts. | Does NOT prove the exact SI-14 tray + film combination is food-safe for Profi chicken fat. | Proves the tool handles multi-format retail complexity and preserves unvarnished truth. |
-| **Step 3 (Literal 250°C)** | C2–C5 move to `BLOCKED`; C6-RO-H surfaces as `Priority 2 Fallback`; closure gap alert displayed. | Operational constraints override green metrics; materials that melt at 250°C are blocked; aluminium fallback surfaced. | Does NOT prove C6 is a complete 250°C transparent system (transparent closure remains post-oven). | Proves that store workflows dictate material survival, protecting Profi from operational disaster. |
+| **Step 1 (P1 Post-Cook)** | C1 Gaia card; `First Qualification Path · Priority 1`; `QUALIFICATION REQUIRED`; `Qualified Survivors: 0 / 6`. | PackShift prioritises renewable fibre packaging for whole chicken without fabricating approval. | Does NOT establish food-contact certification, fatty-food leak resistance, or store readiness. | Shows that the software refuses premature green marketing and enforces evidence discipline. |
+| **Step 2 (P2 Portions)** | Dynamic switch to C5 BIOPAP SI-14; 6h@90°C family evidence; 175°C vs 185°C conflict badge. | Packaging selection is format-dependent; cellulose trays suit deli portions; system surfaces datasheet conflicts. | Does NOT establish that the exact SI-14 tray + film combination is food-safe for Profi chicken fat. | Shows that the tool handles multi-format retail complexity and preserves unvarnished truth. |
+| **Step 3 (Literal 250°C)** | C2–C5 move to `BLOCKED`; C6-RO-H surfaces as `Priority 2 Fallback`; closure gap alert displayed. | Operational constraints override green metrics; materials that exceed thermal limits are blocked; aluminium fallback surfaced. | Does NOT establish that C6 is a complete 250°C transparent system (**no selected transparent closure is qualified for 250°C**; clear closure remains post-oven). | Shows that store workflows dictate material survival, protecting Profi from operational disaster. |
 
 ---
 
@@ -542,7 +546,7 @@ For every demo step, ensure the presenter addresses all four dimensions:
 |---|---|---|
 | **Candidate Status** | *"First qualification path"* / *"Priority alternative"* | Designates research priority without claiming approval. |
 | **Overall State** | *"Qualification required — zero qualified survivors"* | Honestly reflects that all candidates have open technical gates. |
-| **Workflow Framing** | *"Under our post-cook hot-holding operational scenario"* | Explicitly scopes findings to the stated operating model. |
+| **Workflow Framing** | *"Under our post-cook hot-holding operational scenario (actual holding temp UNKNOWN; 85–95°C modeled validation condition)"* | Explicitly scopes findings to the stated operating model without asserting unverified store temperatures. |
 | **Evidence Basis** | *"Manufacturer technical datasheets indicate..."* | Attributes claims to published literature rather than lab certainty. |
 | **Baseline Mass** | *"Modeled engineering scenario (B1-ESTIMATED: 2.6–12.5 g)"* | Prevents confusing an engineering estimate with measured Profi data. |
 | **Environmental Deltas** | *"Conditional material budget"* | Discloses that plastic mass is modeled based on explicit assumptions. |
@@ -566,7 +570,7 @@ For every demo step, ensure the presenter addresses all four dimensions:
 | ❌ *"Guaranteed 52% plastic reduction"* | Untrue; C5 range crosses zero (−68% to +82%), C1 is unmeasured. | *"Modeled scenario crossing zero (−68% to +82%); unverified"* |
 | ❌ *"Saves Profi X RON annually"* | Fabricates confidential Profi purchase volume and unit cost. | *"Annual impact depends on actual confidential Profi volumes"* |
 | ❌ *"Survives 250°C for 6 hours"* | Physically absurd; 250°C is an oven peak, not a 6h holding temperature. | *"250°C peak oven exposure followed by hot holding"* |
-| ❌ *"Aluminium solves the 250°C requirement"* | Ignores transparent closure; no clear closure survives 250°C. | *"Aluminium body provides a high-temp fallback; closure post-oven"* |
+| ❌ *"Aluminium solves the 250°C requirement"* | Ignores transparent closure; no selected transparent closure is qualified for 250°C. | *"Aluminium body provides a high-temp fallback; no selected transparent closure is qualified for 250°C"* |
 | ❌ *"Current Profi bag weighs 6.5 grams"* | Converts a synthetic scenario into an invented provider fact. | *"Our estimated baseline scenario models 2.6 to 12.5 grams"* |
 | ❌ *"PackShift makes procurement risk-free"* | Software cannot eliminate physical or commercial risk. | *"PackShift helps surface qualification gaps before procurement"* |
 | ❌ *"1,600+ stores"* / *"1,700 stores"* | Treats modeled retail network scale as verified Profi fact. | *"Across a large retail network"* / *"At network scale"* |
@@ -591,11 +595,11 @@ For every demo step, ensure the presenter addresses all four dimensions:
 
 # G. Fallback Demo Narration (Current Main @ 513e0867)
 
-> **WHEN TO USE THIS FALLBACK:**  
-> Use this narration if Denis' Recommendation UI (`PUX-HT2R`) is not merged into `main` at presentation time.  
+> **WHEN TO USE THIS FALLBACK:**
+> Use this narration if Denis' Recommendation UI (`PUX-HT2R`) is not merged into `main` at presentation time.
 > This fallback executes exclusively on **verified current main**, utilizing the live **Comparison** and **Portfolio Selection** modes alongside verified **Backend API** responses.
 
-**Fallback Demo Duration:** 60–75 seconds  
+**Fallback Demo Duration:** 60–75 seconds
 **Surfaces Used:**
 1. Browser: `http://localhost:5173` (Comparison Mode & Portfolio Selection Mode)
 2. Terminal / API: `POST /api/v1/recommendation/evaluate` or `GET /api/v1/recommendation/products`
@@ -664,7 +668,7 @@ PackShift enforces hard physical discipline across every layer."
 - [ ] **UI Navigation verified:** Presenter knows whether live UI is running `TARGET` (Recommendation Journey) or `FALLBACK` (Comparison + Portfolio Selection + Terminal API).
 - [ ] **Backup screenshots available:** Pre-captured screenshots of Step 1 (P1 Gaia), Step 2 (P2 BIOPAP), and Step 3 (250°C C6 Fallback) stored locally on presenter desktop.
 - [ ] **Presenter claims checked:** No positive words (*winner*, *approved*, *certified*, *safe*, *rollout-ready*).
-- [ ] **Temperature distinction memorized:** Presenter can recite *"250°C oven cooking $\neq$ 6 hours at 250°C"* under pressure.
+- [ ] **Temperature distinction memorized:** Presenter can recite *"250°C oven cooking $\neq$ holding duration; actual holding temp UNKNOWN; 85–95°C modeled validation condition"* under pressure.
 - [ ] **BIOPAP range memorized:** Presenter can recite *"−68% to +82%, range crosses zero"*.
 - [ ] **Time limit timed:** Spoken pitch + demo clocked under 4 minutes 15 seconds in rehearsal.
 
@@ -674,6 +678,6 @@ PackShift enforces hard physical discipline across every layer."
 |---|---|---|
 | **Demo frontend fails to load / white screen** | Immediately switch to pre-captured backup screenshots. | *"While our local dev port refreshes, let's look at the exact qualification states rendered by our runtime."* |
 | **Denis' branch not merged at judging time** | Seamlessly execute Section G Fallback Demo (Comparison Case B + Selection). | *"Let's look at PackShift's hard-gate engine live on our current build, demonstrating how thermal gates block candidates."* |
-| **Judge interrupts: "Is this certified food safe?"** | Deliver Q7 defense immediately. | *"No. Status is strictly QUALIFICATION REQUIRED; finishing systems require fatty-food migration testing under EU 10/2011 before purchase."* |
+| **Judge interrupts: "Is this certified food safe?"** | Deliver Q7 defense immediately. | *"No. Neither candidate is certified food-safe for Profi store conditions; exact selected-system Declarations of Compliance and fatty-food migration evidence remain unresolved."* |
 | **Judge interrupts: "Who is the winner?"** | Deliver Q6 / 0-survivor defense immediately. | *"We deliberately do not declare a winner. Out of 48 combinations, zero are qualified today; declaring a winner would be greenwashing."* |
 | **Judge interrupts: "How much plastic does Profi save?"** | Deliver Q5 / BIOPAP range defense immediately. | *"Our model shows central 52% reduction for BIOPAP, but the range spans −68% to +82%. No saving is guaranteed until the film is weighed."* |
