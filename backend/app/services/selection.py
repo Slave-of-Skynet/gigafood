@@ -47,6 +47,15 @@ def calculate_article_virgin_plastic(
     return virgin_plastic(package), []
 
 
+def _bounded_comparability_note() -> str:
+    """Returns conservative, truthful explanation when component boundaries match
+    but structured evidence is insufficient to establish strong comparability."""
+    return (
+        "Common component boundary matched. Strong nominal-capacity / format comparability "
+        "is not established by the current structured Selection metadata."
+    )
+
+
 def assess_comparability(
     baseline: CandidateArticle,
     candidate: CandidateArticle,
@@ -65,11 +74,8 @@ def assess_comparability(
         return ComparabilityAssessment(rating=rating, boundary_match=False, notes=notes)
 
     # Boundaries match
-    rating = "BOUNDED_WITH_QUALIFIER"
-    notes = [
-        "Common component boundary matched. Comparison is bounded: baseline nominal volume is unstated "
-        "on primary datasheet or capacity differs > 15%."
-    ]
+    rating: ComparabilityRating = "BOUNDED_WITH_QUALIFIER"
+    notes = [_bounded_comparability_note()]
     return ComparabilityAssessment(rating=rating, boundary_match=True, notes=notes)
 
 
