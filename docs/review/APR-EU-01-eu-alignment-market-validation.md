@@ -1,23 +1,37 @@
 # APR-EU-01 — EU Alignment & Market Validation Evidence Packet
 
-**Status: BOTH METHODS CALCULATED — available-source assessment ready for Project Brain review. Supporting coach DOCX remains missing; full source acceptance is not claimed.**
+**Status: FULL COACH-SOURCE RECONCILIATION COMPLETE — ready for Project Brain review.
+Independent conservative reassessment: 2.59.
+Supplied mentor/team workbook: 2.56.
+Baseline-preserving APR uplift projection: ≈2.94 if accepted.
+Target 3.10–3.15: NOT YET ACHIEVED.**
 
 Prepared 2026-09-26 for Alisa / Team SoS / Vladimir. Inspected base and HEAD:
 `29f0b8b1b237a6812b75ba2affd8b246d6f9399b`, branch `main`, matching refreshed
 `origin/main` and the issuance SHA. Working tree was clean before this document.
 
 The research and proposed validation/business roadmaps below are usable inputs
-to coach review. The user subsequently supplied
-`C:\Users\djahe\Downloads\EU Alignment Scorecard GigaHack2026.xlsx`.
-All three sheets (Read Me, Criteria Guide, Team Scorecard), including formulas,
+to coach review. The user supplied the Level-1 coach sources:
+`EU Alignment Scorecard GigaHack2026.xlsx` and `EU_Frameworks_Supporting_Document.docx`
+(Serghey Drive folder).
+All three workbook sheets (Read Me, Criteria Guide, Team Scorecard), including formulas,
 were inspected read-only. The user approved reporting both aggregation methods
-on 2026-09-26, resolving the methodological HARD STOP. The supporting
-`EU_Frameworks_Supporting_Document.docx` remains unavailable. Scores below are
-analyst proposals against the workbook rubric, not mentor-endorsed replacements.
+on 2026-09-26, resolving the methodological HARD STOP. The supporting coach document
+`EU_Frameworks_Supporting_Document.docx` has now been inspected and reconciled by
+Project Brain: it confirms the framework mappings used throughout this packet
+(Green Deal, Fit for 55, ESPR, CE marking, Twin Transition, EU Taxonomy/DNSH;
+DIGITAL, EIT Deep Tech, Data Act, AI Act/ALTAI, NIS2/CRA, EDIH/TEF/EuroHPC;
+GDPR Arts 5/6/9/25/35; Farm to Fork, CAP, Soil Strategy 2030; Single Market,
+EIC Pathfinder/Transition/Accelerator, Horizon Europe / Moldova association).
+Result: **SUPPORTING DOCX RECONCILIATION: NO MATERIAL CONFLICT**.
+This DOCX is a scorecard framework reference guide, not external compliance certification.
 
-**Proposed index using the coach formula: 2.59. Applicable-criterion average:
-2.60. Target 3.10–3.15: NO under either method.** The supplied workbook's existing
-scores separately yield 2.56 and 2.55; do not confuse those with this reassessment.
+This packet clearly separates four distinct evaluation perspectives:
+1. **Supplied mentor/team workbook state**: baseline index **2.56** (applicable-criterion average **2.55**).
+2. **INDEPENDENT CONSERVATIVE REASSESSMENT**: coach formula **2.59**, applicable-criterion average **2.60**.
+   This is an independent adversarial review and not a replacement for workbook scores.
+3. **Project Brain conditional projection**: **≈2.94** if current candidate uplifts (A3, B1, B4, E1, E3, E4, E5) are accepted by mentor.
+4. **Target 3.10–3.15 path**: conditional on future D2, D3, E2, B3 evidence (**NOT YET ACHIEVED**).
 No missing criterion is silently assigned zero, and no target score is treated
 as evidence. No sheet, runtime, canon, API, dataset or dependency was changed.
 
@@ -40,6 +54,7 @@ Labels: **FACT / INSPECTED CODE** means a repository observation;
 | R7: `README.md` and diff from R5 base to HEAD | Subsequent changes include comparability truthfulness, Selection tests, UI copy/CSS and the QA report. Do not claim R5 reran against those later commits. |
 | R8: local `C:\Users\djahe\Downloads\AgriFood (1).txt` | Supplied challenge-text copy identifies Biomentorhub x Profi; explicit virgin-plastic priority, digital selection tools, public resources and feasibility/scalability. Original publication URL/date unavailable. `AgriFood.txt` instead contains proposed interview questions, not answers or customer evidence. |
 | R9: user-supplied `EU Alignment Scorecard GigaHack2026.xlsx` | Level-1 source. Read Me A14:C20: scoring scale and N/A; Criteria Guide A4:F30: all descriptors; Team Scorecard D10:D34: supplied scores, C37:C42: formulas. Metadata names SoS, AgriTech, Serghey Tkachenko, 26.09.2026 and TRL 4. Notes/evidence cells are empty: recorded scores are not independently verified explanations or customer-validation evidence. |
+| R10: coach-supplied `EU_Frameworks_Supporting_Document.docx` (Serghey Drive folder) | Level-1 source. Scorecard framework reference guide mapping 21 criteria to EU instruments: A (Green Deal, Fit for 55, ESPR, CE marking, Twin Transition, EU Taxonomy/DNSH); B (DIGITAL, EIT Deep Tech, Data Act, AI Act/ALTAI, NIS2/CRA, EDIH/TEF/EuroHPC); C (GDPR Arts 5, 6, 9, 25, 35); D (Farm to Fork, CAP, Soil Strategy 2030, Green Deal/Fit for 55 for stakeholder and validation routes); E (Single Market, CE harmonised standards, EIC Pathfinder/Transition/Accelerator, Horizon Europe / Moldova association). Serves as framework guide, not external certification. SUPPORTING DOCX RECONCILIATION: NO MATERIAL CONFLICT. |
 
 Repository gate executed: `git fetch origin`, `git switch main`,
 `git pull --ff-only`, `git status --short`, `git rev-parse HEAD`,
@@ -430,7 +445,14 @@ establish all three are already selling in the EU, nor a customer-tested reason
 to switch. Retain 2 conservatively against the coach prompt. This is an evidence
 gap, not a claim that those vendors do not operate in Europe.
 
-## 13. Final available-source scorecard reconciliation
+## 13. Scorecard reconciliation & independent conservative reassessment
+
+### INDEPENDENT CONSERVATIVE REASSESSMENT
+> This is not a replacement for the scores already entered in the mentor/team workbook.
+
+This reassessment applies a stricter evidence interpretation than the already populated
+coach workbook, evaluating criteria from verified repository evidence rather than inheriting
+unsupported workbook scores. This provides useful adversarial evidence for Project Brain.
 
 The supplied scores are transcribed, not overwritten. **Before** is a conservative
 independent assessment of evidence in the inspected repository before this packet,
@@ -438,8 +460,9 @@ not an assertion about undocumented team knowledge. **After** includes concrete
 plans and source mapping in this document where the actual rubric permits them.
 A 1 means awareness without a substantiated integrated treatment; a 2 means partial
 consideration; a 3 requires the criterion-specific integrated design/plan. No 4 is
-awarded merely because public sources or a working demo exist. Missing DOCX may
-change interpretation; confidence is in the proposed score, not external approval.
+awarded merely because public sources or a working demo exist. Supporting coach DOCX
+reconciliation found no material framework conflict; confidence is in the proposed
+score, not external approval.
 
 | ID | Criterion | Supplied XLSX | Before | Proposed after | Evidence / APR improvement | Remaining gap | Confidence |
 | --- | --- | ---: | ---: | ---: | --- | --- | --- |
@@ -496,44 +519,360 @@ workbook's **Aligned** band; neither reaches 3.10–3.15. Numerical improvement 
 the independent before assessment reflects documented evidence/planning, not
 new runtime capabilities, customers, environmental savings or coach endorsement.
 
-## 14. Handoff for Project Brain review
+## Baseline-preserving Project Brain planning view
 
-**Both calculations and all-21-criterion available-source assessment completed.
-Full APR-EU-01 source acceptance remains pending the supporting coach DOCX.**
+This is NOT another independent rescore. It begins from the scores already present
+in the supplied coach/team workbook and assesses the impact of accepting only those
+candidate uplifts for which APR-EU-01 provides credible rubric-level-3 evidence, while
+preserving all other supplied workbook entries.
+
+### SUPPLIED MENTOR/TEAM WORKBOOK STATE
+
+These scores represent the baseline entered in the supplied coach/team workbook
+(`EU Alignment Scorecard GigaHack2026.xlsx`). They are recorded here as the team/coach
+starting baseline, NOT as independently verified facts:
+
+| ID | Supplied score |
+|---|---:|
+| A1 | 4 |
+| A2 | 3 |
+| A3 | 2 |
+| A4 | 3 |
+| B1 | 2 |
+| B2 | N/A |
+| B3 | 2 |
+| B4 | 2 |
+| C1 | 4 |
+| C2 | 3 |
+| C3 | 3 |
+| C4 | 3 |
+| D1 | 4 |
+| D2 | 2 |
+| D3 | 2 |
+| D4 | 3 |
+| E1 | 2 |
+| E2 | 2 |
+| E3 | 1 |
+| E4 | 2 |
+| E5 | 2 |
+
+Workbook category baseline:
+```text
+A = 3.00
+B = 2.00
+C = 3.25
+D = 2.75
+E = 1.80
+EU Alignment Index = 2.56
+```
+(Applicable-criterion average: 51 / 20 = 2.55).
+
+### Candidate uplifts already substantiated by APR-EU-01
+
+The following table presents criteria for which APR-EU-01 now provides a credible level-3
+argument against the coach rubric.
+
+Candidate uplifts:
+```text
+A3: 2 → 3
+B1: 2 → 3
+B4: 2 → 3
+E1: 2 → 3
+E3: 1 → 3
+E4: 2 → 3
+E5: 2 → 3
+```
+
+*Important planning constraints:*
+- Do NOT promote E2 yet (requires customer-tested switching rationale and verified EU competitor presence).
+- Do NOT promote D2 or D3 yet (requires real/scheduled attributable stakeholder conversation and confirmed partner/resource commitment).
+- Do NOT promote B3 yet (requires articulated threat model and verified implemented controls).
+- Do NOT change supplied C scores in this planning view (preserves supplied workbook baseline C = 3.25).
+
+| ID | Criterion | Workbook baseline | Proposed score | Evidence from APR-EU-01 | Why rubric level 3 may be defensible | Remaining limitation | Confidence |
+|---|---|---:|---:|---|---|---|---|
+| A3 | Footprint of the tech itself | 2 | 3 | Section 2: Footprint drivers (compute, storage, network) identified and directly mitigated by deterministic in-memory startup snapshot, arithmetic-only evaluation services, no GPU/ML inference, and no evaluation persistence. | Rubric level 3 requires identifying technology footprint drivers and having concrete architectural mitigations designed into the system. | Empirical joules/request and cloud carbon audits not yet measured for production hosting. | HIGH |
+| B1 | Digital Europe capacity fit | 2 | 3 | Section 3, Section 10, SRC-01: PackShift maps directly to Digital Europe Programme objective of deploying digital decision support and digital capacity for business transformation, digitising the packaging transition review workflow. | Explicit alignment with Digital Europe deployment capacity objectives, structured around realistic business process digitisation rather than unsupported AI hype. | No formal programme application, awarded grant, or completed institutional adoption. | MEDIUM |
+| B4 | Use of EU digital infrastructure | 2 | 3 | Section 3, SRC-02: Named facility identified (European Digital Innovation Hub in Transilvania, Romania) with concrete test idea (test-before-invest shadow review intake brief for packaging transition workflow). Excludes mismatched facilities (AgrifoodTEF AI/robotics, EuroHPC). | Rubric level 3 explicitly accepts a named facility and concrete test idea. | Team SoS legal-entity/geographic eligibility, hub availability, and formal contact not yet completed; no outreach has taken place. | HIGH |
+| E1 | EU market definition | 2 | 3 | Section 6, SRC-04–06: Romania-first discovery segment, grocery retail organisation unit, and initial bounded prospect universe of 7 account clusters from 9 AMRCR member banners with group ownership deduplication (Ahold Delhaize / Profi, Schwarz / Lidl & Kaufland). | Specific target country, customer unit defined, and bottom-up prospect sizing without fabricated macro TAM multipliers. | Account shortlist is not a full TAM; buyer decision rights, local packaging ownership, and actual access are unvalidated. | MEDIUM |
+| E3 | Business model for EU scale | 1 | 3 | Section 8: Formulates structured B2B business model hypothesis for EU scale: buyer profile (sustainability/packaging sponsor with QA/procurement gatekeepers), paid fixed-scope pilot transitioning to annual workspace subscription, clear acquisition channels, and key unit-economics drivers to validate. | Rubric level 3 requires a defined business model hypothesis, customer unit, and pricing/scaling logic. | Commercial willingness to pay, price points, and actual sales cycles remain unvalidated hypotheses. | MEDIUM |
+| E4 | Market-entry requirements & costs | 2 | 3 | Section 9: 8-dimension market-entry roadmap with two clear boundaries: software operational requirements (GDPR, cybersecurity/operations, CRA scoping, procurement contracts, CE non-applicability) strictly separated from physical packaging qualification requirements (PPWR 2025/40, food contact 1935/2004 & 10/2011, recycled plastics 2022/1616, retailer trials), with rough effort levels. | Explicit separation of software vendor duties vs packaging compliance, preventing false claims while mapping required entry gates. | Commercial delivery model not yet frozen; detailed legal counsel and exact article-by-article compliance costs not established. | MEDIUM |
+| E5 | EU funding & growth pathway | 2 | 3 | Section 10: Systematically reviews 6 EU funding instruments (EDIH, Horizon Europe Cluster 6, Digital Europe, EIC Pathfinder, EIC Transition, EIC Accelerator), providing evidence-grounded exclusions (e.g. Pathfinder/Transition not fitting deterministic TRL 4 software) and presents a concrete 12-month phased pathway. | Rubric level 3 requires stage-matched instrument identification, realistic eligibility boundaries, and a 12-month roadmap. | Legal entity, IP ownership, live call matching, and consortium partnership remain unconfirmed. | MEDIUM |
+
+### Baseline-preserving projection calculation
+
+If the mentor accepts the candidate uplifts above while all other supplied workbook scores remain unchanged:
+
+- **Category A:** (4 + 3 + 3 + 3) / 4 = 13 / 4 = **3.25** (A3 uplifted from 2 to 3)
+- **Category B:** (3 + 2 + 3) / 3 = 8 / 3 = **2.67** (B1, B4 uplifted from 2 to 3; B2 excluded as N/A; B3 remains 2)
+- **Category C:** (4 + 3 + 3 + 3) / 4 = 13 / 4 = **3.25** (supplied workbook scores preserved unchanged)
+- **Category D:** (4 + 2 + 2 + 3) / 4 = 11 / 4 = **2.75** (supplied workbook scores preserved unchanged)
+- **Category E:** (3 + 2 + 3 + 3 + 3) / 5 = 14 / 5 = **2.80** (E1, E3, E4, E5 uplifted; E2 remains 2)
+
+Coach-formula projection:
+```text
+(3.25 + 2.67 + 3.25 + 2.75 + 2.80) / 5
+= 2.944
+≈ 2.94
+```
+
+```text
+PROJECT-BRAIN CONDITIONAL PROJECTION: ≈ 2.94
+NOT AN ACHIEVED OR MENTOR-ENDORSED SCORE
+```
+
+**Why this differs from Alisa's 2.59:**
+- **2.59** = Independent conservative rescore of everything: evaluates all criteria strictly against current repository evidence, setting unevidenced workbook assumptions (such as C1–C4 and D1) to conservative baselines (2s).
+- **2.94** = Planning projection preserving the already supplied coach/team baseline and applying only newly evidenced candidate uplifts.
+
+Both are useful, but answer different questions.
+
+## Remaining path to the 3.10–3.15 target
+
+To advance from the conditional APR uplift projection (≈2.94) to the target band of **3.10–3.15**, the team must resolve four key remaining criteria. These criteria cannot be promoted based on desk research alone and require specific external interaction or engineering implementation.
+
+### D2 — Stakeholder & value-chain fit
+
+Current supplied:
+```text
+2
+```
+
+Target:
+```text
+3
+```
+
+Rubric requires:
+- value chain mapped;
+- at least one real conversation completed OR scheduled;
+- evidence of that interaction.
+
+APR-EU-01 already provides the value-chain map (Section 4).
+
+Missing:
+```text
+real/scheduled attributable conversation
+```
+
+Examples of candidate participants:
+- Serghey if his domain role genuinely supports the point;
+- retailer packaging/sustainability specialist;
+- QA/procurement expert;
+- packaging-sector mentor.
+
+Record:
+- person;
+- role;
+- date;
+- question;
+- answer;
+- what it validates;
+- what it does NOT validate.
+
+Do not call mentor input customer validation unless justified.
+
+### D3 — Sector validation route
+
+Current supplied:
+```text
+2
+```
+
+Target:
+```text
+3
+```
+
+APR-EU-01 already provides a strong shadow-review protocol (Section 5).
+
+Missing for rubric level 3:
+```text
+specific + resourced + sector-credible next step
+```
+
+Required uplift evidence:
+- named partner type;
+- confirmed responsible team owner;
+- confirmed internal resource availability;
+- realistic next-step timing;
+- preferably a candidate external participant / introduction path.
+
+Do not pretend the pilot already ran.
+
+### E2 — EU value proposition & competition
+
+Current supplied:
+```text
+2
+```
+
+Target:
+```text
+3
+```
+
+APR-EU-01 already has:
+- Recyda;
+- Trayak EcoImpact-COMPASS;
+- Specright.
+
+Missing:
+1. stronger evidence that each relevant competitor actually operates/sells into EU customers/market;
+2. buyer-relevant reason to choose PackShift;
+3. clear differentiation without claiming overall superiority.
+
+Safe differentiation direction:
+```text
+PackShift focuses on an evidence-aware packaging transition review:
+provenance + missing-data refusal + environmental arithmetic +
+operational eligibility kept separate.
+```
+
+Do not claim competitors lack a capability unless verified.
+
+### B3 — Cybersecurity by design
+
+Current supplied:
+```text
+2
+```
+
+Target:
+```text
+3
+```
+
+Rubric explicitly requires:
+```text
+threat model articulated
++
+2–3 basic controls actually implemented
+```
+
+Existing candidate controls include:
+- strict typed input validation;
+- fail-closed evidence loading;
+- no persistent evaluation DB;
+- bounded local runtime surface.
+
+But do NOT automatically count architectural absence as a security control unless it directly mitigates an articulated threat.
+
+A future fix should define approximately:
+```text
+Threat → implemented mitigation → verification evidence
+```
+
+No auth/TLS/production-security claims unless actually implemented.
+
+---
+
+### Conditional target projections
+
+| Scenario | Candidate criteria uplifts | Category Means (A, B, C, D, E) | Projected Coach Index | Status |
+|---|---|---|---:|---|
+| **Supplied baseline** | Baseline workbook state | A=3.00, B=2.00, C=3.25, D=2.75, E=1.80 | **2.56** | Supplied mentor/team workbook state |
+| **Independent reassessment** | Conservative rescore of all 20 criteria | A=3.00, B=2.67, C=2.00, D=2.50, E=2.80 | **2.59** | INDEPENDENT CONSERVATIVE REASSESSMENT |
+| **Current APR-EU-01 projection** | A3, B1, B4, E1, E3, E4, E5 (all 2 → 3, E3 1 → 3) | A=3.25, B=2.67, C=3.25, D=2.75, E=2.80 | **≈ 2.94** | Conditional Project Brain projection |
+| **Projection A** | Current APR uplifts + **D2 (2→3), D3 (2→3), E2 (2→3)** | A=3.25, B=2.67, C=3.25, D=3.25, E=3.00 | **≈ 3.08** | **CONDITIONAL — NOT ACHIEVED** |
+| **Projection B** | Projection A + **B3 (2→3)** | A=3.25, B=3.00, C=3.25, D=3.25, E=3.00 | **≈ 3.15** | **TARGET PROJECTION ≈ 3.15 — CONDITIONAL — NOT ACHIEVED** |
+
+#### Projection A Calculation
+If:
+```text
+D2 2 → 3
+D3 2 → 3
+E2 2 → 3
+```
+in addition to the already proposed APR uplifts:
+
+Category means become approximately:
+```text
+A = 3.25
+B = 2.67
+C = 3.25
+D = 3.25
+E = 3.00
+```
+
+Coach-formula projection:
+```text
+(3.25 + 2.67 + 3.25 + 3.25 + 3.00) / 5 = 15.42 / 5 = 3.084 ≈ 3.08
+```
+
+Label:
+```text
+CONDITIONAL — NOT ACHIEVED
+```
+
+#### Projection B Calculation (Target 3.15)
+If B3 also becomes:
+```text
+B3 2 → 3
+```
+then:
+```text
+B = 3.00
+```
+and projected overall coach index becomes:
+```text
+(3.25 + 3.00 + 3.25 + 3.25 + 3.00) / 5
+= 15.75 / 5
+= 3.15
+```
+
+Label:
+```text
+TARGET PROJECTION ≈ 3.15
+CONDITIONAL — NOT ACHIEVED
+```
+
+## Handoff for Project Brain review
+
+**FULL COACH-SOURCE RECONCILIATION COMPLETE — ready for Project Brain review.**
+
+The supporting coach document (`EU_Frameworks_Supporting_Document.docx`) has been inspected from the Serghey Drive folder and reconciled with the 21-criterion framework mapping:
+```text
+SUPPORTING DOCX RECONCILIATION: NO MATERIAL CONFLICT
+```
+
+Four distinct index perspectives are reported:
+```text
+Supplied workbook EU Alignment Index: 2.56
+
+Independent conservative APR-EU-01 reassessment:
+2.59
+
+Baseline-preserving Project Brain projection
+if current APR candidate uplifts are accepted:
+≈2.94
+
+Target:
+3.10–3.15 — NOT YET ACHIEVED
+```
+
+Exact remaining blocking criteria to reach target 3.10–3.15:
+- **D2:** Stakeholder & value-chain fit (requires real or scheduled attributable conversation).
+- **D3:** Sector validation route (requires confirmed team owner, resourcing, and candidate partner commitment).
+- **E2:** EU value proposition & competition (requires verified EU competitor presence and buyer-relevant switching rationale).
+- **B3:** Cybersecurity by design (requires articulated threat model mapped to verified implemented controls).
 
 Base inspected / HEAD: `29f0b8b1b237a6812b75ba2affd8b246d6f9399b`.
-Changed file: this document only. Proposed coach index **2.59**; supplementary
-average **2.60**. Target reached: **NO / NO**.
+Changed file: `docs/review/APR-EU-01-eu-alignment-market-validation.md` only.
 
-Improved against the independent before assessment: A3, A4, B1, B4, C2, D1, E1–E5.
-Not numerically improved: A1/A2 already have an integrated bounded proposition;
-B3 needs security evidence; C1/C3/C4 lack complete privacy/ethics evidence;
-D2 lacks interaction; D3 lacks committed resources; D4 already has a bounded
-evidence design. B2 remains N/A. Higher supplied A1/C1/C2/C3/C4/D1 scores are not
-automatically inherited from empty evidence notes.
-
-Strongest new evidence: inspected lightweight architecture; named EDIH and
-sector-policy mapping; sourced competitor/market-entry/funding research and
-bounded shadow-review protocol. Mentor/domain answers incorporated: **NO**.
-Workbook metadata is recorded, not treated as an interview transcript.
-
-Remaining UNKNOWNs: actual buyer/workflow, willingness to pay, real pilot partner,
-independent purchasing-account count, full privacy inventory, production security,
-funding eligibility, exact commercial legal scope, actual footprint and impact.
-Supporting DOCX was not supplied; its contents were not inferred. Obtain it for
-final Level-1 source reconciliation before claiming unconditional completion.
+Candidate uplifts substantiated by APR-EU-01: A3, B1, B4, E1, E3, E4, E5.
+Criteria held at baseline: A1, A2, A4, B3, C1, C2, C3, C4, D1, D2, D3, D4, E2. B2 remains N/A.
 
 External ledger: **20 primary sources, 14 EU official**, 5 company and 1 association.
 All ledger URLs retrieved during this task. Verification: read-only code/QA/source
-inspection; both arithmetic methods independently recomputed from matrix rows;
-repository whitespace/scope checks passed: git status lists only this untracked
-report, tracked diff is empty, and both tracked and new-file whitespace checks
-produce no diagnostics. No application tests rerun for
-this documentation-only change; historical QA remains explicitly labelled.
+inspection; all arithmetic methods independently verified; repository scope checks passed.
+No application tests rerun for this documentation-only change; historical QA remains explicitly labelled.
 
 Shared/API/schema/data/runtime changes: **NONE**. No original workbook edits,
-commit, push, PR, external outreach or fabricated validation. Recommended immediate
-follow-up: supply supporting DOCX; review lowered privacy/sector-evidence scores
-with the mentor; schedule one attributable domain discussion and confirm shadow-
-review resources. Stop for Project Brain review; stretch answers are not included
-while the full coach-source requirement remains outstanding.
+no unauthorized commits, no push, no PR, no external outreach, and no fabricated validation.
+Recommended immediate follow-up:
+1. Review candidate uplifts (A3, B1, B4, E1, E3, E4, E5) with the mentor to validate baseline-preserving projection (≈2.94).
+2. Schedule one attributable domain discussion for D2.
+3. Confirm shadow-review resource commitment for D3.
+4. Articulate threat model mapping to existing controls for B3.
+5. Deepen EU competitor market evidence for E2.
