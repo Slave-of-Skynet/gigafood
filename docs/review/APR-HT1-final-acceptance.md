@@ -20,8 +20,7 @@
   - Merge: PR #33 `origin/Vladimir/int-htf-04a-canonical-runtime-transition`
   - Parent: `e069950ed4a18a8a22f7df8b9fff5ce86c9059d9` (INT-HTF-04A documentation)
   - Prior Parent: `bd4f7651fe9f82f5c0849c5708fcd2f315052317` (HTF-03 canonical packaging evidence)
-- **Worktree State:** Verified clean tracking branch `alisa/apr-ht1-recommendation-acceptance`.
-- **Implementation State:** Backend on `main` currently implements the historical Selection MVP (`/api/v1/portfolios`, `/api/v1/scenarios`). The new additive recommendation API (`/api/v1/recommendations`) proposed in `INT-HTF-04A` has **not yet been integrated** into `main`.
+- **Implementation State:** Backend on `main` currently implements the historical Selection MVP (`/api/v1/portfolios`, `/api/v1/scenarios`). The new additive recommendation API (`GET /api/v1/recommendation/products`, `GET /api/v1/recommendation/candidates`, `POST /api/v1/recommendation/evaluate`) specified in `INT-HTF-04A` Section H has **not yet been integrated** into `main`.
 
 ---
 
@@ -60,12 +59,12 @@
 
 Evaluated against the official AgriFood challenge judging criteria:
 1. **Environmental Impact (25%):** `PARTIALLY SUPPORTED`. Incumbent 100% virgin plastic baseline identified (`B1`); renewable paper Gaia (`C1`) and cellulose tray (`C5`) prioritized; rigorous virgin-plastic reduction formulas defined (`E051`, `E008`). Gaps: unmeasured physical candidate virgin mass; real-world Romanian sorting/recycling reality unverified.
-2. **Retail Practicality (15%):** `PARTIALLY SUPPORTED`. Respects mentor preference for bags for whole chicken (`C1`) and trays for portions (`C5`); post-cook holding separated from in-pack baking; transparent viewing accounted for. Gaps: store packing speed, fat accumulation headroom, 6-hour seam leak resistance under hot fat.
+2. **Retail Practicality (15%):** `PARTIALLY SUPPORTED`. Respects mentor preference for bags for whole chicken (`C1`) and trays for portions (`C5`); post-cook holding (modeled 85–95°C scenario; actual Profi holding temp UNKNOWN) separated from in-pack baking (250°C); transparent viewing accounted for. Gaps: store packing speed, fat accumulation headroom (modeled 1.0–1.4 kg test scenario; actual Profi chicken mass UNKNOWN), 6-hour seam leak resistance under hot fat.
 3. **Technical Feasibility (15%):** `SUPPORTED`. 6-gate evaluation model strictly enforced; thermal failure modes blocked (C2/C3/C4/C5 at 250°C); 48-row decision matrix grounded in verified TDS. Gaps: DoC migration certificates for fatty food, BIOPAP 175/185°C conflict.
 4. **Innovation (10%):** `SUPPORTED`. Evidence-first decision support architecture; rigorous epistemic state modeling; dual-path qualification (renewable bag vs cellulose tray vs high-temp aluminium fallback).
 5. **Business Viability (10%):** `PARTIALLY SUPPORTED`. Grounded Romanian prices captured for local components (1.15–1.29 RON/pair for portion pack, 0.37 RON for B3); mentor +10–15% cost tolerance integrated as context. Gaps: actual Profi incumbent purchase price UNKNOWN; European import freight unquoted.
-6. **Scalability (10%):** `PARTIALLY SUPPORTED`. Local Romanian suppliers identified for sampling; established European manufacturers capable of volume. Gaps: inventory and supply contracts for 1,700 stores unverified.
-7. **User Experience (UX) (10%):** `SUPPORTED`. Interactive PackShift decision UI; visible epistemic badges (`ESTIMATED`, `CONFLICT`, `QUALIFICATION REQUIRED`); clear window viewing preserved. Gaps: in-store customer handling and anti-fog behavior under high humidity.
+6. **Scalability (10%):** `PARTIALLY SUPPORTED`. Local Romanian suppliers identified as catalogue/order leads (`listing ≠ stock`); established European manufacturers capable of volume. Gaps: supply chain capacity, inventory, and supply contracts for retail store network (modeled 1,700 stores scenario; actual store count UNKNOWN) unverified.
+7. **User Experience (UX) (10%):** `PARTIALLY SUPPORTED`. Evidence/design requirements and epistemic badge specifications are `SUPPORTED` (interactive PackShift decision UI specification, visible epistemic badges `ESTIMATED`, `CONFLICT`, `QUALIFICATION REQUIRED`, clear window viewing preserved); runtime UI implementation on `main` is `UNVERIFIED` (not yet integrated). Gaps: live UI integration, in-store customer handling, anti-fog behavior under high humidity.
 8. **Presentation (5%):** `SUPPORTED`. Defensible, evidence-backed narrative; clear visual separation between proven facts and open validation items.
 
 ---
@@ -76,18 +75,18 @@ Reconciled against the 15 specific points from the 11:19 Descript clarification:
 - **M01 Virgin Plastic Reduction:** `ESTIMATED`. Modeled scenarios show reduction potential, but physical masses remain unmeasured. C5 range crosses zero (-67.6% to +82.1%).
 - **M02 200–250°C Oven Context:** `OBSERVED_VERIFIED` (Seller claim). C6-RO-H (e-pui225) body offers 280°C seller claim; duration and compatible clear lid unverified. C2/C3/C4/C5 fail thermally.
 - **M03 180–190°C Rotisserie Context:** `ASSUMED`. Primary workflow assumes rotisserie cooking outside package, then hot transfer to packaging for display.
-- **M04 Up to 6 Hours Holding:** `OBSERVED_VERIFIED` (Family). BIOPAP documents 6h/90°C holding claim for LC family; exact SI-14 tray + film + chicken fat combination must be qualified.
+- **M04 Up to 6 Hours Holding:** `OBSERVED_VERIFIED` (Family). BIOPAP documents 6h/90°C holding claim for LC family; exact SI-14 tray + film + chicken fat combination must be qualified. Seam integrity under modeled 85–95°C holding conditions (actual Profi display temp UNKNOWN) unverified.
 - **M05 Food Contact Safety:** `UNKNOWN`. Declaration of Compliance (DoC) and fatty food migration testing (Simulant D2) remain supplier obligations.
-- **M06 Grease & Oil Barrier:** `UNKNOWN`. Chicken fat and juices require physical 6-hour seam and substrate leak testing.
+- **M06 Grease & Oil Barrier:** `UNKNOWN`. Chicken fat and juices require physical 6-hour seam and substrate leak testing under modeled hot display conditions.
 - **M07 Transparent Viewing:** `OBSERVED_VERIFIED` (Components). Clear windows/lids included in all paths; anti-fog performance requires validation.
 - **M08 Small Portions:** `QUALIFICATION_REQUIRED`. BIOPAP LC SI-14 tray + clear film is primary qualification lead for P2–P4.
-- **M09 Whole Chicken:** `QUALIFICATION_REQUIRED`. Flexible windowed bag (Gaia C1) prioritized over rigid box to solve sizing and storage constraints.
+- **M09 Whole Chicken:** `QUALIFICATION_REQUIRED`. Flexible windowed bag (Gaia C1) prioritized over rigid box to solve sizing and storage constraints (modeled 1.0–1.4 kg hot whole bird test scenario; actual Profi chicken mass distribution UNKNOWN).
 - **M10 Recyclability in Romania:** `OBSERVED_VERIFIED` (Design). Materials designed for recycling/composting, but real-world recovery depends on municipal infrastructure and grease contamination.
 - **M11 Avoid Problematic Multilayers:** `OBSERVED_VERIFIED`. Excluded unrecyclable metallized laminates in favor of monomaterials and paper.
-- **M12 Cost Practicality / +10–15%:** `ASSUMED` (Context). +10–15% cost delta integrated as context, not an automatic pass threshold.
+- **M12 Cost Practicality / +10–15%:** `ASSUMED` (Context). +10–15% cost delta integrated as context, not an automatic pass threshold. Commercial volume quotations for retail store network scale (modeled 1,700 stores scenario) required.
 - **M13 Composition & Layer Transparency:** `OBSERVED_VERIFIED` / `UNKNOWN`. Substrate layers and film gauges documented; proprietary adhesives unknown.
 - **M14 Formal Certificates & Evidence:** `OBSERVED_VERIFIED`. 35 cited sources tracked; lab certificates tracked as required next actions.
-- **M15 Romania Procurement Routes:** `OBSERVED_VERIFIED`. Local Romanian distributors identified for sample procurement.
+- **M15 Romania Procurement Routes:** `OBSERVED_VERIFIED` (Catalogue Listings). Local Romanian distributors identified as current catalogue/order leads (listing ≠ stock); verified stock and lead times require inquiry.
 
 ---
 
@@ -170,7 +169,7 @@ Strict isolation enforced across the four configurations:
 
 ## 12. Procurement / Price / EOL
 
-- **Procurement Status:** Domestic distributor listing (`ROMANIA_DISTRIBUTOR_CURRENT`) does NOT imply audited stock or delivery confirmation. European candidates require written quotes.
+- **Procurement Status:** Domestic distributor listing (`ROMANIA_DISTRIBUTOR_CURRENT`) is a current catalogue/order lead and does NOT imply audited stock or delivery confirmation (`listing ≠ stock`). European candidates require written distributor quotes, MOQs, and lead times.
 - **Price Transparency:** Displayed with explicit currency (RON or EUR), VAT basis (included), order units, and freight basis. No silent currency conversions.
 - **End-of-Life:** Design for recycling/composting is distinguished from real-world Romanian municipal waste outcomes.
 
@@ -178,35 +177,45 @@ Strict isolation enforced across the four configurations:
 
 ## 13. Negative / Adversarial Cases (All 20 Cases from Section 51)
 
-1. *UNKNOWN rendered as 0:* **REJECTED / PROTECTED**. Unknown virgin plastic or mass blocks calculation; never coerced to 0.
-2. *ESTIMATED rendered as verified:* **REJECTED / PROTECTED**. Estimates require explicit badge and bound intervals.
-3. *Central estimate shown without range:* **REJECTED / PROTECTED**. Single-point displays of scenario estimates are flagged as defects.
-4. *CONFLICT collapsed into one value:* **REJECTED / PROTECTED**. BIOPAP 175°C vs 185°C preserved as CONFLICT (tested in `test_c5_biopap_conflicts_and_family_boundaries`).
-5. *C6-RO-P evidence borrowed by C6-RO-H:* **REJECTED / PROTECTED**. Configuration isolation enforced (tested in `test_c6_configuration_binding_and_anti_leakage`).
-6. *B3 promoted to Profi:* **REJECTED / PROTECTED**. B3 verified as Romanian market reference only (`test_baseline_identities_and_separation`).
-7. *Faerch legacy baseline promoted to Profi:* **REJECTED / PROTECTED**. Historical Faerch baseline isolated to Selection MVP reference.
-8. *Failed thermal gate compensated by low plastic:* **REJECTED / PROTECTED**. Non-compensatory logic strictly enforced (`test_non_compensatory_hard_gate_semantics`).
-9. *No survivors but UI invents a recommendation winner:* **REJECTED / PROTECTED**. Verified 0 qualified survivors across all 48 rows (`test_canonical_snapshot_invariants`).
-10. *Price missing but displayed as 0:* **REJECTED / PROTECTED**. Missing price rendered as UNKNOWN or Quote Required.
-11. *Actual stock inferred from listing:* **REJECTED / PROTECTED**. Listing scope restricted to catalog existence; stock remains UNKNOWN.
-12. *6h90 family claim promoted to exact-system safety:* **REJECTED / PROTECTED**. Qualified as family evidence only (`test_c5_biopap_conflicts_and_family_boundaries`).
-13. *280/350°C body claim promoted to transparent complete system:* **REJECTED / PROTECTED**. Body rating isolated from closure (`test_c6_configuration_binding_and_anti_leakage`).
-14. *250°C interpreted as 6h:* **REJECTED / PROTECTED**. Peak oven exposure and holding duration verified as separate axes.
-15. *Hidden CO₂ scenario leaked:* **REJECTED / PROTECTED**. Material-only CO₂ calculations excluded from public recommendation API.
-16. *Stale post-cook result displayed after oven switch:* **REJECTED / PROTECTED**. Invalidation protocol specified in acceptance matrix.
-17. *Old Faerch fallback when HTF-03 unavailable:* **REJECTED / PROTECTED**. Fail-closed policy: return 503 rather than defaulting to old demo.
-18. *Unsupported C6-EU context accepted:* **REJECTED / PROTECTED**. C6-EU restricted to technical reference only.
-19. *Actual Profi annual savings invented:* **REJECTED / PROTECTED**. Annual savings uncomputed without unmeasured Profi volume.
-20. *+10–15% tolerance treated as procurement approval:* **REJECTED / PROTECTED**. Tolerance treated as commercial context, not approval gate.
+1. *UNKNOWN rendered as 0:* **PASS (Dataset Invariant Tested)** / **UNVERIFIED (UI Not Mounted)**. Unknown virgin plastic or mass blocks calculation and never coerces to 0 (`test_canonical_snapshot_invariants`). Live UI rendering unmounted on `main`.
+2. *ESTIMATED rendered as verified:* **PASS (Dataset Invariant Tested)** / **UNVERIFIED (UI Not Mounted)**. Estimates require explicit badge and bound intervals (`test_canonical_snapshot_invariants`). Live UI rendering unmounted on `main`.
+3. *Central estimate shown without range:* **PASS (Dataset Invariant Tested)** / **UNVERIFIED (UI Not Mounted)**. Scenarios retain explicit bounds alongside central estimates (`test_canonical_snapshot_invariants`). Live UI rendering unmounted on `main`.
+4. *CONFLICT collapsed into one value:* **PASS (Dataset Invariant Tested)**. BIOPAP 175°C vs 185°C preserved as `CONFLICT` (`test_c5_biopap_conflicts_and_family_boundaries`).
+5. *C6-RO-P evidence borrowed by C6-RO-H:* **PASS (Dataset Invariant Tested)**. Configuration isolation and anti-leakage strictly enforced (`test_c6_configuration_binding_and_anti_leakage`).
+6. *B3 promoted to Profi baseline:* **PASS (Dataset Invariant Tested)**. B3 strictly isolated as Romanian market reference only (`test_baseline_identities_and_separation`).
+7. *Faerch legacy baseline promoted to Profi:* **PASS (Dataset Invariant Tested)**. Historical Faerch baseline isolated to Selection MVP reference (`test_baseline_identities_and_separation`).
+8. *Failed thermal gate compensated by low plastic:* **PASS (Dataset Invariant Tested)**. Non-compensatory logic strictly enforced (`test_non_compensatory_hard_gate_semantics`).
+9. *No survivors but UI invents a recommendation winner:* **PASS (Dataset Invariant Tested)** / **UNVERIFIED (UI Not Mounted)**. Canonical snapshot invariants verify 0 qualified survivors across all 48 rows (`test_canonical_snapshot_invariants`). UI presentation unmounted on `main`.
+10. *Price missing but displayed as 0:* **PASS (Dataset Invariant Tested)** / **UNVERIFIED (UI Not Mounted)**. Missing price preserved as None / Quote Required, never 0. UI presentation unmounted on `main`.
+11. *Actual stock inferred from listing:* **PASS (Document Invariant Tested)**. Distributor listing strictly defined as catalogue/order lead (`listing ≠ stock`); actual stock is UNKNOWN.
+12. *6h90 family claim promoted to exact-system safety:* **PASS (Dataset Invariant Tested)**. BIOPAP 6h @ 90°C qualified as family claim only (`test_c5_biopap_conflicts_and_family_boundaries`).
+13. *280/350°C body claim promoted to transparent complete system:* **PASS (Dataset Invariant Tested)**. Body thermal rating strictly isolated from closure (`test_c6_configuration_binding_and_anti_leakage`).
+14. *250°C interpreted as 6h:* **PASS (Dataset Invariant Tested)**. Peak oven exposure and holding duration verified as separate axes (`test_c6_configuration_binding_and_anti_leakage`).
+15. *Hidden CO₂ scenario leaked:* **PASS (Document Invariant Tested)** / **UNVERIFIED (API Not Mounted)**. Material-only CO₂ calculations isolated from public recommendation API contract. Runtime payload audit pending route integration.
+16. *Stale post-cook result displayed after oven switch:* **UNVERIFIED (UI Not Mounted)**. Invalidation protocol specified in acceptance matrix; UI verification pending frontend integration.
+17. *Old Faerch fallback when HTF-03 unavailable:* **UNVERIFIED (API Not Mounted)**. Target contract specifies `503 RECOMMENDATION_EVIDENCE_UNAVAILABLE` fail-closed behavior rather than fallback; route integration pending.
+18. *Unsupported C6-EU context accepted:* **PASS (Dataset Invariant Tested)** / **UNVERIFIED (API Not Mounted)**. C6-EU strictly absent from canonical gate rows (`test_c6_configuration_binding_and_anti_leakage`). Target API contract specifies `422 CONFIGURATION_NOT_EVALUATED_FOR_CONTEXT` on evaluation attempt.
+19. *Actual Profi annual savings invented:* **PASS (Dataset/Document Invariant Tested)** / **UNVERIFIED (UI Not Mounted)**. Annual savings uncomputed without unmeasured Profi volume. Live UI rendering unmounted on `main`.
+20. *+10–15% tolerance treated as procurement approval:* **PASS (Dataset/Document Invariant Tested)** / **UNVERIFIED (UI Not Mounted)**. Tolerance treated as commercial context, not approval gate. Live UI rendering unmounted on `main`.
 
 ---
 
 ## 14. Runtime / API Observations
 
-- **Endpoint Audit:** Tested FastAPI application on `main @ e067764d334e260440ed69ae6d68dab42205b3a4`.
-- **Target Recommendation Route:** `GET /api/v1/recommendations` returns **`404 Not Found`**.
+- **Audited Target API Surface (INT-HTF-04A Section H):**
+  - `GET /api/v1/recommendation/products`
+  - `GET /api/v1/recommendation/candidates`
+  - `POST /api/v1/recommendation/evaluate`
+  *(Note: Do not describe `/api/v1/recommendations` as the proposed endpoint).*
+- **Endpoint Audit on `main @ e067764d334e260440ed69ae6d68dab42205b3a4`:**
+  - `GET /api/v1/recommendation/products` returns **`404 Not Found`**.
+  - `GET /api/v1/recommendation/candidates` returns **`404 Not Found`**.
+  - `POST /api/v1/recommendation/evaluate` returns **`404 Not Found`**.
   - Verified in automated test `test_blackbox_recommendation_api_absence_fails_closed`.
-  - The runtime correctly fails closed rather than serving mock or unevidenced recommendations.
+  - **Observation:** Target routes are currently unmounted on `main` (recorded as an implementation dependency / `UNVERIFIED` observation). A 404 from unmounted nonexistent routes does not prove that the recommendation subsystem fails closed.
+  - **Target Subsystem Contracts (upon integration):**
+    - Missing/unavailable evidence snapshot must return **`503 RECOMMENDATION_EVIDENCE_UNAVAILABLE`**.
+    - Unsupported configuration context (e.g. `C6-EU`) must return **`422 CONFIGURATION_NOT_EVALUATED_FOR_CONTEXT`**.
 - **Reference Endpoints:** `GET /api/v1/health` and `GET /api/v1/portfolios` remain functional (131 existing backend tests pass).
 
 ---
@@ -215,7 +224,8 @@ Strict isolation enforced across the four configurations:
 
 - **Frontend Build:** Ran `npm run build` in `frontend/` -> builds cleanly without errors.
 - **Demo Script:** Ran `.\scripts\demo.ps1 --check` -> Preflight succeeds, serving historical Selection MVP (`faerch-deli-trays / 2 candidates`).
-- **Target UI Flow:** The HTF-03 recommendation UI (product archetype cards P1–P4, workflow toggle, qualification path view) is **not yet integrated** into the web frontend on `main`.
+- **Target UI Flow:** The HTF-03 recommendation UI (product archetype cards P1–P4, workflow toggle, qualification path view, epistemic badges) is **not yet integrated** into the web frontend on `main`.
+- **Status Demarcation:** Evidence/design specification is **`SUPPORTED`**; live frontend implementation on `main` is **`UNVERIFIED`**.
 
 ---
 
@@ -223,20 +233,20 @@ Strict isolation enforced across the four configurations:
 
 | Defect ID | Component | Severity | Description | Owner | Minimum Fix |
 |---|---|---|---|---|---|
-| **DEF-01** | Backend / Runtime | **P0 / Blocker** | Target recommendation endpoint (`/api/v1/recommendations`) proposed in `INT-HTF-04A` is not yet implemented on `main`. | Igor | Implement recommendation engine and route consuming HTF-03 dataset and passing `backend/tests/acceptance_htf04/test_acceptance_oracle.py`. |
+| **DEF-01** | Backend / Runtime | **P0 / Blocker** | Target recommendation endpoints (`GET /api/v1/recommendation/products`, `GET /api/v1/recommendation/candidates`, `POST /api/v1/recommendation/evaluate`) proposed in `INT-HTF-04A` are not yet implemented on `main`. | Igor | Implement recommendation engine and routes consuming HTF-03 dataset and passing `backend/tests/acceptance_htf04/test_acceptance_oracle.py`. |
 | **DEF-02** | Frontend / UX | **P0 / Blocker** | Frontend recommendation UI shell is not yet wired to HTF-03 recommendation API. | Denis | Implement P1–P4 archetype selector, workflow toggle, and render qualification cards without winner labels or collapsed conflicts. |
-| **DEF-03** | Reconciliation | **P1 / Critical** | BIOPAP 175°C vs 185°C conflict (`C01`) remains unresolved in literature. | Vladimir | Ensure runtime and UI preserve `CONFLICT` badge and do not collapse into single number. |
 
 ---
 
-## 17. Remaining UNKNOWN
+## 17. Remaining UNKNOWN & Evidence Gaps
 
 1. Profi actual packaging baseline: mass, dimensions, polymer, procurement price, and annual volume.
 2. Official Declaration of Compliance (DoC) and fatty-food migration test certificates for all candidates.
-3. Seam integrity and grease leakage under hot chicken juices over 6 hours at 85–95°C.
-4. Physical whole chicken fit checks for 1.4 kg hot birds in Gaia bags.
+3. Seam integrity and grease leakage under hot chicken juices over 6 hours under modeled 85–95°C display conditions (actual Profi holding temp UNKNOWN).
+4. Physical whole chicken fit checks for modeled 1.0–1.4 kg hot whole birds (actual Profi chicken mass distribution UNKNOWN) in Gaia bags.
 5. In-store worker sealing speed and consumer handle ergonomics.
-6. Industrial volume supply contracts, MOQs, and lead times for 1,700 Profi stores.
+6. Industrial volume supply contracts, MOQs, and lead times for retail store network (modeled 1,700 stores scenario; actual store count and network volume UNKNOWN).
+7. BIOPAP LC peak oven temperature literature conflict (**175°C vs 185°C (60 min)**, accepted `CONFLICT` `C01`) remains an open evidence gap to be resolved with the manufacturer.
 
 ---
 
@@ -272,7 +282,7 @@ Challenge coverage:
 - Innovation (10%): SUPPORTED
 - Business viability (10%): PARTIALLY SUPPORTED
 - Scalability (10%): PARTIALLY SUPPORTED
-- UX (10%): SUPPORTED
+- UX (10%): PARTIALLY SUPPORTED (Evidence/design SUPPORTED; runtime UI UNVERIFIED)
 - Presentation (5%): SUPPORTED
 
 Mentor coverage:
@@ -293,7 +303,7 @@ Snapshot counts:
 
 B1/B2/B3 separation: STRICTLY PRESERVED (B3 is Romanian reference, NEVER Profi baseline)
 C6 configuration binding: STRICTLY BOUND (P1->RO-W, P2-P4->RO-P, 250C->RO-H, EU reference only)
-C5 conflict: PRESERVED (175 C vs 185 C remains CONFLICT)
+C5 conflict: PRESERVED (175 C vs 185 C remains CONFLICT C01)
 6h family-vs-system boundary: PRESERVED (LC family claim, exact pack requires qualification)
 
 UNKNOWN handling: NEVER ZERO (blocks dependent calculations)
@@ -309,16 +319,16 @@ Demo verification: PASS (scripts/demo.ps1 --check verified active Selection refe
 Browser verification: UNVERIFIED (HTF-03 recommendation UI not yet integrated)
 
 Defects:
-- DEF-01 (Backend/Igor, P0): Target /api/v1/recommendations endpoint not yet implemented
+- DEF-01 (Backend/Igor, P0): Target /api/v1/recommendation/* endpoints not yet implemented
 - DEF-02 (Frontend/Denis, P0): Target recommendation UI not yet integrated
-- DEF-03 (Reconciliation/Vladimir, P1): BIOPAP 175/185 C conflict remains unresolved in literature
 
 Remaining UNKNOWN:
 - Actual Profi incumbent packaging mass/polymer/cost/volume
 - Official Declaration of Compliance (DoC) fatty food migration certificates
-- 6-hour seam integrity under hot chicken fat at 90 C
-- In-store whole bird physical fit (1.4 kg hot bird)
-- Volume availability and lead times for 1,700 stores
+- 6-hour seam integrity under hot chicken fat under modeled display conditions
+- In-store whole bird physical fit (modeled 1.0-1.4 kg hot bird test scenario)
+- Volume availability and lead times for retail store network
+- BIOPAP 175 C vs 185 C literature conflict (C01 open evidence gap)
 
 VERDICT: BLOCKED: MISSING EVIDENCE
 Minimum missing evidence: integrated recommendation runtime/UI execution evidence.

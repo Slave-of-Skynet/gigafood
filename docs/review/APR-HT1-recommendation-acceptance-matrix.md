@@ -130,8 +130,8 @@ The following table constitutes the complete 48-row acceptance oracle. Every imp
 - **Primary Qualification Path:** `C1 Sacma B.Life Gaia` (qualification_priority = 1).
   - *Rationale:* Renewable windowed whole-chicken bag architecture; bag format matches mentor preference for rotisserie chicken.
   - *Current Status:* `QUALIFICATION REQUIRED`.
-  - *Local Sample Alternative:* `C6-RO-W / C6-RO-H` (clear closure unresolved).
-  - *Secondary Qualification Path:* `C6 Aluminium` (qualification_priority = 2, bound to `C6-RO-W`).
+  - *Local Sample Alternative:* `C6-RO-W` (WePack 803261+803262 paired whole-chicken container; lid material and transparency remain UNKNOWN; clear closure requires qualification).
+  - *Secondary Qualification Path:* `C6 Aluminium` (qualification_priority = 2, strictly bound to `C6-RO-W`).
   - *Display Benefit Rule:* No verified plastic-saving claim. Show conditional model ranges in scenario details; C1 actual plastic unknown.
   - *Critical Gaps:* Food contact fatty-food DoC, 6-hour holding seam integrity, Romanian distributor stock/quote required.
 
@@ -188,12 +188,23 @@ To prevent invalid cross-pollination between aluminium configurations, the runti
 
 ---
 
-## 8. Fail-Closed & Epistemic Guard Invariants
+## 8. Target API Surface & Fail-Closed Transport Invariants (INT-HTF-04A Section H)
 
-1. **Missing / Unresolved Evidence:**
-   - If evidence is unavailable, the API must return `503 EVIDENCE_UNAVAILABLE` or `404 NOT_FOUND`.
-   - The UI must render `UNKNOWN` or `QUALIFICATION REQUIRED`, never defaulting to 0 or substituting legacy Faerch data.
-2. **Stale State Guard:**
-   - Changing workflow from `POST_COOK` to `LITERAL_250C` must immediately invalidate post-cook qualification paths and display the thermal inversion landscape. Stale responses must be rejected.
-3. **Forbidden Terminology:**
+1. **Frozen Target Recommendation API Surface:**
+   - As established in `INT-HTF-04A` Section H, the target recommendation surface consists strictly of:
+     - `GET /api/v1/recommendation/products`: Product catalog P1–P4, two workflow definitions, default P1/post-cook, context assumptions, dataset revision/cutoff.
+     - `GET /api/v1/recommendation/candidates`: C1–C6 catalog plus four separately keyed C6 configurations (`C6-RO-P`, `C6-RO-W`, `C6-RO-H`, `C6-EU`), B1/B2/B3 summaries; curated evidence and no computed universal recommendation.
+     - `POST /api/v1/recommendation/evaluate`: Required `product_id`, `workflow_id`; optional `configuration_id` selecting a C6 variant (absent means exact C6 gate binding for that context).
+   - Under no circumstances may the endpoint be referred to as `/api/v1/recommendations`.
+
+2. **Transport & Failure Semantics:**
+   - **Missing / Unreadable Recommendation Snapshot:** Return `503 RECOMMENDATION_EVIDENCE_UNAVAILABLE`. Never serve old Faerch Selection as a fallback substitute.
+   - **Malformed / Unknown Product or Workflow IDs:** Return `422` validation error.
+   - **Unsupported C6 Configuration Request:** If a request supplies a C6 configuration lacking an evaluated row for that context (e.g., `C6-EU` in any evaluated context, or `C6-RO-H` under post-cook), return `422 CONFIGURATION_NOT_EVALUATED_FOR_CONTEXT`.
+   - **Valid Request with Incomplete Evidence:** Return `200 OK` with explicit `QUALIFICATION REQUIRED` or `BLOCKED` assessments and preserved `UNKNOWN` / `CONFLICT` states; missing price or metric fields are valid payload output.
+
+3. **Stale State Guard:**
+   - Switching workflow from `POST_COOK` to `LITERAL_250C` must immediately invalidate post-cook qualification paths and display the thermal inversion landscape. Stale responses must be rejected.
+
+4. **Forbidden Terminology:**
    - The words **"winner"**, **"best"**, **"approved"**, **"certified"**, **"safe"**, and **"ready for deployment"** are strictly forbidden in recommendation responses.

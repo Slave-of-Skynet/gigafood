@@ -200,16 +200,16 @@ def test_primary_expected_product_decisions(canonical_data):
 
 
 # -----------------------------------------------------------------------------
-# 4. C6 Configuration Binding & Anti-Leakage (Sections 17, 18)
+# 4. C6 Configuration Binding & Anti-Leakage (Sections 17, 18, INT-HTF-04A)
 # -----------------------------------------------------------------------------
 
 def test_c6_configuration_binding_and_anti_leakage(canonical_data):
     """
-    Verify configuration integrity for C6:
-    - P1 + POST_COOK => C6-RO-W (WePack whole chicken)
-    - P2..P4 + POST_COOK => C6-RO-P (E-ambalaj 729 + La Habibi lid)
-    - P1..P4 + LITERAL_250C => C6-RO-H (E-ambalaj e-pui225)
-    - C6-EU (Plus Pack 0192110201) remains technical reference only.
+    Verify configuration integrity for C6 across canonical gate rows and configuration metadata:
+    - P1 + POST_COOK => strictly C6-RO-W (WePack whole chicken). Must NOT be rebound to RO-H.
+    - P2..P4 + POST_COOK => strictly C6-RO-P (E-ambalaj 729 + La Habibi lid).
+    - P1..P4 + LITERAL_250C => strictly C6-RO-H (E-ambalaj e-pui225).
+    - C6-EU (Plus Pack 0192110201) remains technical reference only, NEVER an evaluated context row.
 
     Anti-leakage rules:
     - RO-P price (1.1485–1.2915 RON/pair) must NOT qualify RO-H.
@@ -217,6 +217,29 @@ def test_c6_configuration_binding_and_anti_leakage(canonical_data):
     - C6-EU 350°C body rating must NOT qualify RO-H (RO-H seller claim is 280°C).
     - Aluminium body heat rating must NEVER qualify complete pack (lids are separate).
     """
+    gates = canonical_data.get("product_candidate_gates", [])
+    c6_gate_rows = [r for r in gates if r["candidate_id"] == "C6"]
+    assert len(c6_gate_rows) == 8, f"Expected 8 C6 gate rows, got {len(c6_gate_rows)}"
+
+    # 1. Assert configuration bindings on the canonical gate rows directly
+    for row in c6_gate_rows:
+        pid = row["product_id"]
+        wf = row["workflow"]
+        config_id = row.get("configuration_id")
+
+        assert config_id is not None, f"Missing configuration_id on C6 gate row for {pid}/{wf}"
+        assert config_id != "C6-EU", f"C6-EU must NEVER appear as an evaluated gate context row ({pid}/{wf})"
+
+        if wf == "POST_COOK_HOT_HOLD_6H":
+            if pid == "P1":
+                assert config_id == "C6-RO-W", f"P1 post-cook must strictly bind to C6-RO-W, found {config_id}"
+                assert config_id != "C6-RO-H", "P1 post-cook must NOT be rebound to RO-H"
+            else:
+                assert config_id == "C6-RO-P", f"{pid} post-cook must strictly bind to C6-RO-P, found {config_id}"
+        elif wf == "LITERAL_OVEN_250C_THEN_HOLD":
+            assert config_id == "C6-RO-H", f"{pid} literal 250C must strictly bind to C6-RO-H, found {config_id}"
+
+    # 2. Assert configuration metadata isolation
     configs = {c["configuration_id"]: c for c in canonical_data.get("configurations", [])}
     assert "C6-RO-P" in configs
     assert "C6-RO-W" in configs
@@ -228,34 +251,27 @@ def test_c6_configuration_binding_and_anti_leakage(canonical_data):
     ro_h = configs["C6-RO-H"]
     c6_eu = configs["C6-EU"]
 
-    # 1. Transparency isolation
+    # Transparency isolation
     assert ro_p["transparency"]["transparent_component_present"]["value"] is True
-    # RO-W lid transparency is unknown/unverified
     assert ro_w["transparent_component_present"]["state"] == "UNKNOWN"
-    # RO-H transparent lid is absent / unverified
     assert ro_h["transparent_component_present"]["state"] == "UNKNOWN"
     assert ro_h["transparent_component_present"]["value"] is None
 
-    # 2. Temperature limits isolation
-    # RO-H body has 280°C seller claim
+    # Temperature limits isolation
     ro_h_claims = ro_h.get("thermal_claims", [])
     assert len(ro_h_claims) > 0
     assert ro_h_claims[0]["temperature_c"]["value"] == 280
 
-    # C6-EU has 350°C body rating
     c6_eu_claims = c6_eu.get("thermal_claims", [])
     assert len(c6_eu_claims) > 0
     assert c6_eu_claims[0]["temperature_c"]["value"] == 350
-
-    # Must not cross-pollinate
     assert ro_h_claims[0]["temperature_c"]["value"] != c6_eu_claims[0]["temperature_c"]["value"]
 
-    # 3. Procurement isolation
+    # Procurement isolation
     assert ro_p["procurement"]["status"]["value"] == "ROMANIA_DISTRIBUTOR_CURRENT"
     ro_p_price = ro_p["procurement"]["romania_unit_price"]["value"]["central"]
     assert ro_p_price == pytest.approx(1.1485, rel=1e-2)
 
-    # RO-H does not inherit RO-P pricing
     ro_h_supplier = ro_h["procurement"]["supplier"]["value"]
     assert "E-ambalaj" in ro_h_supplier
     assert ro_h["price"]["amount"]["value"] == 143  # 143 RON per 100 bodies only (1.43 RON/body), lid absent
@@ -348,21 +364,38 @@ def test_virgin_plastic_reduction_bounds_preservation(canonical_data):
 
 
 # -----------------------------------------------------------------------------
-# 8. Black-box Runtime Integration State (Section 48, 55)
+# 8. Target Recommendation API Surface Status (INT-HTF-04A Section H)
 # -----------------------------------------------------------------------------
 
-def test_blackbox_recommendation_api_absence_fails_closed(api_client):
+def test_target_recommendation_api_surface_status(api_client):
     """
-    Verify current runtime implementation state:
-    - Target recommendation endpoint `/api/v1/recommendations` is NOT yet integrated on main @ e067764.
-    - Requesting it returns 404 Not Found (fail-closed), rather than serving unevidenced or mock recommendations.
-    - Legacy endpoints (`/api/v1/health`, `/api/v1/portfolios`) remain intact for Selection MVP reference.
+    Verify current runtime implementation state against INT-HTF-04A Section H:
+    - The frozen target recommendation surface:
+        GET  /api/v1/recommendation/products
+        GET  /api/v1/recommendation/candidates
+        POST /api/v1/recommendation/evaluate
+      is currently NOT yet integrated on main @ e067764.
+    - This absence is recorded as UNVERIFIED (implementation pending under Igor / Packet A).
+    - Unmounted routes return 404; this records route absence only and is NOT evidence
+      that the future target recommendation API fails closed (target failure semantics
+      under INT-HTF-04A Section H are 503 RECOMMENDATION_EVIDENCE_UNAVAILABLE).
+    - Reference endpoints (/api/v1/health, /api/v1/portfolios) remain intact.
     """
-    # 1. Target recommendation route is not present
-    res = api_client.get("/api/v1/recommendations")
-    assert res.status_code == 404, f"Expected 404 for unintegrated recommendation route, got {res.status_code}"
+    target_routes = [
+        ("GET", "/api/v1/recommendation/products"),
+        ("GET", "/api/v1/recommendation/candidates"),
+        ("POST", "/api/v1/recommendation/evaluate"),
+    ]
 
-    # 2. Existing reference routes remain functional
+    for method, route in target_routes:
+        if method == "GET":
+            res = api_client.get(route)
+        else:
+            res = api_client.post(route, json={"product_id": "P1", "workflow_id": "POST_COOK_HOT_HOLD_6H"})
+        # Currently unmounted on main
+        assert res.status_code == 404, f"Target route {route} unexpectedly mounted before integration: {res.status_code}"
+
+    # Existing reference routes remain functional
     health_res = api_client.get("/api/v1/health")
     assert health_res.status_code in (200, 503)
 
