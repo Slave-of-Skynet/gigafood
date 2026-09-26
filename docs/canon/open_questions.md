@@ -1,40 +1,61 @@
 # PackShift — open questions
 
-Status recorded 2026-09-25. No answers are inferred from research. Read the
-[challenge canon](challenge_canon.md), [product canon](product_canon.md) and
-[decision policy](decision_policy.md). The no-confidential-Profi-data clarification
-is already obtained; the questions below remain open.
+Reconciled 2026-09-26 under VLD-MR1. Read the [challenge canon](challenge_canon.md),
+[product canon](product_canon.md), [decision policy](decision_policy.md) and
+[VLD-MR1 source ledger / blocking register](../recon/VLD-MR1-post-mentor-reconciliation.md).
+Answers below are attributed to the Integrator-supplied mentor account, not inferred
+from research or independently verified manufacturer data.
+
+## Resolved or partially answered questions
+
+| Earlier question / uncertainty | Mentor answer and team consequence | What remains open |
+| --- | --- | --- |
+| Confidential Profi dataset availability | Already answered before CANON-01: no additional proprietary dataset will be provided | Actual BOM, masses, costs and volumes remain UNKNOWN; do not assume repeated requests will produce them |
+| Q2: most valuable packaging family / demo anchor | High-temperature packaging is the unresolved practical focus; low-temperature reportedly has a working 100% recycled-plastic solution. TEAM_DECISION: physical high-temperature concept is primary | Exact process, candidate and complete-system feasibility; no SKU/BOM follows from the 100% statement |
+| Primary deliverable: software or physical concept | Physical sustainable packaging and technical/practical feasibility first; PackShift supports proof and decisions | Actual decision owner/workflow (Q3); official digital eligibility remains intact |
+| Q1: expected evidence | Strong material/composition/layer, thermal and food-safety evidence, preferably manufacturer certificate/declaration/datasheet or equivalent | Minimum judging sufficiency, acceptance of public-only evidence with unresolved gaps and illustrative scenarios are not fully answered |
+| Viewing window | Transparent window is a practical requirement for seeing food on shelf | Material, location, visibility criteria, joins and exposure conditions |
+| Size coverage | Small portions (potatoes, wings, thighs) and whole chicken must be considered | Exact dimensions, usable volume/fill and whether one system or separate variants suffice |
+| Material direction | Non-plastic allowed; recycled content desirable for plastic; recyclability and grease resistance matter for paper/cardboard; harmful multilayers undesirable | No selected family/construction; local recycling feasibility and full-system evidence |
+| Cost tolerance | Approximate +10–15% premium could be acceptable for a more sustainable solution | Actual prices, procurement terms/approval and comparison basis; tolerance is not a guaranteed threshold |
 
 ## Mentor questions
 
-Each question is **UNKNOWN — ASK MENTOR**, in priority order. Q5 is conditional.
+Each remaining question is **UNKNOWN — ASK MENTOR**. Original Q identifiers are
+retained for existing references; Q2 is resolved above. Q5 is now critical, not conditional.
 
-| Priority | Question | Why it matters / decision unblocked |
+| Priority / ID | Question | Decision unblocked |
 | --- | --- | --- |
-| Q1 | Since confidential Profi packaging data cannot be provided, what level of evidence is sufficient for judging? Is a working prototype based on public manufacturer/regulatory evidence and clearly labelled illustrative scenarios acceptable if assumptions and unsupported conclusions are explicitly exposed? | Determines acceptable judging evidence and demo framing; public-resource permission alone is not the answer |
-| Q2 | Without sharing confidential volumes, which packaging family would be most valuable for Profi to see addressed: hot food, meat/fish trays, produce, PET bottles, flexible films, or another category? | Selects the demo anchor and next evidence-curation scope |
-| Q3 | Who actually owns or initiates packaging-material changes inside Profi: packaging/sustainability, procurement, category management, QA, or another role? At what workflow step would this tool be useful? | Validates the user hypothesis and review/approval workflow |
-| Q4 | Should the challenge primarily be framed around Profi Romania / EU requirements, or around a wider/Moldovan context? | Establishes jurisdiction and deployment framing before scoped regulatory review |
-| Q5, only if Hot Food becomes demo-critical | Does 250°C refer to real bake-in packaging exposure or to oven conditions before packaging, and what exactly does the six-hour window mean operationally? | Defines hard use conditions: oven air vs packaging surface vs food contact; hot holding vs takeaway vs total post-packaging shelf life |
+| Critical — Q5 thermal | What does 200–250°C describe: oven air, package surface or direct food contact; bake-in or packaging after cooking; short peak or continuous exposure? How long at the maximum? | Comparable intended-use thermal evidence and final qualification semantics; keep official annex's oven/rotisserie contexts distinct |
+| Critical — Q5 holding | What does approximately 6 h describe: in-store hot holding, transport/takeaway or total time packaged? What environment and safety/quality acceptance criteria apply? | Holding evidence and test plan; no inference of six hours at maximum temperature |
+| Critical — Q6 use boundary | May a bounded hot-food process or variants satisfy the brief for this team, or must one system cover all processes? How is the window exposed during preparation/holding? | Candidate/system scope, window qualification and final schema design |
+| High — Q7 formats | What are the required usable dimensions, fill mass/volume and closure/handling conditions for small portions and whole chicken? | Format feasibility, without invented dimensions |
+| High — Q1 residual | What minimum evidence is sufficient for judging? Are public manufacturer evidence plus explicitly unresolved gaps and labelled hypothetical scenarios acceptable? | Judging claim boundaries; formal-evidence preference alone does not resolve sufficiency |
+| Q3 | Who owns/initiates packaging changes inside Profi, and where would this evidence support procurement/QA review? | Validates user hypothesis and human approval workflow |
+| Q4 | Is the intended jurisdiction Profi Romania / EU or a wider/Moldovan context, and which local recycling pathway is relevant? | Scoped review and end-of-life evidence; do not infer legal approval |
 
 ## Remaining UNKNOWNs
 
-| UNKNOWN | Why it matters / decision unblocked |
+| UNKNOWN | Evidence / owner and consequence |
 | --- | --- |
-| Actual Profi inventory/BOM, masses and recycled fractions | Establishes a real baseline and complete-package comparison; public examples cannot substitute for provider data |
-| Real annual purchase/unit volumes | Enables sourced annual impact; otherwise only per-unit or clearly hypothetical scenarios |
-| Actual unit costs, supplier commercial terms and current suppliers | Enables procurement context and defensible business analysis; no invented ROI |
-| Specific food-contact migration behavior for client food formulations | Determines scoped food-contact review and required testing, not certification by calculation |
-| Packaging-line and retail-logistics compatibility | Enables operational feasibility assessment and trial design |
-| Unsourced secondary component masses, including separate lids, labels and adhesives | Enables complete inventories and like-for-like boundaries; current numeric examples are limited to represented components |
-| Real collection/sorting/recycling yield | Enables local end-of-life assessment; recycled content alone does not prove recyclability outcomes |
-| Commercial food-grade recyclate availability, MOQ and supply risk | Enables scale/sourcing feasibility assessment |
-| Exact internal Profi decision owner and workflow | Enables product/user validation (Q3) |
-| Candidate-specific qualification beyond thermal/microwave (barrier, seal, migration) | Enables full packaging qualification beyond the implemented bounded operational gate |
-| Final portfolio-ranking methodology | Enables future ranking after eligibility/evidence gates; no formula selected |
-| Original official-brief artifact/URL and mentor clarification date/transcript | Enables direct audit of the Integrator-supplied challenge record without inventing provenance |
-| Independent source-to-value verification of NDR-01's attributed inputs and use envelopes | Enables stronger evidence claims; a merged ledger and SOURCE_AVAILABLE do not establish VERIFIED |
+| Exact thermal and 6 h conditions, full-system vs bounded use | Mentor/process owner/QA; blocks qualified intended-use claims, not initial research |
+| Actual Profi inventory/BOM, masses and recycled fractions | Attributed provider data if available; otherwise no actual baseline or complete-package savings claim |
+| Real annual purchase/unit volume | Provider data; only labelled hypothetical annual arithmetic without it |
+| Unit costs, current suppliers, quotes and commercial terms | Procurement/manufacturer; no actual cost premium, savings or ROI claim |
+| Candidate composition/layers, window/seal/coatings and formal evidence | NDR-HT1/manufacturer; no material selection or canonical candidate JSON before evidence |
+| Specific food matrix / migration conditions | QA/manufacturer; determines scoped food-contact evidence, not safety by calculation |
+| Manufacturing/packing line and retail-logistics compatibility | Operations/supplier; no production-ready or drop-in claim |
+| Window material/exposure and visibility acceptance criteria | Mentor/manufacturer; transparent-window need is resolved, its implementation is not |
+| Small-portion and whole-chicken dimensions, volume and handling | Mentor/operations; no verified format-fit claim |
+| Unsourced lids, labels, adhesives and other component masses | Complete BOM evidence; no complete-package inventory inferred from represented parts |
+| Local collection/sorting/recycling path and actual yield | Local operators/scoped research; no universally or locally recyclable claim without evidence |
+| Food-grade recyclate availability, MOQ and supply risk | Manufacturer/procurement; scale feasibility remains conditional |
+| Exact Profi decision owner and workflow / jurisdiction | Q3/Q4; no invented process or regulatory conclusion |
+| Final portfolio-ranking methodology | Separate future contract; no global ranking or optimization is selected here |
+| Original official-brief artifact/URL and mentor session date/transcript | Human Integrator; preserve attribution to supplied accounts |
+| Independent source-to-value verification of current public inputs/use envelopes | Research/source audit; committed ledger and SOURCE_AVAILABLE do not establish VERIFIED |
 
-**RECOMMENDATION:** The bounded operational eligibility gate is implemented for
-temperature and microwave reheating dimensions. Keep wider packaging qualification
-requirements, portfolio ranking and mentor questions visible as active UNKNOWNs.
+The [VLD-MR1 UNKNOWN register](../recon/VLD-MR1-post-mentor-reconciliation.md#j-unknown-register-and-decision-gates)
+specifies which gaps block architecture, candidate selection and demo claims, and
+which can remain disclosed for the hackathon. Conceptual design and research may
+start; final shared contracts and qualified physical claims cannot guess these answers.

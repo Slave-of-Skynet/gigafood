@@ -5,10 +5,18 @@ Read with the [challenge and source hierarchy](challenge_canon.md),
 
 ## Thesis and user hypothesis
 
-**TEAM_DECISION:** PackShift is an evidence-aware Packaging Transition Copilot that
-compares current packaging against a candidate transition, computes defensible
-virgin-plastic deltas from explicit inputs, exposes evidence provenance and
-uncertainty, and refuses unsupported conclusions.
+**TEAM_DECISION — VLD-MR1:** We propose a sustainable high-temperature food-packaging
+concept for Profi; PackShift is its evidence-backed decision and demonstration
+layer, showing scoped physical feasibility, virgin-plastic reduction, uncertainty
+and the validation still needed, without certifying safety or granting
+implementation approval.
+
+**TARGET_DIRECTION:** Physical packaging is the proposed solution; software supports
+its evidence and review. Feasibility is not subordinate to environmental arithmetic.
+No material/candidate has been selected by this reconciliation. The previous
+software-led thesis is superseded as the primary judging narrative; working
+comparison, Selection and economic capabilities remain supporting assets.
+See [VLD-MR1 requirements, preservation and gates](../recon/VLD-MR1-post-mentor-reconciliation.md).
 
 **INFERENCE — primary user hypothesis:** A packaging/sustainability specialist
 preparing a transition for review with procurement and QA could use the comparison.
@@ -17,8 +25,9 @@ The actual Profi decision owner and workflow step are UNKNOWN (mentor Q3).
 ## Committed A-core
 
 **OBSERVED_IMPLEMENTATION:** A-core originated at CANON-01 base
-`a1b938d0784bb36779172d26a80c053d6d05e56a`; current observations below include
-Selection from `f04dfa370f350a50dd64d16928fd7f050669886c` and INT-R3 integration.
+`a1b938d0784bb36779172d26a80c053d6d05e56a`; current observations were inspected at
+`e6b326317d11663a401ba4288c27f05853c10d15`, including Selection, INT-R3/INT-R4
+integration and the implemented economic scenario.
 
 ```text
 current and candidate packaging
@@ -72,6 +81,19 @@ tests cover calculable annual scenarios without changing accepted public evidenc
 The demo launcher explicitly selects PUBLIC A-core evidence and the committed
 portfolio pack; normal runtime defaults remain unchanged.
 
+## Current economic scenario
+
+**OBSERVED_IMPLEMENTATION:** Comparison mode exposes
+`POST /api/v1/scenarios/{id}/economics`, backed by
+[economics.py](../../backend/app/services/economics.py) and
+[EconomicScenarioView](../../frontend/src/components/EconomicScenarioView.tsx).
+User-supplied costs, volume and optional transition cost produce hypothetical spend,
+cost deltas and, where supported, annual virgin-plastic arithmetic/cost per kg avoided.
+Inputs remain `USER_PROVIDED` / `NOT_VERIFIED`; operationally BLOCKED results remain
+theoretical/non-actionable in the UI. This is not actual Profi pricing or full ROI/TCO.
+The mentor's approximate +10–15% tolerance is context for later scenarios, not a
+currently implemented acceptance threshold or a procurement commitment.
+
 ## Evidence identity and public cases
 
 **OBSERVED_IMPLEMENTATION:** Both files exist; NDR-01 added the public pack without
@@ -116,6 +138,18 @@ as an advisory disclosure.
 
 ## Demo claims and non-features
 
+**TEAM_DECISION — post-mentor primary flow:** Physical problem → explicit requirements
+→ researched physical concept → composition → technical evidence matrix → sustainability
+/ virgin plastic → small-portion and whole-chicken feasibility → economics → remaining
+UNKNOWN → next validation step. This is a planned flow; the committed UI and evidence
+have not been changed by VLD-MR1.
+
+**DEMOTE FROM PRIMARY DEMO:** The current Faerch portfolio and assumed 95°C/microwave
+examples are retained as bounded runtime demonstrations. They do not demonstrate
+the new high-temperature physical solution. A tray body's recorded 220°C capability
+does not establish 250°C, window/seal compatibility or a 6 h condition. Bottle/cold
+transition examples remain officially allowed, but are not the team's primary anchor.
+
 **TEAM_DECISION — allowed:** Show explicit inputs, represented-component scope,
 deterministic per-unit delta, dataset identity, provenance and uncertainty. Demonstrate
 refusal on missing calculation inputs (`INSUFFICIENT_DATA` without false operational block).
@@ -131,7 +165,15 @@ are automatically verified. Do not claim the bounded gate constitutes a comprehe
 packaging qualification or certification engine.
 
 **OBSERVED_IMPLEMENTATION — absent:** Global portfolio ranking, actual Profi annual impact,
-costs/ROI, LCA/CO2 engine, legal certification, comprehensive packaging qualification engine,
+actual Profi costs/full ROI, LCA/CO2 engine, legal certification, comprehensive packaging qualification engine,
 database/accounts, supplier integration, AI/LLM runtime and production deployment.
 PackShift is decision support, not a certification engine or an LCA oracle, and
 must not fabricate commercial savings.
+
+**TARGET_DIRECTION — not yet implemented:** Scoped thermal exposure, 6 h holding,
+food-contact evidence, grease/oil barrier, recyclability, transparent viewing window,
+composition/layers and both size formats need coordinated qualification coverage.
+Current gate inputs remain temperature and microwave only; `food_contact` and the
+generic advisory do not qualify safety. Current component mass is plastic mass,
+not general material mass. No non-plastic representation, schema, enum or additional
+gate is frozen here. Follow the [VLD-MR1 claims policy and dependency graph](../recon/VLD-MR1-post-mentor-reconciliation.md).
