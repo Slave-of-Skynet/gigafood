@@ -28,8 +28,8 @@ export function ProductVisual({
   eligibilityStatus,
 }: ProductVisualProps) {
   const shape = inferShape(pkg, boundary);
-  const maxTemp = pkg.capabilities?.max_temperature_c?.value ?? pkg.max_temperature_c ?? null;
-  const microwave = pkg.capabilities?.microwave_safe?.value ?? pkg.microwave_safe ?? null;
+  const maxTemp = pkg.capabilities?.max_temperature_c?.value ?? null;
+  const microwave = pkg.capabilities?.microwave_safe?.value ?? null;
   const primaryComponent = pkg.components[0];
 
   return (

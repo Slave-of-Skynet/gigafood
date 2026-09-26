@@ -42,6 +42,39 @@ def wait_http(url, processes):
     raise RuntimeError(f"Timed out waiting for {url}; inspect logs.")
 
 
+def validate_expected_portfolios(expected_portfolios):
+    require(bool(expected_portfolios), "Demo portfolio pack must be non-empty.")
+    for p in expected_portfolios:
+        kind = getattr(p, 'dataset_kind', None) if not isinstance(p, dict) else p.get('dataset_kind')
+        require(kind == 'PUBLIC', "Demo Selection pack must be PUBLIC.")
+
+
+def validate_selection_discovery(summaries, expected_portfolios):
+    expected_ids = [p.id if hasattr(p, 'id') else p['id'] for p in expected_portfolios]
+    actual_ids = [s.get('id') if isinstance(s, dict) else getattr(s, 'id', None) for s in summaries]
+    require(actual_ids == expected_ids, "Served portfolio discovery does not match committed demo pack.")
+    for s in summaries:
+        kind = s.get('dataset_kind') if isinstance(s, dict) else getattr(s, 'dataset_kind', None)
+        require(kind == 'PUBLIC', f"Served portfolio discovery dataset_kind must be PUBLIC (got {kind}).")
+
+
+def validate_selection_evaluation(evaluation, expected_first_portfolio):
+    first_id = expected_first_portfolio.id if hasattr(expected_first_portfolio, 'id') else expected_first_portfolio['id']
+    expected_candidates = expected_first_portfolio.candidates if hasattr(expected_first_portfolio, 'candidates') else expected_first_portfolio['candidates']
+    eval_id = evaluation.get('portfolio_id') if isinstance(evaluation, dict) else getattr(evaluation, 'portfolio_id', None)
+    eval_candidates = evaluation.get('candidates') if isinstance(evaluation, dict) else getattr(evaluation, 'candidates', None)
+    eval_kind = evaluation.get('dataset_kind') if isinstance(evaluation, dict) else getattr(evaluation, 'dataset_kind', None)
+
+    require(eval_id == first_id and len(eval_candidates) == len(expected_candidates), "Canonical Selection evaluation failed.")
+    require(eval_kind == 'PUBLIC', f"Canonical Selection evaluation dataset_kind must be PUBLIC (got {eval_kind}).")
+
+
+def validate_selection_presentation_identity(expected_portfolios, summaries, evaluation):
+    validate_expected_portfolios(expected_portfolios)
+    validate_selection_discovery(summaries, expected_portfolios)
+    validate_selection_evaluation(evaluation, expected_portfolios[0])
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true', help='Start, preflight, then stop both services.')
@@ -69,7 +102,7 @@ def main():
         except Exception as error:
             raise RuntimeError(f"Backend import / demo evidence validation failed: {error}. Run scripts/verify first.") from error
         require(expected_evidence.dataset_kind == 'PUBLIC', "Demo A-core pack must be PUBLIC.")
-        require(bool(expected_portfolios), "Demo portfolio pack must be non-empty.")
+        validate_expected_portfolios(expected_portfolios)
         for port in (8000, 5173):
             with socket.socket() as probe:
                 if os.name == 'nt':
@@ -99,10 +132,10 @@ def main():
         require(health['status'] == 'READY' and health['dataset_kind'] == 'PUBLIC', "Wrong A-core health/dataset; demo NOT READY.")
         require(read_json(API + '/api/v1/scenarios') == expected_evidence.model_dump(), "Served scenario snapshot differs from the explicit PUBLIC pack.")
         summaries = read_json(API + '/api/v1/portfolios')
-        require([p['id'] for p in summaries] == [p.id for p in expected_portfolios], "Served portfolio discovery does not match committed demo pack.")
+        validate_selection_discovery(summaries, expected_portfolios)
         first_id = summaries[0]['id']
         evaluation = read_json(API + '/api/v1/portfolios/' + quote(first_id, safe=''))
-        require(evaluation['portfolio_id'] == first_id and len(evaluation['candidates']) == len(expected_portfolios[0].candidates), "Canonical Selection evaluation failed.")
+        validate_selection_evaluation(evaluation, expected_portfolios[0])
         wait_http(UI, processes)
         require(read_json(UI + '/api/v1/health') == health, "Frontend API proxy did not reach the demo backend.")
         require(all(p.poll() is None for p in processes), "A demo process exited; demo NOT READY.")

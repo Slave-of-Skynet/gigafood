@@ -7,6 +7,8 @@ from fastapi.responses import JSONResponse
 
 from app.domain.packaging import (
     Comparison,
+    EconomicScenarioRequest,
+    EconomicScenarioResponse,
     Evidence,
     Health,
     Portfolio,
@@ -16,6 +18,7 @@ from app.domain.packaging import (
     SelectionResponse,
 )
 from app.runtime.context import load_runtime
+from app.services.economics import evaluate_economic_scenario
 from app.services.selection import evaluate_portfolio
 from app.services.virgin_plastic import compare
 
@@ -68,6 +71,14 @@ def create_app(
         if scenario is None:
             raise HTTPException(404, detail="SCENARIO_NOT_FOUND")
         return compare(scenario)
+
+    @app.post("/api/v1/scenarios/{scenario_id}/economics", response_model=EconomicScenarioResponse)
+    def scenario_economics(scenario_id: str, body: EconomicScenarioRequest, request: Request):
+        data = evidence(request)
+        scenario: Scenario | None = next((s for s in data.scenarios if s.id == scenario_id), None)
+        if scenario is None:
+            raise HTTPException(404, detail="SCENARIO_NOT_FOUND")
+        return evaluate_economic_scenario(scenario, body)
 
     # --- Selection MVP Endpoints (INT-R2 D9 Additive Evolution) ---
 
