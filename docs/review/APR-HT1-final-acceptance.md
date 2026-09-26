@@ -19,7 +19,6 @@
 - **Accepted Base Commit:** `a15ae948f0ea36bfda127e783684622df07e0b83`
   - Merges: PR #35 (`feat/igr-ht2-recommendation-runtime`), PR #37 (`denis/pux-ht2-recommendation-ux`), PR #36 (`nicolae/ncp-ht1-pitch-narrative`), PR #33 (`origin/Vladimir/int-htf-04a-canonical-runtime-transition`).
   - Prior Base Parent: `e067764d334e260440ed69ae6d68dab42205b3a4`
-- **Audited Branch HEAD:** `da0db87d3d252fe921c8516267a2f9e95e61e10d` (synced with `main @ a15ae94`)
 - **Implementation State:** Backend on `main` now implements both the historical Selection MVP (`/api/v1/portfolios`, `/api/v1/scenarios`) and the complete additive Recommendation Runtime API (`GET /api/v1/recommendation/products`, `GET /api/v1/recommendation/candidates`, `POST /api/v1/recommendation/evaluate`) per `INT-HTF-04A` Section H and `IGR-HT2`. Frontend on `main` mounts `RecommendationView` (`navRecommendation: 'Recommendation Journey'`) with full product/workflow selectors, qualification cards, epistemic badges, and stale-response protection per `PUX-HT2`.
 
 ---
@@ -196,7 +195,7 @@ Strict isolation enforced across the four configurations:
 6. *B3 promoted to Profi baseline:* **PASS (Automated Runtime Evidence)**. B3 strictly isolated as Romanian market reference only (`test_baseline_identities_and_separation`, `test_recommendation.py`).
 7. *Faerch legacy baseline promoted to Profi:* **PASS (Automated Runtime Evidence)**. Historical Faerch baseline isolated to Selection MVP reference (`test_baseline_identities_and_separation`, `test_recommendation.py`).
 8. *Failed thermal gate compensated by low plastic:* **PASS (Automated Runtime Evidence)**. Non-compensatory logic strictly enforced; thermal failure produces composite outcome `BLOCKED` (`test_non_compensatory_hard_gate_semantics`, `test_recommendation.py`).
-9. *No survivors but UI invents a recommendation winner:* **PASS (Automated Runtime & UI Code Evidence)**. Canonical snapshot invariants verify 0 qualified survivors across all 48 rows (`test_canonical_snapshot_invariants`). API returns `survivors_count: 0`. UI `DecisionSummary.tsx` renders `Qualified Survivors: 0 / 6` and `QUALIFICATION REQUIRED`; forbidden term "Winner" is strictly absent from the UI code.
+9. *No survivors but UI invents a recommendation winner:* **FIX REQUIRED (UI Terminology Defect)** / **Runtime PASS**. Canonical snapshot invariants verify 0 qualified survivors across all 48 rows (`test_canonical_snapshot_invariants`). API returns `qualified_survivors: []`. UI `DecisionSummary.tsx` renders `Qualified Survivors: 0 / 6` and `QUALIFICATION REQUIRED`, but user-visible strings in `DecisionSummary.tsx` (*"Peak Oven 250°C: No Unqualified Winner · C6-RO-H High-Temp Fallback"*) and `RecommendationView.tsx` (*"No Priority 1 Winner Available for Literal 250°C Oven Path"*) use the forbidden word *"Winner"*, violating APR-HT1 claim safety rules. (Tracked as `DEF-03`).
 10. *Price missing but displayed as 0:* **PASS (Automated Runtime & UI Code Evidence)**. Missing price preserved as None / Quote Required, never 0. UI `ProcurementSummary.tsx` displays `"Quote Required"`, never `0.00 RON`.
 11. *Actual stock inferred from listing:* **PASS (Document & Runtime Invariant Tested)**. Distributor listing strictly defined as catalogue/order lead (`listing ≠ stock`); actual stock is UNKNOWN.
 12. *6h90 family claim promoted to exact-system safety:* **PASS (Automated Runtime Evidence)**. BIOPAP 6h @ 90°C qualified as family claim only (`test_c5_biopap_conflicts_and_family_boundaries`, `test_recommendation.py`).
@@ -239,7 +238,7 @@ Strict isolation enforced across the four configurations:
   - Stale-response protection implemented via `evalRequestGenRef` generation ref in `RecommendationView.tsx` (Case 16).
   - Epistemic badges (`ESTIMATED`, `CONFLICT`, `QUALIFICATION REQUIRED`, `OBSERVED`, `DERIVED`) and 0-survivors count badge (`Qualified Survivors: 0 / 6`) are displayed directly in code.
 - **Status Demarcation:**
-  - Automated code/component verification: **`PASS (Code Evidence)`**.
+  - Automated code/component verification: **`PASS (Code Evidence)`** except terminology defect `DEF-03`.
   - Live in-browser visual interaction and screenshot verification: **`UNVERIFIED (Visual Browser Interaction)`** (headless build verified; interactive browser session with DOM screenshots not executed in headless CI).
 
 ---
@@ -250,8 +249,9 @@ Strict isolation enforced across the four configurations:
 |---|---|---|---|---|
 | ~~**DEF-01**~~ | Backend / Runtime | ~~P0 / Blocker~~ | Target recommendation endpoints (`GET /api/v1/recommendation/products`, `candidates`, `POST evaluate`) proposed in `INT-HTF-04A`. | **CLOSED / RESOLVED**: Implemented by Igor in PR #35 (`feat/igr-ht2-recommendation-runtime`) merged into `main @ a15ae94`. Verified passing 162/162 tests. |
 | ~~**DEF-02**~~ | Frontend / UX | ~~P0 / Blocker~~ | Frontend recommendation UI shell wiring to HTF-03 recommendation API. | **CLOSED / RESOLVED**: Implemented by Denis in PR #37 (`denis/pux-ht2-recommendation-ux`) merged into `main @ a15ae94`. Verified passing `npm run build`. |
+| **DEF-03** | Frontend / UX | P1 / Terminology | User-visible "Winner" wording violates APR-HT1 forbidden claim terminology: `DecisionSummary.tsx` renders *"Peak Oven 250°C: No Unqualified Winner · C6-RO-H High-Temp Fallback"* and `RecommendationView.tsx` renders *"No Priority 1 Winner Available for Literal 250°C Oven Path"*. | **OPEN**: Denis to replace "Winner" with approved claim terms (e.g. "Qualified Survivor" / "Priority 1 Qualification Path"). |
 
-**Open Software Defects:** **0**.
+**Open Software Defects:** **1** (`DEF-03`).
 *(Note: BIOPAP 175°C vs 185°C manufacturer literature conflict is tracked as open evidence gap `C01`, not a software implementation defect).*
 
 ---
@@ -270,16 +270,17 @@ Strict isolation enforced across the four configurations:
 
 ## 18. Final Verdict
 
-### **ACCEPTANCE COMPLETE (SOFTWARE RUNTIME & UI CONTRACTS VERIFIED; PHYSICAL LAB & LIVE BROWSER PENDING)**
+### **ACCEPTANCE CONDITIONAL (RUNTIME PASS; UI CODE PASS EXCEPT TERMINOLOGY DEFECT; LIVE BROWSER UNVERIFIED)**
 
 - **Phase A (Acceptance Oracle & Claim Safety):** **COMPLETE & AUTHORITATIVE**. Master 48-row acceptance matrix, claim safety taxonomy, challenge coverage matrix, 12 mentor requirement reconciliations, and 8 automated acceptance tests established and verified.
-- **Phase B (Software Implementation Verification):** **PASS (Automated Runtime & UI Code Evidence Verified)**.
+- **Phase B (Software Implementation Verification):** **CONDITIONAL (Runtime PASS; UI Code PASS Except Terminology Defect; Live Browser UNVERIFIED)**.
   - Backend recommendation API (`GET products`, `GET candidates`, `POST evaluate`), 503 fail-closed on missing evidence, 422 on invalid context, non-compensatory 6-gate model, and anti-leakage isolation verified passing 162/162 automated tests.
-  - Frontend component architecture, epistemic badges, 0-survivor display, and stale-response protection verified in code (`npm run build` PASS).
+  - Frontend component architecture, epistemic badges, 0-survivor display (`qualified_survivors: []`), and stale-response protection verified in code (`npm run build` PASS). However, user-visible "Winner" wording in `DecisionSummary.tsx` and `RecommendationView.tsx` violates APR-HT1 forbidden terminology (`DEF-03`, open).
 - **Physical Feasibility & Live Browser Gate:** **BLOCKED: MISSING EVIDENCE**.
 - **Minimum Missing Evidence:**
-  1. Live in-browser visual execution / screenshot verification of the interactive UI flow in an active browser session.
-  2. Physical supplier DoC / EU 10/2011 fatty-food migration lab certificates, physical 6-hour hot fat seam leak testing, and commercial distributor stock/lead-time confirmations.
+  1. Resolution of `DEF-03` (replace user-visible "Winner" wording with approved claim terms in frontend).
+  2. Live in-browser visual execution / screenshot verification of the interactive UI flow in an active browser session.
+  3. Physical supplier DoC / EU 10/2011 fatty-food migration lab certificates, physical 6-hour hot fat seam leak testing, and commercial distributor stock/lead-time confirmations.
 
 ---
 
@@ -288,7 +289,6 @@ Strict isolation enforced across the four configurations:
 ```text
 Base SHA: a15ae948f0ea36bfda127e783684622df07e0b83
 Audited implementation SHA: a15ae948f0ea36bfda127e783684622df07e0b83
-Branch HEAD SHA: da0db87d3d252fe921c8516267a2f9e95e61e10d
 HTF-03 source revision/hash: bd4f7651fe9f82f5c0849c5708fcd2f315052317
 
 Files created:
@@ -347,7 +347,8 @@ Browser visual verification: UNVERIFIED (Headless build verified; visual DOM scr
 Defects:
 - DEF-01: CLOSED (PR #35 merged into main)
 - DEF-02: CLOSED (PR #37 merged into main)
-- Open software defects: 0
+- DEF-03: OPEN (User-visible "Winner" terminology defect in DecisionSummary.tsx and RecommendationView.tsx)
+- Open software defects: 1
 
 Remaining UNKNOWN:
 - Actual Profi incumbent packaging mass/polymer/cost/volume
@@ -357,6 +358,6 @@ Remaining UNKNOWN:
 - Volume availability and lead times for retail store network
 - BIOPAP 175 C vs 185 C literature conflict (C01 open evidence gap)
 
-VERDICT: ACCEPTANCE COMPLETE (SOFTWARE VERIFIED; PHYSICAL LAB & LIVE BROWSER PENDING)
-Minimum missing evidence: live visual browser screenshots & physical supplier lab migration/leak certificates.
+VERDICT: ACCEPTANCE CONDITIONAL (RUNTIME PASS; UI CODE PASS EXCEPT TERMINOLOGY DEFECT; LIVE BROWSER UNVERIFIED)
+Minimum missing evidence: DEF-03 terminology fix, live visual browser screenshots & physical supplier lab migration/leak certificates.
 ```
