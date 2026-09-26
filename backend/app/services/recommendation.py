@@ -96,20 +96,20 @@ def evaluate_recommendation(
         # Parse 6 Hard Gates
         gates: dict[GateName, HardGate] = {}
         for gname in ("physical_fit", "food_contact", "thermal_workflow", "grease_leak", "transparent_viewing", "procurement"):
-            gdata = gate_row["gates"].get(gname)
+            gdata = gate_row.gates.get(gname)
             if gdata is None:
                 raise HTTPException(status_code=500, detail=f"MISSING_GATE_{gname}_FOR_{cid}")
             hard_gate = HardGate(
                 gate_id=gname,
-                status=gdata["status"],
-                reason=gdata["reason"],
-                source_ids=list(gdata.get("source_ids", [])),
+                status=gdata.status,
+                reason=gdata.reason,
+                source_ids=list(gdata.source_ids),
             )
             gates[gname] = hard_gate
             all_referenced_source_ids.update(hard_gate.source_ids)
 
-        outcome = gate_row["outcome"]
-        priority = gate_row.get("qualification_priority")
+        outcome = gate_row.outcome
+        priority = gate_row.qualification_priority
         is_first = (priority == 1)
 
         # Determine Role
@@ -131,14 +131,14 @@ def evaluate_recommendation(
             elif product.decision.local_sample_alternative:
                 rationale = f"Local sample alternative ({product.decision.local_sample_alternative})"
             else:
-                rationale = gate_row.get("decision_scope") or "Priority 2 qualification alternative."
+                rationale = gate_row.decision_scope or "Priority 2 qualification alternative."
         elif outcome == "BLOCKED":
             # Identify first failing gate
             failing_gates = [gname for gname, g in gates.items() if g.status == "FAIL"]
             failing_str = ", ".join(failing_gates) if failing_gates else "unmet requirements"
             rationale = f"Candidate blocked by non-compensatory gate failure ({failing_str})."
         else:
-            rationale = gate_row.get("decision_scope") or "Alternative qualification candidate."
+            rationale = gate_row.decision_scope or "Alternative qualification candidate."
 
         # Collect source IDs from metrics, thermal claims, etc.
         cand_source_ids: set[str] = set()
@@ -172,13 +172,13 @@ def evaluate_recommendation(
             configuration_id=cfg_id,
             gates=gates,
             outcome=outcome,
-            qualified_survivor=bool(gate_row.get("qualified_survivor", False)),
-            approved_for_procurement=bool(gate_row.get("approved_for_procurement", False)),
+            qualified_survivor=gate_row.qualified_survivor,
+            approved_for_procurement=gate_row.approved_for_procurement,
             qualification_priority=priority,
             is_first_qualification_path=is_first,
             role=role,
             rationale=rationale,
-            decision_scope=gate_row.get("decision_scope"),
+            decision_scope=gate_row.decision_scope,
             limitations=limitations,
             next_qualification_actions=list(candidate_summary.next_qualification_actions),
             metrics=metrics,

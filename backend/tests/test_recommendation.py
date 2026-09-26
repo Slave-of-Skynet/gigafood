@@ -522,3 +522,56 @@ def test_full_48_row_canonical_parity(client: TestClient):
                 total_evaluated_rows += 1
 
     assert total_evaluated_rows == 48
+
+
+def test_negative_invalid_gate_status_simultaneous(tmp_path: Path):
+    def mut(data):
+        data["product_candidate_gates"][0]["gates"]["physical_fit"]["status"] = "INVALID_STATUS"
+
+    mut_dir = make_mutated_htf03(tmp_path, mutate_canonical=mut, mutate_display=mut)
+    app = create_app(DEFAULT_EVIDENCE, DEFAULT_PORTFOLIOS, mut_dir)
+    with TestClient(app) as test_client:
+        res = test_client.get("/api/v1/recommendation/products")
+        assert res.status_code == 503
+        assert res.json()["detail"] == "RECOMMENDATION_EVIDENCE_UNAVAILABLE"
+
+
+def test_negative_blocked_row_fail_replaced_with_unknown_simultaneous(tmp_path: Path):
+    def mut(data):
+        for r in data["product_candidate_gates"]:
+            if r.get("outcome") == "BLOCKED":
+                for g in r["gates"].values():
+                    if g.get("status") == "FAIL":
+                        g["status"] = "UNKNOWN"
+                break
+
+    mut_dir = make_mutated_htf03(tmp_path, mutate_canonical=mut, mutate_display=mut)
+    app = create_app(DEFAULT_EVIDENCE, DEFAULT_PORTFOLIOS, mut_dir)
+    with TestClient(app) as test_client:
+        res = test_client.get("/api/v1/recommendation/products")
+        assert res.status_code == 503
+        assert res.json()["detail"] == "RECOMMENDATION_EVIDENCE_UNAVAILABLE"
+
+
+def test_negative_gate_empty_reason_simultaneous(tmp_path: Path):
+    def mut(data):
+        data["product_candidate_gates"][0]["gates"]["physical_fit"]["reason"] = ""
+
+    mut_dir = make_mutated_htf03(tmp_path, mutate_canonical=mut, mutate_display=mut)
+    app = create_app(DEFAULT_EVIDENCE, DEFAULT_PORTFOLIOS, mut_dir)
+    with TestClient(app) as test_client:
+        res = test_client.get("/api/v1/recommendation/products")
+        assert res.status_code == 503
+        assert res.json()["detail"] == "RECOMMENDATION_EVIDENCE_UNAVAILABLE"
+
+
+def test_negative_gate_extra_field_simultaneous(tmp_path: Path):
+    def mut(data):
+        data["product_candidate_gates"][0]["gates"]["physical_fit"]["extra_field"] = "unexpected"
+
+    mut_dir = make_mutated_htf03(tmp_path, mutate_canonical=mut, mutate_display=mut)
+    app = create_app(DEFAULT_EVIDENCE, DEFAULT_PORTFOLIOS, mut_dir)
+    with TestClient(app) as test_client:
+        res = test_client.get("/api/v1/recommendation/products")
+        assert res.status_code == 503
+        assert res.json()["detail"] == "RECOMMENDATION_EVIDENCE_UNAVAILABLE"

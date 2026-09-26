@@ -14,6 +14,8 @@ from app.domain.recommendation import (
     CandidateId,
     CandidateMetrics,
     CandidateSummary,
+    CanonicalGateRecord,
+    CanonicalGateRow,
     ConfigurationId,
     EolDetails,
     EstimateDetails,
@@ -167,8 +169,8 @@ class RecommendationRuntime:
     configurations: list[PackagingConfiguration] = field(default_factory=list)
     baselines: list[BaselineSummary] = field(default_factory=list)
     sources: dict[str, SourceReference] = field(default_factory=dict)
-    gate_rows: dict[tuple[str, str, str], dict[str, Any]] = field(default_factory=dict)
-    c6_gate_rows: dict[tuple[str, str, str], dict[str, Any]] = field(default_factory=dict)
+    gate_rows: dict[tuple[str, str, str], CanonicalGateRow] = field(default_factory=dict)
+    c6_gate_rows: dict[tuple[str, str, str], CanonicalGateRow] = field(default_factory=dict)
     configurations_by_id: dict[str, PackagingConfiguration] = field(default_factory=dict)
     candidates_by_id: dict[str, CandidateSummary] = field(default_factory=dict)
     products_by_id: dict[str, ProductArchetype] = field(default_factory=dict)
@@ -214,12 +216,38 @@ def validate_runtime_snapshot(
             f"Expected baselines B1, B2, B3, got {baseline_ids}"
         )
 
-    # 2. Exactly 48 evaluated gate rows
-    gate_rows = data.get("product_candidate_gates", [])
-    if len(gate_rows) != 48:
+    # 2. Exactly 48 evaluated gate rows in canonical and display datasets
+    raw_gate_rows = data.get("product_candidate_gates", [])
+    raw_display_gate_rows = display_data.get("product_candidate_gates", [])
+    if len(raw_gate_rows) != 48:
         raise RuntimeSnapshotValidationError(
-            f"Expected exactly 48 evaluated gate rows, got {len(gate_rows)}"
+            f"Expected exactly 48 evaluated gate rows, got {len(raw_gate_rows)}"
         )
+    if len(raw_display_gate_rows) != 48:
+        raise RuntimeSnapshotValidationError(
+            f"Expected exactly 48 evaluated display gate rows, got {len(raw_display_gate_rows)}"
+        )
+
+    # 3. Gate matrix in display matches canonical
+    if raw_display_gate_rows != raw_gate_rows:
+        raise RuntimeSnapshotValidationError("Display dataset gate rows differ from canonical gate rows")
+
+    # 4. Strict validation of each of the 48 gate rows and objects in canonical and display datasets
+    for idx, r_raw in enumerate(raw_gate_rows):
+        try:
+            CanonicalGateRow.model_validate(r_raw)
+        except ValidationError as err:
+            raise RuntimeSnapshotValidationError(
+                f"Canonical gate row {idx} violates strict contract: {err}"
+            ) from err
+
+    for idx, dr_raw in enumerate(raw_display_gate_rows):
+        try:
+            CanonicalGateRow.model_validate(dr_raw)
+        except ValidationError as err:
+            raise RuntimeSnapshotValidationError(
+                f"Display gate row {idx} violates strict contract: {err}"
+            ) from err
 
     expected_tuples = set(
         itertools.product(
@@ -228,29 +256,29 @@ def validate_runtime_snapshot(
             {f"C{i}" for i in range(1, 7)},
         )
     )
-    actual_tuples = {(r.get("product_id"), r.get("workflow"), r.get("candidate_id")) for r in gate_rows}
+    actual_tuples = {(r.product_id, r.workflow, r.candidate_id) for r in runtime.gate_rows.values()}
     if actual_tuples != expected_tuples:
         raise RuntimeSnapshotValidationError(
             f"Gate rows do not cover all 48 combinations: missing {expected_tuples - actual_tuples}"
         )
 
-    # 3. Canonical matrix outcome distribution: exactly 28 QUALIFICATION REQUIRED, 20 BLOCKED
-    qual_count = sum(1 for r in gate_rows if r.get("outcome") == "QUALIFICATION REQUIRED")
-    blocked_count = sum(1 for r in gate_rows if r.get("outcome") == "BLOCKED")
+    # 5. Canonical matrix outcome distribution: exactly 28 QUALIFICATION REQUIRED, 20 BLOCKED
+    qual_count = sum(1 for r in runtime.gate_rows.values() if r.outcome == "QUALIFICATION REQUIRED")
+    blocked_count = sum(1 for r in runtime.gate_rows.values() if r.outcome == "BLOCKED")
     if qual_count != 28 or blocked_count != 20:
         raise RuntimeSnapshotValidationError(
             f"Expected 28 QUALIFICATION REQUIRED and 20 BLOCKED rows, got {qual_count} and {blocked_count}"
         )
 
-    # 4. Zero qualified_survivor and approved_for_procurement
-    for r in gate_rows:
-        if r.get("qualified_survivor") is True:
+    # 6. Zero qualified_survivor and approved_for_procurement
+    for r in runtime.gate_rows.values():
+        if r.qualified_survivor is True:
             raise RuntimeSnapshotValidationError(
-                f"Gate row {r.get('product_id')}/{r.get('candidate_id')}/{r.get('workflow')} has qualified_survivor=True"
+                f"Gate row {r.product_id}/{r.candidate_id}/{r.workflow} has qualified_survivor=True"
             )
-        if r.get("approved_for_procurement") is True:
+        if r.approved_for_procurement is True:
             raise RuntimeSnapshotValidationError(
-                f"Gate row {r.get('product_id')}/{r.get('candidate_id')}/{r.get('workflow')} has approved_for_procurement=True"
+                f"Gate row {r.product_id}/{r.candidate_id}/{r.workflow} has approved_for_procurement=True"
             )
 
     for d in data.get("product_decisions", []):
@@ -259,49 +287,71 @@ def validate_runtime_snapshot(
                 f"Product decision for {d.get('product_id')} has approved_for_procurement=True"
             )
 
-    # 5. Fail gate must have outcome BLOCKED; Unresolved cannot be qualified_survivor; All 6 gates present
-    for r in gate_rows:
-        gates = r.get("gates", {})
-        if set(gates.keys()) != REQUIRED_GATES:
+    # 7. Strict Gate Contract and Full Outcome Truth Table
+    for r in runtime.gate_rows.values():
+        if set(r.gates.keys()) != REQUIRED_GATES:
             raise RuntimeSnapshotValidationError(
-                f"Gate row {r.get('product_id')}/{r.get('candidate_id')}/{r.get('workflow')} missing required gates"
-            )
-        has_fail = any(isinstance(g, dict) and g.get("status") == "FAIL" for g in gates.values())
-        if has_fail and r.get("outcome") != "BLOCKED":
-            raise RuntimeSnapshotValidationError(
-                f"Gate row with FAIL gate has outcome {r.get('outcome')} instead of BLOCKED"
-            )
-        all_pass = all(isinstance(g, dict) and g.get("status") == "PASS" for g in gates.values())
-        if not all_pass and r.get("qualified_survivor") is True:
-            raise RuntimeSnapshotValidationError(
-                f"Gate row with unresolved/failed gates has qualified_survivor=True"
+                f"Gate row {r.product_id}/{r.candidate_id}/{r.workflow} missing required gates"
             )
 
-    # 6. C6 configuration binding matches accepted context matrix
-    for r in gate_rows:
-        if r.get("candidate_id") == "C6":
-            ctx = (r.get("product_id"), r.get("workflow"))
-            expected_cfg = ACCEPTED_C6_CONTEXT_BINDINGS.get(ctx)
-            if r.get("configuration_id") != expected_cfg:
+        for gname, g in r.gates.items():
+            if g.status not in ("PASS", "QUALIFICATION_REQUIRED", "UNKNOWN", "FAIL"):
                 raise RuntimeSnapshotValidationError(
-                    f"C6 binding mismatch for {ctx}: expected {expected_cfg}, got {r.get('configuration_id')}"
+                    f"Gate {gname} in row {r.product_id}/{r.candidate_id}/{r.workflow} has invalid status {g.status}"
+                )
+            if not isinstance(g.reason, str) or not g.reason.strip():
+                raise RuntimeSnapshotValidationError(
+                    f"Gate {gname} in row {r.product_id}/{r.candidate_id}/{r.workflow} has empty reason"
+                )
+            if not isinstance(g.source_ids, list) or not all(isinstance(sid, str) for sid in g.source_ids):
+                raise RuntimeSnapshotValidationError(
+                    f"Gate {gname} in row {r.product_id}/{r.candidate_id}/{r.workflow} has invalid source_ids"
                 )
 
-    # 7. C6-EU does not get a fabricated evaluated row
-    for r in gate_rows:
-        if r.get("configuration_id") == "C6-EU":
+        if r.outcome == "RECOMMENDED UNDER CURRENT ASSUMPTIONS":
+            raise RuntimeSnapshotValidationError(
+                f"Gate row {r.product_id}/{r.candidate_id}/{r.workflow} has forbidden outcome 'RECOMMENDED UNDER CURRENT ASSUMPTIONS'"
+            )
+
+        has_fail = any(g.status == "FAIL" for g in r.gates.values())
+        has_unresolved = any(g.status in ("UNKNOWN", "QUALIFICATION_REQUIRED") for g in r.gates.values())
+
+        if has_fail:
+            if r.outcome != "BLOCKED":
+                raise RuntimeSnapshotValidationError(
+                    f"Gate row {r.product_id}/{r.candidate_id}/{r.workflow} with FAIL gate has outcome {r.outcome}; expected BLOCKED"
+                )
+        elif has_unresolved:
+            if r.outcome != "QUALIFICATION REQUIRED":
+                raise RuntimeSnapshotValidationError(
+                    f"Gate row {r.product_id}/{r.candidate_id}/{r.workflow} with unresolved gate(s) has outcome {r.outcome}; expected QUALIFICATION REQUIRED"
+                )
+        else:
+            raise RuntimeSnapshotValidationError(
+                f"Gate row {r.product_id}/{r.candidate_id}/{r.workflow} has all PASS gates; forbidden in current slice without qualification"
+            )
+
+    # 8. C6 configuration binding matches accepted context matrix
+    for r in runtime.gate_rows.values():
+        if r.candidate_id == "C6":
+            ctx = (r.product_id, r.workflow)
+            expected_cfg = ACCEPTED_C6_CONTEXT_BINDINGS.get(ctx)
+            if r.configuration_id != expected_cfg:
+                raise RuntimeSnapshotValidationError(
+                    f"C6 binding mismatch for {ctx}: expected {expected_cfg}, got {r.configuration_id}"
+                )
+
+    # 9. C6-EU does not get a fabricated evaluated row
+    for r in runtime.gate_rows.values():
+        if r.configuration_id == "C6-EU":
             raise RuntimeSnapshotValidationError("C6-EU has a fabricated evaluated gate row")
 
-    # 8. Referenced source IDs are not dangling
+    # 10. Referenced source IDs are not dangling
     smap = {s["source_id"] for s in data.get("sources", []) if "source_id" in s}
     all_referenced = collect_source_ids(data) | collect_source_ids(display_data)
     dangling = all_referenced - smap
     if dangling:
         raise RuntimeSnapshotValidationError(f"Dangling referenced source IDs found: {dangling}")
-
-    # 9. Gate matrix in display matches canonical
-    if display_data.get("product_candidate_gates") != gate_rows:
-        raise RuntimeSnapshotValidationError("Display dataset gate rows differ from canonical gate rows")
 
     # 10. Forbidden carbon/eco fields do not enter application/API projection
     for cand in runtime.candidates:
@@ -622,15 +672,16 @@ def load_recommendation_runtime(htf03_dir: Path) -> RecommendationRuntime:
             candidates_by_id[cid] = summary
 
         # 7. Gate Matrix
-        gate_rows: dict[tuple[str, str, str], dict[str, Any]] = {}
-        c6_gate_rows: dict[tuple[str, str, str], dict[str, Any]] = {}
-        for r in data.get("product_candidate_gates", []):
-            p = r["product_id"]
-            w = r["workflow"]
-            c = r["candidate_id"]
+        gate_rows: dict[tuple[str, str, str], CanonicalGateRow] = {}
+        c6_gate_rows: dict[tuple[str, str, str], CanonicalGateRow] = {}
+        for r_raw in data.get("product_candidate_gates", []):
+            r = CanonicalGateRow.model_validate(r_raw)
+            p = r.product_id
+            w = r.workflow
+            c = r.candidate_id
             gate_rows[(p, w, c)] = r
-            if c == "C6" and "configuration_id" in r:
-                c6_gate_rows[(p, w, r["configuration_id"])] = r
+            if c == "C6" and r.configuration_id:
+                c6_gate_rows[(p, w, r.configuration_id)] = r
 
         runtime = RecommendationRuntime(
             is_available=True,

@@ -1,5 +1,5 @@
 from typing import Annotated, Any, Literal
-from pydantic import Field
+from pydantic import Field, field_validator
 from app.domain._contract import Contract
 
 EpistemicState = Literal[
@@ -122,6 +122,33 @@ class HardGate(Contract):
     status: GateStatus
     reason: str
     source_ids: list[str] = Field(default_factory=list)
+
+
+class CanonicalGateRecord(Contract):
+    status: GateStatus
+    reason: Annotated[str, Field(min_length=1)]
+    source_ids: list[str] = Field(default_factory=list)
+
+    @field_validator("reason")
+    @classmethod
+    def validate_reason_non_empty(cls, v: str) -> str:
+        if not v.strip():
+            raise ValueError("Gate reason must be a non-empty string")
+        return v
+
+
+class CanonicalGateRow(Contract):
+    product_id: ProductId
+    candidate_id: CandidateId
+    workflow: WorkflowId
+    configuration_id: ConfigurationId | None = None
+    gates: dict[GateName, CanonicalGateRecord]
+    outcome: Literal["QUALIFICATION REQUIRED", "BLOCKED"]
+    approved_for_procurement: Literal[False] = False
+    qualified_survivor: Literal[False] = False
+    qualification_priority: int | None = None
+    decision_scope: str | None = None
+
 
 
 class ProductDecisionSummary(Contract):
