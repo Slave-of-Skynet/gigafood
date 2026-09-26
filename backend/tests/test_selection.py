@@ -882,3 +882,148 @@ def test_r5_default_faerch_portfolio_summary_verdict_unchanged():
         assert verdict.startswith("No candidate is currently recommendable for transition:")
         assert "Faerch C 2200-1L Evolve CPET Tray requires a current SKU/recipe recycled-content declaration with provenance" in verdict
         assert "Faerch K 2182-1G Clear APET Tray is blocked by thermal incompatibility under the stated modeled operating context." in verdict
+
+
+# --- P0-2 Safe Comparability Truthfulness Tests ---
+
+
+def test_t1_comparability_same_boundary_bottle_truthfulness():
+    """T1 (AC1, AC2, AC4): Same-boundary bottle-style comparison (BOTTLE_AND_CLOSURE vs BOTTLE_AND_CLOSURE).
+    Proves:
+    - boundary_match is True
+    - rating remains conservative BOUNDED_WITH_QUALIFIER (does not claim STRONG)
+    - note does not invent uncomputed capacity difference (>15%, diff, etc.)
+    - note truthfully states strong nominal-capacity/format comparability is not established."""
+    base = make_candidate_article(
+        "bottle-base", "500ml Baseline Bottle",
+        mass=22.0, pcr=0.0, max_temp=60.0, mw_safe=False,
+        boundary="BOTTLE_AND_CLOSURE",
+    )
+    cand = make_candidate_article(
+        "bottle-cand", "500ml Candidate Bottle",
+        mass=19.5, pcr=0.5, max_temp=60.0, mw_safe=False,
+        boundary="BOTTLE_AND_CLOSURE",
+    )
+
+    assessment = assess_comparability(base, cand)
+    assert assessment.boundary_match is True
+    assert assessment.rating == "BOUNDED_WITH_QUALIFIER"
+    assert assessment.rating != "STRONG"
+
+    joined_notes = " ".join(assessment.notes)
+    # AC1 & Negative criteria: no fabricated >15% claim or capacity difference claims
+    assert "> 15%" not in joined_notes
+    assert ">15%" not in joined_notes
+    assert "15%" not in joined_notes
+    assert "differs" not in joined_notes.lower()
+    # Truthful explanation of what is and is not established
+    assert "common component boundary matched" in joined_notes.lower()
+    assert "strong" in joined_notes.lower()
+    assert "not established" in joined_notes.lower()
+
+    # Also verify through full evaluate_portfolio integration
+    port = make_portfolio(base, [cand], req_temp=50.0, req_mw=False)
+    resp = evaluate_portfolio(port)
+    c_res = resp.candidates[0]
+    assert c_res.comparability.boundary_match is True
+    assert c_res.comparability.rating == "BOUNDED_WITH_QUALIFIER"
+    cand_notes = " ".join(c_res.comparability.notes)
+    assert "> 15%" not in cand_notes
+    assert "differs" not in cand_notes.lower()
+
+
+def test_t2_comparability_mismatched_boundary_regression():
+    """T2 (AC3): Mismatched component boundaries (TRAY_BODY_ONLY vs HINGED_COMPLETE_PACK).
+    Proves:
+    - rating is ASYMMETRIC_BOUNDARY
+    - boundary_match is False
+    - transition reduction delta is withheld (None)
+    - explanatory note states the actual component boundary mismatch."""
+    base = make_candidate_article("tray-base", "Tray Base", mass=26.29, pcr=0.0, boundary="TRAY_BODY_ONLY")
+    cand = make_candidate_article("hinged-cand", "Hinged Cand", mass=23.50, pcr=0.5, boundary="HINGED_COMPLETE_PACK")
+
+    # Direct comparator check
+    assessment = assess_comparability(base, cand)
+    assert assessment.rating == "ASYMMETRIC_BOUNDARY"
+    assert assessment.boundary_match is False
+    joined_notes = " ".join(assessment.notes)
+    assert "TRAY_BODY_ONLY" in joined_notes
+    assert "HINGED_COMPLETE_PACK" in joined_notes
+    assert "transition delta is withheld" in joined_notes.lower()
+
+    # Integrated portfolio evaluation check
+    port = make_portfolio(base, [cand])
+    resp = evaluate_portfolio(port)
+    c_res = resp.candidates[0]
+    assert c_res.comparability.rating == "ASYMMETRIC_BOUNDARY"
+    assert c_res.comparability.boundary_match is False
+    assert c_res.calculation.status == "INSUFFICIENT_DATA"
+    assert c_res.calculation.reduction_g is None
+    assert c_res.calculation.reduction_pct is None
+    assert "component_boundary_mismatch" in c_res.calculation.missing_fields
+    assert c_res.next_action.action_code == "VERIFY_OPERATIONAL_PREMISES"
+    assert c_res.next_action.summary == "Establish common component boundary"
+
+
+def test_t3_current_selection_evaluation_regression():
+    """T3 (AC5, AC6): Existing Selection evaluation path regression using default Faerch portfolio.
+    Proves:
+    - Calculation, eligibility, next-action fields remain unchanged
+    - Comparability for same-boundary Faerch trays remains BOUNDED_WITH_QUALIFIER
+    - Notes no longer contain uncomputed >15% capacity assertions."""
+    with TestClient(create_app()) as client:
+        resp = client.get("/api/v1/portfolios/faerch-deli-trays")
+        assert resp.status_code == 200
+        data = resp.json()
+
+        assert data["baseline"]["calculation_status"] == "CALCULATED"
+        assert data["baseline"]["virgin_plastic_g"] == 26.29
+
+        candidates = data["candidates"]
+        assert len(candidates) == 2
+
+        # Candidate A: C 2200-1L (NON_POINT_VALUE PCR -> INSUFFICIENT_DATA, REVIEW_REQUIRED)
+        cand_a = candidates[0]
+        assert cand_a["candidate"]["id"] == "faerch-c-2200-1l"
+        assert cand_a["comparability"]["rating"] == "BOUNDED_WITH_QUALIFIER"
+        assert cand_a["comparability"]["boundary_match"] is True
+        a_notes = " ".join(cand_a["comparability"]["notes"])
+        assert "> 15%" not in a_notes
+        assert ">15%" not in a_notes
+        assert "differs" not in a_notes.lower()
+        assert cand_a["calculation"]["status"] == "INSUFFICIENT_DATA"
+        assert cand_a["calculation"]["reduction_g"] is None
+        assert cand_a["eligibility"]["status"] == "REVIEW_REQUIRED"
+        assert cand_a["next_action"]["action_code"] == "REQUEST_PCR_EVIDENCE"
+
+        # Candidate B: K 2182-1G (UNSTATED PCR -> INSUFFICIENT_DATA, BLOCKED by 70°C ceiling vs 95°C req)
+        cand_b = candidates[1]
+        assert cand_b["candidate"]["id"] == "faerch-k-2182-1g"
+        assert cand_b["comparability"]["rating"] == "BOUNDED_WITH_QUALIFIER"
+        assert cand_b["comparability"]["boundary_match"] is True
+        b_notes = " ".join(cand_b["comparability"]["notes"])
+        assert "> 15%" not in b_notes
+        assert ">15%" not in b_notes
+        assert "differs" not in b_notes.lower()
+        assert cand_b["calculation"]["status"] == "INSUFFICIENT_DATA"
+        assert cand_b["calculation"]["reduction_g"] is None
+        assert cand_b["eligibility"]["status"] == "BLOCKED"
+        assert cand_b["next_action"]["action_code"] == "REJECT_INCOMPATIBLE"
+
+
+def test_comparability_stretch_tray_same_boundary_truthfulness():
+    """Stretch goal: Narrowly scoped test proving comparability notes remain truthful
+    for TRAY_BODY_ONLY same-boundary comparisons."""
+    base = make_candidate_article("tray-base", "Tray Base", boundary="TRAY_BODY_ONLY")
+    cand = make_candidate_article("tray-cand", "Tray Cand", boundary="TRAY_BODY_ONLY")
+
+    assessment = assess_comparability(base, cand)
+    assert assessment.boundary_match is True
+    assert assessment.rating == "BOUNDED_WITH_QUALIFIER"
+    assert assessment.rating != "STRONG"
+
+    joined_notes = " ".join(assessment.notes)
+    assert "> 15%" not in joined_notes
+    assert "differs" not in joined_notes.lower()
+    assert "common component boundary matched" in joined_notes.lower()
+    assert "strong" in joined_notes.lower()
