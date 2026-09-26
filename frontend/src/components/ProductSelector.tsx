@@ -14,25 +14,25 @@ const PRODUCT_METADATA: Record<
   P1: {
     label: 'Whole Rotisserie Chicken',
     icon: '🍗',
-    portionSize: '1.0–1.3 kg whole bird',
+    portionSize: '1.0–1.4 kg modeled test scenario assumption (actual Profi chicken mass/geometry remains UNKNOWN)',
     example: 'Pui la rotisor întreg (high hot grease / headspace)',
   },
   P2: {
     label: 'Chicken Wings & Thighs',
     icon: '🍖',
-    portionSize: '6–20 pcs / 350–600 g',
+    portionSize: 'Exact portion geometry/weight requiring confirmation',
     example: 'Aripioare & pulpe rumenite',
   },
   P3: {
     label: 'Hot Potatoes & Vegetables',
     icon: '🥔',
-    portionSize: '250–450 g side portion',
+    portionSize: 'Exact portion geometry/weight requiring confirmation',
     example: 'Cartofi wedges & legume coapte',
   },
   P4: {
     label: 'Prepared Hot Meat Portions',
     icon: '🥩',
-    portionSize: '300–500 g hot meal',
+    portionSize: 'Exact portion geometry/weight requiring confirmation',
     example: 'Ceafă, șnițel & friptură caldă',
   },
 };

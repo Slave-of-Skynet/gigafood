@@ -170,8 +170,7 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
           </h2>
           <p className="recommendation-lead-text">
             Evaluating sustainable physical packaging concepts for Profi hot rotisserie chicken and deli portions.
-            Analyzing 6 hard operational gates: physical fit, food safety contact, 200–250°C thermal resistance,
-            up to 6-hour heated holding, grease/oil barrier, transparent viewing window, and Romanian procurement.
+            Analyzing 6 canonical hard gates: physical fit; food contact; thermal workflow (peak exposure + holding); grease/leak; transparent viewing; procurement.
           </p>
 
           <div className="challenge-axioms-bar">

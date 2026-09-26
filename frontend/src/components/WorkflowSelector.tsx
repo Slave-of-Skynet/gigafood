@@ -14,15 +14,15 @@ const WORKFLOW_METADATA: Record<
   POST_COOK_HOT_HOLD_6H: {
     label: 'Post-Cook Hot Holding Scenario',
     badge: 'Standard Hot-Bar Workflow',
-    tempDimension: '65–85°C holding temperature',
-    holdDimension: 'Up to 6 hours continuous hold in heated cabinet',
+    tempDimension: '85–95°C (MODELED TEST CONDITION — actual Profi display temperature UNKNOWN)',
+    holdDimension: 'Up to 6 hours continuous hold in heated cabinet (MODELED TEST CONDITION — actual Profi hold duration UNKNOWN)',
     summary: 'Food is cooked in rotisserie/combi oven prior to packaging; packaging only undergoes post-cook hot holding.',
   },
   LITERAL_OVEN_250C_THEN_HOLD: {
     label: 'Literal 250°C Oven Cycle + Holding Scenario',
     badge: 'High-Temperature Workflow',
     tempDimension: '250°C peak oven cooking exposure',
-    holdDimension: 'Followed by 6 hours holding at 65–85°C',
+    holdDimension: 'Followed by holding phase (85–95°C modeled test condition — actual Profi display temperature UNKNOWN, up to 6 hours)',
     summary: 'Food is cooked or reheated directly inside the package at up to 250°C, then held on heated display.',
   },
 };
@@ -104,7 +104,7 @@ export function WorkflowSelector({
               <strong>Post-cook hot hold boundary:</strong>
               <span>
                 {' '}
-                Target holding range is 65–85°C for up to 6 hours.
+                Research/test envelope uses 85–95°C (MODELED TEST CONDITION — actual Profi display temperature UNKNOWN) for up to 6 hours.
                 Because food is packaged after cooking, packaging is NOT exposed to 250°C oven heat in this scenario.
                 Full 6-hour holding performance with fatty poultry remains subject to physical qualification.
               </span>
@@ -121,9 +121,8 @@ export function WorkflowSelector({
               <strong>High-temperature dimension distinction:</strong>
               <span>
                 {' '}
-                <strong>250°C peak oven cooking</strong> is a distinct dimension from <strong>6 hours holding at 65–85°C</strong>.
-                Standard polymers and cellulose solutions fail the 250°C peak gate. For aluminium solutions,
-                an aluminium body heat rating does NOT confer heat resistance or food safety to transparent lids or closures.
+                <strong>250°C peak oven cooking</strong> is a distinct dimension from <strong>subsequent heated holding</strong>.
+                C2, C3, C4 and C5 are hard-blocked by documented thermal limits; C1 Gaia remains unresolved/unprioritized because numeric peak evidence is insufficient; C6-RO-H is a Priority 2 high-temperature fallback qualification path, with closure/duration still unverified. For aluminium solutions, an aluminium body heat rating does NOT confer heat resistance to transparent lids or closures.
               </span>
             </div>
           </div>

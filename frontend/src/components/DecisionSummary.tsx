@@ -73,8 +73,8 @@ export function DecisionSummary({
             {sanitizeRationale(
               firstPathAssessment?.rationale ||
                 (isLiteralOven
-                  ? 'Under the literal 250°C oven requirement, standard polymer and cellulose films (C2, C3, C4, C5) are hard-blocked due to documented thermal limits below 250°C. C1 Sacma Gaia remains an unprioritized alternative. C6-RO-H (Aluminium body with 280°C claim) serves as a high-temperature fallback qualification path (Priority 2), requiring separate physical qualification of food-contact coatings and transparent closures.'
-                  : 'Packaging candidates evaluated against 6 hard gates. Critical physical evidence remains unresolved.')
+                  ? 'Under the literal 250°C oven requirement, C2, C3, C4 and C5 are hard-blocked by documented thermal limits. C1 Gaia remains an unresolved and unprioritized alternative because numeric peak evidence is insufficient. C6-RO-H (Aluminium body with 280°C claim) serves as a high-temperature fallback qualification path (Priority 2), with transparent closure compatibility and holding duration still unverified.'
+                  : 'Packaging candidates evaluated against 6 canonical hard gates (physical fit; food contact; thermal workflow [peak exposure + holding]; grease/leak; transparent viewing; procurement). Critical physical evidence remains unresolved.')
             )}
           </p>
 
@@ -134,7 +134,7 @@ export function DecisionSummary({
           </div>
           <ul className="stretch-list">
             <li>Physical packaging concept candidates identified in European/Romanian market.</li>
-            <li>Basic dimensional suitability & non-toxic substrate composition documented.</li>
+            <li>Candidate construction and component information is documented where published, while physical fit and complete food-contact migration/chemical qualification remain unresolved.</li>
             <li>Theoretical virgin-plastic reductions modeled relative to incumbent baselines.</li>
           </ul>
         </div>

@@ -18,7 +18,7 @@ const GATE_METADATA: Record<GateName, { title: string; subtitle: string; icon: s
   },
   thermal_workflow: {
     title: 'Thermal Workflow',
-    subtitle: 'Oven exposure & 6h hot hold',
+    subtitle: 'Peak exposure + holding',
     icon: '🌡️',
   },
   grease_leak: {
@@ -124,7 +124,7 @@ export function GateMatrix({ gates, compact = false }: GateMatrixProps) {
       </div>
       <div className="gate-non-compensatory-note">
         <strong>Non-compensatory gate policy:</strong> Any single <code>FAIL</code> blocks candidate advancement.
-        Virgin plastic reduction cannot compensate for thermal failure or missing food safety compliance.
+        Virgin plastic reduction cannot compensate for thermal failure or unverified food-contact compliance.
       </div>
     </div>
   );
