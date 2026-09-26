@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 import { api } from '../api/client';
 import type {
-  CalculationResult,
   CandidateAssessment,
   ComparabilityRating,
   ComponentBoundary,
@@ -25,10 +24,26 @@ const formatNumberOnly = (value: number | null) =>
   value === null
     ? 'N/A'
     : value.toLocaleString('en-US', { maximumFractionDigits: 2 });
+type CalculationGapReason =
+  | 'BOUNDARY_MISMATCH'
+  | 'MISSING_MASS'
+  | 'MISSING_OR_NON_POINT_PCR'
+  | 'GENERIC_INCOMPLETE';
 
 // Presentation of the backend delta's sign only; all arithmetic stays on the server.
-function deltaMeaning(value: number | null) {
-  if (value === null) return 'Cannot calculate yet — required numeric evidence missing (delta N/A)';
+function deltaMeaning(
+  value: number | null,
+  gapReason?: CalculationGapReason | null
+) {
+  if (value === null) {
+    if (gapReason === 'BOUNDARY_MISMATCH') {
+      return 'Cannot calculate delta — package scopes differ (delta N/A)';
+    }
+    if (gapReason === 'MISSING_MASS') {
+      return 'Cannot calculate yet — required package mass missing (delta N/A)';
+    }
+    return 'Cannot calculate yet — required numeric evidence missing (delta N/A)';
+  }
   if (value > 0) return 'Reduces virgin plastic';
   if (value === 0) return 'No change — zero virgin-plastic reduction';
   return 'Increases virgin-plastic use';
@@ -95,16 +110,121 @@ function eligibilityHeadline(status: EligibilityStatus) {
   }
 }
 
-function calculationSummaryText(
-  status: CalculationResult['status'],
-  verification: CalculationResult['verification_state']
-) {
-  if (status === 'CALCULATED') {
-    return verification === 'INDICATIVE'
+function detectCalculationGapReason(
+  data: CandidateAssessment
+): CalculationGapReason | null {
+  const { calculation: calc, comparability, metadata } = data;
+  if (calc.status === 'CALCULATED') {
+    return null;
+  }
+
+  // Precedence 1 — Component boundary mismatch
+  if (
+    calc.missing_fields.includes('component_boundary_mismatch') ||
+    !comparability.boundary_match ||
+    comparability.rating === 'ASYMMETRIC_BOUNDARY'
+  ) {
+    return 'BOUNDARY_MISMATCH';
+  }
+
+  // Precedence 2 — Missing physical package mass/specification
+  if (calc.missing_fields.some((f) => f.includes('plastic_mass_g'))) {
+    return 'MISSING_MASS';
+  }
+
+  // Precedence 3 — Missing/non-point recycled-content evidence
+  if (
+    calc.missing_fields.some((f) => f.includes('recycled_content_fraction')) ||
+    metadata.recycled_content_point_value_status === 'NON_POINT_VALUE' ||
+    metadata.recycled_content_point_value_status === 'UNSTATED'
+  ) {
+    return 'MISSING_OR_NON_POINT_PCR';
+  }
+
+  // Precedence 4 — Generic conservative fallback
+  return 'GENERIC_INCOMPLETE';
+}
+
+function missingMassScope(
+  missingFields: string[]
+): 'baseline' | 'candidate' | 'both' | 'general' {
+  const hasBaseline = missingFields.some(
+    (f) => f.startsWith('baseline.') && f.includes('plastic_mass_g')
+  );
+  const hasCandidate = missingFields.some(
+    (f) => f.startsWith('candidate.') && f.includes('plastic_mass_g')
+  );
+  if (hasBaseline && hasCandidate) return 'both';
+  if (hasBaseline) return 'baseline';
+  if (hasCandidate) return 'candidate';
+  return 'general';
+}
+
+function calculationSummaryText(data: CandidateAssessment): string {
+  const { calculation: calc } = data;
+  if (calc.status === 'CALCULATED') {
+    return calc.verification_state === 'INDICATIVE'
       ? 'Calculated from available numeric evidence (indicative arithmetic — not implementation approval or verified operational evidence)'
       : 'Calculated from available numeric evidence';
   }
-  return 'Calculation withheld — exact numeric evidence is missing (missing ≠ 0)';
+
+  const reason = detectCalculationGapReason(data);
+  switch (reason) {
+    case 'BOUNDARY_MISMATCH':
+      return 'Calculation withheld — baseline and candidate represent different component boundaries (scopes not comparable)';
+    case 'MISSING_MASS': {
+      const massScope = missingMassScope(calc.missing_fields);
+      if (massScope === 'candidate') {
+        return 'Calculation withheld — candidate package mass is missing (missing ≠ 0)';
+      }
+      if (massScope === 'baseline') {
+        return 'Calculation withheld — baseline package mass is missing (missing ≠ 0)';
+      }
+      return 'Calculation withheld — required package mass is missing (missing ≠ 0)';
+    }
+    case 'MISSING_OR_NON_POINT_PCR':
+      return 'Calculation withheld — exact numeric evidence is missing (missing ≠ 0)';
+    case 'GENERIC_INCOMPLETE':
+    default:
+      return 'Calculation withheld — required evidence for comparable transition is incomplete (missing ≠ 0)';
+  }
+}
+
+function calculationGapExplanation(data: CandidateAssessment): string {
+  const { calculation: calc, metadata } = data;
+  if (calc.status === 'CALCULATED') {
+    return 'The arithmetic is computed from represented component inputs, but this is not implementation approval or fully verified operational evidence.';
+  }
+
+  const reason = detectCalculationGapReason(data);
+  switch (reason) {
+    case 'BOUNDARY_MISMATCH':
+      return 'Transition delta is withheld because the baseline and candidate represent different component boundaries. PackShift does not subtract non-equivalent package scopes.';
+    case 'MISSING_MASS': {
+      const massScope = missingMassScope(calc.missing_fields);
+      if (massScope === 'candidate') {
+        return 'Calculation is withheld because candidate package mass specification is missing. PackShift never assumes missing data equals zero.';
+      }
+      if (massScope === 'baseline') {
+        return 'Calculation is withheld because baseline package mass specification is missing. PackShift never assumes missing data equals zero.';
+      }
+      if (massScope === 'both') {
+        return 'Calculation is withheld because required baseline and candidate package mass specifications are missing. PackShift never assumes missing data equals zero.';
+      }
+      return 'Calculation is withheld because a required package/component mass is missing. PackShift never assumes missing data equals zero.';
+    }
+    case 'MISSING_OR_NON_POINT_PCR':
+      if (metadata.recycled_content_point_value_status === 'NON_POINT_VALUE') {
+        return 'Only a range or marketing ceiling such as “up to 70%” is available. That is not an exact point value, so PackShift refuses to guess a deterministic number (missing ≠ 0).';
+      }
+      if (metadata.recycled_content_point_value_status === 'UNSTATED') {
+        return 'The required numeric recycled-content value is not stated. Missing evidence is not treated as 0%.';
+      }
+      return 'Calculation is withheld because required recycled-content evidence is missing. PackShift never treats missing recycled content as 0%.';
+    case 'GENERIC_INCOMPLETE':
+    default:
+      return 'Calculation is withheld because required evidence for a comparable numeric transition is incomplete. PackShift never assumes missing data equals zero.';
+  }
 }
 
 function Metadata({ data }: { data: SelectionMetadata }) {
@@ -140,6 +260,7 @@ function Metadata({ data }: { data: SelectionMetadata }) {
 
 function CandidateCard({ data }: { data: CandidateAssessment }) {
   const { calculation: calc, eligibility, annual_impact: annual } = data;
+  const gapReason = detectCalculationGapReason(data);
   const primaryComponentsSummary = data.candidate.components
     .map((c) => `${c.id}: ${c.material}`)
     .join(' · ');
@@ -195,7 +316,7 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
             <div className="comparison-heading-group">
               <h4 className="table-desc">Virgin-plastic comparison</h4>
               <p className="comparison-human-sub">
-                {calculationSummaryText(calc.status, calc.verification_state)}
+                {calculationSummaryText(data)}
               </p>
               <small className="tech-enum-trace">
                 Technical state: {calc.status} · {calc.verification_state}
@@ -286,11 +407,9 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
         <section className="exec-card selection-environment">
           <span className="judge-question-kicker">Does it reduce virgin plastic?</span>
           <h4>Environmental result</h4>
-          <strong>{deltaMeaning(calc.reduction_g)}</strong>
+          <strong>{deltaMeaning(calc.reduction_g, gapReason)}</strong>
           <p className="axis-human-note">
-            {calc.status === 'CALCULATED'
-              ? 'The arithmetic is computed from represented component inputs, but this is not implementation approval or fully verified operational evidence.'
-              : 'No numeric reduction is shown because exact recycled-content evidence is missing. PackShift never assumes missing data equals zero.'}
+            {calculationGapExplanation(data)}
           </p>
           <dl className="selection-metadata">
             <div>
@@ -356,21 +475,21 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
         </small>
       </section>
 
-      {calc.missing_fields.length > 0 ? (
+      {calc.status === 'INSUFFICIENT_DATA' || calc.missing_fields.length > 0 ? (
         <div className="selection-evidence-gap" role="alert">
           <span className="judge-question-kicker">What evidence is missing?</span>
           <strong>Evidence required — missing ≠ 0</strong>
           <p>
             <strong>Why no number is shown:</strong>{' '}
-            {recycledEvidenceExplanation(
-              data.metadata.recycled_content_point_value_status
-            )}
+            {calculationGapExplanation(data)}
           </p>
-          <ul>
-            {calc.missing_fields.map((field) => (
-              <li key={field}>{field}</li>
-            ))}
-          </ul>
+          {calc.missing_fields.length > 0 && (
+            <ul>
+              {calc.missing_fields.map((field) => (
+                <li key={field}>{field}</li>
+              ))}
+            </ul>
+          )}
           <small className="tech-enum-trace">
             Recycled-content evidence:{' '}
             {recycledEvidenceLabel(
@@ -429,6 +548,8 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
             Hypothetical annual impact ·{' '}
             {annual.status === 'CALCULATED'
               ? 'Calculated from hypothetical volume'
+              : gapReason === 'BOUNDARY_MISMATCH'
+              ? 'Calculation withheld (scopes differ)'
               : 'Calculation withheld (missing evidence)'}
           </h4>
           <strong>
@@ -436,7 +557,7 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
               ? 'Available for scenario review — not implementation approval'
               : 'THEORETICAL / NON-ACTIONABLE'}
           </strong>
-          <p>{deltaMeaning(annual.annual_reduction_kg)}</p>
+          <p>{deltaMeaning(annual.annual_reduction_kg, gapReason)}</p>
           <dl className="selection-metadata">
             <div>
               <dt>User-supplied annual units</dt>
