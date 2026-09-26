@@ -175,6 +175,43 @@ def test_truth_table_p03_complete_numeric_violates_constraint():
     assert "Theoretical annual saving only" in c_res.annual_impact.disclosure
 
 
+@pytest.mark.parametrize(
+    "candidate_mass, expected_delta, expected_wording",
+    [
+        (20.0, 0.0, "No annual virgin-plastic reduction (no change)"),
+        (25.0, -5.0, "Annual virgin-plastic use increases"),
+    ],
+    ids=["zero", "negative"],
+)
+def test_f1_blocked_annual_disclosure_sign(candidate_mass, expected_delta, expected_wording):
+    """INT-R3-F1: blocked zero/negative annual deltas are never called savings."""
+    base = make_candidate_article("base", "Synthetic baseline", mass=20.0, pcr=0.0)
+    cand = make_candidate_article(
+        "cand", "Synthetic candidate", mass=candidate_mass, pcr=0.0, max_temp=70.0,
+    )
+    port = make_portfolio(base, [cand], req_temp=95.0)
+    port.dataset_kind = "ILLUSTRATIVE"
+    result = evaluate_portfolio(port, SelectionRequest(annual_units=1000)).candidates[0]
+
+    assert result.calculation.status == "CALCULATED"
+    assert result.calculation.reduction_g == expected_delta
+    assert result.eligibility.status == "BLOCKED"
+    annual = result.annual_impact
+    assert annual is not None
+    assert annual.status == "CALCULATED"
+    assert annual.annual_units == 1000
+    assert annual.annual_current_virgin_kg == 20.0
+    assert annual.annual_candidate_virgin_kg == candidate_mass
+    assert annual.annual_reduction_kg == expected_delta
+    assert annual.is_actionable is False
+    assert "saving" not in annual.disclosure.lower()
+    assert expected_wording in annual.disclosure
+    assert "operationally blocked" in annual.disclosure
+    assert "not actionable under the stated modeled operating context" in annual.disclosure
+    assert "Hypothetical scenario based on user-supplied volume" in annual.disclosure
+    assert "Not actual Profi purchase volume" in annual.disclosure
+
+
 def test_truth_table_p04_incomplete_numeric_satisfies_constraints():
     """P-04: Incomplete numeric inputs (PCR unknown), Satisfies constraints (220°C >= 95°C, MW).
     Outcome: INSUFFICIENT_DATA, REVIEW_REQUIRED, REQUEST_PCR_EVIDENCE, annual_impact unavailable/null."""

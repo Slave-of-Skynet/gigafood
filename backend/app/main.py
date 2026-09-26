@@ -39,7 +39,7 @@ def create_app(
         app.state.runtime = load_runtime(path, port_path)
         yield
 
-    app = FastAPI(title="GigaFood A-core", version="0.1.0", lifespan=lifespan)
+    app = FastAPI(title="PackShift API", version="0.1.0", lifespan=lifespan)
 
     def evidence(request: Request) -> Evidence:
         runtime = request.app.state.runtime

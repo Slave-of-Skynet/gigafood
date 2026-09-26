@@ -3,7 +3,8 @@
 Evidence-aware Packaging Transition Copilot for the AgriFood challenge's primary
 goal: reducing virgin plastic in packaging. The working A-core compares current
 and candidate packaging with deterministic calculations, provenance and visible
-uncertainty. Digital decision support is explicitly within challenge scope.
+uncertainty. Selection MVP adds curated portfolio assessment, comparability,
+operational eligibility, deterministic next actions and optional hypothetical annual impact. Digital decision support is explicitly within challenge scope.
 
 The repository includes a public evidence pack and an illustrative fixture; the
 illustrative fixture remains the runtime default. No Profi provider dataset is
@@ -20,12 +21,76 @@ available. Results are decision support, not certification or implementation app
 - [NDR-01 public evidence pack](docs/evidence/NDR-01-public-evidence-pack.md): source ledger and limitations.
 - [Architecture](docs/architecture.md) and [evidence semantics](docs/evidence_semantics.md).
 
-Current UI/API titles still use GigaFood. A bounded operational eligibility
-gate is implemented in the runtime, evaluating modeled thermal and microwave
-constraints with explicit provenance, strictly decoupled from environmental
-calculations. No portfolio ranking, annual-impact field, costs/ROI, LCA/CO2
-engine, comprehensive packaging qualification engine, database/accounts,
+The UI uses PackShift and the API display title is PackShift API. The bounded
+thermal/microwave eligibility gate remains independent of environmental calculations.
+Selection uses deterministic decision grouping, not global ranking or optimization.
+No costs/ROI, LCA/CO2 engine, comprehensive qualification, database/accounts,
 supplier integration, AI/LLM runtime or production deployment is implemented.
+
+## One-command presentation demo
+
+Install the declared prerequisites once using `./scripts/verify.ps1` (Windows) or
+`bash scripts/verify.sh` (POSIX). Then, from repository root:
+
+```powershell
+.\scripts\demo.ps1
+# Start, preflight, then stop both services (for rehearsals / checks):
+.\scripts\demo.ps1 -Check
+```
+
+POSIX equivalents: `bash scripts/demo.sh` and `bash scripts/demo.sh --check`.
+Both wrappers use the standard-library `scripts/demo.py` helper and repository
+Python environment. No extra dependency or process supervisor is required.
+Keep the terminal open; Ctrl+C stops both child services on either platform.
+Startup failure also stops any children already started. Logs are printed as a
+path in the system temporary directory. Forced termination of the launcher or
+closing its terminal abruptly can bypass cleanup; stop remaining port owners
+explicitly before relaunching.
+
+The launcher explicitly sets absolute paths to `public-packaging.json` and
+`selection-portfolios.json`, overriding inherited pack settings for its children
+only. It rejects missing prerequisites/files, invalid packs and occupied ports
+8000/5173; it never reuses an unknown server or falls back to illustrative data.
+Before printing `PACKSHIFT DEMO READY`, it checks real HTTP: READY/PUBLIC health,
+the served scenario snapshot against the selected file, non-empty portfolio
+discovery, the first portfolio evaluation, frontend reachability and API proxy.
+UI: http://127.0.0.1:5173. API: http://127.0.0.1:8000.
+This is a local development demo, not a deployment.
+
+## Current API and Selection walkthrough
+
+| Route | Purpose |
+| --- | --- |
+| `GET /api/v1/health` | A-core evidence availability only |
+| `GET /api/v1/scenarios` | Scenario evidence and identity |
+| `GET /api/v1/scenarios/{id}/comparison` | A-core comparison |
+| `GET /api/v1/portfolios` | Independent Selection discovery |
+| `GET /api/v1/portfolios/{id}` | Default portfolio assessment |
+| `POST /api/v1/portfolios/{id}/evaluate` | Assessment with optional request overrides / annual units |
+
+Open **Portfolio Selection** (default mode). Inspect PUBLIC / not-Profi disclosure,
+baseline, candidates, comparability, environmental result, operational eligibility
+and next action. Expand evidence for input provenance and modeled requirements.
+Candidate order comes directly from backend decision grouping.
+
+Enter **Hypothetical annual units**, for example `100000`, and select **Evaluate
+scenario**. This sends `{"annual_units":100000}` to the backend. Clear the volume
+to return to per-unit assessment. Where environmental inputs permit calculation,
+the API returns signed annual kg deltas from user-supplied volume; BLOCKED results
+remain theoretical / non-actionable. Zero means no change; negative means increased
+virgin-plastic use. `is_actionable` is a bounded backend flag, never implementation
+approval. Actual Profi annual volume/impact remains UNKNOWN.
+
+The committed Faerch portfolio deliberately has no exact candidate PCR point
+values: both annual deltas remain N/A even after entering volume. CPET requires
+PCR evidence; its “up to 70%” ceiling cannot become a point value. APET is thermally
+BLOCKED for the modeled 95°C context; its microwave capability is unknown. This
+pack does not demonstrate numerical annual savings. Calculable annual cases and
+sign handling are covered by synthetic tests, not invented public evidence.
+
+Selection availability is fetched independently of `/health`. An invalid
+`GIGAFOOD_PORTFOLIOS_PATH` yields Selection unavailable while A-core may remain
+READY. The two legacy `GIGAFOOD_*_PATH` configuration names are unchanged.
 
 ## Run locally
 

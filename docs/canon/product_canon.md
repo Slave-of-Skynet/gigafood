@@ -16,7 +16,9 @@ The actual Profi decision owner and workflow step are UNKNOWN (mentor Q3).
 
 ## Committed A-core
 
-**OBSERVED_IMPLEMENTATION**, base `a1b938d0784bb36779172d26a80c053d6d05e56a`:
+**OBSERVED_IMPLEMENTATION:** A-core originated at CANON-01 base
+`a1b938d0784bb36779172d26a80c053d6d05e56a`; current observations below include
+Selection from `f04dfa370f350a50dd64d16928fd7f050669886c` and INT-R3 integration.
 
 ```text
 current and candidate packaging
@@ -40,12 +42,35 @@ is no silent fallback. Valid evidence with missing numeric values produces
 `INSUFFICIENT_DATA`, null unavailable metrics and missing-field findings. Complete
 numeric inputs produce `CALCULATED` / `INDICATIVE`. The UI receives inputs and
 provenance and shows generic suitability findings, loading, errors and retry.
-The existing UI title remains GigaFood and API title GigaFood A-core; PackShift is
-the canonical product name. CANON-01 does not change those runtime strings.
+The UI uses PackShift and the FastAPI display title is PackShift API. Legacy
+`GIGAFOOD_EVIDENCE_PATH` and `GIGAFOOD_PORTFOLIOS_PATH` names remain unchanged.
 
 Source pointers: [architecture](../architecture.md), [domain contracts](../../backend/app/domain/packaging.py),
 [startup/API](../../backend/app/main.py), [loader](../../backend/app/runtime/context.py),
 [calculation](../../backend/app/services/virgin_plastic.py), [UI](../../frontend/src/pages/HomePage.tsx).
+
+## Current Selection MVP
+
+**OBSERVED_IMPLEMENTATION:** Additive curated portfolio evaluation is implemented:
+`GET /api/v1/portfolios`, `GET /api/v1/portfolios/{id}` and
+`POST /api/v1/portfolios/{id}/evaluate`. The browser exposes a prominent Portfolio
+Selection mode alongside Comparison, with independent availability and error states.
+It shows baseline/candidates, component boundaries, comparability qualifiers,
+environmental calculation, operational eligibility, missing evidence and backend
+next actions. Candidate order is deterministic grouping, not global ranking.
+
+Optional positive integer annual units are user-supplied hypothetical volume.
+Annual kg results are calculated only when evidence permits; they never establish
+actual Profi impact. BLOCKED annual results are theoretical and non-actionable.
+The INT-R3-F1 disclosure fix preserves the sign: positive reduction, zero/no change,
+or increased virgin-plastic use. No arithmetic or eligibility policy changed.
+
+The committed PUBLIC Faerch portfolio has missing exact candidate PCR values.
+CPET requests PCR evidence; APET is thermally blocked. Both environmental deltas
+and annual numerical results are N/A. “Up to 70%” is not a point value. Synthetic
+tests cover calculable annual scenarios without changing accepted public evidence.
+The demo launcher explicitly selects PUBLIC A-core evidence and the committed
+portfolio pack; normal runtime defaults remain unchanged.
 
 ## Evidence identity and public cases
 
@@ -105,7 +130,7 @@ drop-in replacement; annual Profi impact without sourced volume; or that public 
 are automatically verified. Do not claim the bounded gate constitutes a comprehensive
 packaging qualification or certification engine.
 
-**OBSERVED_IMPLEMENTATION — absent:** Portfolio ranking, annual-volume impact,
+**OBSERVED_IMPLEMENTATION — absent:** Global portfolio ranking, actual Profi annual impact,
 costs/ROI, LCA/CO2 engine, legal certification, comprehensive packaging qualification engine,
 database/accounts, supplier integration, AI/LLM runtime and production deployment.
 PackShift is decision support, not a certification engine or an LCA oracle, and

@@ -271,6 +271,13 @@ def calculate_annual_impact(
     )
 
     if eligibility.status == "BLOCKED":
+        impact_description = "Theoretical annual impact only."
+        if ann_red is not None and ann_red > 0:
+            impact_description = "Theoretical annual saving only."
+        elif ann_red == 0:
+            impact_description += " No annual virgin-plastic reduction (no change)."
+        elif ann_red is not None and ann_red < 0:
+            impact_description += " Annual virgin-plastic use increases."
         return AnnualImpactResult(
             annual_units=annual_units,
             annual_reduction_kg=ann_red,
@@ -279,7 +286,7 @@ def calculate_annual_impact(
             status="CALCULATED",
             is_actionable=False,
             disclosure=(
-                "Theoretical annual saving only. Candidate is operationally blocked and the annual result is "
+                f"{impact_description} Candidate is operationally blocked and the annual result is "
                 f"not actionable under the stated modeled operating context. {disclosure_base}"
             ),
         )

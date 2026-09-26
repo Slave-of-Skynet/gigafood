@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
+import { format, OperationalRequirementsView, PackageView } from '../components/EvidenceDetails';
+import { SelectionView } from '../components/SelectionView';
 import { api } from '../api/client';
 import type {
-  BooleanInput,
   Comparison,
   Evidence,
   Health,
-  NumericInput,
-  OperationalRequirements,
-  Package,
 } from '../api/contracts';
 
 type Load<T> =
@@ -15,205 +13,13 @@ type Load<T> =
   | { state: 'error'; message: string }
   | { state: 'ready'; data: T };
 
-const format = (value: number | null, unit: string) =>
-  value === null
-    ? 'N/A'
-    : `${value.toLocaleString('en-US', { maximumFractionDigits: 3 })}${unit ? ` ${unit}` : ''}`;
-
 const formatNumberOnly = (value: number | null) =>
   value === null
     ? 'N/A'
     : value.toLocaleString('en-US', { maximumFractionDigits: 2 });
 
-function NumericProvenanceItem({
-  label,
-  input,
-  unit,
-}: {
-  label: string;
-  input: NumericInput;
-  unit: string;
-}) {
-  return (
-    <div className="input">
-      <div className="input-header">
-        <strong>
-          {label}: {input.value === null ? 'Unknown (N/A)' : format(input.value, unit)}
-        </strong>
-        <div className="provenance-chips">
-          <span className="prov-chip origin">{input.provenance.origin}</span>
-          <span className={`prov-chip verification ${input.provenance.verification_state}`}>
-            {input.provenance.verification_state}
-          </span>
-        </div>
-      </div>
-      <small>Source: {input.provenance.source_reference}</small>
-      <small>{input.provenance.note}</small>
-    </div>
-  );
-}
-
-function BooleanProvenanceItem({
-  label,
-  input,
-}: {
-  label: string;
-  input: BooleanInput;
-}) {
-  const displayVal =
-    input.value === null ? 'Unknown (N/A)' : input.value ? 'Yes (true)' : 'No (false)';
-  return (
-    <div className="input">
-      <div className="input-header">
-        <strong>
-          {label}: {displayVal}
-        </strong>
-        <div className="provenance-chips">
-          <span className="prov-chip origin">{input.provenance.origin}</span>
-          <span className={`prov-chip verification ${input.provenance.verification_state}`}>
-            {input.provenance.verification_state}
-          </span>
-        </div>
-      </div>
-      <small>Source: {input.provenance.source_reference}</small>
-      <small>{input.provenance.note}</small>
-    </div>
-  );
-}
-
-function OperationalRequirementsView({
-  requirements,
-}: {
-  requirements?: OperationalRequirements | null;
-}) {
-  if (
-    !requirements ||
-    (!requirements.max_temperature_c && !requirements.microwave_safe)
-  ) {
-    return null;
-  }
-
-  return (
-    <div className="req-card">
-      <h4>Scenario Operational Requirements (Evaluated by Gate)</h4>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        {requirements.max_temperature_c && (
-          <NumericProvenanceItem
-            label="Required max temperature"
-            input={requirements.max_temperature_c}
-            unit="°C"
-          />
-        )}
-        {requirements.microwave_safe && (
-          <BooleanProvenanceItem
-            label="Required microwave reheating"
-            input={requirements.microwave_safe}
-          />
-        )}
-      </div>
-    </div>
-  );
-}
-
-function PackageView({
-  title,
-  data,
-  eligibilityStatus,
-}: {
-  title: 'Current' | 'Candidate';
-  data: Package;
-  eligibilityStatus?: Comparison['eligibility_status'];
-}) {
-  const isCandidate = title === 'Candidate';
-  const cardClass = isCandidate
-    ? `package-card candidate-package ${eligibilityStatus ?? ''}`
-    : 'package-card current-package';
-
-  const capMaxTemp = data.capabilities?.max_temperature_c;
-  const capMicrowave = data.capabilities?.microwave_safe;
-
-  return (
-    <section className={cardClass}>
-      <div className="package-header">
-        <span className="package-role-tag">
-          {title === 'Current' ? 'Current Baseline Packaging' : 'Candidate Transition Packaging'}
-        </span>
-        <h3>
-          {title}: {data.label}
-        </h3>
-        <small>Package ID: {data.id}</small>
-      </div>
-
-      <div className="package-meta-list">
-        <p>
-          <strong>Use context:</strong> {data.use_context ?? 'Not specified'}
-        </p>
-        <p>
-          <strong>Food-contact use flag:</strong>{' '}
-          {data.food_contact === null ? 'Unknown' : String(data.food_contact)}{' '}
-          <em>(not suitability or regulatory approval)</em>
-        </p>
-        {!capMaxTemp &&
-          data.max_temperature_c !== undefined &&
-          data.max_temperature_c !== null && (
-            <p>
-              <strong>Max operating temperature:</strong> {data.max_temperature_c}°C
-            </p>
-          )}
-        {!capMicrowave &&
-          data.microwave_safe !== undefined &&
-          data.microwave_safe !== null && (
-            <p>
-              <strong>Microwave safe:</strong> {data.microwave_safe ? 'Yes' : 'No'}
-            </p>
-          )}
-      </div>
-
-      {(capMaxTemp || capMicrowave) && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <strong style={{ fontSize: '14px' }}>Declared Technical Capabilities:</strong>
-          {capMaxTemp && (
-            <NumericProvenanceItem
-              label="Max operating temperature"
-              input={capMaxTemp}
-              unit="°C"
-            />
-          )}
-          {capMicrowave && (
-            <BooleanProvenanceItem label="Microwave safe" input={capMicrowave} />
-          )}
-        </div>
-      )}
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-        <strong style={{ fontSize: '14px' }}>
-          Represented Plastic Components ({data.components.length}):
-        </strong>
-        {data.components.map((c) => (
-          <article key={c.id} className="component-card">
-            <h4>
-              <span>
-                {c.id} · {c.material}
-              </span>
-            </h4>
-            <NumericProvenanceItem
-              label="Plastic mass"
-              input={c.plastic_mass_g}
-              unit="g"
-            />
-            <NumericProvenanceItem
-              label="Recycled fraction (0–1)"
-              input={c.recycled_content_fraction}
-              unit=""
-            />
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 export function HomePage() {
+  const [mode, setMode] = useState<'comparison' | 'selection'>('selection');
   const [attempt, setAttempt] = useState(0);
   const [selected, setSelected] = useState('');
   const [runtime, setRuntime] = useState<
@@ -275,7 +81,7 @@ export function HomePage() {
             </a>
           </div>
           <div className="nav-bar-sect">
-            <nav className="btn-nav-bar" aria-label="Primary Navigation">
+            <nav hidden={mode !== 'comparison'} className="btn-nav-bar" aria-label="Primary Navigation">
               <a href="#overview" className="desc-nav-bar">
                 Overview
               </a>
@@ -300,10 +106,10 @@ export function HomePage() {
               />
               <span>
                 {runtime.state === 'ready'
-                  ? `Service: ${runtime.data.health.status} · ${runtime.data.evidence.dataset_kind}`
+                  ? `A-core: ${runtime.data.health.status} · ${runtime.data.evidence.dataset_kind}`
                   : runtime.state === 'loading'
                   ? 'Checking runtime…'
-                  : 'Service offline'}
+                  : 'A-core unavailable'}
               </span>
             </div>
           </div>
@@ -344,6 +150,12 @@ export function HomePage() {
           </div>
         </section>
 
+        <div className="mode-switch" role="group" aria-label="Product mode">
+          <button type="button" className={`scenario-pill ${mode === 'comparison' ? 'active' : ''}`} aria-pressed={mode === 'comparison'} onClick={() => setMode('comparison')}>Comparison</button>
+          <button type="button" className={`scenario-pill ${mode === 'selection' ? 'active' : ''}`} aria-pressed={mode === 'selection'} onClick={() => setMode('selection')}>Portfolio Selection</button>
+        </div>
+        <SelectionView visible={mode === 'selection'} />
+        <div className="comparison-mode" hidden={mode !== 'comparison'}>
         {runtime.state === 'loading' && (
           <div className="status-panel" role="status">
             <h2>Checking service and evidence…</h2>
@@ -463,16 +275,16 @@ export function HomePage() {
                       {result.data.status === 'CALCULATED' &&
                       result.data.reduction_pct !== null ? (
                         <span
-                          className={`exec-delta-badge ${
+                          className={`exec-delta-badge ${result.data.reduction_g !== null && result.data.reduction_g <= 0 ? 'nonpositive' : ''} ${
                             result.data.eligibility_status === 'BLOCKED'
                               ? 'theoretical'
                               : ''
                           }`}
                         >
                           {result.data.reduction_g !== null &&
-                          result.data.reduction_g >= 0
+                          result.data.reduction_g > 0
                             ? '↓ '
-                            : '↑ '}
+                            : result.data.reduction_g === 0 ? 'No change · ' : '↑ '}
                           {format(result.data.reduction_pct, '%')}
                           {result.data.eligibility_status === 'BLOCKED'
                             ? ' (Theoretical)'
@@ -667,7 +479,7 @@ export function HomePage() {
                             ? 'missing-ring'
                             : result.data.eligibility_status === 'BLOCKED'
                             ? 'blocked-ring'
-                            : 'candidate-ring'
+                            : result.data.reduction_g <= 0 ? 'nonpositive-ring' : 'candidate-ring'
                         }`}
                       >
                         <span className="circle-num">
@@ -694,7 +506,7 @@ export function HomePage() {
                             ? 'missing-ring'
                             : result.data.eligibility_status === 'BLOCKED'
                             ? 'blocked-ring'
-                            : 'candidate-ring'
+                            : result.data.reduction_pct <= 0 ? 'nonpositive-ring' : 'candidate-ring'
                         }`}
                       >
                         <span className="circle-num">
@@ -768,6 +580,8 @@ export function HomePage() {
                       Percentage is N/A because current virgin plastic is zero.
                     </p>
                   )}
+
+                  {result.data.reduction_g === 0 && <p className="disclosure-banner">No change — zero virgin-plastic reduction.</p>}
 
                   {result.data.reduction_g !== null &&
                     result.data.reduction_g < 0 && (
@@ -868,6 +682,7 @@ export function HomePage() {
             )}
           </>
         )}
+        </div>
       </main>
     </>
   );
