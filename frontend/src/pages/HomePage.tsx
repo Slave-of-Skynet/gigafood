@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { format, OperationalRequirementsView, PackageView } from '../components/EvidenceDetails';
 import { SelectionView } from '../components/SelectionView';
+import { RecommendationView } from '../components/RecommendationView';
 import { EconomicScenarioView } from '../components/EconomicScenarioView';
 import { reductionRingStyle } from '../components/metricRing';
 import { api } from '../api/client';
@@ -26,6 +27,9 @@ const CHROME_I18N: Record<
     navOverview: string;
     navPortfolio: string;
     navCandidates: string;
+    navJourney: string;
+    navProblem: string;
+    navDecisionSummary: string;
   }
 > = {
   en: {
@@ -35,6 +39,9 @@ const CHROME_I18N: Record<
     navOverview: 'Overview',
     navPortfolio: 'Portfolio & Baseline',
     navCandidates: 'Evaluated Candidates',
+    navJourney: 'Recommendation Journey',
+    navProblem: 'Physical Challenge',
+    navDecisionSummary: 'Decision Summary',
   },
   ru: {
     eyebrow: 'Поддержка решений на основе доказательств',
@@ -43,6 +50,9 @@ const CHROME_I18N: Record<
     navOverview: 'Обзор (Overview)',
     navPortfolio: 'Портфель и база (Baseline)',
     navCandidates: 'Кандидаты (Candidates)',
+    navJourney: 'Маршрут рекомендации',
+    navProblem: 'Физическая задача',
+    navDecisionSummary: 'Итог решения',
   },
   md: {
     eyebrow: 'Suport decizional bazat pe dovezi',
@@ -51,6 +61,9 @@ const CHROME_I18N: Record<
     navOverview: 'Prezentare (Overview)',
     navPortfolio: 'Portofoliu & Bază',
     navCandidates: 'Candidați Evaluați',
+    navJourney: 'Traseu Recomandare',
+    navProblem: 'Provocare Fizică',
+    navDecisionSummary: 'Sumar Decizional',
   },
 };
 
@@ -60,7 +73,7 @@ const formatNumberOnly = (value: number | null) =>
     : value.toLocaleString('en-US', { maximumFractionDigits: 2 });
 
 export function HomePage() {
-  const [mode, setMode] = useState<'comparison' | 'selection'>('selection');
+  const [mode, setMode] = useState<'comparison' | 'selection' | 'recommendation'>('recommendation');
   const [uiLang, setUiLang] = useState<UiLang>('en');
   const [attempt, setAttempt] = useState(0);
   const [selected, setSelected] = useState('');
@@ -170,6 +183,31 @@ export function HomePage() {
 
           <div className="nav-bar-sect">
             <nav
+              hidden={mode !== 'recommendation'}
+              className="btn-nav-bar"
+              aria-label="Recommendation Navigation"
+            >
+              <a href="#overview" className="desc-nav-bar">
+                {chrome.navOverview}
+              </a>
+              <a href="#problem" className="desc-nav-bar">
+                {chrome.navProblem}
+              </a>
+              <a href="#journey-context" className="desc-nav-bar">
+                Context
+              </a>
+              <a href="#decision-summary" className="desc-nav-bar">
+                {chrome.navDecisionSummary}
+              </a>
+              <a href="#candidate-evaluations" className="desc-nav-bar">
+                {chrome.navCandidates}
+              </a>
+              <a href="#baselines" className="desc-nav-bar">
+                Baselines
+              </a>
+            </nav>
+
+            <nav
               hidden={mode !== 'selection'}
               className="btn-nav-bar"
               aria-label="Selection Navigation"
@@ -263,8 +301,17 @@ export function HomePage() {
           >
             Portfolio Selection
           </button>
+          <button
+            type="button"
+            className={`scenario-pill ${mode === 'recommendation' ? 'active' : ''}`}
+            aria-pressed={mode === 'recommendation'}
+            onClick={() => setMode('recommendation')}
+          >
+            Recommendation Journey
+          </button>
         </div>
 
+        <RecommendationView visible={mode === 'recommendation'} uiLang={uiLang} />
         <SelectionView visible={mode === 'selection'} />
 
         <div className="comparison-mode" hidden={mode !== 'comparison'}>
