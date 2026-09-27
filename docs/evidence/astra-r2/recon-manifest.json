@@ -1,0 +1,217 @@
+[
+  {
+    "path": "docs/canon/challenge_canon.md",
+    "sha256": "20a1dca060629f97fd9089e2be2c7eed121f87f3e44fa76deddccea4f1f382e1",
+    "bytes": 8938
+  },
+  {
+    "path": "docs/canon/decision_policy.md",
+    "sha256": "e11d6d7de5039f585b4ff30852df56c26aa403b406302bc1cde955c3943ffaff",
+    "bytes": 6003
+  },
+  {
+    "path": "docs/canon/open_questions.md",
+    "sha256": "8def8229609b58ef02dae3b47281829d57982b3ba55573f64352ba8379b6dfea",
+    "bytes": 7285
+  },
+  {
+    "path": "docs/canon/product_canon.md",
+    "sha256": "43715b62a329bc65f37d8bad5c5f63c8d0f897bf61968632ec7bdc57f6e1801f",
+    "bytes": 11843
+  },
+  {
+    "path": "docs/evidence_semantics.md",
+    "sha256": "1e326b53f5cc0f072e7ead6889724a5becf82eaf0e79af3b241dab0deb7367eb",
+    "bytes": 3747
+  },
+  {
+    "path": "docs/evidence/htf-03/HTF-03-canonical-packaging-dataset.json",
+    "sha256": "90b4ff27f7eec88df192e3e264bb479852bff0dffff163780ec3f33434f9a416",
+    "bytes": 1211433
+  },
+  {
+    "path": "docs/evidence/htf-03/HTF-03-conflict-resolution.md",
+    "sha256": "643a17159f59af1d40119cacf704726607f140c18caa2c7afc12347cd005c20f",
+    "bytes": 39706
+  },
+  {
+    "path": "docs/evidence/htf-03/HTF-03-estimation-ledger.md",
+    "sha256": "138f09d87a4042ea5ebacacc40fedf3c2d620f8147b68990bb5ec0b81f691a4d",
+    "bytes": 93132
+  },
+  {
+    "path": "docs/evidence/htf-03/HTF-03-final-synthesis-report.md",
+    "sha256": "b5cf2e88800b734a9f023c62df869491c4f631b6bafbf9a3bf07d007a436709a",
+    "bytes": 38398
+  },
+  {
+    "path": "docs/evidence/htf-03/HTF-03-prototype-display-dataset.json",
+    "sha256": "1360e354d31531c80e64bdcf7fd1b9d5847a68af25e07931ccc023625c98ac0f",
+    "bytes": 229124
+  },
+  {
+    "path": "docs/evidence/htf-03/HTF-03-romania-procurement.md",
+    "sha256": "2e4f53840810fc67684b7c94c9a883ab4dd72e6361b29edda57e3f78117db06f",
+    "bytes": 8542
+  },
+  {
+    "path": "docs/evidence/htf-03/HTF-03-source-ledger.md",
+    "sha256": "e392ef9236244109b405f92af5823ef793ebcb6dc2e96ff5d952e803d22739bb",
+    "bytes": 38453
+  },
+  {
+    "path": "docs/recon/INT-HTF-04A-canonical-runtime-transition.md",
+    "sha256": "0db9a67b9aad91fa9f403eda54eb5cf5646db137e13460e82826600a2c71090d",
+    "bytes": 48223
+  },
+  {
+    "path": "docs/review/APR-HT1-claim-safety-matrix.md",
+    "sha256": "002c764b229c72c9e53e3538fc21703e0c9d440f42b7c965b4b835f62acdaff3",
+    "bytes": 28957
+  },
+  {
+    "path": "docs/review/APR-HT1-final-acceptance.md",
+    "sha256": "2d70cdf9f072f178a7578095c389ddce5bdb2171f365d2ae56d2990b0233ea43",
+    "bytes": 33789
+  },
+  {
+    "path": "docs/review/APR-HT1-recommendation-acceptance-matrix.md",
+    "sha256": "ac02f591cd02d04a3d8f9f7b0a21fbd8c6a9c1d7d132105080ec805dce8ad9be",
+    "bytes": 30224
+  },
+  {
+    "path": "docs/pitch/NCP-HT1-claim-evidence-matrix.md",
+    "sha256": "4e10c1484ec89cb1fbd1567015eb24049aac2472704e73ce461cb22baed8bbd3",
+    "bytes": 14071
+  },
+  {
+    "path": "docs/pitch/NCP-HT1-economics-procurement.md",
+    "sha256": "3bbca54919ee4b48728c58b8d3c329ffc48f159ce349e7d8e5a36666b349dbce",
+    "bytes": 12373
+  },
+  {
+    "path": "docs/pitch/NCP-HT1-judge-qa.md",
+    "sha256": "071acbf96aa28b05078016778c8449404b4156913d629e3dc00cf0c69d2b0992",
+    "bytes": 15790
+  },
+  {
+    "path": "docs/pitch/NCP-HT1-pitch-narrative.md",
+    "sha256": "362e10a5cfc6ec9f570a5d420b41ebeeca3fe51344d973150d95b8b6da4cd4ca",
+    "bytes": 18038
+  },
+  {
+    "path": "docs/pitch/NCP-HT1-slide-plan.md",
+    "sha256": "3e24f67de5370ce3586ff3895f9d0bad37cfeca35b56e48d17689ae345c91321",
+    "bytes": 16346
+  },
+  {
+    "path": "docs/pitch/NCP-HT2-claim-evidence-matrix.md",
+    "sha256": "3db350335278aef744cc88a1deb05ff832e3b44acfec705ab072490f6580bc67",
+    "bytes": 18263
+  },
+  {
+    "path": "docs/pitch/NCP-HT2-final-pitch-packet.md",
+    "sha256": "ea7952bf876815352aef53ba688d8dbe8ece0827df48647d2ba6f779d60dc63d",
+    "bytes": 57540
+  },
+  {
+    "path": "docs/pitch/NCP-HT2-judge-qa.md",
+    "sha256": "ce31c6165b0689180cbad8a41bb8c07057fef2056bd6c4ec11ea2509536365d2",
+    "bytes": 24052
+  },
+  {
+    "path": "backend/app/domain/recommendation.py",
+    "sha256": "9dbf037ea10014a6a38bcf295e77e54f6b7dd77c536e2466b96493d6634a5b7d",
+    "bytes": 12166
+  },
+  {
+    "path": "backend/app/runtime/recommendation.py",
+    "sha256": "c3de4b2c624bf7b731ef0cf6a2f5e8e91af4c7860b12ffefeaca129cfba2ff93",
+    "bytes": 33308
+  },
+  {
+    "path": "backend/app/services/recommendation.py",
+    "sha256": "f60154b4095fad0212bb71957cd85631590396f28b7b6f2486f04e79d190f3bb",
+    "bytes": 12287
+  },
+  {
+    "path": "frontend/src/api/contracts.ts",
+    "sha256": "4b79be1afa0c5fbdeda9731b25690f35807b7d40eb1c4808a7c662dc0c17cb4c",
+    "bytes": 16550
+  },
+  {
+    "path": "frontend/src/components/CandidateRecommendationCard.tsx",
+    "sha256": "29400fd2143a1cddbb36b24d023a1b8dc95865706ae95ec5e5431dd7b629219b",
+    "bytes": 13713
+  },
+  {
+    "path": "frontend/src/components/DecisionSummary.tsx",
+    "sha256": "6b514f92df698ee7e301467fc4859d96db70fce56ab2f34f5c2eb8bdf61a2a23",
+    "bytes": 8066
+  },
+  {
+    "path": "frontend/src/components/EconomicScenarioView.tsx",
+    "sha256": "d4a11c5fbd78158ad29cc2817750869fc054b63b8d1e12f14442325603e66ab6",
+    "bytes": 14725
+  },
+  {
+    "path": "frontend/src/components/EvidenceDetails.tsx",
+    "sha256": "561aaf0ceff698056feaac9f99dc5a4d9c923d156cc7d1d02bde0c7b03e25217",
+    "bytes": 5828
+  },
+  {
+    "path": "frontend/src/components/EvidenceStateBadge.tsx",
+    "sha256": "d7c5b4969e73f30e0850bc9fe8d9880b0413fd3de42a511f6585a65b53991ae4",
+    "bytes": 1874
+  },
+  {
+    "path": "frontend/src/components/GateMatrix.tsx",
+    "sha256": "3a2c4fce4647dfe44c5bec161e6e221b70772c6a49828b76af73e6c84564f10e",
+    "bytes": 3883
+  },
+  {
+    "path": "frontend/src/components/MetricField.tsx",
+    "sha256": "63117ee0f1e54db38910c86fbefc1b45e7677e76eee050c0593dd3c224b5b279",
+    "bytes": 4007
+  },
+  {
+    "path": "frontend/src/components/NextActions.tsx",
+    "sha256": "846cf98ed15792ed2a14bc7e34fe250b7a69b0a440b35b30e98224f4892a8715",
+    "bytes": 1159
+  },
+  {
+    "path": "frontend/src/components/ProcurementSummary.tsx",
+    "sha256": "819af6ed11b2b1cd454c775d52ece43e6dcc859d88e6bd0e426e3455eee3d969",
+    "bytes": 3236
+  },
+  {
+    "path": "frontend/src/components/ProductSelector.tsx",
+    "sha256": "731d0f8c086520ae05a144c95105c62a79c6acc2590d80afd3dceaeac9ee7953",
+    "bytes": 3377
+  },
+  {
+    "path": "frontend/src/components/ProductVisual.tsx",
+    "sha256": "de1cdcccb72d47c10163d3354205d4bd5d78bc86c77f1b98ceee6e369fc68174",
+    "bytes": 5064
+  },
+  {
+    "path": "frontend/src/components/RecommendationView.tsx",
+    "sha256": "7c56001edb7d4d8e05c6cfdd19b5eb7da8a9b4f237671e9af4714a6e9661801c",
+    "bytes": 19023
+  },
+  {
+    "path": "frontend/src/components/SelectionView.tsx",
+    "sha256": "063a7fafdde193614ea7528f65e6713854f016a3a6ab9ec0a4d827006673ea18",
+    "bytes": 38752
+  },
+  {
+    "path": "frontend/src/components/WorkflowSelector.tsx",
+    "sha256": "db4cec374c61f8879c45f9cc5a0a7b6b03b7ed2a425ac0b108c9b8a52a3dc8c2",
+    "bytes": 5964
+  },
+  {
+    "path": "scripts/validate_htf03.py",
+    "sha256": "1528d96af5ce30b001dcfc9673e24ca400d9343a494f49fe29054ad4cbbdc016",
+    "bytes": 33182
+  }
+]
