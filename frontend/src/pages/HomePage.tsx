@@ -5,12 +5,15 @@ import { format, OperationalRequirementsView, PackageView } from '../components/
 import { SelectionView } from '../components/SelectionView';
 import { RecommendationView } from '../components/RecommendationView';
 import { EconomicScenarioView } from '../components/EconomicScenarioView';
+import { UniversalPouchShowcase } from '../components/UniversalPouchShowcase';
 import { reductionRingStyle } from '../components/metricRing';
 import { api } from '../api/client';
 import type {
   Comparison,
   Evidence,
   Health,
+  ProductId,
+  WorkflowId,
 } from '../api/contracts';
 
 type Load<T> =
@@ -25,7 +28,9 @@ const formatNumberOnly = (value: number | null) =>
 
 export function HomePage() {
   const t = useTranslation();
-  const [mode, setMode] = useState<'comparison' | 'selection' | 'recommendation'>('recommendation');
+  const [mode, setMode] = useState<'universal_pouch' | 'recommendation' | 'selection' | 'comparison'>('universal_pouch');
+  const [targetWorkflowId, setTargetWorkflowId] = useState<WorkflowId | undefined>(undefined);
+  const [targetProductId, setTargetProductId] = useState<ProductId | undefined>(undefined);
   const { language: uiLang, setLanguage: setUiLang } = useLanguage();
   const [attempt, setAttempt] = useState(0);
   const [selected, setSelected] = useState('');
@@ -115,9 +120,9 @@ export function HomePage() {
                 value={uiLang}
                 onChange={(e) => setUiLang(e.target.value as Language)}
               >
-                <option value="en" className="lang">{t("EN")}</option>
-                <option value="ru" className="lang">{t("RU")}</option>
-                <option value="ro" className="lang">{t("RO")}</option>
+                <option value="ru" className="lang">Русский (RU)</option>
+                <option value="ro" className="lang">Română / Moldovenească (RO/MD)</option>
+                <option value="en" className="lang">English (EN)</option>
               </select>
             </div>
           </div>
@@ -129,6 +134,15 @@ export function HomePage() {
           </div>
 
           <div className="nav-bar-sect">
+            <nav
+              hidden={mode !== 'universal_pouch'}
+              className="btn-nav-bar"
+              aria-label={t("Universal Pouch Navigation")}
+            >
+              <a href="#overview" className="desc-nav-bar">{t("Overview")}</a>
+              <a href="#universal-pouch-showcase" className="desc-nav-bar">{t("Grill & Oven Pouch")}</a>
+            </nav>
+
             <nav
               hidden={mode !== 'recommendation'}
               className="btn-nav-bar"
@@ -190,10 +204,18 @@ export function HomePage() {
         <div className="mode-switch" role="group" aria-label={t("Product mode")}>
           <button
             type="button"
-            className={`scenario-pill ${mode === 'comparison' ? 'active' : ''}`}
-            aria-pressed={mode === 'comparison'}
-            onClick={() => setMode('comparison')}
-          >{t("Compare plastic use")}</button>
+            className={`scenario-pill ${mode === 'universal_pouch' ? 'active' : ''}`}
+            aria-pressed={mode === 'universal_pouch'}
+            onClick={() => setMode('universal_pouch')}
+          >
+            🔥 {t("Термо-упаковка 250°C (Grill & Oven Pouch)")}
+          </button>
+          <button
+            type="button"
+            className={`scenario-pill ${mode === 'recommendation' ? 'active' : ''}`}
+            aria-pressed={mode === 'recommendation'}
+            onClick={() => setMode('recommendation')}
+          >{t("Find packaging")}</button>
           <button
             type="button"
             className={`scenario-pill ${mode === 'selection' ? 'active' : ''}`}
@@ -202,13 +224,28 @@ export function HomePage() {
           >{t("Browse packaging")}</button>
           <button
             type="button"
-            className={`scenario-pill ${mode === 'recommendation' ? 'active' : ''}`}
-            aria-pressed={mode === 'recommendation'}
-            onClick={() => setMode('recommendation')}
-          >{t("Find packaging")}</button>
+            className={`scenario-pill ${mode === 'comparison' ? 'active' : ''}`}
+            aria-pressed={mode === 'comparison'}
+            onClick={() => setMode('comparison')}
+          >{t("Compare plastic use")}</button>
         </div>
 
-        <RecommendationView visible={mode === 'recommendation'} uiLang={uiLang} />
+        {mode === 'universal_pouch' && (
+          <UniversalPouchShowcase
+            onApplyWorkflow={(pId, wfId) => {
+              setTargetProductId(pId);
+              setTargetWorkflowId(wfId);
+              setMode('recommendation');
+            }}
+          />
+        )}
+
+        <RecommendationView
+          visible={mode === 'recommendation'}
+          uiLang={uiLang}
+          targetWorkflowId={targetWorkflowId}
+          targetProductId={targetProductId}
+        />
         <SelectionView visible={mode === 'selection'} />
 
         <div className="comparison-mode" hidden={mode !== 'comparison'}>

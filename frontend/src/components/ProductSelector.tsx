@@ -10,31 +10,35 @@ interface ProductSelectorProps {
 
 const PRODUCT_METADATA: Record<
   ProductId,
-  { label: string; icon: string; portionSize: string; example: string }
+  { label: string; icon: string; portionSize: string; example: string; image: string }
 > = {
   P1: {
     label: 'Whole Rotisserie Chicken',
     icon: '🍗',
     portionSize: 'Test size: 1.0–1.4 kg. Actual size needs confirmation.',
     example: 'Pui la rotisor întreg (high hot grease / headspace)',
+    image: '/reference-packaging/pouch-chicken-l.jpg',
   },
   P2: {
     label: 'Chicken Wings & Thighs',
     icon: '🍖',
     portionSize: 'Portion size needs confirmation.',
     example: 'Aripioare & pulpe rumenite',
+    image: '/reference-packaging/pouch-wings-sm.jpg',
   },
   P3: {
     label: 'Hot Potatoes & Vegetables',
     icon: '🥔',
     portionSize: 'Portion size needs confirmation.',
     example: 'Cartofi wedges & legume coapte',
+    image: '/reference-packaging/veg-1.jpg',
   },
   P4: {
     label: 'Prepared Hot Meat Portions',
     icon: '🥩',
     portionSize: 'Portion size needs confirmation.',
     example: 'Ceafă, șnițel & friptură caldă',
+    image: '/reference-packaging/meat-1.jpg',
   },
 };
 
@@ -57,7 +61,7 @@ export function ProductSelector({
       </div>
 
       <div className="product-archetype-grid">
-        {t(products.map((prod) => {
+        {products.map((prod) => {
           const meta = PRODUCT_METADATA[prod.product_id] || {
             label: prod.name,
             icon: '🍱',
@@ -77,6 +81,14 @@ export function ProductSelector({
             >
               <div className="product-card-top">
                 <span className="product-id-tag">{prod.product_id}</span>
+                {meta.image && (
+                  <img
+                    src={meta.image}
+                    alt={t(meta.label)}
+                    className="product-card-thumb"
+                    style={{ width: '42px', height: '42px', objectFit: 'cover', borderRadius: '8px', border: '1px solid #c2b280' }}
+                  />
+                )}
                 <span className="product-icon" aria-hidden="true">
                   {t(meta.icon)}
                 </span>
@@ -88,14 +100,14 @@ export function ProductSelector({
                 <small className="product-example-note">{t(meta.example)}</small>
               </div>
 
-              {t(isSelected && (
+              {isSelected && (
                 <div className="selected-active-marker">
                   <span>{t("Selected Product")}</span>
                 </div>
-              ))}
+              )}
             </button>
           );
-        }))}
+        })}
       </div>
     </section>
   );

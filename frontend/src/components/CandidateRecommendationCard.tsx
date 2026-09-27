@@ -21,6 +21,8 @@ interface CandidateRecommendationCardProps {
 // Reference packaging image map for physical concept visualization (Section 14)
 const CONCEPT_REFERENCE_IMAGES: Record<string, string> = {
   C1: '/reference-packaging/sacma-gaia-futamura.jpg',
+  C2: '/reference-packaging/sacma-blife-gaia.jpg',
+  C6: '/reference-packaging/user-fajita-meat.jpg',
 };
 
 export function CandidateRecommendationCard({
@@ -87,16 +89,20 @@ export function CandidateRecommendationCard({
         <div className="candidate-identity-group">
           <div className="candidate-id-cluster">
             <span className="candidate-id-badge">{assessment.candidate_id}</span>
-            {t(configId && (
+            {configId && (
               <span className="candidate-config-badge">{t("Configuration: ")}<strong>{configId}</strong>
-                {t(configuration?.role ? ` (${configuration.role})` : '')}
+                {configuration?.role ? ` (${t(configuration.role)})` : ''}
               </span>
-            ))}
+            )}
             <span className={`candidate-role-pill ${roleBadge.className}`}>
               {t(roleBadge.text)}
             </span>
           </div>
-          <h3 className="candidate-name-title">{t(assessment.candidate_name)}</h3>
+          <h3 className="candidate-name-title">
+            {isC6
+              ? t("Foil Grill & Oven Bag (Ready. Chef. Go! / Sirane) · Smoothwall Tray")
+              : t(assessment.candidate_name)}
+          </h3>
         </div>
 
         <div className="candidate-status-cluster">
@@ -107,16 +113,16 @@ export function CandidateRecommendationCard({
           >
             {t(isBlocked ? 'Not suitable' : 'Needs testing')}
           </span>
-          <code className="canonical-outcome-token">{assessment.outcome}</code>
-          {t(assessment.qualification_priority && (
-            <span className="priority-rank-badge">{t("Priority: #")}{t(assessment.qualification_priority)}
+          {assessment.qualification_priority && (
+            <span className="priority-rank-badge">
+              {t("Priority: #")}{assessment.qualification_priority}
             </span>
-          ))}
+          )}
         </div>
       </header>
 
       {/* Reference Image Amplifier (Section 14: optional visual amplifier with mandatory disclaimer) */}
-      {t(refImage && (
+      {refImage && (
         <div className="candidate-visual-reference">
           <div className="reference-image-container">
             <img
@@ -125,24 +131,28 @@ export function CandidateRecommendationCard({
               className="reference-packaging-img"
               loading="lazy"
             />
-            <span className="reference-image-disclaimer">{t("Reference product image · Not evidence of qualification or Profi approval")}</span>
+            <span className="reference-image-disclaimer">
+              {t("Reference product image · Not evidence of qualification or Profi approval")}
+            </span>
           </div>
         </div>
-      ))}
+      )}
 
       {/* Blocked Alert Banner */}
-      {t(isBlocked && failingGates.length > 0 && (
+      {isBlocked && failingGates.length > 0 && (
         <div className="blocking-reason-banner" role="alert">
-          <strong className="blocking-banner-title">{t("⛔ Blocked by Non-Compensatory Gate Failure (")}{t(failingGates.length)}{t(" gate")}{t(failingGates.length > 1 ? 's' : '')}{t("):")}</strong>
+          <strong className="blocking-banner-title">
+            {t("⛔ Blocked by Non-Compensatory Gate Failure (")}{failingGates.length}{t(" gate")}{failingGates.length > 1 ? 's' : ''}{t("):")}
+          </strong>
           <ul className="failing-gates-list">
-            {t(failingGates.map((fg) => (
+            {failingGates.map((fg) => (
               <li key={fg.gate_id}>
                 <strong>{t(fg.gate_id.replace('_', ' ').toUpperCase())}{t(":")}</strong> {t(fg.reason)}
               </li>
-            )))}
+            ))}
           </ul>
         </div>
-      ))}
+      )}
 
       {/* Assessment Rationale */}
       <div className="candidate-rationale-box">
@@ -153,7 +163,7 @@ export function CandidateRecommendationCard({
       </div>
 
       {/* Specific Boundary Disclosures: C5 BIOPAP CONFLICT and C6 Isolation */}
-      {t(assessment.candidate_id === 'C5' && (
+      {assessment.candidate_id === 'C5' && (
         <div className="boundary-warning-callout biopap-callout">
           <span className="warning-icon" aria-hidden="true">{t("ℹ️")}</span>
           <div className="warning-body">
@@ -164,18 +174,86 @@ export function CandidateRecommendationCard({
             <span>{t("Competing technical sources state ")}<strong>{t("175°C vs 185°C (60 min)")}</strong>{t(". Neither value is silently selected as canonical truth. 6 hours @ 90°C is family-level claim evidence, NOT exact-system validation for Profi fatty poultry. Exact tray + heat-seal film combination must undergo physical laboratory qualification.")}</span>
           </div>
         </div>
-      ))}
+      )}
 
-      {t(isC6 && (
-        <div className="boundary-warning-callout c6-callout">
-          <span className="warning-icon" aria-hidden="true">{t("ℹ️")}</span>
-          <div className="warning-body">
-            <strong>{t("Aluminium Body vs Closure Boundary (")}{configId || 'C6'}{t("):")}</strong>
-            <span>
-              {t(' ')}{t("Bare aluminium body heat claim applies strictly to the metal container. Transparent viewing lids and retail seals are separate physical articles and do NOT inherit the body heat tolerance. Each C6 configuration is isolated.")}</span>
+      {isC6 && (
+        <>
+          <div className="boundary-warning-callout c6-callout">
+            <span className="warning-icon" aria-hidden="true">{t("ℹ️")}</span>
+            <div className="warning-body">
+              <strong>{t("Aluminium Body vs Closure Boundary (")}{configId || 'C6'}{t("):")}</strong>
+              <span>
+                {t(' ')}{t("Bare aluminium body heat claim applies strictly to the metal container. Transparent viewing lids and retail seals are separate physical articles and do NOT inherit the body heat tolerance. Each C6 configuration is isolated.")}</span>
+            </div>
           </div>
-        </div>
-      ))}
+
+          <div className="universal-pouch-spec-panel">
+            <div className="universal-pouch-header">
+              <span className="pouch-badge">🔥 {t("Universal 250°C Engineering Solution")}</span>
+              <h4 className="pouch-title">{t("Universal Grill & Oven Packaging (Strictly 2 Materials · Glue-Free · 100% Recyclable)")}</h4>
+              <p className="pouch-subtitle">{t("Engineered specifically for 250°C cooking with tool-free manual separation for Romanian waste regulations.")}</p>
+            </div>
+
+            <div className="pouch-products-grid">
+              {/* Product 1: Foil Grill & Oven Bag */}
+              <div className="pouch-product-card primary-pouch">
+                <div className="pouch-product-header">
+                  <span className="badge-primary-sol">⭐ {t("Primary Solution: Foil Grill & Oven Bag")}</span>
+                  <span className="pouch-type-desc">{t("Flexible Hybrid Foil Pouch with Self-Venting Window")}</span>
+                </div>
+                <div className="pouch-specs-list">
+                  <div className="pouch-spec-item">
+                    <strong>{t("Strictly 2 Materials:")}</strong>
+                    <span>{t("Heavy Duty Aluminum Foil (body/bottom) + High-Temp BOPET window.")}</span>
+                  </div>
+                  <div className="pouch-spec-item">
+                    <strong>{t("250°C Steam Cooling Physics:")}</strong>
+                    <span>{t("Steam phase change absorbs thermal energy — film temperature stays under 110–130°C (only 2–5% shrinkage). 100% clarity & food safety preserved.")}</span>
+                  </div>
+                  <div className="pouch-spec-item">
+                    <strong>{t("Glue-Free Peel-able Heat Seal:")}</strong>
+                    <span>{t("Thermocompression welding with aPET contact layer flowing into foil micropores (mechanical interlock, zero solvent/adhesive).")}</span>
+                  </div>
+                  <div className="pouch-spec-item">
+                    <strong>{t("Venting & Romania Separation:")}</strong>
+                    <span>{t("Self-Venting micro-channels relieve steam. Tool-free manual Peel-away separation: foil to metal, PET to plastic (100% recyclable).")}</span>
+                  </div>
+                  <div className="pouch-spec-item price-item">
+                    <strong>{t("References & Wholesale Price:")}</strong>
+                    <span className="pouch-price">{t("Ready. Chef. Go! & Sirane Sira-Cook™ Supreme · $0.15–$0.35 / unit (~0.70–1.60 RON).")}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Product 2: Smoothwall Tray */}
+              <div className="pouch-product-card alt-pouch">
+                <div className="pouch-product-header">
+                  <span className="badge-alt-sol">🔄 {t("Alternative Solution: Smoothwall Tray")}</span>
+                  <span className="pouch-type-desc">{t("Semi-Rigid Smoothwall Container with Heat-Sealed Membrane")}</span>
+                </div>
+                <div className="pouch-specs-list">
+                  <div className="pouch-spec-item">
+                    <strong>{t("Strictly 2 Materials:")}</strong>
+                    <span>{t("Deep-drawn Smoothwall Aluminum + High-Temp CPET clear membrane.")}</span>
+                  </div>
+                  <div className="pouch-spec-item">
+                    <strong>{t("Flange Sealing Mechanics:")}</strong>
+                    <span>{t("Thermocompression welded to smooth flange without glue. Factory laser micro-perforations vent excess 220–250°C steam.")}</span>
+                  </div>
+                  <div className="pouch-spec-item">
+                    <strong>{t("Easy-Peel Separation:")}</strong>
+                    <span>{t("Clean pull tab separates membrane from metal rim for easy, tool-free sorting in Romanian recycling bins.")}</span>
+                  </div>
+                  <div className="pouch-spec-item price-item">
+                    <strong>{t("References & Wholesale Price:")}</strong>
+                    <span className="pouch-price">{t("Advanta Packaging Smoothwall + KM Packaging films · $0.08–$0.25 / set (~0.37–1.15 RON).")}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
 
       {/* 6 Hard Gates Evaluation */}
       <div className="card-section hard-gates-section">
@@ -190,7 +268,7 @@ export function CandidateRecommendationCard({
             {t(showGates ? 'Hide checks' : 'Show all 6 checks')}
           </button>
         </div>
-        {t(showGates && <GateMatrix gates={assessment.gates} />)}
+        {showGates && <GateMatrix gates={assessment.gates} />}
       </div>
 
       {/* Measurable Physical & Material Metrics */}
@@ -223,13 +301,13 @@ export function CandidateRecommendationCard({
             field={assessment.metrics.renewable_material_fraction}
             unitOverride="%"
           />
-          {t(assessment.procurement?.romania_unit_price && (
+          {assessment.procurement?.romania_unit_price && (
             <MetricField
               label="Quoted Unit Price"
               field={assessment.procurement.romania_unit_price}
               unitOverride="RON / unit"
             />
-          ))}
+          )}
         </div>
       </div>
 
@@ -238,7 +316,7 @@ export function CandidateRecommendationCard({
 
       {/* Conditional Screening Scenarios (Opt-in) */}
       </details>
-      {t(assessment.scenario_details && assessment.scenario_details.length > 0 && (
+      {assessment.scenario_details && assessment.scenario_details.length > 0 && (
         <div className="card-section scenario-details-section">
           <button
             type="button"
@@ -249,26 +327,26 @@ export function CandidateRecommendationCard({
             {t(showScenarios ? 'Hide Model Scenarios' : `Conditional Screening Scenarios (${assessment.scenario_details.length})`)}
           </button>
 
-          {t(showScenarios && (
+          {showScenarios && (
             <div className="scenario-details-drawer">
               <span className="scenario-disclaimer">{t("Screening models only — not verified savings. Incumbent baseline is modeled/estimated.")}</span>
               <div className="scenario-cards-grid">
-                {t(assessment.scenario_details.map((sc) => (
+                {assessment.scenario_details.map((sc) => (
                   <div key={sc.scenario_id} className="scenario-subcard">
                     <strong>{t(sc.label)}</strong>
-                    {t(sc.reduction_pct && (
+                    {sc.reduction_pct && (
                       <MetricField label="Virgin Reduction (%)" field={sc.reduction_pct} unitOverride="%" />
-                    ))}
-                    {t(sc.reduction_g && (
+                    )}
+                    {sc.reduction_g && (
                       <MetricField label="Virgin Reduction (g)" field={sc.reduction_g} unitOverride="g" />
-                    ))}
+                    )}
                   </div>
-                )))}
+                ))}
               </div>
             </div>
-          ))}
+          )}
         </div>
-      ))}
+      )}
 
       {/* Limitations & Next Actions */}
       <NextActions
@@ -277,7 +355,7 @@ export function CandidateRecommendationCard({
       />
 
       {/* Referenced Sources Ledger */}
-      {t(assessment.referenced_source_ids && assessment.referenced_source_ids.length > 0 && (
+      {assessment.referenced_source_ids && assessment.referenced_source_ids.length > 0 && (
         <div className="card-section sources-drawer-section">
           <button
             type="button"
@@ -290,9 +368,9 @@ export function CandidateRecommendationCard({
               : `Inspect Citations & Evidence Ledger (${assessment.referenced_source_ids.length} sources)`)}
           </button>
 
-          {t(showSources && (
+          {showSources && (
             <div className="sources-list-drawer">
-              {t(assessment.referenced_source_ids.map((sid) => {
+              {assessment.referenced_source_ids.map((sid) => {
                 const sref = sourcesMap[sid];
                 if (!sref) {
                   return (
@@ -304,33 +382,33 @@ export function CandidateRecommendationCard({
                   <div key={sid} className="source-item">
                     <div className="source-header-row">
                       <span className="source-id-pill">{sref.source_id}</span>
-                      {t(sref.tier && <span className="source-tier-tag">{t("Tier ")}{t(sref.tier)}</span>)}
-                      {t(sref.romania_evidence && (
+                      {sref.tier && <span className="source-tier-tag">{t("Tier ")}{sref.tier}</span>}
+                      {sref.romania_evidence && (
                         <span className="source-ro-tag">{t("🇷🇴 Romania Evidence")}</span>
-                      ))}
+                      )}
                     </div>
                     <strong className="source-title-text">{t(sref.title)}</strong>
-                    {t(sref.findings && <p className="source-findings">{t(sref.findings)}</p>)}
-                    {t(sref.limitations && (
+                    {sref.findings && <p className="source-findings">{t(sref.findings)}</p>}
+                    {sref.limitations && (
                       <small className="source-limitations">
                         <strong>{t("Limitations:")}</strong> {t(sref.limitations)}
                       </small>
-                    ))}
-                    {t(sref.url && (
+                    )}
+                    {sref.url && (
                       <a
                         href={sref.url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="source-external-link"
                       >{t("Inspect Official Source Document ↗")}</a>
-                    ))}
+                    )}
                   </div>
                 );
-              }))}
+              })}
             </div>
-          ))}
+          )}
         </div>
-      ))}
+      )}
     </article>
   );
 }

@@ -15,10 +15,17 @@ import { CandidateRecommendationCard } from './CandidateRecommendationCard';
 import { DecisionSummary } from './DecisionSummary';
 import { ProductSelector } from './ProductSelector';
 import { WorkflowSelector } from './WorkflowSelector';
+import {
+  getOfflineProducts,
+  getOfflineCandidates,
+  getOfflineEvaluation,
+} from '../api/offlineFallback';
 
 interface RecommendationViewProps {
   visible: boolean;
   uiLang?: 'en' | 'ru' | 'ro';
+  targetWorkflowId?: WorkflowId;
+  targetProductId?: ProductId;
 }
 
 type LoadState<T> =
@@ -26,23 +33,52 @@ type LoadState<T> =
   | { status: 'error'; message: string; is503?: boolean }
   | { status: 'ready'; data: T };
 
-export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: RecommendationViewProps) {
+export function RecommendationView({
+  visible,
+  uiLang: _uiLang = 'en',
+  targetWorkflowId,
+  targetProductId,
+}: RecommendationViewProps) {
   const t = useTranslation();
-  // Catalogues state
-  const [productsLoad, setProductsLoad] = useState<LoadState<RecommendationProductsResponse>>({
-    status: 'loading',
+  // Catalogues state - initialized with offline fallback for instant render
+  const [productsLoad, setProductsLoad] = useState<LoadState<RecommendationProductsResponse>>(() => {
+    try {
+      const off = getOfflineProducts();
+      if (off) return { status: 'ready', data: off };
+    } catch {}
+    return { status: 'loading' };
   });
-  const [candidatesLoad, setCandidatesLoad] = useState<LoadState<RecommendationCandidatesResponse>>({
-    status: 'loading',
+  const [candidatesLoad, setCandidatesLoad] = useState<LoadState<RecommendationCandidatesResponse>>(() => {
+    try {
+      const off = getOfflineCandidates();
+      if (off) return { status: 'ready', data: off };
+    } catch {}
+    return { status: 'loading' };
   });
 
   // User selection context
-  const [selectedProductId, setSelectedProductId] = useState<ProductId>('P1');
-  const [selectedWorkflowId, setSelectedWorkflowId] = useState<WorkflowId>('POST_COOK_HOT_HOLD_6H');
+  const [selectedProductId, setSelectedProductId] = useState<ProductId>(targetProductId || 'P1');
+  const [selectedWorkflowId, setSelectedWorkflowId] = useState<WorkflowId>(targetWorkflowId || 'POST_COOK_HOT_HOLD_6H');
 
-  // Evaluation response state
-  const [evaluationLoad, setEvaluationLoad] = useState<LoadState<RecommendationEvaluationResponse>>({
-    status: 'loading',
+  useEffect(() => {
+    if (targetWorkflowId) {
+      setSelectedWorkflowId(targetWorkflowId);
+    }
+  }, [targetWorkflowId]);
+
+  useEffect(() => {
+    if (targetProductId) {
+      setSelectedProductId(targetProductId);
+    }
+  }, [targetProductId]);
+
+  // Evaluation response state - initialized with offline fallback for instant render
+  const [evaluationLoad, setEvaluationLoad] = useState<LoadState<RecommendationEvaluationResponse>>(() => {
+    try {
+      const off = getOfflineEvaluation('P1', 'POST_COOK_HOT_HOLD_6H');
+      if (off) return { status: 'ready', data: off };
+    } catch {}
+    return { status: 'loading' };
   });
 
   // Stale-response protection: generation guard & abort controller
@@ -55,8 +91,6 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
   // 1. Load initial catalogues (Products & Candidates)
   useEffect(() => {
     const controller = new AbortController();
-    setProductsLoad({ status: 'loading' });
-    setCandidatesLoad({ status: 'loading' });
 
     Promise.all([
       api.recommendationProducts(controller.signal),
@@ -76,10 +110,21 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
       })
       .catch((err) => {
         if (controller.signal.aborted) return;
+        try {
+          const offProd = getOfflineProducts();
+          const offCand = getOfflineCandidates();
+          if (offProd && offCand) {
+            setProductsLoad({ status: 'ready', data: offProd });
+            setCandidatesLoad({ status: 'ready', data: offCand });
+            return;
+          }
+        } catch {
+          // Ignore
+        }
         const msg = String(err?.message || err);
         const is503 = msg.includes('503') || msg.includes('RECOMMENDATION_EVIDENCE_UNAVAILABLE');
-        setProductsLoad({ status: 'error', message: msg, is503 });
-        setCandidatesLoad({ status: 'error', message: msg, is503 });
+        setProductsLoad((prev) => (prev.status === 'ready' ? prev : { status: 'error', message: msg, is503 }));
+        setCandidatesLoad((prev) => (prev.status === 'ready' ? prev : { status: 'error', message: msg, is503 }));
       });
 
     return () => controller.abort();
@@ -96,7 +141,16 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
     const controller = new AbortController();
     evalAbortControllerRef.current = controller;
 
-    setEvaluationLoad({ status: 'loading' });
+    try {
+      const offEval = getOfflineEvaluation(selectedProductId, selectedWorkflowId);
+      if (offEval) {
+        setEvaluationLoad({ status: 'ready', data: offEval });
+      } else {
+        setEvaluationLoad({ status: 'loading' });
+      }
+    } catch {
+      setEvaluationLoad({ status: 'loading' });
+    }
 
     api
       .evaluateRecommendation(
@@ -117,9 +171,18 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
         if (currentGeneration !== evalGenerationRef.current || controller.signal.aborted) {
           return;
         }
+        try {
+          const offEval = getOfflineEvaluation(selectedProductId, selectedWorkflowId);
+          if (offEval) {
+            setEvaluationLoad({ status: 'ready', data: offEval });
+            return;
+          }
+        } catch {
+          // Ignore
+        }
         const msg = String(err?.message || err);
         const is503 = msg.includes('503') || msg.includes('RECOMMENDATION_EVIDENCE_UNAVAILABLE');
-        setEvaluationLoad({ status: 'error', message: msg, is503 });
+        setEvaluationLoad((prev) => (prev.status === 'ready' ? prev : { status: 'error', message: msg, is503 }));
       });
 
     return () => {
@@ -166,14 +229,14 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
       </section>
 
       {/* Catalogue Loading / Error States */}
-      {t(productsLoad.status === 'loading' && (
+      {productsLoad.status === 'loading' && (
         <div className="status-panel" role="status">
           <h2>{t("Loading packaging options…")}</h2>
           <p>{t("Getting the product list ready.")}</p>
         </div>
-      ))}
+      )}
 
-      {t(productsLoad.status === 'error' && (
+      {productsLoad.status === 'error' && (
         <div className="status-panel error-panel" role="alert">
           <h2>
             {t(productsLoad.is503
@@ -183,10 +246,28 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
           <p>{t("Calculation could not be loaded. Please retry.")}</p>
           <button type="button" className="retry-btn" onClick={handleRetry}>{t("Retry")}</button>
         </div>
-      ))}
+      )}
+
+      {/* Universal 250°C Engineering Solution Spotlight Banner */}
+      <div className="recommendation-spotlight-banner">
+        <div className="spotlight-content">
+          <span className="spotlight-icon">🔥</span>
+          <div>
+            <strong className="spotlight-title">{t("Универсальная разработка для 250°C: Foil Grill Bag и Smoothwall Tray")}</strong>
+            <span className="spotlight-desc">{t("Строго 2 материала · Шов без клея · 100% переработка под нормативы Румынии")}</span>
+          </div>
+        </div>
+        <button
+          type="button"
+          className="spotlight-action-btn"
+          onClick={() => setSelectedWorkflowId('LITERAL_OVEN_250C_THEN_HOLD')}
+        >
+          {t("Выбрать сценарий 250°C →")}
+        </button>
+      </div>
 
       {/* Controls Deck: Stage A (Product) & Stage B (Workflow) */}
-      {t(productsLoad.status === 'ready' && (
+      {productsLoad.status === 'ready' && (
         <div id="journey-context" className="recommendation-controls-deck">
           <ProductSelector
             products={productsLoad.data.products}
@@ -200,10 +281,10 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
             onSelectWorkflow={(id) => setSelectedWorkflowId(id)}
           />
         </div>
-      ))}
+      )}
 
       {/* Evaluation Loading State */}
-      {t(evaluationLoad.status === 'loading' && productsLoad.status === 'ready' && (
+      {evaluationLoad.status === 'loading' && productsLoad.status === 'ready' && (
         <div className="status-panel evaluating-panel" role="status">
           <div className="eval-spinner" aria-hidden="true" />
           <div>
@@ -211,10 +292,10 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
             <p>{t("Checking size, heat resistance and other requirements for your selection.")}</p>
           </div>
         </div>
-      ))}
+      )}
 
       {/* Evaluation Error State */}
-      {t(evaluationLoad.status === 'error' && (
+      {evaluationLoad.status === 'error' && (
         <div className="status-panel error-panel" role="alert">
           <h2>
             {t(evaluationLoad.is503
@@ -224,10 +305,10 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
           <p>{t("Calculation could not be loaded. Please retry.")}</p>
           <button type="button" className="retry-btn" onClick={handleRetry}>{t("Retry")}</button>
         </div>
-      ))}
+      )}
 
       {/* Evaluation Results Flow */}
-      {t(evaluation && evaluationLoad.status === 'ready' && (
+      {evaluation && evaluationLoad.status === 'ready' && (
         <div className="recommendation-results-flow">
           {/* Decision Summary */}
           <div id="decision-summary">
@@ -253,7 +334,7 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
                 </h3>
               </div>
 
-              {t(firstPathAssessment && (
+              {firstPathAssessment && (
                 <CandidateRecommendationCard
                   assessment={firstPathAssessment}
                   configuration={
@@ -264,9 +345,9 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
                   sourcesMap={sourcesMap}
                   isFirstPath={true}
                 />
-              ))}
+              )}
 
-              {t(fallbackAssessment && (
+              {fallbackAssessment && (
                 <CandidateRecommendationCard
                   assessment={fallbackAssessment}
                   configuration={
@@ -277,9 +358,9 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
                   sourcesMap={sourcesMap}
                   isFirstPath={false}
                 />
-              ))}
+              )}
 
-              {t(!firstPathAssessment && !fallbackAssessment && (
+              {!firstPathAssessment && !fallbackAssessment && (
                 <div className="no-first-path-card">
                   <div className="no-first-path-inner">
                     <span className="icon-warn">{t("⚠️")}</span>
@@ -289,21 +370,21 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
                     </div>
                   </div>
                 </div>
-              ))}
+              )}
             </section>
 
             {/* Viable Alternatives Section */}
-            {t(alternativeAssessments.length > 0 && (
+            {alternativeAssessments.length > 0 && (
               <details className="results-group alternatives-group" aria-label={t("Alternatives Requiring Qualification")}>
-                <summary>{t("Other options to test (")}{t(alternativeAssessments.length)}{t(")")}</summary>
+                <summary>{t("Other options to test (")}{alternativeAssessments.length}{t(")")}</summary>
                 <div className="group-header">
                   <span className="group-tag">{t("More options")}</span>
-                  <h3 className="group-heading">{t("Other options to test (")}{t(alternativeAssessments.length)}{t(")")}</h3>
+                  <h3 className="group-heading">{t("Other options to test (")}{alternativeAssessments.length}{t(")")}</h3>
                   <p className="group-desc">{t("These candidate concepts satisfy basic thermal holding or material requirements but require empirical testing for food contact migration, seal integrity, or store operations.")}</p>
                 </div>
 
                 <div className="candidates-list-stack">
-                  {t(alternativeAssessments.map((alt) => (
+                  {alternativeAssessments.map((alt) => (
                     <CandidateRecommendationCard
                       key={`${alt.candidate_id}-${alt.configuration_id || 'default'}`}
                       assessment={alt}
@@ -313,23 +394,23 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
                       sourcesMap={sourcesMap}
                       isFirstPath={false}
                     />
-                  )))}
+                  ))}
                 </div>
               </details>
-            ))}
+            )}
 
             {/* Incompatible options Section */}
-            {t(blockedAssessments.length > 0 && (
+            {blockedAssessments.length > 0 && (
               <details className="results-group blocked-group" aria-label={t("Incompatible options")}>
-                <summary>{t("Incompatible options (")}{t(blockedAssessments.length)}{t(")")}</summary>
+                <summary>{t("Incompatible options (")}{blockedAssessments.length}{t(")")}</summary>
                 <div className="group-header">
                   <span className="group-tag blocked-tag">{t("Not suitable for this use")}</span>
-                  <h3 className="group-heading">{t("Incompatible options (")}{t(blockedAssessments.length)}{t(")")}</h3>
+                  <h3 className="group-heading">{t("Incompatible options (")}{blockedAssessments.length}{t(")")}</h3>
                   <p className="group-desc">{t("These candidates fail at least one non-compensatory hard gate (e.g. thermal limits below the required workflow or geometry mismatch).")}</p>
                 </div>
 
                 <div className="candidates-list-stack">
-                  {t(blockedAssessments.map((blocked) => (
+                  {blockedAssessments.map((blocked) => (
                     <CandidateRecommendationCard
                       key={`${blocked.candidate_id}-${blocked.configuration_id || 'default'}`}
                       assessment={blocked}
@@ -339,10 +420,10 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
                       sourcesMap={sourcesMap}
                       isFirstPath={false}
                     />
-                  )))}
+                  ))}
                 </div>
               </details>
-            ))}
+            )}
           </div>
 
           {/* Reference Baselines Context (Section 20) */}
@@ -354,7 +435,7 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
             </div>
 
             <div className="baselines-cards-grid">
-              {t(evaluation.baselines.map((b) => (
+              {evaluation.baselines.map((b) => (
                 <div
                   key={b.baseline_id}
                   className={`baseline-info-card ${
@@ -370,26 +451,26 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
                   <strong className="baseline-identity">{t(b.identity)}</strong>
                   <p className="baseline-desc">{t(b.description)}</p>
                   <div className="baseline-specs-row">
-                    <span>{t("Virgin plastic fraction:")}{t(' ')}
+                    <span>{t("Virgin plastic fraction:")}{' '}
                       <strong>
-                        {t(b.observed_virgin_fraction != null
+                        {b.observed_virgin_fraction != null
                           ? `${b.observed_virgin_fraction * 100}%`
-                          : 'Not measured by the team')}
+                          : t('Not measured by the team')}
                       </strong>
                     </span>
-                    {t(b.estimated_mass_g && (
-                      <span>{t("Modeled mass scenario:")}{t(' ')}
-                        <strong>{t("≈")}{t(b.estimated_mass_g.central)}{t(" g (")}{t(b.estimated_mass_g.low)}{t("–")}{t(b.estimated_mass_g.high)}{t(" g)")}</strong>
+                    {b.estimated_mass_g && (
+                      <span>{t("Modeled mass scenario:")}{' '}
+                        <strong>{t("≈")}{b.estimated_mass_g.central}{t(" g (")}{b.estimated_mass_g.low}{t("–")}{b.estimated_mass_g.high}{t(" g)")}</strong>
                       </span>
-                    ))}
-                    {t(b.observed_price_ron != null && (
-                      <span>{t("Market price: ")}<strong>{t(b.observed_price_ron)}{t(" RON")}</strong>
+                    )}
+                    {b.observed_price_ron != null && (
+                      <span>{t("Market price: ")}<strong>{b.observed_price_ron}{t(" RON")}</strong>
                       </span>
-                    ))}
+                    )}
                   </div>
-                  {t(b.notes && <small className="baseline-note">{t(b.notes)}</small>)}
+                  {b.notes && <small className="baseline-note">{t(b.notes)}</small>}
                 </div>
-              )))}
+              ))}
             </div>
           </details>
 
@@ -398,9 +479,9 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
             <div className="disclosures-inner">
               <strong className="disclosures-title">{t("⚖️ About these results:")}</strong>
               <ul className="disclosures-list">
-                {t(evaluation.disclosures.map((d, idx) => (
+                {evaluation.disclosures.map((d, idx) => (
                   <li key={idx}>{t(d)}</li>
-                )))}
+                ))}
               </ul>
               <div className="revision-hash-row">
                 <small>{t("Canonical Dataset: ")}<code>{evaluation.dataset_id}</code></small>
@@ -410,7 +491,7 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
             </div>
           </footer>
         </div>
-      ))}
+      )}
     </div>
   );
 }
