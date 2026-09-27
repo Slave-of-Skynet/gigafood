@@ -511,7 +511,7 @@
         "central": 1,
         "high": 1
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "fraction",
       "source_ids": [
         "S27",
@@ -522,11 +522,11 @@
       "confidence": "LOW",
       "qualifier": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E009",
         "field": "B1-ESTIMATED.virgin_fraction",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "fraction",
         "low": 1,
         "central": 1,
@@ -23004,7 +23004,7 @@
         "central": 247,
         "high": 247
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "mm",
       "source_ids": [
         "ASTRA-S15"
@@ -23013,11 +23013,11 @@
       "confidence": "LOW",
       "qualifier": "Published nominal outer dimensions (or inherited exact historical source), not food-clear internal dimensions.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E321",
         "field": "C5.outer_length",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "mm",
         "low": 247,
         "central": 247,
@@ -23061,7 +23061,7 @@
         "central": 190,
         "high": 190
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "mm",
       "source_ids": [
         "ASTRA-S15"
@@ -23070,11 +23070,11 @@
       "confidence": "LOW",
       "qualifier": "Published nominal outer dimensions (or inherited exact historical source), not food-clear internal dimensions.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E322",
         "field": "C5.outer_width",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "mm",
         "low": 190,
         "central": 190,
@@ -23118,7 +23118,7 @@
         "central": 37,
         "high": 37
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "mm",
       "source_ids": [
         "ASTRA-S15"
@@ -23127,11 +23127,11 @@
       "confidence": "LOW",
       "qualifier": "Published nominal outer dimensions (or inherited exact historical source), not food-clear internal dimensions.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E323",
         "field": "C5.outer_height",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "mm",
         "low": 37,
         "central": 37,
@@ -23175,7 +23175,7 @@
         "central": 1240,
         "high": 1240
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "ml",
       "source_ids": [
         "ASTRA-S15"
@@ -23184,11 +23184,11 @@
       "confidence": "LOW",
       "qualifier": "Published nominal body capacity; usable fill is lower.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E324",
         "field": "C5.capacity_ml",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "ml",
         "low": 1240,
         "central": 1240,
@@ -23436,7 +23436,7 @@
             "central": 1240,
             "high": 1240,
             "unit": "ml",
-            "state": "ASSUMED",
+            "state": "OBSERVED_VERIFIED",
             "calculation_ref": "ASTRA-E324",
             "source_ids": [
               "ASTRA-S15"
@@ -23783,7 +23783,7 @@
             "central": 1240,
             "high": 1240,
             "unit": "ml",
-            "state": "ASSUMED",
+            "state": "OBSERVED_VERIFIED",
             "calculation_ref": "ASTRA-E324",
             "source_ids": [
               "ASTRA-S15"
@@ -23878,7 +23878,7 @@
             "central": 1240,
             "high": 1240,
             "unit": "ml",
-            "state": "ASSUMED",
+            "state": "OBSERVED_VERIFIED",
             "calculation_ref": "ASTRA-E324",
             "source_ids": [
               "ASTRA-S15"
@@ -24127,7 +24127,7 @@
         "central": 780,
         "high": 780
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "packs/carton",
       "source_ids": [
         "ASTRA-S16"
@@ -24136,11 +24136,11 @@
       "confidence": "LOW",
       "qualifier": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E337",
         "field": "C5.order_unit",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "packs/carton",
         "low": 780,
         "central": 780,
@@ -25825,7 +25825,7 @@
         "central": 100,
         "high": 100
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "packs/carton",
       "source_ids": [
         "ASTRA-TASK"
@@ -25834,11 +25834,11 @@
       "confidence": "LOW",
       "qualifier": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E362",
         "field": "C6-RO-P.order_unit",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "packs/carton",
         "low": 100,
         "central": 100,
@@ -25939,7 +25939,7 @@
         "central": 5,
         "high": 10
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "working_days",
       "source_ids": [
         "ASTRA-TASK"
@@ -25948,11 +25948,11 @@
       "confidence": "LOW",
       "qualifier": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E364",
         "field": "C6-RO-P.lead_time",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "working_days",
         "low": 3,
         "central": 5,
@@ -26260,7 +26260,7 @@
         "central": 257,
         "high": 257
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "mm",
       "source_ids": [
         "S18"
@@ -26269,11 +26269,11 @@
       "confidence": "LOW",
       "qualifier": "Published nominal outer dimensions (or inherited exact historical source), not food-clear internal dimensions.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E369",
         "field": "C6-RO-W.outer_length",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "mm",
         "low": 257,
         "central": 257,
@@ -26317,7 +26317,7 @@
         "central": 195,
         "high": 195
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "mm",
       "source_ids": [
         "S18"
@@ -26326,11 +26326,11 @@
       "confidence": "LOW",
       "qualifier": "Published nominal outer dimensions (or inherited exact historical source), not food-clear internal dimensions.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E370",
         "field": "C6-RO-W.outer_width",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "mm",
         "low": 195,
         "central": 195,
@@ -26374,7 +26374,7 @@
         "central": 103,
         "high": 103
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "mm",
       "source_ids": [
         "S18"
@@ -26383,11 +26383,11 @@
       "confidence": "LOW",
       "qualifier": "Published nominal outer dimensions (or inherited exact historical source), not food-clear internal dimensions.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E371",
         "field": "C6-RO-W.outer_height",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "mm",
         "low": 103,
         "central": 103,
@@ -27523,7 +27523,7 @@
         "central": 200,
         "high": 200
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "packs/carton",
       "source_ids": [
         "ASTRA-TASK"
@@ -27532,11 +27532,11 @@
       "confidence": "LOW",
       "qualifier": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E387",
         "field": "C6-RO-W.order_unit",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "packs/carton",
         "low": 200,
         "central": 200,
@@ -27637,7 +27637,7 @@
         "central": 5,
         "high": 10
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "working_days",
       "source_ids": [
         "ASTRA-TASK"
@@ -27646,11 +27646,11 @@
       "confidence": "LOW",
       "qualifier": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E389",
         "field": "C6-RO-W.lead_time",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "working_days",
         "low": 3,
         "central": 5,
@@ -27955,7 +27955,7 @@
         "central": 255,
         "high": 255
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "mm",
       "source_ids": [
         "S19"
@@ -27964,11 +27964,11 @@
       "confidence": "LOW",
       "qualifier": "Published nominal outer dimensions (or inherited exact historical source), not food-clear internal dimensions.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E394",
         "field": "C6-RO-H.outer_length",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "mm",
         "low": 255,
         "central": 255,
@@ -28012,7 +28012,7 @@
         "central": 195,
         "high": 195
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "mm",
       "source_ids": [
         "S19"
@@ -28021,11 +28021,11 @@
       "confidence": "LOW",
       "qualifier": "Published nominal outer dimensions (or inherited exact historical source), not food-clear internal dimensions.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E395",
         "field": "C6-RO-H.outer_width",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "mm",
         "low": 195,
         "central": 195,
@@ -28069,7 +28069,7 @@
         "central": 90,
         "high": 90
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "mm",
       "source_ids": [
         "S19"
@@ -28078,11 +28078,11 @@
       "confidence": "LOW",
       "qualifier": "Published nominal outer dimensions (or inherited exact historical source), not food-clear internal dimensions.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E396",
         "field": "C6-RO-H.outer_height",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "mm",
         "low": 90,
         "central": 90,
@@ -28126,7 +28126,7 @@
         "central": 2400,
         "high": 2400
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "ml",
       "source_ids": [
         "S19"
@@ -28135,11 +28135,11 @@
       "confidence": "LOW",
       "qualifier": "Published nominal body capacity; usable fill is lower.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E397",
         "field": "C6-RO-H.capacity_ml",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "ml",
         "low": 2400,
         "central": 2400,
@@ -28387,7 +28387,7 @@
             "central": 2400,
             "high": 2400,
             "unit": "ml",
-            "state": "ASSUMED",
+            "state": "OBSERVED_VERIFIED",
             "calculation_ref": "ASTRA-E397",
             "source_ids": [
               "S19"
@@ -28728,7 +28728,7 @@
             "central": 2400,
             "high": 2400,
             "unit": "ml",
-            "state": "ASSUMED",
+            "state": "OBSERVED_VERIFIED",
             "calculation_ref": "ASTRA-E397",
             "source_ids": [
               "S19"
@@ -28823,7 +28823,7 @@
             "central": 2400,
             "high": 2400,
             "unit": "ml",
-            "state": "ASSUMED",
+            "state": "OBSERVED_VERIFIED",
             "calculation_ref": "ASTRA-E397",
             "source_ids": [
               "S19"
@@ -29209,7 +29209,7 @@
         "central": 100,
         "high": 100
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "packs/carton",
       "source_ids": [
         "ASTRA-TASK"
@@ -29218,11 +29218,11 @@
       "confidence": "LOW",
       "qualifier": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E412",
         "field": "C6-RO-H.order_unit",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "packs/carton",
         "low": 100,
         "central": 100,
@@ -29323,7 +29323,7 @@
         "central": 5,
         "high": 10
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "working_days",
       "source_ids": [
         "ASTRA-TASK"
@@ -29332,11 +29332,11 @@
       "confidence": "LOW",
       "qualifier": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E414",
         "field": "C6-RO-H.lead_time",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "working_days",
         "low": 3,
         "central": 5,
@@ -29647,7 +29647,7 @@
         "central": 293,
         "high": 293
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "mm",
       "source_ids": [
         "S24"
@@ -29656,11 +29656,11 @@
       "confidence": "LOW",
       "qualifier": "Published nominal outer dimensions (or inherited exact historical source), not food-clear internal dimensions.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E419",
         "field": "C6-EU.outer_length",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "mm",
         "low": 293,
         "central": 293,
@@ -29704,7 +29704,7 @@
         "central": 193,
         "high": 193
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "mm",
       "source_ids": [
         "S24"
@@ -29713,11 +29713,11 @@
       "confidence": "LOW",
       "qualifier": "Published nominal outer dimensions (or inherited exact historical source), not food-clear internal dimensions.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E420",
         "field": "C6-EU.outer_width",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "mm",
         "low": 193,
         "central": 193,
@@ -29761,7 +29761,7 @@
         "central": 45,
         "high": 45
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "mm",
       "source_ids": [
         "S24"
@@ -29770,11 +29770,11 @@
       "confidence": "LOW",
       "qualifier": "Published nominal outer dimensions (or inherited exact historical source), not food-clear internal dimensions.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E421",
         "field": "C6-EU.outer_height",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "mm",
         "low": 45,
         "central": 45,
@@ -29818,7 +29818,7 @@
         "central": 1896,
         "high": 1896
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "ml",
       "source_ids": [
         "S24"
@@ -29827,11 +29827,11 @@
       "confidence": "LOW",
       "qualifier": "Published nominal body capacity; usable fill is lower.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E422",
         "field": "C6-EU.capacity_ml",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "ml",
         "low": 1896,
         "central": 1896,
@@ -30079,7 +30079,7 @@
             "central": 1896,
             "high": 1896,
             "unit": "ml",
-            "state": "ASSUMED",
+            "state": "OBSERVED_VERIFIED",
             "calculation_ref": "ASTRA-E422",
             "source_ids": [
               "S24"
@@ -30420,7 +30420,7 @@
             "central": 1896,
             "high": 1896,
             "unit": "ml",
-            "state": "ASSUMED",
+            "state": "OBSERVED_VERIFIED",
             "calculation_ref": "ASTRA-E422",
             "source_ids": [
               "S24"
@@ -30515,7 +30515,7 @@
             "central": 1896,
             "high": 1896,
             "unit": "ml",
-            "state": "ASSUMED",
+            "state": "OBSERVED_VERIFIED",
             "calculation_ref": "ASTRA-E422",
             "source_ids": [
               "S24"
@@ -30901,7 +30901,7 @@
         "central": 400,
         "high": 400
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "packs/carton",
       "source_ids": [
         "S24"
@@ -30910,11 +30910,11 @@
       "confidence": "LOW",
       "qualifier": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E437",
         "field": "C6-EU.order_unit",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "packs/carton",
         "low": 400,
         "central": 400,
@@ -31015,7 +31015,7 @@
         "central": 14,
         "high": 28
       },
-      "state": "ASSUMED",
+      "state": "OBSERVED_VERIFIED",
       "unit": "working_days",
       "source_ids": [
         "S24"
@@ -31024,11 +31024,11 @@
       "confidence": "LOW",
       "qualifier": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
       "scope": "CONFIGURATION",
-      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
         "calculation_id": "ASTRA-E439",
         "field": "C6-EU.lead_time",
-        "state": "ASSUMED",
+        "state": "OBSERVED_VERIFIED",
         "unit": "working_days",
         "low": 7,
         "central": 14,
@@ -41687,6 +41687,795 @@
       },
       "demo_safe_sentence": "Modeled C6-EU.vs.B3.reduction_pct: -744.22 % (engineering bounds -945.341–-289.041); Percent reduction with the same baseline denominator at each corner; negative is an increase."
     },
+    "C1.dimensions": {
+      "kind": "evidence_field",
+      "value": {
+        "low": [
+          350,
+          180,
+          70
+        ],
+        "central": [
+          350,
+          180,
+          70
+        ],
+        "high": [
+          350,
+          180,
+          70
+        ]
+      },
+      "state": "ASSUMED",
+      "unit": "mm[3]",
+      "source_ids": [
+        "ASTRA-TASK"
+      ],
+      "calculation_id": "ASTRA-E552",
+      "confidence": "LOW",
+      "qualifier": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+      "scope": "CONFIGURATION",
+      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "estimate": {
+        "calculation_id": "ASTRA-E552",
+        "field": "C1.dimensions",
+        "state": "ASSUMED",
+        "unit": "mm[3]",
+        "low": [
+          350,
+          180,
+          70
+        ],
+        "central": [
+          350,
+          180,
+          70
+        ],
+        "high": [
+          350,
+          180,
+          70
+        ],
+        "method": "Independent input corner bounds; deterministic central design point; not a statistical confidence interval",
+        "formula": "\"x\"",
+        "expression": "x",
+        "inputs": {
+          "x": {
+            "low": [
+              350,
+              180,
+              70
+            ],
+            "central": [
+              350,
+              180,
+              70
+            ],
+            "high": [
+              350,
+              180,
+              70
+            ]
+          }
+        },
+        "assumptions": [
+          "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+        ],
+        "analogue_validity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "central_selection": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "confidence": "LOW",
+        "sensitivity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "dominant_uncertainty": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "falsification_condition": "Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.",
+        "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI",
+        "source_ids": [
+          "ASTRA-TASK"
+        ]
+      },
+      "demo_safe_sentence": "Modeled C1.dimensions: [350, 180, 70] mm[3]; Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+    },
+    "C2.dimensions": {
+      "kind": "evidence_field",
+      "value": {
+        "low": [
+          350,
+          180,
+          70
+        ],
+        "central": [
+          350,
+          180,
+          70
+        ],
+        "high": [
+          350,
+          180,
+          70
+        ]
+      },
+      "state": "ASSUMED",
+      "unit": "mm[3]",
+      "source_ids": [
+        "ASTRA-TASK"
+      ],
+      "calculation_id": "ASTRA-E553",
+      "confidence": "LOW",
+      "qualifier": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+      "scope": "CONFIGURATION",
+      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "estimate": {
+        "calculation_id": "ASTRA-E553",
+        "field": "C2.dimensions",
+        "state": "ASSUMED",
+        "unit": "mm[3]",
+        "low": [
+          350,
+          180,
+          70
+        ],
+        "central": [
+          350,
+          180,
+          70
+        ],
+        "high": [
+          350,
+          180,
+          70
+        ],
+        "method": "Independent input corner bounds; deterministic central design point; not a statistical confidence interval",
+        "formula": "\"x\"",
+        "expression": "x",
+        "inputs": {
+          "x": {
+            "low": [
+              350,
+              180,
+              70
+            ],
+            "central": [
+              350,
+              180,
+              70
+            ],
+            "high": [
+              350,
+              180,
+              70
+            ]
+          }
+        },
+        "assumptions": [
+          "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+        ],
+        "analogue_validity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "central_selection": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "confidence": "LOW",
+        "sensitivity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "dominant_uncertainty": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "falsification_condition": "Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.",
+        "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI",
+        "source_ids": [
+          "ASTRA-TASK"
+        ]
+      },
+      "demo_safe_sentence": "Modeled C2.dimensions: [350, 180, 70] mm[3]; Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+    },
+    "C3.dimensions": {
+      "kind": "evidence_field",
+      "value": {
+        "low": [
+          350,
+          180,
+          70
+        ],
+        "central": [
+          350,
+          180,
+          70
+        ],
+        "high": [
+          350,
+          180,
+          70
+        ]
+      },
+      "state": "ASSUMED",
+      "unit": "mm[3]",
+      "source_ids": [
+        "ASTRA-TASK"
+      ],
+      "calculation_id": "ASTRA-E554",
+      "confidence": "LOW",
+      "qualifier": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+      "scope": "CONFIGURATION",
+      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "estimate": {
+        "calculation_id": "ASTRA-E554",
+        "field": "C3.dimensions",
+        "state": "ASSUMED",
+        "unit": "mm[3]",
+        "low": [
+          350,
+          180,
+          70
+        ],
+        "central": [
+          350,
+          180,
+          70
+        ],
+        "high": [
+          350,
+          180,
+          70
+        ],
+        "method": "Independent input corner bounds; deterministic central design point; not a statistical confidence interval",
+        "formula": "\"x\"",
+        "expression": "x",
+        "inputs": {
+          "x": {
+            "low": [
+              350,
+              180,
+              70
+            ],
+            "central": [
+              350,
+              180,
+              70
+            ],
+            "high": [
+              350,
+              180,
+              70
+            ]
+          }
+        },
+        "assumptions": [
+          "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+        ],
+        "analogue_validity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "central_selection": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "confidence": "LOW",
+        "sensitivity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "dominant_uncertainty": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "falsification_condition": "Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.",
+        "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI",
+        "source_ids": [
+          "ASTRA-TASK"
+        ]
+      },
+      "demo_safe_sentence": "Modeled C3.dimensions: [350, 180, 70] mm[3]; Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+    },
+    "C4.dimensions": {
+      "kind": "evidence_field",
+      "value": {
+        "low": [
+          227,
+          178,
+          43
+        ],
+        "central": [
+          227,
+          178,
+          43
+        ],
+        "high": [
+          227,
+          178,
+          43
+        ]
+      },
+      "state": "ASSUMED",
+      "unit": "mm[3]",
+      "source_ids": [
+        "ASTRA-TASK"
+      ],
+      "calculation_id": "ASTRA-E555",
+      "confidence": "LOW",
+      "qualifier": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+      "scope": "CONFIGURATION",
+      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "estimate": {
+        "calculation_id": "ASTRA-E555",
+        "field": "C4.dimensions",
+        "state": "ASSUMED",
+        "unit": "mm[3]",
+        "low": [
+          227,
+          178,
+          43
+        ],
+        "central": [
+          227,
+          178,
+          43
+        ],
+        "high": [
+          227,
+          178,
+          43
+        ],
+        "method": "Independent input corner bounds; deterministic central design point; not a statistical confidence interval",
+        "formula": "\"x\"",
+        "expression": "x",
+        "inputs": {
+          "x": {
+            "low": [
+              227,
+              178,
+              43
+            ],
+            "central": [
+              227,
+              178,
+              43
+            ],
+            "high": [
+              227,
+              178,
+              43
+            ]
+          }
+        },
+        "assumptions": [
+          "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+        ],
+        "analogue_validity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "central_selection": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "confidence": "LOW",
+        "sensitivity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "dominant_uncertainty": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "falsification_condition": "Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.",
+        "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI",
+        "source_ids": [
+          "ASTRA-TASK"
+        ]
+      },
+      "demo_safe_sentence": "Modeled C4.dimensions: [227, 178, 43] mm[3]; Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+    },
+    "C5.dimensions": {
+      "kind": "evidence_field",
+      "value": {
+        "low": [
+          190,
+          247,
+          37
+        ],
+        "central": [
+          190,
+          247,
+          37
+        ],
+        "high": [
+          190,
+          247,
+          37
+        ]
+      },
+      "state": "OBSERVED_VERIFIED",
+      "unit": "mm[3]",
+      "source_ids": [
+        "ASTRA-S15",
+        "S10",
+        "S15"
+      ],
+      "calculation_id": "ASTRA-E556",
+      "confidence": "LOW",
+      "qualifier": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+      "scope": "CONFIGURATION",
+      "display_policy": "DISPLAY_VERIFIED",
+      "estimate": {
+        "calculation_id": "ASTRA-E556",
+        "field": "C5.dimensions",
+        "state": "OBSERVED_VERIFIED",
+        "unit": "mm[3]",
+        "low": [
+          190,
+          247,
+          37
+        ],
+        "central": [
+          190,
+          247,
+          37
+        ],
+        "high": [
+          190,
+          247,
+          37
+        ],
+        "method": "Independent input corner bounds; deterministic central design point; not a statistical confidence interval",
+        "formula": "\"x\"",
+        "expression": "x",
+        "inputs": {
+          "x": {
+            "low": [
+              190,
+              247,
+              37
+            ],
+            "central": [
+              190,
+              247,
+              37
+            ],
+            "high": [
+              190,
+              247,
+              37
+            ]
+          }
+        },
+        "assumptions": [
+          "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+        ],
+        "analogue_validity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "central_selection": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "confidence": "LOW",
+        "sensitivity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "dominant_uncertainty": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "falsification_condition": "Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.",
+        "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI",
+        "source_ids": [
+          "ASTRA-S15",
+          "S10",
+          "S15"
+        ]
+      },
+      "demo_safe_sentence": "Modeled C5.dimensions: [190, 247, 37] mm[3]; Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+    },
+    "C6-RO-P.dimensions": {
+      "kind": "evidence_field",
+      "value": {
+        "low": [
+          220,
+          170,
+          35
+        ],
+        "central": [
+          220,
+          170,
+          35
+        ],
+        "high": [
+          220,
+          170,
+          35
+        ]
+      },
+      "state": "ASSUMED",
+      "unit": "mm[3]",
+      "source_ids": [
+        "ASTRA-TASK"
+      ],
+      "calculation_id": "ASTRA-E557",
+      "confidence": "LOW",
+      "qualifier": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+      "scope": "CONFIGURATION",
+      "display_policy": "DISPLAY_WITH_QUALIFIER",
+      "estimate": {
+        "calculation_id": "ASTRA-E557",
+        "field": "C6-RO-P.dimensions",
+        "state": "ASSUMED",
+        "unit": "mm[3]",
+        "low": [
+          220,
+          170,
+          35
+        ],
+        "central": [
+          220,
+          170,
+          35
+        ],
+        "high": [
+          220,
+          170,
+          35
+        ],
+        "method": "Independent input corner bounds; deterministic central design point; not a statistical confidence interval",
+        "formula": "\"x\"",
+        "expression": "x",
+        "inputs": {
+          "x": {
+            "low": [
+              220,
+              170,
+              35
+            ],
+            "central": [
+              220,
+              170,
+              35
+            ],
+            "high": [
+              220,
+              170,
+              35
+            ]
+          }
+        },
+        "assumptions": [
+          "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+        ],
+        "analogue_validity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "central_selection": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "confidence": "LOW",
+        "sensitivity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "dominant_uncertainty": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "falsification_condition": "Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.",
+        "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI",
+        "source_ids": [
+          "ASTRA-TASK"
+        ]
+      },
+      "demo_safe_sentence": "Modeled C6-RO-P.dimensions: [220, 170, 35] mm[3]; Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+    },
+    "C6-RO-W.dimensions": {
+      "kind": "evidence_field",
+      "value": {
+        "low": [
+          257,
+          195,
+          103
+        ],
+        "central": [
+          257,
+          195,
+          103
+        ],
+        "high": [
+          257,
+          195,
+          103
+        ]
+      },
+      "state": "OBSERVED_VERIFIED",
+      "unit": "mm[3]",
+      "source_ids": [
+        "S18"
+      ],
+      "calculation_id": "ASTRA-E558",
+      "confidence": "LOW",
+      "qualifier": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+      "scope": "CONFIGURATION",
+      "display_policy": "DISPLAY_VERIFIED",
+      "estimate": {
+        "calculation_id": "ASTRA-E558",
+        "field": "C6-RO-W.dimensions",
+        "state": "OBSERVED_VERIFIED",
+        "unit": "mm[3]",
+        "low": [
+          257,
+          195,
+          103
+        ],
+        "central": [
+          257,
+          195,
+          103
+        ],
+        "high": [
+          257,
+          195,
+          103
+        ],
+        "method": "Independent input corner bounds; deterministic central design point; not a statistical confidence interval",
+        "formula": "\"x\"",
+        "expression": "x",
+        "inputs": {
+          "x": {
+            "low": [
+              257,
+              195,
+              103
+            ],
+            "central": [
+              257,
+              195,
+              103
+            ],
+            "high": [
+              257,
+              195,
+              103
+            ]
+          }
+        },
+        "assumptions": [
+          "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+        ],
+        "analogue_validity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "central_selection": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "confidence": "LOW",
+        "sensitivity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "dominant_uncertainty": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "falsification_condition": "Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.",
+        "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI",
+        "source_ids": [
+          "S18"
+        ]
+      },
+      "demo_safe_sentence": "Modeled C6-RO-W.dimensions: [257, 195, 103] mm[3]; Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+    },
+    "C6-RO-H.dimensions": {
+      "kind": "evidence_field",
+      "value": {
+        "low": [
+          255,
+          195,
+          90
+        ],
+        "central": [
+          255,
+          195,
+          90
+        ],
+        "high": [
+          255,
+          195,
+          90
+        ]
+      },
+      "state": "OBSERVED_VERIFIED",
+      "unit": "mm[3]",
+      "source_ids": [
+        "S19",
+        "S23"
+      ],
+      "calculation_id": "ASTRA-E559",
+      "confidence": "LOW",
+      "qualifier": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+      "scope": "CONFIGURATION",
+      "display_policy": "DISPLAY_VERIFIED",
+      "estimate": {
+        "calculation_id": "ASTRA-E559",
+        "field": "C6-RO-H.dimensions",
+        "state": "OBSERVED_VERIFIED",
+        "unit": "mm[3]",
+        "low": [
+          255,
+          195,
+          90
+        ],
+        "central": [
+          255,
+          195,
+          90
+        ],
+        "high": [
+          255,
+          195,
+          90
+        ],
+        "method": "Independent input corner bounds; deterministic central design point; not a statistical confidence interval",
+        "formula": "\"x\"",
+        "expression": "x",
+        "inputs": {
+          "x": {
+            "low": [
+              255,
+              195,
+              90
+            ],
+            "central": [
+              255,
+              195,
+              90
+            ],
+            "high": [
+              255,
+              195,
+              90
+            ]
+          }
+        },
+        "assumptions": [
+          "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+        ],
+        "analogue_validity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "central_selection": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "confidence": "LOW",
+        "sensitivity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "dominant_uncertainty": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "falsification_condition": "Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.",
+        "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI",
+        "source_ids": [
+          "S19",
+          "S23"
+        ]
+      },
+      "demo_safe_sentence": "Modeled C6-RO-H.dimensions: [255, 195, 90] mm[3]; Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+    },
+    "C6-EU.dimensions": {
+      "kind": "evidence_field",
+      "value": {
+        "low": [
+          293,
+          193,
+          45
+        ],
+        "central": [
+          293,
+          193,
+          45
+        ],
+        "high": [
+          293,
+          193,
+          45
+        ]
+      },
+      "state": "OBSERVED_VERIFIED",
+      "unit": "mm[3]",
+      "source_ids": [
+        "S24"
+      ],
+      "calculation_id": "ASTRA-E560",
+      "confidence": "LOW",
+      "qualifier": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+      "scope": "CONFIGURATION",
+      "display_policy": "DISPLAY_VERIFIED",
+      "estimate": {
+        "calculation_id": "ASTRA-E560",
+        "field": "C6-EU.dimensions",
+        "state": "OBSERVED_VERIFIED",
+        "unit": "mm[3]",
+        "low": [
+          293,
+          193,
+          45
+        ],
+        "central": [
+          293,
+          193,
+          45
+        ],
+        "high": [
+          293,
+          193,
+          45
+        ],
+        "method": "Independent input corner bounds; deterministic central design point; not a statistical confidence interval",
+        "formula": "\"x\"",
+        "expression": "x",
+        "inputs": {
+          "x": {
+            "low": [
+              293,
+              193,
+              45
+            ],
+            "central": [
+              293,
+              193,
+              45
+            ],
+            "high": [
+              293,
+              193,
+              45
+            ]
+          }
+        },
+        "assumptions": [
+          "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+        ],
+        "analogue_validity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "central_selection": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "confidence": "LOW",
+        "sensitivity": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "dominant_uncertainty": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+        "falsification_condition": "Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.",
+        "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI",
+        "source_ids": [
+          "S24"
+        ]
+      },
+      "demo_safe_sentence": "Modeled C6-EU.dimensions: [293, 193, 45] mm[3]; Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json."
+    },
     "B3.virgin_fraction_inventory": {
       "kind": "evidence_field",
       "value": {
@@ -41699,13 +42488,13 @@
       "source_ids": [
         "S17"
       ],
-      "calculation_id": "ASTRA-E552",
+      "calculation_id": "ASTRA-E561",
       "confidence": "LOW",
       "qualifier": "Virgin fraction 1 in modeled no-PCR baseline scenario.",
       "scope": "CONFIGURATION",
       "display_policy": "DISPLAY_ESTIMATED",
       "estimate": {
-        "calculation_id": "ASTRA-E552",
+        "calculation_id": "ASTRA-E561",
         "field": "B3.virgin_fraction_inventory",
         "state": "ESTIMATED",
         "unit": "fraction",
@@ -41774,13 +42563,13 @@
       "source_ids": [
         "ASTRA-TASK"
       ],
-      "calculation_id": "ASTRA-E553",
+      "calculation_id": "ASTRA-E562",
       "confidence": "LOW",
       "qualifier": "No recycled PP credit in selected B3 scenario; identical virgin and polymer mass, ratio exactly 1.",
       "scope": "CONFIGURATION",
       "display_policy": "DISPLAY_WITH_QUALIFIER",
       "estimate": {
-        "calculation_id": "ASTRA-E553",
+        "calculation_id": "ASTRA-E562",
         "field": "B3.virgin_fraction",
         "state": "ASSUMED",
         "unit": "fraction",

@@ -269,19 +269,30 @@
     "why": "No selected orderable dimensions.",
     "can_estimate": true,
     "research_route": "Exact drawing -> geometric usable-envelope scenario",
-    "target": "BAG.usable_length",
+    "target": "C1.dimensions",
     "final_state": "ASSUMED",
     "final_values": {
-      "low": 280,
-      "central": 300,
-      "high": 310
+      "low": [
+        350,
+        180,
+        70
+      ],
+      "central": [
+        350,
+        180,
+        70
+      ],
+      "high": [
+        350,
+        180,
+        70
+      ]
     },
-    "calculation_id": "ASTRA-E044",
+    "calculation_id": "ASTRA-E552",
     "source_ids": [
-      "ASTRA-TASK",
-      "S17"
+      "ASTRA-TASK"
     ],
-    "synthesis": "Deformable oval cross-section scenario for nominal 180+70 by 350 mm bag. Width and depth are not independent rectangular gusset dimensions.",
+    "synthesis": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
     "closure_scope": "Proposed modeled projection only; current runtime unchanged"
   },
   {
@@ -564,19 +575,30 @@
     "why": "No selected orderable dimensions.",
     "can_estimate": true,
     "research_route": "Exact drawing -> geometric usable-envelope scenario",
-    "target": "BAG.usable_length",
+    "target": "C2.dimensions",
     "final_state": "ASSUMED",
     "final_values": {
-      "low": 280,
-      "central": 300,
-      "high": 310
+      "low": [
+        350,
+        180,
+        70
+      ],
+      "central": [
+        350,
+        180,
+        70
+      ],
+      "high": [
+        350,
+        180,
+        70
+      ]
     },
-    "calculation_id": "ASTRA-E044",
+    "calculation_id": "ASTRA-E553",
     "source_ids": [
-      "ASTRA-TASK",
-      "S17"
+      "ASTRA-TASK"
     ],
-    "synthesis": "Deformable oval cross-section scenario for nominal 180+70 by 350 mm bag. Width and depth are not independent rectangular gusset dimensions.",
+    "synthesis": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
     "closure_scope": "Proposed modeled projection only; current runtime unchanged"
   },
   {
@@ -865,19 +887,30 @@
     "why": "No selected orderable dimensions.",
     "can_estimate": true,
     "research_route": "Exact drawing -> geometric usable-envelope scenario",
-    "target": "BAG.usable_length",
+    "target": "C3.dimensions",
     "final_state": "ASSUMED",
     "final_values": {
-      "low": 280,
-      "central": 300,
-      "high": 310
+      "low": [
+        350,
+        180,
+        70
+      ],
+      "central": [
+        350,
+        180,
+        70
+      ],
+      "high": [
+        350,
+        180,
+        70
+      ]
     },
-    "calculation_id": "ASTRA-E044",
+    "calculation_id": "ASTRA-E554",
     "source_ids": [
-      "ASTRA-TASK",
-      "S17"
+      "ASTRA-TASK"
     ],
-    "synthesis": "Deformable oval cross-section scenario for nominal 180+70 by 350 mm bag. Width and depth are not independent rectangular gusset dimensions.",
+    "synthesis": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
     "closure_scope": "Proposed modeled projection only; current runtime unchanged"
   },
   {
@@ -1173,18 +1206,30 @@
     "why": "Present; scope/normalization review",
     "can_estimate": true,
     "research_route": "Exact drawing -> geometric usable-envelope scenario",
-    "target": "C4.usable_length",
+    "target": "C4.dimensions",
     "final_state": "ASSUMED",
     "final_values": {
-      "low": 186.3,
-      "central": 207,
-      "high": 217.35
+      "low": [
+        227,
+        178,
+        43
+      ],
+      "central": [
+        227,
+        178,
+        43
+      ],
+      "high": [
+        227,
+        178,
+        43
+      ]
     },
-    "calculation_id": "ASTRA-E300",
+    "calculation_id": "ASTRA-E555",
     "source_ids": [
       "ASTRA-TASK"
     ],
-    "synthesis": "Internal taper/rim model; deep whole-chicken configurations include a post-oven domed-lid assumption, to be tested.",
+    "synthesis": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
     "closure_scope": "Proposed modeled projection only; current runtime unchanged"
   },
   {
@@ -1409,7 +1454,7 @@
     "can_estimate": true,
     "research_route": "Exact list price -> EU landed market/order scenario",
     "target": "C5.order_unit",
-    "final_state": "ASSUMED",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
       "low": 780,
       "central": 780,
@@ -1420,7 +1465,7 @@
       "ASTRA-S16"
     ],
     "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-052",
@@ -1490,19 +1535,33 @@
     "why": "Present; scope/normalization review",
     "can_estimate": true,
     "research_route": "Exact drawing -> geometric usable-envelope scenario",
-    "target": "C5.usable_length",
-    "final_state": "ASSUMED",
+    "target": "C5.dimensions",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
-      "low": 211,
-      "central": 222,
-      "high": 233
+      "low": [
+        190,
+        247,
+        37
+      ],
+      "central": [
+        190,
+        247,
+        37
+      ],
+      "high": [
+        190,
+        247,
+        37
+      ]
     },
-    "calculation_id": "ASTRA-E325",
+    "calculation_id": "ASTRA-E556",
     "source_ids": [
-      "ASTRA-S15"
+      "ASTRA-S15",
+      "S10",
+      "S15"
     ],
-    "synthesis": "Internal taper/rim model; deep whole-chicken configurations include a post-oven domed-lid assumption, to be tested.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "synthesis": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-055",
@@ -1517,7 +1576,7 @@
     "can_estimate": true,
     "research_route": "Exact drawing -> geometric usable-envelope scenario",
     "target": "C5.capacity_ml",
-    "final_state": "ASSUMED",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
       "low": 1240,
       "central": 1240,
@@ -1528,7 +1587,7 @@
       "ASTRA-S15"
     ],
     "synthesis": "Published nominal body capacity; usable fill is lower.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-056",
@@ -1725,7 +1784,7 @@
     "can_estimate": true,
     "research_route": "Exact list price -> EU landed market/order scenario",
     "target": "C6-RO-P.order_unit",
-    "final_state": "ASSUMED",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
       "low": 100,
       "central": 100,
@@ -1736,7 +1795,7 @@
       "ASTRA-TASK"
     ],
     "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-063",
@@ -1777,7 +1836,7 @@
     "can_estimate": true,
     "research_route": "Exact list price -> EU landed market/order scenario",
     "target": "C6-RO-P.lead_time",
-    "final_state": "ASSUMED",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
       "low": 3,
       "central": 5,
@@ -1788,7 +1847,7 @@
       "ASTRA-TASK"
     ],
     "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-065",
@@ -1802,18 +1861,30 @@
     "why": "Projection absent or exact object shadows model",
     "can_estimate": true,
     "research_route": "Exact drawing -> geometric usable-envelope scenario",
-    "target": "C6-RO-P.usable_length",
+    "target": "C6-RO-P.dimensions",
     "final_state": "ASSUMED",
     "final_values": {
-      "low": 180.0,
-      "central": 200,
-      "high": 210.0
+      "low": [
+        220,
+        170,
+        35
+      ],
+      "central": [
+        220,
+        170,
+        35
+      ],
+      "high": [
+        220,
+        170,
+        35
+      ]
     },
-    "calculation_id": "ASTRA-E348",
+    "calculation_id": "ASTRA-E557",
     "source_ids": [
       "ASTRA-TASK"
     ],
-    "synthesis": "Internal taper/rim model; deep whole-chicken configurations include a post-oven domed-lid assumption, to be tested.",
+    "synthesis": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
     "closure_scope": "Proposed modeled projection only; current runtime unchanged"
   },
   {
@@ -2030,7 +2101,7 @@
     "can_estimate": true,
     "research_route": "Exact list price -> EU landed market/order scenario",
     "target": "C6-RO-W.order_unit",
-    "final_state": "ASSUMED",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
       "low": 200,
       "central": 200,
@@ -2041,7 +2112,7 @@
       "ASTRA-TASK"
     ],
     "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-074",
@@ -2082,7 +2153,7 @@
     "can_estimate": true,
     "research_route": "Exact list price -> EU landed market/order scenario",
     "target": "C6-RO-W.lead_time",
-    "final_state": "ASSUMED",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
       "low": 3,
       "central": 5,
@@ -2093,7 +2164,7 @@
       "ASTRA-TASK"
     ],
     "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-076",
@@ -2111,19 +2182,31 @@
     "why": "Present; scope/normalization review",
     "can_estimate": true,
     "research_route": "Exact drawing -> geometric usable-envelope scenario",
-    "target": "C6-RO-W.usable_length",
-    "final_state": "ASSUMED",
+    "target": "C6-RO-W.dimensions",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
-      "low": 213.3,
-      "central": 237,
-      "high": 248.85
+      "low": [
+        257,
+        195,
+        103
+      ],
+      "central": [
+        257,
+        195,
+        103
+      ],
+      "high": [
+        257,
+        195,
+        103
+      ]
     },
-    "calculation_id": "ASTRA-E373",
+    "calculation_id": "ASTRA-E558",
     "source_ids": [
-      "ASTRA-TASK"
+      "S18"
     ],
-    "synthesis": "Internal taper/rim model; deep whole-chicken configurations include a post-oven domed-lid assumption, to be tested.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "synthesis": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-077",
@@ -2342,7 +2425,7 @@
     "can_estimate": true,
     "research_route": "Exact list price -> EU landed market/order scenario",
     "target": "C6-RO-H.order_unit",
-    "final_state": "ASSUMED",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
       "low": 100,
       "central": 100,
@@ -2353,7 +2436,7 @@
       "ASTRA-TASK"
     ],
     "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-085",
@@ -2394,7 +2477,7 @@
     "can_estimate": true,
     "research_route": "Exact list price -> EU landed market/order scenario",
     "target": "C6-RO-H.lead_time",
-    "final_state": "ASSUMED",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
       "low": 3,
       "central": 5,
@@ -2405,7 +2488,7 @@
       "ASTRA-TASK"
     ],
     "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-087",
@@ -2423,19 +2506,32 @@
     "why": "Present; scope/normalization review",
     "can_estimate": true,
     "research_route": "Exact drawing -> geometric usable-envelope scenario",
-    "target": "C6-RO-H.usable_length",
-    "final_state": "ASSUMED",
+    "target": "C6-RO-H.dimensions",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
-      "low": 211.5,
-      "central": 235,
-      "high": 246.75
+      "low": [
+        255,
+        195,
+        90
+      ],
+      "central": [
+        255,
+        195,
+        90
+      ],
+      "high": [
+        255,
+        195,
+        90
+      ]
     },
-    "calculation_id": "ASTRA-E398",
+    "calculation_id": "ASTRA-E559",
     "source_ids": [
-      "ASTRA-TASK"
+      "S19",
+      "S23"
     ],
-    "synthesis": "Internal taper/rim model; deep whole-chicken configurations include a post-oven domed-lid assumption, to be tested.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "synthesis": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-088",
@@ -2450,7 +2546,7 @@
     "can_estimate": true,
     "research_route": "Exact drawing -> geometric usable-envelope scenario",
     "target": "C6-RO-H.capacity_ml",
-    "final_state": "ASSUMED",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
       "low": 2400,
       "central": 2400,
@@ -2461,7 +2557,7 @@
       "S19"
     ],
     "synthesis": "Published nominal body capacity; usable fill is lower.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-089",
@@ -2659,7 +2755,7 @@
     "can_estimate": true,
     "research_route": "Exact list price -> EU landed market/order scenario",
     "target": "C6-EU.order_unit",
-    "final_state": "ASSUMED",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
       "low": 400,
       "central": 400,
@@ -2670,7 +2766,7 @@
       "S24"
     ],
     "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-096",
@@ -2711,7 +2807,7 @@
     "can_estimate": true,
     "research_route": "Exact list price -> EU landed market/order scenario",
     "target": "C6-EU.lead_time",
-    "final_state": "ASSUMED",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
       "low": 7,
       "central": 14,
@@ -2722,7 +2818,7 @@
       "S24"
     ],
     "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-098",
@@ -2740,19 +2836,31 @@
     "why": "Present; scope/normalization review",
     "can_estimate": true,
     "research_route": "Exact drawing -> geometric usable-envelope scenario",
-    "target": "C6-EU.usable_length",
-    "final_state": "ASSUMED",
+    "target": "C6-EU.dimensions",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
-      "low": 245.7,
-      "central": 273,
-      "high": 286.65
+      "low": [
+        293,
+        193,
+        45
+      ],
+      "central": [
+        293,
+        193,
+        45
+      ],
+      "high": [
+        293,
+        193,
+        45
+      ]
     },
-    "calculation_id": "ASTRA-E423",
+    "calculation_id": "ASTRA-E560",
     "source_ids": [
-      "ASTRA-TASK"
+      "S24"
     ],
-    "synthesis": "Internal taper/rim model; deep whole-chicken configurations include a post-oven domed-lid assumption, to be tested.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "synthesis": "Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.",
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-099",
@@ -2767,7 +2875,7 @@
     "can_estimate": true,
     "research_route": "Exact drawing -> geometric usable-envelope scenario",
     "target": "C6-EU.capacity_ml",
-    "final_state": "ASSUMED",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
       "low": 1896,
       "central": 1896,
@@ -2778,7 +2886,7 @@
       "S24"
     ],
     "synthesis": "Published nominal body capacity; usable fill is lower.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-100",
@@ -3533,7 +3641,7 @@
     "can_estimate": true,
     "research_route": "Keep provider observation separate from bounded scenario",
     "target": "B1-ESTIMATED.virgin_fraction",
-    "final_state": "ASSUMED",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
       "low": 1,
       "central": 1,
@@ -3546,7 +3654,7 @@
       "TASK"
     ],
     "synthesis": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
-    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+    "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
     "id": "GAP-121",
@@ -3619,7 +3727,7 @@
     "can_estimate": true,
     "research_route": "Keep provider observation separate from bounded scenario",
     "target": "B1-ESTIMATED.virgin_fraction",
-    "final_state": "ASSUMED",
+    "final_state": "OBSERVED_VERIFIED",
     "final_values": {
       "low": 1,
       "central": 1,
@@ -3710,7 +3818,7 @@
       "central": 1,
       "high": 1
     },
-    "calculation_id": "ASTRA-E553",
+    "calculation_id": "ASTRA-E562",
     "source_ids": [
       "ASTRA-TASK"
     ],

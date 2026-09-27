@@ -21,7 +21,7 @@ All modeled values are flagged **[M]**.
 
 | Candidate / config | Total mass (g) | Plastic mass (g) | Virgin mass (g) | Recycled % | Renewable % | Cost net RON | Thermal screen °C | Whole fill ratio | Outcome |
 |---|---:|---:|---:|---:|---:|---:|---|---:|---|
-| **B1-ESTIMATED** (baseline) | 6.50 [M] | 6.50 [M] | 6.50 [M] | 0 [M] | 0 [M] | 0.723 [M] | 200–220 [M] | 0.55 [M] | INCUMBENT |
+| **B1-ESTIMATED** (baseline) | 6.50 [M] | 6.50 [M] | 6.50 [M] | 0 [M] | 0 [M] | 0.723 [M] | 200–220 [M] | — | INCUMBENT |
 | **C1** Sacma B.Life Gaia bag | 20.11 [M] | 11.08 [M]¹ | 11.08 [M]¹ | 0 [M] | 91.4% [M] | 1.483 [M] | 150–200 [M] | 0.55 [M] | QUALIFICATION REQUIRED |
 | **C2** Sirane Siralon nylon bag | 5.74 [M] | 5.74 [M] | 5.74 [M] | 0 [M] | 0 [M] | 1.378 [M] | 210 [M] | 0.55 [M] | QUALIFICATION REQUIRED |
 | **C3** Sealed Air Oven Ease bag | 14.97 [M] | 14.97 [M] | 14.97 [M] | 0 [M] | 0 [M] | 1.794 [M] | 220 [M] | 0.55 [M] | QUALIFICATION REQUIRED |

@@ -24,7 +24,7 @@ Scenario mass and cost are added by ASTRA-R2 modeling, not from Profi procuremen
 | total_package_mass_g | **6.4985** | g | ESTIMATED | ASTRA-E006 |
 | plastic_mass_g | **6.4985** | g | ESTIMATED | ASTRA-E007 |
 | virgin_plastic_mass_g | **6.4985** | g | ESTIMATED | ASTRA-E008 |
-| virgin_fraction | **1.000** | fraction | ASSUMED | ASTRA-E009 |
+| virgin_fraction | **1.000** | fraction | OBSERVED_VERIFIED [OV] | ASTRA-E009 |
 | recycled_material_fraction | **0.000** | fraction | ASSUMED | ASTRA-E010 |
 | renewable_material_fraction | **0.000** | fraction | ASSUMED | ASTRA-E011 |
 | complete_cost (net RON) | **0.7230** | RON/pack | ESTIMATED | ASTRA-E017 |

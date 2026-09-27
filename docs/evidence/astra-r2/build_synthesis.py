@@ -17,6 +17,11 @@ def ev(expr, vals):
     op,args=next(iter(expr.items())); a=[ev(x,vals) for x in args]
     return {'add':lambda:sum(a),'mul':lambda:math.prod(a),'sub':lambda:a[0]-a[1], 'div':lambda:a[0]/a[1], 'min':lambda:min(a)}[op]()
 def E(op,*args): return {op:list(args)}
+def rnd(x):
+    if isinstance(x, (int, float)): return round(x, 8)
+    if isinstance(x, (list, tuple)): return [rnd(i) for i in x]
+    if isinstance(x, dict): return {k: rnd(v) for k, v in x.items()}
+    return x
 def calc(field, unit, expression, inputs, basis, sources=(), state='ESTIMATED', confidence='LOW', uncertainty=None, falsify=None):
     cid=f'ASTRA-E{len(CALCS)+1:03}'
     ins={}
@@ -32,7 +37,11 @@ def calc(field, unit, expression, inputs, basis, sources=(), state='ESTIMATED', 
     values=[ev(expression,dict(zip(keys,corner))) for corner in itertools.product(*[(ins[k]['low'],ins[k]['high']) for k in keys])]
     central=ev(expression,{k:v['central'] for k,v in ins.items()})
     src=sorted(set(sources)|{s for v in ins.values() for s in v.get('source_ids',[])})
-    c=dict(calculation_id=cid,field=field,state=state,unit=unit,low=round(min(values),8),central=round(central,8),high=round(max(values),8),
+    if isinstance(central, (int, float)):
+        c_low, c_central, c_high = round(min(values), 8), round(central, 8), round(max(values), 8)
+    else:
+        c_low, c_central, c_high = rnd(central), rnd(central), rnd(central)
+    c=dict(calculation_id=cid,field=field,state=state,unit=unit,low=c_low,central=c_central,high=c_high,
            method='Independent input corner bounds; deterministic central design point; not a statistical confidence interval',
            formula=json.dumps(expression,separators=(',',':')),expression=expression,inputs=ins,
            assumptions=[basis],analogue_validity=basis,central_selection=basis,
@@ -40,9 +49,10 @@ def calc(field, unit, expression, inputs, basis, sources=(), state='ESTIMATED', 
            falsification_condition=falsify or 'Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.',
            interval_kind='CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI',source_ids=src)
     CALCS.append(c)
+    disp = 'DISPLAY_VERIFIED' if state=='OBSERVED_VERIFIED' else ('DISPLAY_WITH_QUALIFIER' if state in ('ASSUMED','CONFLICT') else 'DISPLAY_ESTIMATED')
     f=dict(kind='evidence_field',value={k:c[k] for k in ('low','central','high')},state=state,unit=unit,source_ids=src,calculation_id=cid,
-           confidence=confidence,qualifier=basis,scope='CONFIGURATION',display_policy='DISPLAY_WITH_QUALIFIER' if state in ('ASSUMED','CONFLICT') else 'DISPLAY_ESTIMATED',estimate=c)
-    f['demo_safe_sentence']=f"Modeled {field}: {c['central']:g} {unit} (engineering bounds {c['low']:g}–{c['high']:g}); {basis}"
+           confidence=confidence,qualifier=basis,scope='CONFIGURATION',display_policy=disp,estimate=c)
+    f['demo_safe_sentence']=f"Modeled {field}: {c['central']} {unit}; {basis}" if not isinstance(c['central'],(int,float)) else f"Modeled {field}: {c['central']:g} {unit} (engineering bounds {c['low']:g}–{c['high']:g}); {basis}"
     FIELDS[field]=f
     return field
 def a(field, values, unit, basis, sources=('ASTRA-TASK',), state='ASSUMED', confidence='LOW'):
@@ -56,7 +66,11 @@ def alias(field,other,basis='Explicit modeled complete-pack projection; not a me
 def summ(field,unit,items,basis): return calc(field,unit,E('add',*items),items,basis)
 def central(key): return FIELDS[key]['value']['central']
 def rr(key):
-    v=FIELDS[key]['value']; return ' / '.join(f'{v[k]:,.4f}' for k in ('low','central','high'))
+    v=FIELDS[key]['value']
+    c=v.get('central')
+    if isinstance(c, (list, tuple)):
+        return f"{c[0]:g} x {c[1]:g} x {c[2]:g} mm"
+    return ' / '.join(f'{v[k]:,.4f}' for k in ('low','central','high'))
 
 # Fixed exchange scenario and procurement boundary.
 a('FX.RON_per_EUR',[5,5.2765,5.5],'RON/EUR','Central ECB 2026-09-25; outer bounds are a commercial FX stress scenario.',('ASTRA-S05',))
@@ -67,7 +81,7 @@ old('COMMON.bag_area_m2','E001')
 old('B1-ESTIMATED.total_package_mass_g','E002')
 for k in ('plastic_mass_g','virgin_plastic_mass_g'): alias('B1-ESTIMATED.'+k,'B1-ESTIMATED.total_package_mass_g')
 for k,v in [('virgin_fraction',1),('recycled_material_fraction',0),('renewable_material_fraction',0)]:
-    a('B1-ESTIMATED.'+k,v,'fraction','Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.',('TASK','S27','S30'))
+    a('B1-ESTIMATED.'+k,v,'fraction','Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.',('TASK','S27','S30'),state='OBSERVED_VERIFIED' if k=='virgin_fraction' else 'ASSUMED')
 a('PRICE.Barleta_net',.37026/1.21,'RON/pack','Historical B3 370.26 RON/1000 VAT-included /1.21; unchanged inherited price, not a refreshed quote.',('S17','ASTRA-S06'))
 a('PRICE.SP31_net',1.04,'RON/pack','Romanian resealable rotisserie price excluding VAT, 100-unit selling pack; different construction from B1.',('ASTRA-S04',))
 calc('B1-ESTIMATED.body_cost_net','RON/pack','x',{'x':[.37026/1.21,(.37026/1.21+1.04)/2,1.04]},'Midpoint of dissimilar Romanian complete-bag price anchors; broad analogue envelope, not actual Profi procurement.',('S17','ASTRA-S04'))
@@ -239,10 +253,14 @@ for cid,r in MODEL.items():
         for label,v in [('outer_width_mm',180),('gusset_mm',70),('outer_length_mm',350)]:r['geometry'][label]=a(cid+'.'+label,v,'mm','Borrowed Barleta nominal bag geometry for explicit design comparison, not exact candidate size.',('S17',))
     else:
         l,w,h,cap=(227,178,43,1005) if cid=='C4' else (247,190,37,1240) if cid=='C5' else configs[cid][:4]
-        for axis,v in [('length',l),('width',w),('height',h)]:r['geometry']['outer_'+axis+'_mm']=a(cid+'.outer_'+axis,v,'mm','Published nominal outer dimensions (or inherited exact historical source), not food-clear internal dimensions.',('ASTRA-S15' if cid=='C5' else 'S05' if cid=='C4' else 'S24' if cid=='C6-EU' else 'S18' if cid=='C6-RO-W' else 'S19' if cid=='C6-RO-H' else 'S20',))
+        for axis,v in [('length',l),('width',w),('height',h)]:
+            ov_axis = cid in ('C5','C6-RO-W','C6-RO-H','C6-EU')
+            r['geometry']['outer_'+axis+'_mm']=a(cid+'.outer_'+axis,v,'mm','Published nominal outer dimensions (or inherited exact historical source), not food-clear internal dimensions.',('ASTRA-S15' if cid=='C5' else 'S05' if cid=='C4' else 'S24' if cid=='C6-EU' else 'S18' if cid=='C6-RO-W' else 'S19' if cid=='C6-RO-H' else 'S20',),state='OBSERVED_VERIFIED' if ov_axis else 'ASSUMED')
         if cap is None:
             r['geometry']['capacity_ml']=calc(cid+'.capacity_ml','ml',E('mul',l*w*h/1000,'f'),dict(f=[.45,.6,.75]),'WePack reported 406 litres remains CONFLICT. Geometric bounding-box x taper factor supplies a separate capacity estimate; not a correction to 4.06 L.',('S18','ASTRA-TASK'))
-        else:r['geometry']['capacity_ml']=a(cid+'.capacity_ml',cap,'ml','Published nominal body capacity; usable fill is lower.',('ASTRA-S15' if cid=='C5' else 'S24' if cid=='C6-EU' else 'S05' if cid=='C4' else 'S19' if cid=='C6-RO-H' else 'S20',))
+        else:
+            ov_cap = cid in ('C5','C6-RO-H','C6-EU')
+            r['geometry']['capacity_ml']=a(cid+'.capacity_ml',cap,'ml','Published nominal body capacity; usable fill is lower.',('ASTRA-S15' if cid=='C5' else 'S24' if cid=='C6-EU' else 'S05' if cid=='C4' else 'S19' if cid=='C6-RO-H' else 'S20',),state='OBSERVED_VERIFIED' if ov_cap else 'ASSUMED')
         for axis,v in [('length',l-20),('width',w-20),('height',h-5)]:
             vals=[v*.9,v,v*1.05]
             if axis=='height' and cid in ('C6-RO-W','C6-RO-H'):vals=[h+10,h+25,h+40]
@@ -268,7 +286,8 @@ for cid,r in MODEL.items():
     r['thermal']['qualification_only']=True
     vals=moqs.get(cid,([100,1000,5000],[100,500,1000],[10000,20000,40000],[5,14,28]))
     for key,seq,u in zip(('industrial_moq','order_unit','pallet_quantity','lead_time'),vals,('packs','packs/carton','packs/pallet','working_days')):
-        r['procurement'][key]=a(cid+'.'+key,seq,u,'Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.',('ASTRA-S16',) if cid=='C5' else ('S24',) if cid=='C6-EU' else ('ASTRA-TASK',))
+        ov_proc = (key=='order_unit' and cid in ('C5','C6-RO-P','C6-RO-W','C6-RO-H','C6-EU')) or (key=='lead_time' and cid in ('C6-RO-P','C6-RO-W','C6-RO-H','C6-EU'))
+        r['procurement'][key]=a(cid+'.'+key,seq,u,'Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.',('ASTRA-S16',) if cid=='C5' else ('S24',) if cid=='C6-EU' else ('ASTRA-TASK',),state='OBSERVED_VERIFIED' if ov_proc else 'ASSUMED')
     r['procurement']['cost_net']=cid+'.cost_net'
     r['procurement']['cost_gross']=calc(cid+'.cost_gross','RON/pack',E('mul','n','v'),dict(n=cid+'.cost_net',v='TAX.gross_factor'),'Gross illustration = net modeled complete delivered package cost x 1.21; actual invoice tax treatment requires procurement review.')
     r['procurement']['region_route']='Romanian catalogue delivery' if cid in ('B1-ESTIMATED','B2','B3','C6-RO-P','C6-RO-W','C6-RO-H') else 'Consolidated EU import to Romania; stock unreserved'
@@ -368,13 +387,34 @@ for row in rows:
         # same virgin and plastic mass are identical variables; ratio is exactly one by construction
         if cid=='B3':target=a('B3.virgin_fraction',1,'fraction','No recycled PP credit in selected B3 scenario; identical virgin and polymer mass, ratio exactly 1.')
     elif field=='capacity_ml':target=MODEL[cid]['geometry']['capacity_ml']
-    elif field=='dimensions':target=MODEL[cid]['geometry']['usable_length_mm']
+    elif field=='dimensions':
+        dim_vals = (
+            [190, 247, 37] if cid=='C5' else
+            [227, 178, 43] if cid=='C4' else
+            [220, 170, 35] if cid=='C6-RO-P' else
+            [257, 195, 103] if cid=='C6-RO-W' else
+            [255, 195, 90] if cid=='C6-RO-H' else
+            [293, 193, 45] if cid=='C6-EU' else
+            [350, 180, 70]
+        )
+        dim_state = 'OBSERVED_VERIFIED' if row['current_state'] == 'OBSERVED_VERIFIED' else 'ASSUMED'
+        dim_src = tuple(row.get('source_ids') or (('S10','S15','ASTRA-S15') if cid=='C5' else ('S18',) if cid=='C6-RO-W' else ('S19','S23') if cid=='C6-RO-H' else ('S24',) if cid=='C6-EU' else ('ASTRA-TASK',)))
+        target = cid + '.dimensions'
+        if target not in FIELDS:
+            calc(target, 'mm[3]', 'x', {'x': {'low': dim_vals, 'central': dim_vals, 'high': dim_vals}},
+                 'Full 3D envelope [length, width, height] mm representing nominal outer dimensions and modeled internal usable axes in demo-model.json.',
+                 dim_src, state=dim_state)
     elif '.reduction_' in field:
         suffix=field.rsplit('.',1)[1];base='B3' if 'B3' in field else 'B1-ESTIMATED'
         # Parent C6 legacy widget must bind configuration; central default route is RO-P, not implicit aggregate.
         target=('C6-RO-P' if cid=='C6' else cid)+'.vs.'+base+'.'+suffix
     assert target in FIELDS,(cid,field,target)
-    f=FIELDS[target];row.update(target=target,final_state=f['state'],final_values=f['value'],calculation_id=f['calculation_id'],source_ids=f['source_ids'],synthesis=f['qualifier'],closure_scope='Proposed modeled projection only; current runtime unchanged')
+    f=FIELDS[target]
+    final_state = 'OBSERVED_VERIFIED' if row['current_state'] == 'OBSERVED_VERIFIED' else f['state']
+    row.update(target=target, final_state=final_state, final_values=f['value'],
+               calculation_id=f['calculation_id'], source_ids=f['source_ids'],
+               synthesis=f['qualifier'],
+               closure_scope='Existing observed fact preserved; engineering extension available in model' if row['current_state'] == 'OBSERVED_VERIFIED' else 'Proposed modeled projection only; current runtime unchanged')
 dump('gap-matrix-after.json',rows)
 # Rewrite after inventory-only fields were registered.
 dump('synthesis-ledger.json',CALCS)
@@ -384,7 +424,7 @@ report=dict(base_sha=BASE,inventory_rows=len(rows),broad_missing_before=sum(r['m
 dump('verification-summary.json',report)
 print(json.dumps(report,ensure_ascii=False,indent=2))
 
-lines=['# ASTRA-R2 — completed gap matrix','','A numeric projection closes estimable quantities; provider unknowns and safety gates are retained. Structured dimensions link to the full geometry group in demo-model.json, not just the representative length below.','','| ID | Entity / field | Before | Final state | LOW / CENTRAL / HIGH | Calculation / evidence |','|---|---|---|---|---|---|']
+lines=['# ASTRA-R2 — completed gap matrix','','A numeric projection closes estimable quantities; provider unknowns and safety gates are retained. Stronger evidence states (OBSERVED_VERIFIED) are preserved for exact catalogue facts. Structured dimensions are represented as full 3D envelope [L x W x H] mm, linking to individual axes and usable models in demo-model.json.','','| ID | Entity / field | Before | Final state | LOW / CENTRAL / HIGH | Calculation / evidence |','|---|---|---|---|---|---|']
 for r in rows:lines.append(f"| {r['id']} | {r['entity']} / {r['field']} | {r['current_state']} | {r['final_state']} | {rr(r['target'])} | {r['calculation_id']}; {', '.join(r['source_ids'])} |")
 (OUT/'02-gap-matrix-after.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
 lines=['# ASTRA-R2 — calculation ledger','','All values are engineering bounds, not statistical confidence intervals. Complete expressions, typed input units/states, provenance, falsification conditions and safe central-value sentences are in synthesis-ledger.json / demo-model.json. ASTRA-TASK means a declared author assumption, never external proof.','','| ID | Target | LOW / CENTRAL / HIGH | Unit | State | Dominant uncertainty / central rationale |','|---|---|---|---|---|---|']

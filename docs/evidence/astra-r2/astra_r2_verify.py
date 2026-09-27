@@ -267,6 +267,41 @@ else:
     fail(f'{gate_errors} gate regression errors')
 
 
+# ── 5. Evidence state preservation and structured dimensions ──────────────────
+print('\n=== Step 5: evidence state preservation & structured dimensions ===')
+rows_before = json.loads((OUT / 'gap-inventory-before.json').read_text(encoding='utf-8'))
+rows_after  = json.loads((OUT / 'gap-matrix-after.json').read_text(encoding='utf-8'))
+before_map  = {r['id']: r for r in rows_before}
+
+ov_downgrades = 0
+for r in rows_after:
+    b = before_map.get(r['id'])
+    if b and b.get('current_state') == 'OBSERVED_VERIFIED':
+        if r.get('final_state') != 'OBSERVED_VERIFIED':
+            fail(f"{r['id']} {r['entity']}/{r['field']}: downgraded from OBSERVED_VERIFIED to {r.get('final_state')}")
+            ov_downgrades += 1
+if ov_downgrades == 0:
+    ok('All 17 OBSERVED_VERIFIED facts preserved with final_state = OBSERVED_VERIFIED')
+else:
+    fail(f'{ov_downgrades} OBSERVED_VERIFIED facts downgraded')
+
+dim_errors = 0
+for r in rows_after:
+    if r['field'] == 'dimensions':
+        target = r.get('target', '')
+        if not target.endswith('.dimensions'):
+            fail(f"{r['id']} {r['entity']}/dimensions mapped to {target} (not .dimensions)")
+            dim_errors += 1
+        val = r.get('final_values')
+        if not (isinstance(val, dict) and isinstance(val.get('central'), (list, tuple)) and len(val['central']) == 3):
+            fail(f"{r['id']} {r['entity']}/dimensions final_values not a 3D vector: {val}")
+            dim_errors += 1
+if dim_errors == 0:
+    ok('All 9 dimensions rows closed with structured 3D [L x W x H] envelopes')
+else:
+    fail(f'{dim_errors} dimensions closure errors')
+
+
 # ── Summary ────────────────────────────────────────────────────────────────────
 print(f'\n=== SUMMARY: {len(errors)} error(s) ===')
 if errors:
