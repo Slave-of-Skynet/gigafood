@@ -352,9 +352,14 @@ for i,c in enumerate(D['configurations']):
     cid=c['configuration_id'];m=copy.deepcopy(c.get('model_metrics') or {})
     m.update({k:clean(FIELDS[fkey]) for k,fkey in MODEL[cid]['metrics'].items()})
     ops.append(dict(op='add',path=f'/configurations/{i}/model_metrics',value=m))
-for c in CALCS:ops.append(dict(op='add',path='/calculations/-',value=c))
+existing_cids = {c['calculation_id'] for c in D.get('calculations', [])}
+for c in CALCS:
+    if c['calculation_id'] not in existing_cids:
+        ops.append(dict(op='add',path='/calculations/-',value=c))
+existing_sids = {s['source_id'] for s in D.get('sources', [])}
 for s in sources:
-    if s['source_id'].startswith('ASTRA-'):ops.append(dict(op='add',path='/sources/-',value=s))
+    if s['source_id'].startswith('ASTRA-') and s['source_id'] not in existing_sids:
+        ops.append(dict(op='add',path='/sources/-',value=s))
 for cid,r in MODEL.items():
     for category in ('metrics','components','geometry','thermal','procurement','viewing'):
         for slot,key in r[category].items():

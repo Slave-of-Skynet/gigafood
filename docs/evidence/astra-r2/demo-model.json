@@ -1,7 +1,7 @@
 {
   "artifact_kind": "ASTRA-R2 research handoff; NOT an API schema or new runtime enum",
   "base_sha": "21e9caa540dd710218147a2c343586dcd40f429b",
-  "base_canonical_sha256": "90b4ff27f7eec88df192e3e264bb479852bff0dffff163780ec3f33434f9a416",
+  "base_canonical_sha256": "7f3a1eef826e212970c76bfe84bcfff5b0027b93f9483f0afd9e2305f3a3a829",
   "interval_policy": "Engineering sensitivity bounds; endpoints are independent corners, not two simultaneous network worlds. Central is deterministic. No probability claims.",
   "accounting_boundary": "C1/C5 use separately labeled existing all-liner/all-film accounting scenarios with explicit added coating budget. Actual polymer measurements remain unknown; do not relabel scenario as exact plastic.",
   "fields": {
