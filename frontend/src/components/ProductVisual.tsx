@@ -1,3 +1,4 @@
+import { useTranslation } from '../i18n';
 import type { ComponentBoundary, EligibilityStatus, Package } from '../api/contracts';
 import { format } from './EvidenceDetails';
 
@@ -27,6 +28,7 @@ export function ProductVisual({
   roleLabel,
   eligibilityStatus,
 }: ProductVisualProps) {
+  const t = useTranslation();
   const shape = inferShape(pkg, boundary);
   const maxTemp = pkg.capabilities?.max_temperature_c?.value ?? null;
   const microwave = pkg.capabilities?.microwave_safe?.value ?? null;
@@ -34,14 +36,14 @@ export function ProductVisual({
 
   return (
     <div className={`picture-product ${eligibilityStatus ? `visual-${eligibilityStatus}` : ''}`}>
-      <div className="img-product schematic-visual-card" role="img" aria-label={`Schematic packaging illustration for ${pkg.label} (${boundary ?? 'represented components'})`}>
+      <div className="img-product schematic-visual-card" role="img" aria-label={t(`Schematic packaging illustration for ${pkg.label} (${boundary ?? 'represented components'})`)}>
         <div className="schematic-top-row">
-          <span className="schematic-role-chip">{roleLabel}</span>
-          {boundary && <span className="schematic-boundary-chip">{boundary}</span>}
+          <span className="schematic-role-chip">{t(roleLabel)}</span>
+          {t(boundary && <span className="schematic-boundary-chip">{t(boundary)}</span>)}
         </div>
 
         <div className="schematic-svg-wrap" aria-hidden="true">
-          {shape === 'bottle' && (
+          {t(shape === 'bottle' && (
             <svg viewBox="0 0 160 120" className="schematic-svg">
               <rect x="68" y="10" width="24" height="14" rx="4" fill="#86efac" stroke="#dcfce7" strokeWidth="2.5" />
               <path
@@ -53,9 +55,9 @@ export function ProductVisual({
               <line x1="55" y1="62" x2="105" y2="62" stroke="#86efac" strokeWidth="1.5" strokeDasharray="4 3" />
               <line x1="55" y1="84" x2="105" y2="84" stroke="#86efac" strokeWidth="1.5" strokeDasharray="4 3" />
             </svg>
-          )}
+          ))}
 
-          {shape === 'hinged' && (
+          {t(shape === 'hinged' && (
             <svg viewBox="0 0 160 120" className="schematic-svg">
               <polygon
                 points="28,48 52,22 128,22 140,48"
@@ -71,9 +73,9 @@ export function ProductVisual({
               />
               <line x1="20" y1="52" x2="140" y2="52" stroke="#fde047" strokeWidth="2" />
             </svg>
-          )}
+          ))}
 
-          {shape === 'pot' && (
+          {t(shape === 'pot' && (
             <svg viewBox="0 0 160 120" className="schematic-svg">
               <ellipse cx="80" cy="36" rx="48" ry="12" fill="rgba(220, 252, 231, 0.25)" stroke="#bbf7d0" strokeWidth="2.5" />
               <path
@@ -83,9 +85,9 @@ export function ProductVisual({
                 strokeWidth="2.5"
               />
             </svg>
-          )}
+          ))}
 
-          {shape === 'tray' && (
+          {t(shape === 'tray' && (
             <svg viewBox="0 0 160 120" className="schematic-svg">
               <polygon
                 points="20,40 44,24 136,24 144,40"
@@ -102,28 +104,24 @@ export function ProductVisual({
               <line x1="42" y1="58" x2="118" y2="58" stroke="#86efac" strokeWidth="1.5" strokeDasharray="5 4" />
               <line x1="46" y1="74" x2="114" y2="74" stroke="#86efac" strokeWidth="1.5" strokeDasharray="5 4" />
             </svg>
-          )}
+          ))}
         </div>
 
         <div className="schematic-specs">
-          {primaryComponent && (
+          {t(primaryComponent && (
             <span className="schematic-spec-pill">
-              {primaryComponent.material} · {format(primaryComponent.plastic_mass_g.value, 'g')}
+              {t(primaryComponent.material)}{t(" · ")}{t(format(primaryComponent.plastic_mass_g.value, 'g'))}
             </span>
-          )}
+          ))}
           <div className="schematic-cap-row">
-            <span className="schematic-cap-tag">
-              Max temp: {maxTemp === null ? 'Unknown (N/A)' : `${maxTemp}°C`}
+            <span className="schematic-cap-tag">{t("Max temp: ")}{t(maxTemp === null ? 'Unknown (N/A)' : `${maxTemp}°C`)}
             </span>
-            <span className="schematic-cap-tag">
-              MW: {microwave === null ? 'Unknown (N/A)' : microwave ? 'Yes' : 'No'}
+            <span className="schematic-cap-tag">{t("MW: ")}{t(microwave === null ? 'Unknown (N/A)' : microwave ? 'Yes' : 'No')}
             </span>
           </div>
         </div>
 
-        <small className="schematic-disclaimer">
-          Schematic geometry · Not supplier article photo
-        </small>
+        <small className="schematic-disclaimer">{t("Schematic geometry · Not supplier article photo")}</small>
       </div>
     </div>
   );

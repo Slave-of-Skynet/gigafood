@@ -3073,3 +3073,94 @@ button:focus-visible, summary:focus-visible, select:focus-visible, input:focus-v
     font-size: 17px;
   }
 }
+
+/* Calm, task-focused presentation with progressive disclosure. */
+:root { --bg-page: #f7f9f7; }
+[hidden] { display: none !important; }
+html { padding: 12px 20px; }
+.app-shell { max-width: 1160px; margin-inline: auto; }
+.header-project { position: relative; top: 0; }
+.nav-bar { max-width: 1160px; min-height: 68px; border-radius: 14px; box-shadow: none; }
+.hero-card { padding: 28px 32px; background: #fff; box-shadow: none; border: 1px solid #dce5df; }
+.hero-title { font-size: clamp(30px, 5vw, 44px); }
+.hero-subtitle { font-size: clamp(20px, 3vw, 28px); }
+.hero-description { max-width: 680px; font-size: 16px; }
+.simple-scope-note { font-size: 14px; color: #526359; margin-bottom: 0; }
+.simple-intro { padding: 12px 0; }
+.simple-intro h2 { margin-bottom: 6px; font-size: 24px; }
+.simple-intro p { margin-top: 0; color: #526359; }
+.mode-switch { justify-content: flex-start; gap: 10px; }
+.mode-switch button { min-height: 46px; }
+.mode-switch button:last-child { order: -1; }
+.product-selector-deck, .workflow-selector-deck, .decision-summary-card,
+.candidate-recommendation-card { box-shadow: none; border-radius: 16px; }
+.product-select-card, .workflow-select-card { box-shadow: none; }
+.product-select-card.active, .workflow-select-card.active { outline: 2px solid #28784a; outline-offset: 2px; }
+.selected-product-badge, .current-workflow-badge { display: none; }
+.candidate-card-header { position: static; z-index: auto; }
+.supporting-details { margin: 18px 0; border-top: 1px solid #dce5df; padding-top: 12px; }
+summary { cursor: pointer; font-weight: 650; padding: 14px 8px; color: #244f38; }
+summary:hover { background: #edf4ee; border-radius: 8px; }
+details[open] > summary { margin-bottom: 16px; }
+button, select, summary, a { touch-action: manipulation; }
+:where(button, select, summary, a):focus-visible { outline: 3px solid #378653; outline-offset: 4px; }
+[id] { scroll-margin-top: 24px; }
+.skip-link { position: fixed; top: -80px; left: 16px; z-index: 200; background: white; padding: 12px; }
+.skip-link:focus { top: 12px; }
+@media (max-width: 760px) {
+ html { padding: 8px 12px; }
+ .nav-bar { display: flex; flex-wrap: wrap; justify-content: space-between; padding: 12px; gap: 12px; }
+ .nav-bar-sect { width: 100%; }
+ .btn-nav-bar { flex-wrap: wrap; justify-content: flex-start; }
+ .hero-card { padding: 22px 18px; }
+ .mode-switch { display: flex; flex-wrap: wrap; }
+ .mode-switch button { flex: 1 1 140px; }
+ .product-archetype-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+ .workflow-options-grid, .decision-grid, .metrics-grid { grid-template-columns: 1fr; }
+ .candidate-card-header { flex-wrap: wrap; }
+ .stat-value, .candidate-name-title { overflow-wrap: anywhere; }
+}
+@media (prefers-reduced-motion: reduce) {
+ html { scroll-behavior: auto; }
+ *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+/* Readable hero and compact navigation at every width. */
+.hero-card { color: #173f2d; overflow: hidden; }
+.hero-title { color: #173f2d; }
+.hero-subtitle { color: #244f38; }
+.hero-description { color: #53685b; line-height: 1.65; }
+.hero-top { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(240px, 1fr); align-items: center; }
+.hero-guide { list-style: none; margin: 0; padding: 18px; background: #eef5ef; border: 1px solid #d8e6da; border-radius: 16px; display: grid; gap: 18px; }
+.hero-guide li { display: flex; gap: 12px; align-items: center; }
+.hero-guide li > span { width: 34px; height: 34px; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%; background: #dbeadb; color: #255c3b; font-size: 12px; font-weight: 750; }
+.hero-guide strong, .hero-guide small { display: block; }
+.hero-guide strong { font-size: 14px; }
+.hero-guide small { font-size: 12px; color: #53685b; margin-top: 3px; }
+.nav-bar { grid-template-columns: auto minmax(0, 1fr) auto; gap: 20px; }
+.brand-cluster { grid-column: 1; grid-row: 1; }
+.nav-bar-sect { grid-column: 2; grid-row: 1; }
+.blk-lang { grid-column: 3; grid-row: 1; }
+.logo-log { max-width: 136px; }
+.lang-control-cluster { flex-wrap: nowrap; }
+.lang-scope-note { background: transparent; padding: 0; font-size: 12px; }
+.btn-nav-bar { gap: 6px; }
+.desc-nav-bar { padding: 8px; }
+@media (max-width: 900px) {
+ .nav-bar { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+ .brand-cluster { grid-column: 1; justify-self: start; }
+ .blk-lang { grid-column: 2; justify-self: end; }
+ .nav-bar-sect { grid-column: 1 / -1; grid-row: 2; }
+ .btn-nav-bar { justify-content: flex-start; flex-wrap: wrap; }
+ .hero-top { grid-template-columns: 1fr; gap: 18px; }
+ .hero-guide { padding: 14px; gap: 12px; }
+ .hero-title { font-size: 32px; }
+ .hero-subtitle { font-size: 22px; }
+}
+@media (max-width: 420px) {
+ .lang-scope-note { display: none; }
+ .hero-card { padding: 20px 16px; }
+ .hero-description { font-size: 14px; }
+ .logo-log { max-width: 120px; }
+ .desc-nav-bar { font-size: 12px; }
+ .product-archetype-grid { grid-template-columns: 1fr; }
+}

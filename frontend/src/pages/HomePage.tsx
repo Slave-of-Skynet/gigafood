@@ -1,3 +1,5 @@
+import { useTranslation } from '../i18n';
+import { useLanguage, type Language } from '../i18n';
 import { useEffect, useState } from 'react';
 import { format, OperationalRequirementsView, PackageView } from '../components/EvidenceDetails';
 import { SelectionView } from '../components/SelectionView';
@@ -16,65 +18,15 @@ type Load<T> =
   | { state: 'error'; message: string }
   | { state: 'ready'; data: T };
 
-type UiLang = 'en' | 'ru' | 'md';
-
-const CHROME_I18N: Record<
-  UiLang,
-  {
-    eyebrow: string;
-    subtitle: string;
-    scopeNote: string;
-    navOverview: string;
-    navPortfolio: string;
-    navCandidates: string;
-    navJourney: string;
-    navProblem: string;
-    navDecisionSummary: string;
-  }
-> = {
-  en: {
-    eyebrow: 'Evidence-Aware Decision Support',
-    subtitle: 'Packaging Transition Copilot',
-    scopeNote: 'UI chrome: EN · Backend evidence & API enums remain canonical EN',
-    navOverview: 'Overview',
-    navPortfolio: 'Portfolio & Baseline',
-    navCandidates: 'Evaluated Candidates',
-    navJourney: 'Recommendation Journey',
-    navProblem: 'Physical Challenge',
-    navDecisionSummary: 'Decision Summary',
-  },
-  ru: {
-    eyebrow: 'Поддержка решений на основе доказательств',
-    subtitle: 'Копилот перехода на устойчивую упаковку',
-    scopeNote: 'Шапка UI: RU · Данные backend и доказательства остаются на каноническом EN',
-    navOverview: 'Обзор (Overview)',
-    navPortfolio: 'Портфель и база (Baseline)',
-    navCandidates: 'Кандидаты (Candidates)',
-    navJourney: 'Маршрут рекомендации',
-    navProblem: 'Физическая задача',
-    navDecisionSummary: 'Итог решения',
-  },
-  md: {
-    eyebrow: 'Suport decizional bazat pe dovezi',
-    subtitle: 'Copilot pentru tranziția ambalajelor',
-    scopeNote: 'Interfață: MD · Dovezile și stările API rămân în EN canonic',
-    navOverview: 'Prezentare (Overview)',
-    navPortfolio: 'Portofoliu & Bază',
-    navCandidates: 'Candidați Evaluați',
-    navJourney: 'Traseu Recomandare',
-    navProblem: 'Provocare Fizică',
-    navDecisionSummary: 'Sumar Decizional',
-  },
-};
-
 const formatNumberOnly = (value: number | null) =>
   value === null
     ? 'N/A'
     : value.toLocaleString('en-US', { maximumFractionDigits: 2 });
 
 export function HomePage() {
+  const t = useTranslation();
   const [mode, setMode] = useState<'comparison' | 'selection' | 'recommendation'>('recommendation');
-  const [uiLang, setUiLang] = useState<UiLang>('en');
+  const { language: uiLang, setLanguage: setUiLang } = useLanguage();
   const [attempt, setAttempt] = useState(0);
   const [selected, setSelected] = useState('');
   const [runtime, setRuntime] = useState<
@@ -82,7 +34,7 @@ export function HomePage() {
   >({ state: 'loading' });
   const [result, setResult] = useState<Load<Comparison>>({ state: 'loading' });
 
-  const chrome = CHROME_I18N[uiLang];
+
 
   useEffect(() => {
     const controller = new AbortController();
@@ -135,49 +87,44 @@ export function HomePage() {
 
   return (
     <>
+      <a className="skip-link" href="#main-content">{t("Skip to content")}</a>
       <header className="header-project">
         <div className="nav-bar">
           <div className="blk-lang">
-            <div className="runtime-pill">
+            <div className="runtime-pill" hidden={mode !== 'comparison'}>
               <span
                 className={`pulse-dot ${
                   runtime.state === 'ready' ? '' : 'offline'
                 }`}
               />
               <span>
-                {runtime.state === 'ready'
+                {t(runtime.state === 'ready'
                   ? `A-core: ${runtime.data.health.status} · ${runtime.data.evidence.dataset_kind}`
                   : runtime.state === 'loading'
                   ? 'Checking runtime…'
-                  : 'A-core unavailable'}
+                  : 'A-core unavailable')}
               </span>
             </div>
 
             <div className="lang-control-cluster">
-              <span className="lang-scope-note">{chrome.scopeNote}</span>
+              <span className="lang-scope-note">{t("Language")}</span>
               <select
                 name="lang"
-                aria-label="Header UI language"
+                aria-label={t("Language")}
                 className="lang-select"
                 value={uiLang}
-                onChange={(e) => setUiLang(e.target.value as UiLang)}
+                onChange={(e) => setUiLang(e.target.value as Language)}
               >
-                <option value="en" className="lang">
-                  EN
-                </option>
-                <option value="ru" className="lang">
-                  RU
-                </option>
-                <option value="md" className="lang">
-                  MD
-                </option>
+                <option value="en" className="lang">{t("EN")}</option>
+                <option value="ru" className="lang">{t("RU")}</option>
+                <option value="ro" className="lang">{t("RO")}</option>
               </select>
             </div>
           </div>
 
           <div className="brand-cluster">
-            <a href="#overview" className="logo-img" aria-label="PackShift Home">
-              <img src="/logo.png" alt="PackShift" className="logo-log" />
+            <a href="#overview" className="logo-img" aria-label={t("PackShift Home")}>
+              <img src="/logo.png" alt={t("PackShift")} className="logo-log" />
             </a>
           </div>
 
@@ -185,179 +132,124 @@ export function HomePage() {
             <nav
               hidden={mode !== 'recommendation'}
               className="btn-nav-bar"
-              aria-label="Recommendation Navigation"
+              aria-label={t("Recommendation Navigation")}
             >
-              <a href="#overview" className="desc-nav-bar">
-                {chrome.navOverview}
-              </a>
-              <a href="#problem" className="desc-nav-bar">
-                {chrome.navProblem}
-              </a>
-              <a href="#journey-context" className="desc-nav-bar">
-                Context
-              </a>
-              <a href="#decision-summary" className="desc-nav-bar">
-                {chrome.navDecisionSummary}
-              </a>
-              <a href="#candidate-evaluations" className="desc-nav-bar">
-                {chrome.navCandidates}
-              </a>
-              <a href="#baselines" className="desc-nav-bar">
-                Baselines
-              </a>
+              <a href="#overview" className="desc-nav-bar">{t("Overview")}</a>
+              <a href="#journey-context" className="desc-nav-bar">{t("Choose your food")}</a>
+              <a href="#decision-summary" className="desc-nav-bar">{t("Your result")}</a>
+              <a href="#candidate-evaluations" className="desc-nav-bar">{t("Packaging options")}</a>
             </nav>
 
             <nav
               hidden={mode !== 'selection'}
               className="btn-nav-bar"
-              aria-label="Selection Navigation"
+              aria-label={t("Selection Navigation")}
             >
-              <a href="#overview" className="desc-nav-bar">
-                {chrome.navOverview}
-              </a>
-              <a href="#portfolio-category-title" className="desc-nav-bar">
-                {chrome.navPortfolio}
-              </a>
-              <a href="#evaluated-candidates-heading" className="desc-nav-bar">
-                {chrome.navCandidates}
-              </a>
+              <a href="#overview" className="desc-nav-bar">{t("Overview")}</a>
+              <a href="#portfolio-category-title" className="desc-nav-bar">{t("Portfolio & Baseline")}</a>
+              <a href="#evaluated-candidates-heading" className="desc-nav-bar">{t("Packaging options")}</a>
             </nav>
 
             <nav
               hidden={mode !== 'comparison'}
               className="btn-nav-bar"
-              aria-label="Primary Navigation"
+              aria-label={t("Primary Navigation")}
             >
-              <a href="#overview" className="desc-nav-bar">
-                Overview
-              </a>
-              <a href="#impact" className="desc-nav-bar">
-                Impact
-              </a>
-              <a href="#economics" className="desc-nav-bar">
-                Economics
-              </a>
-              <a href="#eligibility" className="desc-nav-bar">
-                Eligibility
-              </a>
-              <a href="#packages" className="desc-nav-bar">
-                Packaging
-              </a>
-              <a href="#evidence" className="desc-nav-bar">
-                Evidence
-              </a>
+              <a href="#overview" className="desc-nav-bar">{t("Overview")}</a>
+              <a href="#impact" className="desc-nav-bar">{t("Impact")}</a>
+              <a href="#economics" className="desc-nav-bar">{t("Economics")}</a>
+              <a href="#eligibility" className="desc-nav-bar">{t("Eligibility")}</a>
+              <a href="#packages" className="desc-nav-bar">{t("Packaging")}</a>
+              <a href="#evidence" className="desc-nav-bar">{t("Evidence")}</a>
             </nav>
           </div>
         </div>
       </header>
 
-      <main className="app-shell">
+      <main id="main-content" className="app-shell" tabIndex={-1}>
         <section id="overview" className="hero-card">
           <div className="hero-top">
             <div>
               <div className="hero-eyebrow">
-                <span>{chrome.eyebrow}</span>
+                <span>{t("Less plastic. Clearer choices.")}</span>
               </div>
-              <h1 className="hero-title">PackShift</h1>
-              <p className="hero-subtitle">{chrome.subtitle}</p>
-              <p className="hero-description">
-                Evaluate packaging transitions and portfolios. Measure
-                virgin-plastic change, test bounded operating-context scenarios,
-                and see the evidence and uncertainty behind each result.
-              </p>
+              <h1 className="hero-title">{t("PackShift")}</h1>
+              <p className="hero-subtitle">{t("Find better packaging for your food")}</p>
+              <p className="hero-description">{t("Choose your food and how you use the packaging. See which options are worth testing, what could reduce plastic, and what needs checking before you switch.")}</p>
             </div>
+            <ol className="hero-guide" aria-label={t("How it works")}>
+              <li><span aria-hidden="true">{t("01")}</span><div><strong>{t("Choose your food")}</strong><small>{t("Chicken, vegetables or a hot meal")}</small></div></li>
+              <li><span aria-hidden="true">{t("02")}</span><div><strong>{t("Set the conditions")}</strong><small>{t("Pack after cooking or use in the oven")}</small></div></li>
+              <li><span aria-hidden="true">{t("03")}</span><div><strong>{t("Find your next step")}</strong><small>{t("Compare options and plan the checks")}</small></div></li>
+            </ol>
           </div>
 
-          <div className="policy-guard-banner">
-            <span>
-              <strong>Decision support only:</strong> Food safety, shelf life,
-              comprehensive operational suitability and legal compliance are{' '}
-              <strong>NOT VERIFIED</strong>. Environmental calculation ≠
-              candidate eligibility ≠ implementation approval.
-            </span>
-            <div className="axiom-chips">
-              <span className="axiom-chip">CALCULATED ≠ VERIFIED</span>
-              <span className="axiom-chip">SOURCE_AVAILABLE ≠ VERIFIED</span>
-              <span className="axiom-chip">missing ≠ 0</span>
-              <span className="axiom-chip">PUBLIC ≠ PROVIDER</span>
-            </div>
-          </div>
+          <p className="simple-scope-note">{t("A guide to your next packaging trial. Results still need food-safety, shelf-life and operational checks before use.")}</p>
         </section>
 
-        <div className="mode-switch" role="group" aria-label="Product mode">
+        <div className="mode-switch" role="group" aria-label={t("Product mode")}>
           <button
             type="button"
             className={`scenario-pill ${mode === 'comparison' ? 'active' : ''}`}
             aria-pressed={mode === 'comparison'}
             onClick={() => setMode('comparison')}
-          >
-            Comparison
-          </button>
+          >{t("Compare plastic use")}</button>
           <button
             type="button"
             className={`scenario-pill ${mode === 'selection' ? 'active' : ''}`}
             aria-pressed={mode === 'selection'}
             onClick={() => setMode('selection')}
-          >
-            Portfolio Selection
-          </button>
+          >{t("Browse packaging")}</button>
           <button
             type="button"
             className={`scenario-pill ${mode === 'recommendation' ? 'active' : ''}`}
             aria-pressed={mode === 'recommendation'}
             onClick={() => setMode('recommendation')}
-          >
-            Recommendation Journey
-          </button>
+          >{t("Find packaging")}</button>
         </div>
 
         <RecommendationView visible={mode === 'recommendation'} uiLang={uiLang} />
         <SelectionView visible={mode === 'selection'} />
 
         <div className="comparison-mode" hidden={mode !== 'comparison'}>
-          {runtime.state === 'loading' && (
+          {t(runtime.state === 'loading' && (
             <div className="status-panel" role="status">
-              <h2>Checking service and evidence…</h2>
-              <p>Loading validated packaging evidence snapshot from backend…</p>
+              <h2>{t("Checking service and evidence…")}</h2>
+              <p>{t("Loading validated packaging evidence snapshot from backend…")}</p>
             </div>
-          )}
+          ))}
 
-          {runtime.state === 'error' && (
+          {t(runtime.state === 'error' && (
             <div className="status-panel error-panel" role="alert">
-              <h2>Service / evidence unavailable</h2>
-              <p>{runtime.message}</p>
-              <button className="retry-btn" onClick={retry}>
-                Retry
-              </button>
+              <h2>{t("Service / evidence unavailable")}</h2>
+              <p>{t(runtime.message)}</p>
+              <button className="retry-btn" onClick={retry}>{t("Retry")}</button>
             </div>
-          )}
+          ))}
 
-          {runtime.state === 'ready' && (
+          {t(runtime.state === 'ready' && (
             <>
               <section
                 className="control-deck"
-                aria-label="Dataset and Scenario Controls"
+                aria-label={t("Dataset and Scenario Controls")}
               >
                 <div className="evidence-bar">
                   <div className="dataset-identity-group">
                     <span
                       className={`dataset-badge ${runtime.data.evidence.dataset_kind}`}
-                    >
-                      Dataset: {runtime.data.evidence.dataset_kind}
+                    >{t("Dataset: ")}{t(runtime.data.evidence.dataset_kind)}
                     </span>
-                    <span style={{ fontSize: '13.5px', fontWeight: 600 }}>
-                      Service: {runtime.data.health.status} · Schema v
-                      {runtime.data.evidence.schema_version}
+                    <span style={{ fontSize: '13.5px', fontWeight: 600 }}>{t("Service: ")}{t(runtime.data.health.status)}{t(" · Schema v")}{t(runtime.data.evidence.schema_version)}
                     </span>
                   </div>
                   <div className="disclosure-banner">
-                    {runtime.data.evidence.disclosure}
+                    {t(runtime.data.evidence.disclosure)}
                   </div>
                 </div>
 
                 <div className="scenario-selector-row">
                   <label className="scenario-label">
-                    <span>Select Transition Scenario</span>
+                    <span>{t("Select Transition Scenario")}</span>
                     <select
                       className="scenario-select"
                       value={selected}
@@ -366,20 +258,20 @@ export function HomePage() {
                         setSelected(event.target.value);
                       }}
                     >
-                      {runtime.data.evidence.scenarios.map((s) => (
+                      {t(runtime.data.evidence.scenarios.map((s) => (
                         <option key={s.id} value={s.id}>
-                          {s.label}
+                          {t(s.label)}
                         </option>
-                      ))}
+                      )))}
                     </select>
                   </label>
 
                   <div
                     className="scenario-pills"
                     role="group"
-                    aria-label="Quick scenario switcher"
+                    aria-label={t("Quick scenario switcher")}
                   >
-                    {runtime.data.evidence.scenarios.map((s) => (
+                    {t(runtime.data.evidence.scenarios.map((s) => (
                       <button
                         key={s.id}
                         type="button"
@@ -393,33 +285,29 @@ export function HomePage() {
                           }
                         }}
                       >
-                        {s.label}
+                        {t(s.label)}
                       </button>
-                    ))}
+                    )))}
                   </div>
                 </div>
               </section>
 
-              {result.state === 'loading' && (
+              {t(result.state === 'loading' && (
                 <div className="status-panel" role="status">
-                  <h2>Calculating…</h2>
-                  <p>
-                    Evaluating virgin-plastic delta and operational constraints…
-                  </p>
+                  <h2>{t("Calculating…")}</h2>
+                  <p>{t("Evaluating virgin-plastic delta and operational constraints…")}</p>
                 </div>
-              )}
+              ))}
 
-              {result.state === 'error' && (
+              {t(result.state === 'error' && (
                 <div className="status-panel error-panel" role="alert">
-                  <h2>Comparison calculation failed</h2>
-                  <p>{result.message}</p>
-                  <button className="retry-btn" onClick={retry}>
-                    Retry
-                  </button>
+                  <h2>{t("Comparison calculation failed")}</h2>
+                  <p>{t(result.message)}</p>
+                  <button className="retry-btn" onClick={retry}>{t("Retry")}</button>
                 </div>
-              )}
+              ))}
 
-              {result.state === 'ready' && (
+              {t(result.state === 'ready' && (
                 <div
                   className="all-products-board"
                   aria-live="polite"
@@ -427,27 +315,27 @@ export function HomePage() {
                 >
                   <div className="option-class">
                     <h2 className="name-option-class">
-                      {result.data.scenario.label}
+                      {t(result.data.scenario.label)}
                     </h2>
                   </div>
 
                   {/* Stretch Goal: 3-Card Executive Decision Summary */}
                   <section
                     className="executive-strip"
-                    aria-label="Decision Summary At-A-Glance"
+                    aria-label={t("Decision Summary At-A-Glance")}
                   >
                     <div className="exec-card">
                       <span className="exec-kicker">
-                        {result.data.eligibility_status === 'BLOCKED'
+                        {t(result.data.eligibility_status === 'BLOCKED'
                           ? 'Theoretical Virgin Plastic Delta (Ineligible)'
-                          : 'Virgin Plastic Impact (Represented Components)'}
+                          : 'Virgin Plastic Impact (Represented Components)')}
                       </span>
                       <div className="exec-main-value">
                         <span>
-                          {format(result.data.current_virgin_pack_g, 'g/unit')} →{' '}
-                          {format(result.data.candidate_virgin_pack_g, 'g/unit')}
+                          {t(format(result.data.current_virgin_pack_g, 'g/unit'))}{t(" →")}{t(' ')}
+                          {t(format(result.data.candidate_virgin_pack_g, 'g/unit'))}
                         </span>
-                        {result.data.status === 'CALCULATED' &&
+                        {t(result.data.status === 'CALCULATED' &&
                         result.data.reduction_pct !== null ? (
                           <span
                             className={`exec-delta-badge ${
@@ -461,26 +349,23 @@ export function HomePage() {
                                 : ''
                             }`}
                           >
-                            {result.data.reduction_g !== null &&
+                            {t(result.data.reduction_g !== null &&
                             result.data.reduction_g > 0
                               ? '↓ '
                               : result.data.reduction_g === 0
                               ? 'No change · '
-                              : '↑ '}
-                            {format(result.data.reduction_pct, '%')}
-                            {result.data.eligibility_status === 'BLOCKED'
+                              : '↑ ')}
+                            {t(format(result.data.reduction_pct, '%'))}
+                            {t(result.data.eligibility_status === 'BLOCKED'
                               ? ' (Theoretical)'
-                              : ''}
+                              : '')}
                           </span>
                         ) : (
-                          <span className="exec-delta-badge insufficient">
-                            Insufficient data (N/A)
-                          </span>
-                        )}
+                          <span className="exec-delta-badge insufficient">{t("Insufficient data (N/A)")}</span>
+                        ))}
                       </div>
-                      <span className="exec-meta">
-                        Calculation: <strong>{result.data.status}</strong> ·{' '}
-                        {result.data.eligibility_status === 'BLOCKED'
+                      <span className="exec-meta">{t("Calculation: ")}<strong>{t(result.data.status)}</strong>{t(" ·")}{t(' ')}
+                        {t(result.data.eligibility_status === 'BLOCKED'
                           ? `Theoretical reduction: ${format(
                               result.data.reduction_g,
                               'g/unit'
@@ -488,7 +373,7 @@ export function HomePage() {
                           : `Reduction: ${format(
                               result.data.reduction_g,
                               'g/unit'
-                            )}`}
+                            )}`)}
                       </span>
                     </div>
 
@@ -501,51 +386,44 @@ export function HomePage() {
                           : 'eligible-card'
                       }`}
                     >
-                      <span className="exec-kicker">
-                        Operational Eligibility Gate
-                      </span>
+                      <span className="exec-kicker">{t("Operational Eligibility Gate")}</span>
                       <div className="exec-main-value">
-                        {result.data.eligibility_status === 'BLOCKED' && (
-                          <span>⛔ BLOCKED</span>
-                        )}
-                        {result.data.eligibility_status ===
-                          'REVIEW_REQUIRED' && <span>⚠️ REVIEW REQUIRED</span>}
-                        {result.data.eligibility_status === 'ELIGIBLE' && (
-                          <span>✓ ELIGIBLE</span>
-                        )}
+                        {t(result.data.eligibility_status === 'BLOCKED' && (
+                          <span>{t("⛔ BLOCKED")}</span>
+                        ))}
+                        {t(result.data.eligibility_status ===
+                          'REVIEW_REQUIRED' && <span>{t("⚠️ REVIEW REQUIRED")}</span>)}
+                        {t(result.data.eligibility_status === 'ELIGIBLE' && (
+                          <span>{t("✓ ELIGIBLE")}</span>
+                        ))}
                       </div>
                       <span className="exec-meta">
-                        {result.data.eligibility_status === 'BLOCKED'
+                        {t(result.data.eligibility_status === 'BLOCKED'
                           ? 'Candidate incompatible with evaluated operating context.'
                           : result.data.eligibility_status === 'REVIEW_REQUIRED'
                           ? requirementsNotModeled
                             ? 'Operating requirements not modeled; review is required.'
                             : 'Evidence / verification insufficient to confirm operational compatibility.'
-                          : 'Meets evaluated runtime constraints (not implementation approval).'}
+                          : 'Meets evaluated runtime constraints (not implementation approval).')}
                       </span>
                     </div>
 
                     <div className="exec-card">
-                      <span className="exec-kicker">
-                        Evidence & Epistemic State
-                      </span>
+                      <span className="exec-kicker">{t("Evidence & Epistemic State")}</span>
                       <div className="exec-main-value">
                         <span>
-                          {runtime.data.evidence.dataset_kind} ·{' '}
-                          {result.data.verification_state}
+                          {t(runtime.data.evidence.dataset_kind)}{t(" ·")}{t(' ')}
+                          {t(result.data.verification_state)}
                         </span>
                       </div>
-                      <span className="exec-meta">
-                        Derivation: <strong>{result.data.origin}</strong> ·
-                        CALCULATED ≠ VERIFIED
-                      </span>
+                      <span className="exec-meta">{t("Derivation: ")}<strong>{t(result.data.origin)}</strong>{t(" · CALCULATED ≠ VERIFIED")}</span>
                     </div>
                   </section>
 
                   {/* Primary Operational Eligibility Gate Banner */}
                   <section
                     id="eligibility"
-                    aria-label="Operational Eligibility Status"
+                    aria-label={t("Operational Eligibility Status")}
                   >
                     <div
                       role="status"
@@ -553,59 +431,43 @@ export function HomePage() {
                     >
                       <div className="eligibility-header">
                         <span className="eligibility-title">
-                          {result.data.eligibility_status === 'BLOCKED' && (
-                            <span>
-                              ⛔ BLOCKED — NOT ELIGIBLE FOR OPERATING CONTEXT
-                            </span>
-                          )}
-                          {result.data.eligibility_status ===
+                          {t(result.data.eligibility_status === 'BLOCKED' && (
+                            <span>{t("⛔ BLOCKED — NOT ELIGIBLE FOR OPERATING CONTEXT")}</span>
+                          ))}
+                          {t(result.data.eligibility_status ===
                             'REVIEW_REQUIRED' && (
-                            <span>
-                              ⚠️ REVIEW REQUIRED —{' '}
-                              {requirementsNotModeled
+                            <span>{t("⚠️ REVIEW REQUIRED —")}{t(' ')}
+                              {t(requirementsNotModeled
                                 ? 'OPERATING REQUIREMENTS NOT MODELED'
-                                : 'UNVERIFIED OPERATIONAL CONSTRAINTS'}
+                                : 'UNVERIFIED OPERATIONAL CONSTRAINTS')}
                             </span>
-                          )}
-                          {result.data.eligibility_status === 'ELIGIBLE' && (
-                            <span>
-                              ✓ ELIGIBLE — MEETS EVALUATED CONSTRAINTS
-                            </span>
-                          )}
+                          ))}
+                          {t(result.data.eligibility_status === 'ELIGIBLE' && (
+                            <span>{t("✓ ELIGIBLE — MEETS EVALUATED CONSTRAINTS")}</span>
+                          ))}
                         </span>
-                        <span className="eligibility-scope-note">
-                          Bounded gate (thermal & microwave only) · Not
-                          certification or rollout approval
-                        </span>
+                        <span className="eligibility-scope-note">{t("Bounded gate (thermal & microwave only) · Not certification or rollout approval")}</span>
                       </div>
 
-                      {result.data.eligibility_status === 'REVIEW_REQUIRED' &&
+                      {t(result.data.eligibility_status === 'REVIEW_REQUIRED' &&
                         requirementsNotModeled && (
-                          <p>
-                            No explicit thermal or microwave requirements are
-                            defined for this scenario, so PackShift does not
-                            infer operational eligibility. Review is required
-                            before advancing the candidate.
-                          </p>
-                        )}
+                          <p>{t("No explicit thermal or microwave requirements are defined for this scenario, so PackShift does not infer operational eligibility. Review is required before advancing the candidate.")}</p>
+                        ))}
 
-                      {result.data.eligibility_status === 'BLOCKED' && (
+                      {t(result.data.eligibility_status === 'BLOCKED' && (
                         <div role="alert" className="blocking-alert-box">
-                          <h4>
-                            Why Blocked? Demonstrated Operational
-                            Incompatibilities:
-                          </h4>
+                          <h4>{t("Why Blocked? Demonstrated Operational Incompatibilities:")}</h4>
                           <ul>
-                            {result.data.constraints
+                            {t(result.data.constraints
                               .filter((c) => c.status === 'BLOCKED')
                               .map((c) => (
                                 <li key={c.constraint_id}>
-                                  <strong>{c.constraint_id}:</strong> {c.reason}
+                                  <strong>{t(c.constraint_id)}{t(":")}</strong> {t(c.reason)}
                                 </li>
-                              ))}
+                              )))}
                           </ul>
                         </div>
-                      )}
+                      ))}
                     </div>
                   </section>
 
@@ -613,27 +475,22 @@ export function HomePage() {
                   <section
                     id="impact"
                     className="products-board"
-                    aria-label="Environmental Impact Comparison"
+                    aria-label={t("Environmental Impact Comparison")}
                   >
                     <div className="section-header">
                       <div>
-                        <h2 className="section-title">
-                          Environmental Impact · {result.data.status}
+                        <h2 className="section-title">{t("Environmental Impact · ")}{t(result.data.status)}
                         </h2>
-                        <small>
-                          Scenario:{' '}
-                          <strong>{result.data.scenario.label}</strong>
+                        <small>{t("Scenario:")}{t(' ')}
+                          <strong>{t(result.data.scenario.label)}</strong>
                         </small>
                       </div>
                       <div className="epistemic-badges">
-                        <span className="epistemic-badge">
-                          Derivation: {result.data.origin}
+                        <span className="epistemic-badge">{t("Derivation: ")}{t(result.data.origin)}
                         </span>
-                        <span className="epistemic-badge">
-                          Decision state: {result.data.verification_state}
+                        <span className="epistemic-badge">{t("Decision state: ")}{t(result.data.verification_state)}
                         </span>
-                        <span className="epistemic-badge">
-                          Eligibility: {result.data.eligibility_status}
+                        <span className="epistemic-badge">{t("Eligibility: ")}{t(result.data.eligibility_status)}
                         </span>
                       </div>
                     </div>
@@ -649,15 +506,13 @@ export function HomePage() {
                           }`}
                         >
                           <span className="circle-num">
-                            {formatNumberOnly(
+                            {t(formatNumberOnly(
                               result.data.current_virgin_pack_g
-                            )}
+                            ))}
                           </span>
-                          <span className="circle-unit">g / unit</span>
+                          <span className="circle-unit">{t("g / unit")}</span>
                         </div>
-                        <span className="circle-text">
-                          Current virgin plastic
-                        </span>
+                        <span className="circle-text">{t("Current virgin plastic")}</span>
                       </div>
 
                       <div className="stat-circle-wrapper">
@@ -669,15 +524,13 @@ export function HomePage() {
                           }`}
                         >
                           <span className="circle-num">
-                            {formatNumberOnly(
+                            {t(formatNumberOnly(
                               result.data.candidate_virgin_pack_g
-                            )}
+                            ))}
                           </span>
-                          <span className="circle-unit">g / unit</span>
+                          <span className="circle-unit">{t("g / unit")}</span>
                         </div>
-                        <span className="circle-text">
-                          Candidate virgin plastic
-                        </span>
+                        <span className="circle-text">{t("Candidate virgin plastic")}</span>
                       </div>
 
                       <div className="stat-circle-wrapper">
@@ -693,20 +546,18 @@ export function HomePage() {
                           }`}
                         >
                           <span className="circle-num">
-                            {formatNumberOnly(result.data.reduction_g)}
+                            {t(formatNumberOnly(result.data.reduction_g))}
                           </span>
-                          <span className="circle-unit">g / unit</span>
+                          <span className="circle-unit">{t("g / unit")}</span>
                         </div>
                         <span className="circle-text">
-                          {result.data.eligibility_status === 'BLOCKED'
+                          {t(result.data.eligibility_status === 'BLOCKED'
                             ? 'Theoretical reduction'
-                            : 'Reduction'}
+                            : 'Reduction')}
                         </span>
-                        {result.data.eligibility_status === 'BLOCKED' && (
-                          <span className="circle-subnote">
-                            (Ineligible candidate)
-                          </span>
-                        )}
+                        {t(result.data.eligibility_status === 'BLOCKED' && (
+                          <span className="circle-subnote">{t("(Ineligible candidate)")}</span>
+                        ))}
                       </div>
 
                       <div className="stat-circle-wrapper">
@@ -726,24 +577,22 @@ export function HomePage() {
                           } ${result.data.reduction_pct !== null && result.data.reduction_pct >= 0 ? 'progress-ring' : ''}`}
                         >
                           <span className="circle-num">
-                            {result.data.reduction_pct === null
+                            {t(result.data.reduction_pct === null
                               ? 'N/A'
                               : `${formatNumberOnly(
                                   result.data.reduction_pct
-                                )}%`}
+                                )}%`)}
                           </span>
-                          <span className="circle-unit">virgin delta</span>
+                          <span className="circle-unit">{t("virgin delta")}</span>
                         </div>
                         <span className="circle-text">
-                          {result.data.eligibility_status === 'BLOCKED'
+                          {t(result.data.eligibility_status === 'BLOCKED'
                             ? 'Theoretical reduction %'
-                            : 'Reduction percentage'}
+                            : 'Reduction percentage')}
                         </span>
-                        {result.data.eligibility_status === 'BLOCKED' && (
-                          <span className="circle-subnote">
-                            (Ineligible candidate)
-                          </span>
-                        )}
+                        {t(result.data.eligibility_status === 'BLOCKED' && (
+                          <span className="circle-subnote">{t("(Ineligible candidate)")}</span>
+                        ))}
                       </div>
                     </div>
 
@@ -756,82 +605,71 @@ export function HomePage() {
                       }`}
                     >
                       <div className="metric-item">
-                        <dt>Current virgin plastic</dt>
+                        <dt>{t("Current virgin plastic")}</dt>
                         <dd>
-                          {format(result.data.current_virgin_pack_g, 'g/unit')}
+                          {t(format(result.data.current_virgin_pack_g, 'g/unit'))}
                         </dd>
                       </div>
                       <div className="metric-item">
-                        <dt>Candidate virgin plastic</dt>
+                        <dt>{t("Candidate virgin plastic")}</dt>
                         <dd>
-                          {format(
+                          {t(format(
                             result.data.candidate_virgin_pack_g,
                             'g/unit'
-                          )}
+                          ))}
                         </dd>
                       </div>
                       <div className="metric-item">
                         <dt>
-                          {result.data.eligibility_status === 'BLOCKED'
+                          {t(result.data.eligibility_status === 'BLOCKED'
                             ? 'Theoretical reduction'
-                            : 'Reduction'}
+                            : 'Reduction')}
                         </dt>
                         <dd>
-                          {result.data.eligibility_status === 'BLOCKED' && (
-                            <small>(Ineligible) </small>
-                          )}
-                          {format(result.data.reduction_g, 'g/unit')}
+                          {t(result.data.eligibility_status === 'BLOCKED' && (
+                            <small>{t("(Ineligible) ")}</small>
+                          ))}
+                          {t(format(result.data.reduction_g, 'g/unit'))}
                         </dd>
                       </div>
                       <div className="metric-item">
                         <dt>
-                          {result.data.eligibility_status === 'BLOCKED'
+                          {t(result.data.eligibility_status === 'BLOCKED'
                             ? 'Theoretical reduction percentage'
-                            : 'Reduction percentage'}
+                            : 'Reduction percentage')}
                         </dt>
                         <dd>
-                          {result.data.eligibility_status === 'BLOCKED' && (
-                            <small>(Ineligible) </small>
-                          )}
-                          {format(result.data.reduction_pct, '%')}
+                          {t(result.data.eligibility_status === 'BLOCKED' && (
+                            <small>{t("(Ineligible) ")}</small>
+                          ))}
+                          {t(format(result.data.reduction_pct, '%'))}
                         </dd>
                       </div>
                     </dl>
 
-                    {result.data.current_virgin_pack_g === 0 && (
-                      <p className="disclosure-banner">
-                        Percentage is N/A because current virgin plastic is
-                        zero.
-                      </p>
-                    )}
+                    {t(result.data.current_virgin_pack_g === 0 && (
+                      <p className="disclosure-banner">{t("Percentage is N/A because current virgin plastic is zero.")}</p>
+                    ))}
 
-                    {result.data.reduction_g === 0 && (
-                      <p className="disclosure-banner">
-                        No change — zero virgin-plastic reduction.
-                      </p>
-                    )}
+                    {t(result.data.reduction_g === 0 && (
+                      <p className="disclosure-banner">{t("No change — zero virgin-plastic reduction.")}</p>
+                    ))}
 
-                    {result.data.reduction_g !== null &&
+                    {t(result.data.reduction_g !== null &&
                       result.data.reduction_g < 0 && (
-                        <p className="disclosure-banner">
-                          The candidate uses more virgin plastic than the
-                          current packaging.
-                        </p>
-                      )}
+                        <p className="disclosure-banner">{t("The candidate uses more virgin plastic than the current packaging.")}</p>
+                      ))}
 
-                    {!!result.data.missing_fields.length && (
+                    {t(!!result.data.missing_fields.length && (
                       <div className="refusal-box" role="alert">
-                        <h4>
-                          Comparison refused: required numeric inputs are
-                          missing (INSUFFICIENT_DATA — missing ≠ 0)
-                        </h4>
+                        <h4>{t("Comparison refused: required numeric inputs are missing (INSUFFICIENT_DATA — missing ≠ 0)")}</h4>
                         <ul>
-                          {result.data.missing_fields.map((f) => (
-                            <li key={f}>{f}</li>
-                          ))}
+                          {t(result.data.missing_fields.map((f) => (
+                            <li key={f}>{t(f)}</li>
+                          )))}
                         </ul>
                       </div>
-                    )}
+                    ))}
                   </section>
 
                   {/* INT-R5 Economic Scenario Amplifier Section */}
@@ -845,15 +683,11 @@ export function HomePage() {
                   <section
                     id="evidence"
                     className="products-board"
-                    aria-label="Operational Constraints and Evidence Findings"
+                    aria-label={t("Operational Constraints and Evidence Findings")}
                   >
                     <div className="section-header">
-                      <h2 className="section-title">
-                        Operational Constraints & Suitability Findings
-                      </h2>
-                      <span className="epistemic-badge">
-                        NOT_VERIFIED ≠ FALSE · SOURCE_AVAILABLE ≠ VERIFIED
-                      </span>
+                      <h2 className="section-title">{t("Operational Constraints & Suitability Findings")}</h2>
+                      <span className="epistemic-badge">{t("NOT_VERIFIED ≠ FALSE · SOURCE_AVAILABLE ≠ VERIFIED")}</span>
                     </div>
 
                     <OperationalRequirementsView
@@ -863,26 +697,26 @@ export function HomePage() {
                     />
 
                     <div className="constraints-list">
-                      {result.data.constraints.map((c) => (
+                      {t(result.data.constraints.map((c) => (
                         <div
                           className={`constraint-card ${c.status}`}
                           key={c.constraint_id}
                         >
                           <div className="constraint-top">
                             <strong>
-                              {c.status === 'BLOCKED' ? '⛔ ' : '⚠️ '}
-                              {c.constraint_id} · {c.status}
+                              {t(c.status === 'BLOCKED' ? '⛔ ' : '⚠️ ')}
+                              {t(c.constraint_id)}{t(" · ")}{t(c.status)}
                             </strong>
                             <span className="prov-chip verification">
-                              {c.verification_state}
+                              {t(c.verification_state)}
                             </span>
                           </div>
-                          <p style={{ margin: 0 }}>{c.reason}</p>
-                          {c.source_reference && (
-                            <small>Source: {c.source_reference}</small>
-                          )}
+                          <p style={{ margin: 0 }}>{t(c.reason)}</p>
+                          {t(c.source_reference && (
+                            <small>{t("Source: ")}{t(c.source_reference)}</small>
+                          ))}
                         </div>
-                      ))}
+                      )))}
                     </div>
                   </section>
 
@@ -890,33 +724,30 @@ export function HomePage() {
                   <section
                     id="packages"
                     className="products-board"
-                    aria-label="Current vs Candidate Packaging Inputs and Provenance"
+                    aria-label={t("Current vs Candidate Packaging Inputs and Provenance")}
                   >
                     <div className="section-header">
-                      <h2 className="section-title">
-                        Current vs Candidate Packaging Inputs & Provenance
-                      </h2>
-                      <span className="epistemic-badge">
-                        Dataset: {runtime.data.evidence.dataset_kind}
+                      <h2 className="section-title">{t("Current vs Candidate Packaging Inputs & Provenance")}</h2>
+                      <span className="epistemic-badge">{t("Dataset: ")}{t(runtime.data.evidence.dataset_kind)}
                       </span>
                     </div>
 
                     <div className="packages">
                       <PackageView
-                        title="Current"
+                        title={t("Current")}
                         data={result.data.scenario.current}
                       />
                       <PackageView
-                        title="Candidate"
+                        title={t("Candidate")}
                         data={result.data.scenario.candidate}
                         eligibilityStatus={result.data.eligibility_status}
                       />
                     </div>
                   </section>
                 </div>
-              )}
+              ))}
             </>
-          )}
+          ))}
         </div>
       </main>
     </>

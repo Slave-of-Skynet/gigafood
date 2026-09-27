@@ -1,3 +1,4 @@
+import { useTranslation } from '../i18n';
 import { useState } from 'react';
 import type { EvidenceField, IntervalValue } from '../api/contracts';
 import { EvidenceStateBadge } from './EvidenceStateBadge';
@@ -19,6 +20,7 @@ export function MetricField({
   unitOverride,
   showSources = true,
 }: MetricFieldProps) {
+  const t = useTranslation();
   const [expanded, setExpanded] = useState(false);
 
   // UNKNOWN or missing field handling: NEVER display 0 or 0 units.
@@ -29,13 +31,13 @@ export function MetricField({
     return (
       <div className="metric-field-box metric-field-unknown">
         <div className="metric-field-header">
-          <span className="metric-field-label">{label}</span>
+          <span className="metric-field-label">{t(label)}</span>
           <EvidenceStateBadge state={field?.state ?? 'UNKNOWN'} qualifier={field?.qualifier} />
         </div>
-        <div className="metric-field-val unknown-text">{unknownText}</div>
-        {field?.qualifier && (
-          <small className="metric-field-qualifier">{field.qualifier}</small>
-        )}
+        <div className="metric-field-val unknown-text">{t(unknownText)}</div>
+        {t(field?.qualifier && (
+          <small className="metric-field-qualifier">{t(field.qualifier)}</small>
+        ))}
       </div>
     );
   }
@@ -80,23 +82,23 @@ export function MetricField({
   return (
     <div className={`metric-field-box state-${field.state.toLowerCase()}`}>
       <div className="metric-field-header">
-        <span className="metric-field-label">{label}</span>
+        <span className="metric-field-label">{t(label)}</span>
         <EvidenceStateBadge state={field.state} />
       </div>
 
       <div className="metric-field-val">
-        <strong>{mainDisplay}</strong>
+        <strong>{t(mainDisplay)}</strong>
       </div>
 
-      {intervalSubtitle && (
-        <div className="metric-field-interval">{intervalSubtitle}</div>
-      )}
+      {t(intervalSubtitle && (
+        <div className="metric-field-interval">{t(intervalSubtitle)}</div>
+      ))}
 
-      {field.qualifier && (
-        <div className="metric-field-qualifier">{field.qualifier}</div>
-      )}
+      {t(field.qualifier && (
+        <div className="metric-field-qualifier">{t(field.qualifier)}</div>
+      ))}
 
-      {showSources && field.source_ids.length > 0 && (
+      {t(showSources && field.source_ids.length > 0 && (
         <div className="metric-field-provenance">
           <button
             type="button"
@@ -104,25 +106,25 @@ export function MetricField({
             onClick={() => setExpanded(!expanded)}
             aria-expanded={expanded}
           >
-            {expanded ? 'Hide sources' : `Sources (${field.source_ids.length})`}
+            {t(expanded ? 'Hide sources' : `Sources (${field.source_ids.length})`)}
           </button>
-          {expanded && (
+          {t(expanded && (
             <div className="provenance-details-drawer">
               <small>
-                <strong>Scope:</strong> {field.scope}
+                <strong>{t("Scope:")}</strong> {t(field.scope)}
               </small>
               <small>
-                <strong>Citations:</strong> {field.source_ids.join(', ')}
+                <strong>{t("Citations:")}</strong> {t(field.source_ids.join(', '))}
               </small>
-              {field.calculation_id && (
+              {t(field.calculation_id && (
                 <small>
-                  <strong>Calculation ID:</strong> {field.calculation_id}
+                  <strong>{t("Calculation ID:")}</strong> {t(field.calculation_id)}
                 </small>
-              )}
+              ))}
             </div>
-          )}
+          ))}
         </div>
-      )}
+      ))}
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { useTranslation } from '../i18n';
 import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 import { api } from '../api/client';
@@ -229,37 +230,37 @@ function calculationGapExplanation(data: CandidateAssessment): string {
 }
 
 function Metadata({ data }: { data: SelectionMetadata }) {
+  const t = useTranslation();
   return (
     <dl className="selection-metadata">
       <div>
-        <dt>Component boundary</dt>
+        <dt>{t("Component boundary")}</dt>
         <dd>
-          {componentBoundaryLabel(data.component_boundary)}{' '}
-          <span className="tech-enum-inline">({data.component_boundary})</span>
+          {t(componentBoundaryLabel(data.component_boundary))}{t(' ')}
+          <span className="tech-enum-inline">{t("(")}{t(data.component_boundary)}{t(")")}</span>
         </dd>
       </div>
       <div>
-        <dt>Recycled-content evidence</dt>
+        <dt>{t("Recycled-content evidence")}</dt>
         <dd>
-          {recycledEvidenceLabel(data.recycled_content_point_value_status)}{' '}
-          <span className="tech-enum-inline">
-            ({data.recycled_content_point_value_status})
-          </span>
+          {t(recycledEvidenceLabel(data.recycled_content_point_value_status))}{t(' ')}
+          <span className="tech-enum-inline">{t("(")}{t(data.recycled_content_point_value_status)}{t(")")}</span>
         </dd>
       </div>
       <div>
-        <dt>Evidence scope</dt>
-        <dd>{data.recycled_content_scope ?? 'Unknown'}</dd>
+        <dt>{t("Evidence scope")}</dt>
+        <dd>{t(data.recycled_content_scope ?? 'Unknown')}</dd>
       </div>
       <div>
-        <dt>Evidence date</dt>
-        <dd>{data.evidence_date ?? 'Unknown'}</dd>
+        <dt>{t("Evidence date")}</dt>
+        <dd>{t(data.evidence_date ?? 'Unknown')}</dd>
       </div>
     </dl>
   );
 }
 
 function CandidateCard({ data }: { data: CandidateAssessment }) {
+  const t = useTranslation();
   const { calculation: calc, eligibility, annual_impact: annual } = data;
   const gapReason = detectCalculationGapReason(data);
   const primaryComponentsSummary = data.candidate.components
@@ -269,7 +270,7 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
   return (
     <article
       className={`products-board selection-candidate candidate-${eligibility.status}`}
-      aria-label={data.candidate.label}
+      aria-label={t(data.candidate.label)}
     >
       {/* Reconciled Denis Product Card Layout: .picture-product left + .desc-product right */}
       <div className="candidate-showcase-row">
@@ -283,44 +284,40 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
         <div className="desc-product">
           <div className="section-header">
             <div>
-              <span className="candidate-kicker">
-                What is this packaging option? · ID: {data.candidate.id}
+              <span className="candidate-kicker">{t("What is this packaging option? · ID: ")}{t(data.candidate.id)}
               </span>
-              <h3 className="name-product section-title">{data.candidate.label}</h3>
+              <h3 className="name-product section-title">{t(data.candidate.label)}</h3>
             </div>
             <div className="epistemic-badges">
               <span className="epistemic-badge">
-                {componentBoundaryLabel(data.metadata.component_boundary)} ·{' '}
-                <small>{data.metadata.component_boundary}</small>
+                {t(componentBoundaryLabel(data.metadata.component_boundary))}{t(" ·")}{t(' ')}
+                <small>{t(data.metadata.component_boundary)}</small>
               </span>
               <span className={`eligibility-status-pill ${eligibility.status}`}>
-                {eligibility.status === 'BLOCKED'
+                {t(eligibility.status === 'BLOCKED'
                   ? '⛔ BLOCKED'
                   : eligibility.status === 'REVIEW_REQUIRED'
                   ? '⚠️ Review required'
-                  : '✓ Eligible'}
+                  : '✓ Eligible')}
               </span>
             </div>
           </div>
 
           <p className="info-product">
-            <strong>Use context:</strong> {data.candidate.use_context ?? 'Not specified'} ·{' '}
-            <strong>Represented components:</strong> {primaryComponentsSummary} ·{' '}
-            <strong>Recycled-content evidence:</strong>{' '}
-            {recycledEvidenceLabel(data.metadata.recycled_content_point_value_status)}{' '}
-            <span className="tech-enum-inline">
-              ({data.metadata.recycled_content_point_value_status})
-            </span>
+            <strong>{t("Use context:")}</strong> {t(data.candidate.use_context ?? 'Not specified')}{t(" ·")}{t(' ')}
+            <strong>{t("Represented components:")}</strong> {t(primaryComponentsSummary)}{t(" ·")}{t(' ')}
+            <strong>{t("Recycled-content evidence:")}</strong>{t(' ')}
+            {t(recycledEvidenceLabel(data.metadata.recycled_content_point_value_status))}{t(' ')}
+            <span className="tech-enum-inline">{t("(")}{t(data.metadata.recycled_content_point_value_status)}{t(")")}</span>
           </p>
 
           <div className="option-product">
             <div className="comparison-heading-group">
-              <h4 className="table-desc">Virgin-plastic comparison</h4>
+              <h4 className="table-desc">{t("Virgin-plastic comparison")}</h4>
               <p className="comparison-human-sub">
-                {calculationSummaryText(data)}
+                {t(calculationSummaryText(data))}
               </p>
-              <small className="tech-enum-trace">
-                Technical state: {calc.status} · {calc.verification_state}
+              <small className="tech-enum-trace">{t("Technical state: ")}{t(calc.status)}{t(" · ")}{t(calc.verification_state)}
               </small>
             </div>
 
@@ -332,11 +329,11 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
                   }`}
                 >
                   <span className="circle-num">
-                    {formatNumberOnly(calc.current_virgin_pack_g)}
+                    {t(formatNumberOnly(calc.current_virgin_pack_g))}
                   </span>
-                  <span className="circle-unit">g / unit</span>
+                  <span className="circle-unit">{t("g / unit")}</span>
                 </div>
-                <span className="circle-text">Baseline virgin</span>
+                <span className="circle-text">{t("Baseline virgin")}</span>
               </div>
 
               <div className="stat-circle-wrapper">
@@ -348,13 +345,13 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
                   }`}
                 >
                   <span className="circle-num">
-                    {formatNumberOnly(calc.candidate_virgin_pack_g)}
+                    {t(formatNumberOnly(calc.candidate_virgin_pack_g))}
                   </span>
                   <span className="circle-unit">
-                    {calc.candidate_virgin_pack_g === null ? 'missing ≠ 0' : 'g / unit'}
+                    {t(calc.candidate_virgin_pack_g === null ? 'missing ≠ 0' : 'g / unit')}
                   </span>
                 </div>
-                <span className="circle-text">Candidate virgin</span>
+                <span className="circle-text">{t("Candidate virgin")}</span>
               </div>
 
               <div className="stat-circle-wrapper">
@@ -369,12 +366,12 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
                       : 'candidate-ring'
                   }`}
                 >
-                  <span className="circle-num">{formatNumberOnly(calc.reduction_g)}</span>
+                  <span className="circle-num">{t(formatNumberOnly(calc.reduction_g))}</span>
                   <span className="circle-unit">
-                    {calc.reduction_g === null ? 'delta N/A' : 'g / unit'}
+                    {t(calc.reduction_g === null ? 'delta N/A' : 'g / unit')}
                   </span>
                 </div>
-                <span className="circle-text">Signed reduction</span>
+                <span className="circle-text">{t("Signed reduction")}</span>
               </div>
 
               <div className="stat-circle-wrapper">
@@ -391,13 +388,13 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
                   } ${calc.reduction_pct !== null && calc.reduction_pct >= 0 ? 'progress-ring' : ''}`}
                 >
                   <span className="circle-num">
-                    {calc.reduction_pct === null
+                    {t(calc.reduction_pct === null
                       ? 'N/A'
-                      : `${formatNumberOnly(calc.reduction_pct)}%`}
+                      : `${formatNumberOnly(calc.reduction_pct)}%`)}
                   </span>
-                  <span className="circle-unit">virgin delta</span>
+                  <span className="circle-unit">{t("virgin delta")}</span>
                 </div>
-                <span className="circle-text">Reduction %</span>
+                <span className="circle-text">{t("Reduction %")}</span>
               </div>
             </div>
           </div>
@@ -407,193 +404,173 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
       {/* 3-Axis Judge Decision Grid: Environmental Result, Operational Eligibility, Next Action */}
       <div className="selection-axes">
         <section className="exec-card selection-environment">
-          <span className="judge-question-kicker">Does it reduce virgin plastic?</span>
-          <h4>Environmental result</h4>
-          <strong>{deltaMeaning(calc.reduction_g, gapReason)}</strong>
+          <span className="judge-question-kicker">{t("Does it reduce virgin plastic?")}</span>
+          <h4>{t("Environmental result")}</h4>
+          <strong>{t(deltaMeaning(calc.reduction_g, gapReason))}</strong>
           <p className="axis-human-note">
-            {calculationGapExplanation(data)}
+            {t(calculationGapExplanation(data))}
           </p>
           <dl className="selection-metadata">
             <div>
-              <dt>Current virgin plastic</dt>
-              <dd>{format(calc.current_virgin_pack_g, 'g/unit')}</dd>
+              <dt>{t("Current virgin plastic")}</dt>
+              <dd>{t(format(calc.current_virgin_pack_g, 'g/unit'))}</dd>
             </div>
             <div>
-              <dt>Candidate virgin plastic</dt>
-              <dd>{format(calc.candidate_virgin_pack_g, 'g/unit')}</dd>
+              <dt>{t("Candidate virgin plastic")}</dt>
+              <dd>{t(format(calc.candidate_virgin_pack_g, 'g/unit'))}</dd>
             </div>
             <div>
-              <dt>Signed reduction</dt>
+              <dt>{t("Signed reduction")}</dt>
               <dd>
-                {format(calc.reduction_g, 'g/unit')} · {format(calc.reduction_pct, '%')}
+                {t(format(calc.reduction_g, 'g/unit'))}{t(" · ")}{t(format(calc.reduction_pct, '%'))}
               </dd>
             </div>
           </dl>
-          <small className="tech-enum-trace">
-            Represented components only · CALCULATED ≠ VERIFIED · Technical state:{' '}
-            {calc.status} · {calc.verification_state}
+          <small className="tech-enum-trace">{t("Represented components only · CALCULATED ≠ VERIFIED · Technical state:")}{t(' ')}
+            {t(calc.status)}{t(" · ")}{t(calc.verification_state)}
           </small>
         </section>
 
         <section className={`eligibility-banner ${eligibility.status}`}>
-          <span className="judge-question-kicker">
-            Can we use it in this operating context?
-          </span>
-          <h4>Operational eligibility</h4>
-          <strong>{eligibilityHeadline(eligibility.status)}</strong>
+          <span className="judge-question-kicker">{t("Can we use it in this operating context?")}</span>
+          <h4>{t("Operational eligibility")}</h4>
+          <strong>{t(eligibilityHeadline(eligibility.status))}</strong>
           <p>
-            {eligibility.status === 'BLOCKED'
+            {t(eligibility.status === 'BLOCKED'
               ? 'Incompatible with the stated modeled operating requirements. Environmental benefit does not override this operational block.'
               : eligibility.status === 'REVIEW_REQUIRED'
               ? 'Evidence or human verification is required before confirming compatibility; an unknown capability is not proven incompatibility.'
-              : 'Passes the bounded evaluated thermal and microwave requirements. Still requires human QA and food-safety review.'}
+              : 'Passes the bounded evaluated thermal and microwave requirements. Still requires human QA and food-safety review.')}
           </p>
-          <small className="tech-enum-trace">
-            Technical state: {eligibility.status}
+          <small className="tech-enum-trace">{t("Technical state: ")}{t(eligibility.status)}
           </small>
         </section>
 
         <section className="exec-card next-action">
-          <span className="judge-question-kicker">
-            What should Profi investigate next?
-          </span>
-          <h4>Next action</h4>
-          <strong>{data.next_action.summary}</strong>
-          <p>{data.next_action.details}</p>
-          <small className="tech-enum-trace">
-            Action code: {data.next_action.action_code}
+          <span className="judge-question-kicker">{t("What should Profi investigate next?")}</span>
+          <h4>{t("Next action")}</h4>
+          <strong>{t(data.next_action.summary)}</strong>
+          <p>{t(data.next_action.details)}</p>
+          <small className="tech-enum-trace">{t("Action code: ")}{t(data.next_action.action_code)}
           </small>
         </section>
       </div>
 
-      <section className="comparability-panel" aria-label="Comparability">
-        <span className="judge-question-kicker">Comparison scope</span>
-        <h4>{comparabilityLabel(data.comparability.rating)}</h4>
-        {data.comparability.notes.map((note, i) => (
-          <p key={i}>{note}</p>
-        ))}
-        <small className="tech-enum-trace">
-          Technical state: {data.comparability.rating}
+      <section className="comparability-panel" aria-label={t("Comparability")}>
+        <span className="judge-question-kicker">{t("Comparison scope")}</span>
+        <h4>{t(comparabilityLabel(data.comparability.rating))}</h4>
+        {t(data.comparability.notes.map((note, i) => (
+          <p key={i}>{t(note)}</p>
+        )))}
+        <small className="tech-enum-trace">{t("Technical state: ")}{t(data.comparability.rating)}
         </small>
       </section>
 
-      {calc.status === 'INSUFFICIENT_DATA' || calc.missing_fields.length > 0 ? (
+      {t(calc.status === 'INSUFFICIENT_DATA' || calc.missing_fields.length > 0 ? (
         <div className="selection-evidence-gap" role="alert">
-          <span className="judge-question-kicker">What evidence is missing?</span>
-          <strong>Evidence required — missing ≠ 0</strong>
+          <span className="judge-question-kicker">{t("What evidence is missing?")}</span>
+          <strong>{t("Evidence required — missing ≠ 0")}</strong>
           <p>
-            <strong>Why no number is shown:</strong>{' '}
-            {calculationGapExplanation(data)}
+            <strong>{t("Why no number is shown:")}</strong>{t(' ')}
+            {t(calculationGapExplanation(data))}
           </p>
-          {calc.missing_fields.length > 0 && (
+          {t(calc.missing_fields.length > 0 && (
             <ul>
-              {calc.missing_fields.map((field) => (
-                <li key={field}>{field}</li>
-              ))}
+              {t(calc.missing_fields.map((field) => (
+                <li key={field}>{t(field)}</li>
+              )))}
             </ul>
-          )}
-          <small className="tech-enum-trace">
-            Recycled-content evidence:{' '}
-            {recycledEvidenceLabel(
+          ))}
+          <small className="tech-enum-trace">{t("Recycled-content evidence:")}{t(' ')}
+            {t(recycledEvidenceLabel(
               data.metadata.recycled_content_point_value_status
-            )}{' '}
-            ({data.metadata.recycled_content_point_value_status})
-          </small>
+            ))}{t(' ')}{t("(")}{t(data.metadata.recycled_content_point_value_status)}{t(")")}</small>
         </div>
       ) : (
         <div className="comparability-panel">
-          <span className="judge-question-kicker">What evidence is missing?</span>
-          <strong>No missing numeric fields for represented components</strong>
+          <span className="judge-question-kicker">{t("What evidence is missing?")}</span>
+          <strong>{t("No missing numeric fields for represented components")}</strong>
           <p>
-            {recycledEvidenceExplanation(
+            {t(recycledEvidenceExplanation(
               data.metadata.recycled_content_point_value_status
-            )}{' '}
-            The arithmetic is computed from represented inputs, but this is not
-            implementation approval (CALCULATED ≠ VERIFIED).
-          </p>
-          <small className="tech-enum-trace">
-            Recycled-content evidence:{' '}
-            {recycledEvidenceLabel(
+            ))}{t(' ')}{t("The arithmetic is computed from represented inputs, but this is not implementation approval (CALCULATED ≠ VERIFIED).")}</p>
+          <small className="tech-enum-trace">{t("Recycled-content evidence:")}{t(' ')}
+            {t(recycledEvidenceLabel(
               data.metadata.recycled_content_point_value_status
-            )}{' '}
-            ({data.metadata.recycled_content_point_value_status}) · Verification
-            state: {calc.verification_state}
+            ))}{t(' ')}{t("(")}{t(data.metadata.recycled_content_point_value_status)}{t(") · Verification state: ")}{t(calc.verification_state)}
           </small>
         </div>
-      )}
+      ))}
 
       <div className="constraints-list">
-        {eligibility.constraints.map((finding) => (
+        {t(eligibility.constraints.map((finding) => (
           <div
             key={finding.constraint_id}
             className={`constraint-card ${finding.status}`}
           >
             <strong>
-              {finding.status === 'BLOCKED' ? '⛔ Blocked' : '⚠️ Review required'} ·{' '}
-              {finding.constraint_id}
+              {t(finding.status === 'BLOCKED' ? '⛔ Blocked' : '⚠️ Review required')}{t(" ·")}{t(' ')}
+              {t(finding.constraint_id)}
             </strong>
-            <p>{finding.reason}</p>
-            <small className="tech-enum-trace">
-              Technical state: {finding.status} · {finding.verification_state}
-              {finding.source_reference ? ` · Source: ${finding.source_reference}` : ''}
+            <p>{t(finding.reason)}</p>
+            <small className="tech-enum-trace">{t("Technical state: ")}{t(finding.status)}{t(" · ")}{t(finding.verification_state)}
+              {t(finding.source_reference ? ` · Source: ${finding.source_reference}` : '')}
             </small>
           </div>
-        ))}
+        )))}
       </div>
 
-      {annual && (
+      {t(annual && (
         <section
           className={`annual-impact ${annual.is_actionable ? '' : 'non-actionable'}`}
-          aria-label="Hypothetical annual impact"
+          aria-label={t("Hypothetical annual impact")}
         >
-          <h4>
-            Hypothetical annual impact ·{' '}
-            {annual.status === 'CALCULATED'
+          <h4>{t("Hypothetical annual impact ·")}{t(' ')}
+            {t(annual.status === 'CALCULATED'
               ? 'Calculated from hypothetical volume'
               : gapReason === 'BOUNDARY_MISMATCH'
               ? 'Calculation withheld (scopes differ)'
-              : 'Calculation withheld (missing evidence)'}
+              : 'Calculation withheld (missing evidence)')}
           </h4>
           <strong>
-            {annual.is_actionable
+            {t(annual.is_actionable
               ? 'Available for scenario review — not implementation approval'
-              : 'THEORETICAL / NON-ACTIONABLE'}
+              : 'THEORETICAL / NON-ACTIONABLE')}
           </strong>
-          <p>{deltaMeaning(annual.annual_reduction_kg, gapReason)}</p>
+          <p>{t(deltaMeaning(annual.annual_reduction_kg, gapReason))}</p>
           <dl className="selection-metadata">
             <div>
-              <dt>User-supplied annual units</dt>
-              <dd>{format(annual.annual_units, '')}</dd>
+              <dt>{t("User-supplied annual units")}</dt>
+              <dd>{t(format(annual.annual_units, ''))}</dd>
             </div>
             <div>
-              <dt>Annual current virgin plastic</dt>
-              <dd>{format(annual.annual_current_virgin_kg, 'kg')}</dd>
+              <dt>{t("Annual current virgin plastic")}</dt>
+              <dd>{t(format(annual.annual_current_virgin_kg, 'kg'))}</dd>
             </div>
             <div>
-              <dt>Annual candidate virgin plastic</dt>
-              <dd>{format(annual.annual_candidate_virgin_kg, 'kg')}</dd>
+              <dt>{t("Annual candidate virgin plastic")}</dt>
+              <dd>{t(format(annual.annual_candidate_virgin_kg, 'kg'))}</dd>
             </div>
             <div>
-              <dt>Signed annual reduction</dt>
-              <dd>{format(annual.annual_reduction_kg, 'kg')}</dd>
+              <dt>{t("Signed annual reduction")}</dt>
+              <dd>{t(format(annual.annual_reduction_kg, 'kg'))}</dd>
             </div>
             <div>
-              <dt>Actionable under modeled context</dt>
-              <dd>{String(annual.is_actionable)}</dd>
+              <dt>{t("Actionable under modeled context")}</dt>
+              <dd>{t(String(annual.is_actionable))}</dd>
             </div>
           </dl>
-          <p className="disclosure-banner">{annual.disclosure}</p>
-          <small className="tech-enum-trace">
-            Technical state: {annual.status}
+          <p className="disclosure-banner">{t(annual.disclosure)}</p>
+          <small className="tech-enum-trace">{t("Technical state: ")}{t(annual.status)}
           </small>
         </section>
-      )}
+      ))}
 
       <details>
-        <summary>Technical evidence and provenance</summary>
+        <summary>{t("Technical evidence and provenance")}</summary>
         <Metadata data={data.metadata} />
         <PackageView
-          title="Candidate"
+          title={t("Candidate")}
           data={data.candidate}
           eligibilityStatus={eligibility.status}
         />
@@ -603,6 +580,7 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
 }
 
 export function SelectionView({ visible }: { visible: boolean }) {
+  const t = useTranslation();
   const [attempt, setAttempt] = useState(0);
   const [portfolios, setPortfolios] = useState<Load<PortfolioSummary[]>>({
     state: 'loading',
@@ -699,7 +677,7 @@ export function SelectionView({ visible }: { visible: boolean }) {
   return (
     <>
       <div className="runtime-pill selection-availability" role="status">
-        {portfolios.state === 'loading'
+        {t(portfolios.state === 'loading'
           ? 'Selection: checking portfolios…'
           : portfolios.state === 'error'
           ? 'Selection unavailable'
@@ -707,37 +685,30 @@ export function SelectionView({ visible }: { visible: boolean }) {
           ? 'Selection: evaluation unavailable'
           : result.state === 'loading'
           ? 'Selection: portfolios loaded · evaluating…'
-          : `Selection: READY · ${portfolios.data.length} portfolio(s)`}
+          : `Selection: READY · ${portfolios.data.length} portfolio(s)`)}
       </div>
 
       <div className="selection-mode" hidden={!visible}>
-        {portfolios.state === 'loading' && (
-          <div className="status-panel">Loading Selection portfolios…</div>
-        )}
+        {t(portfolios.state === 'loading' && (
+          <div className="status-panel">{t("Loading Selection portfolios…")}</div>
+        ))}
 
-        {portfolios.state === 'error' && (
+        {t(portfolios.state === 'error' && (
           <div className="status-panel error-panel" role="alert">
-            <h2>Selection unavailable</h2>
-            <p>{portfolios.message}</p>
-            <p>
-              Comparison has its own evidence availability. No fallback portfolio
-              is used.
-            </p>
+            <h2>{t("Selection unavailable")}</h2>
+            <p>{t(portfolios.message)}</p>
+            <p>{t("Comparison has its own evidence availability. No fallback portfolio is used.")}</p>
             <button
               className="retry-btn"
               onClick={() => setAttempt((n) => n + 1)}
-            >
-              Retry Selection
-            </button>
+            >{t("Retry Selection")}</button>
           </div>
-        )}
+        ))}
 
-        {portfolios.state === 'ready' && (
+        {t(portfolios.state === 'ready' && (
           <>
-            <section className="control-deck" aria-label="Portfolio controls">
-              <label className="scenario-label">
-                Select portfolio
-                <select
+            <section className="control-deck" aria-label={t("Portfolio controls")}>
+              <label className="scenario-label">{t("Select portfolio")}<select
                   className="scenario-select"
                   value={selected}
                   onChange={(event) => {
@@ -746,125 +717,95 @@ export function SelectionView({ visible }: { visible: boolean }) {
                     resetScenario();
                   }}
                 >
-                  {portfolios.data.map((p) => (
+                  {t(portfolios.data.map((p) => (
                     <option key={p.id} value={p.id}>
-                      {p.label} · {p.candidate_count} candidates
-                    </option>
-                  ))}
+                      {t(p.label)}{t(" · ")}{t(p.candidate_count)}{t(" candidates")}</option>
+                  )))}
                 </select>
               </label>
 
               <form onSubmit={evaluate} className="scenario-form" noValidate>
                 <div className="scenario-form-heading">
-                  <h3>User-supplied scenario</h3>
-                  <p>
-                    Not a verified Profi requirement. Blank fields and “Use
-                    portfolio default” inherit the committed portfolio
-                    assumptions.
-                  </p>
+                  <h3>{t("User-supplied scenario")}</h3>
+                  <p>{t("Not a verified Profi requirement. Blank fields and “Use portfolio default” inherit the committed portfolio assumptions.")}</p>
                 </div>
 
-                <label className="scenario-label" htmlFor="scenario-context">
-                  Scenario notes (not evaluated)
-                  <input
+                <label className="scenario-label" htmlFor="scenario-context">{t("Scenario notes (not evaluated)")}<input
                     id="scenario-context"
                     value={context}
                     onChange={(event) => setContext(event.target.value)}
-                    placeholder="Optional context notes (not evaluated)"
+                    placeholder={t("Optional context notes (not evaluated)")}
                     aria-describedby="context-help"
                   />
-                  <small id="context-help">
-                    Optional notes for this scenario. These notes are shown for
-                    context only. Eligibility is evaluated from the structured
-                    temperature and microwave fields below.
-                  </small>
+                  <small id="context-help">{t("Optional notes for this scenario. These notes are shown for context only. Eligibility is evaluated from the structured temperature and microwave fields below.")}</small>
                 </label>
 
                 <label
                   className="scenario-label"
                   htmlFor="scenario-temperature"
-                >
-                  Required maximum temperature (°C)
-                  <input
+                >{t("Required maximum temperature (°C)")}<input
                     id="scenario-temperature"
                     type="text"
                     inputMode="decimal"
                     value={temperature}
                     onChange={(event) => setTemperature(event.target.value)}
-                    placeholder="Optional · e.g. 60"
+                    placeholder={t("Optional · e.g. 60")}
                   />
                 </label>
 
-                <label className="scenario-label" htmlFor="scenario-microwave">
-                  Microwave reheating
-                  <select
+                <label className="scenario-label" htmlFor="scenario-microwave">{t("Microwave reheating")}<select
                     id="scenario-microwave"
                     className="scenario-select"
                     value={microwave}
                     onChange={(event) => setMicrowave(event.target.value)}
                   >
-                    <option value="default">Use portfolio default</option>
-                    <option value="required">Required</option>
-                    <option value="not-required">
-                      Not required in this scenario
-                    </option>
+                    <option value="default">{t("Use portfolio default")}</option>
+                    <option value="required">{t("Required")}</option>
+                    <option value="not-required">{t("Not required in this scenario")}</option>
                   </select>
                 </label>
 
-                <label className="scenario-label" htmlFor="annual-units">
-                  Hypothetical annual units
-                  <input
+                <label className="scenario-label" htmlFor="annual-units">{t("Hypothetical annual units")}<input
                     id="annual-units"
                     type="text"
                     inputMode="numeric"
                     value={volume}
                     onChange={(event) => setVolume(event.target.value)}
-                    placeholder="Optional · e.g. 100000"
+                    placeholder={t("Optional · e.g. 100000")}
                     aria-describedby="volume-disclosure"
                   />
-                  <small id="volume-disclosure">
-                    User-supplied hypothetical volume. Not actual Profi volume
-                    or measured impact. Leave blank for per-unit assessment.
-                  </small>
+                  <small id="volume-disclosure">{t("User-supplied hypothetical volume. Not actual Profi volume or measured impact. Leave blank for per-unit assessment.")}</small>
                 </label>
 
                 <div className="scenario-actions">
-                  <button type="submit" className="scenario-pill">
-                    Evaluate scenario
-                  </button>
+                  <button type="submit" className="scenario-pill">{t("Evaluate scenario")}</button>
                   <button
                     type="button"
                     className="scenario-pill"
                     onClick={resetScenario}
-                  >
-                    Reset to portfolio defaults
-                  </button>
+                  >{t("Reset to portfolio defaults")}</button>
                 </div>
               </form>
 
-              {validation && <p role="alert">{validation}</p>}
+              {t(validation && <p role="alert">{t(validation)}</p>)}
             </section>
 
-            {result.state === 'loading' && (
-              <div className="status-panel" role="status">
-                Evaluating portfolio…
-              </div>
-            )}
+            {t(result.state === 'loading' && (
+              <div className="status-panel" role="status">{t("Evaluating portfolio…")}</div>
+            ))}
 
-            {result.state === 'error' && (
+            {t(result.state === 'error' && (
               <div className="status-panel error-panel" role="alert">
-                <h2>Selection evaluation failed</h2>
-                <p>{result.message}</p>
+                <h2>{t("Selection evaluation failed")}</h2>
+                <p>{t(result.message)}</p>
                 <button
                   className="retry-btn"
                   onClick={() => setEvaluationAttempt((n) => n + 1)}
-                >
-                  Retry evaluation
-                </button>
+                >{t("Retry evaluation")}</button>
               </div>
-            )}
+            ))}
 
-            {result.state === 'ready' && (
+            {t(result.state === 'ready' && (
               <div
                 className="selection-results all-products-board"
                 aria-live="polite"
@@ -872,51 +813,43 @@ export function SelectionView({ visible }: { visible: boolean }) {
                 {/* Denis Category Section Heading with 50% underline (.option-class / .name-option-class) */}
                 <div className="option-class">
                   <h2 className="name-option-class" id="portfolio-category-title">
-                    {result.data.label}
+                    {t(result.data.label)}
                   </h2>
                 </div>
 
                 <section
                   className="products-board"
-                  aria-label="Portfolio assessment"
+                  aria-label={t("Portfolio assessment")}
                 >
                   <div className="section-header">
-                    <h3 className="section-title">
-                      Portfolio Decision Context & Baseline
-                    </h3>
-                    <span className={`dataset-badge ${result.data.dataset_kind}`}>
-                      Dataset: {result.data.dataset_kind}
+                    <h3 className="section-title">{t("Portfolio Decision Context & Baseline")}</h3>
+                    <span className={`dataset-badge ${result.data.dataset_kind}`}>{t("Dataset: ")}{t(result.data.dataset_kind)}
                     </span>
                   </div>
 
-                  <p className="disclosure-banner">{result.data.disclosure}</p>
+                  <p className="disclosure-banner">{t(result.data.disclosure)}</p>
 
                   {/* UX-9: First-screen narrative hierarchy — What PackShift concluded first */}
                   <div className="selection-verdict">
-                    <strong>What PackShift concluded</strong>
-                    <p>{result.data.summary_verdict}</p>
+                    <strong>{t("What PackShift concluded")}</strong>
+                    <p>{t(result.data.summary_verdict)}</p>
                   </div>
-                  <small>
-                    Backend decision grouping, not a global ranking. No result
-                    grants implementation approval.
-                  </small>
+                  <small>{t("Backend decision grouping, not a global ranking. No result grants implementation approval.")}</small>
 
-                  <h3>Modeled decision context</h3>
+                  <h3>{t("Modeled decision context")}</h3>
                   <p>
-                    <strong>Scenario context / notes (not evaluated by gate):</strong>{' '}
-                    {result.data.use_context} · {result.data.candidates.length}{' '}
-                    candidates
-                  </p>
+                    <strong>{t("Scenario context / notes (not evaluated by gate):")}</strong>{t(' ')}
+                    {t(result.data.use_context)}{t(" · ")}{t(result.data.candidates.length)}{t(' ')}{t("candidates")}</p>
 
                   <OperationalRequirementsView
                     requirements={result.data.operational_requirements}
                   />
 
                   <p>
-                    <strong>Hypothetical annual units:</strong>{' '}
-                    {result.data.annual_units_requested === null
+                    <strong>{t("Hypothetical annual units:")}</strong>{t(' ')}
+                    {t(result.data.annual_units_requested === null
                       ? 'Not supplied · per-unit assessment'
-                      : format(result.data.annual_units_requested, '')}
+                      : format(result.data.annual_units_requested, ''))}
                   </p>
 
                   <section className="selection-baseline">
@@ -929,29 +862,25 @@ export function SelectionView({ visible }: { visible: boolean }) {
                         roleLabel="Current Baseline"
                       />
                       <div className="desc-product">
-                        <h3 className="name-product">
-                          Baseline · {result.data.baseline.package.label}
+                        <h3 className="name-product">{t("Baseline · ")}{t(result.data.baseline.package.label)}
                         </h3>
                         <p className="info-product">
                           <strong>
-                            {format(
+                            {t(format(
                               result.data.baseline.virgin_plastic_g,
                               'g/unit'
-                            )}
-                          </strong>{' '}
-                          virgin plastic ·{' '}
-                          {result.data.baseline.calculation_status === 'CALCULATED'
+                            ))}
+                          </strong>{t(' ')}{t("virgin plastic ·")}{t(' ')}
+                          {t(result.data.baseline.calculation_status === 'CALCULATED'
                             ? 'Calculated from represented components'
-                            : 'Insufficient numeric data'}{' '}
-                          <span className="tech-enum-inline">
-                            ({result.data.baseline.calculation_status})
-                          </span>
+                            : 'Insufficient numeric data')}{t(' ')}
+                          <span className="tech-enum-inline">{t("(")}{t(result.data.baseline.calculation_status)}{t(")")}</span>
                         </p>
                         <Metadata data={result.data.baseline.metadata} />
                         <details>
-                          <summary>Baseline technical evidence and provenance</summary>
+                          <summary>{t("Baseline technical evidence and provenance")}</summary>
                           <PackageView
-                            title="Current"
+                            title={t("Current")}
                             data={result.data.baseline.package}
                           />
                         </details>
@@ -965,23 +894,21 @@ export function SelectionView({ visible }: { visible: boolean }) {
                   <h2
                     className="name-option-class"
                     id="evaluated-candidates-heading"
-                  >
-                    Evaluated Candidates ({result.data.candidates.length})
-                  </h2>
+                  >{t("Evaluated Candidates (")}{t(result.data.candidates.length)}{t(")")}</h2>
                 </div>
 
                 <div className="section-product-board">
-                  {result.data.candidates.map((candidate) => (
+                  {t(result.data.candidates.map((candidate) => (
                     <CandidateCard
                       key={candidate.candidate.id}
                       data={candidate}
                     />
-                  ))}
+                  )))}
                 </div>
               </div>
-            )}
+            ))}
           </>
-        )}
+        ))}
       </div>
     </>
   );
