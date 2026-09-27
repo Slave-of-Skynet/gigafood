@@ -128,7 +128,7 @@ export function DecisionSummary({
         <div className="stretch-column">
           <div className="stretch-header">
             <span className="stretch-icon">{t("❓")}</span>
-            <strong>{t("What Remains Unknown")}</strong>
+            <strong>{t("What still needs checking")}</strong>
           </div>
           <ul className="stretch-list">
             <li>{t("Exact fatty-food migration dossiers for complete assembled package systems.")}</li>

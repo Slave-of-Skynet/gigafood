@@ -41,7 +41,7 @@ export function EvidenceStateBadge({
         };
       case 'UNKNOWN':
         return {
-          label: 'UNKNOWN',
+          label: 'Needs validation',
           subtext: 'Evidence required',
           styleClass: 'epistemic-unknown',
         };

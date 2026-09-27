@@ -114,9 +114,9 @@ export function ProductVisual({
             </span>
           ))}
           <div className="schematic-cap-row">
-            <span className="schematic-cap-tag">{t("Max temp: ")}{t(maxTemp === null ? 'Unknown (N/A)' : `${maxTemp}°C`)}
+            <span className="schematic-cap-tag">{t("Max temp: ")}{t(maxTemp === null ? 'Needs verification' : `${maxTemp}°C`)}
             </span>
-            <span className="schematic-cap-tag">{t("MW: ")}{t(microwave === null ? 'Unknown (N/A)' : microwave ? 'Yes' : 'No')}
+            <span className="schematic-cap-tag">{t("MW: ")}{t(microwave === null ? 'Needs verification' : microwave ? 'Yes' : 'No')}
             </span>
           </div>
         </div>

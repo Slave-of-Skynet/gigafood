@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { humanizePresentationText } from './presentation';
 import { messages } from './messages';
 
 export type Language = 'en' | 'ru' | 'ro';
@@ -24,7 +25,9 @@ const patterns = Object.entries(messages).filter(([key]) => /\{\d+\}/.test(key))
 }));
 /** Translate presentation strings only. API values, identifiers and calculations stay unchanged. */
 export function translate<T>(value: T, language: Language): T {
-  if (language === 'en' || typeof value !== 'string' || !value.trim()) return value;
+  if (typeof value !== 'string' || !value.trim()) return value;
+  if (['QUALIFICATION REQUIRED', 'BLOCKED', 'ESTIMATED', 'ASSUMED', 'CONFLICT'].includes(value)) return value;
+  if (language === 'en') return humanizePresentationText(value, language) as T;
   const key = normalize(value);
   const entry = messages[key];
   let result = entry?.[language];
@@ -44,7 +47,7 @@ export function translate<T>(value: T, language: Language): T {
     const base = key.slice(0,-1).trimEnd();
     if (messages[base]) result = messages[base][language] + key.slice(-1);
   }
-  if (!result) return value;
-  return (value.match(/^\s*/)?.[0] + result + value.match(/\s*$/)?.[0]) as T;
+  if (!result) return humanizePresentationText(value, language) as T;
+  return (value.match(/^\s*/)?.[0] + humanizePresentationText(result, language) + value.match(/\s*$/)?.[0]) as T;
 }
 export function useTranslation() { const { language } = useLanguage(); return <T,>(value: T): T => translate(value, language); }

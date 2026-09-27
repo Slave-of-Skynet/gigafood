@@ -15,7 +15,7 @@ const WORKFLOW_METADATA: Record<
   POST_COOK_HOT_HOLD_6H: {
     label: 'Pack after cooking',
     badge: 'Standard Hot-Bar Workflow',
-    tempDimension: '85–95°C in this test; actual store temperature unknown',
+    tempDimension: '85–95°C in this test; actual store temperature needs confirmation',
     holdDimension: 'Up to 6 hours required; performance needs testing',
     summary: 'Food is cooked in rotisserie/combi oven prior to packaging; packaging only undergoes post-cook hot holding.',
   },
@@ -23,7 +23,7 @@ const WORKFLOW_METADATA: Record<
     label: 'Cook inside the packaging',
     badge: 'High-Temperature Workflow',
     tempDimension: '250°C peak oven cooking exposure',
-    holdDimension: 'Followed by holding phase: up to 6 hours holding requirement; 85–95°C is a MODELED TEST CONDITION and actual Profi display temperature remains UNKNOWN',
+    holdDimension: 'Followed by holding phase: up to 6 hours holding requirement; 85–95°C is a MODELED TEST CONDITION and actual Profi display temperature needs confirmation',
     summary: 'Food is cooked or reheated directly inside the package at up to 250°C, then held on heated display.',
   },
 };
@@ -102,7 +102,7 @@ export function WorkflowSelector({
             <div className="alert-content">
               <strong>{t("What this means:")}</strong>
               <span>
-                {t(' ')}{t("Up to 6 hours required; performance needs testing; 85–95°C is a MODELED TEST CONDITION and actual Profi display temperature remains UNKNOWN. Because food is packaged after cooking, packaging is NOT exposed to 250°C oven heat in this scenario. Full 6-hour holding performance with fatty poultry remains subject to physical qualification.")}</span>
+                {t(' ')}{t("Up to 6 hours required; performance needs testing; 85–95°C is a MODELED TEST CONDITION and actual Profi display temperature needs confirmation. Because food is packaged after cooking, packaging is NOT exposed to 250°C oven heat in this scenario. Full 6-hour holding performance with fatty poultry remains subject to physical qualification.")}</span>
             </div>
           </div>
         ))}

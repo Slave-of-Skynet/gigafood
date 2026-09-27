@@ -52,7 +52,7 @@ export function ProductSelector({
           <span className="control-step-tag">{t("Step 1")}</span>
           <h2 className="control-section-heading">{t("What food are you packing?")}</h2>
         </div>
-        <span className="selected-product-badge">{t("Selected: ")}<strong>{t(PRODUCT_METADATA[selectedProductId]?.label || selectedProductId)}{t(" (")}{t(selectedProductId)}{t(")")}</strong>
+        <span className="selected-product-badge">{t("Selected: ")}<strong>{t(PRODUCT_METADATA[selectedProductId]?.label || selectedProductId)}{t(" (")}{selectedProductId}{t(")")}</strong>
         </span>
       </div>
 
@@ -76,7 +76,7 @@ export function ProductSelector({
               aria-pressed={isSelected}
             >
               <div className="product-card-top">
-                <span className="product-id-tag">{t(prod.product_id)}</span>
+                <span className="product-id-tag">{prod.product_id}</span>
                 <span className="product-icon" aria-hidden="true">
                   {t(meta.icon)}
                 </span>

@@ -86,9 +86,9 @@ export function CandidateRecommendationCard({
       <header className="candidate-card-header">
         <div className="candidate-identity-group">
           <div className="candidate-id-cluster">
-            <span className="candidate-id-badge">{t(assessment.candidate_id)}</span>
+            <span className="candidate-id-badge">{assessment.candidate_id}</span>
             {t(configId && (
-              <span className="candidate-config-badge">{t("Configuration: ")}<strong>{t(configId)}</strong>
+              <span className="candidate-config-badge">{t("Configuration: ")}<strong>{configId}</strong>
                 {t(configuration?.role ? ` (${configuration.role})` : '')}
               </span>
             ))}
@@ -170,7 +170,7 @@ export function CandidateRecommendationCard({
         <div className="boundary-warning-callout c6-callout">
           <span className="warning-icon" aria-hidden="true">{t("ℹ️")}</span>
           <div className="warning-body">
-            <strong>{t("Aluminium Body vs Closure Boundary (")}{t(configId || 'C6')}{t("):")}</strong>
+            <strong>{t("Aluminium Body vs Closure Boundary (")}{configId || 'C6'}{t("):")}</strong>
             <span>
               {t(' ')}{t("Bare aluminium body heat claim applies strictly to the metal container. Transparent viewing lids and retail seals are separate physical articles and do NOT inherit the body heat tolerance. Each C6 configuration is isolated.")}</span>
           </div>
@@ -297,13 +297,13 @@ export function CandidateRecommendationCard({
                 if (!sref) {
                   return (
                     <div key={sid} className="source-item missing-source">
-                      <code>{t(sid)}</code>{t(": Citation details not mapped in candidates response.")}</div>
+                      <code>{sid}</code>{t(": Citation details not mapped in candidates response.")}</div>
                   );
                 }
                 return (
                   <div key={sid} className="source-item">
                     <div className="source-header-row">
-                      <span className="source-id-pill">{t(sref.source_id)}</span>
+                      <span className="source-id-pill">{sref.source_id}</span>
                       {t(sref.tier && <span className="source-tier-tag">{t("Tier ")}{t(sref.tier)}</span>)}
                       {t(sref.romania_evidence && (
                         <span className="source-ro-tag">{t("🇷🇴 Romania Evidence")}</span>
