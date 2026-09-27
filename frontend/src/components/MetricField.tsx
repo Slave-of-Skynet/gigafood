@@ -41,21 +41,33 @@ export function MetricField({
   }
 
   const unit = unitOverride ?? field.unit ?? '';
+  const isFractionToPercent = field.unit === 'fraction' && unitOverride === '%';
+
+  const formatVal = (val: number): number => {
+    if (!isFractionToPercent) return val;
+    return Number((val * 100).toFixed(2));
+  };
 
   let mainDisplay = '';
   let intervalSubtitle: string | null = null;
 
   if (isInterval(field.value)) {
-    mainDisplay = `≈${field.value.central}${unit ? ` ${unit}` : ''}`;
-    intervalSubtitle = `Range: ${field.value.low}–${field.value.high}${unit ? ` ${unit}` : ''} · ${field.confidence} confidence`;
+    const central = formatVal(field.value.central);
+    const low = formatVal(field.value.low);
+    const high = formatVal(field.value.high);
+    mainDisplay = `≈${central}${unit ? ` ${unit}` : ''}`;
+    intervalSubtitle = `Range: ${low}–${high}${unit ? ` ${unit}` : ''} · ${field.confidence} confidence`;
   } else if (typeof field.value === 'number') {
+    const displayVal = formatVal(field.value);
     if (field.state === 'ESTIMATED') {
-      mainDisplay = `≈${field.value}${unit ? ` ${unit}` : ''}`;
+      mainDisplay = `≈${displayVal}${unit ? ` ${unit}` : ''}`;
       if (field.estimate) {
-        intervalSubtitle = `Range: ${field.estimate.low}–${field.estimate.high}${unit ? ` ${unit}` : ''} · ${field.confidence} confidence`;
+        const estLow = formatVal(field.estimate.low);
+        const estHigh = formatVal(field.estimate.high);
+        intervalSubtitle = `Range: ${estLow}–${estHigh}${unit ? ` ${unit}` : ''} · ${field.confidence} confidence`;
       }
     } else {
-      mainDisplay = `${field.value}${unit ? ` ${unit}` : ''}`;
+      mainDisplay = `${displayVal}${unit ? ` ${unit}` : ''}`;
     }
   } else if (typeof field.value === 'string') {
     mainDisplay = field.value;
