@@ -15,22 +15,46 @@ try {
       import assert from 'node:assert/strict';
       import { renderToStaticMarkup } from 'react-dom/server';
       import { translate, LanguageProvider } from './src/i18n';
+      import { messages } from './src/i18n/messages';
       import { MetricField } from './src/components/MetricField';
       import { GateMatrix } from './src/components/GateMatrix';
-      const forbidden = /\\bunknown\\b|N\\/A/gi;
+      const forbidden = /\\bunknown\\b|N\\/A|неизвест|necunosc/i;
       const visible = html => html.replace(/<[^>]*>/g, '');
       const field = {kind:'evidence_field', state:'UNKNOWN', value:null,
         source_ids:[], confidence:'LOW', scope:'complete pack', display_policy:'SHOW'};
       for (const language of ['en','ru','ro']) {
         globalThis.localStorage = { getItem: () => language };
         const render = element => renderToStaticMarkup(<LanguageProvider>{element}</LanguageProvider>);
-        for (const text of ['UNKNOWN', 'Unknown (N/A)', 'actual temperature remains UNKNOWN', 'duration UNKNOWN', 'delta N/A']) {
-          assert.doesNotMatch(translate(text, language), forbidden);
+        const probePhrases = [
+          'UNKNOWN',
+          'Unknown (N/A)',
+          'actual temperature remains UNKNOWN',
+          'duration UNKNOWN',
+          'delta N/A',
+          'неизвестно',
+          'неизвестен',
+          'неизвестна',
+          'неизвестны',
+          'неизвестная',
+          'неизвестной',
+          'температура остаётся неизвестной',
+          'necunoscut',
+          'necunoscută',
+          'necunoscute',
+          'necunoscuți',
+          'rămâne necunoscut',
+        ];
+        for (const text of probePhrases) {
+          assert.doesNotMatch(translate(text, language), forbidden, 'Probe phrase ' + text + ' in ' + language + ' matched forbidden');
+        }
+        for (const [key] of Object.entries(messages)) {
+          const result = translate(key, language);
+          assert.doesNotMatch(result, forbidden, 'Catalogue key ' + key + ' in ' + language + ' matched forbidden: ' + result);
         }
         for (const token of ['QUALIFICATION REQUIRED','BLOCKED','ESTIMATED','ASSUMED','CONFLICT']) {
           assert.equal(translate(token, language), token);
         }
-        for (const label of ['Price','Exact package mass','Food contact','Temperature limit']) {
+        for (const label of ['Price','Exact package mass','Food contact','Temperature limit','Availability']) {
           const result = visible(render(<MetricField label={label} field={field}/>));
           assert.doesNotMatch(result, forbidden);
           assert.doesNotMatch(result, /0 g|0%|false/);
