@@ -1,3 +1,4 @@
+import { useTranslation } from '../i18n';
 import type { EpistemicState } from '../api/contracts';
 
 interface EvidenceStateBadgeProps {
@@ -11,6 +12,7 @@ export function EvidenceStateBadge({
   qualifier,
   className = '',
 }: EvidenceStateBadgeProps) {
+  const t = useTranslation();
   const getBadgeConfig = () => {
     switch (state) {
       case 'OBSERVED_VERIFIED':
@@ -63,11 +65,11 @@ export function EvidenceStateBadge({
   return (
     <span
       className={`epistemic-badge ${config.styleClass} ${className}`}
-      title={qualifier ? `Qualifier: ${qualifier}` : config.subtext}
+      title={t(qualifier ? `Qualifier: ${qualifier}` : config.subtext)}
     >
       <span className="epistemic-indicator" />
-      <span className="epistemic-label">{config.label}</span>
-      {qualifier && <span className="epistemic-qualifier">· {qualifier}</span>}
+      <span className="epistemic-label">{t(config.label)}</span>
+      {t(qualifier && <span className="epistemic-qualifier">{t("· ")}{t(qualifier)}</span>)}
     </span>
   );
 }

@@ -1,3 +1,4 @@
+import { useTranslation } from '../i18n';
 import { useEffect, useRef, useState } from 'react';
 import { api } from '../api/client';
 import type {
@@ -17,7 +18,7 @@ import { WorkflowSelector } from './WorkflowSelector';
 
 interface RecommendationViewProps {
   visible: boolean;
-  uiLang?: 'en' | 'ru' | 'md';
+  uiLang?: 'en' | 'ru' | 'ro';
 }
 
 type LoadState<T> =
@@ -26,6 +27,7 @@ type LoadState<T> =
   | { status: 'ready'; data: T };
 
 export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: RecommendationViewProps) {
+  const t = useTranslation();
   // Catalogues state
   const [productsLoad, setProductsLoad] = useState<LoadState<RecommendationProductsResponse>>({
     status: 'loading',
@@ -158,62 +160,33 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
 
   return (
     <div className="recommendation-view" hidden={!visible} aria-live="polite">
-      {/* Physical Packaging Challenge Introduction */}
-      <section id="problem" className="recommendation-header-card" aria-label="Physical Packaging Problem">
-        <div className="recommendation-header-content">
-          <div className="header-badge-row">
-            <span className="recommendation-pill">HTF-03 · Canonical Recommendation Journey</span>
-            <span className="recommendation-role-pill">Decision Layer (Not Certification)</span>
-          </div>
-          <h2 className="recommendation-main-title">
-            High-Temperature Hot-Food Packaging Transition
-          </h2>
-          <p className="recommendation-lead-text">
-            Evaluating sustainable physical packaging concepts for Profi hot rotisserie chicken and deli portions.
-            Analyzing 6 canonical hard gates: physical fit; food contact; thermal workflow (peak exposure + holding); grease/leak; transparent viewing; procurement.
-          </p>
-
-          <div className="challenge-axioms-bar">
-            <div className="axiom-item">
-              <span className="axiom-label">Challenge Focus:</span>
-              <strong className="axiom-value">Physical packaging concept qualification</strong>
-            </div>
-            <div className="axiom-item">
-              <span className="axiom-label">Commercial Premise:</span>
-              <span className="axiom-value">+10–15% cost allowance is a commercial heuristic, not automatic approval</span>
-            </div>
-            <div className="axiom-item">
-              <span className="axiom-label">Epistemic Rule:</span>
-              <strong className="axiom-value">0 qualified survivors · Software is evidence-backed decision layer</strong>
-            </div>
-          </div>
-        </div>
+      <section id="problem" className="simple-intro" aria-label={t("How to find packaging")}>
+        <h2>{t("Find packaging in two simple steps")}</h2>
+        <p>{t("Choose a product, then select how it is heated. Your results update automatically below.")}</p>
       </section>
 
       {/* Catalogue Loading / Error States */}
-      {productsLoad.status === 'loading' && (
+      {t(productsLoad.status === 'loading' && (
         <div className="status-panel" role="status">
-          <h2>Loading Recommendation Evidence Snapshot…</h2>
-          <p>Connecting to HTF-03 canonical packaging dataset…</p>
+          <h2>{t("Loading packaging options…")}</h2>
+          <p>{t("Getting the product list ready.")}</p>
         </div>
-      )}
+      ))}
 
-      {productsLoad.status === 'error' && (
+      {t(productsLoad.status === 'error' && (
         <div className="status-panel error-panel" role="alert">
           <h2>
-            {productsLoad.is503
+            {t(productsLoad.is503
               ? 'Recommendation evidence unavailable'
-              : 'Failed to load recommendation catalogue'}
+              : 'Failed to load recommendation catalogue')}
           </h2>
-          <p>{productsLoad.message}</p>
-          <button type="button" className="retry-btn" onClick={handleRetry}>
-            Retry
-          </button>
+          <p>{t(productsLoad.message)}</p>
+          <button type="button" className="retry-btn" onClick={handleRetry}>{t("Retry")}</button>
         </div>
-      )}
+      ))}
 
       {/* Controls Deck: Stage A (Product) & Stage B (Workflow) */}
-      {productsLoad.status === 'ready' && (
+      {t(productsLoad.status === 'ready' && (
         <div id="journey-context" className="recommendation-controls-deck">
           <ProductSelector
             products={productsLoad.data.products}
@@ -227,38 +200,34 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
             onSelectWorkflow={(id) => setSelectedWorkflowId(id)}
           />
         </div>
-      )}
+      ))}
 
       {/* Evaluation Loading State */}
-      {evaluationLoad.status === 'loading' && productsLoad.status === 'ready' && (
+      {t(evaluationLoad.status === 'loading' && productsLoad.status === 'ready' && (
         <div className="status-panel evaluating-panel" role="status">
           <div className="eval-spinner" aria-hidden="true" />
           <div>
-            <h2>Evaluating 6 Hard Gates & Qualification Priority…</h2>
-            <p>
-              Testing candidate physical concepts against selected product geometry and thermal workflow…
-            </p>
+            <h2>{t("Checking packaging options…")}</h2>
+            <p>{t("Checking size, heat resistance and other requirements for your selection.")}</p>
           </div>
         </div>
-      )}
+      ))}
 
       {/* Evaluation Error State */}
-      {evaluationLoad.status === 'error' && (
+      {t(evaluationLoad.status === 'error' && (
         <div className="status-panel error-panel" role="alert">
           <h2>
-            {evaluationLoad.is503
+            {t(evaluationLoad.is503
               ? 'Recommendation evidence unavailable'
-              : 'Evaluation request failed'}
+              : 'Evaluation request failed')}
           </h2>
-          <p>{evaluationLoad.message}</p>
-          <button type="button" className="retry-btn" onClick={handleRetry}>
-            Retry
-          </button>
+          <p>{t(evaluationLoad.message)}</p>
+          <button type="button" className="retry-btn" onClick={handleRetry}>{t("Retry")}</button>
         </div>
-      )}
+      ))}
 
       {/* Evaluation Results Flow */}
-      {evaluation && evaluationLoad.status === 'ready' && (
+      {t(evaluation && evaluationLoad.status === 'ready' && (
         <div className="recommendation-results-flow">
           {/* Decision Summary */}
           <div id="decision-summary">
@@ -267,25 +236,24 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
               workflowId={selectedWorkflowId}
               recommendation={evaluation.recommendation}
               firstPathAssessment={firstPathAssessment}
-              effectiveAssumptions={evaluation.context.effective_assumptions}
             />
           </div>
 
           {/* Primary Qualification Path or High-Temperature Fallback Path */}
           <div id="candidate-evaluations">
-            <section className="results-group primary-path-group" aria-label="First Qualification Path">
+            <section className="results-group primary-path-group" aria-label={t("First Qualification Path")}>
               <div className="group-header">
-                <span className="group-tag">Primary Qualification Focus</span>
+                <span className="group-tag">{t("Where to start")}</span>
                 <h3 className="group-heading">
-                  {firstPathAssessment
-                    ? 'First Physical Packaging Path Worth Qualifying (Priority 1)'
+                  {t(firstPathAssessment
+                    ? 'First option to test'
                     : selectedWorkflowId === 'LITERAL_OVEN_250C_THEN_HOLD'
-                    ? 'High-Temperature Fallback Qualification Path (Priority 2)'
-                    : 'Candidate Under Evaluation'}
+                    ? 'An option to investigate for oven use'
+                    : 'Candidate Under Evaluation')}
                 </h3>
               </div>
 
-              {firstPathAssessment && (
+              {t(firstPathAssessment && (
                 <CandidateRecommendationCard
                   assessment={firstPathAssessment}
                   configuration={
@@ -296,9 +264,9 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
                   sourcesMap={sourcesMap}
                   isFirstPath={true}
                 />
-              )}
+              ))}
 
-              {fallbackAssessment && (
+              {t(fallbackAssessment && (
                 <CandidateRecommendationCard
                   assessment={fallbackAssessment}
                   configuration={
@@ -309,39 +277,33 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
                   sourcesMap={sourcesMap}
                   isFirstPath={false}
                 />
-              )}
+              ))}
 
-              {!firstPathAssessment && !fallbackAssessment && (
+              {t(!firstPathAssessment && !fallbackAssessment && (
                 <div className="no-first-path-card">
                   <div className="no-first-path-inner">
-                    <span className="icon-warn">⚠️</span>
+                    <span className="icon-warn">{t("⚠️")}</span>
                     <div>
-                      <strong>No Priority 1 Path Identified for Current Context</strong>
-                      <p>
-                        Candidate solutions require laboratory qualification before being advanced.
-                      </p>
+                      <strong>{t("No Priority 1 Path Identified for Current Context")}</strong>
+                      <p>{t("Candidate solutions require laboratory qualification before being advanced.")}</p>
                     </div>
                   </div>
                 </div>
-              )}
+              ))}
             </section>
 
             {/* Viable Alternatives Section */}
-            {alternativeAssessments.length > 0 && (
-              <section className="results-group alternatives-group" aria-label="Alternatives Requiring Qualification">
+            {t(alternativeAssessments.length > 0 && (
+              <details className="results-group alternatives-group" aria-label={t("Alternatives Requiring Qualification")}>
+                <summary>{t("Other options to test (")}{t(alternativeAssessments.length)}{t(")")}</summary>
                 <div className="group-header">
-                  <span className="group-tag">Candidate Landscape</span>
-                  <h3 className="group-heading">
-                    Alternatives Requiring Physical Qualification ({alternativeAssessments.length})
-                  </h3>
-                  <p className="group-desc">
-                    These candidate concepts satisfy basic thermal holding or material requirements but require
-                    empirical testing for food contact migration, seal integrity, or store operations.
-                  </p>
+                  <span className="group-tag">{t("More options")}</span>
+                  <h3 className="group-heading">{t("Other options to test (")}{t(alternativeAssessments.length)}{t(")")}</h3>
+                  <p className="group-desc">{t("These candidate concepts satisfy basic thermal holding or material requirements but require empirical testing for food contact migration, seal integrity, or store operations.")}</p>
                 </div>
 
                 <div className="candidates-list-stack">
-                  {alternativeAssessments.map((alt) => (
+                  {t(alternativeAssessments.map((alt) => (
                     <CandidateRecommendationCard
                       key={`${alt.candidate_id}-${alt.configuration_id || 'default'}`}
                       assessment={alt}
@@ -351,27 +313,23 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
                       sourcesMap={sourcesMap}
                       isFirstPath={false}
                     />
-                  ))}
+                  )))}
                 </div>
-              </section>
-            )}
+              </details>
+            ))}
 
-            {/* Hard-Blocked Candidates Section */}
-            {blockedAssessments.length > 0 && (
-              <section className="results-group blocked-group" aria-label="Hard-Blocked Candidates">
+            {/* Incompatible options Section */}
+            {t(blockedAssessments.length > 0 && (
+              <details className="results-group blocked-group" aria-label={t("Incompatible options")}>
+                <summary>{t("Incompatible options (")}{t(blockedAssessments.length)}{t(")")}</summary>
                 <div className="group-header">
-                  <span className="group-tag blocked-tag">Hard-Gate Incompatibilities</span>
-                  <h3 className="group-heading">
-                    Hard-Blocked Candidates ({blockedAssessments.length})
-                  </h3>
-                  <p className="group-desc">
-                    These candidates fail at least one non-compensatory hard gate (e.g. thermal limits below the
-                    required workflow or geometry mismatch).
-                  </p>
+                  <span className="group-tag blocked-tag">{t("Not suitable for this use")}</span>
+                  <h3 className="group-heading">{t("Incompatible options (")}{t(blockedAssessments.length)}{t(")")}</h3>
+                  <p className="group-desc">{t("These candidates fail at least one non-compensatory hard gate (e.g. thermal limits below the required workflow or geometry mismatch).")}</p>
                 </div>
 
                 <div className="candidates-list-stack">
-                  {blockedAssessments.map((blocked) => (
+                  {t(blockedAssessments.map((blocked) => (
                     <CandidateRecommendationCard
                       key={`${blocked.candidate_id}-${blocked.configuration_id || 'default'}`}
                       assessment={blocked}
@@ -381,21 +339,22 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
                       sourcesMap={sourcesMap}
                       isFirstPath={false}
                     />
-                  ))}
+                  )))}
                 </div>
-              </section>
-            )}
+              </details>
+            ))}
           </div>
 
           {/* Reference Baselines Context (Section 20) */}
-          <section id="baselines" className="results-group baselines-group" aria-label="Reference Baselines Context">
+          <details id="baselines" className="results-group baselines-group" aria-label={t("Reference Baselines Context")}>
+            <summary>{t("Current packaging and market references")}</summary>
             <div className="group-header">
-              <span className="group-tag">Reference Baselines</span>
-              <h3 className="group-heading">Profi Incumbent vs Market References</h3>
+              <span className="group-tag">{t("Reference Baselines")}</span>
+              <h3 className="group-heading">{t("Profi Incumbent vs Market References")}</h3>
             </div>
 
             <div className="baselines-cards-grid">
-              {evaluation.baselines.map((b) => (
+              {t(evaluation.baselines.map((b) => (
                 <div
                   key={b.baseline_id}
                   className={`baseline-info-card ${
@@ -403,60 +362,55 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
                   }`}
                 >
                   <div className="baseline-card-top">
-                    <span className="baseline-id-tag">{b.baseline_id}</span>
+                    <span className="baseline-id-tag">{t(b.baseline_id)}</span>
                     <span className="baseline-role-tag">
-                      {b.is_profi_incumbent ? 'Actual Profi Incumbent' : 'Romanian Market Reference'}
+                      {t(b.is_profi_incumbent ? 'Actual Profi Incumbent' : 'Romanian Market Reference')}
                     </span>
                   </div>
-                  <strong className="baseline-identity">{b.identity}</strong>
-                  <p className="baseline-desc">{b.description}</p>
+                  <strong className="baseline-identity">{t(b.identity)}</strong>
+                  <p className="baseline-desc">{t(b.description)}</p>
                   <div className="baseline-specs-row">
-                    <span>
-                      Virgin plastic fraction:{' '}
+                    <span>{t("Virgin plastic fraction:")}{t(' ')}
                       <strong>
-                        {b.observed_virgin_fraction != null
+                        {t(b.observed_virgin_fraction != null
                           ? `${b.observed_virgin_fraction * 100}%`
-                          : 'Unknown'}
+                          : 'Unknown')}
                       </strong>
                     </span>
-                    {b.estimated_mass_g && (
-                      <span>
-                        Estimated mass:{' '}
-                        <strong>
-                          ≈{b.estimated_mass_g.central} g ({b.estimated_mass_g.low}–{b.estimated_mass_g.high} g)
-                        </strong>
+                    {t(b.estimated_mass_g && (
+                      <span>{t("Estimated mass:")}{t(' ')}
+                        <strong>{t("≈")}{t(b.estimated_mass_g.central)}{t(" g (")}{t(b.estimated_mass_g.low)}{t("–")}{t(b.estimated_mass_g.high)}{t(" g)")}</strong>
                       </span>
-                    )}
-                    {b.observed_price_ron != null && (
-                      <span>
-                        Market price: <strong>{b.observed_price_ron} RON</strong>
+                    ))}
+                    {t(b.observed_price_ron != null && (
+                      <span>{t("Market price: ")}<strong>{t(b.observed_price_ron)}{t(" RON")}</strong>
                       </span>
-                    )}
+                    ))}
                   </div>
-                  {b.notes && <small className="baseline-note">{b.notes}</small>}
+                  {t(b.notes && <small className="baseline-note">{t(b.notes)}</small>)}
                 </div>
-              ))}
+              )))}
             </div>
-          </section>
+          </details>
 
           {/* Mandatory Disclosures & Epistemic Guardrails */}
           <footer className="recommendation-disclosures-footer">
             <div className="disclosures-inner">
-              <strong className="disclosures-title">⚖️ Mandatory Product Governance & Legal Disclosures:</strong>
+              <strong className="disclosures-title">{t("⚖️ About these results:")}</strong>
               <ul className="disclosures-list">
-                {evaluation.disclosures.map((d, idx) => (
-                  <li key={idx}>{d}</li>
-                ))}
+                {t(evaluation.disclosures.map((d, idx) => (
+                  <li key={idx}>{t(d)}</li>
+                )))}
               </ul>
               <div className="revision-hash-row">
-                <small>Canonical Dataset: <code>{evaluation.dataset_id}</code></small>
-                <small>Research Cut-Off: <code>{evaluation.research_cut_off}</code></small>
-                <small>SHA256: <code>{evaluation.source_revision_hash.slice(0, 16)}…</code></small>
+                <small>{t("Canonical Dataset: ")}<code>{t(evaluation.dataset_id)}</code></small>
+                <small>{t("Research Cut-Off: ")}<code>{t(evaluation.research_cut_off)}</code></small>
+                <small>{t("SHA256: ")}<code>{t(evaluation.source_revision_hash.slice(0, 16))}{t("…")}</code></small>
               </div>
             </div>
           </footer>
         </div>
-      )}
+      ))}
     </div>
   );
 }

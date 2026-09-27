@@ -1,3 +1,4 @@
+import { useTranslation } from '../i18n';
 import type { WorkflowDefinition, WorkflowId } from '../api/contracts';
 
 interface WorkflowSelectorProps {
@@ -12,14 +13,14 @@ const WORKFLOW_METADATA: Record<
   { label: string; badge: string; tempDimension: string; holdDimension: string; summary: string }
 > = {
   POST_COOK_HOT_HOLD_6H: {
-    label: 'Post-Cook Hot Holding Scenario',
+    label: 'Pack after cooking',
     badge: 'Standard Hot-Bar Workflow',
-    tempDimension: '85–95°C (MODELED TEST CONDITION — actual Profi display temperature UNKNOWN)',
-    holdDimension: 'Up to 6 hours holding requirement (mentor-confirmed challenge operating requirement)',
+    tempDimension: '85–95°C in this test; actual store temperature unknown',
+    holdDimension: 'Up to 6 hours required; performance needs testing',
     summary: 'Food is cooked in rotisserie/combi oven prior to packaging; packaging only undergoes post-cook hot holding.',
   },
   LITERAL_OVEN_250C_THEN_HOLD: {
-    label: 'Literal 250°C Oven Cycle + Holding Scenario',
+    label: 'Cook inside the packaging',
     badge: 'High-Temperature Workflow',
     tempDimension: '250°C peak oven cooking exposure',
     holdDimension: 'Followed by holding phase: up to 6 hours holding requirement; 85–95°C is a MODELED TEST CONDITION and actual Profi display temperature remains UNKNOWN',
@@ -33,20 +34,20 @@ export function WorkflowSelector({
   onSelectWorkflow,
   disabled = false,
 }: WorkflowSelectorProps) {
+  const t = useTranslation();
   return (
-    <section className="workflow-selector-deck" aria-label="Select Operational Workflow">
+    <section className="workflow-selector-deck" aria-label={t("Select Operational Workflow")}>
       <div className="selector-title-row">
         <div>
-          <span className="control-step-tag">Stage B · Operational Workflow</span>
-          <h2 className="control-section-heading">Select Thermal & In-Store Workflow</h2>
+          <span className="control-step-tag">{t("Step 2")}</span>
+          <h2 className="control-section-heading">{t("How will the packaging be used?")}</h2>
         </div>
-        <span className="current-workflow-badge">
-          Workflow: <strong>{WORKFLOW_METADATA[selectedWorkflowId]?.label || selectedWorkflowId}</strong>
+        <span className="current-workflow-badge">{t("Workflow: ")}<strong>{t(WORKFLOW_METADATA[selectedWorkflowId]?.label || selectedWorkflowId)}</strong>
         </span>
       </div>
 
       <div className="workflow-options-grid">
-        {workflows.map((wf) => {
+        {t(workflows.map((wf) => {
           const isSelected = wf.workflow_id === selectedWorkflowId;
           const meta = WORKFLOW_METADATA[wf.workflow_id];
 
@@ -61,72 +62,62 @@ export function WorkflowSelector({
             >
               <div className="workflow-card-header">
                 <span className="workflow-temp-chip">
-                  {meta?.badge || wf.name}
+                  {t(meta?.badge || wf.name)}
                 </span>
-                <span className="workflow-status-tag">{wf.status}</span>
+                <span className="workflow-status-tag">{t(wf.status)}</span>
               </div>
 
               <div className="workflow-card-body">
-                <strong className="workflow-title-text">{meta?.label || wf.name}</strong>
-                <p className="workflow-desc-text">{meta?.summary || wf.description}</p>
+                <strong className="workflow-title-text">{t(meta?.label || wf.name)}</strong>
+                <p className="workflow-desc-text">{t(meta?.summary || wf.description)}</p>
 
                 {/* Explicitly separate the 2 dimensions: Peak Temp vs Hold Duration */}
                 <div className="workflow-dimensions-grid">
                   <div className="dimension-row">
-                    <span className="dim-label">Peak Temperature:</span>
-                    <strong className="dim-value">{meta?.tempDimension}</strong>
+                    <span className="dim-label">{t("Peak Temperature:")}</span>
+                    <strong className="dim-value">{t(meta?.tempDimension)}</strong>
                   </div>
                   <div className="dimension-row">
-                    <span className="dim-label">Holding Shelf Life:</span>
-                    <strong className="dim-value">{meta?.holdDimension}</strong>
+                    <span className="dim-label">{t("Hot holding:")}</span>
+                    <strong className="dim-value">{t(meta?.holdDimension)}</strong>
                   </div>
                 </div>
               </div>
 
-              {isSelected && (
+              {t(isSelected && (
                 <div className="workflow-active-indicator">
-                  <span>Active Evaluation Workflow</span>
+                  <span>{t("Selected")}</span>
                 </div>
-              )}
+              ))}
             </button>
           );
-        })}
+        }))}
       </div>
 
       {/* Explicit Dimension Separation and Workflow Disclosures */}
       <div className="workflow-assumption-banner" role="note">
-        {selectedWorkflowId === 'POST_COOK_HOT_HOLD_6H' && (
+        {t(selectedWorkflowId === 'POST_COOK_HOT_HOLD_6H' && (
           <div className="assumption-alert post-cook-alert">
-            <span className="alert-icon" aria-hidden="true">
-              ℹ️
-            </span>
+            <span className="alert-icon" aria-hidden="true">{t("ℹ️")}</span>
             <div className="alert-content">
-              <strong>Post-cook hot hold boundary:</strong>
+              <strong>{t("What this means:")}</strong>
               <span>
-                {' '}
-                Up to 6 hours holding requirement (mentor-confirmed challenge operating requirement); 85–95°C is a MODELED TEST CONDITION and actual Profi display temperature remains UNKNOWN.
-                Because food is packaged after cooking, packaging is NOT exposed to 250°C oven heat in this scenario.
-                Full 6-hour holding performance with fatty poultry remains subject to physical qualification.
-              </span>
+                {t(' ')}{t("Up to 6 hours required; performance needs testing; 85–95°C is a MODELED TEST CONDITION and actual Profi display temperature remains UNKNOWN. Because food is packaged after cooking, packaging is NOT exposed to 250°C oven heat in this scenario. Full 6-hour holding performance with fatty poultry remains subject to physical qualification.")}</span>
             </div>
           </div>
-        )}
+        ))}
 
-        {selectedWorkflowId === 'LITERAL_OVEN_250C_THEN_HOLD' && (
+        {t(selectedWorkflowId === 'LITERAL_OVEN_250C_THEN_HOLD' && (
           <div className="assumption-alert oven-alert">
-            <span className="alert-icon" aria-hidden="true">
-              ⚠️
-            </span>
+            <span className="alert-icon" aria-hidden="true">{t("⚠️")}</span>
             <div className="alert-content">
-              <strong>High-temperature dimension distinction:</strong>
+              <strong>{t("Oven use needs extra checks:")}</strong>
               <span>
-                {' '}
-                <strong>250°C peak oven cooking</strong> is a distinct dimension from <strong>subsequent heated holding</strong>.
-                C2, C3, C4 and C5 are hard-blocked by documented thermal limits; C1 Gaia remains unresolved/unprioritized because numeric peak evidence is insufficient; C6-RO-H is a Priority 2 high-temperature fallback qualification path, with closure/duration still unverified. For aluminium solutions, an aluminium body heat rating does NOT confer heat resistance to transparent lids or closures.
-              </span>
+                {t(' ')}
+                <strong>{t("250°C peak oven cooking")}</strong>{t(" is a distinct dimension from ")}<strong>{t("subsequent heated holding")}</strong>{t(". C2, C3, C4 and C5 are hard-blocked by documented thermal limits; C1 Gaia remains unresolved/unprioritized because numeric peak evidence is insufficient; C6-RO-H is a Priority 2 high-temperature fallback qualification path, with closure/duration still unverified. For aluminium solutions, an aluminium body heat rating does NOT confer heat resistance to transparent lids or closures.")}</span>
             </div>
           </div>
-        )}
+        ))}
       </div>
     </section>
   );

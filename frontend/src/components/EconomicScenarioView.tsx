@@ -1,3 +1,4 @@
+import { useTranslation } from '../i18n';
 import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 import { api } from '../api/client';
@@ -36,6 +37,7 @@ const formatKg = (val: number | null): string => {
 };
 
 export function EconomicScenarioView({ scenarioId, scenarioLabel, comparison }: Props) {
+  const t = useTranslation();
   const [annualUnits, setAnnualUnits] = useState('');
   const [currentCost, setCurrentCost] = useState('');
   const [candidateCost, setCandidateCost] = useState('');
@@ -117,189 +119,169 @@ export function EconomicScenarioView({ scenarioId, scenarioLabel, comparison }: 
   const isBlocked = comparison.eligibility_status === 'BLOCKED';
 
   return (
-    <section id="economics" className="products-board economic-scenario-section" aria-label="Hypothetical Economic Scenario">
+    <section id="economics" className="products-board economic-scenario-section" aria-label={t("Hypothetical Economic Scenario")}>
       <div className="section-header">
         <div>
-          <h2 className="section-title">Economic Scenario · Business Impact Amplifier</h2>
-          <small>Hypothetical packaging transition economics for <strong>{scenarioLabel}</strong></small>
+          <h2 className="section-title">{t("Economic Scenario · Business Impact Amplifier")}</h2>
+          <small>{t("Hypothetical packaging transition economics for ")}<strong>{t(scenarioLabel)}</strong></small>
         </div>
         <div className="epistemic-badges">
-          <span className="epistemic-badge">Derivation: CALCULATED</span>
-          <span className="epistemic-badge">Input origin: USER_PROVIDED</span>
-          <span className="epistemic-badge">Verification: NOT_VERIFIED</span>
+          <span className="epistemic-badge">{t("Derivation: CALCULATED")}</span>
+          <span className="epistemic-badge">{t("Input origin: USER_PROVIDED")}</span>
+          <span className="epistemic-badge">{t("Verification: NOT_VERIFIED")}</span>
         </div>
       </div>
 
-      <p className="disclosure-banner">
-        Hypothetical economic scenario based on user-supplied volume and packaging costs.
-        Not actual Profi pricing, procurement terms, commercial commitment, or verified savings.
-      </p>
+      <p className="disclosure-banner">{t("Hypothetical economic scenario based on user-supplied volume and packaging costs. Not actual Profi pricing, procurement terms, commercial commitment, or verified savings.")}</p>
 
       <form onSubmit={evaluate} className="scenario-form economic-form" noValidate>
         <div className="scenario-form-heading">
-          <h3>User-Supplied Economic Parameters</h3>
-          <p>Supply retail volume and packaging unit economics to calculate hypothetical annual spend and incremental cost per kg avoided.</p>
+          <h3>{t("User-Supplied Economic Parameters")}</h3>
+          <p>{t("Supply retail volume and packaging unit economics to calculate hypothetical annual spend and incremental cost per kg avoided.")}</p>
         </div>
 
         <div className="economic-inputs-grid">
-          <label className="scenario-label" htmlFor="econ-annual-units">
-            Annual units
-            <input
+          <label className="scenario-label" htmlFor="econ-annual-units">{t("Annual units")}<input
               id="econ-annual-units"
               type="text"
               inputMode="numeric"
               value={annualUnits}
               onChange={(e) => setAnnualUnits(e.target.value)}
-              placeholder="e.g. 1000000"
+              placeholder={t("e.g. 1000000")}
               aria-describedby="econ-units-help"
             />
-            <small id="econ-units-help">Required positive whole number (e.g. 1,000,000).</small>
+            <small id="econ-units-help">{t("Required positive whole number (e.g. 1,000,000).")}</small>
           </label>
 
-          <label className="scenario-label" htmlFor="econ-current-cost">
-            Current packaging cost (€ / unit)
-            <input
+          <label className="scenario-label" htmlFor="econ-current-cost">{t("Current packaging cost (€ / unit)")}<input
               id="econ-current-cost"
               type="text"
               inputMode="decimal"
               value={currentCost}
               onChange={(e) => setCurrentCost(e.target.value)}
-              placeholder="e.g. 0.120"
+              placeholder={t("e.g. 0.120")}
               aria-describedby="econ-current-help"
             />
-            <small id="econ-current-help">Baseline unit packaging cost (€ ≥ 0).</small>
+            <small id="econ-current-help">{t("Baseline unit packaging cost (€ ≥ 0).")}</small>
           </label>
 
-          <label className="scenario-label" htmlFor="econ-candidate-cost">
-            Candidate packaging cost (€ / unit)
-            <input
+          <label className="scenario-label" htmlFor="econ-candidate-cost">{t("Candidate packaging cost (€ / unit)")}<input
               id="econ-candidate-cost"
               type="text"
               inputMode="decimal"
               value={candidateCost}
               onChange={(e) => setCandidateCost(e.target.value)}
-              placeholder="e.g. 0.135"
+              placeholder={t("e.g. 0.135")}
               aria-describedby="econ-candidate-help"
             />
-            <small id="econ-candidate-help">Candidate unit packaging cost (€ ≥ 0).</small>
+            <small id="econ-candidate-help">{t("Candidate unit packaging cost (€ ≥ 0).")}</small>
           </label>
 
-          <label className="scenario-label" htmlFor="econ-transition-cost">
-            One-time transition cost (€)
-            <input
+          <label className="scenario-label" htmlFor="econ-transition-cost">{t("One-time transition cost (€)")}<input
               id="econ-transition-cost"
               type="text"
               inputMode="decimal"
               value={transitionCost}
               onChange={(e) => setTransitionCost(e.target.value)}
-              placeholder="Optional · e.g. 50000"
+              placeholder={t("Optional · e.g. 50000")}
               aria-describedby="econ-trans-help"
             />
-            <small id="econ-trans-help">Optional tooling / switch costs. Blank = none supplied.</small>
+            <small id="econ-trans-help">{t("Optional tooling / switch costs. Blank = none supplied.")}</small>
           </label>
         </div>
 
         <div className="scenario-actions">
           <button type="submit" className="scenario-pill active" disabled={evaluating}>
-            {evaluating ? 'Calculating…' : 'Evaluate economic scenario'}
+            {t(evaluating ? 'Calculating…' : 'Evaluate economic scenario')}
           </button>
-          <button type="button" className="scenario-pill" onClick={resetScenario}>
-            Reset economic scenario
-          </button>
+          <button type="button" className="scenario-pill" onClick={resetScenario}>{t("Reset economic scenario")}</button>
         </div>
       </form>
 
-      {validation && <p className="validation-alert" role="alert">{validation}</p>}
-      {error && <div className="status-panel error-panel" role="alert"><p>{error}</p></div>}
+      {t(validation && <p className="validation-alert" role="alert">{t(validation)}</p>)}
+      {t(error && <div className="status-panel error-panel" role="alert"><p>{t(error)}</p></div>)}
 
-      {result && (
+      {t(result && (
         <div className="economic-results-container" aria-live="polite">
-          {isBlocked && (
+          {t(isBlocked && (
             <div role="alert" className="blocking-alert-box economic-blocked-alert">
-              <h4>⛔ THEORETICAL / NON-ACTIONABLE</h4>
-              <p>
-                Candidate is operationally BLOCKED for the evaluated context.
-                Economic values are scenario arithmetic only and do not represent an implementable business case.
-              </p>
+              <h4>{t("⛔ THEORETICAL / NON-ACTIONABLE")}</h4>
+              <p>{t("Candidate is operationally BLOCKED for the evaluated context. Economic values are scenario arithmetic only and do not represent an implementable business case.")}</p>
             </div>
-          )}
+          ))}
 
-          <div className="executive-strip" aria-label="Economic Results Summary">
+          <div className="executive-strip" aria-label={t("Economic Results Summary")}>
             {/* Card 1: Annual Packaging Spend */}
             <div className={`exec-card ${isBlocked ? 'blocked-card' : ''}`}>
-              <span className="exec-kicker">Annual Packaging Spend</span>
+              <span className="exec-kicker">{t("Annual Packaging Spend")}</span>
               <div className="exec-main-value">
-                <span>{formatCurrency(result.current_annual_spend_eur)} → {formatCurrency(result.candidate_annual_spend_eur)}</span>
+                <span>{t(formatCurrency(result.current_annual_spend_eur))}{t(" → ")}{t(formatCurrency(result.candidate_annual_spend_eur))}</span>
               </div>
-              <span className="exec-meta">
-                Based on {result.annual_units.toLocaleString('en-US')} units/year ({formatCurrency(result.current_cost_eur_per_unit)} vs {formatCurrency(result.candidate_cost_eur_per_unit)}/unit)
-              </span>
+              <span className="exec-meta">{t("Based on ")}{t(result.annual_units.toLocaleString('en-US'))}{t(" units/year (")}{t(formatCurrency(result.current_cost_eur_per_unit))}{t(" vs ")}{t(formatCurrency(result.candidate_cost_eur_per_unit))}{t("/unit)")}</span>
             </div>
 
             {/* Card 2: Annual Packaging-Cost Delta */}
             <div className={`exec-card ${isBlocked ? 'blocked-card' : result.annual_cost_delta_eur < 0 ? 'eligible-card' : result.annual_cost_delta_eur > 0 ? 'review-card' : ''}`}>
-              <span className="exec-kicker">Annual Cost Delta</span>
+              <span className="exec-kicker">{t("Annual Cost Delta")}</span>
               <div className="exec-main-value">
                 <span className={`exec-delta-badge ${isBlocked ? 'theoretical' : result.annual_cost_delta_eur < 0 ? 'eligible-card' : result.annual_cost_delta_eur > 0 ? 'nonpositive' : ''}`}>
-                  {formatDeltaCurrency(result.annual_cost_delta_eur)}
+                  {t(formatDeltaCurrency(result.annual_cost_delta_eur))}
                 </span>
               </div>
               <span className="exec-meta">
-                {result.annual_cost_delta_eur > 0 && 'Additional annual packaging cost (candidate costs more)'}
-                {result.annual_cost_delta_eur === 0 && 'No annual packaging-cost change'}
-                {result.annual_cost_delta_eur < 0 && 'Annual packaging-cost saving (candidate costs less)'}
+                {t(result.annual_cost_delta_eur > 0 && 'Additional annual packaging cost (candidate costs more)')}
+                {t(result.annual_cost_delta_eur === 0 && 'No annual packaging-cost change')}
+                {t(result.annual_cost_delta_eur < 0 && 'Annual packaging-cost saving (candidate costs less)')}
               </span>
             </div>
 
             {/* Card 3: First-year cost delta if supplied */}
-            {result.first_year_cost_delta_eur !== null && (
+            {t(result.first_year_cost_delta_eur !== null && (
               <div className={`exec-card ${isBlocked ? 'blocked-card' : ''}`}>
-                <span className="exec-kicker">First-Year Transition Impact</span>
+                <span className="exec-kicker">{t("First-Year Transition Impact")}</span>
                 <div className="exec-main-value">
-                  <span>{formatFirstYearDeltaCurrency(result.first_year_cost_delta_eur)}</span>
+                  <span>{t(formatFirstYearDeltaCurrency(result.first_year_cost_delta_eur))}</span>
                 </div>
-                <span className="exec-meta">
-                  Includes {formatCurrency(result.one_time_transition_cost_eur)} one-time transition cost
-                </span>
+                <span className="exec-meta">{t("Includes ")}{t(formatCurrency(result.one_time_transition_cost_eur))}{t(" one-time transition cost")}</span>
               </div>
-            )}
+            ))}
 
             {/* Card 4: Annual Virgin Plastic Avoided */}
             <div className="exec-card">
-              <span className="exec-kicker">Annual Virgin Plastic Avoided</span>
+              <span className="exec-kicker">{t("Annual Virgin Plastic Avoided")}</span>
               <div className="exec-main-value">
                 <span>
-                  {result.annual_virgin_plastic_reduction_kg !== null && result.annual_virgin_plastic_reduction_kg > 0
+                  {t(result.annual_virgin_plastic_reduction_kg !== null && result.annual_virgin_plastic_reduction_kg > 0
                     ? formatKg(result.annual_virgin_plastic_reduction_kg)
                     : result.annual_virgin_plastic_reduction_kg === 0
                     ? '0 kg / year'
                     : result.annual_virgin_plastic_reduction_kg !== null && result.annual_virgin_plastic_reduction_kg < 0
                     ? 'Increases'
-                    : 'N/A'}
+                    : 'N/A')}
                 </span>
               </div>
               <span className="exec-meta">
-                {result.annual_virgin_plastic_reduction_kg !== null && result.annual_virgin_plastic_reduction_kg > 0 &&
-                  `≈ ${(result.annual_virgin_plastic_reduction_kg / 1000).toLocaleString('en-US', { maximumFractionDigits: 2 })} t/year avoided`}
-                {result.annual_virgin_plastic_reduction_kg === 0 && 'No change — zero virgin-plastic reduction'}
-                {result.annual_virgin_plastic_reduction_kg !== null && result.annual_virgin_plastic_reduction_kg < 0 &&
-                  `Virgin-plastic use increases by ${formatKg(Math.abs(result.annual_virgin_plastic_reduction_kg))}`}
-                {result.annual_virgin_plastic_reduction_kg === null && 'Environmental delta unavailable (INSUFFICIENT_DATA)'}
+                {t(result.annual_virgin_plastic_reduction_kg !== null && result.annual_virgin_plastic_reduction_kg > 0 &&
+                  `≈ ${(result.annual_virgin_plastic_reduction_kg / 1000).toLocaleString('en-US', { maximumFractionDigits: 2 })} t/year avoided`)}
+                {t(result.annual_virgin_plastic_reduction_kg === 0 && 'No change — zero virgin-plastic reduction')}
+                {t(result.annual_virgin_plastic_reduction_kg !== null && result.annual_virgin_plastic_reduction_kg < 0 &&
+                  `Virgin-plastic use increases by ${formatKg(Math.abs(result.annual_virgin_plastic_reduction_kg))}`)}
+                {t(result.annual_virgin_plastic_reduction_kg === null && 'Environmental delta unavailable (INSUFFICIENT_DATA)')}
               </span>
             </div>
 
             {/* Card 5: Economic Delta Per Kg Virgin Plastic Avoided */}
             <div className={`exec-card ${isBlocked ? 'blocked-card' : ''}`}>
-              <span className="exec-kicker">Economic Delta per kg Avoided</span>
+              <span className="exec-kicker">{t("Economic Delta per kg Avoided")}</span>
               <div className="exec-main-value">
                 <span>
-                  {result.incremental_cost_per_kg_avoided_eur !== null
+                  {t(result.incremental_cost_per_kg_avoided_eur !== null
                     ? `${result.incremental_cost_per_kg_avoided_eur > 0 ? '+' : ''}${result.incremental_cost_per_kg_avoided_eur.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €/kg`
-                    : 'N/A'}
+                    : 'N/A')}
                 </span>
               </div>
               <span className="exec-meta">
-                {result.incremental_cost_per_kg_avoided_eur !== null ? (
+                {t(result.incremental_cost_per_kg_avoided_eur !== null ? (
                   result.incremental_cost_per_kg_avoided_eur > 0
                     ? `Each kg of avoided virgin plastic corresponds to an additional €${result.incremental_cost_per_kg_avoided_eur.toFixed(2)} packaging cost.`
                     : result.incremental_cost_per_kg_avoided_eur === 0
@@ -311,12 +293,12 @@ export function EconomicScenarioView({ scenarioId, scenarioLabel, comparison }: 
                   'N/A — candidate increases virgin-plastic use'
                 ) : (
                   'N/A — environmental delta unavailable'
-                )}
+                ))}
               </span>
             </div>
           </div>
         </div>
-      )}
+      ))}
     </section>
   );
 }

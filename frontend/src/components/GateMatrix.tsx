@@ -1,3 +1,4 @@
+import { useTranslation } from '../i18n';
 import type { GateName, HardGate } from '../api/contracts';
 
 interface GateMatrixProps {
@@ -39,6 +40,7 @@ const GATE_METADATA: Record<GateName, { title: string; subtitle: string; icon: s
 };
 
 export function GateMatrix({ gates, compact = false }: GateMatrixProps) {
+  const t = useTranslation();
   const gateKeys: GateName[] = [
     'physical_fit',
     'food_contact',
@@ -81,7 +83,7 @@ export function GateMatrix({ gates, compact = false }: GateMatrixProps) {
   return (
     <div className={`gate-matrix-container ${compact ? 'compact' : ''}`}>
       <div className="gate-matrix-grid">
-        {gateKeys.map((key) => {
+        {t(gateKeys.map((key) => {
           const gate = gates[key];
           const meta = GATE_METADATA[key];
           const badge = getStatusBadge(gate?.status ?? 'UNKNOWN');
@@ -95,37 +97,35 @@ export function GateMatrix({ gates, compact = false }: GateMatrixProps) {
             >
               <div className="gate-cell-top">
                 <span className="gate-icon" aria-hidden="true">
-                  {meta.icon}
+                  {t(meta.icon)}
                 </span>
                 <div className="gate-title-group">
-                  <strong className="gate-title">{meta.title}</strong>
-                  <span className="gate-sub">{meta.subtitle}</span>
+                  <strong className="gate-title">{t(meta.title)}</strong>
+                  <span className="gate-sub">{t(meta.subtitle)}</span>
                 </div>
               </div>
 
               <div className="gate-status-row">
                 <span className={`gate-status-pill ${badge.className}`}>
-                  {badge.text}
+                  {t(badge.text)}
                 </span>
               </div>
 
               <p className="gate-reason-text">
-                {gate?.reason || 'Evaluation criteria pending verification.'}
+                {t(gate?.reason || 'Evaluation criteria pending verification.')}
               </p>
 
-              {gate?.source_ids && gate.source_ids.length > 0 && (
+              {t(gate?.source_ids && gate.source_ids.length > 0 && (
                 <div className="gate-sources-ref">
-                  <small>Citations: {gate.source_ids.join(', ')}</small>
+                  <small>{t("Citations: ")}{t(gate.source_ids.join(', '))}</small>
                 </div>
-              )}
+              ))}
             </div>
           );
-        })}
+        }))}
       </div>
       <div className="gate-non-compensatory-note">
-        <strong>Non-compensatory gate policy:</strong> Any single <code>FAIL</code> blocks candidate advancement.
-        Virgin plastic reduction cannot compensate for thermal failure or unverified food-contact compliance.
-      </div>
+        <strong>{t("Non-compensatory gate policy:")}</strong>{t(" Any single ")}<code>{t("FAIL")}</code>{t(" blocks candidate advancement. Virgin plastic reduction cannot compensate for thermal failure or unverified food-contact compliance.")}</div>
     </div>
   );
 }
