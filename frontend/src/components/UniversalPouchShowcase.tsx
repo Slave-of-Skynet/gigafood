@@ -220,7 +220,44 @@ export function UniversalPouchShowcase({ onApplyWorkflow }: UniversalPouchShowca
             className="showcase-cert-btn"
             onClick={() => setIsCertModalOpen(true)}
           >
-            📜 {t("Посмотреть официальный лабораторный сертификат соответствия (EU 1935/2004 & FDA 250°C) →")}
+            📜 {t("Посмотреть спецификацию и симуляцию паспорта соответствия (EU / FDA) →")}
+          </button>
+        </div>
+
+        {/* Epistemic / Claim Safety Engineering Disclaimer */}
+        <div style={{
+          backgroundColor: '#f8fafc',
+          border: '1px solid #e2e8f0',
+          borderRadius: '8px',
+          padding: '10px 16px',
+          marginTop: '16px',
+          fontSize: '12.5px',
+          color: '#475569',
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '10px'
+        }}>
+          <div>
+            <strong>ℹ️ {t("Инженерная физическая концепция HTF-05:")}</strong>{' '}
+            {t("Термостойкость 250°C основана на спецификациях фольги/LSR и модели парового охлаждения. Для аудита существующих SKU ритейлера перейдите в режим")} <strong>{t("Recommendation Journey")}</strong>.
+          </div>
+          <button
+            type="button"
+            style={{
+              background: '#0284c7',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '6px',
+              padding: '5px 12px',
+              fontSize: '12px',
+              fontWeight: 600,
+              cursor: 'pointer'
+            }}
+            onClick={() => onApplyWorkflow && onApplyWorkflow('P1', 'LITERAL_OVEN_250C_THEN_HOLD')}
+          >
+            {t("Открыть Decision Engine →")}
           </button>
         </div>
       </section>

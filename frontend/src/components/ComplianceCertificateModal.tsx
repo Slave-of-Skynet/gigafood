@@ -41,8 +41,8 @@ export const ComplianceCertificateModal: React.FC<ComplianceCertificateModalProp
         {/* Modal Controls Bar */}
         <div className="cert-modal-toolbar">
           <div className="cert-toolbar-status">
-            <span className="cert-valid-dot" />
-            <span>{t("Официальный верифицированный сертификат безопасности EU / FDA")}</span>
+            <span className="cert-valid-dot" style={{ backgroundColor: '#f59e0b' }} />
+            <span>{t("Симуляция спецификации соответствия EU / FDA (Demo Model)")}</span>
           </div>
           <div className="cert-toolbar-actions">
             <button
@@ -66,6 +66,24 @@ export const ComplianceCertificateModal: React.FC<ComplianceCertificateModalProp
 
         {/* Certificate Document Canvas (A4 / Official Sheet style) */}
         <div className="cert-document-sheet">
+          {/* Claim Safety Watermark Banner */}
+          <div style={{
+            background: '#fffbeb',
+            border: '1px dashed #f59e0b',
+            borderRadius: '6px',
+            padding: '8px 12px',
+            marginBottom: '14px',
+            fontSize: '12px',
+            color: '#b45309',
+            fontWeight: 500,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
+          }}>
+            <span>⚠️</span>
+            <span>{t("SIMULATION SPECIFICATION (TRL 4–5): Инженерная симуляция паспорта соответствия для демонстрации интерфейса. Для коммерческого внедрения в Profi требуется финальный протокол аккредитованной лаборатории.")}</span>
+          </div>
+
           {/* Header */}
           <div className="cert-doc-header">
             <div className="cert-lab-emblem">

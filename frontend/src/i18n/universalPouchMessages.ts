@@ -3070,4 +3070,34 @@ export const universalPouchMessages: Record<string, TranslationEntry> = {
     "ru": "Дорогая форма (€15k+), но минимальная копеечная цена готовой детали.",
     "ro": "Matriță scumpă (€15k+), dar preț unitar minim pe bucată la tiraje mari."
   },
+  "Симуляция спецификации соответствия EU / FDA (Demo Model)": {
+    "en": "EU / FDA Compliance Specification Simulation (Demo Model)",
+    "ru": "Симуляция спецификации соответствия EU / FDA (Demo Model)",
+    "ro": "Simulare specificație de conformitate EU / FDA (Model Demo)"
+  },
+  "SIMULATION SPECIFICATION (TRL 4–5): Инженерная симуляция паспорта соответствия для демонстрации интерфейса. Для коммерческого внедрения в Profi требуется финальный протокол аккредитованной лаборатории.": {
+    "en": "SIMULATION SPECIFICATION (TRL 4–5): Engineering simulation of compliance certificate for UI demonstration. Commercial deployment in Profi requires final accredited laboratory protocol.",
+    "ru": "SIMULATION SPECIFICATION (TRL 4–5): Инженерная симуляция паспорта соответствия для демонстрации интерфейса. Для коммерческого внедрения в Profi требуется финальный протокол аккредитованной лаборатории.",
+    "ro": "SPECIFICAȚIE DE SIMULARE (TRL 4–5): Simulare inginerească a certificatului de conformitate pentru demonstrarea interfeței. Implementarea comercială în Profi necesită protocol final de laborator acreditat."
+  },
+  "Посмотреть спецификацию и симуляцию паспорта соответствия (EU / FDA) →": {
+    "en": "View specification and compliance certificate simulation (EU / FDA) →",
+    "ru": "Посмотреть спецификацию и симуляцию паспорта соответствия (EU / FDA) →",
+    "ro": "Vizualizați specificația și simularea certificatului de conformitate (EU / FDA) →"
+  },
+  "Инженерная физическая концепция HTF-05:": {
+    "en": "HTF-05 Engineering Physical Concept:",
+    "ru": "Инженерная физическая концепция HTF-05:",
+    "ro": "Concept fizic de inginerie HTF-05:"
+  },
+  "Термостойкость 250°C основана на спецификациях фольги/LSR и модели парового охлаждения. Для аудита существующих SKU ритейлера перейдите в режим": {
+    "en": "250°C thermal resistance is based on foil/LSR specifications and steam cooling model. To audit existing retailer SKUs, switch to",
+    "ru": "Термостойкость 250°C основана на спецификациях фольги/LSR и модели парового охлаждения. Для аудита существующих SKU ритейлера перейдите в режим",
+    "ro": "Rezistența termică la 250°C se bazează pe specificațiile foliei/LSR și modelul de răcire prin abur. Pentru auditul SKU-urilor existente ale retailerului, comutați la"
+  },
+  "Открыть Decision Engine →": {
+    "en": "Open Decision Engine →",
+    "ru": "Открыть Decision Engine →",
+    "ro": "Deschide Decision Engine →"
+  }
 };
