@@ -11,28 +11,28 @@ interface Props {
 }
 
 const formatCurrency = (val: number | null): string => {
-  if (val === null) return 'N/A';
+  if (val === null) return 'Baseline and candidate costs needed';
   const prefix = val < 0 ? '-€' : '€';
   const absVal = Math.abs(val);
   return `${prefix}${absVal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 };
 
 const formatDeltaCurrency = (val: number | null): string => {
-  if (val === null) return 'N/A';
+  if (val === null) return 'Baseline and candidate costs needed';
   if (val > 0) return `+€${val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / year`;
   if (val < 0) return `-€${Math.abs(val).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / year`;
   return `€0.00 / year`;
 };
 
 const formatFirstYearDeltaCurrency = (val: number | null): string => {
-  if (val === null) return 'N/A';
+  if (val === null) return 'Baseline and candidate costs needed';
   if (val > 0) return `+€${val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   if (val < 0) return `-€${Math.abs(val).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   return `€0.00`;
 };
 
 const formatKg = (val: number | null): string => {
-  if (val === null) return 'N/A';
+  if (val === null) return 'Plastic mass inputs needed';
   return `${val.toLocaleString('en-US', { maximumFractionDigits: 1 })} kg / year`;
 };
 
@@ -199,7 +199,7 @@ export function EconomicScenarioView({ scenarioId, scenarioLabel, comparison }: 
       </form>
 
       {t(validation && <p className="validation-alert" role="alert">{t(validation)}</p>)}
-      {t(error && <div className="status-panel error-panel" role="alert"><p>{t(error)}</p></div>)}
+      {t(error && <div className="status-panel error-panel" role="alert"><p>{t("Calculation could not be loaded. Please retry.")}</p></div>)}
 
       {t(result && (
         <div className="economic-results-container" aria-live="polite">
@@ -257,7 +257,7 @@ export function EconomicScenarioView({ scenarioId, scenarioLabel, comparison }: 
                     ? '0 kg / year'
                     : result.annual_virgin_plastic_reduction_kg !== null && result.annual_virgin_plastic_reduction_kg < 0
                     ? 'Increases'
-                    : 'N/A')}
+                    : 'Plastic mass inputs needed')}
                 </span>
               </div>
               <span className="exec-meta">
@@ -266,7 +266,7 @@ export function EconomicScenarioView({ scenarioId, scenarioLabel, comparison }: 
                 {t(result.annual_virgin_plastic_reduction_kg === 0 && 'No change — zero virgin-plastic reduction')}
                 {t(result.annual_virgin_plastic_reduction_kg !== null && result.annual_virgin_plastic_reduction_kg < 0 &&
                   `Virgin-plastic use increases by ${formatKg(Math.abs(result.annual_virgin_plastic_reduction_kg))}`)}
-                {t(result.annual_virgin_plastic_reduction_kg === null && 'Environmental delta unavailable (INSUFFICIENT_DATA)')}
+                {t(result.annual_virgin_plastic_reduction_kg === null && 'Plastic mass inputs needed')}
               </span>
             </div>
 
@@ -277,7 +277,11 @@ export function EconomicScenarioView({ scenarioId, scenarioLabel, comparison }: 
                 <span>
                   {t(result.incremental_cost_per_kg_avoided_eur !== null
                     ? `${result.incremental_cost_per_kg_avoided_eur > 0 ? '+' : ''}${result.incremental_cost_per_kg_avoided_eur.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €/kg`
-                    : 'N/A')}
+                    : comparison.reduction_g === 0
+                    ? 'No virgin-plastic reduction'
+                    : comparison.reduction_g !== null && comparison.reduction_g < 0
+                    ? 'Candidate increases virgin-plastic use'
+                    : 'Plastic mass inputs needed')}
                 </span>
               </div>
               <span className="exec-meta">
@@ -288,11 +292,11 @@ export function EconomicScenarioView({ scenarioId, scenarioLabel, comparison }: 
                     ? 'Packaging spend is neutral per kg of virgin plastic avoided.'
                     : `Candidate reduces virgin plastic while reducing packaging spend by €${Math.abs(result.incremental_cost_per_kg_avoided_eur).toFixed(2)} per kg avoided.`
                 ) : comparison.reduction_g === 0 ? (
-                  'N/A — no virgin-plastic reduction'
+                  'No savings calculation: no virgin-plastic reduction'
                 ) : comparison.reduction_g !== null && comparison.reduction_g < 0 ? (
-                  'N/A — candidate increases virgin-plastic use'
+                  'No savings calculation: candidate increases virgin-plastic use'
                 ) : (
-                  'N/A — environmental delta unavailable'
+                  'Cannot calculate until plastic reduction is established'
                 ))}
               </span>
             </div>

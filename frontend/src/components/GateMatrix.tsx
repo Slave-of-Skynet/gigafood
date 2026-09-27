@@ -64,7 +64,7 @@ export function GateMatrix({ gates, compact = false }: GateMatrixProps) {
         };
       case 'UNKNOWN':
         return {
-          text: 'UNKNOWN (Evidence required)',
+          text: 'Needs verification',
           className: 'gate-badge-unknown',
         };
       case 'FAIL':
@@ -117,7 +117,7 @@ export function GateMatrix({ gates, compact = false }: GateMatrixProps) {
 
               {t(gate?.source_ids && gate.source_ids.length > 0 && (
                 <div className="gate-sources-ref">
-                  <small>{t("Citations: ")}{t(gate.source_ids.join(', '))}</small>
+                  <small>{t("Citations: ")}{gate.source_ids.join(', ')}</small>
                 </div>
               ))}
             </div>

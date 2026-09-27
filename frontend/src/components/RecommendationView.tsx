@@ -180,7 +180,7 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
               ? 'Recommendation evidence unavailable'
               : 'Failed to load recommendation catalogue')}
           </h2>
-          <p>{t(productsLoad.message)}</p>
+          <p>{t("Calculation could not be loaded. Please retry.")}</p>
           <button type="button" className="retry-btn" onClick={handleRetry}>{t("Retry")}</button>
         </div>
       ))}
@@ -221,7 +221,7 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
               ? 'Recommendation evidence unavailable'
               : 'Evaluation request failed')}
           </h2>
-          <p>{t(evaluationLoad.message)}</p>
+          <p>{t("Calculation could not be loaded. Please retry.")}</p>
           <button type="button" className="retry-btn" onClick={handleRetry}>{t("Retry")}</button>
         </div>
       ))}
@@ -362,7 +362,7 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
                   }`}
                 >
                   <div className="baseline-card-top">
-                    <span className="baseline-id-tag">{t(b.baseline_id)}</span>
+                    <span className="baseline-id-tag">{b.baseline_id}</span>
                     <span className="baseline-role-tag">
                       {t(b.is_profi_incumbent ? 'Actual Profi Incumbent' : 'Romanian Market Reference')}
                     </span>
@@ -374,11 +374,11 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
                       <strong>
                         {t(b.observed_virgin_fraction != null
                           ? `${b.observed_virgin_fraction * 100}%`
-                          : 'Unknown')}
+                          : 'Not measured by the team')}
                       </strong>
                     </span>
                     {t(b.estimated_mass_g && (
-                      <span>{t("Estimated mass:")}{t(' ')}
+                      <span>{t("Modeled mass scenario:")}{t(' ')}
                         <strong>{t("≈")}{t(b.estimated_mass_g.central)}{t(" g (")}{t(b.estimated_mass_g.low)}{t("–")}{t(b.estimated_mass_g.high)}{t(" g)")}</strong>
                       </span>
                     ))}
@@ -403,9 +403,9 @@ export function RecommendationView({ visible, uiLang: _uiLang = 'en' }: Recommen
                 )))}
               </ul>
               <div className="revision-hash-row">
-                <small>{t("Canonical Dataset: ")}<code>{t(evaluation.dataset_id)}</code></small>
+                <small>{t("Canonical Dataset: ")}<code>{evaluation.dataset_id}</code></small>
                 <small>{t("Research Cut-Off: ")}<code>{t(evaluation.research_cut_off)}</code></small>
-                <small>{t("SHA256: ")}<code>{t(evaluation.source_revision_hash.slice(0, 16))}{t("…")}</code></small>
+                <small>{t("SHA256: ")}<code>{evaluation.source_revision_hash.slice(0, 16)}{t("…")}</code></small>
               </div>
             </div>
           </footer>

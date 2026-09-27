@@ -1,7 +1,8 @@
+import { missingEvidenceAction } from '../i18n/presentation';
 import { useTranslation } from '../i18n';
 import type { BooleanInput, Comparison, NumericInput, OperationalRequirements, Package } from '../api/contracts';
 
-export const format = (value: number | null, unit: string) => value === null ? 'N/A' : `${value.toLocaleString('en-US', { maximumFractionDigits: 3 })}${unit ? ` ${unit}` : ''}`;
+export const format = (value: number | null, unit: string) => value === null ? 'Measurement needed' : `${value.toLocaleString('en-US', { maximumFractionDigits: 3 })}${unit ? ` ${unit}` : ''}`;
 
 function NumericProvenanceItem({
   label,
@@ -17,7 +18,7 @@ function NumericProvenanceItem({
     <div className="input">
       <div className="input-header">
         <strong>
-          {t(label)}{t(": ")}{t(input.value === null ? 'Unknown (N/A)' : format(input.value, unit))}
+          {t(label)}{t(": ")}{t(input.value === null ? missingEvidenceAction(label) : format(input.value, unit))}
         </strong>
         <div className="provenance-chips">
           <span className="prov-chip origin">{t(input.provenance.origin)}</span>
@@ -26,7 +27,7 @@ function NumericProvenanceItem({
           </span>
         </div>
       </div>
-      <small>{t("Source: ")}{t(input.provenance.source_reference)}</small>
+      <small>{t("Source: ")}{input.provenance.source_reference}</small>
       <small>{t(input.provenance.note)}</small>
     </div>
   );
@@ -41,7 +42,7 @@ function BooleanProvenanceItem({
 }) {
   const t = useTranslation();
   const displayVal =
-    input.value === null ? 'Unknown (N/A)' : input.value ? 'Yes (true)' : 'No (false)';
+    input.value === null ? 'Needs verification' : input.value ? 'Yes (true)' : 'No (false)';
   return (
     <div className="input">
       <div className="input-header">
@@ -55,7 +56,7 @@ function BooleanProvenanceItem({
           </span>
         </div>
       </div>
-      <small>{t("Source: ")}{t(input.provenance.source_reference)}</small>
+      <small>{t("Source: ")}{input.provenance.source_reference}</small>
       <small>{t(input.provenance.note)}</small>
     </div>
   );
@@ -123,7 +124,7 @@ export function PackageView({
         <h3>
           {t(title)}{t(": ")}{t(data.label)}
         </h3>
-        <small>{t("Package ID: ")}{t(data.id)}</small>
+        <small>{t("Package ID: ")}{data.id}</small>
       </div>
 
       <div className="package-meta-list">
@@ -132,7 +133,7 @@ export function PackageView({
         </p>
         <p>
           <strong>{t("Food-contact use flag:")}</strong>{t(' ')}
-          {t(data.food_contact === null ? 'Unknown' : String(data.food_contact))}{t(' ')}
+          {t(data.food_contact === null ? 'Supplier / lab verification needed' : String(data.food_contact))}{t(' ')}
           <em>{t("(not suitability or regulatory approval)")}</em>
         </p>
         {t(!capMaxTemp &&
@@ -172,7 +173,7 @@ export function PackageView({
           <article key={c.id} className="component-card">
             <h4>
               <span>
-                {t(c.id)}{t(" · ")}{t(c.material)}
+                {c.id}{t(" · ")}{t(c.material)}
               </span>
             </h4>
             <NumericProvenanceItem

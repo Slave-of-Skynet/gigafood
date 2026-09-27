@@ -1,3 +1,4 @@
+import { missingEvidenceAction } from '../i18n/presentation';
 import { useTranslation } from '../i18n';
 import { useState } from 'react';
 import type { EvidenceField, IntervalValue } from '../api/contracts';
@@ -11,7 +12,8 @@ interface MetricFieldProps {
 }
 
 function isInterval(val: unknown): val is IntervalValue {
-  return typeof val === 'object' && val !== null && 'central' in val && 'low' in val && 'high' in val;
+  return typeof val === 'object' && val !== null && 'central' in val && 'low' in val && 'high' in val
+    && [val.low, val.central, val.high].every(n => typeof n === 'number' && Number.isFinite(n));
 }
 
 export function MetricField({
@@ -25,8 +27,7 @@ export function MetricField({
 
   // UNKNOWN or missing field handling: NEVER display 0 or 0 units.
   if (!field || field.state === 'UNKNOWN' || field.value === null || field.value === undefined) {
-    const isPrice = label.toLowerCase().includes('price') || (unitOverride && unitOverride.includes('RON'));
-    const unknownText = isPrice ? 'Quote required' : 'Evidence required';
+    const unknownText = missingEvidenceAction(label + ' ' + (unitOverride ?? ''));
 
     return (
       <div className="metric-field-box metric-field-unknown">
@@ -46,14 +47,16 @@ export function MetricField({
   const isFractionToPercent = field.unit === 'fraction' && unitOverride === '%';
 
   const formatVal = (val: number): number => {
-    if (!isFractionToPercent) return val;
-    return Number((val * 100).toFixed(2));
+    if (isFractionToPercent) return Number((val * 100).toFixed(2));
+    return field.state === 'ESTIMATED' ? Number(val.toFixed(2)) : val;
   };
 
   let mainDisplay = '';
   let intervalSubtitle: string | null = null;
 
-  if (isInterval(field.value)) {
+  if (field.state === 'ESTIMATED' && !isInterval(field.value) && !isInterval(field.estimate)) {
+    mainDisplay = 'Modeled range needed before displaying estimate';
+  } else if (isInterval(field.value)) {
     const central = formatVal(field.value.central);
     const low = formatVal(field.value.low);
     const high = formatVal(field.value.high);
@@ -114,11 +117,11 @@ export function MetricField({
                 <strong>{t("Scope:")}</strong> {t(field.scope)}
               </small>
               <small>
-                <strong>{t("Citations:")}</strong> {t(field.source_ids.join(', '))}
+                <strong>{t("Citations:")}</strong> {field.source_ids.join(', ')}
               </small>
               {t(field.calculation_id && (
                 <small>
-                  <strong>{t("Calculation ID:")}</strong> {t(field.calculation_id)}
+                  <strong>{t("Calculation ID:")}</strong> {field.calculation_id}
                 </small>
               ))}
             </div>

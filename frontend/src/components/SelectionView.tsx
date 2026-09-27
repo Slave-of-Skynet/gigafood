@@ -24,7 +24,7 @@ type Load<T> =
 
 const formatNumberOnly = (value: number | null) =>
   value === null
-    ? 'N/A'
+    ? 'Required inputs need verification'
     : value.toLocaleString('en-US', { maximumFractionDigits: 2 });
 type CalculationGapReason =
   | 'BOUNDARY_MISMATCH'
@@ -39,12 +39,12 @@ function deltaMeaning(
 ) {
   if (value === null) {
     if (gapReason === 'BOUNDARY_MISMATCH') {
-      return 'Cannot calculate delta — package scopes differ (delta N/A)';
+      return 'Cannot calculate delta — package scopes differ';
     }
     if (gapReason === 'MISSING_MASS') {
-      return 'Cannot calculate yet — required package mass missing (delta N/A)';
+      return 'Cannot calculate yet — required package mass missing';
     }
-    return 'Cannot calculate yet — required numeric evidence missing (delta N/A)';
+    return 'Cannot calculate yet — required numeric evidence missing';
   }
   if (value > 0) return 'Reduces virgin plastic';
   if (value === 0) return 'No change — zero virgin-plastic reduction';
@@ -249,11 +249,11 @@ function Metadata({ data }: { data: SelectionMetadata }) {
       </div>
       <div>
         <dt>{t("Evidence scope")}</dt>
-        <dd>{t(data.recycled_content_scope ?? 'Unknown')}</dd>
+        <dd>{t(data.recycled_content_scope ?? 'Scope not provided')}</dd>
       </div>
       <div>
         <dt>{t("Evidence date")}</dt>
-        <dd>{t(data.evidence_date ?? 'Unknown')}</dd>
+        <dd>{t(data.evidence_date ?? 'Source date not provided')}</dd>
       </div>
     </dl>
   );
@@ -284,7 +284,7 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
         <div className="desc-product">
           <div className="section-header">
             <div>
-              <span className="candidate-kicker">{t("What is this packaging option? · ID: ")}{t(data.candidate.id)}
+              <span className="candidate-kicker">{t("What is this packaging option? · ID: ")}{data.candidate.id}
               </span>
               <h3 className="name-product section-title">{t(data.candidate.label)}</h3>
             </div>
@@ -368,7 +368,7 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
                 >
                   <span className="circle-num">{t(formatNumberOnly(calc.reduction_g))}</span>
                   <span className="circle-unit">
-                    {t(calc.reduction_g === null ? 'delta N/A' : 'g / unit')}
+                    {t(calc.reduction_g === null ? 'Package inputs needed' : 'g / unit')}
                   </span>
                 </div>
                 <span className="circle-text">{t("Signed reduction")}</span>
@@ -389,7 +389,7 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
                 >
                   <span className="circle-num">
                     {t(calc.reduction_pct === null
-                      ? 'N/A'
+                      ? 'Required inputs need verification'
                       : `${formatNumberOnly(calc.reduction_pct)}%`)}
                   </span>
                   <span className="circle-unit">{t("virgin delta")}</span>
@@ -439,7 +439,7 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
             {t(eligibility.status === 'BLOCKED'
               ? 'Incompatible with the stated modeled operating requirements. Environmental benefit does not override this operational block.'
               : eligibility.status === 'REVIEW_REQUIRED'
-              ? 'Evidence or human verification is required before confirming compatibility; an unknown capability is not proven incompatibility.'
+              ? 'Evidence or human verification is required before confirming compatibility; an unverified capability is not proven incompatibility.'
               : 'Passes the bounded evaluated thermal and microwave requirements. Still requires human QA and food-safety review.')}
           </p>
           <small className="tech-enum-trace">{t("Technical state: ")}{t(eligibility.status)}
@@ -451,7 +451,7 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
           <h4>{t("Next action")}</h4>
           <strong>{t(data.next_action.summary)}</strong>
           <p>{t(data.next_action.details)}</p>
-          <small className="tech-enum-trace">{t("Action code: ")}{t(data.next_action.action_code)}
+          <small className="tech-enum-trace">{t("Action code: ")}{data.next_action.action_code}
           </small>
         </section>
       </div>
@@ -510,11 +510,11 @@ function CandidateCard({ data }: { data: CandidateAssessment }) {
           >
             <strong>
               {t(finding.status === 'BLOCKED' ? '⛔ Blocked' : '⚠️ Review required')}{t(" ·")}{t(' ')}
-              {t(finding.constraint_id)}
+              {finding.constraint_id}
             </strong>
             <p>{t(finding.reason)}</p>
             <small className="tech-enum-trace">{t("Technical state: ")}{t(finding.status)}{t(" · ")}{t(finding.verification_state)}
-              {t(finding.source_reference ? ` · Source: ${finding.source_reference}` : '')}
+              {finding.source_reference && <>{t(' · Source: ')}{finding.source_reference}</>}
             </small>
           </div>
         )))}
@@ -696,7 +696,7 @@ export function SelectionView({ visible }: { visible: boolean }) {
         {t(portfolios.state === 'error' && (
           <div className="status-panel error-panel" role="alert">
             <h2>{t("Selection unavailable")}</h2>
-            <p>{t(portfolios.message)}</p>
+            <p>{t("Calculation could not be loaded. Please retry.")}</p>
             <p>{t("Comparison has its own evidence availability. No fallback portfolio is used.")}</p>
             <button
               className="retry-btn"
@@ -797,7 +797,7 @@ export function SelectionView({ visible }: { visible: boolean }) {
             {t(result.state === 'error' && (
               <div className="status-panel error-panel" role="alert">
                 <h2>{t("Selection evaluation failed")}</h2>
-                <p>{t(result.message)}</p>
+                <p>{t("Calculation could not be loaded. Please retry.")}</p>
                 <button
                   className="retry-btn"
                   onClick={() => setEvaluationAttempt((n) => n + 1)}

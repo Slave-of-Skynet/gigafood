@@ -3180,3 +3180,15 @@ button, select, summary, a { touch-action: manipulation; }
  .desc-nav-bar { font-size: 12px; }
  .product-archetype-grid { grid-template-columns: 1fr; }
 }
+
+/* Missing metrics are actions, so give text a readable wrapping surface. */
+.stat-circle.missing-ring {
+  border-radius: 16px;
+  height: auto;
+  min-height: 108px;
+}
+.missing-ring .circle-num { font-size: 13px; line-height: 1.4; }
+.metric-field-val, .exec-main-value, .epistemic-badge, .gate-status-pill {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}

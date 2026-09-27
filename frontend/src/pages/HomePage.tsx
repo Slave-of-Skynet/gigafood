@@ -20,7 +20,7 @@ type Load<T> =
 
 const formatNumberOnly = (value: number | null) =>
   value === null
-    ? 'N/A'
+    ? 'Required inputs need verification'
     : value.toLocaleString('en-US', { maximumFractionDigits: 2 });
 
 export function HomePage() {
@@ -222,7 +222,7 @@ export function HomePage() {
           {t(runtime.state === 'error' && (
             <div className="status-panel error-panel" role="alert">
               <h2>{t("Service / evidence unavailable")}</h2>
-              <p>{t(runtime.message)}</p>
+              <p>{t("Calculation could not be loaded. Please retry.")}</p>
               <button className="retry-btn" onClick={retry}>{t("Retry")}</button>
             </div>
           ))}
@@ -302,7 +302,7 @@ export function HomePage() {
               {t(result.state === 'error' && (
                 <div className="status-panel error-panel" role="alert">
                   <h2>{t("Comparison calculation failed")}</h2>
-                  <p>{t(result.message)}</p>
+                  <p>{t("Calculation could not be loaded. Please retry.")}</p>
                   <button className="retry-btn" onClick={retry}>{t("Retry")}</button>
                 </div>
               ))}
@@ -361,7 +361,7 @@ export function HomePage() {
                               : '')}
                           </span>
                         ) : (
-                          <span className="exec-delta-badge insufficient">{t("Insufficient data (N/A)")}</span>
+                          <span className="exec-delta-badge insufficient">{t("Package inputs needed")}</span>
                         ))}
                       </div>
                       <span className="exec-meta">{t("Calculation: ")}<strong>{t(result.data.status)}</strong>{t(" ·")}{t(' ')}
@@ -462,7 +462,7 @@ export function HomePage() {
                               .filter((c) => c.status === 'BLOCKED')
                               .map((c) => (
                                 <li key={c.constraint_id}>
-                                  <strong>{t(c.constraint_id)}{t(":")}</strong> {t(c.reason)}
+                                  <strong>{c.constraint_id}{t(":")}</strong> {t(c.reason)}
                                 </li>
                               )))}
                           </ul>
@@ -578,7 +578,7 @@ export function HomePage() {
                         >
                           <span className="circle-num">
                             {t(result.data.reduction_pct === null
-                              ? 'N/A'
+                              ? 'Required inputs need verification'
                               : `${formatNumberOnly(
                                   result.data.reduction_pct
                                 )}%`)}
@@ -648,7 +648,7 @@ export function HomePage() {
                     </dl>
 
                     {t(result.data.current_virgin_pack_g === 0 && (
-                      <p className="disclosure-banner">{t("Percentage is N/A because current virgin plastic is zero.")}</p>
+                      <p className="disclosure-banner">{t("Percentage not calculated because the baseline is zero.")}</p>
                     ))}
 
                     {t(result.data.reduction_g === 0 && (
@@ -705,7 +705,7 @@ export function HomePage() {
                           <div className="constraint-top">
                             <strong>
                               {t(c.status === 'BLOCKED' ? '⛔ ' : '⚠️ ')}
-                              {t(c.constraint_id)}{t(" · ")}{t(c.status)}
+                              {c.constraint_id}{t(" · ")}{t(c.status)}
                             </strong>
                             <span className="prov-chip verification">
                               {t(c.verification_state)}
@@ -713,7 +713,7 @@ export function HomePage() {
                           </div>
                           <p style={{ margin: 0 }}>{t(c.reason)}</p>
                           {t(c.source_reference && (
-                            <small>{t("Source: ")}{t(c.source_reference)}</small>
+                            <small>{t("Source: ")}{c.source_reference}</small>
                           ))}
                         </div>
                       )))}

@@ -1,4 +1,27 @@
 export const messages: Record<string, { ru: string; ro: string }> = {
+"Needs validation": {"ru": "Требуется проверка", "ro": "Necesită validare"},
+"Needs verification": {"ru": "Требует проверки", "ro": "Necesită verificare"},
+"Measurement needed": {"ru": "Требуется измерение", "ro": "Este necesară măsurarea"},
+"Supplier quote needed": {"ru": "Нужно ценовое предложение поставщика", "ro": "Este necesară oferta furnizorului"},
+"Supplier confirmation needed": {"ru": "Нужно подтверждение поставщика", "ro": "Este necesară confirmarea furnizorului"},
+"Temperature limit needs verification": {"ru": "Температурный предел требует проверки", "ro": "Limita de temperatură necesită verificare"},
+"Supplier / lab verification needed": {"ru": "Нужна проверка поставщика или лаборатории", "ro": "Este necesară verificarea furnizorului sau a laboratorului"},
+"Availability needs confirmation": {"ru": "Наличие требует подтверждения", "ro": "Disponibilitatea necesită confirmare"},
+"Scope not provided": {"ru": "Область применимости не указана", "ro": "Domeniul nu este precizat"},
+"Source date not provided": {"ru": "Дата источника не указана", "ro": "Data sursei nu este precizată"},
+"Not measured by the team": {"ru": "Команда не проводила измерение", "ro": "Echipa nu a efectuat măsurarea"},
+"Modeled mass scenario:": {"ru": "Модельный сценарий массы:", "ro": "Scenariu de masă modelată:"},
+"What still needs checking": {"ru": "Что ещё нужно проверить", "ro": "Ce mai trebuie verificat"},
+"Required inputs need verification": {"ru": "Нужно проверить исходные данные", "ro": "Datele de intrare necesită verificare"},
+"Package inputs needed": {"ru": "Нужны данные об упаковке", "ro": "Sunt necesare datele ambalajului"},
+"Percentage not calculated because the baseline is zero.": {"ru": "Процент не рассчитан: базовое значение равно нулю.", "ro": "Procentul nu este calculat deoarece valoarea de bază este zero."},
+"Required cost and plastic inputs needed": {"ru": "Нужны данные о стоимости и пластике", "ro": "Sunt necesare date despre cost și plastic"},
+"Plastic mass inputs needed": {"ru": "Нужны данные о массе пластика", "ro": "Sunt necesare date despre masa plasticului"},
+"No savings calculation: no virgin-plastic reduction": {"ru": "Экономия не рассчитана: нет сокращения первичного пластика", "ro": "Economia nu este calculată: plasticul virgin nu se reduce"},
+"No savings calculation: candidate increases virgin-plastic use": {"ru": "Экономия не рассчитана: вариант увеличивает расход первичного пластика", "ro": "Economia nu este calculată: opțiunea crește consumul de plastic virgin"},
+"Cannot calculate until plastic reduction is established": {"ru": "Для расчёта нужно установить сокращение пластика", "ro": "Calculul necesită stabilirea reducerii plasticului"},
+"Calculation could not be loaded. Please retry.": {"ru": "Не удалось загрузить расчёт. Повторите попытку.", "ro": "Calculul nu a putut fi încărcat. Reîncercați."},
+"Modeled range needed before displaying estimate": {"ru": "Для отображения оценки нужен модельный диапазон", "ro": "Este necesar intervalul modelat pentru afișarea estimării"},
   "Less plastic. Clearer choices.": {
     "ru": "Меньше пластика. Понятнее выбор.",
     "ro": "Mai puțin plastic. Alegeri mai clare."
@@ -220,8 +243,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Utilizare în cuptor"
   },
   "85–95°C in this test; actual store temperature unknown": {
-    "ru": "В испытании — 85–95°C; температура в магазине неизвестна",
-    "ro": "85–95°C în test; temperatura reală din magazin este necunoscută"
+    "ru": "В испытании — 85–95°C; температура в магазине требует подтверждения",
+    "ro": "85–95°C în test; temperatura reală din magazin necesită confirmare"
   },
   "Up to 6 hours required; performance needs testing": {
     "ru": "Требуется до 6 часов; необходимы испытания",
@@ -240,8 +263,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Temperatură maximă în cuptor: 250°C"
   },
   "Followed by holding phase: up to 6 hours holding requirement; 85–95°C is a MODELED TEST CONDITION and actual Profi display temperature remains UNKNOWN": {
-    "ru": "Затем хранение в тепле до 6 часов. 85–95°C — условие модели; реальная температура витрины Profi неизвестна.",
-    "ro": "Urmează menținerea la cald până la 6 ore. 85–95°C este o condiție de test; temperatura reală a vitrinei Profi rămâne necunoscută."
+    "ru": "Затем хранение в тепле до 6 часов. 85–95°C — условие модели; реальная температура витрины Profi требует подтверждения.",
+    "ro": "Urmează menținerea la cald până la 6 ore. 85–95°C este o condiție de test; temperatura reală a vitrinei Profi necesită confirmare."
   },
   "Peak Temperature:": {
     "ru": "Максимальная температура:",
@@ -256,8 +279,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Ce înseamnă:"
   },
   "Up to 6 hours required; performance needs testing; 85–95°C is a MODELED TEST CONDITION and actual Profi display temperature remains UNKNOWN. Because food is packaged after cooking, packaging is NOT exposed to 250°C oven heat in this scenario. Full 6-hour holding performance with fatty poultry remains subject to physical qualification.": {
-    "ru": "Требуется хранение до 6 часов; это нужно проверить испытаниями. 85–95°C — условие модели, реальная температура витрины Profi неизвестна. Еду упаковывают после приготовления, поэтому упаковка не подвергается нагреву до 250°C. Хранение жирного мяса птицы в течение всех 6 часов требует испытаний.",
-    "ro": "Sunt necesare până la 6 ore de păstrare; performanța trebuie testată. 85–95°C este o condiție de model, iar temperatura reală a vitrinei Profi este necunoscută. Ambalarea are loc după gătire, deci ambalajul nu este expus la 250°C. Păstrarea cărnii grase de pasăre timp de 6 ore necesită teste fizice."
+    "ru": "Требуется хранение до 6 часов; это нужно проверить испытаниями. 85–95°C — условие модели, реальная температура витрины Profi требует подтверждения. Еду упаковывают после приготовления, поэтому упаковка не подвергается нагреву до 250°C. Хранение жирного мяса птицы в течение всех 6 часов требует испытаний.",
+    "ro": "Sunt necesare până la 6 ore de păstrare; performanța trebuie testată. 85–95°C este o condiție de model, iar temperatura reală a vitrinei Profi necesită confirmare. Ambalarea are loc după gătire, deci ambalajul nu este expus la 250°C. Păstrarea cărnii grase de pasăre timp de 6 ore necesită teste fizice."
   },
   "Oven use needs extra checks:": {
     "ru": "Для духовки нужны дополнительные проверки:",
@@ -376,8 +399,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Ce știm"
   },
   "What Remains Unknown": {
-    "ru": "Что пока неизвестно",
-    "ro": "Ce rămâne necunoscut"
+    "ru": "Что требует подтверждения",
+    "ro": "Ce necesită verificare"
   },
   "What Profi Should Validate Next": {
     "ru": "Следующие проверки для Profi",
@@ -564,16 +587,16 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Reîncercați"
   },
   "Unknown": {
-    "ru": "Неизвестно",
-    "ro": "Necunoscut"
+    "ru": "Требует проверки",
+    "ro": "Necesită verificare"
   },
   "Unknown (N/A)": {
-    "ru": "Нет данных",
-    "ro": "Fără date"
+    "ru": "Требует проверки",
+    "ro": "Necesită verificare"
   },
   "N/A": {
-    "ru": "Нет данных",
-    "ro": "Fără date"
+    "ru": "Требует проверки",
+    "ro": "Necesită verificare"
   },
   "Yes": {
     "ru": "Да",
@@ -648,8 +671,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Estimare"
   },
   "UNKNOWN": {
-    "ru": "Нет данных",
-    "ro": "Necunoscut"
+    "ru": "Требует проверки",
+    "ro": "Necesită verificare"
   },
   "CONFLICT": {
     "ru": "Противоречивые данные",
@@ -832,8 +855,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Livrare locală și comandă minimă"
   },
   "UNKNOWN (Evidence required)": {
-    "ru": "Нет данных — нужны подтверждения",
-    "ro": "Necunoscut — sunt necesare dovezi"
+    "ru": "Требует проверки — нужны подтверждения",
+    "ro": "Necesită verificare — sunt necesare dovezi"
   },
   "FAIL (Hard blocking gate)": {
     "ru": "Не соответствует обязательному требованию",
@@ -1456,8 +1479,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Consumul de plastic virgin crește cu {0}"
   },
   "Environmental delta unavailable (INSUFFICIENT_DATA)": {
-    "ru": "Экологический эффект неизвестен: недостаточно данных",
-    "ro": "Impact ecologic necunoscut: date insuficiente"
+    "ru": "Экологический эффект не определён: недостаточно данных",
+    "ro": "Impact ecologic nedeterminat: date insuficiente"
   },
   "Economic Delta per kg Avoided": {
     "ru": "Изменение расходов на 1 кг сокращения",
@@ -1484,8 +1507,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Fără calcul — opțiunea nouă crește consumul de plastic"
   },
   "N/A — environmental delta unavailable": {
-    "ru": "Нет расчёта — экологический эффект неизвестен",
-    "ro": "Fără calcul — impactul ecologic este necunoscut"
+    "ru": "Нет расчёта — экологический эффект требует проверки",
+    "ro": "Fără calcul — impactul ecologic necesită confirmare"
   },
   "{0} / year": {
     "ru": "{0} / год",
@@ -1504,7 +1527,7 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Diferența nu poate fi calculată: componentele incluse diferă"
   },
   "Cannot calculate yet — required package mass missing (delta N/A)": {
-    "ru": "Расчёт пока невозможен: неизвестна масса упаковки",
+    "ru": "Расчёт пока невозможен: масса упаковки не подтверждена",
     "ro": "Calculul nu este posibil încă: lipsește masa ambalajului"
   },
   "Cannot calculate yet — required numeric evidence missing (delta N/A)": {
@@ -1604,15 +1627,15 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Calcul indisponibil: ambalajul actual și cel nou includ componente diferite"
   },
   "Calculation withheld — candidate package mass is missing (missing ≠ 0)": {
-    "ru": "Нет расчёта: неизвестна масса новой упаковки. Отсутствие данных не означает ноль.",
+    "ru": "Нет расчёта: масса новой упаковки не измерена. Отсутствие данных не означает ноль.",
     "ro": "Calcul indisponibil: lipsește masa ambalajului nou. Lipsa datelor nu înseamnă zero."
   },
   "Calculation withheld — baseline package mass is missing (missing ≠ 0)": {
-    "ru": "Нет расчёта: неизвестна масса текущей упаковки. Отсутствие данных не означает ноль.",
+    "ru": "Нет расчёта: масса текущей упаковки не измерена. Отсутствие данных не означает ноль.",
     "ro": "Calcul indisponibil: lipsește masa ambalajului actual. Lipsa datelor nu înseamnă zero."
   },
   "Calculation withheld — required package mass is missing (missing ≠ 0)": {
-    "ru": "Нет расчёта: неизвестна необходимая масса упаковки. Отсутствие данных не означает ноль.",
+    "ru": "Нет расчёта: необходимая масса упаковки не измерена. Отсутствие данных не означает ноль.",
     "ro": "Calcul indisponibil: lipsește masa necesară a ambalajului. Lipsa datelor nu înseamnă zero."
   },
   "Calculation withheld — exact numeric evidence is missing (missing ≠ 0)": {
@@ -1640,11 +1663,11 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Calcul indisponibil: lipsește masa ambalajului actual. Datele lipsă nu înseamnă zero."
   },
   "Calculation is withheld because required baseline and candidate package mass specifications are missing. PackShift never assumes missing data equals zero.": {
-    "ru": "Расчёт невозможен: неизвестна масса текущей и новой упаковки. Отсутствие данных не означает ноль.",
+    "ru": "Расчёт невозможен: масса текущей и новой упаковки не измерена. Отсутствие данных не означает ноль.",
     "ro": "Calcul indisponibil: lipsește masa ambalajului actual și nou. Datele lipsă nu înseamnă zero."
   },
   "Calculation is withheld because a required package/component mass is missing. PackShift never assumes missing data equals zero.": {
-    "ru": "Расчёт невозможен: неизвестна масса упаковки или компонента. Отсутствие данных не означает ноль.",
+    "ru": "Расчёт невозможен: масса упаковки или компонента не измерена. Отсутствие данных не означает ноль.",
     "ro": "Calcul indisponibil: lipsește masa ambalajului sau a unei componente. Datele lipsă nu înseamnă zero."
   },
   "Only a range or marketing ceiling such as “up to 70%” is available. That is not an exact point value, so PackShift refuses to guess a deterministic number (missing ≠ 0).": {
@@ -1720,8 +1743,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Plastic virgin în opțiunea nouă"
   },
   "delta N/A": {
-    "ru": "разница неизвестна",
-    "ro": "diferență necunoscută"
+    "ru": "разница требует подтверждения",
+    "ro": "diferență neconfirmată"
   },
   "Signed reduction": {
     "ru": "Сокращение со знаком",
@@ -1756,8 +1779,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Incompatibil cu cerințele modelate. Beneficiul ecologic nu elimină această incompatibilitate."
   },
   "Evidence or human verification is required before confirming compatibility; an unknown capability is not proven incompatibility.": {
-    "ru": "Нужны подтверждения или проверка специалиста. Неизвестная характеристика не означает доказанную несовместимость.",
-    "ro": "Sunt necesare dovezi sau verificarea unui specialist. O caracteristică necunoscută nu dovedește incompatibilitatea."
+    "ru": "Нужны подтверждения или проверка специалиста. Непроверенное свойство не означает доказанную несовместимость.",
+    "ro": "Sunt necesare dovezi sau verificarea unui specialist. O caracteristică neconfirmată nu dovedește incompatibilitatea."
   },
   "Passes the bounded evaluated thermal and microwave requirements. Still requires human QA and food-safety review.": {
     "ru": "Соответствует проверенным требованиям к температуре и микроволновому нагреву. Нужна проверка качества и безопасности специалистом.",
@@ -2304,7 +2327,7 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Componente necorespunzătoare"
   },
   "MISSING_MASS": {
-    "ru": "Неизвестна масса",
+    "ru": "Масса не измерена",
     "ro": "Masa lipsește"
   },
   "MISSING_OR_NON_POINT_PCR": {
@@ -2352,8 +2375,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Proces: gătire → transferul alimentelor calde → ambalare → menținere la cald până la 6 ore → cumpărare."
   },
   "Hot-fill temperatures, cabinet holding conditions, and food geometry at Profi remain UNKNOWN.": {
-    "ru": "Температура фасовки, условия подогрева и размеры продуктов в Profi неизвестны.",
-    "ro": "Temperatura de ambalare, condițiile de menținere la cald și dimensiunile alimentelor Profi rămân necunoscute."
+    "ru": "Температура фасовки, условия подогрева и размеры продуктов в Profi требуют подтверждения.",
+    "ro": "Temperatura de ambalare, condițiile de menținere la cald și dimensiunile alimentelor Profi necesită confirmare."
   },
   "Literal oven 250°C branch targets oven body only; clear lid must be applied post-oven at a validated temperature.": {
     "ru": "В сценарии 250°C в духовку помещают только корпус; прозрачную крышку устанавливают после духовки при проверенной температуре.",
@@ -2540,12 +2563,12 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Exclus operațional: corpul este raportat inactiv. Aceasta nu înseamnă absența verificată a stocurilor la nivel mondial."
   },
   "Clear lid has unknown heat limit; no 250 C system.": {
-    "ru": "Температурный предел прозрачной крышки неизвестен; система на 250°C не подтверждена.",
-    "ro": "Limita termică a capacului transparent este necunoscută; sistemul la 250°C nu este confirmat."
+    "ru": "Температурный предел прозрачной крышки требует проверки; система на 250°C не подтверждена.",
+    "ro": "Limita termică a capacului transparent necesită confirmare; sistemul la 250°C nu este confirmat."
   },
   "Whole-chicken WePack lid transparency is unknown.": {
-    "ru": "Прозрачность крышки WePack для целой курицы неизвестна.",
-    "ro": "Transparența capacului WePack pentru pui întreg este necunoscută."
+    "ru": "Прозрачность крышки WePack для целой курицы требует подтверждения.",
+    "ro": "Transparența capacului WePack pentru pui întreg necesită confirmare."
   },
   "Clear lid polymer/temperature/anti-fog and cross-seller fit unverified.": {
     "ru": "Не проверены полимер крышки, температура, защита от запотевания и совместимость деталей разных продавцов.",
@@ -2896,8 +2919,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Compatibilitatea cu cuptorul și microundele este confirmată."
   },
   "TDS states 'Not ovenable'; microwave capability is unstated/unknown.": {
-    "ru": "Технический лист указывает «не для духовки»; пригодность для микроволновки неизвестна.",
-    "ro": "Fișa tehnică indică „incompatibil cu cuptorul”; compatibilitatea cu microundele este necunoscută."
+    "ru": "Технический лист указывает «не для духовки»; пригодность для микроволновки требует подтверждения.",
+    "ro": "Fișa tehnică indică „incompatibil cu cuptorul”; compatibilitatea cu microundele necesită confirmare."
   },
   "Recycled PET content fluctuates; datasheet defers to sales/compliance declaration for recipe 6811. 'Up to 70%' is marketing ceiling, not article point value.": {
     "ru": "Доля вторичного ПЭТ меняется; для рецептуры 6811 нужна декларация отдела продаж или соответствия. «До 70%» — верхний предел, а не точное значение артикула.",
@@ -3052,8 +3075,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "ADCOTE102A: 1,2–2,0 livre/top; ADCOTE102E: 1,2–2,5. Cu ipoteza explicită de 3000 ft² rezultă circa 1,95–4,07 g/m². Susține un ordin de mărime nenul al acoperirii."
   },
   "Actual Profi incumbent bag: plastic class, effectively zero recycled plastic and 100% virgin fraction of plastic, attributed to user-provided mentor clarification (TASK). Exact polymer, mass, dimensions, gauge, SKU, supplier, price and annual units are UNKNOWN.": {
-    "ru": "Текущий пакет Profi: пластиковый, практически без вторичного пластика, доля первичного пластика 100% по переданному пользователем пояснению ментора. Полимер, масса, размеры, толщина, артикул, поставщик, цена и годовой объём неизвестны.",
-    "ro": "Punga actuală Profi: din plastic, practic fără plastic reciclat și cu fracție virgină de 100%, conform clarificării mentorului furnizate de utilizator. Polimerul, masa, dimensiunile, grosimea, codul, furnizorul, prețul și volumul anual sunt necunoscute."
+    "ru": "Текущий пакет Profi: пластиковый, практически без вторичного пластика, доля первичного пластика 100% по переданному пользователем пояснению ментора. Полимер, масса, размеры, толщина, артикул, поставщик, цена и годовой объём требуют подтверждения.",
+    "ro": "Punga actuală Profi: din plastic, practic fără plastic reciclat și cu fracție virgină de 100%, conform clarificării mentorului furnizate de utilizator. Polimerul, masa, dimensiunile, grosimea, codul, furnizorul, prețul și volumul anual necesită confirmare."
   },
   "Actual lid polymer/gauge and body coating.": {
     "ru": "Фактический полимер и толщина крышки, покрытие корпуса.",
@@ -3068,8 +3091,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Capacul transparent și elementele auxiliare sunt considerate polimer virgin; aliajul corpului nu este plastic."
   },
   "All modelled plastic conservatively assumed virgin; recycled content remains unknown.": {
-    "ru": "Весь пластик модели консервативно считается первичным; доля вторичного сырья неизвестна.",
-    "ro": "Tot plasticul modelat este presupus conservator virgin; conținutul reciclat rămâne necunoscut."
+    "ru": "Весь пластик модели консервативно считается первичным; доля вторичного сырья требует подтверждения.",
+    "ro": "Tot plasticul modelat este presupus conservator virgin; conținutul reciclat necesită confirmare."
   },
   "All unmeasured coating/labels represented by ancillary envelope; may be invalid if a substantial liner exists.": {
     "ru": "Неизмеренные покрытия и этикетки учтены диапазоном вспомогательных элементов; при наличии существенного вкладыша оценка может быть неверной.",
@@ -3084,16 +3107,16 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Masa aluminiului și fracția reciclată nu pot fi preluate ca proprietăți exacte ale produsului românesc."
   },
   "Ancillary/coating allowance all counted as plastic; lid recycled share unknown.": {
-    "ru": "Вспомогательные элементы и покрытия полностью учтены как пластик; вторичная доля крышки неизвестна.",
-    "ro": "Elementele auxiliare și acoperirile sunt integral considerate plastic; fracția reciclată a capacului este necunoscută."
+    "ru": "Вспомогательные элементы и покрытия полностью учтены как пластик; вторичная доля крышки требует подтверждения.",
+    "ro": "Elementele auxiliare și acoperirile sunt integral considerate plastic; fracția reciclată a capacului necesită confirmare."
   },
   "Authorizes transparent LOW/CENTRAL/HIGH modeling without fabricating measured, supplier, provider or approval claims.": {
     "ru": "Допускает прозрачное моделирование нижней, средней и верхней оценки без выдуманных измерений, данных поставщика или разрешений.",
     "ro": "Permite modelarea transparentă a valorilor joasă, centrală și înaltă fără măsurători, date de furnizor sau aprobări inventate."
   },
   "B1 is a virgin-plastic bag; exact mass, polymer, price and annual volume are unknown. Working post-cook flow is an assumption.": {
-    "ru": "B1 — пакет из первичного пластика; точные масса, полимер, цена и годовой объём неизвестны. Процесс после приготовления — допущение.",
-    "ro": "B1 este o pungă din plastic virgin; masa, polimerul, prețul și volumul anual exacte sunt necunoscute. Procesul după gătire este o ipoteză."
+    "ru": "B1 — пакет из первичного пластика; точные масса, полимер, цена и годовой объём требуют подтверждения. Процесс после приготовления — допущение.",
+    "ro": "B1 este o pungă din plastic virgin; masa, polimerul, prețul și volumul anual exacte necesită confirmare. Procesul după gătire este o ipoteză."
   },
   "B1-ESTIMATED is a scenario, never a measured provider pack.": {
     "ru": "B1-ESTIMATED — сценарий, а не измеренная упаковка поставщика.",
@@ -3304,16 +3327,16 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Extreme independente conservatoare, nu interval probabilistic. Reducerea negativă înseamnă mai mult plastic virgin."
   },
   "Conservative liner-as-plastic accounting scenario; actual plastic mass UNKNOWN": {
-    "ru": "Консервативный сценарий: вкладыш считается пластиком; фактическая масса пластика неизвестна",
-    "ro": "Scenariu conservator: căptușeala considerată plastic; masa reală a plasticului este necunoscută"
+    "ru": "Консервативный сценарий: вкладыш считается пластиком; фактическая масса пластика требует подтверждения",
+    "ro": "Scenariu conservator: căptușeala considerată plastic; masa reală a plasticului necesită confirmare"
   },
   "Conventional PA6 reference 6.7 kgCO2e/kg.": {
     "ru": "Ориентир обычного PA6: 6,7 кг CO₂-экв./кг.",
     "ro": "Referință PA6 convențional: 6,7 kg CO₂-echiv./kg."
   },
   "Cook -> transfer hot food -> retail pack -> hot hold up to six hours -> purchase. Primary ASSUMED workflow; actual hot-fill/cabinet temperatures and food geometry remain UNKNOWN.": {
-    "ru": "Приготовление → перекладывание → упаковка → хранение в тепле до 6 часов → покупка. Процесс предполагаемый; реальные температуры и размеры продуктов неизвестны.",
-    "ro": "Gătire → transfer → ambalare → menținere la cald până la 6 ore → cumpărare. Proces presupus; temperaturile reale și dimensiunile alimentelor sunt necunoscute."
+    "ru": "Приготовление → перекладывание → упаковка → хранение в тепле до 6 часов → покупка. Процесс предполагаемый; реальные температуры и размеры продуктов требуют подтверждения.",
+    "ro": "Gătire → transfer → ambalare → menținere la cald până la 6 ore → cumpărare. Proces presupus; temperaturile reale și dimensiunile alimentelor necesită confirmare."
   },
   "Current EU layers undisclosed.": {
     "ru": "Слои актуальной версии для ЕС не раскрыты.",
@@ -3344,8 +3367,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Programul actual include seturi de date mai noi despre materiale."
   },
   "Danish listing; mass, thermal rating and Romania delivery unknown.": {
-    "ru": "Датское предложение; масса, термостойкость и доставка в Румынию неизвестны.",
-    "ro": "Ofertă daneză; masa, rezistența termică și livrarea în România sunt necunoscute."
+    "ru": "Датское предложение; масса, термостойкость и доставка в Румынию требуют подтверждения.",
+    "ro": "Ofertă daneză; masa, rezistența termică și livrarea în România necesită confirmare."
   },
   "Density 1130 kg/m3 = 1.13 g/cm3.": {
     "ru": "Плотность 1130 кг/м³ = 1,13 г/см³.",
@@ -3424,8 +3447,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Fișa corpului a fost recitită; capacul este păstrat prin sursele R3."
   },
   "Exact complete-system six-hour profile unknown.": {
-    "ru": "Точный шестичасовой режим полной системы неизвестен.",
-    "ro": "Profilul exact de șase ore al sistemului complet este necunoscut."
+    "ru": "Точный шестичасовой режим полной системы требует проверки.",
+    "ro": "Profilul exact de șase ore al sistemului complet necesită confirmare."
   },
   "Exact current delivered article/stock and terms require confirmation.": {
     "ru": "Точный поставляемый артикул, наличие и условия требуют подтверждения.",
@@ -3464,12 +3487,12 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Suprafața exactă de vizualizare lipsește."
   },
   "Exact viewing component limit unknown.": {
-    "ru": "Точный предел прозрачного элемента неизвестен.",
-    "ro": "Limita exactă a componentei transparente este necunoscută."
+    "ru": "Точный предел прозрачного элемента требует проверки.",
+    "ro": "Limita exactă a componentei transparente necesită confirmare."
   },
   "Explicit LC family claim; exact SI-14/film/fatty-food dossier and food safety remain UNKNOWN.": {
-    "ru": "Явное заявление для линейки LC; документы SI-14 с плёнкой для жирной пищи и безопасность остаются неизвестными.",
-    "ro": "Afirmație explicită pentru familia LC; documentele SI-14/folie/alimente grase și siguranța rămân necunoscute."
+    "ru": "Явное заявление для линейки LC; документы SI-14 с плёнкой для жирной пищи и безопасность требуют проверки.",
+    "ro": "Afirmație explicită pentru familia LC; documentele SI-14/folie/alimente grase și siguranța necesită confirmare."
   },
   "Explicit design assumptions only": {
     "ru": "Только явные проектные допущения",
@@ -3496,8 +3519,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Nailon flexibil; fluxul local de colectare nu este demonstrat"
   },
   "Foil gauge, lid gauge/height and unknown material.": {
-    "ru": "Толщина фольги, толщина и высота крышки, неизвестный материал.",
-    "ro": "Grosimea foliei, grosimea și înălțimea capacului, material necunoscut."
+    "ru": "Толщина фольги, толщина и высота крышки, материал требует подтверждения.",
+    "ro": "Grosimea foliei, grosimea și înălțimea capacului, materialul necesită confirmare."
   },
   "Food cooked in packaging in oven at target 250°C, then held. Oven body only during oven phase; clear lid applied post-oven.": {
     "ru": "Еда готовится в упаковке при 250°C, затем хранится. В духовке только корпус; прозрачную крышку ставят после.",
@@ -3532,8 +3555,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Familia Gaia"
   },
   "Gaia numeric oven limit unknown.": {
-    "ru": "Числовой предел Gaia для духовки неизвестен.",
-    "ro": "Limita numerică Gaia pentru cuptor este necunoscută."
+    "ru": "Числовой предел Gaia для духовки требует проверки.",
+    "ro": "Limita numerică Gaia pentru cuptor necesită confirmare."
   },
   "Gaia paper/cellulose concept, window option and qualitative thermal/compostability claims.": {
     "ru": "Концепция Gaia из бумаги и целлюлозы, окно, качественные заявления о нагреве и компостировании.",
@@ -3548,7 +3571,7 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Grosimea, dimensiunea pungii și formula reală a nailonului."
   },
   "Geometry scenario; unreported recycled share conservatively assumed zero; complete mass not measured.": {
-    "ru": "Геометрическая модель; неизвестная вторичная доля консервативно считается нулевой; полная масса не измерена.",
+    "ru": "Геометрическая модель; неподтверждённая вторичная доля консервативно считается нулевой; полная масса не измерена.",
     "ro": "Model geometric; fracția reciclată neraportată este presupusă conservator zero; masa completă nu este măsurată."
   },
   "Grass-paper outer and NatureFlex cellulose inner film; transparent viewing; frozen and heated uses.": {
@@ -3636,8 +3659,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Structura straturilor este nerezolvată"
   },
   "Lid and ancillary conservatively assumed virgin; actual lid PCR unknown.": {
-    "ru": "Крышка и вспомогательные элементы считаются первичными; фактическая вторичная доля крышки неизвестна.",
-    "ro": "Capacul și elementele auxiliare sunt presupuse virgine; fracția reciclată reală a capacului este necunoscută."
+    "ru": "Крышка и вспомогательные элементы считаются первичными; фактическая вторичная доля крышки требует подтверждения.",
+    "ro": "Capacul și elementele auxiliare sunt presupuse virgine; fracția reciclată reală a capacului necesită confirmare."
   },
   "Lid estimated, so complete sum is not DERIVED_EXACT.": {
     "ru": "Крышка оценена, поэтому итог не является точным расчётом.",
@@ -3652,7 +3675,7 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Masa capacului reduce fracția reciclată a întregului ambalaj."
   },
   "Lid mass missing; no exact complete total.": {
-    "ru": "Масса крышки неизвестна; точного итога нет.",
+    "ru": "Масса крышки не измерена; точного итога нет.",
     "ro": "Masa capacului lipsește; totalul exact nu este disponibil."
   },
   "Lid mass.": {
@@ -3668,8 +3691,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Incertitudinea grosimii capacului și a tarei cutiei."
   },
   "Lid transparency/polymer/temperature unknown; displayed 406-litre wording is inconsistent with dimensions.": {
-    "ru": "Прозрачность, полимер и температура крышки неизвестны; указание 406 литров не соответствует размерам.",
-    "ro": "Transparența, polimerul și temperatura capacului sunt necunoscute; valoarea de 406 litri nu corespunde dimensiunilor."
+    "ru": "Прозрачность, полимер и температура крышки требуют подтверждения; указание 406 литров не соответствует размерам.",
+    "ro": "Transparența, polimerul și temperatura capacului necesită confirmare; valoarea de 406 litri nu corespunde dimensiunilor."
   },
   "Listing stock is not reserved inventory; 14 kg logistics weight is not net bag weight. KAPP units require confirmation.": {
     "ru": "Наличие в каталоге не резервирует товар; логистическая масса 14 кг не равна массе пакета. Единицы KAPP требуют уточнения.",
@@ -3720,8 +3743,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Randament NVS30: 23,3 m²/kg; NVS45: 15,5 m²/kg. Gramaj = 1000/randament. Temperaturile de sigilare sunt setări de proces de 0,5 secunde, nu de utilizare."
   },
   "Named grade claim to 210 C; duration/fill still unknown.": {
-    "ru": "Для марки заявлены 210°C; время и продукт неизвестны.",
-    "ro": "Marca declară 210°C; durata și alimentul rămân necunoscute."
+    "ru": "Для марки заявлены 210°C; время и продукт требуют подтверждения.",
+    "ro": "Marca declară 210°C; durata și alimentul necesită confirmare."
   },
   "NatureFlex cellulosic liner/window": {
     "ru": "Целлюлозный вкладыш/окно NatureFlex",
@@ -3740,8 +3763,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Limita de 280°C a e-pui225 nu poate fi transferată."
   },
   "No comparable current selected-SKU PET/PA/cellulose/paper/aluminium factors extracted; missing factors remain unknown.": {
-    "ru": "Нет сопоставимых актуальных коэффициентов ПЭТ/ПА/целлюлозы/бумаги/алюминия для выбранных артикулов; они остаются неизвестными.",
-    "ro": "Nu există coeficienți actuali comparabili PET/PA/celuloză/hârtie/aluminiu pentru articolele selectate; rămân necunoscuți."
+    "ru": "Нет сопоставимых актуальных коэффициентов ПЭТ/ПА/целлюлозы/бумаги/алюминия для выбранных артикулов; они требуют проверки.",
+    "ro": "Nu există coeficienți actuali comparabili PET/PA/celuloză/hârtie/aluminiu pentru articolele selectate; necesită verificare."
   },
   "No complete-system oven qualification by default.": {
     "ru": "Полная система не считается пригодной для духовки по умолчанию.",
@@ -3768,8 +3791,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Lipsesc masa exactă și limita termică numerică. Există ofertă publică, nu stoc verificat."
   },
   "No exposure duration. Separate product from WePack and portion tray 729. No qualified clear lid.": {
-    "ru": "Время воздействия неизвестно. Это отдельное изделие, не WePack и не лоток 729. Проверенной прозрачной крышки нет.",
-    "ro": "Durata expunerii este necunoscută. Produs separat de WePack și tăvița 729. Fără capac transparent validat."
+    "ru": "Время воздействия не указано. Это отдельное изделие, не WePack и не лоток 729. Проверенной прозрачной крышки нет.",
+    "ro": "Durata expunerii nu este specificată. Produs separat de WePack și tăvița 729. Fără capac transparent validat."
   },
   "No filled, closed, six-hour grease/leak test for a complete C6-RO-H system; the closure is unresolved.": {
     "ru": "Нет испытания заполненной закрытой системы C6-RO-H на жир и протечки за 6 часов; крышка не определена.",
@@ -3788,8 +3811,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Marja, TVA, costul conversiei și transportul nu sunt inventate. Mașina de ambalare și munca sunt excluse."
   },
   "No maximum duration; acidic/salty-food caveat remains.": {
-    "ru": "Максимальное время неизвестно; ограничение для кислой/солёной пищи сохраняется.",
-    "ro": "Durata maximă este necunoscută; precauția pentru alimente acide/sărate rămâne."
+    "ru": "Максимальное время не указано; ограничение для кислой/солёной пищи сохраняется.",
+    "ro": "Durata maximă nu este specificată; precauția pentru alimente acide/sărate rămâne."
   },
   "No numerical body/lid thermal limits or complete six-hour holding profile is established for C6-RO-W.": {
     "ru": "Для C6-RO-W не установлены температурные пределы корпуса и крышки и полный шестичасовой режим.",
@@ -3812,8 +3835,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Nu sunt selectate dimensiuni comandabile."
   },
   "No verified plastic-saving claim. Show conditional model ranges in scenario details; C1 actual plastic unknown.": {
-    "ru": "Подтверждённой экономии пластика нет. В сценарии показаны условные диапазоны; фактический пластик C1 неизвестен.",
-    "ro": "Fără economie de plastic verificată. Scenariul arată intervale condiționate; plasticul real C1 este necunoscut."
+    "ru": "Подтверждённой экономии пластика нет. В сценарии показаны условные диапазоны; фактический пластик C1 требует проверки.",
+    "ro": "Fără economie de plastic verificată. Scenariul arată intervale condiționate; plasticul real C1 necesită confirmare."
   },
   "Nominal dimensions do not establish whole-chicken fit.": {
     "ru": "Номинальные размеры не подтверждают пригодность для целой курицы.",
@@ -3944,8 +3967,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Porții de carne gătită caldă"
   },
   "Price for this opaque/unknown-viewing pair is not the price of a qualified clear-lid system.": {
-    "ru": "Цена непрозрачной пары или пары с неизвестной прозрачностью не равна цене проверенной системы с прозрачной крышкой.",
-    "ro": "Prețul perechii opace/cu transparență necunoscută nu este prețul unui sistem validat cu capac transparent."
+    "ru": "Цена непрозрачной пары или пары с неподтверждённой прозрачностью не равна цене проверенной системы с прозрачной крышкой.",
+    "ro": "Prețul perechii opace sau cu transparență neconfirmată nu este prețul unui sistem validat cu capac transparent."
   },
   "Price is 0.37026 RON/pack with VAT, freight excluded.": {
     "ru": "Цена 0,37026 RON за упаковку с НДС, без доставки.",
@@ -3960,8 +3983,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Prioritate de testare, nu câștigător al etapei B. Numerele indică ordinea de lucru, nu scoruri ecologice."
   },
   "Promotional body price and supplier fit; below free-delivery threshold freight becomes UNKNOWN.": {
-    "ru": "Акционная цена корпуса и условие совместимости; ниже порога бесплатной доставки её стоимость неизвестна.",
-    "ro": "Preț promoțional al corpului și condiție de potrivire; sub pragul gratuit, costul transportului este necunoscut."
+    "ru": "Акционная цена корпуса и условие совместимости; ниже порога бесплатной доставки её стоимость требует подтверждения.",
+    "ro": "Preț promoțional al corpului și condiție de potrivire; sub pragul gratuit, costul transportului necesită confirmare."
   },
   "Provider dimensions, fill mass and headspace not supplied.": {
     "ru": "Не предоставлены размеры, масса продукта и свободное пространство.",
@@ -4068,20 +4091,20 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Afirmația vânzătorului; durata și tipul alimentului nu sunt validate."
   },
   "Separate assumed package/oven branch targeting 250°C, duration UNKNOWN, followed by separately qualified holding. For aluminium, distinguish OVEN_BODY_ONLY and POST_OVEN_LID; never expose an unqualified clear lid to oven heat.": {
-    "ru": "Отдельный предполагаемый сценарий духовки 250°C с неизвестной длительностью и отдельной проверкой хранения. Для алюминия: в духовке только корпус, крышка после; непроверенную прозрачную крышку нельзя нагревать в духовке.",
-    "ro": "Scenariu separat presupus la 250°C, cu durată necunoscută și păstrare validată separat. Pentru aluminiu: doar corpul în cuptor, capacul după; capacul transparent nevalidat nu se introduce în cuptor."
+    "ru": "Отдельный предполагаемый сценарий духовки 250°C с длительностью, требующей проверки и отдельной проверкой хранения. Для алюминия: в духовке только корпус, крышка после; непроверенную прозрачную крышку нельзя нагревать в духовке.",
+    "ro": "Scenariu separat presupus la 250°C, cu durată ce necesită verificare și păstrare validată separat. Pentru aluminiu: doar corpul în cuptor, capacul după; capacul transparent nevalidat nu se introduce în cuptor."
   },
   "Separate collection and biowaste capacity limitations.": {
     "ru": "Ограничения раздельного сбора и мощностей обработки биоотходов.",
     "ro": "Limitări ale colectării separate și capacității de procesare a biodeșeurilor."
   },
   "Separate metal body and plastic lid; actual coating/polymer unknown": {
-    "ru": "Отдельные металлический корпус и пластиковая крышка; фактические покрытие и полимер неизвестны",
-    "ro": "Corp metalic și capac de plastic separate; acoperirea și polimerul reale sunt necunoscute"
+    "ru": "Отдельные металлический корпус и пластиковая крышка; фактические покрытие и полимер требуют подтверждения",
+    "ro": "Corp metalic și capac de plastic separate; acoperirea și polimerul reale necesită confirmare"
   },
   "Show QUALIFICATION REQUIRED or BLOCKED; never rank by environmental numbers through failed/unknown gates.": {
-    "ru": "Показывать необходимость испытаний или несовместимость; не ранжировать по экологическим цифрам при проваленных или неизвестных проверках.",
-    "ro": "Se indică necesitatea testării sau incompatibilitatea; nu se clasifică după cifre ecologice când verificările sunt eșuate sau necunoscute."
+    "ru": "Показывать необходимость испытаний или несовместимость; не ранжировать по экологическим цифрам при непройденных или неподтверждённых проверках.",
+    "ro": "Se indică necesitatea testării sau incompatibilitatea; nu se clasifică după cifre ecologice când verificările sunt eșuate sau neconfirmate."
   },
   "Show estimated SI-14 total pack mass; optional conservative film-as-plastic scenario with full reduction interval, not a single saving badge.": {
     "ru": "Показывать оценку полной массы SI-14; дополнительно — консервативный сценарий плёнки как пластика с полным диапазоном сокращения, не одним числом.",
@@ -4128,8 +4151,8 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ro": "Corp istoric exact cu două compartimente, nu varianta înrudită de 1065 ml."
   },
   "UNKNOWN — supplier/provider evidence required": {
-    "ru": "Неизвестно — нужны данные поставщика",
-    "ro": "Necunoscut — sunt necesare date de la furnizor"
+    "ru": "Требует проверки — нужны данные поставщика",
+    "ro": "Necesită verificare — sunt necesare date de la furnizor"
   },
   "US resin-production proxy": {
     "ru": "Аналог производства полимера в США",
@@ -4227,4 +4250,16 @@ export const messages: Record<string, { ru: string; ro: string }> = {
     "ru": "Ссылка на источник",
     "ro": "Link către sursă"
   }
+,
+"85–95°C in this test; actual store temperature needs confirmation": {"ru": "В испытании — 85–95°C; температура в магазине требует подтверждения", "ro": "85–95°C în test; temperatura reală din magazin necesită confirmare"},
+"Followed by holding phase: up to 6 hours holding requirement; 85–95°C is a MODELED TEST CONDITION and actual Profi display temperature needs confirmation": {"ru": "Затем хранение в тепле до 6 часов. 85–95°C — условие модели; реальная температура витрины Profi требует подтверждения.", "ro": "Urmează menținerea la cald până la 6 ore. 85–95°C este o condiție de test; temperatura reală a vitrinei Profi necesită confirmare."},
+"Up to 6 hours required; performance needs testing; 85–95°C is a MODELED TEST CONDITION and actual Profi display temperature needs confirmation. Because food is packaged after cooking, packaging is NOT exposed to 250°C oven heat in this scenario. Full 6-hour holding performance with fatty poultry remains subject to physical qualification.": {"ru": "Требуется хранение до 6 часов; это нужно проверить испытаниями. 85–95°C — условие модели, реальная температура витрины Profi требует подтверждения. Еду упаковывают после приготовления, поэтому упаковка не подвергается нагреву до 250°C. Хранение жирного мяса птицы в течение всех 6 часов требует испытаний.", "ro": "Sunt necesare până la 6 ore de păstrare; performanța trebuie testată. 85–95°C este o condiție de model, iar temperatura reală a vitrinei Profi necesită confirmare. Ambalarea are loc după gătire, deci ambalajul nu este expus la 250°C. Păstrarea cărnii grase de pasăre timp de 6 ore necesită teste fizice."},
+"Cannot calculate delta — package scopes differ": {"ru": "Нельзя рассчитать разницу: сравниваются разные составы упаковки", "ro": "Diferența nu poate fi calculată: componentele incluse diferă"},
+"Cannot calculate yet — required package mass missing": {"ru": "Расчёт пока невозможен: масса упаковки не подтверждена", "ro": "Calculul nu este posibil încă: lipsește masa ambalajului"},
+"Cannot calculate yet — required numeric evidence missing": {"ru": "Расчёт пока невозможен: не хватает числовых данных", "ro": "Calculul nu este posibil încă: lipsesc date numerice"},
+"Evidence or human verification is required before confirming compatibility; an unverified capability is not proven incompatibility.": {"ru": "Нужны подтверждения или проверка специалиста. Непроверенное свойство не означает доказанную несовместимость.", "ro": "Sunt necesare dovezi sau verificarea unui specialist. O caracteristică neconfirmată nu dovedește incompatibilitatea."}
+,
+"Baseline and candidate costs needed": {"ru": "Нужна стоимость текущей и новой упаковки", "ro": "Sunt necesare costurile ambalajului actual și alternativ"},
+"No virgin-plastic reduction": {"ru": "Нет сокращения первичного пластика", "ro": "Fără reducerea plasticului virgin"},
+"Candidate increases virgin-plastic use": {"ru": "Вариант увеличивает расход первичного пластика", "ro": "Opțiunea crește consumul de plastic virgin"}
 };
