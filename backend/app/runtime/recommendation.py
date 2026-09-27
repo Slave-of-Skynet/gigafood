@@ -142,14 +142,24 @@ def clean_ef(f: dict[str, Any] | None) -> EvidenceField | None:
     return EvidenceField(**clean_estimate_dict(f))
 
 
+def _select_metric(exact_raw: dict[str, Any] | None, model_raw: dict[str, Any] | None) -> EvidenceField | None:
+    ef_exact = clean_ef(exact_raw)
+    if ef_exact and ef_exact.state != "UNKNOWN" and ef_exact.value is not None:
+        return ef_exact
+    ef_model = clean_ef(model_raw)
+    if ef_model and ef_model.state != "UNKNOWN" and ef_model.value is not None:
+        return ef_model
+    return ef_exact or ef_model
+
+
 def build_candidate_metrics(exact_m: dict[str, Any], model_m: dict[str, Any]) -> CandidateMetrics:
     # Explicitly excludes material_only_co2e_kg and internal carbon scenarios!
     return CandidateMetrics(
-        total_package_mass_g=clean_ef(exact_m.get("total_package_mass_g")) or clean_ef(model_m.get("total_package_mass_g")),
-        plastic_mass_g=clean_ef(exact_m.get("plastic_mass_g")) or clean_ef(model_m.get("plastic_mass_g")),
-        virgin_plastic_mass_g=clean_ef(exact_m.get("virgin_plastic_mass_g")) or clean_ef(model_m.get("virgin_plastic_mass_g")),
-        recycled_material_fraction=clean_ef(exact_m.get("recycled_material_fraction")) or clean_ef(model_m.get("recycled_material_fraction")),
-        renewable_material_fraction=clean_ef(exact_m.get("renewable_material_fraction")) or clean_ef(model_m.get("renewable_material_fraction")),
+        total_package_mass_g=_select_metric(exact_m.get("total_package_mass_g"), model_m.get("total_package_mass_g")),
+        plastic_mass_g=_select_metric(exact_m.get("plastic_mass_g"), model_m.get("plastic_mass_g")),
+        virgin_plastic_mass_g=_select_metric(exact_m.get("virgin_plastic_mass_g"), model_m.get("virgin_plastic_mass_g")),
+        recycled_material_fraction=_select_metric(exact_m.get("recycled_material_fraction"), model_m.get("recycled_material_fraction")),
+        renewable_material_fraction=_select_metric(exact_m.get("renewable_material_fraction"), model_m.get("renewable_material_fraction")),
     )
 
 

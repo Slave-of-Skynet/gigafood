@@ -575,3 +575,146 @@ def test_negative_gate_extra_field_simultaneous(tmp_path: Path):
         res = test_client.get("/api/v1/recommendation/products")
         assert res.status_code == 503
         assert res.json()["detail"] == "RECOMMENDATION_EVIDENCE_UNAVAILABLE"
+
+
+def test_astra_live_01_c1_modeled_metrics_and_plastic_exclusion(client: TestClient):
+    """P1 Whole Chicken + POST_COOK: C1 exposes mass & fractions, headline plastic unavailable."""
+    response = client.post(
+        "/api/v1/recommendation/evaluate",
+        json={"product_id": "P1", "workflow_id": "POST_COOK_HOT_HOLD_6H"},
+    )
+    assert response.status_code == 200
+    data = response.json()
+    c1 = next(a for a in data["assessments"] if a["candidate_id"] == "C1")
+    assert c1["outcome"] == "QUALIFICATION REQUIRED"
+    assert c1["qualification_priority"] == 1
+    assert c1["role"] == "FIRST_QUALIFICATION_PATH"
+
+    metrics = c1["metrics"]
+    # Total package mass: ESTIMATED, central ≈ 20.1050 g, full interval preserved
+    total_mass = metrics["total_package_mass_g"]
+    assert total_mass is not None
+    assert total_mass["state"] == "ESTIMATED"
+    assert total_mass["calculation_id"] == "ASTRA-E069"
+    assert abs(total_mass["value"]["central"] - 20.1050) < 1e-3
+    assert total_mass["value"]["low"] < total_mass["value"]["central"] < total_mass["value"]["high"]
+
+    # Renewable material fraction: ESTIMATED, central ≈ 0.9142 (91.4%)
+    renewable = metrics["renewable_material_fraction"]
+    assert renewable is not None
+    assert renewable["state"] == "ESTIMATED"
+    assert renewable["calculation_id"] == "ASTRA-E074"
+    assert abs(renewable["value"]["central"] - 0.9142) < 1e-3
+
+    # Recycled material fraction: ASSUMED, central == 0, qualifier preserved
+    recycled = metrics["recycled_material_fraction"]
+    assert recycled is not None
+    assert recycled["state"] == "ASSUMED"
+    assert recycled["calculation_id"] == "ASTRA-E072"
+    assert recycled["value"]["central"] == 0.0
+
+    # Mandatory negative cases: headline physical plastic metrics remain unavailable/null
+    assert metrics["plastic_mass_g"]["value"] is None
+    assert metrics["plastic_mass_g"]["state"] == "UNKNOWN"
+    assert metrics["virgin_plastic_mass_g"]["value"] is None
+    assert metrics["virgin_plastic_mass_g"]["state"] == "UNKNOWN"
+
+
+def test_astra_live_01_c5_modeled_metrics_and_plastic_exclusion(client: TestClient):
+    """P2 Portions + POST_COOK: C5 exposes mass & fractions, headline plastic unavailable."""
+    response = client.post(
+        "/api/v1/recommendation/evaluate",
+        json={"product_id": "P2", "workflow_id": "POST_COOK_HOT_HOLD_6H"},
+    )
+    assert response.status_code == 200
+    data = response.json()
+    c5 = next(a for a in data["assessments"] if a["candidate_id"] == "C5")
+    assert c5["outcome"] == "QUALIFICATION REQUIRED"
+    assert c5["qualification_priority"] == 1
+    assert c5["role"] == "FIRST_QUALIFICATION_PATH"
+
+    metrics = c5["metrics"]
+    # Total package mass: ESTIMATED, central ≈ 27.1305 g
+    total_mass = metrics["total_package_mass_g"]
+    assert total_mass is not None
+    assert total_mass["state"] == "ESTIMATED"
+    assert total_mass["calculation_id"] == "ASTRA-E118"
+    assert abs(total_mass["value"]["central"] - 27.1305) < 1e-3
+
+    # Renewable material fraction: ESTIMATED, central ≈ 0.9507 (95.1%)
+    renewable = metrics["renewable_material_fraction"]
+    assert renewable is not None
+    assert renewable["state"] == "ESTIMATED"
+    assert renewable["calculation_id"] == "ASTRA-E122"
+    assert abs(renewable["value"]["central"] - 0.9507) < 1e-3
+
+    # Recycled material fraction: ASSUMED, central == 0
+    recycled = metrics["recycled_material_fraction"]
+    assert recycled is not None
+    assert recycled["state"] == "ASSUMED"
+    assert recycled["calculation_id"] == "ASTRA-E121"
+    assert recycled["value"]["central"] == 0.0
+
+    # Mandatory negative cases: headline physical plastic metrics remain unavailable/null
+    assert metrics["plastic_mass_g"]["value"] is None
+    assert metrics["plastic_mass_g"]["state"] == "UNKNOWN"
+    assert metrics["virgin_plastic_mass_g"]["value"] is None
+    assert metrics["virgin_plastic_mass_g"]["state"] == "UNKNOWN"
+
+
+def test_astra_live_01_c6_configurations_modeled_metrics(client: TestClient):
+    """C6 configurations expose complete modeled physical/material metrics."""
+    # 1. C6-RO-W for P1 + POST_COOK
+    res_w = client.post(
+        "/api/v1/recommendation/evaluate",
+        json={"product_id": "P1", "workflow_id": "POST_COOK_HOT_HOLD_6H"},
+    )
+    assert res_w.status_code == 200
+    data_w = res_w.json()
+    assert data_w["context"]["selected_configuration_id"] == "C6-RO-W"
+    c6_w = next(a for a in data_w["assessments"] if a["candidate_id"] == "C6")
+    assert c6_w["configuration_id"] == "C6-RO-W"
+    assert c6_w["outcome"] == "QUALIFICATION REQUIRED"
+    assert c6_w["qualification_priority"] == 2
+    mw = c6_w["metrics"]
+    assert abs(mw["total_package_mass_g"]["value"]["central"] - 65.7140) < 1e-2
+    assert abs(mw["plastic_mass_g"]["value"]["central"] - 28.2953) < 1e-2
+    assert abs(mw["virgin_plastic_mass_g"]["value"]["central"] - 28.2953) < 1e-2
+    assert abs(mw["recycled_material_fraction"]["value"]["central"] - 0.2164) < 1e-2
+
+    # 2. C6-RO-P for P2 + POST_COOK
+    res_p = client.post(
+        "/api/v1/recommendation/evaluate",
+        json={"product_id": "P2", "workflow_id": "POST_COOK_HOT_HOLD_6H"},
+    )
+    assert res_p.status_code == 200
+    data_p = res_p.json()
+    assert data_p["context"]["selected_configuration_id"] == "C6-RO-P"
+    c6_p = next(a for a in data_p["assessments"] if a["candidate_id"] == "C6")
+    assert c6_p["configuration_id"] == "C6-RO-P"
+    assert c6_p["outcome"] == "QUALIFICATION REQUIRED"
+    assert c6_p["qualification_priority"] == 2
+    mp = c6_p["metrics"]
+    assert abs(mp["total_package_mass_g"]["value"]["central"] - 43.9015) < 1e-2
+    assert abs(mp["plastic_mass_g"]["value"]["central"] - 19.2035) < 1e-2
+    assert abs(mp["virgin_plastic_mass_g"]["value"]["central"] - 19.2035) < 1e-2
+    assert abs(mp["recycled_material_fraction"]["value"]["central"] - 0.2138) < 1e-2
+
+    # 3. C6-RO-H for P1 + LITERAL_OVEN_250C_THEN_HOLD
+    res_h = client.post(
+        "/api/v1/recommendation/evaluate",
+        json={"product_id": "P1", "workflow_id": "LITERAL_OVEN_250C_THEN_HOLD"},
+    )
+    assert res_h.status_code == 200
+    data_h = res_h.json()
+    assert data_h["context"]["selected_configuration_id"] == "C6-RO-H"
+    c6_h = next(a for a in data_h["assessments"] if a["candidate_id"] == "C6")
+    assert c6_h["configuration_id"] == "C6-RO-H"
+    assert c6_h["outcome"] == "QUALIFICATION REQUIRED"
+    assert c6_h["qualification_priority"] == 2
+    mh = c6_h["metrics"]
+    assert abs(mh["total_package_mass_g"]["value"]["central"] - 61.9739) < 1e-2
+    assert abs(mh["plastic_mass_g"]["value"]["central"] - 28.1066) < 1e-2
+    assert abs(mh["virgin_plastic_mass_g"]["value"]["central"] - 28.1066) < 1e-2
+    assert abs(mh["recycled_material_fraction"]["value"]["central"] - 0.2077) < 1e-2
+    assert mh["renewable_material_fraction"]["value"]["central"] == 0.0

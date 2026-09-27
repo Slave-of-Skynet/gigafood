@@ -637,5 +637,70 @@
     "romania_evidence": false,
     "organization": "BASF",
     "geographical_relevance": "Inherited HTF-03 scope; see limitations"
+  },
+  {
+    "source_id": "ASTRA-S09",
+    "organization": "Futamura",
+    "title": "NatureFlex film grade summary N100",
+    "url": "https://cdn.asp.events/CLIENT_Exhibiti_030C4FB2_97AC_2262_74166DECA5FD4BAB/sites/AusPack-2022/media/libraries/documents/2966-UK%20N100%20NatureFlex%20Product%20Range%20-%20J.pdf",
+    "scope": "Manufacturer family technical sheet hosted by exhibition",
+    "published_or_version_date": "archived by AusPack 2022; issue J",
+    "findings": "NVS30 yield 23.3 m2/kg; NVS45 yield 15.5 m2/kg. 1000/yield gives basis weight. Heat-seal temperature columns are 0.5-second process settings, not service temperatures.",
+    "limitations": "Material-mass analogue only; not a nominated Gaia or BIOPAP hot-hold grade.",
+    "accessed_at": "2026-09-27",
+    "geographical_relevance": "Inherited HTF-03 scope; see limitations",
+    "access_status": "INHERITED_2026_09_26_RECORD_UNLESS_NEW_SOURCE_SUPERSEDES"
+  },
+  {
+    "source_id": "ASTRA-S10",
+    "organization": "Futamura",
+    "title": "NatureFlex film range",
+    "url": "https://www.futamuragroup.com/products/natureflex/",
+    "scope": "Manufacturer family",
+    "published_or_version_date": "undated",
+    "findings": "Range includes coated and uncoated cellulose, proprietary barrier layers, and separate ovenable grades; grease/oil barrier and transparency are grade-dependent.",
+    "limitations": "No exact Gaia liner grade or mass; no generic permission to put NVS45 in oven.",
+    "accessed_at": "2026-09-27",
+    "geographical_relevance": "Inherited HTF-03 scope; see limitations",
+    "access_status": "INHERITED_2026_09_26_RECORD_UNLESS_NEW_SOURCE_SUPERSEDES"
+  },
+  {
+    "source_id": "ASTRA-S11",
+    "organization": "Bostik",
+    "title": "ADCOTE laminating-adhesive coating weights",
+    "url": "https://www.laminatingadhesiveproducts.com/products/by-benefit/high-green-bonds",
+    "scope": "Coating-order-of-magnitude analogue",
+    "published_or_version_date": "undated",
+    "findings": "ADCOTE102A lists 1.2-2.0 lb/ream; ADCOTE102E 1.2-2.5. Using explicitly assumed 3000 ft2 packaging ream gives approximately 1.95-4.07 g/m2. Supports nonzero order-of-magnitude coating budget.",
+    "limitations": "Not a Gaia adhesive or compostability/food-contact analogue; modeled coverage/chemistry remains ASSUMED.",
+    "accessed_at": "2026-09-27",
+    "geographical_relevance": "Inherited HTF-03 scope; see limitations",
+    "access_status": "INHERITED_2026_09_26_RECORD_UNLESS_NEW_SOURCE_SUPERSEDES"
+  },
+  {
+    "source_id": "ASTRA-S15",
+    "organization": "BIOPAP",
+    "title": "Tray dimensions table",
+    "url": "https://www.biopap.com/wp-content/uploads/2021/05/BIOPAP_Tabella_DimensioniSitoQR_ENG.pdf",
+    "scope": "LC SI-14 PCTSI14000LC31019",
+    "published_or_version_date": "path 2021-05; document undated",
+    "findings": "Outside 190 x 247 x 37 mm; opening 176 x 233 mm; bottom 154 x 211 mm; nominal 1240 ml.",
+    "limitations": "Nominal dimensions do not establish whole-chicken fit.",
+    "accessed_at": "2026-09-27",
+    "geographical_relevance": "Inherited HTF-03 scope; see limitations",
+    "access_status": "INHERITED_2026_09_26_RECORD_UNLESS_NEW_SOURCE_SUPERSEDES"
+  },
+  {
+    "source_id": "ASTRA-TASK",
+    "organization": "User / ASTRA-R2 research author",
+    "title": "Authorized bounded engineering and market demo scenario",
+    "url": "user-attachment:58f952f0-7057-4e7a-9e17-c17679618c3d",
+    "scope": "Explicit design assumptions only",
+    "published_or_version_date": "2026-09-27",
+    "accessed_at": "2026-09-27",
+    "findings": "Authorizes transparent LOW/CENTRAL/HIGH modeling without fabricating measured, supplier, provider or approval claims.",
+    "geographical_relevance": "Inherited HTF-03 scope; see limitations",
+    "limitations": "Not external empirical evidence. Inputs citing only this record are assumptions, not researched market facts.",
+    "access_status": "INHERITED_2026_09_26_RECORD_UNLESS_NEW_SOURCE_SUPERSEDES"
   }
 ]

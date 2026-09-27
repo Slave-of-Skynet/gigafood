@@ -383,35 +383,117 @@
       "estimated_pack_mass": {
         "kind": "evidence_field",
         "value": {
-          "low": 14.55125,
-          "central": 19.72,
-          "high": 26.59
+          "low": 14.643125,
+          "central": 20.105,
+          "high": 27.64
         },
         "state": "ESTIMATED",
         "unit": "g",
         "source_ids": [
-          "S17",
-          "S31",
-          "S32"
+          "ASTRA-S09",
+          "ASTRA-S10",
+          "ASTRA-S11",
+          "ASTRA-TASK",
+          "S01",
+          "S17"
         ],
-        "confidence": "VERY_LOW",
-        "qualifier": "",
+        "calculation_id": "ASTRA-E069",
+        "confidence": "LOW",
+        "qualifier": "Full Gaia-format design: cutout-subtracted paper + full liner + explicit extra coating + closure.",
         "scope": "CONFIGURATION",
         "display_policy": "DISPLAY_ESTIMATED",
-        "calculation_id": "E007",
         "estimate": {
-          "low": 14.55125,
-          "central": 19.72,
-          "high": 26.59,
-          "method": "Deterministic bounded corner propagation; central is a scenario, not an expected value",
-          "formula": "total = (A-window_cutout)*paper_gsm + A*liner_gsm + ancillary",
+          "calculation_id": "ASTRA-E069",
+          "field": "C1.total_package_mass_g",
+          "state": "ESTIMATED",
+          "unit": "g",
+          "low": 14.643125,
+          "central": 20.105,
+          "high": 27.64,
+          "method": "Independent input corner bounds; deterministic central design point; not a statistical confidence interval",
+          "formula": "{\"add\":[\"paper\",\"film\",\"coat\",\"extra\"]}",
+          "expression": {
+            "add": [
+              "paper",
+              "film",
+              "coat",
+              "extra"
+            ]
+          },
+          "inputs": {
+            "paper": {
+              "low": 6.55,
+              "central": 9.025,
+              "high": 12.24,
+              "unit": "g",
+              "state": "ESTIMATED",
+              "calculation_ref": "ASTRA-E066",
+              "source_ids": [
+                "ASTRA-TASK",
+                "S01",
+                "S17"
+              ],
+              "basis": "C1.paper_g"
+            },
+            "film": {
+              "low": 7.90125,
+              "central": 10.395,
+              "high": 13.65,
+              "unit": "g",
+              "state": "ESTIMATED",
+              "calculation_ref": "ASTRA-E067",
+              "source_ids": [
+                "ASTRA-S09",
+                "ASTRA-S10",
+                "S17"
+              ],
+              "basis": "C1.liner_g"
+            },
+            "coat": {
+              "low": 0.091875,
+              "central": 0.385,
+              "high": 1.05,
+              "unit": "g",
+              "state": "ESTIMATED",
+              "calculation_ref": "ASTRA-E068",
+              "source_ids": [
+                "ASTRA-S11",
+                "S17"
+              ],
+              "basis": "C1.coating_g"
+            },
+            "extra": {
+              "low": 0.1,
+              "central": 0.3,
+              "high": 0.7,
+              "unit": "g",
+              "state": "ASSUMED",
+              "calculation_ref": "ASTRA-E004",
+              "source_ids": [
+                "ASTRA-TASK",
+                "S17"
+              ],
+              "basis": "COMMON.ancillary_g"
+            }
+          },
           "assumptions": [
-            "Full-area liner retained behind window; folds included in A.",
-            "No exact Gaia SKU; size, GSM and liner gauge are assumed."
+            "Full Gaia-format design: cutout-subtracted paper + full liner + explicit extra coating + closure."
           ],
-          "confidence": "VERY_LOW",
-          "sensitivity": "Liner coverage/gauge, paper GSM and selected bag size.",
-          "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI"
+          "analogue_validity": "Full Gaia-format design: cutout-subtracted paper + full liner + explicit extra coating + closure.",
+          "central_selection": "Full Gaia-format design: cutout-subtracted paper + full liner + explicit extra coating + closure.",
+          "confidence": "LOW",
+          "sensitivity": "Full Gaia-format design: cutout-subtracted paper + full liner + explicit extra coating + closure.",
+          "dominant_uncertainty": "Full Gaia-format design: cutout-subtracted paper + full liner + explicit extra coating + closure.",
+          "falsification_condition": "Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.",
+          "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI",
+          "source_ids": [
+            "ASTRA-S09",
+            "ASTRA-S10",
+            "ASTRA-S11",
+            "ASTRA-TASK",
+            "S01",
+            "S17"
+          ]
         }
       },
       "actual_plastic_mass": {
@@ -1879,35 +1961,99 @@
       "estimated_pack_mass": {
         "kind": "evidence_field",
         "value": {
-          "low": 23.37597609,
-          "central": 26.5840163,
-          "high": 30.19453043
+          "low": 23.36487124,
+          "central": 27.13051613,
+          "high": 30.49212
         },
         "state": "ESTIMATED",
         "unit": "g",
         "source_ids": [
+          "ASTRA-S09",
+          "ASTRA-S15",
+          "ASTRA-TASK",
           "S10",
-          "S11",
-          "S31",
-          "S32"
+          "S17"
         ],
+        "calculation_id": "ASTRA-E118",
         "confidence": "LOW",
-        "qualifier": "",
+        "qualifier": "Complete tray + retained film + label; coating already inside body.",
         "scope": "CONFIGURATION",
         "display_policy": "DISPLAY_ESTIMATED",
-        "calculation_id": "E017",
         "estimate": {
-          "low": 23.37597609,
-          "central": 26.5840163,
-          "high": 30.19453043,
-          "method": "Deterministic bounded corner propagation; central is a scenario, not an expected value",
-          "formula": "total = tray + film allocation + ancillary",
+          "calculation_id": "ASTRA-E118",
+          "field": "C5.total_package_mass_g",
+          "state": "ESTIMATED",
+          "unit": "g",
+          "low": 23.36487124,
+          "central": 27.13051613,
+          "high": 30.49212,
+          "method": "Independent input corner bounds; deterministic central design point; not a statistical confidence interval",
+          "formula": "{\"add\":[\"body\",\"film\",\"extra\"]}",
+          "expression": {
+            "add": [
+              "body",
+              "film",
+              "extra"
+            ]
+          },
+          "inputs": {
+            "body": {
+              "low": 21.15,
+              "central": 23.5,
+              "high": 25.85,
+              "unit": "g",
+              "state": "ASSUMED",
+              "calculation_ref": "ASTRA-E112",
+              "source_ids": [
+                "S10"
+              ],
+              "basis": "C5.body_g"
+            },
+            "film": {
+              "low": 2.11487124,
+              "central": 3.33051613,
+              "high": 3.94212,
+              "unit": "g",
+              "state": "ESTIMATED",
+              "calculation_ref": "ASTRA-E117",
+              "source_ids": [
+                "ASTRA-S09",
+                "ASTRA-S15",
+                "ASTRA-TASK"
+              ],
+              "basis": "C5.film_g"
+            },
+            "extra": {
+              "low": 0.1,
+              "central": 0.3,
+              "high": 0.7,
+              "unit": "g",
+              "state": "ASSUMED",
+              "calculation_ref": "ASTRA-E004",
+              "source_ids": [
+                "ASTRA-TASK",
+                "S17"
+              ],
+              "basis": "COMMON.ancillary_g"
+            }
+          },
           "assumptions": [
-            "Film trim allocated to each unit, conservative for mass screening."
+            "Complete tray + retained film + label; coating already inside body."
           ],
+          "analogue_validity": "Complete tray + retained film + label; coating already inside body.",
+          "central_selection": "Complete tray + retained film + label; coating already inside body.",
           "confidence": "LOW",
-          "sensitivity": "Current body specification and film gauge; nominal body has historical exact evidence.",
-          "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI"
+          "sensitivity": "Complete tray + retained film + label; coating already inside body.",
+          "dominant_uncertainty": "Complete tray + retained film + label; coating already inside body.",
+          "falsification_condition": "Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.",
+          "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI",
+          "source_ids": [
+            "ASTRA-S09",
+            "ASTRA-S15",
+            "ASTRA-TASK",
+            "S10",
+            "S17"
+          ]
         }
       },
       "actual_plastic_mass": {
