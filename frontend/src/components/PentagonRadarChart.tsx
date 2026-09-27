@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from '../i18n';
 
 export interface RadarMetric {
@@ -23,6 +24,15 @@ export function PentagonRadarChart({
   metrics,
 }: PentagonRadarChartProps) {
   const t = useTranslation();
+  const [activeFilter, setActiveFilter] = useState<'all' | 'product' | 'worst'>('all');
+  const [hoveredSeries, setHoveredSeries] = useState<'product' | 'worst' | null>(null);
+
+  // Hover takes priority for instant feedback, falls back to clicked filter
+  const effectiveView = hoveredSeries || activeFilter;
+  const showProduct = effectiveView === 'all' || effectiveView === 'product';
+  const showWorst = effectiveView === 'all' || effectiveView === 'worst';
+  const isProductOnly = effectiveView === 'product';
+  const isWorstOnly = effectiveView === 'worst';
 
   const cx = 175;
   const cy = 165;
@@ -98,6 +108,36 @@ export function PentagonRadarChart({
         </p>
       </div>
 
+      {/* Interactive Filter Pills (Both, Green only, Red only) */}
+      <div className="radar-filter-bar">
+        <button
+          type="button"
+          className={`radar-filter-btn ${effectiveView === 'all' ? 'active' : ''}`}
+          onClick={() => { setActiveFilter('all'); setHoveredSeries(null); }}
+          onMouseEnter={() => setHoveredSeries(null)}
+        >
+          ⚖️ {t("Совмещенный вид (Оба)")}
+        </button>
+        <button
+          type="button"
+          className={`radar-filter-btn product-filter-btn ${effectiveView === 'product' ? 'active' : ''}`}
+          onClick={() => setActiveFilter(activeFilter === 'product' ? 'all' : 'product')}
+          onMouseEnter={() => setHoveredSeries('product')}
+          onMouseLeave={() => setHoveredSeries(null)}
+        >
+          🟢 {t("Только наше решение")}
+        </button>
+        <button
+          type="button"
+          className={`radar-filter-btn worst-filter-btn ${effectiveView === 'worst' ? 'active' : ''}`}
+          onClick={() => setActiveFilter(activeFilter === 'worst' ? 'all' : 'worst')}
+          onMouseEnter={() => setHoveredSeries('worst')}
+          onMouseLeave={() => setHoveredSeries(null)}
+        >
+          🔴 {t("Только худшая альтернатива")}
+        </button>
+      </div>
+
       <div className="radar-main-layout">
         {/* SVG Radar Chart */}
         <div className="radar-svg-wrapper">
@@ -129,40 +169,74 @@ export function PentagonRadarChart({
             ))}
 
             {/* Worst Alternative Polygon (Red) */}
-            <polygon
-              points={worstPoints}
-              fill="rgba(239, 68, 68, 0.22)"
-              stroke="#ef4444"
-              strokeWidth="2"
-              className="worst-poly"
-            />
-            {metrics.map((m, i) => {
-              const { x, y } = getCoordinates(i, m.worstScore);
-              return <circle key={i} cx={x} cy={y} r="3.5" fill="#ef4444" />;
-            })}
+            <g
+              className="worst-series-group"
+              style={{
+                opacity: showWorst ? 1 : 0.04,
+                transition: 'opacity 0.22s ease-in-out',
+                pointerEvents: showWorst ? 'auto' : 'none',
+                cursor: 'pointer',
+              }}
+              onMouseEnter={() => setHoveredSeries('worst')}
+              onMouseLeave={() => setHoveredSeries(null)}
+            >
+              <polygon
+                points={worstPoints}
+                fill={isWorstOnly ? 'rgba(239, 68, 68, 0.45)' : 'rgba(239, 68, 68, 0.22)'}
+                stroke="#ef4444"
+                strokeWidth={isWorstOnly ? '3.5' : '2'}
+                className="worst-poly"
+              />
+              {metrics.map((m, i) => {
+                const { x, y } = getCoordinates(i, m.worstScore);
+                return (
+                  <circle
+                    key={i}
+                    cx={x}
+                    cy={y}
+                    r={isWorstOnly ? '5' : '3.5'}
+                    fill="#ef4444"
+                    stroke="#ffffff"
+                    strokeWidth="1"
+                  />
+                );
+              })}
+            </g>
 
             {/* Product Polygon (Emerald / Blue) */}
-            <polygon
-              points={productPoints}
-              fill={productFill}
-              stroke={productColor}
-              strokeWidth="2.5"
-              className="product-poly"
-            />
-            {metrics.map((m, i) => {
-              const { x, y } = getCoordinates(i, m.productScore);
-              return (
-                <circle
-                  key={i}
-                  cx={x}
-                  cy={y}
-                  r="4.5"
-                  fill={productColor}
-                  stroke="#ffffff"
-                  strokeWidth="1.5"
-                />
-              );
-            })}
+            <g
+              className="product-series-group"
+              style={{
+                opacity: showProduct ? 1 : 0.04,
+                transition: 'opacity 0.22s ease-in-out',
+                pointerEvents: showProduct ? 'auto' : 'none',
+                cursor: 'pointer',
+              }}
+              onMouseEnter={() => setHoveredSeries('product')}
+              onMouseLeave={() => setHoveredSeries(null)}
+            >
+              <polygon
+                points={productPoints}
+                fill={isProductOnly ? 'rgba(5, 150, 105, 0.52)' : productFill}
+                stroke={productColor}
+                strokeWidth={isProductOnly ? '4' : '2.5'}
+                className="product-poly"
+              />
+              {metrics.map((m, i) => {
+                const { x, y } = getCoordinates(i, m.productScore);
+                return (
+                  <circle
+                    key={i}
+                    cx={x}
+                    cy={y}
+                    r={isProductOnly ? '6' : '4.5'}
+                    fill={productColor}
+                    stroke="#ffffff"
+                    strokeWidth="1.5"
+                  />
+                );
+              })}
+            </g>
 
             {/* Axis Labels */}
             {labelPositions.map((pos, idx) => (
@@ -178,18 +252,32 @@ export function PentagonRadarChart({
             ))}
           </svg>
 
-          {/* Interactive Legend */}
+          {/* Interactive Legend (Click or Hover to isolate) */}
           <div className="radar-legend">
-            <div className="legend-item product-legend">
+            <button
+              type="button"
+              className={`legend-item legend-btn product-legend ${isProductOnly ? 'legend-isolated' : ''} ${!showProduct ? 'legend-dimmed' : ''}`}
+              onClick={() => setActiveFilter(activeFilter === 'product' ? 'all' : 'product')}
+              onMouseEnter={() => setHoveredSeries('product')}
+              onMouseLeave={() => setHoveredSeries(null)}
+              title={t("Нажмите или наведите, чтобы показать только этот график")}
+            >
               <span className="legend-color-dot" style={{ background: productColor }} />
               <strong>{t(productName)}</strong>
               <small>({t("Наше решение")})</small>
-            </div>
-            <div className="legend-item worst-legend">
+            </button>
+            <button
+              type="button"
+              className={`legend-item legend-btn worst-legend ${isWorstOnly ? 'legend-isolated' : ''} ${!showWorst ? 'legend-dimmed' : ''}`}
+              onClick={() => setActiveFilter(activeFilter === 'worst' ? 'all' : 'worst')}
+              onMouseEnter={() => setHoveredSeries('worst')}
+              onMouseLeave={() => setHoveredSeries(null)}
+              title={t("Нажмите или наведите, чтобы показать только этот график")}
+            >
               <span className="legend-color-dot worst-dot" />
               <strong>{t("Худшая альтернатива (PP)")}</strong>
               <small>({t("Полипропилен 32г")})</small>
-            </div>
+            </button>
           </div>
         </div>
 
@@ -200,9 +288,28 @@ export function PentagonRadarChart({
               <div className="compare-label-row">
                 <span className="compare-name">{t(m.label)}</span>
                 <div className="compare-scores-pill">
-                  <span className="score-our" style={{ color: productColor }}>{m.productScore}/100</span>
+                  <span
+                    className="score-our"
+                    style={{
+                      color: productColor,
+                      fontWeight: isProductOnly ? 850 : 700,
+                      opacity: showProduct ? 1 : 0.25,
+                      transition: 'all 0.2s ease',
+                    }}
+                  >
+                    {m.productScore}/100
+                  </span>
                   <span className="score-vs">vs</span>
-                  <span className="score-worst">{m.worstScore}/100</span>
+                  <span
+                    className="score-worst"
+                    style={{
+                      fontWeight: isWorstOnly ? 850 : 700,
+                      opacity: showWorst ? 1 : 0.25,
+                      transition: 'all 0.2s ease',
+                    }}
+                  >
+                    {m.worstScore}/100
+                  </span>
                 </div>
               </div>
 
@@ -210,22 +317,44 @@ export function PentagonRadarChart({
                 <div className="bar-track">
                   <div
                     className="bar-fill our-bar"
-                    style={{ width: `${m.productScore}%`, background: productColor }}
+                    style={{
+                      width: `${m.productScore}%`,
+                      background: productColor,
+                      opacity: showProduct ? 1 : 0.15,
+                      transition: 'all 0.25s ease',
+                    }}
                   />
                 </div>
                 <div className="bar-track worst-track">
                   <div
                     className="bar-fill worst-bar"
-                    style={{ width: `${m.worstScore}%`, background: '#ef4444' }}
+                    style={{
+                      width: `${m.worstScore}%`,
+                      background: '#ef4444',
+                      opacity: showWorst ? 1 : 0.15,
+                      transition: 'all 0.25s ease',
+                    }}
                   />
                 </div>
               </div>
 
               <div className="compare-notes-grid">
-                <span className="note-our">
+                <span
+                  className="note-our"
+                  style={{
+                    opacity: showProduct ? 1 : 0.25,
+                    transition: 'opacity 0.2s ease',
+                  }}
+                >
                   <strong>✓ {t("Решение:")}</strong> {t(m.productNote)}
                 </span>
-                <span className="note-worst">
+                <span
+                  className="note-worst"
+                  style={{
+                    opacity: showWorst ? 1 : 0.25,
+                    transition: 'opacity 0.2s ease',
+                  }}
+                >
                   <strong>✗ {t("Худший вариант:")}</strong> {t(m.worstNote)}
                 </span>
               </div>

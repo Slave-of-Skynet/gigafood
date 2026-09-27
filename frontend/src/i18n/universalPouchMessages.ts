@@ -3099,5 +3099,25 @@ export const universalPouchMessages: Record<string, TranslationEntry> = {
     "en": "Open Decision Engine →",
     "ru": "Открыть Decision Engine →",
     "ro": "Deschide Decision Engine →"
+  },
+  "Совмещенный вид (Оба)": {
+    "en": "Combined View (Both)",
+    "ru": "Совмещенный вид (Оба)",
+    "ro": "Vizualizare combinată (Ambele)"
+  },
+  "Только наше решение": {
+    "en": "Our Solution Only",
+    "ru": "Только наше решение",
+    "ro": "Doar soluția noastră"
+  },
+  "Только худшая альтернатива": {
+    "en": "Worst Alternative Only",
+    "ru": "Только худшая альтернатива",
+    "ro": "Doar cea mai slabă alternativă"
+  },
+  "Нажмите или наведите, чтобы показать только этот график": {
+    "en": "Click or hover to isolate this series",
+    "ru": "Нажмите или наведите, чтобы показать только этот график",
+    "ro": "Faceți clic sau treceți cursorul pentru a izola această serie"
   }
 };
