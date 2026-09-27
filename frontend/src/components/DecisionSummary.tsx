@@ -52,7 +52,10 @@ export function DecisionSummary({
           {t(isLiteralOven && fallbackCandidate && (
             <span className="decision-role-badge fallback-badge">{t("High-Temperature Fallback Qualification Path · Priority 2")}</span>
           ))}
-          <span className="decision-outcome-badge status-caution">{t("Testing required")}</span>
+          <span className="decision-outcome-badge status-caution">
+            {t("Testing required")}
+            <code className="canonical-outcome-token">QUALIFICATION REQUIRED</code>
+          </span>
           {/* Section 9: Qualified survivors: 0 must be obvious. No positive hero badge when 0. */}
           <span className="survivors-count-badge zero-survivors">{t("Fully checked options: ")}<strong>{t(qualifiedCount)}{t(" / 6")}</strong>
           </span>

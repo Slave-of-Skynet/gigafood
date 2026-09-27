@@ -107,6 +107,7 @@ export function CandidateRecommendationCard({
           >
             {t(isBlocked ? 'Not suitable' : 'Needs testing')}
           </span>
+          <code className="canonical-outcome-token">{assessment.outcome}</code>
           {t(assessment.qualification_priority && (
             <span className="priority-rank-badge">{t("Priority: #")}{t(assessment.qualification_priority)}
             </span>
