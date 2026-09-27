@@ -1,0 +1,3940 @@
+[
+  {
+    "id": "GAP-001",
+    "entity": "C1",
+    "field": "total_package_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C1.total_package_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 14.643125,
+      "central": 20.105,
+      "high": 27.64
+    },
+    "calculation_id": "ASTRA-E069",
+    "source_ids": [
+      "ASTRA-S09",
+      "ASTRA-S10",
+      "ASTRA-S11",
+      "ASTRA-TASK",
+      "S01",
+      "S17"
+    ],
+    "synthesis": "Full Gaia-format design: cutout-subtracted paper + full liner + explicit extra coating + closure.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-002",
+    "entity": "C1",
+    "field": "plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C1.plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 8.093125,
+      "central": 11.08,
+      "high": 15.4
+    },
+    "calculation_id": "ASTRA-E070",
+    "source_ids": [
+      "ASTRA-S09",
+      "ASTRA-S10",
+      "ASTRA-S11",
+      "ASTRA-TASK",
+      "S17"
+    ],
+    "synthesis": "Existing conditional all-liner-counted budget plus coating. Regenerated cellulose is not declared fossil polymer; display explicitly as accounting budget, never exact plastic.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-003",
+    "entity": "C1",
+    "field": "virgin_plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C1.virgin_plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 8.093125,
+      "central": 11.08,
+      "high": 15.4
+    },
+    "calculation_id": "ASTRA-E071",
+    "source_ids": [
+      "ASTRA-S09",
+      "ASTRA-S10",
+      "ASTRA-S11",
+      "ASTRA-TASK",
+      "S17"
+    ],
+    "synthesis": "No recycled credit in conservative all-liner-counted scenario; virgin definition unchanged.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-004",
+    "entity": "C1",
+    "field": "recycled_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C1.recycled_material_fraction",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+    },
+    "calculation_id": "ASTRA-E072",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Virgin paper/film design assumption; zero recycled credit, not a supplier observation.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-005",
+    "entity": "C1",
+    "field": "renewable_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C1.renewable_material_fraction",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 0.81882957,
+      "central": 0.91422532,
+      "high": 0.97113393
+    },
+    "calculation_id": "ASTRA-E074",
+    "source_ids": [
+      "ASTRA-S09",
+      "ASTRA-S10",
+      "ASTRA-S11",
+      "ASTRA-TASK",
+      "S01",
+      "S17"
+    ],
+    "synthesis": "Renewable mass estimate; overlaps conservative plastic accounting budget because that budget counts all cellulose liner.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-006",
+    "entity": "C1",
+    "field": "romania_unit_price",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "No complete, quantity- and VAT-qualified Romanian quote; no invented freight or margin.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C1.cost_net",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 0.77028901,
+      "central": 1.48331721,
+      "high": 3.88760645
+    },
+    "calculation_id": "ASTRA-E084",
+    "source_ids": [
+      "ASTRA-S04",
+      "ASTRA-S05",
+      "ASTRA-S11",
+      "ASTRA-S18",
+      "ASTRA-TASK",
+      "S01",
+      "S17"
+    ],
+    "synthesis": "Complete converted bag delivered Romania; net VAT; unquoted design market model.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-007",
+    "entity": "C1",
+    "field": "order_unit",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Exact order unit not published.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C1.order_unit",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 250,
+      "central": 500,
+      "high": 1000
+    },
+    "calculation_id": "ASTRA-E251",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-008",
+    "entity": "C1",
+    "field": "industrial_moq",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Negotiated MOQ not published; cannot be estimated.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C1.industrial_moq",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 1000,
+      "central": 5000,
+      "high": 10000
+    },
+    "calculation_id": "ASTRA-E250",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-009",
+    "entity": "C1",
+    "field": "lead_time",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "No Romania-confirmed lead time.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C1.lead_time",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 10,
+      "central": 20,
+      "high": 40
+    },
+    "calculation_id": "ASTRA-E253",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-010",
+    "entity": "C1",
+    "field": "dimensions",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "No selected orderable dimensions.",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "BAG.usable_length",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 280,
+      "central": 300,
+      "high": 310
+    },
+    "calculation_id": "ASTRA-E044",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17"
+    ],
+    "synthesis": "Deformable oval cross-section scenario for nominal 180+70 by 350 mm bag. Width and depth are not independent rectangular gusset dimensions.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-011",
+    "entity": "C1",
+    "field": "capacity_ml",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "No exact capacity.",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "BAG.usable_volume",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 1900.03523689,
+      "central": 3562.56606917,
+      "high": 4440.95537511
+    },
+    "calculation_id": "ASTRA-E048",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17"
+    ],
+    "synthesis": "Oval cylinder times shape allowance. Circumference must fit 500 mm available lay-flat perimeter; supplier drawing and hot trial required.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-012",
+    "entity": "C2",
+    "field": "total_package_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C2.total_package_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 4.25275,
+      "central": 5.738125,
+      "high": 10.192
+    },
+    "calculation_id": "ASTRA-E085",
+    "source_ids": [
+      "S17",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Inherited HTF-03 calculation E009; original expression and input provenance retained in canonical calculation registry.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-013",
+    "entity": "C2",
+    "field": "plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C2.plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 4.25275,
+      "central": 5.738125,
+      "high": 10.192
+    },
+    "calculation_id": "ASTRA-E086",
+    "source_ids": [
+      "S17",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Explicit modeled complete-pack projection; not a measured supplier or Profi value.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-014",
+    "entity": "C2",
+    "field": "virgin_plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C2.virgin_plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 4.25275,
+      "central": 5.738125,
+      "high": 10.192
+    },
+    "calculation_id": "ASTRA-E087",
+    "source_ids": [
+      "S17",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Explicit modeled complete-pack projection; not a measured supplier or Profi value.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-015",
+    "entity": "C2",
+    "field": "recycled_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C2.recycled_material_fraction",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+    },
+    "calculation_id": "ASTRA-E088",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Virgin fossil-polymer construction scenario; no recycled or renewable credit claimed.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-016",
+    "entity": "C2",
+    "field": "renewable_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C2.renewable_material_fraction",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+    },
+    "calculation_id": "ASTRA-E089",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Virgin fossil-polymer construction scenario; no recycled or renewable credit claimed.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-017",
+    "entity": "C2",
+    "field": "romania_unit_price",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "No complete, quantity- and VAT-qualified Romanian quote; no invented freight or margin.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C2.cost_net",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 0.768,
+      "central": 1.378,
+      "high": 2.46
+    },
+    "calculation_id": "ASTRA-E091",
+    "source_ids": [
+      "ASTRA-S04",
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Complete bag + closure + delivered import allowance; no exact supplier quote.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-018",
+    "entity": "C2",
+    "field": "order_unit",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Exact order unit not published.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C2.order_unit",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 100,
+      "central": 500,
+      "high": 1000
+    },
+    "calculation_id": "ASTRA-E270",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-019",
+    "entity": "C2",
+    "field": "industrial_moq",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Negotiated MOQ not published; cannot be estimated.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C2.industrial_moq",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 100,
+      "central": 1000,
+      "high": 5000
+    },
+    "calculation_id": "ASTRA-E269",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-020",
+    "entity": "C2",
+    "field": "lead_time",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "No Romania-confirmed lead time.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C2.lead_time",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 5,
+      "central": 14,
+      "high": 28
+    },
+    "calculation_id": "ASTRA-E272",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-021",
+    "entity": "C2",
+    "field": "dimensions",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "No selected orderable dimensions.",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "BAG.usable_length",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 280,
+      "central": 300,
+      "high": 310
+    },
+    "calculation_id": "ASTRA-E044",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17"
+    ],
+    "synthesis": "Deformable oval cross-section scenario for nominal 180+70 by 350 mm bag. Width and depth are not independent rectangular gusset dimensions.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-022",
+    "entity": "C2",
+    "field": "capacity_ml",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "No exact capacity.",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "BAG.usable_volume",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 1900.03523689,
+      "central": 3562.56606917,
+      "high": 4440.95537511
+    },
+    "calculation_id": "ASTRA-E048",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17"
+    ],
+    "synthesis": "Oval cylinder times shape allowance. Circumference must fit 500 mm available lay-flat perimeter; supplier drawing and hot trial required.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-023",
+    "entity": "C3",
+    "field": "total_package_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C3.total_package_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 10.36795,
+      "central": 14.9685,
+      "high": 23.1028
+    },
+    "calculation_id": "ASTRA-E094",
+    "source_ids": [
+      "ASTRA-S19",
+      "ASTRA-TASK",
+      "S17",
+      "S27",
+      "S30"
+    ],
+    "synthesis": "Full flexible package geometry plus closure; gauge analogue dominates.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-024",
+    "entity": "C3",
+    "field": "plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C3.plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 10.36795,
+      "central": 14.9685,
+      "high": 23.1028
+    },
+    "calculation_id": "ASTRA-E095",
+    "source_ids": [
+      "ASTRA-S19",
+      "ASTRA-TASK",
+      "S17",
+      "S27",
+      "S30"
+    ],
+    "synthesis": "Explicit modeled complete-pack projection; not a measured supplier or Profi value.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-025",
+    "entity": "C3",
+    "field": "virgin_plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C3.virgin_plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 10.36795,
+      "central": 14.9685,
+      "high": 23.1028
+    },
+    "calculation_id": "ASTRA-E096",
+    "source_ids": [
+      "ASTRA-S19",
+      "ASTRA-TASK",
+      "S17",
+      "S27",
+      "S30"
+    ],
+    "synthesis": "Explicit modeled complete-pack projection; not a measured supplier or Profi value.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-026",
+    "entity": "C3",
+    "field": "recycled_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C3.recycled_material_fraction",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+    },
+    "calculation_id": "ASTRA-E097",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Virgin fossil-polymer construction scenario; no recycled or renewable credit claimed.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-027",
+    "entity": "C3",
+    "field": "renewable_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C3.renewable_material_fraction",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+    },
+    "calculation_id": "ASTRA-E098",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Virgin fossil-polymer construction scenario; no recycled or renewable credit claimed.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-028",
+    "entity": "C3",
+    "field": "romania_unit_price",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "No complete, quantity- and VAT-qualified Romanian quote; no invented freight or margin.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C3.cost_net",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 1.08,
+      "central": 1.794,
+      "high": 2.98
+    },
+    "calculation_id": "ASTRA-E100",
+    "source_ids": [
+      "ASTRA-S04",
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Complete bag + closure + delivered import allowance; no exact supplier quote.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-029",
+    "entity": "C3",
+    "field": "order_unit",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Exact order unit not published.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C3.order_unit",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 100,
+      "central": 500,
+      "high": 1000
+    },
+    "calculation_id": "ASTRA-E289",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-030",
+    "entity": "C3",
+    "field": "industrial_moq",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Negotiated MOQ not published; cannot be estimated.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C3.industrial_moq",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 100,
+      "central": 1000,
+      "high": 5000
+    },
+    "calculation_id": "ASTRA-E288",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-031",
+    "entity": "C3",
+    "field": "lead_time",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "No Romania-confirmed lead time.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C3.lead_time",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 5,
+      "central": 14,
+      "high": 28
+    },
+    "calculation_id": "ASTRA-E291",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-032",
+    "entity": "C3",
+    "field": "dimensions",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "No selected orderable dimensions.",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "BAG.usable_length",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 280,
+      "central": 300,
+      "high": 310
+    },
+    "calculation_id": "ASTRA-E044",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17"
+    ],
+    "synthesis": "Deformable oval cross-section scenario for nominal 180+70 by 350 mm bag. Width and depth are not independent rectangular gusset dimensions.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-033",
+    "entity": "C3",
+    "field": "capacity_ml",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "No exact capacity.",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "BAG.usable_volume",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 1900.03523689,
+      "central": 3562.56606917,
+      "high": 4440.95537511
+    },
+    "calculation_id": "ASTRA-E048",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17"
+    ],
+    "synthesis": "Oval cylinder times shape allowance. Circumference must fit 500 mm available lay-flat perimeter; supplier drawing and hot trial required.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-034",
+    "entity": "C4",
+    "field": "total_package_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C4.total_package_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 63.949788,
+      "central": 73.31836,
+      "high": 89.714592
+    },
+    "calculation_id": "ASTRA-E103",
+    "source_ids": [
+      "R3",
+      "S05",
+      "S06",
+      "S27"
+    ],
+    "synthesis": "Inherited HTF-03 calculation E012; original expression and input provenance retained in canonical calculation registry.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-035",
+    "entity": "C4",
+    "field": "plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C4.plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 63.949788,
+      "central": 73.31836,
+      "high": 89.714592
+    },
+    "calculation_id": "ASTRA-E104",
+    "source_ids": [
+      "R3",
+      "S05",
+      "S06",
+      "S27"
+    ],
+    "synthesis": "Inherited HTF-03 calculation E012; original expression and input provenance retained in canonical calculation registry.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-036",
+    "entity": "C4",
+    "field": "virgin_plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C4.virgin_plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 25.279788,
+      "central": 36.19516,
+      "high": 54.138192
+    },
+    "calculation_id": "ASTRA-E105",
+    "source_ids": [
+      "R3",
+      "S05",
+      "S06",
+      "S27"
+    ],
+    "synthesis": "Inherited HTF-03 calculation E013; original expression and input provenance retained in canonical calculation registry.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-037",
+    "entity": "C4",
+    "field": "recycled_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C4.recycled_material_fraction",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 0.39655088,
+      "central": 0.50632884,
+      "high": 0.60469317
+    },
+    "calculation_id": "ASTRA-E106",
+    "source_ids": [
+      "R3",
+      "S05",
+      "S06",
+      "S27"
+    ],
+    "synthesis": "Inherited HTF-03 calculation E014; original expression and input provenance retained in canonical calculation registry.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-038",
+    "entity": "C4",
+    "field": "renewable_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C4.renewable_material_fraction",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+    },
+    "calculation_id": "ASTRA-E107",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Fossil PET construction; PCR is recycled, not renewable mass.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-039",
+    "entity": "C4",
+    "field": "romania_unit_price",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "No complete, quantity- and VAT-qualified Romanian quote; no invented freight or margin.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C4.cost_net",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 1.98214578,
+      "central": 3.21958305,
+      "high": 5.24749504
+    },
+    "calculation_id": "ASTRA-E111",
+    "source_ids": [
+      "ASTRA-S04",
+      "ASTRA-S05",
+      "ASTRA-TASK",
+      "S05",
+      "S06"
+    ],
+    "synthesis": "Complete body/lid landed scenario; no availability or fit approval.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-040",
+    "entity": "C4",
+    "field": "order_unit",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Exact order unit not published.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C4.order_unit",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 100,
+      "central": 500,
+      "high": 1000
+    },
+    "calculation_id": "ASTRA-E314",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-041",
+    "entity": "C4",
+    "field": "industrial_moq",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Negotiated MOQ not published; cannot be estimated.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C4.industrial_moq",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 100,
+      "central": 1000,
+      "high": 5000
+    },
+    "calculation_id": "ASTRA-E313",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-042",
+    "entity": "C4",
+    "field": "lead_time",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "No Romania-confirmed lead time.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C4.lead_time",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 5,
+      "central": 14,
+      "high": 28
+    },
+    "calculation_id": "ASTRA-E316",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-043",
+    "entity": "C4",
+    "field": "dimensions",
+    "current_value": [
+      227,
+      178,
+      43
+    ],
+    "current_state": "ASSUMED",
+    "missing": false,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "C4.usable_length",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 186.3,
+      "central": 207,
+      "high": 217.35
+    },
+    "calculation_id": "ASTRA-E300",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Internal taper/rim model; deep whole-chicken configurations include a post-oven domed-lid assumption, to be tested.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-044",
+    "entity": "C4",
+    "field": "capacity_ml",
+    "current_value": 1005,
+    "current_state": "ASSUMED",
+    "missing": false,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "C4.capacity_ml",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 1005,
+      "central": 1005,
+      "high": 1005
+    },
+    "calculation_id": "ASTRA-E299",
+    "source_ids": [
+      "S05"
+    ],
+    "synthesis": "Published nominal body capacity; usable fill is lower.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-045",
+    "entity": "C5",
+    "field": "total_package_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C5.total_package_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 23.36487124,
+      "central": 27.13051613,
+      "high": 30.49212
+    },
+    "calculation_id": "ASTRA-E118",
+    "source_ids": [
+      "ASTRA-S09",
+      "ASTRA-S15",
+      "ASTRA-TASK",
+      "S10",
+      "S17"
+    ],
+    "synthesis": "Complete tray + retained film + label; coating already inside body.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-046",
+    "entity": "C5",
+    "field": "plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C5.plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 2.42637124,
+      "central": 4.33551613,
+      "high": 5.93462
+    },
+    "calculation_id": "ASTRA-E119",
+    "source_ids": [
+      "ASTRA-S09",
+      "ASTRA-S11",
+      "ASTRA-S15",
+      "ASTRA-TASK",
+      "S10",
+      "S17"
+    ],
+    "synthesis": "Conservative all-film accounting budget plus explicit body coating and ancillary, not a measured plastic BOM.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-047",
+    "entity": "C5",
+    "field": "virgin_plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C5.virgin_plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 2.42637124,
+      "central": 4.33551613,
+      "high": 5.93462
+    },
+    "calculation_id": "ASTRA-E120",
+    "source_ids": [
+      "ASTRA-S09",
+      "ASTRA-S11",
+      "ASTRA-S15",
+      "ASTRA-TASK",
+      "S10",
+      "S17"
+    ],
+    "synthesis": "No recycled credit in all-film accounting scenario.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-048",
+    "entity": "C5",
+    "field": "recycled_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C5.recycled_material_fraction",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+    },
+    "calculation_id": "ASTRA-E121",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Virgin fibre/film scenario; no unverified recycled-content credit.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-049",
+    "entity": "C5",
+    "field": "renewable_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Complete exact component accounting not available.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C5.renewable_material_fraction",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 0.90893273,
+      "central": 0.95068094,
+      "high": 0.9834582
+    },
+    "calculation_id": "ASTRA-E122",
+    "source_ids": [
+      "ASTRA-S09",
+      "ASTRA-S10",
+      "ASTRA-S11",
+      "ASTRA-S15",
+      "ASTRA-TASK",
+      "S10",
+      "S17"
+    ],
+    "synthesis": "Cellulose body minus coating reserve + estimated cellulose share of film; mass-based, not carbon certification.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-050",
+    "entity": "C5",
+    "field": "romania_unit_price",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "No complete, quantity- and VAT-qualified Romanian quote; no invented freight or margin.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C5.cost_net",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 1.78707569,
+      "central": 2.6726232,
+      "high": 4.24557012
+    },
+    "calculation_id": "ASTRA-E131",
+    "source_ids": [
+      "ASTRA-S04",
+      "ASTRA-S05",
+      "ASTRA-S07",
+      "ASTRA-S14",
+      "ASTRA-S16",
+      "ASTRA-S17",
+      "ASTRA-S18",
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Complete SI-14/compatible-film delivered design cost, net VAT.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-051",
+    "entity": "C5",
+    "field": "order_unit",
+    "current_value": 780,
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C5.order_unit",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 780,
+      "central": 780,
+      "high": 780
+    },
+    "calculation_id": "ASTRA-E337",
+    "source_ids": [
+      "ASTRA-S16"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-052",
+    "entity": "C5",
+    "field": "industrial_moq",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Negotiated MOQ not published; cannot be estimated.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C5.industrial_moq",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 780,
+      "central": 780,
+      "high": 1560
+    },
+    "calculation_id": "ASTRA-E336",
+    "source_ids": [
+      "ASTRA-S16"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-053",
+    "entity": "C5",
+    "field": "lead_time",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "No Romania-confirmed lead time.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C5.lead_time",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 7,
+      "central": 14,
+      "high": 28
+    },
+    "calculation_id": "ASTRA-E339",
+    "source_ids": [
+      "ASTRA-S16"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-054",
+    "entity": "C5",
+    "field": "dimensions",
+    "current_value": [
+      190,
+      247,
+      37
+    ],
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "C5.usable_length",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 211,
+      "central": 222,
+      "high": 233
+    },
+    "calculation_id": "ASTRA-E325",
+    "source_ids": [
+      "ASTRA-S15"
+    ],
+    "synthesis": "Internal taper/rim model; deep whole-chicken configurations include a post-oven domed-lid assumption, to be tested.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-055",
+    "entity": "C5",
+    "field": "capacity_ml",
+    "current_value": 1240,
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "C5.capacity_ml",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 1240,
+      "central": 1240,
+      "high": 1240
+    },
+    "calculation_id": "ASTRA-E324",
+    "source_ids": [
+      "ASTRA-S15"
+    ],
+    "synthesis": "Published nominal body capacity; usable fill is lower.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-056",
+    "entity": "C6-RO-P",
+    "field": "total_package_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "No exact body/lid weights.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-RO-P.total_package_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 24.76639092,
+      "central": 43.90150145,
+      "high": 74.25494208
+    },
+    "calculation_id": "ASTRA-E134",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17",
+      "S20",
+      "S21",
+      "S24",
+      "S27"
+    ],
+    "synthesis": "Complete aluminium body + clear closure design + ancillary, all net package mass.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-057",
+    "entity": "C6-RO-P",
+    "field": "plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "No exact body/lid weights.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-RO-P.plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 9.20665,
+      "central": 19.2035,
+      "high": 38.9368
+    },
+    "calculation_id": "ASTRA-E135",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17",
+      "S20",
+      "S21",
+      "S27"
+    ],
+    "synthesis": "All designed clear lid and ancillary counted as virgin polymer; body alloy is not plastic.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-058",
+    "entity": "C6-RO-P",
+    "field": "virgin_plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "No exact body/lid weights.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-RO-P.virgin_plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 9.20665,
+      "central": 19.2035,
+      "high": 38.9368
+    },
+    "calculation_id": "ASTRA-E136",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17",
+      "S20",
+      "S21",
+      "S27"
+    ],
+    "synthesis": "Explicit modeled complete-pack projection; not a measured supplier or Profi value.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-059",
+    "entity": "C6-RO-P",
+    "field": "recycled_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "No exact body/lid weights.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-RO-P.recycled_material_fraction",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 0.0,
+      "central": 0.21377949,
+      "high": 0.47593451
+    },
+    "calculation_id": "ASTRA-E138",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17",
+      "S20",
+      "S21",
+      "S24",
+      "S27"
+    ],
+    "synthesis": "Whole-package secondary mass fraction, body weighted; no recycled-plastic claim.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-060",
+    "entity": "C6-RO-P",
+    "field": "renewable_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "No exact body/lid weights.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-RO-P.renewable_material_fraction",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+    },
+    "calculation_id": "ASTRA-E139",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Metal and fossil-polymer design: no renewable mass credit.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-061",
+    "entity": "C6-RO-P",
+    "field": "romania_unit_price",
+    "current_value": {
+      "low": 1.1485,
+      "central": 1.1485,
+      "high": 1.2915
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C6-RO-P.cost_net",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 0.96917355,
+      "central": 0.99917355,
+      "high": 1.29157025
+    },
+    "calculation_id": "ASTRA-E142",
+    "source_ids": [
+      "ASTRA-S04",
+      "ASTRA-S06",
+      "ASTRA-TASK",
+      "S20",
+      "S22"
+    ],
+    "synthesis": "Complete matched/design body plus post-oven lid and label delivered Romania; net VAT; oven step must exclude unqualified lid.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-062",
+    "entity": "C6-RO-P",
+    "field": "order_unit",
+    "current_value": 100,
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C6-RO-P.order_unit",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 100,
+      "central": 100,
+      "high": 100
+    },
+    "calculation_id": "ASTRA-E362",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-063",
+    "entity": "C6-RO-P",
+    "field": "industrial_moq",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Negotiated MOQ not published; cannot be estimated.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C6-RO-P.industrial_moq",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 100,
+      "central": 1400,
+      "high": 5000
+    },
+    "calculation_id": "ASTRA-E361",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-064",
+    "entity": "C6-RO-P",
+    "field": "lead_time",
+    "current_value": "Body: 4-5 working days; lid: 24-48 h (seller estimates).",
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C6-RO-P.lead_time",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 3,
+      "central": 5,
+      "high": 10
+    },
+    "calculation_id": "ASTRA-E364",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-065",
+    "entity": "C6-RO-P",
+    "field": "dimensions",
+    "current_value": null,
+    "current_state": "ABSENT",
+    "missing": true,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "Projection absent or exact object shadows model",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "C6-RO-P.usable_length",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 180.0,
+      "central": 200,
+      "high": 210.0
+    },
+    "calculation_id": "ASTRA-E348",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Internal taper/rim model; deep whole-chicken configurations include a post-oven domed-lid assumption, to be tested.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-066",
+    "entity": "C6-RO-P",
+    "field": "capacity_ml",
+    "current_value": null,
+    "current_state": "ABSENT",
+    "missing": true,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "Projection absent or exact object shadows model",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "C6-RO-P.capacity_ml",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 1125,
+      "central": 1125,
+      "high": 1125
+    },
+    "calculation_id": "ASTRA-E347",
+    "source_ids": [
+      "S20"
+    ],
+    "synthesis": "Published nominal body capacity; usable fill is lower.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-067",
+    "entity": "C6-RO-W",
+    "field": "total_package_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Local body/lid net weights and lid material absent.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-RO-W.total_package_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 34.97391317,
+      "central": 65.71396397,
+      "high": 118.95835686
+    },
+    "calculation_id": "ASTRA-E148",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17",
+      "S18",
+      "S24",
+      "S27"
+    ],
+    "synthesis": "Complete aluminium body + clear closure design + ancillary, all net package mass.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-068",
+    "entity": "C6-RO-W",
+    "field": "plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Local body/lid net weights and lid material absent.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-RO-W.plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 13.1436775,
+      "central": 28.295275,
+      "high": 61.71424
+    },
+    "calculation_id": "ASTRA-E149",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17",
+      "S27"
+    ],
+    "synthesis": "All designed clear lid and ancillary counted as virgin polymer; body alloy is not plastic.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-069",
+    "entity": "C6-RO-W",
+    "field": "virgin_plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Local body/lid net weights and lid material absent.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-RO-W.virgin_plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 13.1436775,
+      "central": 28.295275,
+      "high": 61.71424
+    },
+    "calculation_id": "ASTRA-E150",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17",
+      "S27"
+    ],
+    "synthesis": "Explicit modeled complete-pack projection; not a measured supplier or Profi value.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-070",
+    "entity": "C6-RO-W",
+    "field": "recycled_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Local body/lid net weights and lid material absent.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-RO-W.recycled_material_fraction",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 0.0,
+      "central": 0.2163787,
+      "high": 0.4879606
+    },
+    "calculation_id": "ASTRA-E152",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17",
+      "S18",
+      "S24",
+      "S27"
+    ],
+    "synthesis": "Whole-package secondary mass fraction, body weighted; no recycled-plastic claim.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-071",
+    "entity": "C6-RO-W",
+    "field": "renewable_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Local body/lid net weights and lid material absent.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-RO-W.renewable_material_fraction",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+    },
+    "calculation_id": "ASTRA-E153",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Metal and fossil-polymer design: no renewable mass credit.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-072",
+    "entity": "C6-RO-W",
+    "field": "romania_unit_price",
+    "current_value": {
+      "low": 1.1485,
+      "central": 1.1485,
+      "high": 1.2915
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C6-RO-W.cost_net",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 1.9076033,
+      "central": 1.9376033,
+      "high": 2.42512396
+    },
+    "calculation_id": "ASTRA-E156",
+    "source_ids": [
+      "ASTRA-S04",
+      "ASTRA-S06",
+      "ASTRA-TASK",
+      "S18"
+    ],
+    "synthesis": "Complete matched/design body plus post-oven lid and label delivered Romania; net VAT; oven step must exclude unqualified lid.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-073",
+    "entity": "C6-RO-W",
+    "field": "order_unit",
+    "current_value": 100,
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C6-RO-W.order_unit",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 200,
+      "central": 200,
+      "high": 200
+    },
+    "calculation_id": "ASTRA-E387",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-074",
+    "entity": "C6-RO-W",
+    "field": "industrial_moq",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Negotiated MOQ not published; cannot be estimated.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C6-RO-W.industrial_moq",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 100,
+      "central": 200,
+      "high": 2000
+    },
+    "calculation_id": "ASTRA-E386",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-075",
+    "entity": "C6-RO-W",
+    "field": "lead_time",
+    "current_value": "Body: 4-5 working days; lid: 24-48 h (seller estimates).",
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C6-RO-W.lead_time",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 3,
+      "central": 5,
+      "high": 10
+    },
+    "calculation_id": "ASTRA-E389",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-076",
+    "entity": "C6-RO-W",
+    "field": "dimensions",
+    "current_value": [
+      257,
+      195,
+      103
+    ],
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "C6-RO-W.usable_length",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 213.3,
+      "central": 237,
+      "high": 248.85
+    },
+    "calculation_id": "ASTRA-E373",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Internal taper/rim model; deep whole-chicken configurations include a post-oven domed-lid assumption, to be tested.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-077",
+    "entity": "C6-RO-W",
+    "field": "capacity_ml",
+    "current_value": null,
+    "current_state": "CONFLICT",
+    "missing": true,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "406-litre text inconsistent with external envelope; no inferred correction to 4.06 L.",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "C6-RO-W.capacity_ml",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 2322.83025,
+      "central": 3097.107,
+      "high": 3871.38375
+    },
+    "calculation_id": "ASTRA-E372",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S18"
+    ],
+    "synthesis": "WePack reported 406 litres remains CONFLICT. Geometric bounding-box x taper factor supplies a separate capacity estimate; not a correction to 4.06 L.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-078",
+    "entity": "C6-RO-H",
+    "field": "total_package_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Body mass unavailable; complete clear-lid BOM absent.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-RO-H.total_package_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 32.73136359,
+      "central": 61.9739265,
+      "high": 113.32648862
+    },
+    "calculation_id": "ASTRA-E162",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17",
+      "S19",
+      "S24",
+      "S27"
+    ],
+    "synthesis": "Complete aluminium body + clear closure design + ancillary, all net package mass.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-079",
+    "entity": "C6-RO-H",
+    "field": "plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Body mass unavailable; complete clear-lid BOM absent.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-RO-H.plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 13.0488625,
+      "central": 28.106625,
+      "high": 61.3312
+    },
+    "calculation_id": "ASTRA-E163",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17",
+      "S27"
+    ],
+    "synthesis": "All designed clear lid and ancillary counted as virgin polymer; body alloy is not plastic.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-080",
+    "entity": "C6-RO-H",
+    "field": "virgin_plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Body mass unavailable; complete clear-lid BOM absent.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-RO-H.virgin_plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 13.0488625,
+      "central": 28.106625,
+      "high": 61.3312
+    },
+    "calculation_id": "ASTRA-E164",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17",
+      "S27"
+    ],
+    "synthesis": "Explicit modeled complete-pack projection; not a measured supplier or Profi value.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-081",
+    "entity": "C6-RO-H",
+    "field": "recycled_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Body mass unavailable; complete clear-lid BOM absent.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-RO-H.recycled_material_fraction",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 0.0,
+      "central": 0.20766111,
+      "high": 0.47963072
+    },
+    "calculation_id": "ASTRA-E166",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17",
+      "S19",
+      "S24",
+      "S27"
+    ],
+    "synthesis": "Whole-package secondary mass fraction, body weighted; no recycled-plastic claim.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-082",
+    "entity": "C6-RO-H",
+    "field": "renewable_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Body mass unavailable; complete clear-lid BOM absent.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-RO-H.renewable_material_fraction",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+    },
+    "calculation_id": "ASTRA-E167",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Metal and fossil-polymer design: no renewable mass credit.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-083",
+    "entity": "C6-RO-H",
+    "field": "romania_unit_price",
+    "current_value": {
+      "low": 1.1485,
+      "central": 1.1485,
+      "high": 1.2915
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C6-RO-H.cost_net",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 1.60181818,
+      "central": 2.03181818,
+      "high": 3.07818182
+    },
+    "calculation_id": "ASTRA-E170",
+    "source_ids": [
+      "ASTRA-S04",
+      "ASTRA-S06",
+      "ASTRA-TASK",
+      "S06",
+      "S19",
+      "S22"
+    ],
+    "synthesis": "Complete matched/design body plus post-oven lid and label delivered Romania; net VAT; oven step must exclude unqualified lid.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-084",
+    "entity": "C6-RO-H",
+    "field": "order_unit",
+    "current_value": 100,
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C6-RO-H.order_unit",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 100,
+      "central": 100,
+      "high": 100
+    },
+    "calculation_id": "ASTRA-E412",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-085",
+    "entity": "C6-RO-H",
+    "field": "industrial_moq",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Negotiated MOQ not published; cannot be estimated.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C6-RO-H.industrial_moq",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 100,
+      "central": 1000,
+      "high": 5000
+    },
+    "calculation_id": "ASTRA-E411",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-086",
+    "entity": "C6-RO-H",
+    "field": "lead_time",
+    "current_value": "Body: 4-5 working days; lid: 24-48 h (seller estimates).",
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C6-RO-H.lead_time",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 3,
+      "central": 5,
+      "high": 10
+    },
+    "calculation_id": "ASTRA-E414",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-087",
+    "entity": "C6-RO-H",
+    "field": "dimensions",
+    "current_value": [
+      255,
+      195,
+      90
+    ],
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "C6-RO-H.usable_length",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 211.5,
+      "central": 235,
+      "high": 246.75
+    },
+    "calculation_id": "ASTRA-E398",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Internal taper/rim model; deep whole-chicken configurations include a post-oven domed-lid assumption, to be tested.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-088",
+    "entity": "C6-RO-H",
+    "field": "capacity_ml",
+    "current_value": 2400,
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "C6-RO-H.capacity_ml",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 2400,
+      "central": 2400,
+      "high": 2400
+    },
+    "calculation_id": "ASTRA-E397",
+    "source_ids": [
+      "S19"
+    ],
+    "synthesis": "Published nominal body capacity; usable fill is lower.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-089",
+    "entity": "C6-EU",
+    "field": "total_package_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Lid mass missing; no exact complete total.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-EU.total_package_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 46.963,
+      "central": 64.41,
+      "high": 69.72
+    },
+    "calculation_id": "ASTRA-E173",
+    "source_ids": [
+      "ASTRA-TASK",
+      "R3",
+      "S17",
+      "S24",
+      "S25",
+      "S27"
+    ],
+    "synthesis": "Complete aluminium body + clear closure design + ancillary, all net package mass.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-090",
+    "entity": "C6-EU",
+    "field": "plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Lid mass missing; no exact complete total.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-EU.plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 19.063,
+      "central": 33.41,
+      "high": 35.62
+    },
+    "calculation_id": "ASTRA-E174",
+    "source_ids": [
+      "ASTRA-TASK",
+      "R3",
+      "S17",
+      "S25",
+      "S27"
+    ],
+    "synthesis": "All designed clear lid and ancillary counted as virgin polymer; body alloy is not plastic.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-091",
+    "entity": "C6-EU",
+    "field": "virgin_plastic_mass_g",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Lid mass missing; no exact complete total.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-EU.virgin_plastic_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 19.063,
+      "central": 33.41,
+      "high": 35.62
+    },
+    "calculation_id": "ASTRA-E175",
+    "source_ids": [
+      "ASTRA-TASK",
+      "R3",
+      "S17",
+      "S25",
+      "S27"
+    ],
+    "synthesis": "Explicit modeled complete-pack projection; not a measured supplier or Profi value.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-092",
+    "entity": "C6-EU",
+    "field": "recycled_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Lid mass missing; no exact complete total.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-EU.recycled_material_fraction",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 0.13176952,
+      "central": 0.18289086,
+      "high": 0.32071177
+    },
+    "calculation_id": "ASTRA-E177",
+    "source_ids": [
+      "ASTRA-TASK",
+      "R3",
+      "S17",
+      "S24",
+      "S25",
+      "S27"
+    ],
+    "synthesis": "Whole-package secondary mass fraction, body weighted; no recycled-plastic claim.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-093",
+    "entity": "C6-EU",
+    "field": "renewable_material_fraction",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G3",
+    "surface": "CandidateRecommendationCard / configuration metrics",
+    "why": "Lid mass missing; no exact complete total.",
+    "can_estimate": true,
+    "research_route": "BOM geometry + bounded composition",
+    "target": "C6-EU.renewable_material_fraction",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+    },
+    "calculation_id": "ASTRA-E178",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Metal and fossil-polymer design: no renewable mass credit.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-094",
+    "entity": "C6-EU",
+    "field": "romania_unit_price",
+    "current_value": {
+      "low": 1.1485,
+      "central": 1.1485,
+      "high": 1.2915
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C6-EU.cost_net",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 3.94507123,
+      "central": 5.68150709,
+      "high": 7.77916226
+    },
+    "calculation_id": "ASTRA-E181",
+    "source_ids": [
+      "ASTRA-S04",
+      "ASTRA-S05",
+      "ASTRA-TASK",
+      "S06",
+      "S22",
+      "S26"
+    ],
+    "synthesis": "Complete matched/design body plus post-oven lid and label delivered Romania; net VAT; oven step must exclude unqualified lid.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-095",
+    "entity": "C6-EU",
+    "field": "order_unit",
+    "current_value": 100,
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C6-EU.order_unit",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 400,
+      "central": 400,
+      "high": 400
+    },
+    "calculation_id": "ASTRA-E437",
+    "source_ids": [
+      "S24"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-096",
+    "entity": "C6-EU",
+    "field": "industrial_moq",
+    "current_value": null,
+    "current_state": "UNKNOWN",
+    "missing": true,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Negotiated MOQ not published; cannot be estimated.",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C6-EU.industrial_moq",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 400,
+      "central": 400,
+      "high": 800
+    },
+    "calculation_id": "ASTRA-E436",
+    "source_ids": [
+      "S24"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-097",
+    "entity": "C6-EU",
+    "field": "lead_time",
+    "current_value": "Body: 4-5 working days; lid: 24-48 h (seller estimates).",
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G4",
+    "surface": "ProcurementSummary (C6 currently inherits parent)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact list price -> EU landed market/order scenario",
+    "target": "C6-EU.lead_time",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 7,
+      "central": 14,
+      "high": 28
+    },
+    "calculation_id": "ASTRA-E439",
+    "source_ids": [
+      "S24"
+    ],
+    "synthesis": "Modeled purchasing/lead scenario, not supplier promise; C5 780/carton and 12480/pallet and EU 400/carton/9600 pallet use published anchors where stated.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-098",
+    "entity": "C6-EU",
+    "field": "dimensions",
+    "current_value": [
+      293,
+      193,
+      45
+    ],
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "C6-EU.usable_length",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 245.7,
+      "central": 273,
+      "high": 286.65
+    },
+    "calculation_id": "ASTRA-E423",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Internal taper/rim model; deep whole-chicken configurations include a post-oven domed-lid assumption, to be tested.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-099",
+    "entity": "C6-EU",
+    "field": "capacity_ml",
+    "current_value": 1896,
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G3",
+    "surface": "API catalogue (not currently visible card)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Exact drawing -> geometric usable-envelope scenario",
+    "target": "C6-EU.capacity_ml",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 1896,
+      "central": 1896,
+      "high": 1896
+    },
+    "calculation_id": "ASTRA-E422",
+    "source_ids": [
+      "S24"
+    ],
+    "synthesis": "Published nominal body capacity; usable fill is lower.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-100",
+    "entity": "C1",
+    "field": "C1-ALL-LINER-COUNTED.reduction_g",
+    "current_value": {
+      "low": -11.75835,
+      "central": -4.1965,
+      "high": 4.45875
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C1.vs.B1-ESTIMATED.reduction_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -12.80835,
+      "central": -4.5815,
+      "high": 4.366875
+    },
+    "calculation_id": "ASTRA-E444",
+    "source_ids": [
+      "ASTRA-S09",
+      "ASTRA-S10",
+      "ASTRA-S11",
+      "ASTRA-TASK",
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Signed baseline minus candidate; negative is additional virgin accounting mass, never savings.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-101",
+    "entity": "C1",
+    "field": "C1-ALL-LINER-COUNTED.reduction_pct",
+    "current_value": {
+      "low": -453.70130998,
+      "central": -64.57644072,
+      "high": 35.78451043
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C1.vs.B1-ESTIMATED.reduction_pct",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -494.21603997,
+      "central": -70.50088482,
+      "high": 35.04715088
+    },
+    "calculation_id": "ASTRA-E445",
+    "source_ids": [
+      "ASTRA-S09",
+      "ASTRA-S10",
+      "ASTRA-S11",
+      "ASTRA-TASK",
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Percent reduction with the same baseline denominator at each corner; negative is an increase.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-102",
+    "entity": "C1",
+    "field": "C1-ALL-LINER-COUNTED.reduction_g",
+    "current_value": {
+      "low": -10.9425,
+      "central": -6.7375,
+      "high": -3.10125
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C1.vs.B1-ESTIMATED.reduction_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -12.80835,
+      "central": -4.5815,
+      "high": 4.366875
+    },
+    "calculation_id": "ASTRA-E444",
+    "source_ids": [
+      "ASTRA-S09",
+      "ASTRA-S10",
+      "ASTRA-S11",
+      "ASTRA-TASK",
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Signed baseline minus candidate; negative is additional virgin accounting mass, never savings.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-103",
+    "entity": "C1",
+    "field": "C1-ALL-LINER-COUNTED.reduction_pct",
+    "current_value": {
+      "low": -321.1298606,
+      "central": -170.24636766,
+      "high": -63.29081633
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C1.vs.B1-ESTIMATED.reduction_pct",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -494.21603997,
+      "central": -70.50088482,
+      "high": 35.04715088
+    },
+    "calculation_id": "ASTRA-E445",
+    "source_ids": [
+      "ASTRA-S09",
+      "ASTRA-S10",
+      "ASTRA-S11",
+      "ASTRA-TASK",
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Percent reduction with the same baseline denominator at each corner; negative is an increase.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-104",
+    "entity": "C2",
+    "field": "C2-GEOMETRY-VIRGIN-CLOSURE.reduction_g",
+    "current_value": {
+      "low": -7.60035,
+      "central": 0.760375,
+      "high": 8.20725
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C2.vs.B1-ESTIMATED.reduction_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -7.60035,
+      "central": 0.760375,
+      "high": 8.20725
+    },
+    "calculation_id": "ASTRA-E456",
+    "source_ids": [
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Signed baseline minus candidate; negative is additional virgin accounting mass, never savings.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-105",
+    "entity": "C2",
+    "field": "C2-GEOMETRY-VIRGIN-CLOSURE.reduction_pct",
+    "current_value": {
+      "low": -293.26297918,
+      "central": 11.7007771,
+      "high": 65.8687801
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C2.vs.B1-ESTIMATED.reduction_pct",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -293.26297918,
+      "central": 11.7007771,
+      "high": 65.8687801
+    },
+    "calculation_id": "ASTRA-E457",
+    "source_ids": [
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Percent reduction with the same baseline denominator at each corner; negative is an increase.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-106",
+    "entity": "C2",
+    "field": "C2-GEOMETRY-VIRGIN-CLOSURE.reduction_g",
+    "current_value": {
+      "low": -6.7845,
+      "central": -1.780625,
+      "high": 0.64725
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C2.vs.B1-ESTIMATED.reduction_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -7.60035,
+      "central": 0.760375,
+      "high": 8.20725
+    },
+    "calculation_id": "ASTRA-E456",
+    "source_ids": [
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Signed baseline minus candidate; negative is additional virgin accounting mass, never savings.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-107",
+    "entity": "C2",
+    "field": "C2-GEOMETRY-VIRGIN-CLOSURE.reduction_pct",
+    "current_value": {
+      "low": -199.10491563,
+      "central": -44.99368288,
+      "high": 13.20918367
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C2.vs.B1-ESTIMATED.reduction_pct",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -293.26297918,
+      "central": 11.7007771,
+      "high": 65.8687801
+    },
+    "calculation_id": "ASTRA-E457",
+    "source_ids": [
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Percent reduction with the same baseline denominator at each corner; negative is an increase.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-108",
+    "entity": "C4",
+    "field": "C4-GEOMETRY-VIRGIN-CLOSURE.reduction_g",
+    "current_value": {
+      "low": -51.546542,
+      "central": -29.69666,
+      "high": -12.819788
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C4.vs.B1-ESTIMATED.reduction_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -51.546542,
+      "central": -29.69666,
+      "high": -12.819788
+    },
+    "calculation_id": "ASTRA-E480",
+    "source_ids": [
+      "R3",
+      "S05",
+      "S06",
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Signed baseline minus candidate; negative is additional virgin accounting mass, never savings.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-109",
+    "entity": "C4",
+    "field": "C4-GEOMETRY-VIRGIN-CLOSURE.reduction_pct",
+    "current_value": {
+      "low": -1988.94688712,
+      "central": -456.97714857,
+      "high": -102.88754414
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C4.vs.B1-ESTIMATED.reduction_pct",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -1988.94688712,
+      "central": -456.97714857,
+      "high": -102.88754414
+    },
+    "calculation_id": "ASTRA-E481",
+    "source_ids": [
+      "R3",
+      "S05",
+      "S06",
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Percent reduction with the same baseline denominator at each corner; negative is an increase.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-110",
+    "entity": "C4",
+    "field": "C4-GEOMETRY-VIRGIN-CLOSURE.reduction_g",
+    "current_value": {
+      "low": -50.730692,
+      "central": -32.23766,
+      "high": -20.379788
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C4.vs.B1-ESTIMATED.reduction_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -51.546542,
+      "central": -29.69666,
+      "high": -12.819788
+    },
+    "calculation_id": "ASTRA-E480",
+    "source_ids": [
+      "R3",
+      "S05",
+      "S06",
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Signed baseline minus candidate; negative is additional virgin accounting mass, never savings.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-111",
+    "entity": "C4",
+    "field": "C4-GEOMETRY-VIRGIN-CLOSURE.reduction_pct",
+    "current_value": {
+      "low": -1488.7950697,
+      "central": -814.59658876,
+      "high": -415.91404082
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C4.vs.B1-ESTIMATED.reduction_pct",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -1988.94688712,
+      "central": -456.97714857,
+      "high": -102.88754414
+    },
+    "calculation_id": "ASTRA-E481",
+    "source_ids": [
+      "R3",
+      "S05",
+      "S06",
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Percent reduction with the same baseline denominator at each corner; negative is an increase.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-112",
+    "entity": "C5",
+    "field": "C5-BODY-ZERO-ALL-FILM-COUNTED.reduction_g",
+    "current_value": {
+      "low": -1.75288043,
+      "central": 3.4144837,
+      "high": 10.23402391
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C5.vs.B1-ESTIMATED.reduction_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -3.34297,
+      "central": 2.16298387,
+      "high": 10.03362876
+    },
+    "calculation_id": "ASTRA-E492",
+    "source_ids": [
+      "ASTRA-S09",
+      "ASTRA-S11",
+      "ASTRA-S15",
+      "ASTRA-TASK",
+      "S10",
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Signed baseline minus candidate; negative is additional virgin accounting mass, never savings.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-113",
+    "entity": "C5",
+    "field": "C5-BODY-ZERO-ALL-FILM-COUNTED.reduction_pct",
+    "current_value": {
+      "low": -67.63569271,
+      "central": 52.54264369,
+      "high": 82.13502335
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C5.vs.B1-ESTIMATED.reduction_pct",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -128.99002566,
+      "central": 33.28435593,
+      "high": 80.52671557
+    },
+    "calculation_id": "ASTRA-E493",
+    "source_ids": [
+      "ASTRA-S09",
+      "ASTRA-S11",
+      "ASTRA-S15",
+      "ASTRA-TASK",
+      "S10",
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Percent reduction with the same baseline denominator at each corner; negative is an increase.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-114",
+    "entity": "C5",
+    "field": "C5-BODY-ZERO-ALL-FILM-COUNTED.reduction_g",
+    "current_value": {
+      "low": -0.93703043,
+      "central": 0.8734837,
+      "high": 2.67402391
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C5.vs.B1-ESTIMATED.reduction_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -3.34297,
+      "central": 2.16298387,
+      "high": 10.03362876
+    },
+    "calculation_id": "ASTRA-E492",
+    "source_ids": [
+      "ASTRA-S09",
+      "ASTRA-S11",
+      "ASTRA-S15",
+      "ASTRA-TASK",
+      "S10",
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Signed baseline minus candidate; negative is additional virgin accounting mass, never savings.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-115",
+    "entity": "C5",
+    "field": "C5-BODY-ZERO-ALL-FILM-COUNTED.reduction_pct",
+    "current_value": {
+      "low": -27.49905884,
+      "central": 22.07160328,
+      "high": 54.57191653
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C5.vs.B1-ESTIMATED.reduction_pct",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -128.99002566,
+      "central": 33.28435593,
+      "high": 80.52671557
+    },
+    "calculation_id": "ASTRA-E493",
+    "source_ids": [
+      "ASTRA-S09",
+      "ASTRA-S11",
+      "ASTRA-S15",
+      "ASTRA-TASK",
+      "S10",
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Percent reduction with the same baseline denominator at each corner; negative is an increase.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-116",
+    "entity": "C6",
+    "field": "C6-GEOMETRY-VIRGIN-CLOSURE.reduction_g",
+    "current_value": {
+      "low": -36.34515,
+      "central": -12.705,
+      "high": 3.25335
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C6-RO-P.vs.B1-ESTIMATED.reduction_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -36.34515,
+      "central": -12.705,
+      "high": 3.25335
+    },
+    "calculation_id": "ASTRA-E504",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17",
+      "S20",
+      "S21",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Signed baseline minus candidate; negative is additional virgin accounting mass, never savings.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-117",
+    "entity": "C6",
+    "field": "C6-GEOMETRY-VIRGIN-CLOSURE.reduction_pct",
+    "current_value": {
+      "low": -1402.39422762,
+      "central": -195.50665538,
+      "high": 26.11035313
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C6-RO-P.vs.B1-ESTIMATED.reduction_pct",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -1402.39422762,
+      "central": -195.50665538,
+      "high": 26.11035313
+    },
+    "calculation_id": "ASTRA-E505",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17",
+      "S20",
+      "S21",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Percent reduction with the same baseline denominator at each corner; negative is an increase.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-118",
+    "entity": "C6",
+    "field": "C6-GEOMETRY-VIRGIN-CLOSURE.reduction_g",
+    "current_value": {
+      "low": -35.5293,
+      "central": -15.246,
+      "high": -4.30665
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C6-RO-P.vs.B1-ESTIMATED.reduction_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -36.34515,
+      "central": -12.705,
+      "high": 3.25335
+    },
+    "calculation_id": "ASTRA-E504",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17",
+      "S20",
+      "S21",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Signed baseline minus candidate; negative is additional virgin accounting mass, never savings.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-119",
+    "entity": "C6",
+    "field": "C6-GEOMETRY-VIRGIN-CLOSURE.reduction_pct",
+    "current_value": {
+      "low": -1042.67938371,
+      "central": -385.2432091,
+      "high": -87.89081633
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Conditional Screening Scenarios",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Recompute complete-pack model; C6 must bind selected configuration",
+    "target": "C6-RO-P.vs.B1-ESTIMATED.reduction_pct",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": -1402.39422762,
+      "central": -195.50665538,
+      "high": 26.11035313
+    },
+    "calculation_id": "ASTRA-E505",
+    "source_ids": [
+      "ASTRA-TASK",
+      "S17",
+      "S20",
+      "S21",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Percent reduction with the same baseline denominator at each corner; negative is an increase.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-120",
+    "entity": "B1",
+    "field": "virgin_fraction",
+    "current_value": 1.0,
+    "current_state": "OBSERVED_VERIFIED",
+    "missing": false,
+    "group": "G5",
+    "surface": "Baseline card",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Keep provider observation separate from bounded scenario",
+    "target": "B1-ESTIMATED.virgin_fraction",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 1,
+      "central": 1,
+      "high": 1
+    },
+    "calculation_id": "ASTRA-E009",
+    "source_ids": [
+      "S27",
+      "S30",
+      "TASK"
+    ],
+    "synthesis": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-121",
+    "entity": "B1",
+    "field": "complete_mass",
+    "current_value": null,
+    "current_state": "ABSENT",
+    "missing": true,
+    "group": "G3",
+    "surface": "Baseline card (missing optional field hidden)",
+    "why": "Projection absent or exact object shadows model",
+    "can_estimate": true,
+    "research_route": "Reuse E002/E003 or explicit B2 all-plastic scenario",
+    "target": "B1-ESTIMATED.total_package_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 2.59165,
+      "central": 6.4985,
+      "high": 12.46
+    },
+    "calculation_id": "ASTRA-E006",
+    "source_ids": [
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "Inherited HTF-03 calculation E002; original expression and input provenance retained in canonical calculation registry.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-122",
+    "entity": "B1",
+    "field": "complete_cost",
+    "current_value": null,
+    "current_state": "ABSENT",
+    "missing": true,
+    "group": "G4",
+    "surface": "Baseline card (B1/B2 hidden; B3 raw listed price not normalized)",
+    "why": "Projection absent or exact object shadows model",
+    "can_estimate": true,
+    "research_route": "Romanian market benchmark + closure + delivery + VAT",
+    "target": "B1-ESTIMATED.cost_net",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 0.326,
+      "central": 0.723,
+      "high": 1.2
+    },
+    "calculation_id": "ASTRA-E017",
+    "source_ids": [
+      "ASTRA-S04",
+      "ASTRA-TASK",
+      "S17"
+    ],
+    "synthesis": "Complete package Romania-delivered market model, recoverable VAT excluded; not Profi price.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-123",
+    "entity": "B2",
+    "field": "virgin_fraction",
+    "current_value": null,
+    "current_state": "ABSENT",
+    "missing": true,
+    "group": "G5",
+    "surface": "Baseline card",
+    "why": "Projection absent or exact object shadows model",
+    "can_estimate": true,
+    "research_route": "Keep provider observation separate from bounded scenario",
+    "target": "B1-ESTIMATED.virgin_fraction",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 1,
+      "central": 1,
+      "high": 1
+    },
+    "calculation_id": "ASTRA-E009",
+    "source_ids": [
+      "S27",
+      "S30",
+      "TASK"
+    ],
+    "synthesis": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-124",
+    "entity": "B2",
+    "field": "complete_mass",
+    "current_value": null,
+    "current_state": "ABSENT",
+    "missing": true,
+    "group": "G3",
+    "surface": "Baseline card (missing optional field hidden)",
+    "why": "Projection absent or exact object shadows model",
+    "can_estimate": true,
+    "research_route": "Reuse E002/E003 or explicit B2 all-plastic scenario",
+    "target": "B2.total_package_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 2.59165,
+      "central": 6.4985,
+      "high": 12.46
+    },
+    "calculation_id": "ASTRA-E050",
+    "source_ids": [
+      "S17",
+      "S27",
+      "S28",
+      "S29",
+      "S30"
+    ],
+    "synthesis": "B2 all-plastic geometry stress model; not exact SP31 material identification.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-125",
+    "entity": "B2",
+    "field": "complete_cost",
+    "current_value": null,
+    "current_state": "ABSENT",
+    "missing": true,
+    "group": "G4",
+    "surface": "Baseline card (B1/B2 hidden; B3 raw listed price not normalized)",
+    "why": "Projection absent or exact object shadows model",
+    "can_estimate": true,
+    "research_route": "Romanian market benchmark + closure + delivery + VAT",
+    "target": "B2.cost_net",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 1.06,
+      "central": 1.09,
+      "high": 1.2
+    },
+    "calculation_id": "ASTRA-E055",
+    "source_ids": [
+      "ASTRA-S04",
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Complete Romanian market comparator model; no exact selected B2 SKU claim.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-126",
+    "entity": "B3",
+    "field": "virgin_fraction",
+    "current_value": null,
+    "current_state": "ABSENT",
+    "missing": true,
+    "group": "G5",
+    "surface": "Baseline card",
+    "why": "Projection absent or exact object shadows model",
+    "can_estimate": true,
+    "research_route": "Keep provider observation separate from bounded scenario",
+    "target": "B3.virgin_fraction",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 1,
+      "central": 1,
+      "high": 1
+    },
+    "calculation_id": "ASTRA-E553",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "No recycled PP credit in selected B3 scenario; identical virgin and polymer mass, ratio exactly 1.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-127",
+    "entity": "B3",
+    "field": "complete_mass",
+    "current_value": {
+      "low": 10.7575,
+      "central": 11.6575,
+      "high": 13.3
+    },
+    "current_state": "ESTIMATED",
+    "missing": false,
+    "group": "G3",
+    "surface": "Baseline card (missing optional field hidden)",
+    "why": "Present; scope/normalization review",
+    "can_estimate": true,
+    "research_route": "Reuse E002/E003 or explicit B2 all-plastic scenario",
+    "target": "B3.total_package_mass_g",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 10.7575,
+      "central": 11.6575,
+      "high": 13.3
+    },
+    "calculation_id": "ASTRA-E056",
+    "source_ids": [
+      "S17"
+    ],
+    "synthesis": "Inherited HTF-03 calculation E003; original expression and input provenance retained in canonical calculation registry.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-128",
+    "entity": "B3",
+    "field": "complete_cost",
+    "current_value": null,
+    "current_state": "ABSENT",
+    "missing": true,
+    "group": "G4",
+    "surface": "Baseline card (B1/B2 hidden; B3 raw listed price not normalized)",
+    "why": "Projection absent or exact object shadows model",
+    "can_estimate": true,
+    "research_route": "Romanian market benchmark + closure + delivery + VAT",
+    "target": "B3.cost_net",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 0.326,
+      "central": 0.356,
+      "high": 0.466
+    },
+    "calculation_id": "ASTRA-E061",
+    "source_ids": [
+      "ASTRA-S04",
+      "ASTRA-S06",
+      "ASTRA-TASK",
+      "S17"
+    ],
+    "synthesis": "Historical body price normalized to net plus closure and domestic delivered allowance.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-129",
+    "entity": "DEMO",
+    "field": "annual_packages",
+    "current_value": null,
+    "current_state": "ABSENT",
+    "missing": true,
+    "group": "G5",
+    "surface": "Required narrative extension; not current numeric card",
+    "why": "Projection absent or exact object shadows model",
+    "can_estimate": true,
+    "research_route": "Observed network anchor + explicit bounded scenario",
+    "target": "NETWORK.annual_packages",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 1742400.0,
+      "central": 9504000.0,
+      "high": 30835200.0
+    },
+    "calculation_id": "ASTRA-E026",
+    "source_ids": [
+      "ASTRA-S01",
+      "ASTRA-S02",
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Whole and portions are disjoint demand streams; fallback packs replace a stream and must not be added.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-130",
+    "entity": "DEMO",
+    "field": "participating_locations",
+    "current_value": null,
+    "current_state": "ABSENT",
+    "missing": true,
+    "group": "G5",
+    "surface": "Required narrative extension; not current numeric card",
+    "why": "Projection absent or exact object shadows model",
+    "can_estimate": true,
+    "research_route": "Observed network anchor + explicit bounded scenario",
+    "target": "NETWORK.participating_locations",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 176.0,
+      "central": 440.0,
+      "high": 704.0
+    },
+    "calculation_id": "ASTRA-E020",
+    "source_ids": [
+      "ASTRA-S01",
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Scenario store count times assumed participation.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-131",
+    "entity": "DEMO",
+    "field": "daily_packages",
+    "current_value": null,
+    "current_state": "ABSENT",
+    "missing": true,
+    "group": "G5",
+    "surface": "Required narrative extension; not current numeric card",
+    "why": "Projection absent or exact object shadows model",
+    "can_estimate": true,
+    "research_route": "Observed network anchor + explicit bounded scenario",
+    "target": "NETWORK.daily_packages",
+    "final_state": "ESTIMATED",
+    "final_values": {
+      "low": 30,
+      "central": 60,
+      "high": 120
+    },
+    "calculation_id": "ASTRA-E027",
+    "source_ids": [
+      "ASTRA-S02",
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Combined disjoint whole and portions daily scenario.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-132",
+    "entity": "DEMO",
+    "field": "operating_days",
+    "current_value": null,
+    "current_state": "ABSENT",
+    "missing": true,
+    "group": "G5",
+    "surface": "Required narrative extension; not current numeric card",
+    "why": "Projection absent or exact object shadows model",
+    "can_estimate": true,
+    "research_route": "Observed network anchor + explicit bounded scenario",
+    "target": "NETWORK.operating_days",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 330,
+      "central": 360,
+      "high": 365
+    },
+    "calculation_id": "ASTRA-E021",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Calendar operating scenario; not observed store opening record.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-133",
+    "entity": "DEMO",
+    "field": "hot_hold_temperature",
+    "current_value": null,
+    "current_state": "ABSENT",
+    "missing": true,
+    "group": "G5",
+    "surface": "Required narrative extension; not current numeric card",
+    "why": "Projection absent or exact object shadows model",
+    "can_estimate": true,
+    "research_route": "Observed network anchor + explicit bounded scenario",
+    "target": "WORKFLOW.cabinet_temperature",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 85,
+      "central": 90,
+      "high": 95
+    },
+    "calculation_id": "ASTRA-E028",
+    "source_ids": [
+      "ASTRA-S14",
+      "ASTRA-S20"
+    ],
+    "synthesis": "MODELED RETAIL HOT-HOLD CONDITION: cabinet setpoint/stress range, not food core temperature or supplier qualification.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  },
+  {
+    "id": "GAP-134",
+    "entity": "DEMO",
+    "field": "oven_duration",
+    "current_value": null,
+    "current_state": "ABSENT",
+    "missing": true,
+    "group": "G5",
+    "surface": "Required narrative extension; not current numeric card",
+    "why": "Projection absent or exact object shadows model",
+    "can_estimate": true,
+    "research_route": "Observed network anchor + explicit bounded scenario",
+    "target": "WORKFLOW.oven_duration",
+    "final_state": "ASSUMED",
+    "final_values": {
+      "low": 30,
+      "central": 60,
+      "high": 90
+    },
+    "calculation_id": "ASTRA-E033",
+    "source_ids": [
+      "ASTRA-TASK"
+    ],
+    "synthesis": "Explicit missing-duration stress design; central 60 minutes. Official exposure duration remains unconfirmed.",
+    "closure_scope": "Proposed modeled projection only; current runtime unchanged"
+  }
+]

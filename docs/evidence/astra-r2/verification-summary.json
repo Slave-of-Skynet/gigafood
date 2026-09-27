@@ -1,0 +1,145 @@
+{
+  "base_sha": "21e9caa540dd710218147a2c343586dcd40f429b",
+  "inventory_rows": 134,
+  "broad_missing_before": 90,
+  "current_widget_missing_before": 75,
+  "proposed_avoidable_gaps": 0,
+  "current_runtime_changed": false,
+  "gate_cells": {
+    "QUALIFICATION_REQUIRED": 135,
+    "UNKNOWN": 129,
+    "FAIL": 24
+  },
+  "gate_rows": 48,
+  "ratio_exceptions": {
+    "C1": {
+      "unit": "RON/kg",
+      "formula": "incremental_cost_RON_per_pack / (positive_reduction_g_per_pack /1000); annual volume cancels",
+      "source_calculations": [
+        "ASTRA-E446",
+        "ASTRA-E444"
+      ],
+      "state": "ESTIMATED",
+      "confidence": "VERY_LOW",
+      "low": null,
+      "central": null,
+      "high": null,
+      "display": "Not applicable — no virgin plastic avoided in the central scenario; no finite whole-domain ratio across non-positive reductions."
+    },
+    "C2": {
+      "unit": "RON/kg",
+      "formula": "incremental_cost_RON_per_pack / (positive_reduction_g_per_pack /1000); annual volume cancels",
+      "source_calculations": [
+        "ASTRA-E458",
+        "ASTRA-E456"
+      ],
+      "state": "ESTIMATED",
+      "confidence": "VERY_LOW",
+      "low": null,
+      "central": 861.41706395,
+      "high": null,
+      "display": "Central ratio only; uncertainty crosses zero avoided mass, so no finite full-domain LOW/HIGH. Near zero positive reduction the ratio is unbounded."
+    },
+    "C3": {
+      "unit": "RON/kg",
+      "formula": "incremental_cost_RON_per_pack / (positive_reduction_g_per_pack /1000); annual volume cancels",
+      "source_calculations": [
+        "ASTRA-E470",
+        "ASTRA-E468"
+      ],
+      "state": "ESTIMATED",
+      "confidence": "VERY_LOW",
+      "low": null,
+      "central": null,
+      "high": null,
+      "display": "Not applicable — no virgin plastic avoided in the central scenario; no finite whole-domain ratio across non-positive reductions."
+    },
+    "C4": {
+      "unit": "RON/kg",
+      "formula": "incremental_cost_RON_per_pack / (positive_reduction_g_per_pack /1000); annual volume cancels",
+      "source_calculations": [
+        "ASTRA-E482",
+        "ASTRA-E480"
+      ],
+      "state": "ESTIMATED",
+      "confidence": "VERY_LOW",
+      "low": null,
+      "central": null,
+      "high": null,
+      "display": "Not applicable — no virgin plastic avoided in the central scenario; no finite whole-domain ratio across non-positive reductions."
+    },
+    "C5": {
+      "unit": "RON/kg",
+      "formula": "incremental_cost_RON_per_pack / (positive_reduction_g_per_pack /1000); annual volume cancels",
+      "source_calculations": [
+        "ASTRA-E494",
+        "ASTRA-E492"
+      ],
+      "state": "ESTIMATED",
+      "confidence": "VERY_LOW",
+      "low": null,
+      "central": 901.35817795,
+      "high": null,
+      "display": "Central ratio only; uncertainty crosses zero avoided mass, so no finite full-domain LOW/HIGH. Near zero positive reduction the ratio is unbounded."
+    },
+    "C6-RO-P": {
+      "unit": "RON/kg",
+      "formula": "incremental_cost_RON_per_pack / (positive_reduction_g_per_pack /1000); annual volume cancels",
+      "source_calculations": [
+        "ASTRA-E506",
+        "ASTRA-E504"
+      ],
+      "state": "ESTIMATED",
+      "confidence": "VERY_LOW",
+      "low": null,
+      "central": null,
+      "high": null,
+      "display": "Not applicable — no virgin plastic avoided in the central scenario; no finite whole-domain ratio across non-positive reductions."
+    },
+    "C6-RO-W": {
+      "unit": "RON/kg",
+      "formula": "incremental_cost_RON_per_pack / (positive_reduction_g_per_pack /1000); annual volume cancels",
+      "source_calculations": [
+        "ASTRA-E518",
+        "ASTRA-E516"
+      ],
+      "state": "ESTIMATED",
+      "confidence": "VERY_LOW",
+      "low": null,
+      "central": null,
+      "high": null,
+      "display": "Not applicable — no virgin plastic avoided in the central scenario; no finite whole-domain ratio across non-positive reductions."
+    },
+    "C6-RO-H": {
+      "unit": "RON/kg",
+      "formula": "incremental_cost_RON_per_pack / (positive_reduction_g_per_pack /1000); annual volume cancels",
+      "source_calculations": [
+        "ASTRA-E530",
+        "ASTRA-E528"
+      ],
+      "state": "ESTIMATED",
+      "confidence": "VERY_LOW",
+      "low": null,
+      "central": null,
+      "high": null,
+      "display": "Not applicable — no virgin plastic avoided in the central scenario; no finite whole-domain ratio across non-positive reductions."
+    },
+    "C6-EU": {
+      "unit": "RON/kg",
+      "formula": "incremental_cost_RON_per_pack / (positive_reduction_g_per_pack /1000); annual volume cancels",
+      "source_calculations": [
+        "ASTRA-E542",
+        "ASTRA-E540"
+      ],
+      "state": "ESTIMATED",
+      "confidence": "VERY_LOW",
+      "low": null,
+      "central": null,
+      "high": null,
+      "display": "Not applicable — no virgin plastic avoided in the central scenario; no finite whole-domain ratio across non-positive reductions."
+    }
+  },
+  "calculation_count": 553,
+  "field_count": 553,
+  "projection_mapping_count": 417
+}

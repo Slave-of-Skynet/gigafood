@@ -1,0 +1,3755 @@
+[
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "metrics",
+    "field": "total_package_mass_g",
+    "model_field": "B1-ESTIMATED.total_package_mass_g",
+    "calculation_id": "ASTRA-E006",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.total_package_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "metrics",
+    "field": "plastic_mass_g",
+    "model_field": "B1-ESTIMATED.plastic_mass_g",
+    "calculation_id": "ASTRA-E007",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "metrics",
+    "field": "virgin_plastic_mass_g",
+    "model_field": "B1-ESTIMATED.virgin_plastic_mass_g",
+    "calculation_id": "ASTRA-E008",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.virgin_plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "metrics",
+    "field": "recycled_material_fraction",
+    "model_field": "B1-ESTIMATED.recycled_material_fraction",
+    "calculation_id": "ASTRA-E010",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.recycled_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "metrics",
+    "field": "renewable_material_fraction",
+    "model_field": "B1-ESTIMATED.renewable_material_fraction",
+    "calculation_id": "ASTRA-E011",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.renewable_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "geometry",
+    "field": "usable_length_mm",
+    "model_field": "BAG.usable_length",
+    "calculation_id": "ASTRA-E044",
+    "sidecar_pointer": "/fields/BAG.usable_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "geometry",
+    "field": "usable_width_mm",
+    "model_field": "BAG.usable_width",
+    "calculation_id": "ASTRA-E045",
+    "sidecar_pointer": "/fields/BAG.usable_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "geometry",
+    "field": "usable_height_mm",
+    "model_field": "BAG.usable_height",
+    "calculation_id": "ASTRA-E046",
+    "sidecar_pointer": "/fields/BAG.usable_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "geometry",
+    "field": "capacity_ml",
+    "model_field": "BAG.usable_volume",
+    "calculation_id": "ASTRA-E048",
+    "sidecar_pointer": "/fields/BAG.usable_volume",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "geometry",
+    "field": "closure_allowance_mm",
+    "model_field": "BAG.closure_allowance",
+    "calculation_id": "ASTRA-E049",
+    "sidecar_pointer": "/fields/BAG.closure_allowance",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "geometry",
+    "field": "outer_width_mm",
+    "model_field": "B1-ESTIMATED.outer_width_mm",
+    "calculation_id": "ASTRA-E182",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.outer_width_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "geometry",
+    "field": "gusset_mm",
+    "model_field": "B1-ESTIMATED.gusset_mm",
+    "calculation_id": "ASTRA-E183",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.gusset_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "geometry",
+    "field": "outer_length_mm",
+    "model_field": "B1-ESTIMATED.outer_length_mm",
+    "calculation_id": "ASTRA-E184",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.outer_length_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "geometry",
+    "field": "usable_fill_ml",
+    "model_field": "B1-ESTIMATED.usable_fill_ml",
+    "calculation_id": "ASTRA-E185",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.usable_fill_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "geometry",
+    "field": "whole_headroom_length_mm",
+    "model_field": "B1-ESTIMATED.whole_headroom_length",
+    "calculation_id": "ASTRA-E186",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.whole_headroom_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "geometry",
+    "field": "whole_headroom_width_mm",
+    "model_field": "B1-ESTIMATED.whole_headroom_width",
+    "calculation_id": "ASTRA-E187",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.whole_headroom_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "geometry",
+    "field": "whole_headroom_height_mm",
+    "model_field": "B1-ESTIMATED.whole_headroom_height",
+    "calculation_id": "ASTRA-E188",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.whole_headroom_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "geometry",
+    "field": "whole_fill_ratio",
+    "model_field": "B1-ESTIMATED.whole_fill_ratio",
+    "calculation_id": "ASTRA-E189",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.whole_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "geometry",
+    "field": "portion_fill_ratio",
+    "model_field": "B1-ESTIMATED.portion_fill_ratio",
+    "calculation_id": "ASTRA-E190",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.portion_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "geometry",
+    "field": "portion_capacity_kg",
+    "model_field": "B1-ESTIMATED.portion_capacity_kg",
+    "calculation_id": "ASTRA-E191",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.portion_capacity_kg",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "thermal",
+    "field": "body_screening_degC",
+    "model_field": "B1-ESTIMATED.body_screening_degC",
+    "calculation_id": "ASTRA-E192",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "thermal",
+    "field": "hold_degC",
+    "model_field": "WORKFLOW.cabinet_temperature",
+    "calculation_id": "ASTRA-E028",
+    "sidecar_pointer": "/fields/WORKFLOW.cabinet_temperature",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "thermal",
+    "field": "hold_minutes",
+    "model_field": "WORKFLOW.hold_minutes",
+    "calculation_id": "ASTRA-E031",
+    "sidecar_pointer": "/fields/WORKFLOW.hold_minutes",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "thermal",
+    "field": "complete_system_screening_degC",
+    "model_field": "B1-ESTIMATED.body_screening_degC",
+    "calculation_id": "ASTRA-E192",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "procurement",
+    "field": "industrial_moq",
+    "model_field": "B1-ESTIMATED.industrial_moq",
+    "calculation_id": "ASTRA-E193",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.industrial_moq",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "procurement",
+    "field": "order_unit",
+    "model_field": "B1-ESTIMATED.order_unit",
+    "calculation_id": "ASTRA-E194",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.order_unit",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "procurement",
+    "field": "pallet_quantity",
+    "model_field": "B1-ESTIMATED.pallet_quantity",
+    "calculation_id": "ASTRA-E195",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.pallet_quantity",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "procurement",
+    "field": "lead_time",
+    "model_field": "B1-ESTIMATED.lead_time",
+    "calculation_id": "ASTRA-E196",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.lead_time",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "procurement",
+    "field": "cost_net",
+    "model_field": "B1-ESTIMATED.cost_net",
+    "calculation_id": "ASTRA-E017",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.cost_net",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "procurement",
+    "field": "cost_gross",
+    "model_field": "B1-ESTIMATED.cost_gross",
+    "calculation_id": "ASTRA-E197",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.cost_gross",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "viewing",
+    "field": "visible_area_m2",
+    "model_field": "B1-ESTIMATED.visible_area_m2",
+    "calculation_id": "ASTRA-E198",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.visible_area_m2",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "viewing",
+    "field": "visible_fraction",
+    "model_field": "B1-ESTIMATED.visible_fraction",
+    "calculation_id": "ASTRA-E199",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.visible_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B1-ESTIMATED",
+    "surface": "viewing",
+    "field": "anti_fog_target",
+    "model_field": "B1-ESTIMATED.anti_fog_target",
+    "calculation_id": "ASTRA-E200",
+    "sidecar_pointer": "/fields/B1-ESTIMATED.anti_fog_target",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "metrics",
+    "field": "total_package_mass_g",
+    "model_field": "B2.total_package_mass_g",
+    "calculation_id": "ASTRA-E050",
+    "sidecar_pointer": "/fields/B2.total_package_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "metrics",
+    "field": "plastic_mass_g",
+    "model_field": "B2.plastic_mass_g",
+    "calculation_id": "ASTRA-E051",
+    "sidecar_pointer": "/fields/B2.plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "metrics",
+    "field": "virgin_plastic_mass_g",
+    "model_field": "B2.virgin_plastic_mass_g",
+    "calculation_id": "ASTRA-E052",
+    "sidecar_pointer": "/fields/B2.virgin_plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "metrics",
+    "field": "recycled_material_fraction",
+    "model_field": "B2.recycled_material_fraction",
+    "calculation_id": "ASTRA-E053",
+    "sidecar_pointer": "/fields/B2.recycled_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "metrics",
+    "field": "renewable_material_fraction",
+    "model_field": "B2.renewable_material_fraction",
+    "calculation_id": "ASTRA-E054",
+    "sidecar_pointer": "/fields/B2.renewable_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "geometry",
+    "field": "usable_length_mm",
+    "model_field": "BAG.usable_length",
+    "calculation_id": "ASTRA-E044",
+    "sidecar_pointer": "/fields/BAG.usable_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "geometry",
+    "field": "usable_width_mm",
+    "model_field": "BAG.usable_width",
+    "calculation_id": "ASTRA-E045",
+    "sidecar_pointer": "/fields/BAG.usable_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "geometry",
+    "field": "usable_height_mm",
+    "model_field": "BAG.usable_height",
+    "calculation_id": "ASTRA-E046",
+    "sidecar_pointer": "/fields/BAG.usable_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "geometry",
+    "field": "capacity_ml",
+    "model_field": "BAG.usable_volume",
+    "calculation_id": "ASTRA-E048",
+    "sidecar_pointer": "/fields/BAG.usable_volume",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "geometry",
+    "field": "closure_allowance_mm",
+    "model_field": "BAG.closure_allowance",
+    "calculation_id": "ASTRA-E049",
+    "sidecar_pointer": "/fields/BAG.closure_allowance",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "geometry",
+    "field": "outer_width_mm",
+    "model_field": "B2.outer_width_mm",
+    "calculation_id": "ASTRA-E201",
+    "sidecar_pointer": "/fields/B2.outer_width_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "geometry",
+    "field": "gusset_mm",
+    "model_field": "B2.gusset_mm",
+    "calculation_id": "ASTRA-E202",
+    "sidecar_pointer": "/fields/B2.gusset_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "geometry",
+    "field": "outer_length_mm",
+    "model_field": "B2.outer_length_mm",
+    "calculation_id": "ASTRA-E203",
+    "sidecar_pointer": "/fields/B2.outer_length_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "geometry",
+    "field": "usable_fill_ml",
+    "model_field": "B2.usable_fill_ml",
+    "calculation_id": "ASTRA-E204",
+    "sidecar_pointer": "/fields/B2.usable_fill_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "geometry",
+    "field": "whole_headroom_length_mm",
+    "model_field": "B2.whole_headroom_length",
+    "calculation_id": "ASTRA-E205",
+    "sidecar_pointer": "/fields/B2.whole_headroom_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "geometry",
+    "field": "whole_headroom_width_mm",
+    "model_field": "B2.whole_headroom_width",
+    "calculation_id": "ASTRA-E206",
+    "sidecar_pointer": "/fields/B2.whole_headroom_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "geometry",
+    "field": "whole_headroom_height_mm",
+    "model_field": "B2.whole_headroom_height",
+    "calculation_id": "ASTRA-E207",
+    "sidecar_pointer": "/fields/B2.whole_headroom_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "geometry",
+    "field": "whole_fill_ratio",
+    "model_field": "B2.whole_fill_ratio",
+    "calculation_id": "ASTRA-E208",
+    "sidecar_pointer": "/fields/B2.whole_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "geometry",
+    "field": "portion_fill_ratio",
+    "model_field": "B2.portion_fill_ratio",
+    "calculation_id": "ASTRA-E209",
+    "sidecar_pointer": "/fields/B2.portion_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "geometry",
+    "field": "portion_capacity_kg",
+    "model_field": "B2.portion_capacity_kg",
+    "calculation_id": "ASTRA-E210",
+    "sidecar_pointer": "/fields/B2.portion_capacity_kg",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "thermal",
+    "field": "body_screening_degC",
+    "model_field": "B2.body_screening_degC",
+    "calculation_id": "ASTRA-E211",
+    "sidecar_pointer": "/fields/B2.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "thermal",
+    "field": "hold_degC",
+    "model_field": "WORKFLOW.cabinet_temperature",
+    "calculation_id": "ASTRA-E028",
+    "sidecar_pointer": "/fields/WORKFLOW.cabinet_temperature",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "thermal",
+    "field": "hold_minutes",
+    "model_field": "WORKFLOW.hold_minutes",
+    "calculation_id": "ASTRA-E031",
+    "sidecar_pointer": "/fields/WORKFLOW.hold_minutes",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "thermal",
+    "field": "complete_system_screening_degC",
+    "model_field": "B2.body_screening_degC",
+    "calculation_id": "ASTRA-E211",
+    "sidecar_pointer": "/fields/B2.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "procurement",
+    "field": "industrial_moq",
+    "model_field": "B2.industrial_moq",
+    "calculation_id": "ASTRA-E212",
+    "sidecar_pointer": "/fields/B2.industrial_moq",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "procurement",
+    "field": "order_unit",
+    "model_field": "B2.order_unit",
+    "calculation_id": "ASTRA-E213",
+    "sidecar_pointer": "/fields/B2.order_unit",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "procurement",
+    "field": "pallet_quantity",
+    "model_field": "B2.pallet_quantity",
+    "calculation_id": "ASTRA-E214",
+    "sidecar_pointer": "/fields/B2.pallet_quantity",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "procurement",
+    "field": "lead_time",
+    "model_field": "B2.lead_time",
+    "calculation_id": "ASTRA-E215",
+    "sidecar_pointer": "/fields/B2.lead_time",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "procurement",
+    "field": "cost_net",
+    "model_field": "B2.cost_net",
+    "calculation_id": "ASTRA-E055",
+    "sidecar_pointer": "/fields/B2.cost_net",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "procurement",
+    "field": "cost_gross",
+    "model_field": "B2.cost_gross",
+    "calculation_id": "ASTRA-E216",
+    "sidecar_pointer": "/fields/B2.cost_gross",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "viewing",
+    "field": "visible_area_m2",
+    "model_field": "B2.visible_area_m2",
+    "calculation_id": "ASTRA-E217",
+    "sidecar_pointer": "/fields/B2.visible_area_m2",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "viewing",
+    "field": "visible_fraction",
+    "model_field": "B2.visible_fraction",
+    "calculation_id": "ASTRA-E218",
+    "sidecar_pointer": "/fields/B2.visible_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B2",
+    "surface": "viewing",
+    "field": "anti_fog_target",
+    "model_field": "B2.anti_fog_target",
+    "calculation_id": "ASTRA-E219",
+    "sidecar_pointer": "/fields/B2.anti_fog_target",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "metrics",
+    "field": "total_package_mass_g",
+    "model_field": "B3.total_package_mass_g",
+    "calculation_id": "ASTRA-E056",
+    "sidecar_pointer": "/fields/B3.total_package_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "metrics",
+    "field": "plastic_mass_g",
+    "model_field": "B3.plastic_mass_g",
+    "calculation_id": "ASTRA-E057",
+    "sidecar_pointer": "/fields/B3.plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "metrics",
+    "field": "virgin_plastic_mass_g",
+    "model_field": "B3.virgin_plastic_mass_g",
+    "calculation_id": "ASTRA-E058",
+    "sidecar_pointer": "/fields/B3.virgin_plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "metrics",
+    "field": "renewable_material_fraction",
+    "model_field": "B3.renewable_material_fraction",
+    "calculation_id": "ASTRA-E059",
+    "sidecar_pointer": "/fields/B3.renewable_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "metrics",
+    "field": "recycled_material_fraction",
+    "model_field": "B3.recycled_material_fraction",
+    "calculation_id": "ASTRA-E060",
+    "sidecar_pointer": "/fields/B3.recycled_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "geometry",
+    "field": "usable_length_mm",
+    "model_field": "BAG.usable_length",
+    "calculation_id": "ASTRA-E044",
+    "sidecar_pointer": "/fields/BAG.usable_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "geometry",
+    "field": "usable_width_mm",
+    "model_field": "BAG.usable_width",
+    "calculation_id": "ASTRA-E045",
+    "sidecar_pointer": "/fields/BAG.usable_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "geometry",
+    "field": "usable_height_mm",
+    "model_field": "BAG.usable_height",
+    "calculation_id": "ASTRA-E046",
+    "sidecar_pointer": "/fields/BAG.usable_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "geometry",
+    "field": "capacity_ml",
+    "model_field": "BAG.usable_volume",
+    "calculation_id": "ASTRA-E048",
+    "sidecar_pointer": "/fields/BAG.usable_volume",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "geometry",
+    "field": "closure_allowance_mm",
+    "model_field": "BAG.closure_allowance",
+    "calculation_id": "ASTRA-E049",
+    "sidecar_pointer": "/fields/BAG.closure_allowance",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "geometry",
+    "field": "outer_width_mm",
+    "model_field": "B3.outer_width_mm",
+    "calculation_id": "ASTRA-E220",
+    "sidecar_pointer": "/fields/B3.outer_width_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "geometry",
+    "field": "gusset_mm",
+    "model_field": "B3.gusset_mm",
+    "calculation_id": "ASTRA-E221",
+    "sidecar_pointer": "/fields/B3.gusset_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "geometry",
+    "field": "outer_length_mm",
+    "model_field": "B3.outer_length_mm",
+    "calculation_id": "ASTRA-E222",
+    "sidecar_pointer": "/fields/B3.outer_length_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "geometry",
+    "field": "usable_fill_ml",
+    "model_field": "B3.usable_fill_ml",
+    "calculation_id": "ASTRA-E223",
+    "sidecar_pointer": "/fields/B3.usable_fill_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "geometry",
+    "field": "whole_headroom_length_mm",
+    "model_field": "B3.whole_headroom_length",
+    "calculation_id": "ASTRA-E224",
+    "sidecar_pointer": "/fields/B3.whole_headroom_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "geometry",
+    "field": "whole_headroom_width_mm",
+    "model_field": "B3.whole_headroom_width",
+    "calculation_id": "ASTRA-E225",
+    "sidecar_pointer": "/fields/B3.whole_headroom_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "geometry",
+    "field": "whole_headroom_height_mm",
+    "model_field": "B3.whole_headroom_height",
+    "calculation_id": "ASTRA-E226",
+    "sidecar_pointer": "/fields/B3.whole_headroom_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "geometry",
+    "field": "whole_fill_ratio",
+    "model_field": "B3.whole_fill_ratio",
+    "calculation_id": "ASTRA-E227",
+    "sidecar_pointer": "/fields/B3.whole_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "geometry",
+    "field": "portion_fill_ratio",
+    "model_field": "B3.portion_fill_ratio",
+    "calculation_id": "ASTRA-E228",
+    "sidecar_pointer": "/fields/B3.portion_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "geometry",
+    "field": "portion_capacity_kg",
+    "model_field": "B3.portion_capacity_kg",
+    "calculation_id": "ASTRA-E229",
+    "sidecar_pointer": "/fields/B3.portion_capacity_kg",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "thermal",
+    "field": "body_screening_degC",
+    "model_field": "B3.body_screening_degC",
+    "calculation_id": "ASTRA-E230",
+    "sidecar_pointer": "/fields/B3.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "thermal",
+    "field": "hold_degC",
+    "model_field": "WORKFLOW.cabinet_temperature",
+    "calculation_id": "ASTRA-E028",
+    "sidecar_pointer": "/fields/WORKFLOW.cabinet_temperature",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "thermal",
+    "field": "hold_minutes",
+    "model_field": "WORKFLOW.hold_minutes",
+    "calculation_id": "ASTRA-E031",
+    "sidecar_pointer": "/fields/WORKFLOW.hold_minutes",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "thermal",
+    "field": "complete_system_screening_degC",
+    "model_field": "B3.body_screening_degC",
+    "calculation_id": "ASTRA-E230",
+    "sidecar_pointer": "/fields/B3.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "procurement",
+    "field": "industrial_moq",
+    "model_field": "B3.industrial_moq",
+    "calculation_id": "ASTRA-E231",
+    "sidecar_pointer": "/fields/B3.industrial_moq",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "procurement",
+    "field": "order_unit",
+    "model_field": "B3.order_unit",
+    "calculation_id": "ASTRA-E232",
+    "sidecar_pointer": "/fields/B3.order_unit",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "procurement",
+    "field": "pallet_quantity",
+    "model_field": "B3.pallet_quantity",
+    "calculation_id": "ASTRA-E233",
+    "sidecar_pointer": "/fields/B3.pallet_quantity",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "procurement",
+    "field": "lead_time",
+    "model_field": "B3.lead_time",
+    "calculation_id": "ASTRA-E234",
+    "sidecar_pointer": "/fields/B3.lead_time",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "procurement",
+    "field": "cost_net",
+    "model_field": "B3.cost_net",
+    "calculation_id": "ASTRA-E061",
+    "sidecar_pointer": "/fields/B3.cost_net",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "procurement",
+    "field": "cost_gross",
+    "model_field": "B3.cost_gross",
+    "calculation_id": "ASTRA-E235",
+    "sidecar_pointer": "/fields/B3.cost_gross",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "viewing",
+    "field": "visible_area_m2",
+    "model_field": "B3.visible_area_m2",
+    "calculation_id": "ASTRA-E236",
+    "sidecar_pointer": "/fields/B3.visible_area_m2",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "viewing",
+    "field": "visible_fraction",
+    "model_field": "B3.visible_fraction",
+    "calculation_id": "ASTRA-E237",
+    "sidecar_pointer": "/fields/B3.visible_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "B3",
+    "surface": "viewing",
+    "field": "anti_fog_target",
+    "model_field": "B3.anti_fog_target",
+    "calculation_id": "ASTRA-E238",
+    "sidecar_pointer": "/fields/B3.anti_fog_target",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "metrics",
+    "field": "total_package_mass_g",
+    "model_field": "C1.total_package_mass_g",
+    "calculation_id": "ASTRA-E069",
+    "sidecar_pointer": "/fields/C1.total_package_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "metrics",
+    "field": "plastic_mass_g",
+    "model_field": "C1.plastic_mass_g",
+    "calculation_id": "ASTRA-E070",
+    "sidecar_pointer": "/fields/C1.plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "metrics",
+    "field": "virgin_plastic_mass_g",
+    "model_field": "C1.virgin_plastic_mass_g",
+    "calculation_id": "ASTRA-E071",
+    "sidecar_pointer": "/fields/C1.virgin_plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "metrics",
+    "field": "recycled_material_fraction",
+    "model_field": "C1.recycled_material_fraction",
+    "calculation_id": "ASTRA-E072",
+    "sidecar_pointer": "/fields/C1.recycled_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "metrics",
+    "field": "renewable_material_fraction",
+    "model_field": "C1.renewable_material_fraction",
+    "calculation_id": "ASTRA-E074",
+    "sidecar_pointer": "/fields/C1.renewable_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "components",
+    "field": "paper",
+    "model_field": "C1.paper_g",
+    "calculation_id": "ASTRA-E066",
+    "sidecar_pointer": "/fields/C1.paper_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "components",
+    "field": "liner_including_window",
+    "model_field": "C1.liner_g",
+    "calculation_id": "ASTRA-E067",
+    "sidecar_pointer": "/fields/C1.liner_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "components",
+    "field": "coating",
+    "model_field": "C1.coating_g",
+    "calculation_id": "ASTRA-E068",
+    "sidecar_pointer": "/fields/C1.coating_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "components",
+    "field": "closure",
+    "model_field": "COMMON.ancillary_g",
+    "calculation_id": "ASTRA-E004",
+    "sidecar_pointer": "/fields/COMMON.ancillary_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "geometry",
+    "field": "usable_length_mm",
+    "model_field": "BAG.usable_length",
+    "calculation_id": "ASTRA-E044",
+    "sidecar_pointer": "/fields/BAG.usable_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "geometry",
+    "field": "usable_width_mm",
+    "model_field": "BAG.usable_width",
+    "calculation_id": "ASTRA-E045",
+    "sidecar_pointer": "/fields/BAG.usable_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "geometry",
+    "field": "usable_height_mm",
+    "model_field": "BAG.usable_height",
+    "calculation_id": "ASTRA-E046",
+    "sidecar_pointer": "/fields/BAG.usable_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "geometry",
+    "field": "capacity_ml",
+    "model_field": "BAG.usable_volume",
+    "calculation_id": "ASTRA-E048",
+    "sidecar_pointer": "/fields/BAG.usable_volume",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "geometry",
+    "field": "closure_allowance_mm",
+    "model_field": "BAG.closure_allowance",
+    "calculation_id": "ASTRA-E049",
+    "sidecar_pointer": "/fields/BAG.closure_allowance",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "geometry",
+    "field": "outer_width_mm",
+    "model_field": "C1.outer_width_mm",
+    "calculation_id": "ASTRA-E239",
+    "sidecar_pointer": "/fields/C1.outer_width_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "geometry",
+    "field": "gusset_mm",
+    "model_field": "C1.gusset_mm",
+    "calculation_id": "ASTRA-E240",
+    "sidecar_pointer": "/fields/C1.gusset_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "geometry",
+    "field": "outer_length_mm",
+    "model_field": "C1.outer_length_mm",
+    "calculation_id": "ASTRA-E241",
+    "sidecar_pointer": "/fields/C1.outer_length_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "geometry",
+    "field": "usable_fill_ml",
+    "model_field": "C1.usable_fill_ml",
+    "calculation_id": "ASTRA-E242",
+    "sidecar_pointer": "/fields/C1.usable_fill_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "geometry",
+    "field": "whole_headroom_length_mm",
+    "model_field": "C1.whole_headroom_length",
+    "calculation_id": "ASTRA-E243",
+    "sidecar_pointer": "/fields/C1.whole_headroom_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "geometry",
+    "field": "whole_headroom_width_mm",
+    "model_field": "C1.whole_headroom_width",
+    "calculation_id": "ASTRA-E244",
+    "sidecar_pointer": "/fields/C1.whole_headroom_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "geometry",
+    "field": "whole_headroom_height_mm",
+    "model_field": "C1.whole_headroom_height",
+    "calculation_id": "ASTRA-E245",
+    "sidecar_pointer": "/fields/C1.whole_headroom_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "geometry",
+    "field": "whole_fill_ratio",
+    "model_field": "C1.whole_fill_ratio",
+    "calculation_id": "ASTRA-E246",
+    "sidecar_pointer": "/fields/C1.whole_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "geometry",
+    "field": "portion_fill_ratio",
+    "model_field": "C1.portion_fill_ratio",
+    "calculation_id": "ASTRA-E247",
+    "sidecar_pointer": "/fields/C1.portion_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "geometry",
+    "field": "portion_capacity_kg",
+    "model_field": "C1.portion_capacity_kg",
+    "calculation_id": "ASTRA-E248",
+    "sidecar_pointer": "/fields/C1.portion_capacity_kg",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "thermal",
+    "field": "body_screening_degC",
+    "model_field": "C1.body_screening_degC",
+    "calculation_id": "ASTRA-E249",
+    "sidecar_pointer": "/fields/C1.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "thermal",
+    "field": "hold_degC",
+    "model_field": "WORKFLOW.cabinet_temperature",
+    "calculation_id": "ASTRA-E028",
+    "sidecar_pointer": "/fields/WORKFLOW.cabinet_temperature",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "thermal",
+    "field": "hold_minutes",
+    "model_field": "WORKFLOW.hold_minutes",
+    "calculation_id": "ASTRA-E031",
+    "sidecar_pointer": "/fields/WORKFLOW.hold_minutes",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "thermal",
+    "field": "complete_system_screening_degC",
+    "model_field": "C1.body_screening_degC",
+    "calculation_id": "ASTRA-E249",
+    "sidecar_pointer": "/fields/C1.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "procurement",
+    "field": "industrial_moq",
+    "model_field": "C1.industrial_moq",
+    "calculation_id": "ASTRA-E250",
+    "sidecar_pointer": "/fields/C1.industrial_moq",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "procurement",
+    "field": "order_unit",
+    "model_field": "C1.order_unit",
+    "calculation_id": "ASTRA-E251",
+    "sidecar_pointer": "/fields/C1.order_unit",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "procurement",
+    "field": "pallet_quantity",
+    "model_field": "C1.pallet_quantity",
+    "calculation_id": "ASTRA-E252",
+    "sidecar_pointer": "/fields/C1.pallet_quantity",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "procurement",
+    "field": "lead_time",
+    "model_field": "C1.lead_time",
+    "calculation_id": "ASTRA-E253",
+    "sidecar_pointer": "/fields/C1.lead_time",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "procurement",
+    "field": "cost_net",
+    "model_field": "C1.cost_net",
+    "calculation_id": "ASTRA-E084",
+    "sidecar_pointer": "/fields/C1.cost_net",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "procurement",
+    "field": "cost_gross",
+    "model_field": "C1.cost_gross",
+    "calculation_id": "ASTRA-E254",
+    "sidecar_pointer": "/fields/C1.cost_gross",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "viewing",
+    "field": "visible_area_m2",
+    "model_field": "C1.visible_area_m2",
+    "calculation_id": "ASTRA-E255",
+    "sidecar_pointer": "/fields/C1.visible_area_m2",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "viewing",
+    "field": "visible_fraction",
+    "model_field": "C1.visible_fraction",
+    "calculation_id": "ASTRA-E256",
+    "sidecar_pointer": "/fields/C1.visible_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C1",
+    "surface": "viewing",
+    "field": "anti_fog_target",
+    "model_field": "C1.anti_fog_target",
+    "calculation_id": "ASTRA-E257",
+    "sidecar_pointer": "/fields/C1.anti_fog_target",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "metrics",
+    "field": "total_package_mass_g",
+    "model_field": "C2.total_package_mass_g",
+    "calculation_id": "ASTRA-E085",
+    "sidecar_pointer": "/fields/C2.total_package_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "metrics",
+    "field": "plastic_mass_g",
+    "model_field": "C2.plastic_mass_g",
+    "calculation_id": "ASTRA-E086",
+    "sidecar_pointer": "/fields/C2.plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "metrics",
+    "field": "virgin_plastic_mass_g",
+    "model_field": "C2.virgin_plastic_mass_g",
+    "calculation_id": "ASTRA-E087",
+    "sidecar_pointer": "/fields/C2.virgin_plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "metrics",
+    "field": "recycled_material_fraction",
+    "model_field": "C2.recycled_material_fraction",
+    "calculation_id": "ASTRA-E088",
+    "sidecar_pointer": "/fields/C2.recycled_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "metrics",
+    "field": "renewable_material_fraction",
+    "model_field": "C2.renewable_material_fraction",
+    "calculation_id": "ASTRA-E089",
+    "sidecar_pointer": "/fields/C2.renewable_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "geometry",
+    "field": "usable_length_mm",
+    "model_field": "BAG.usable_length",
+    "calculation_id": "ASTRA-E044",
+    "sidecar_pointer": "/fields/BAG.usable_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "geometry",
+    "field": "usable_width_mm",
+    "model_field": "BAG.usable_width",
+    "calculation_id": "ASTRA-E045",
+    "sidecar_pointer": "/fields/BAG.usable_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "geometry",
+    "field": "usable_height_mm",
+    "model_field": "BAG.usable_height",
+    "calculation_id": "ASTRA-E046",
+    "sidecar_pointer": "/fields/BAG.usable_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "geometry",
+    "field": "capacity_ml",
+    "model_field": "BAG.usable_volume",
+    "calculation_id": "ASTRA-E048",
+    "sidecar_pointer": "/fields/BAG.usable_volume",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "geometry",
+    "field": "closure_allowance_mm",
+    "model_field": "BAG.closure_allowance",
+    "calculation_id": "ASTRA-E049",
+    "sidecar_pointer": "/fields/BAG.closure_allowance",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "geometry",
+    "field": "outer_width_mm",
+    "model_field": "C2.outer_width_mm",
+    "calculation_id": "ASTRA-E258",
+    "sidecar_pointer": "/fields/C2.outer_width_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "geometry",
+    "field": "gusset_mm",
+    "model_field": "C2.gusset_mm",
+    "calculation_id": "ASTRA-E259",
+    "sidecar_pointer": "/fields/C2.gusset_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "geometry",
+    "field": "outer_length_mm",
+    "model_field": "C2.outer_length_mm",
+    "calculation_id": "ASTRA-E260",
+    "sidecar_pointer": "/fields/C2.outer_length_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "geometry",
+    "field": "usable_fill_ml",
+    "model_field": "C2.usable_fill_ml",
+    "calculation_id": "ASTRA-E261",
+    "sidecar_pointer": "/fields/C2.usable_fill_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "geometry",
+    "field": "whole_headroom_length_mm",
+    "model_field": "C2.whole_headroom_length",
+    "calculation_id": "ASTRA-E262",
+    "sidecar_pointer": "/fields/C2.whole_headroom_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "geometry",
+    "field": "whole_headroom_width_mm",
+    "model_field": "C2.whole_headroom_width",
+    "calculation_id": "ASTRA-E263",
+    "sidecar_pointer": "/fields/C2.whole_headroom_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "geometry",
+    "field": "whole_headroom_height_mm",
+    "model_field": "C2.whole_headroom_height",
+    "calculation_id": "ASTRA-E264",
+    "sidecar_pointer": "/fields/C2.whole_headroom_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "geometry",
+    "field": "whole_fill_ratio",
+    "model_field": "C2.whole_fill_ratio",
+    "calculation_id": "ASTRA-E265",
+    "sidecar_pointer": "/fields/C2.whole_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "geometry",
+    "field": "portion_fill_ratio",
+    "model_field": "C2.portion_fill_ratio",
+    "calculation_id": "ASTRA-E266",
+    "sidecar_pointer": "/fields/C2.portion_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "geometry",
+    "field": "portion_capacity_kg",
+    "model_field": "C2.portion_capacity_kg",
+    "calculation_id": "ASTRA-E267",
+    "sidecar_pointer": "/fields/C2.portion_capacity_kg",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "thermal",
+    "field": "body_screening_degC",
+    "model_field": "C2.body_screening_degC",
+    "calculation_id": "ASTRA-E268",
+    "sidecar_pointer": "/fields/C2.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "thermal",
+    "field": "hold_degC",
+    "model_field": "WORKFLOW.cabinet_temperature",
+    "calculation_id": "ASTRA-E028",
+    "sidecar_pointer": "/fields/WORKFLOW.cabinet_temperature",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "thermal",
+    "field": "hold_minutes",
+    "model_field": "WORKFLOW.hold_minutes",
+    "calculation_id": "ASTRA-E031",
+    "sidecar_pointer": "/fields/WORKFLOW.hold_minutes",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "thermal",
+    "field": "complete_system_screening_degC",
+    "model_field": "C2.body_screening_degC",
+    "calculation_id": "ASTRA-E268",
+    "sidecar_pointer": "/fields/C2.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "procurement",
+    "field": "industrial_moq",
+    "model_field": "C2.industrial_moq",
+    "calculation_id": "ASTRA-E269",
+    "sidecar_pointer": "/fields/C2.industrial_moq",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "procurement",
+    "field": "order_unit",
+    "model_field": "C2.order_unit",
+    "calculation_id": "ASTRA-E270",
+    "sidecar_pointer": "/fields/C2.order_unit",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "procurement",
+    "field": "pallet_quantity",
+    "model_field": "C2.pallet_quantity",
+    "calculation_id": "ASTRA-E271",
+    "sidecar_pointer": "/fields/C2.pallet_quantity",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "procurement",
+    "field": "lead_time",
+    "model_field": "C2.lead_time",
+    "calculation_id": "ASTRA-E272",
+    "sidecar_pointer": "/fields/C2.lead_time",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "procurement",
+    "field": "cost_net",
+    "model_field": "C2.cost_net",
+    "calculation_id": "ASTRA-E091",
+    "sidecar_pointer": "/fields/C2.cost_net",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "procurement",
+    "field": "cost_gross",
+    "model_field": "C2.cost_gross",
+    "calculation_id": "ASTRA-E273",
+    "sidecar_pointer": "/fields/C2.cost_gross",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "viewing",
+    "field": "visible_area_m2",
+    "model_field": "C2.visible_area_m2",
+    "calculation_id": "ASTRA-E274",
+    "sidecar_pointer": "/fields/C2.visible_area_m2",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "viewing",
+    "field": "visible_fraction",
+    "model_field": "C2.visible_fraction",
+    "calculation_id": "ASTRA-E275",
+    "sidecar_pointer": "/fields/C2.visible_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C2",
+    "surface": "viewing",
+    "field": "anti_fog_target",
+    "model_field": "C2.anti_fog_target",
+    "calculation_id": "ASTRA-E276",
+    "sidecar_pointer": "/fields/C2.anti_fog_target",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "metrics",
+    "field": "total_package_mass_g",
+    "model_field": "C3.total_package_mass_g",
+    "calculation_id": "ASTRA-E094",
+    "sidecar_pointer": "/fields/C3.total_package_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "metrics",
+    "field": "plastic_mass_g",
+    "model_field": "C3.plastic_mass_g",
+    "calculation_id": "ASTRA-E095",
+    "sidecar_pointer": "/fields/C3.plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "metrics",
+    "field": "virgin_plastic_mass_g",
+    "model_field": "C3.virgin_plastic_mass_g",
+    "calculation_id": "ASTRA-E096",
+    "sidecar_pointer": "/fields/C3.virgin_plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "metrics",
+    "field": "recycled_material_fraction",
+    "model_field": "C3.recycled_material_fraction",
+    "calculation_id": "ASTRA-E097",
+    "sidecar_pointer": "/fields/C3.recycled_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "metrics",
+    "field": "renewable_material_fraction",
+    "model_field": "C3.renewable_material_fraction",
+    "calculation_id": "ASTRA-E098",
+    "sidecar_pointer": "/fields/C3.renewable_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "geometry",
+    "field": "usable_length_mm",
+    "model_field": "BAG.usable_length",
+    "calculation_id": "ASTRA-E044",
+    "sidecar_pointer": "/fields/BAG.usable_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "geometry",
+    "field": "usable_width_mm",
+    "model_field": "BAG.usable_width",
+    "calculation_id": "ASTRA-E045",
+    "sidecar_pointer": "/fields/BAG.usable_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "geometry",
+    "field": "usable_height_mm",
+    "model_field": "BAG.usable_height",
+    "calculation_id": "ASTRA-E046",
+    "sidecar_pointer": "/fields/BAG.usable_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "geometry",
+    "field": "capacity_ml",
+    "model_field": "BAG.usable_volume",
+    "calculation_id": "ASTRA-E048",
+    "sidecar_pointer": "/fields/BAG.usable_volume",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "geometry",
+    "field": "closure_allowance_mm",
+    "model_field": "BAG.closure_allowance",
+    "calculation_id": "ASTRA-E049",
+    "sidecar_pointer": "/fields/BAG.closure_allowance",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "geometry",
+    "field": "outer_width_mm",
+    "model_field": "C3.outer_width_mm",
+    "calculation_id": "ASTRA-E277",
+    "sidecar_pointer": "/fields/C3.outer_width_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "geometry",
+    "field": "gusset_mm",
+    "model_field": "C3.gusset_mm",
+    "calculation_id": "ASTRA-E278",
+    "sidecar_pointer": "/fields/C3.gusset_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "geometry",
+    "field": "outer_length_mm",
+    "model_field": "C3.outer_length_mm",
+    "calculation_id": "ASTRA-E279",
+    "sidecar_pointer": "/fields/C3.outer_length_mm",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "geometry",
+    "field": "usable_fill_ml",
+    "model_field": "C3.usable_fill_ml",
+    "calculation_id": "ASTRA-E280",
+    "sidecar_pointer": "/fields/C3.usable_fill_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "geometry",
+    "field": "whole_headroom_length_mm",
+    "model_field": "C3.whole_headroom_length",
+    "calculation_id": "ASTRA-E281",
+    "sidecar_pointer": "/fields/C3.whole_headroom_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "geometry",
+    "field": "whole_headroom_width_mm",
+    "model_field": "C3.whole_headroom_width",
+    "calculation_id": "ASTRA-E282",
+    "sidecar_pointer": "/fields/C3.whole_headroom_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "geometry",
+    "field": "whole_headroom_height_mm",
+    "model_field": "C3.whole_headroom_height",
+    "calculation_id": "ASTRA-E283",
+    "sidecar_pointer": "/fields/C3.whole_headroom_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "geometry",
+    "field": "whole_fill_ratio",
+    "model_field": "C3.whole_fill_ratio",
+    "calculation_id": "ASTRA-E284",
+    "sidecar_pointer": "/fields/C3.whole_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "geometry",
+    "field": "portion_fill_ratio",
+    "model_field": "C3.portion_fill_ratio",
+    "calculation_id": "ASTRA-E285",
+    "sidecar_pointer": "/fields/C3.portion_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "geometry",
+    "field": "portion_capacity_kg",
+    "model_field": "C3.portion_capacity_kg",
+    "calculation_id": "ASTRA-E286",
+    "sidecar_pointer": "/fields/C3.portion_capacity_kg",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "thermal",
+    "field": "body_screening_degC",
+    "model_field": "C3.body_screening_degC",
+    "calculation_id": "ASTRA-E287",
+    "sidecar_pointer": "/fields/C3.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "thermal",
+    "field": "hold_degC",
+    "model_field": "WORKFLOW.cabinet_temperature",
+    "calculation_id": "ASTRA-E028",
+    "sidecar_pointer": "/fields/WORKFLOW.cabinet_temperature",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "thermal",
+    "field": "hold_minutes",
+    "model_field": "WORKFLOW.hold_minutes",
+    "calculation_id": "ASTRA-E031",
+    "sidecar_pointer": "/fields/WORKFLOW.hold_minutes",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "thermal",
+    "field": "complete_system_screening_degC",
+    "model_field": "C3.body_screening_degC",
+    "calculation_id": "ASTRA-E287",
+    "sidecar_pointer": "/fields/C3.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "procurement",
+    "field": "industrial_moq",
+    "model_field": "C3.industrial_moq",
+    "calculation_id": "ASTRA-E288",
+    "sidecar_pointer": "/fields/C3.industrial_moq",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "procurement",
+    "field": "order_unit",
+    "model_field": "C3.order_unit",
+    "calculation_id": "ASTRA-E289",
+    "sidecar_pointer": "/fields/C3.order_unit",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "procurement",
+    "field": "pallet_quantity",
+    "model_field": "C3.pallet_quantity",
+    "calculation_id": "ASTRA-E290",
+    "sidecar_pointer": "/fields/C3.pallet_quantity",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "procurement",
+    "field": "lead_time",
+    "model_field": "C3.lead_time",
+    "calculation_id": "ASTRA-E291",
+    "sidecar_pointer": "/fields/C3.lead_time",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "procurement",
+    "field": "cost_net",
+    "model_field": "C3.cost_net",
+    "calculation_id": "ASTRA-E100",
+    "sidecar_pointer": "/fields/C3.cost_net",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "procurement",
+    "field": "cost_gross",
+    "model_field": "C3.cost_gross",
+    "calculation_id": "ASTRA-E292",
+    "sidecar_pointer": "/fields/C3.cost_gross",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "viewing",
+    "field": "visible_area_m2",
+    "model_field": "C3.visible_area_m2",
+    "calculation_id": "ASTRA-E293",
+    "sidecar_pointer": "/fields/C3.visible_area_m2",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "viewing",
+    "field": "visible_fraction",
+    "model_field": "C3.visible_fraction",
+    "calculation_id": "ASTRA-E294",
+    "sidecar_pointer": "/fields/C3.visible_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C3",
+    "surface": "viewing",
+    "field": "anti_fog_target",
+    "model_field": "C3.anti_fog_target",
+    "calculation_id": "ASTRA-E295",
+    "sidecar_pointer": "/fields/C3.anti_fog_target",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "metrics",
+    "field": "total_package_mass_g",
+    "model_field": "C4.total_package_mass_g",
+    "calculation_id": "ASTRA-E103",
+    "sidecar_pointer": "/fields/C4.total_package_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "metrics",
+    "field": "plastic_mass_g",
+    "model_field": "C4.plastic_mass_g",
+    "calculation_id": "ASTRA-E104",
+    "sidecar_pointer": "/fields/C4.plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "metrics",
+    "field": "virgin_plastic_mass_g",
+    "model_field": "C4.virgin_plastic_mass_g",
+    "calculation_id": "ASTRA-E105",
+    "sidecar_pointer": "/fields/C4.virgin_plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "metrics",
+    "field": "recycled_material_fraction",
+    "model_field": "C4.recycled_material_fraction",
+    "calculation_id": "ASTRA-E106",
+    "sidecar_pointer": "/fields/C4.recycled_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "metrics",
+    "field": "renewable_material_fraction",
+    "model_field": "C4.renewable_material_fraction",
+    "calculation_id": "ASTRA-E107",
+    "sidecar_pointer": "/fields/C4.renewable_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "components",
+    "field": "body",
+    "model_field": "C4.body_g",
+    "calculation_id": "ASTRA-E102",
+    "sidecar_pointer": "/fields/C4.body_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "components",
+    "field": "lid",
+    "model_field": "C4.lid_g",
+    "calculation_id": "ASTRA-E101",
+    "sidecar_pointer": "/fields/C4.lid_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "geometry",
+    "field": "outer_length_mm",
+    "model_field": "C4.outer_length",
+    "calculation_id": "ASTRA-E296",
+    "sidecar_pointer": "/fields/C4.outer_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "geometry",
+    "field": "outer_width_mm",
+    "model_field": "C4.outer_width",
+    "calculation_id": "ASTRA-E297",
+    "sidecar_pointer": "/fields/C4.outer_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "geometry",
+    "field": "outer_height_mm",
+    "model_field": "C4.outer_height",
+    "calculation_id": "ASTRA-E298",
+    "sidecar_pointer": "/fields/C4.outer_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "geometry",
+    "field": "capacity_ml",
+    "model_field": "C4.capacity_ml",
+    "calculation_id": "ASTRA-E299",
+    "sidecar_pointer": "/fields/C4.capacity_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "geometry",
+    "field": "usable_length_mm",
+    "model_field": "C4.usable_length",
+    "calculation_id": "ASTRA-E300",
+    "sidecar_pointer": "/fields/C4.usable_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "geometry",
+    "field": "usable_width_mm",
+    "model_field": "C4.usable_width",
+    "calculation_id": "ASTRA-E301",
+    "sidecar_pointer": "/fields/C4.usable_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "geometry",
+    "field": "usable_height_mm",
+    "model_field": "C4.usable_height",
+    "calculation_id": "ASTRA-E302",
+    "sidecar_pointer": "/fields/C4.usable_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "geometry",
+    "field": "usable_fill_ml",
+    "model_field": "C4.usable_fill_ml",
+    "calculation_id": "ASTRA-E303",
+    "sidecar_pointer": "/fields/C4.usable_fill_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "geometry",
+    "field": "whole_headroom_length_mm",
+    "model_field": "C4.whole_headroom_length",
+    "calculation_id": "ASTRA-E304",
+    "sidecar_pointer": "/fields/C4.whole_headroom_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "geometry",
+    "field": "whole_headroom_width_mm",
+    "model_field": "C4.whole_headroom_width",
+    "calculation_id": "ASTRA-E305",
+    "sidecar_pointer": "/fields/C4.whole_headroom_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "geometry",
+    "field": "whole_headroom_height_mm",
+    "model_field": "C4.whole_headroom_height",
+    "calculation_id": "ASTRA-E306",
+    "sidecar_pointer": "/fields/C4.whole_headroom_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "geometry",
+    "field": "whole_fill_ratio",
+    "model_field": "C4.whole_fill_ratio",
+    "calculation_id": "ASTRA-E307",
+    "sidecar_pointer": "/fields/C4.whole_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "geometry",
+    "field": "portion_fill_ratio",
+    "model_field": "C4.portion_fill_ratio",
+    "calculation_id": "ASTRA-E308",
+    "sidecar_pointer": "/fields/C4.portion_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "geometry",
+    "field": "portion_capacity_kg",
+    "model_field": "C4.portion_capacity_kg",
+    "calculation_id": "ASTRA-E309",
+    "sidecar_pointer": "/fields/C4.portion_capacity_kg",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "thermal",
+    "field": "body_screening_degC",
+    "model_field": "C4.body_screening_degC",
+    "calculation_id": "ASTRA-E310",
+    "sidecar_pointer": "/fields/C4.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "thermal",
+    "field": "hold_degC",
+    "model_field": "WORKFLOW.cabinet_temperature",
+    "calculation_id": "ASTRA-E028",
+    "sidecar_pointer": "/fields/WORKFLOW.cabinet_temperature",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "thermal",
+    "field": "hold_minutes",
+    "model_field": "WORKFLOW.hold_minutes",
+    "calculation_id": "ASTRA-E031",
+    "sidecar_pointer": "/fields/WORKFLOW.hold_minutes",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "thermal",
+    "field": "lid_screening_degC",
+    "model_field": "C4.lid_screening_degC",
+    "calculation_id": "ASTRA-E311",
+    "sidecar_pointer": "/fields/C4.lid_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "thermal",
+    "field": "complete_system_screening_degC",
+    "model_field": "C4.system_screening_degC",
+    "calculation_id": "ASTRA-E312",
+    "sidecar_pointer": "/fields/C4.system_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "procurement",
+    "field": "industrial_moq",
+    "model_field": "C4.industrial_moq",
+    "calculation_id": "ASTRA-E313",
+    "sidecar_pointer": "/fields/C4.industrial_moq",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "procurement",
+    "field": "order_unit",
+    "model_field": "C4.order_unit",
+    "calculation_id": "ASTRA-E314",
+    "sidecar_pointer": "/fields/C4.order_unit",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "procurement",
+    "field": "pallet_quantity",
+    "model_field": "C4.pallet_quantity",
+    "calculation_id": "ASTRA-E315",
+    "sidecar_pointer": "/fields/C4.pallet_quantity",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "procurement",
+    "field": "lead_time",
+    "model_field": "C4.lead_time",
+    "calculation_id": "ASTRA-E316",
+    "sidecar_pointer": "/fields/C4.lead_time",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "procurement",
+    "field": "cost_net",
+    "model_field": "C4.cost_net",
+    "calculation_id": "ASTRA-E111",
+    "sidecar_pointer": "/fields/C4.cost_net",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "procurement",
+    "field": "cost_gross",
+    "model_field": "C4.cost_gross",
+    "calculation_id": "ASTRA-E317",
+    "sidecar_pointer": "/fields/C4.cost_gross",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "viewing",
+    "field": "visible_area_m2",
+    "model_field": "C4.visible_area_m2",
+    "calculation_id": "ASTRA-E318",
+    "sidecar_pointer": "/fields/C4.visible_area_m2",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "viewing",
+    "field": "visible_fraction",
+    "model_field": "C4.visible_fraction",
+    "calculation_id": "ASTRA-E319",
+    "sidecar_pointer": "/fields/C4.visible_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C4",
+    "surface": "viewing",
+    "field": "anti_fog_target",
+    "model_field": "C4.anti_fog_target",
+    "calculation_id": "ASTRA-E320",
+    "sidecar_pointer": "/fields/C4.anti_fog_target",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "metrics",
+    "field": "total_package_mass_g",
+    "model_field": "C5.total_package_mass_g",
+    "calculation_id": "ASTRA-E118",
+    "sidecar_pointer": "/fields/C5.total_package_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "metrics",
+    "field": "plastic_mass_g",
+    "model_field": "C5.plastic_mass_g",
+    "calculation_id": "ASTRA-E119",
+    "sidecar_pointer": "/fields/C5.plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "metrics",
+    "field": "virgin_plastic_mass_g",
+    "model_field": "C5.virgin_plastic_mass_g",
+    "calculation_id": "ASTRA-E120",
+    "sidecar_pointer": "/fields/C5.virgin_plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "metrics",
+    "field": "recycled_material_fraction",
+    "model_field": "C5.recycled_material_fraction",
+    "calculation_id": "ASTRA-E121",
+    "sidecar_pointer": "/fields/C5.recycled_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "metrics",
+    "field": "renewable_material_fraction",
+    "model_field": "C5.renewable_material_fraction",
+    "calculation_id": "ASTRA-E122",
+    "sidecar_pointer": "/fields/C5.renewable_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "components",
+    "field": "body_including_coating",
+    "model_field": "C5.body_g",
+    "calculation_id": "ASTRA-E112",
+    "sidecar_pointer": "/fields/C5.body_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "components",
+    "field": "coating_already_in_body",
+    "model_field": "C5.body_coating_g",
+    "calculation_id": "ASTRA-E114",
+    "sidecar_pointer": "/fields/C5.body_coating_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "components",
+    "field": "film",
+    "model_field": "C5.film_g",
+    "calculation_id": "ASTRA-E117",
+    "sidecar_pointer": "/fields/C5.film_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "components",
+    "field": "label",
+    "model_field": "COMMON.ancillary_g",
+    "calculation_id": "ASTRA-E004",
+    "sidecar_pointer": "/fields/COMMON.ancillary_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "geometry",
+    "field": "outer_length_mm",
+    "model_field": "C5.outer_length",
+    "calculation_id": "ASTRA-E321",
+    "sidecar_pointer": "/fields/C5.outer_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "geometry",
+    "field": "outer_width_mm",
+    "model_field": "C5.outer_width",
+    "calculation_id": "ASTRA-E322",
+    "sidecar_pointer": "/fields/C5.outer_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "geometry",
+    "field": "outer_height_mm",
+    "model_field": "C5.outer_height",
+    "calculation_id": "ASTRA-E323",
+    "sidecar_pointer": "/fields/C5.outer_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "geometry",
+    "field": "capacity_ml",
+    "model_field": "C5.capacity_ml",
+    "calculation_id": "ASTRA-E324",
+    "sidecar_pointer": "/fields/C5.capacity_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "geometry",
+    "field": "usable_length_mm",
+    "model_field": "C5.usable_length",
+    "calculation_id": "ASTRA-E325",
+    "sidecar_pointer": "/fields/C5.usable_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "geometry",
+    "field": "usable_width_mm",
+    "model_field": "C5.usable_width",
+    "calculation_id": "ASTRA-E326",
+    "sidecar_pointer": "/fields/C5.usable_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "geometry",
+    "field": "usable_height_mm",
+    "model_field": "C5.usable_height",
+    "calculation_id": "ASTRA-E327",
+    "sidecar_pointer": "/fields/C5.usable_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "geometry",
+    "field": "usable_fill_ml",
+    "model_field": "C5.usable_fill_ml",
+    "calculation_id": "ASTRA-E328",
+    "sidecar_pointer": "/fields/C5.usable_fill_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "geometry",
+    "field": "whole_headroom_length_mm",
+    "model_field": "C5.whole_headroom_length",
+    "calculation_id": "ASTRA-E329",
+    "sidecar_pointer": "/fields/C5.whole_headroom_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "geometry",
+    "field": "whole_headroom_width_mm",
+    "model_field": "C5.whole_headroom_width",
+    "calculation_id": "ASTRA-E330",
+    "sidecar_pointer": "/fields/C5.whole_headroom_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "geometry",
+    "field": "whole_headroom_height_mm",
+    "model_field": "C5.whole_headroom_height",
+    "calculation_id": "ASTRA-E331",
+    "sidecar_pointer": "/fields/C5.whole_headroom_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "geometry",
+    "field": "whole_fill_ratio",
+    "model_field": "C5.whole_fill_ratio",
+    "calculation_id": "ASTRA-E332",
+    "sidecar_pointer": "/fields/C5.whole_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "geometry",
+    "field": "portion_fill_ratio",
+    "model_field": "C5.portion_fill_ratio",
+    "calculation_id": "ASTRA-E333",
+    "sidecar_pointer": "/fields/C5.portion_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "geometry",
+    "field": "portion_capacity_kg",
+    "model_field": "C5.portion_capacity_kg",
+    "calculation_id": "ASTRA-E334",
+    "sidecar_pointer": "/fields/C5.portion_capacity_kg",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "thermal",
+    "field": "body_screening_degC",
+    "model_field": "C5.body_screening_degC",
+    "calculation_id": "ASTRA-E335",
+    "sidecar_pointer": "/fields/C5.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "thermal",
+    "field": "hold_degC",
+    "model_field": "WORKFLOW.cabinet_temperature",
+    "calculation_id": "ASTRA-E028",
+    "sidecar_pointer": "/fields/WORKFLOW.cabinet_temperature",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "thermal",
+    "field": "hold_minutes",
+    "model_field": "WORKFLOW.hold_minutes",
+    "calculation_id": "ASTRA-E031",
+    "sidecar_pointer": "/fields/WORKFLOW.hold_minutes",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "thermal",
+    "field": "complete_system_screening_degC",
+    "model_field": "C5.body_screening_degC",
+    "calculation_id": "ASTRA-E335",
+    "sidecar_pointer": "/fields/C5.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "procurement",
+    "field": "industrial_moq",
+    "model_field": "C5.industrial_moq",
+    "calculation_id": "ASTRA-E336",
+    "sidecar_pointer": "/fields/C5.industrial_moq",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "procurement",
+    "field": "order_unit",
+    "model_field": "C5.order_unit",
+    "calculation_id": "ASTRA-E337",
+    "sidecar_pointer": "/fields/C5.order_unit",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "procurement",
+    "field": "pallet_quantity",
+    "model_field": "C5.pallet_quantity",
+    "calculation_id": "ASTRA-E338",
+    "sidecar_pointer": "/fields/C5.pallet_quantity",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "procurement",
+    "field": "lead_time",
+    "model_field": "C5.lead_time",
+    "calculation_id": "ASTRA-E339",
+    "sidecar_pointer": "/fields/C5.lead_time",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "procurement",
+    "field": "cost_net",
+    "model_field": "C5.cost_net",
+    "calculation_id": "ASTRA-E131",
+    "sidecar_pointer": "/fields/C5.cost_net",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "procurement",
+    "field": "cost_gross",
+    "model_field": "C5.cost_gross",
+    "calculation_id": "ASTRA-E340",
+    "sidecar_pointer": "/fields/C5.cost_gross",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "viewing",
+    "field": "visible_area_m2",
+    "model_field": "C5.visible_area_m2",
+    "calculation_id": "ASTRA-E341",
+    "sidecar_pointer": "/fields/C5.visible_area_m2",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "viewing",
+    "field": "visible_fraction",
+    "model_field": "C5.visible_fraction",
+    "calculation_id": "ASTRA-E342",
+    "sidecar_pointer": "/fields/C5.visible_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C5",
+    "surface": "viewing",
+    "field": "anti_fog_target",
+    "model_field": "C5.anti_fog_target",
+    "calculation_id": "ASTRA-E343",
+    "sidecar_pointer": "/fields/C5.anti_fog_target",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "metrics",
+    "field": "total_package_mass_g",
+    "model_field": "C6-RO-P.total_package_mass_g",
+    "calculation_id": "ASTRA-E134",
+    "sidecar_pointer": "/fields/C6-RO-P.total_package_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "metrics",
+    "field": "plastic_mass_g",
+    "model_field": "C6-RO-P.plastic_mass_g",
+    "calculation_id": "ASTRA-E135",
+    "sidecar_pointer": "/fields/C6-RO-P.plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "metrics",
+    "field": "virgin_plastic_mass_g",
+    "model_field": "C6-RO-P.virgin_plastic_mass_g",
+    "calculation_id": "ASTRA-E136",
+    "sidecar_pointer": "/fields/C6-RO-P.virgin_plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "metrics",
+    "field": "recycled_material_fraction",
+    "model_field": "C6-RO-P.recycled_material_fraction",
+    "calculation_id": "ASTRA-E138",
+    "sidecar_pointer": "/fields/C6-RO-P.recycled_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "metrics",
+    "field": "renewable_material_fraction",
+    "model_field": "C6-RO-P.renewable_material_fraction",
+    "calculation_id": "ASTRA-E139",
+    "sidecar_pointer": "/fields/C6-RO-P.renewable_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "components",
+    "field": "body",
+    "model_field": "C6-RO-P.body_g",
+    "calculation_id": "ASTRA-E132",
+    "sidecar_pointer": "/fields/C6-RO-P.body_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "components",
+    "field": "lid",
+    "model_field": "C6-RO-P.lid_g",
+    "calculation_id": "ASTRA-E133",
+    "sidecar_pointer": "/fields/C6-RO-P.lid_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "components",
+    "field": "ancillary",
+    "model_field": "COMMON.ancillary_g",
+    "calculation_id": "ASTRA-E004",
+    "sidecar_pointer": "/fields/COMMON.ancillary_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "geometry",
+    "field": "outer_length_mm",
+    "model_field": "C6-RO-P.outer_length",
+    "calculation_id": "ASTRA-E344",
+    "sidecar_pointer": "/fields/C6-RO-P.outer_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "geometry",
+    "field": "outer_width_mm",
+    "model_field": "C6-RO-P.outer_width",
+    "calculation_id": "ASTRA-E345",
+    "sidecar_pointer": "/fields/C6-RO-P.outer_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "geometry",
+    "field": "outer_height_mm",
+    "model_field": "C6-RO-P.outer_height",
+    "calculation_id": "ASTRA-E346",
+    "sidecar_pointer": "/fields/C6-RO-P.outer_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "geometry",
+    "field": "capacity_ml",
+    "model_field": "C6-RO-P.capacity_ml",
+    "calculation_id": "ASTRA-E347",
+    "sidecar_pointer": "/fields/C6-RO-P.capacity_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "geometry",
+    "field": "usable_length_mm",
+    "model_field": "C6-RO-P.usable_length",
+    "calculation_id": "ASTRA-E348",
+    "sidecar_pointer": "/fields/C6-RO-P.usable_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "geometry",
+    "field": "usable_width_mm",
+    "model_field": "C6-RO-P.usable_width",
+    "calculation_id": "ASTRA-E349",
+    "sidecar_pointer": "/fields/C6-RO-P.usable_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "geometry",
+    "field": "usable_height_mm",
+    "model_field": "C6-RO-P.usable_height",
+    "calculation_id": "ASTRA-E350",
+    "sidecar_pointer": "/fields/C6-RO-P.usable_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "geometry",
+    "field": "usable_fill_ml",
+    "model_field": "C6-RO-P.usable_fill_ml",
+    "calculation_id": "ASTRA-E351",
+    "sidecar_pointer": "/fields/C6-RO-P.usable_fill_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "geometry",
+    "field": "whole_headroom_length_mm",
+    "model_field": "C6-RO-P.whole_headroom_length",
+    "calculation_id": "ASTRA-E352",
+    "sidecar_pointer": "/fields/C6-RO-P.whole_headroom_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "geometry",
+    "field": "whole_headroom_width_mm",
+    "model_field": "C6-RO-P.whole_headroom_width",
+    "calculation_id": "ASTRA-E353",
+    "sidecar_pointer": "/fields/C6-RO-P.whole_headroom_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "geometry",
+    "field": "whole_headroom_height_mm",
+    "model_field": "C6-RO-P.whole_headroom_height",
+    "calculation_id": "ASTRA-E354",
+    "sidecar_pointer": "/fields/C6-RO-P.whole_headroom_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "geometry",
+    "field": "whole_fill_ratio",
+    "model_field": "C6-RO-P.whole_fill_ratio",
+    "calculation_id": "ASTRA-E355",
+    "sidecar_pointer": "/fields/C6-RO-P.whole_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "geometry",
+    "field": "portion_fill_ratio",
+    "model_field": "C6-RO-P.portion_fill_ratio",
+    "calculation_id": "ASTRA-E356",
+    "sidecar_pointer": "/fields/C6-RO-P.portion_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "geometry",
+    "field": "portion_capacity_kg",
+    "model_field": "C6-RO-P.portion_capacity_kg",
+    "calculation_id": "ASTRA-E357",
+    "sidecar_pointer": "/fields/C6-RO-P.portion_capacity_kg",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "thermal",
+    "field": "body_screening_degC",
+    "model_field": "C6-RO-P.body_screening_degC",
+    "calculation_id": "ASTRA-E358",
+    "sidecar_pointer": "/fields/C6-RO-P.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "thermal",
+    "field": "hold_degC",
+    "model_field": "WORKFLOW.cabinet_temperature",
+    "calculation_id": "ASTRA-E028",
+    "sidecar_pointer": "/fields/WORKFLOW.cabinet_temperature",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "thermal",
+    "field": "hold_minutes",
+    "model_field": "WORKFLOW.hold_minutes",
+    "calculation_id": "ASTRA-E031",
+    "sidecar_pointer": "/fields/WORKFLOW.hold_minutes",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "thermal",
+    "field": "lid_screening_degC",
+    "model_field": "C6-RO-P.lid_screening_degC",
+    "calculation_id": "ASTRA-E359",
+    "sidecar_pointer": "/fields/C6-RO-P.lid_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "thermal",
+    "field": "complete_system_screening_degC",
+    "model_field": "C6-RO-P.system_screening_degC",
+    "calculation_id": "ASTRA-E360",
+    "sidecar_pointer": "/fields/C6-RO-P.system_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "procurement",
+    "field": "industrial_moq",
+    "model_field": "C6-RO-P.industrial_moq",
+    "calculation_id": "ASTRA-E361",
+    "sidecar_pointer": "/fields/C6-RO-P.industrial_moq",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "procurement",
+    "field": "order_unit",
+    "model_field": "C6-RO-P.order_unit",
+    "calculation_id": "ASTRA-E362",
+    "sidecar_pointer": "/fields/C6-RO-P.order_unit",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "procurement",
+    "field": "pallet_quantity",
+    "model_field": "C6-RO-P.pallet_quantity",
+    "calculation_id": "ASTRA-E363",
+    "sidecar_pointer": "/fields/C6-RO-P.pallet_quantity",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "procurement",
+    "field": "lead_time",
+    "model_field": "C6-RO-P.lead_time",
+    "calculation_id": "ASTRA-E364",
+    "sidecar_pointer": "/fields/C6-RO-P.lead_time",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "procurement",
+    "field": "cost_net",
+    "model_field": "C6-RO-P.cost_net",
+    "calculation_id": "ASTRA-E142",
+    "sidecar_pointer": "/fields/C6-RO-P.cost_net",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "procurement",
+    "field": "cost_gross",
+    "model_field": "C6-RO-P.cost_gross",
+    "calculation_id": "ASTRA-E365",
+    "sidecar_pointer": "/fields/C6-RO-P.cost_gross",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "viewing",
+    "field": "visible_area_m2",
+    "model_field": "C6-RO-P.visible_area_m2",
+    "calculation_id": "ASTRA-E366",
+    "sidecar_pointer": "/fields/C6-RO-P.visible_area_m2",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "viewing",
+    "field": "visible_fraction",
+    "model_field": "C6-RO-P.visible_fraction",
+    "calculation_id": "ASTRA-E367",
+    "sidecar_pointer": "/fields/C6-RO-P.visible_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-P",
+    "surface": "viewing",
+    "field": "anti_fog_target",
+    "model_field": "C6-RO-P.anti_fog_target",
+    "calculation_id": "ASTRA-E368",
+    "sidecar_pointer": "/fields/C6-RO-P.anti_fog_target",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "metrics",
+    "field": "total_package_mass_g",
+    "model_field": "C6-RO-W.total_package_mass_g",
+    "calculation_id": "ASTRA-E148",
+    "sidecar_pointer": "/fields/C6-RO-W.total_package_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "metrics",
+    "field": "plastic_mass_g",
+    "model_field": "C6-RO-W.plastic_mass_g",
+    "calculation_id": "ASTRA-E149",
+    "sidecar_pointer": "/fields/C6-RO-W.plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "metrics",
+    "field": "virgin_plastic_mass_g",
+    "model_field": "C6-RO-W.virgin_plastic_mass_g",
+    "calculation_id": "ASTRA-E150",
+    "sidecar_pointer": "/fields/C6-RO-W.virgin_plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "metrics",
+    "field": "recycled_material_fraction",
+    "model_field": "C6-RO-W.recycled_material_fraction",
+    "calculation_id": "ASTRA-E152",
+    "sidecar_pointer": "/fields/C6-RO-W.recycled_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "metrics",
+    "field": "renewable_material_fraction",
+    "model_field": "C6-RO-W.renewable_material_fraction",
+    "calculation_id": "ASTRA-E153",
+    "sidecar_pointer": "/fields/C6-RO-W.renewable_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "components",
+    "field": "body",
+    "model_field": "C6-RO-W.body_g",
+    "calculation_id": "ASTRA-E145",
+    "sidecar_pointer": "/fields/C6-RO-W.body_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "components",
+    "field": "lid",
+    "model_field": "C6-RO-W.lid_g",
+    "calculation_id": "ASTRA-E147",
+    "sidecar_pointer": "/fields/C6-RO-W.lid_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "components",
+    "field": "ancillary",
+    "model_field": "COMMON.ancillary_g",
+    "calculation_id": "ASTRA-E004",
+    "sidecar_pointer": "/fields/COMMON.ancillary_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "geometry",
+    "field": "outer_length_mm",
+    "model_field": "C6-RO-W.outer_length",
+    "calculation_id": "ASTRA-E369",
+    "sidecar_pointer": "/fields/C6-RO-W.outer_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "geometry",
+    "field": "outer_width_mm",
+    "model_field": "C6-RO-W.outer_width",
+    "calculation_id": "ASTRA-E370",
+    "sidecar_pointer": "/fields/C6-RO-W.outer_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "geometry",
+    "field": "outer_height_mm",
+    "model_field": "C6-RO-W.outer_height",
+    "calculation_id": "ASTRA-E371",
+    "sidecar_pointer": "/fields/C6-RO-W.outer_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "geometry",
+    "field": "capacity_ml",
+    "model_field": "C6-RO-W.capacity_ml",
+    "calculation_id": "ASTRA-E372",
+    "sidecar_pointer": "/fields/C6-RO-W.capacity_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "geometry",
+    "field": "usable_length_mm",
+    "model_field": "C6-RO-W.usable_length",
+    "calculation_id": "ASTRA-E373",
+    "sidecar_pointer": "/fields/C6-RO-W.usable_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "geometry",
+    "field": "usable_width_mm",
+    "model_field": "C6-RO-W.usable_width",
+    "calculation_id": "ASTRA-E374",
+    "sidecar_pointer": "/fields/C6-RO-W.usable_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "geometry",
+    "field": "usable_height_mm",
+    "model_field": "C6-RO-W.usable_height",
+    "calculation_id": "ASTRA-E375",
+    "sidecar_pointer": "/fields/C6-RO-W.usable_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "geometry",
+    "field": "usable_fill_ml",
+    "model_field": "C6-RO-W.usable_fill_ml",
+    "calculation_id": "ASTRA-E376",
+    "sidecar_pointer": "/fields/C6-RO-W.usable_fill_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "geometry",
+    "field": "whole_headroom_length_mm",
+    "model_field": "C6-RO-W.whole_headroom_length",
+    "calculation_id": "ASTRA-E377",
+    "sidecar_pointer": "/fields/C6-RO-W.whole_headroom_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "geometry",
+    "field": "whole_headroom_width_mm",
+    "model_field": "C6-RO-W.whole_headroom_width",
+    "calculation_id": "ASTRA-E378",
+    "sidecar_pointer": "/fields/C6-RO-W.whole_headroom_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "geometry",
+    "field": "whole_headroom_height_mm",
+    "model_field": "C6-RO-W.whole_headroom_height",
+    "calculation_id": "ASTRA-E379",
+    "sidecar_pointer": "/fields/C6-RO-W.whole_headroom_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "geometry",
+    "field": "whole_fill_ratio",
+    "model_field": "C6-RO-W.whole_fill_ratio",
+    "calculation_id": "ASTRA-E380",
+    "sidecar_pointer": "/fields/C6-RO-W.whole_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "geometry",
+    "field": "portion_fill_ratio",
+    "model_field": "C6-RO-W.portion_fill_ratio",
+    "calculation_id": "ASTRA-E381",
+    "sidecar_pointer": "/fields/C6-RO-W.portion_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "geometry",
+    "field": "portion_capacity_kg",
+    "model_field": "C6-RO-W.portion_capacity_kg",
+    "calculation_id": "ASTRA-E382",
+    "sidecar_pointer": "/fields/C6-RO-W.portion_capacity_kg",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "thermal",
+    "field": "body_screening_degC",
+    "model_field": "C6-RO-W.body_screening_degC",
+    "calculation_id": "ASTRA-E383",
+    "sidecar_pointer": "/fields/C6-RO-W.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "thermal",
+    "field": "hold_degC",
+    "model_field": "WORKFLOW.cabinet_temperature",
+    "calculation_id": "ASTRA-E028",
+    "sidecar_pointer": "/fields/WORKFLOW.cabinet_temperature",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "thermal",
+    "field": "hold_minutes",
+    "model_field": "WORKFLOW.hold_minutes",
+    "calculation_id": "ASTRA-E031",
+    "sidecar_pointer": "/fields/WORKFLOW.hold_minutes",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "thermal",
+    "field": "lid_screening_degC",
+    "model_field": "C6-RO-W.lid_screening_degC",
+    "calculation_id": "ASTRA-E384",
+    "sidecar_pointer": "/fields/C6-RO-W.lid_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "thermal",
+    "field": "complete_system_screening_degC",
+    "model_field": "C6-RO-W.system_screening_degC",
+    "calculation_id": "ASTRA-E385",
+    "sidecar_pointer": "/fields/C6-RO-W.system_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "procurement",
+    "field": "industrial_moq",
+    "model_field": "C6-RO-W.industrial_moq",
+    "calculation_id": "ASTRA-E386",
+    "sidecar_pointer": "/fields/C6-RO-W.industrial_moq",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "procurement",
+    "field": "order_unit",
+    "model_field": "C6-RO-W.order_unit",
+    "calculation_id": "ASTRA-E387",
+    "sidecar_pointer": "/fields/C6-RO-W.order_unit",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "procurement",
+    "field": "pallet_quantity",
+    "model_field": "C6-RO-W.pallet_quantity",
+    "calculation_id": "ASTRA-E388",
+    "sidecar_pointer": "/fields/C6-RO-W.pallet_quantity",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "procurement",
+    "field": "lead_time",
+    "model_field": "C6-RO-W.lead_time",
+    "calculation_id": "ASTRA-E389",
+    "sidecar_pointer": "/fields/C6-RO-W.lead_time",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "procurement",
+    "field": "cost_net",
+    "model_field": "C6-RO-W.cost_net",
+    "calculation_id": "ASTRA-E156",
+    "sidecar_pointer": "/fields/C6-RO-W.cost_net",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "procurement",
+    "field": "cost_gross",
+    "model_field": "C6-RO-W.cost_gross",
+    "calculation_id": "ASTRA-E390",
+    "sidecar_pointer": "/fields/C6-RO-W.cost_gross",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "viewing",
+    "field": "visible_area_m2",
+    "model_field": "C6-RO-W.visible_area_m2",
+    "calculation_id": "ASTRA-E391",
+    "sidecar_pointer": "/fields/C6-RO-W.visible_area_m2",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "viewing",
+    "field": "visible_fraction",
+    "model_field": "C6-RO-W.visible_fraction",
+    "calculation_id": "ASTRA-E392",
+    "sidecar_pointer": "/fields/C6-RO-W.visible_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-W",
+    "surface": "viewing",
+    "field": "anti_fog_target",
+    "model_field": "C6-RO-W.anti_fog_target",
+    "calculation_id": "ASTRA-E393",
+    "sidecar_pointer": "/fields/C6-RO-W.anti_fog_target",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "metrics",
+    "field": "total_package_mass_g",
+    "model_field": "C6-RO-H.total_package_mass_g",
+    "calculation_id": "ASTRA-E162",
+    "sidecar_pointer": "/fields/C6-RO-H.total_package_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "metrics",
+    "field": "plastic_mass_g",
+    "model_field": "C6-RO-H.plastic_mass_g",
+    "calculation_id": "ASTRA-E163",
+    "sidecar_pointer": "/fields/C6-RO-H.plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "metrics",
+    "field": "virgin_plastic_mass_g",
+    "model_field": "C6-RO-H.virgin_plastic_mass_g",
+    "calculation_id": "ASTRA-E164",
+    "sidecar_pointer": "/fields/C6-RO-H.virgin_plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "metrics",
+    "field": "recycled_material_fraction",
+    "model_field": "C6-RO-H.recycled_material_fraction",
+    "calculation_id": "ASTRA-E166",
+    "sidecar_pointer": "/fields/C6-RO-H.recycled_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "metrics",
+    "field": "renewable_material_fraction",
+    "model_field": "C6-RO-H.renewable_material_fraction",
+    "calculation_id": "ASTRA-E167",
+    "sidecar_pointer": "/fields/C6-RO-H.renewable_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "components",
+    "field": "body",
+    "model_field": "C6-RO-H.body_g",
+    "calculation_id": "ASTRA-E159",
+    "sidecar_pointer": "/fields/C6-RO-H.body_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "components",
+    "field": "lid",
+    "model_field": "C6-RO-H.lid_g",
+    "calculation_id": "ASTRA-E161",
+    "sidecar_pointer": "/fields/C6-RO-H.lid_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "components",
+    "field": "ancillary",
+    "model_field": "COMMON.ancillary_g",
+    "calculation_id": "ASTRA-E004",
+    "sidecar_pointer": "/fields/COMMON.ancillary_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "geometry",
+    "field": "outer_length_mm",
+    "model_field": "C6-RO-H.outer_length",
+    "calculation_id": "ASTRA-E394",
+    "sidecar_pointer": "/fields/C6-RO-H.outer_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "geometry",
+    "field": "outer_width_mm",
+    "model_field": "C6-RO-H.outer_width",
+    "calculation_id": "ASTRA-E395",
+    "sidecar_pointer": "/fields/C6-RO-H.outer_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "geometry",
+    "field": "outer_height_mm",
+    "model_field": "C6-RO-H.outer_height",
+    "calculation_id": "ASTRA-E396",
+    "sidecar_pointer": "/fields/C6-RO-H.outer_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "geometry",
+    "field": "capacity_ml",
+    "model_field": "C6-RO-H.capacity_ml",
+    "calculation_id": "ASTRA-E397",
+    "sidecar_pointer": "/fields/C6-RO-H.capacity_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "geometry",
+    "field": "usable_length_mm",
+    "model_field": "C6-RO-H.usable_length",
+    "calculation_id": "ASTRA-E398",
+    "sidecar_pointer": "/fields/C6-RO-H.usable_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "geometry",
+    "field": "usable_width_mm",
+    "model_field": "C6-RO-H.usable_width",
+    "calculation_id": "ASTRA-E399",
+    "sidecar_pointer": "/fields/C6-RO-H.usable_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "geometry",
+    "field": "usable_height_mm",
+    "model_field": "C6-RO-H.usable_height",
+    "calculation_id": "ASTRA-E400",
+    "sidecar_pointer": "/fields/C6-RO-H.usable_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "geometry",
+    "field": "usable_fill_ml",
+    "model_field": "C6-RO-H.usable_fill_ml",
+    "calculation_id": "ASTRA-E401",
+    "sidecar_pointer": "/fields/C6-RO-H.usable_fill_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "geometry",
+    "field": "whole_headroom_length_mm",
+    "model_field": "C6-RO-H.whole_headroom_length",
+    "calculation_id": "ASTRA-E402",
+    "sidecar_pointer": "/fields/C6-RO-H.whole_headroom_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "geometry",
+    "field": "whole_headroom_width_mm",
+    "model_field": "C6-RO-H.whole_headroom_width",
+    "calculation_id": "ASTRA-E403",
+    "sidecar_pointer": "/fields/C6-RO-H.whole_headroom_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "geometry",
+    "field": "whole_headroom_height_mm",
+    "model_field": "C6-RO-H.whole_headroom_height",
+    "calculation_id": "ASTRA-E404",
+    "sidecar_pointer": "/fields/C6-RO-H.whole_headroom_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "geometry",
+    "field": "whole_fill_ratio",
+    "model_field": "C6-RO-H.whole_fill_ratio",
+    "calculation_id": "ASTRA-E405",
+    "sidecar_pointer": "/fields/C6-RO-H.whole_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "geometry",
+    "field": "portion_fill_ratio",
+    "model_field": "C6-RO-H.portion_fill_ratio",
+    "calculation_id": "ASTRA-E406",
+    "sidecar_pointer": "/fields/C6-RO-H.portion_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "geometry",
+    "field": "portion_capacity_kg",
+    "model_field": "C6-RO-H.portion_capacity_kg",
+    "calculation_id": "ASTRA-E407",
+    "sidecar_pointer": "/fields/C6-RO-H.portion_capacity_kg",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "thermal",
+    "field": "body_screening_degC",
+    "model_field": "C6-RO-H.body_screening_degC",
+    "calculation_id": "ASTRA-E408",
+    "sidecar_pointer": "/fields/C6-RO-H.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "thermal",
+    "field": "hold_degC",
+    "model_field": "WORKFLOW.cabinet_temperature",
+    "calculation_id": "ASTRA-E028",
+    "sidecar_pointer": "/fields/WORKFLOW.cabinet_temperature",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "thermal",
+    "field": "hold_minutes",
+    "model_field": "WORKFLOW.hold_minutes",
+    "calculation_id": "ASTRA-E031",
+    "sidecar_pointer": "/fields/WORKFLOW.hold_minutes",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "thermal",
+    "field": "lid_screening_degC",
+    "model_field": "C6-RO-H.lid_screening_degC",
+    "calculation_id": "ASTRA-E409",
+    "sidecar_pointer": "/fields/C6-RO-H.lid_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "thermal",
+    "field": "complete_system_screening_degC",
+    "model_field": "C6-RO-H.system_screening_degC",
+    "calculation_id": "ASTRA-E410",
+    "sidecar_pointer": "/fields/C6-RO-H.system_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "procurement",
+    "field": "industrial_moq",
+    "model_field": "C6-RO-H.industrial_moq",
+    "calculation_id": "ASTRA-E411",
+    "sidecar_pointer": "/fields/C6-RO-H.industrial_moq",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "procurement",
+    "field": "order_unit",
+    "model_field": "C6-RO-H.order_unit",
+    "calculation_id": "ASTRA-E412",
+    "sidecar_pointer": "/fields/C6-RO-H.order_unit",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "procurement",
+    "field": "pallet_quantity",
+    "model_field": "C6-RO-H.pallet_quantity",
+    "calculation_id": "ASTRA-E413",
+    "sidecar_pointer": "/fields/C6-RO-H.pallet_quantity",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "procurement",
+    "field": "lead_time",
+    "model_field": "C6-RO-H.lead_time",
+    "calculation_id": "ASTRA-E414",
+    "sidecar_pointer": "/fields/C6-RO-H.lead_time",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "procurement",
+    "field": "cost_net",
+    "model_field": "C6-RO-H.cost_net",
+    "calculation_id": "ASTRA-E170",
+    "sidecar_pointer": "/fields/C6-RO-H.cost_net",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "procurement",
+    "field": "cost_gross",
+    "model_field": "C6-RO-H.cost_gross",
+    "calculation_id": "ASTRA-E415",
+    "sidecar_pointer": "/fields/C6-RO-H.cost_gross",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "viewing",
+    "field": "visible_area_m2",
+    "model_field": "C6-RO-H.visible_area_m2",
+    "calculation_id": "ASTRA-E416",
+    "sidecar_pointer": "/fields/C6-RO-H.visible_area_m2",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "viewing",
+    "field": "visible_fraction",
+    "model_field": "C6-RO-H.visible_fraction",
+    "calculation_id": "ASTRA-E417",
+    "sidecar_pointer": "/fields/C6-RO-H.visible_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-RO-H",
+    "surface": "viewing",
+    "field": "anti_fog_target",
+    "model_field": "C6-RO-H.anti_fog_target",
+    "calculation_id": "ASTRA-E418",
+    "sidecar_pointer": "/fields/C6-RO-H.anti_fog_target",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "metrics",
+    "field": "total_package_mass_g",
+    "model_field": "C6-EU.total_package_mass_g",
+    "calculation_id": "ASTRA-E173",
+    "sidecar_pointer": "/fields/C6-EU.total_package_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "metrics",
+    "field": "plastic_mass_g",
+    "model_field": "C6-EU.plastic_mass_g",
+    "calculation_id": "ASTRA-E174",
+    "sidecar_pointer": "/fields/C6-EU.plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "metrics",
+    "field": "virgin_plastic_mass_g",
+    "model_field": "C6-EU.virgin_plastic_mass_g",
+    "calculation_id": "ASTRA-E175",
+    "sidecar_pointer": "/fields/C6-EU.virgin_plastic_mass_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "metrics",
+    "field": "recycled_material_fraction",
+    "model_field": "C6-EU.recycled_material_fraction",
+    "calculation_id": "ASTRA-E177",
+    "sidecar_pointer": "/fields/C6-EU.recycled_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "metrics",
+    "field": "renewable_material_fraction",
+    "model_field": "C6-EU.renewable_material_fraction",
+    "calculation_id": "ASTRA-E178",
+    "sidecar_pointer": "/fields/C6-EU.renewable_material_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "components",
+    "field": "body",
+    "model_field": "C6-EU.body_g",
+    "calculation_id": "ASTRA-E171",
+    "sidecar_pointer": "/fields/C6-EU.body_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "components",
+    "field": "lid",
+    "model_field": "C6-EU.lid_g",
+    "calculation_id": "ASTRA-E172",
+    "sidecar_pointer": "/fields/C6-EU.lid_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "components",
+    "field": "ancillary",
+    "model_field": "COMMON.ancillary_g",
+    "calculation_id": "ASTRA-E004",
+    "sidecar_pointer": "/fields/COMMON.ancillary_g",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "geometry",
+    "field": "outer_length_mm",
+    "model_field": "C6-EU.outer_length",
+    "calculation_id": "ASTRA-E419",
+    "sidecar_pointer": "/fields/C6-EU.outer_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "geometry",
+    "field": "outer_width_mm",
+    "model_field": "C6-EU.outer_width",
+    "calculation_id": "ASTRA-E420",
+    "sidecar_pointer": "/fields/C6-EU.outer_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "geometry",
+    "field": "outer_height_mm",
+    "model_field": "C6-EU.outer_height",
+    "calculation_id": "ASTRA-E421",
+    "sidecar_pointer": "/fields/C6-EU.outer_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "geometry",
+    "field": "capacity_ml",
+    "model_field": "C6-EU.capacity_ml",
+    "calculation_id": "ASTRA-E422",
+    "sidecar_pointer": "/fields/C6-EU.capacity_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "geometry",
+    "field": "usable_length_mm",
+    "model_field": "C6-EU.usable_length",
+    "calculation_id": "ASTRA-E423",
+    "sidecar_pointer": "/fields/C6-EU.usable_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "geometry",
+    "field": "usable_width_mm",
+    "model_field": "C6-EU.usable_width",
+    "calculation_id": "ASTRA-E424",
+    "sidecar_pointer": "/fields/C6-EU.usable_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "geometry",
+    "field": "usable_height_mm",
+    "model_field": "C6-EU.usable_height",
+    "calculation_id": "ASTRA-E425",
+    "sidecar_pointer": "/fields/C6-EU.usable_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "geometry",
+    "field": "usable_fill_ml",
+    "model_field": "C6-EU.usable_fill_ml",
+    "calculation_id": "ASTRA-E426",
+    "sidecar_pointer": "/fields/C6-EU.usable_fill_ml",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "geometry",
+    "field": "whole_headroom_length_mm",
+    "model_field": "C6-EU.whole_headroom_length",
+    "calculation_id": "ASTRA-E427",
+    "sidecar_pointer": "/fields/C6-EU.whole_headroom_length",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "geometry",
+    "field": "whole_headroom_width_mm",
+    "model_field": "C6-EU.whole_headroom_width",
+    "calculation_id": "ASTRA-E428",
+    "sidecar_pointer": "/fields/C6-EU.whole_headroom_width",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "geometry",
+    "field": "whole_headroom_height_mm",
+    "model_field": "C6-EU.whole_headroom_height",
+    "calculation_id": "ASTRA-E429",
+    "sidecar_pointer": "/fields/C6-EU.whole_headroom_height",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "geometry",
+    "field": "whole_fill_ratio",
+    "model_field": "C6-EU.whole_fill_ratio",
+    "calculation_id": "ASTRA-E430",
+    "sidecar_pointer": "/fields/C6-EU.whole_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "geometry",
+    "field": "portion_fill_ratio",
+    "model_field": "C6-EU.portion_fill_ratio",
+    "calculation_id": "ASTRA-E431",
+    "sidecar_pointer": "/fields/C6-EU.portion_fill_ratio",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "geometry",
+    "field": "portion_capacity_kg",
+    "model_field": "C6-EU.portion_capacity_kg",
+    "calculation_id": "ASTRA-E432",
+    "sidecar_pointer": "/fields/C6-EU.portion_capacity_kg",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "thermal",
+    "field": "body_screening_degC",
+    "model_field": "C6-EU.body_screening_degC",
+    "calculation_id": "ASTRA-E433",
+    "sidecar_pointer": "/fields/C6-EU.body_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "thermal",
+    "field": "hold_degC",
+    "model_field": "WORKFLOW.cabinet_temperature",
+    "calculation_id": "ASTRA-E028",
+    "sidecar_pointer": "/fields/WORKFLOW.cabinet_temperature",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "thermal",
+    "field": "hold_minutes",
+    "model_field": "WORKFLOW.hold_minutes",
+    "calculation_id": "ASTRA-E031",
+    "sidecar_pointer": "/fields/WORKFLOW.hold_minutes",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "thermal",
+    "field": "lid_screening_degC",
+    "model_field": "C6-EU.lid_screening_degC",
+    "calculation_id": "ASTRA-E434",
+    "sidecar_pointer": "/fields/C6-EU.lid_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "thermal",
+    "field": "complete_system_screening_degC",
+    "model_field": "C6-EU.system_screening_degC",
+    "calculation_id": "ASTRA-E435",
+    "sidecar_pointer": "/fields/C6-EU.system_screening_degC",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "procurement",
+    "field": "industrial_moq",
+    "model_field": "C6-EU.industrial_moq",
+    "calculation_id": "ASTRA-E436",
+    "sidecar_pointer": "/fields/C6-EU.industrial_moq",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "procurement",
+    "field": "order_unit",
+    "model_field": "C6-EU.order_unit",
+    "calculation_id": "ASTRA-E437",
+    "sidecar_pointer": "/fields/C6-EU.order_unit",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "procurement",
+    "field": "pallet_quantity",
+    "model_field": "C6-EU.pallet_quantity",
+    "calculation_id": "ASTRA-E438",
+    "sidecar_pointer": "/fields/C6-EU.pallet_quantity",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "procurement",
+    "field": "lead_time",
+    "model_field": "C6-EU.lead_time",
+    "calculation_id": "ASTRA-E439",
+    "sidecar_pointer": "/fields/C6-EU.lead_time",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "procurement",
+    "field": "cost_net",
+    "model_field": "C6-EU.cost_net",
+    "calculation_id": "ASTRA-E181",
+    "sidecar_pointer": "/fields/C6-EU.cost_net",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "procurement",
+    "field": "cost_gross",
+    "model_field": "C6-EU.cost_gross",
+    "calculation_id": "ASTRA-E440",
+    "sidecar_pointer": "/fields/C6-EU.cost_gross",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "viewing",
+    "field": "visible_area_m2",
+    "model_field": "C6-EU.visible_area_m2",
+    "calculation_id": "ASTRA-E441",
+    "sidecar_pointer": "/fields/C6-EU.visible_area_m2",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "viewing",
+    "field": "visible_fraction",
+    "model_field": "C6-EU.visible_fraction",
+    "calculation_id": "ASTRA-E442",
+    "sidecar_pointer": "/fields/C6-EU.visible_fraction",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  },
+  {
+    "entity_id": "C6-EU",
+    "surface": "viewing",
+    "field": "anti_fog_target",
+    "model_field": "C6-EU.anti_fog_target",
+    "calculation_id": "ASTRA-E443",
+    "sidecar_pointer": "/fields/C6-EU.anti_fog_target",
+    "implementation": "Existing EvidenceField projection where slot exists; otherwise additive design/API acceptance. Preserve source and modeled record separately."
+  }
+]
