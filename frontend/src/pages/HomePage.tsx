@@ -111,8 +111,37 @@ export function HomePage() {
               </span>
             </div>
 
-            <div className="lang-control-cluster">
+            <div className="lang-control-cluster" role="group" aria-label={t("Language")}>
               <span className="lang-scope-note">{t("Language")}</span>
+              <div className="lang-buttons-group">
+                <button
+                  type="button"
+                  className={`lang-btn ${uiLang === 'ru' ? 'active' : ''}`}
+                  onClick={() => setUiLang('ru')}
+                  aria-pressed={uiLang === 'ru'}
+                  title="Русский (RU)"
+                >
+                  🇷🇺 RU
+                </button>
+                <button
+                  type="button"
+                  className={`lang-btn ${uiLang === 'ro' ? 'active' : ''}`}
+                  onClick={() => setUiLang('ro')}
+                  aria-pressed={uiLang === 'ro'}
+                  title="Română / Moldovenească (RO/MD)"
+                >
+                  🇲🇩 RO / MD
+                </button>
+                <button
+                  type="button"
+                  className={`lang-btn ${uiLang === 'en' ? 'active' : ''}`}
+                  onClick={() => setUiLang('en')}
+                  aria-pressed={uiLang === 'en'}
+                  title="English (EN)"
+                >
+                  🇬🇧 EN
+                </button>
+              </div>
               <select
                 name="lang"
                 aria-label={t("Language")}
@@ -120,9 +149,9 @@ export function HomePage() {
                 value={uiLang}
                 onChange={(e) => setUiLang(e.target.value as Language)}
               >
-                <option value="ru" className="lang">Русский (RU)</option>
-                <option value="ro" className="lang">Română / Moldovenească (RO/MD)</option>
-                <option value="en" className="lang">English (EN)</option>
+                <option value="ru">Русский (RU)</option>
+                <option value="ro">Română / Moldovenească (RO/MD)</option>
+                <option value="en">English (EN)</option>
               </select>
             </div>
           </div>
