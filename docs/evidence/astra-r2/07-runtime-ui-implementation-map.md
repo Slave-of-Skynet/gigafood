@@ -12,20 +12,41 @@ Changes that can be delivered by updating the accepted canonical dataset and dis
 code modification required. These are additive model_metrics fields that map directly to existing
 EvidenceField rendering logic.
 
-### C1–C5 candidate model_metrics (mass fields)
+### C1 and C5 candidate model_metrics — partial only (DATA-ONLY)
+
+> **Important boundary:** The builder (`build_synthesis.py`) intentionally **excludes**
+> `C1.model_metrics.plastic_mass_g`, `C1.model_metrics.virgin_plastic_mass_g`,
+> `C5.model_metrics.plastic_mass_g`, and `C5.model_metrics.virgin_plastic_mass_g` from the
+> headline canonical patch (`canonical-patch-proposal.json`). These fields carry a conservative
+> accounting-budget scenario (all-liner / all-film counted as plastic), NOT a measured physical
+> plastic mass. Patching them into the headline `model_metrics.plastic_mass_g` slot without explicit
+> qualification language would misrepresent the accounting scenario as a physical measurement.
+>
+> See §SHARED CONTRACT for the correct classification of these fields.
+
+The following fields ARE included in the DATA-ONLY patch:
 
 | Field | Current state | Proposed | Files affected |
 |---|---|---|---|
 | `C1.model_metrics.total_package_mass_g` | absent | add ASTRA-E069 | `docs/evidence/htf-03/HTF-03-canonical-packaging-dataset.json` |
-| `C1.model_metrics.plastic_mass_g` | absent | add ASTRA-E070 | same |
-| `C1.model_metrics.virgin_plastic_mass_g` | absent | add ASTRA-E071 | same |
 | `C1.model_metrics.recycled_material_fraction` | absent | add ASTRA-E072 | same |
 | `C1.model_metrics.renewable_material_fraction` | absent | add ASTRA-E074 | same |
 | `C2.model_metrics.*` (5 fields) | absent | add ASTRA-E085–E089 | same |
 | `C3.model_metrics.*` (5 fields) | absent | add ASTRA-E094–E098 | same |
 | `C4.model_metrics.recycled_material_fraction` | absent | add ASTRA-E106 | same |
 | `C4.model_metrics.renewable_material_fraction` | absent | add ASTRA-E107 | same |
-| `C5.model_metrics.*` (5 fields) | absent | add ASTRA-E118–E122 | same |
+| `C5.model_metrics.total_package_mass_g` | absent | add ASTRA-E118 | same |
+| `C5.model_metrics.recycled_material_fraction` | absent | add ASTRA-E121 | same |
+| `C5.model_metrics.renewable_material_fraction` | absent | add ASTRA-E122 | same |
+
+The following fields are **NOT in the DATA-ONLY patch** (see §SHARED CONTRACT):
+
+| Field | Reason for exclusion |
+|---|---|
+| `C1.model_metrics.plastic_mass_g` (ASTRA-E070) | Conservative accounting budget, not physical plastic mass |
+| `C1.model_metrics.virgin_plastic_mass_g` (ASTRA-E071) | Same — accounting budget, not physical virgin plastic |
+| `C5.model_metrics.plastic_mass_g` (ASTRA-E119) | Same — all-film accounting scenario |
+| `C5.model_metrics.virgin_plastic_mass_g` (ASTRA-E120) | Same — all-film accounting scenario |
 
 ### C6 configuration model_metrics
 
@@ -123,19 +144,28 @@ ASTRA model requires:
 Changes that require explicit Integrator approval before implementation, because they affect the
 semantics of the shared API/UI contract or introduce new enumeration values.
 
-### New `plastic_accounting_scenario` pattern for C1/C5
+### C1/C5 conservative accounting budget — SHARED CONTRACT / PRESENTATION DECISION
 
-C1 and C5 use a conservative accounting scenario where all cellulose liner/film is counted as the
-plastic budget. This is distinct from `plastic_mass_g` (actual chemical plastic). The existing schema
-supports this through `plastic_accounting_scenario`, but exposing it distinctly in the UI (separate
-from the headline plastic figure) requires:
+C1 and C5 carry a conservative accounting scenario where all cellulose liner/film is counted as the
+plastic budget (all-liner / all-film). The ASTRA-R2 synthesis ledger contains these values
+(ASTRA-E070/E071 for C1; ASTRA-E119/E120 for C5), but they are intentionally **excluded from the
+headline canonical patch** because patching them into `model_metrics.plastic_mass_g` and
+`model_metrics.virgin_plastic_mass_g` without explicit qualification language would misrepresent
+an accounting scenario as a physical measurement.
+
+Exposing the accounting budget in the UI requires a **SHARED CONTRACT / PRESENTATION DECISION**:
 
 1. Integrator sign-off on how to present "accounting budget vs actual" to end users without confusion.
-2. Potentially a new display policy value (`DISPLAY_ACCOUNTING_BUDGET`) or explicit UI label.
-3. Agreement on whether the headline widget shows the accounting budget or the physical mass (currently
-   C1/C5 have neither filled in the production dataset).
+2. A dedicated schema slot or display policy (e.g., `plastic_accounting_scenario`, `DISPLAY_ACCOUNTING_BUDGET`),
+   rather than overloading the headline `plastic_mass_g` field.
+3. Agreement on whether the headline widget shows the accounting budget or the physical mass. Currently
+   C1/C5 have neither filled in the production dataset — leaving them absent is the safe default
+   until this decision is made.
+4. Corresponding update to the display dataset to use the new slot, not the headline field.
 
-**Affects:** API schema contract, UI copy, recommendation logic epistemic boundary.
+**Must NOT be implemented as a DATA-ONLY change without explicit Integrator approval.**
+
+**Affects:** API schema contract, UI copy, recommendation logic epistemic boundary, display dataset rendering_contract.
 
 ### C6 configuration-specific display routing
 
