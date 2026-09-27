@@ -80,8 +80,9 @@ a('COMMON.ancillary_g',[.1,.3,.7],'g','Closure/seam/label allowance; all counted
 old('COMMON.bag_area_m2','E001')
 old('B1-ESTIMATED.total_package_mass_g','E002')
 for k in ('plastic_mass_g','virgin_plastic_mass_g'): alias('B1-ESTIMATED.'+k,'B1-ESTIMATED.total_package_mass_g')
-for k,v in [('virgin_fraction',1),('recycled_material_fraction',0),('renewable_material_fraction',0)]:
-    a('B1-ESTIMATED.'+k,v,'fraction','Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.',('TASK','S27','S30'),state='OBSERVED_VERIFIED' if k=='virgin_fraction' else 'ASSUMED')
+a('B1-ESTIMATED.virgin_fraction',1,'fraction','Inherited from provider/mentor observation: incumbent high-temperature plastic packaging in active store use is 100% virgin fossil plastic (virgin_plastic_fraction = 1.0). Exact polymer identity remains unobserved; PET/PA-like properties belong to the separate engineering mass/cost scenario.',sources=(),state='OBSERVED_VERIFIED',confidence='HIGH')
+for k in ('recycled_material_fraction','renewable_material_fraction'):
+    a('B1-ESTIMATED.'+k,0,'fraction','Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation.',('ASTRA-TASK',),state='ASSUMED')
 a('PRICE.Barleta_net',.37026/1.21,'RON/pack','Historical B3 370.26 RON/1000 VAT-included /1.21; unchanged inherited price, not a refreshed quote.',('S17','ASTRA-S06'))
 a('PRICE.SP31_net',1.04,'RON/pack','Romanian resealable rotisserie price excluding VAT, 100-unit selling pack; different construction from B1.',('ASTRA-S04',))
 calc('B1-ESTIMATED.body_cost_net','RON/pack','x',{'x':[.37026/1.21,(.37026/1.21+1.04)/2,1.04]},'Midpoint of dissimilar Romanian complete-bag price anchors; broad analogue envelope, not actual Profi procurement.',('S17','ASTRA-S04'))

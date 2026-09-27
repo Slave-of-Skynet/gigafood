@@ -3649,11 +3649,9 @@
     },
     "calculation_id": "ASTRA-E009",
     "source_ids": [
-      "S27",
-      "S30",
-      "TASK"
+      "ASTRA-TASK"
     ],
-    "synthesis": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
+    "synthesis": "Inherited from provider/mentor observation: incumbent high-temperature plastic packaging in active store use is 100% virgin fossil plastic (virgin_plastic_fraction = 1.0). Exact polymer identity remains unobserved; PET/PA-like properties belong to the separate engineering mass/cost scenario.",
     "closure_scope": "Existing observed fact preserved; engineering extension available in model"
   },
   {
@@ -3735,11 +3733,9 @@
     },
     "calculation_id": "ASTRA-E009",
     "source_ids": [
-      "S27",
-      "S30",
-      "TASK"
+      "ASTRA-TASK"
     ],
-    "synthesis": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
+    "synthesis": "Inherited from provider/mentor observation: incumbent high-temperature plastic packaging in active store use is 100% virgin fossil plastic (virgin_plastic_fraction = 1.0). Exact polymer identity remains unobserved; PET/PA-like properties belong to the separate engineering mass/cost scenario.",
     "closure_scope": "Proposed modeled projection only; current runtime unchanged"
   },
   {

@@ -514,13 +514,11 @@
       "state": "OBSERVED_VERIFIED",
       "unit": "fraction",
       "source_ids": [
-        "S27",
-        "S30",
-        "TASK"
+        "ASTRA-TASK"
       ],
       "calculation_id": "ASTRA-E009",
-      "confidence": "LOW",
-      "qualifier": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
+      "confidence": "HIGH",
+      "qualifier": "Inherited from provider/mentor observation: incumbent high-temperature plastic packaging in active store use is 100% virgin fossil plastic (virgin_plastic_fraction = 1.0). Exact polymer identity remains unobserved; PET/PA-like properties belong to the separate engineering mass/cost scenario.",
       "scope": "CONFIGURATION",
       "display_policy": "DISPLAY_VERIFIED",
       "estimate": {
@@ -542,30 +540,26 @@
             "unit": "fraction",
             "state": "ASSUMED",
             "source_ids": [
-              "TASK",
-              "S27",
-              "S30"
+              "ASTRA-TASK"
             ],
-            "basis": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation."
+            "basis": "Inherited from provider/mentor observation: incumbent high-temperature plastic packaging in active store use is 100% virgin fossil plastic (virgin_plastic_fraction = 1.0). Exact polymer identity remains unobserved; PET/PA-like properties belong to the separate engineering mass/cost scenario."
           }
         },
         "assumptions": [
-          "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation."
+          "Inherited from provider/mentor observation: incumbent high-temperature plastic packaging in active store use is 100% virgin fossil plastic (virgin_plastic_fraction = 1.0). Exact polymer identity remains unobserved; PET/PA-like properties belong to the separate engineering mass/cost scenario."
         ],
-        "analogue_validity": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
-        "central_selection": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
-        "confidence": "LOW",
-        "sensitivity": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
-        "dominant_uncertainty": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
+        "analogue_validity": "Inherited from provider/mentor observation: incumbent high-temperature plastic packaging in active store use is 100% virgin fossil plastic (virgin_plastic_fraction = 1.0). Exact polymer identity remains unobserved; PET/PA-like properties belong to the separate engineering mass/cost scenario.",
+        "central_selection": "Inherited from provider/mentor observation: incumbent high-temperature plastic packaging in active store use is 100% virgin fossil plastic (virgin_plastic_fraction = 1.0). Exact polymer identity remains unobserved; PET/PA-like properties belong to the separate engineering mass/cost scenario.",
+        "confidence": "HIGH",
+        "sensitivity": "Inherited from provider/mentor observation: incumbent high-temperature plastic packaging in active store use is 100% virgin fossil plastic (virgin_plastic_fraction = 1.0). Exact polymer identity remains unobserved; PET/PA-like properties belong to the separate engineering mass/cost scenario.",
+        "dominant_uncertainty": "Inherited from provider/mentor observation: incumbent high-temperature plastic packaging in active store use is 100% virgin fossil plastic (virgin_plastic_fraction = 1.0). Exact polymer identity remains unobserved; PET/PA-like properties belong to the separate engineering mass/cost scenario.",
         "falsification_condition": "Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.",
         "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI",
         "source_ids": [
-          "S27",
-          "S30",
-          "TASK"
+          "ASTRA-TASK"
         ]
       },
-      "demo_safe_sentence": "Modeled B1-ESTIMATED.virgin_fraction: 1 fraction (engineering bounds 1–1); Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation."
+      "demo_safe_sentence": "Modeled B1-ESTIMATED.virgin_fraction: 1 fraction (engineering bounds 1–1); Inherited from provider/mentor observation: incumbent high-temperature plastic packaging in active store use is 100% virgin fossil plastic (virgin_plastic_fraction = 1.0). Exact polymer identity remains unobserved; PET/PA-like properties belong to the separate engineering mass/cost scenario."
     },
     "B1-ESTIMATED.recycled_material_fraction": {
       "kind": "evidence_field",
@@ -577,13 +571,11 @@
       "state": "ASSUMED",
       "unit": "fraction",
       "source_ids": [
-        "S27",
-        "S30",
-        "TASK"
+        "ASTRA-TASK"
       ],
       "calculation_id": "ASTRA-E010",
       "confidence": "LOW",
-      "qualifier": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
+      "qualifier": "Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation.",
       "scope": "CONFIGURATION",
       "display_policy": "DISPLAY_WITH_QUALIFIER",
       "estimate": {
@@ -605,30 +597,26 @@
             "unit": "fraction",
             "state": "ASSUMED",
             "source_ids": [
-              "TASK",
-              "S27",
-              "S30"
+              "ASTRA-TASK"
             ],
-            "basis": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation."
+            "basis": "Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation."
           }
         },
         "assumptions": [
-          "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation."
+          "Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation."
         ],
-        "analogue_validity": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
-        "central_selection": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
+        "analogue_validity": "Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation.",
+        "central_selection": "Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation.",
         "confidence": "LOW",
-        "sensitivity": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
-        "dominant_uncertainty": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
+        "sensitivity": "Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation.",
+        "dominant_uncertainty": "Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation.",
         "falsification_condition": "Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.",
         "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI",
         "source_ids": [
-          "S27",
-          "S30",
-          "TASK"
+          "ASTRA-TASK"
         ]
       },
-      "demo_safe_sentence": "Modeled B1-ESTIMATED.recycled_material_fraction: 0 fraction (engineering bounds 0–0); Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation."
+      "demo_safe_sentence": "Modeled B1-ESTIMATED.recycled_material_fraction: 0 fraction (engineering bounds 0–0); Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation."
     },
     "B1-ESTIMATED.renewable_material_fraction": {
       "kind": "evidence_field",
@@ -640,13 +628,11 @@
       "state": "ASSUMED",
       "unit": "fraction",
       "source_ids": [
-        "S27",
-        "S30",
-        "TASK"
+        "ASTRA-TASK"
       ],
       "calculation_id": "ASTRA-E011",
       "confidence": "LOW",
-      "qualifier": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
+      "qualifier": "Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation.",
       "scope": "CONFIGURATION",
       "display_policy": "DISPLAY_WITH_QUALIFIER",
       "estimate": {
@@ -668,30 +654,26 @@
             "unit": "fraction",
             "state": "ASSUMED",
             "source_ids": [
-              "TASK",
-              "S27",
-              "S30"
+              "ASTRA-TASK"
             ],
-            "basis": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation."
+            "basis": "Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation."
           }
         },
         "assumptions": [
-          "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation."
+          "Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation."
         ],
-        "analogue_validity": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
-        "central_selection": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
+        "analogue_validity": "Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation.",
+        "central_selection": "Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation.",
         "confidence": "LOW",
-        "sensitivity": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
-        "dominant_uncertainty": "Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation.",
+        "sensitivity": "Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation.",
+        "dominant_uncertainty": "Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation.",
         "falsification_condition": "Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.",
         "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI",
         "source_ids": [
-          "S27",
-          "S30",
-          "TASK"
+          "ASTRA-TASK"
         ]
       },
-      "demo_safe_sentence": "Modeled B1-ESTIMATED.renewable_material_fraction: 0 fraction (engineering bounds 0–0); Virgin PET/PA-like scenario; zero recycled/renewable credit is an explicit construction assumption, not null imputation."
+      "demo_safe_sentence": "Modeled B1-ESTIMATED.renewable_material_fraction: 0 fraction (engineering bounds 0–0); Modeled baseline assumption: zero recycled or renewable mass credit in incumbent plastic bag scenario; not null imputation."
     },
     "PRICE.Barleta_net": {
       "kind": "evidence_field",
@@ -3432,9 +3414,7 @@
       "state": "ESTIMATED",
       "unit": "fraction",
       "source_ids": [
-        "S27",
-        "S30",
-        "TASK"
+        "ASTRA-TASK"
       ],
       "calculation_id": "ASTRA-E053",
       "confidence": "LOW",
@@ -3461,9 +3441,7 @@
             "state": "ASSUMED",
             "calculation_ref": "ASTRA-E010",
             "source_ids": [
-              "S27",
-              "S30",
-              "TASK"
+              "ASTRA-TASK"
             ],
             "basis": "B1-ESTIMATED.recycled_material_fraction"
           }
@@ -3479,9 +3457,7 @@
         "falsification_condition": "Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.",
         "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI",
         "source_ids": [
-          "S27",
-          "S30",
-          "TASK"
+          "ASTRA-TASK"
         ]
       },
       "demo_safe_sentence": "Modeled B2.recycled_material_fraction: 0 fraction (engineering bounds 0–0); B2 all-plastic geometry stress model; not exact SP31 material identification."
@@ -3496,9 +3472,7 @@
       "state": "ESTIMATED",
       "unit": "fraction",
       "source_ids": [
-        "S27",
-        "S30",
-        "TASK"
+        "ASTRA-TASK"
       ],
       "calculation_id": "ASTRA-E054",
       "confidence": "LOW",
@@ -3525,9 +3499,7 @@
             "state": "ASSUMED",
             "calculation_ref": "ASTRA-E011",
             "source_ids": [
-              "S27",
-              "S30",
-              "TASK"
+              "ASTRA-TASK"
             ],
             "basis": "B1-ESTIMATED.renewable_material_fraction"
           }
@@ -3543,9 +3515,7 @@
         "falsification_condition": "Replace when a measured finished-pack BOM, exact supplier specification, invoice or site trial falls outside these conditional bounds.",
         "interval_kind": "CONDITIONAL_ENGINEERING_BOUNDS_NOT_STATISTICAL_CI",
         "source_ids": [
-          "S27",
-          "S30",
-          "TASK"
+          "ASTRA-TASK"
         ]
       },
       "demo_safe_sentence": "Modeled B2.renewable_material_fraction: 0 fraction (engineering bounds 0–0); B2 all-plastic geometry stress model; not exact SP31 material identification."

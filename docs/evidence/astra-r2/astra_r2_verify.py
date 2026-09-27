@@ -250,6 +250,73 @@ for p in ['P1','P2','P3','P4']:
         fail(f'{p}/C5/LITERAL outcome={row["outcome"]} (expected BLOCKED)')
         gate_errors += 1
 
+# C5 POST_COOK P2–P4 = QUALIFICATION REQUIRED, priority 1
+for p in ['P2','P3','P4']:
+    row = lookup.get((p, 'C5', 'POST_COOK_HOT_HOLD_6H'))
+    if row is None:
+        fail(f'Missing gate row: {p}/C5/POST_COOK')
+        gate_errors += 1
+    elif row.get('outcome') != 'QUALIFICATION REQUIRED':
+        fail(f'{p}/C5/POST_COOK outcome={row["outcome"]} (expected QUALIFICATION REQUIRED)')
+        gate_errors += 1
+    elif row.get('qualification_priority') != 1:
+        fail(f'{p}/C5/POST_COOK priority={row.get("qualification_priority")} (expected 1)')
+        gate_errors += 1
+
+# C1 POST_COOK P1 = QUALIFICATION REQUIRED, priority 1
+row_c1_p1 = lookup.get(('P1', 'C1', 'POST_COOK_HOT_HOLD_6H'))
+if row_c1_p1 is None:
+    fail('Missing gate row: P1/C1/POST_COOK')
+    gate_errors += 1
+elif row_c1_p1.get('outcome') != 'QUALIFICATION REQUIRED':
+    fail(f'P1/C1/POST_COOK outcome={row_c1_p1["outcome"]} (expected QUALIFICATION REQUIRED)')
+    gate_errors += 1
+elif row_c1_p1.get('qualification_priority') != 1:
+    fail(f'P1/C1/POST_COOK priority={row_c1_p1.get("qualification_priority")} (expected 1)')
+    gate_errors += 1
+
+# Check ASTRA-E009 provenance (Fix 2)
+c_e009 = next((c for c in ledger if c['calculation_id'] == 'ASTRA-E009'), None)
+if c_e009 is None:
+    fail('ASTRA-E009 not found in ledger')
+    gate_errors += 1
+else:
+    if c_e009.get('state') != 'OBSERVED_VERIFIED':
+        fail(f"ASTRA-E009 state is {c_e009.get('state')} (expected OBSERVED_VERIFIED)")
+        gate_errors += 1
+    e009_basis = c_e009.get('analogue_validity', '')
+    if 'provider' not in e009_basis.lower():
+        fail(f"ASTRA-E009 basis missing provider observation inheritance: {e009_basis}")
+        gate_errors += 1
+    if 'Virgin PET/PA-like scenario;' in e009_basis:
+        fail(f"ASTRA-E009 basis implies PET/PA itself was observed: {e009_basis}")
+        gate_errors += 1
+
+# Check 05-demo-candidate-matrix.md consistency with canonical gate matrix (Fix 1)
+matrix_md = (OUT / '05-demo-candidate-matrix.md').read_text(encoding='utf-8')
+for line in matrix_md.splitlines():
+    if line.startswith('| **C5**'):
+        if 'CONFLICT (thermal)' in line and 'Primary demo-path' not in line:
+            fail('05-demo-candidate-matrix.md: C5 top-level outcome collapsed to CONFLICT (thermal)')
+            gate_errors += 1
+        if 'P2–P4: QUALIFICATION REQUIRED, priority 1' not in line:
+            fail('05-demo-candidate-matrix.md: C5 missing POST_COOK P2–P4 priority 1 outcome')
+            gate_errors += 1
+        if 'BLOCKED' not in line:
+            fail('05-demo-candidate-matrix.md: C5 missing LITERAL 250C BLOCKED outcome')
+            gate_errors += 1
+        if 'CONFLICT 175°C vs 185°C' not in line and 'CONFLICT 175' not in line:
+            fail('05-demo-candidate-matrix.md: C5 missing thermal CONFLICT 175 vs 185')
+            gate_errors += 1
+    elif line.startswith('| **C1**'):
+        if 'priority 1' not in line:
+            fail('05-demo-candidate-matrix.md: C1 missing P1 priority 1 outcome')
+            gate_errors += 1
+    elif line.startswith('| **C6-RO-H**'):
+        if 'priority 2' not in line:
+            fail('05-demo-candidate-matrix.md: C6-RO-H missing literal priority 2 outcome')
+            gate_errors += 1
+
 # Count gate cell types
 from collections import Counter
 counts = Counter(g.get('status') for r in gates for g in r.get('gates', {}).values())
@@ -262,7 +329,7 @@ if counts.get('FAIL', 0) != 24:
     fail(f'FAIL cells: expected 24, got {counts.get("FAIL", 0)}')
 
 if gate_errors == 0:
-    ok('Gate outcome regression: C6 LITERAL=QUALIFICATION_REQUIRED priority=2, C5 LITERAL=BLOCKED')
+    ok('Gate outcome regression: C6 LITERAL=QUAL_REQ p2, C5 LITERAL=BLOCKED, C5 POST_COOK=QUAL_REQ p1, C1 POST_COOK=QUAL_REQ p1, matrix consistent')
 else:
     fail(f'{gate_errors} gate regression errors')
 

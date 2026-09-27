@@ -13,24 +13,26 @@
 - **Complete cost RON** = net delivered Romania RON/pack; excludes recoverable VAT.
 - **Thermal screen °C** = lowest modeled component-family maximum; **NOT** assembled-pack approval.
 - **Whole fill ratio** = modeled occupied bird volume / package capacity (central); >1 = no geometric fit.
-- **Outcome** = canonical gate outcome (HTF-03 gate matrix, unchanged).
+- **Primary demo-path outcome (POST_COOK_HOT_HOLD_6H)** = canonical gate outcome on the primary commercial workflow.
+- **Literal-250°C outcome (LITERAL_OVEN_250C_THEN_HOLD)** = canonical gate outcome under direct 250 °C oven exposure.
+- **Evidence conflict / boundary** = underlying evidence state, thermal rating conflicts, or qualification boundaries.
 
 All modeled values are flagged **[M]**.
 
 ---
 
-| Candidate / config | Total mass (g) | Plastic mass (g) | Virgin mass (g) | Recycled % | Renewable % | Cost net RON | Thermal screen °C | Whole fill ratio | Outcome |
-|---|---:|---:|---:|---:|---:|---:|---|---:|---|
-| **B1-ESTIMATED** (baseline) | 6.50 [M] | 6.50 [M] | 6.50 [M] | 0 [M] | 0 [M] | 0.723 [M] | 200–220 [M] | — | INCUMBENT |
-| **C1** Sacma B.Life Gaia bag | 20.11 [M] | 11.08 [M]¹ | 11.08 [M]¹ | 0 [M] | 91.4% [M] | 1.483 [M] | 150–200 [M] | 0.55 [M] | QUALIFICATION REQUIRED |
-| **C2** Sirane Siralon nylon bag | 5.74 [M] | 5.74 [M] | 5.74 [M] | 0 [M] | 0 [M] | 1.378 [M] | 210 [M] | 0.55 [M] | QUALIFICATION REQUIRED |
-| **C3** Sealed Air Oven Ease bag | 14.97 [M] | 14.97 [M] | 14.97 [M] | 0 [M] | 0 [M] | 1.794 [M] | 220 [M] | 0.55 [M] | QUALIFICATION REQUIRED |
-| **C4** Faerch CPET 2227 + lid | 73.32 [M] | 73.32 [M] | 36.20 [M] | 50.6% [M] | 0 [M] | 3.220 [M] | 60–70 [M]² | 1.94 [M] — NO FIT | BLOCKED |
-| **C5** BIOPAP SI-14 + compat. film | 27.13 [M] | 4.34 [M]¹ | 4.34 [M]¹ | 0 [M] | 95.1% [M] | 2.673 [M] | 175 CONFLICT⁵ | 1.57 [M] — NO FIT³ | CONFLICT (thermal) |
-| **C6-RO-P** Al portion 729 + lid | 43.90 [M] | 19.20 [M] | 19.20 [M] | 21.4% [M] | 0 [M] | 0.999 [M] | 60–70 [M]² | 1.73 [M] — NO FIT | QUALIFICATION REQUIRED |
-| **C6-RO-W** WePack whole Al + lid | 65.71 [M] | 28.30 [M] | 28.30 [M] | 21.6% [M] | 0 [M] | 1.938 [M] | 60–70 [M]² | 0.63 [M] | QUALIFICATION REQUIRED |
-| **C6-RO-H** E-ambalaj e-pui225 + lid | 61.97 [M] | 28.11 [M] | 28.11 [M] | 20.8% [M] | 0 [M] | 2.032 [M] | 60–70 [M]² | 0.81 [M] | **QUALIFICATION REQUIRED**⁴ |
-| **C6-EU** Plus Pack Al + DPET lid | 64.41 [M] | 33.41 [M] | 33.41 [M] | 18.3% [M] | 0 [M] | 5.682 [M] | 60–70 [M]² | 1.03 [M] | QUALIFICATION REQUIRED |
+| Candidate / config | Total mass (g) | Plastic mass (g) | Virgin mass (g) | Recycled % | Renewable % | Cost net RON | Thermal screen °C | Whole fill ratio | Primary demo-path outcome (POST_COOK_HOT_HOLD_6H) | Literal-250°C outcome (LITERAL_OVEN_250C_THEN_HOLD) | Evidence conflict / boundary |
+|---|---:|---:|---:|---:|---:|---:|---|---:|---|---|---|
+| **B1-ESTIMATED** (baseline) | 6.50 [M] | 6.50 [M] | 6.50 [M] | 0 [M] | 0 [M] | 0.723 [M] | 200–220 [M] | — | INCUMBENT (baseline comparator) | INCUMBENT (baseline comparator) | None; incumbent bag in store use is 100% virgin fossil plastic [OV]; mass/cost modeled |
+| **C1** Sacma B.Life Gaia bag | 20.11 [M] | 11.08 [M]¹ | 11.08 [M]¹ | 0 [M] | 91.4% [M] | 1.483 [M] | 150–200 [M] | 0.55 [M] | **P1: QUALIFICATION REQUIRED, priority 1**⁶; P2–P4: QUALIFICATION REQUIRED | QUALIFICATION REQUIRED (unprioritized) | Paper hot-hold liner unverified; 250 °C oven unverified; conservative all-liner plastic accounting budget |
+| **C2** Sirane Siralon nylon bag | 5.74 [M] | 5.74 [M] | 5.74 [M] | 0 [M] | 0 [M] | 1.378 [M] | 210 [M] | 0.55 [M] | QUALIFICATION REQUIRED (unprioritized) | BLOCKED (thermal FAIL) | Siralon 210 °C rating < 250 °C oven gate; 6h hot-hold unverified |
+| **C3** Sealed Air Oven Ease bag | 14.97 [M] | 14.97 [M] | 14.97 [M] | 0 [M] | 0 [M] | 1.794 [M] | 220 [M] | 0.55 [M] | QUALIFICATION REQUIRED (unprioritized) | BLOCKED (thermal FAIL) | Oven Ease 220 °C rating < 250 °C oven gate; 6h hot-hold unverified |
+| **C4** Faerch CPET 2227 + lid | 73.32 [M] | 73.32 [M] | 36.20 [M] | 50.6% [M] | 0 [M] | 3.220 [M] | 60–70 [M]² | 1.94 [M] — NO FIT | BLOCKED (fit FAIL) | BLOCKED (thermal FAIL) | Dimensional fit fail (deli tray); CPET 220 °C < 250 °C; clear lid 60–70 °C ceiling |
+| **C5** BIOPAP SI-14 + compat. film | 27.13 [M] | 4.34 [M]¹ | 4.34 [M]¹ | 0 [M] | 95.1% [M] | 2.673 [M] | 175 CONFLICT⁵ | 1.57 [M] — NO FIT³ | **P2–P4: QUALIFICATION REQUIRED, priority 1**⁶; P1: QUALIFICATION REQUIRED (no whole fit) | BLOCKED (thermal FAIL) | **Thermal evidence: CONFLICT 175°C vs 185°C**; compatible film unnominated; all-film accounting |
+| **C6-RO-P** Al portion 729 + lid | 43.90 [M] | 19.20 [M] | 19.20 [M] | 21.4% [M] | 0 [M] | 0.999 [M] | 60–70 [M]² | 1.73 [M] — NO FIT | P2–P4: QUALIFICATION REQUIRED, priority 2 (binds to RO-P) | N/A (literal 250 °C binds to RO-H) | Unqualified post-oven clear lid modeled at 60–70 °C; portion tray (no whole bird fit) |
+| **C6-RO-W** WePack whole Al + lid | 65.71 [M] | 28.30 [M] | 28.30 [M] | 21.6% [M] | 0 [M] | 1.938 [M] | 60–70 [M]² | 0.63 [M] | P1: QUALIFICATION REQUIRED, priority 2 (binds to RO-W) | N/A (literal 250 °C binds to RO-H) | Unqualified post-oven clear lid modeled at 60–70 °C; reported 406L capacity is CONFLICT (modeled ~3.1L) |
+| **C6-RO-H** E-ambalaj e-pui225 + lid | 61.97 [M] | 28.11 [M] | 28.11 [M] | 20.8% [M] | 0 [M] | 2.032 [M] | 60–70 [M]² | 0.81 [M] | N/A (POST_COOK binds to RO-W for P1, RO-P for P2–P4) | **P1–P4: QUALIFICATION REQUIRED, priority 2**⁴ | Aluminium body oven-capable (280 °C claim), but post-oven clear lid modeled at 60–70 °C (unresolved qualification boundary) |
+| **C6-EU** Plus Pack Al + DPET lid | 64.41 [M] | 33.41 [M] | 33.41 [M] | 18.3% [M] | 0 [M] | 5.682 [M] | 60–70 [M]² | 1.03 [M] | TECHNICAL REFERENCE ONLY (never evaluated in gate rows) | TECHNICAL REFERENCE ONLY (never evaluated in gate rows) | Technical benchmark (Plus Pack); 350 °C body rating does NOT qualify Romanian bodies; Danish pricing route |
 
 ---
 
@@ -69,7 +71,13 @@ under LITERAL_OVEN_250C_THEN_HOLD, with qualification_priority = 2.
 
 ⁵ **C5 thermal CONFLICT:** BIOPAP LC family claims 175 °C (2016) vs 185 °C (2026). This conflict is
 preserved from the canonical HTF-03 record. C2/C3/C4/C5 are BLOCKED under
-LITERAL_OVEN_250C_THEN_HOLD (thermal FAIL gate).
+LITERAL_OVEN_250C_THEN_HOLD (thermal FAIL gate). Under POST_COOK_HOT_HOLD_6H, C5 is
+QUALIFICATION REQUIRED (priority 1 for P2–P4 portions), with the thermal evidence CONFLICT
+constituting the primary open research boundary.
+
+⁶ **C1 & C5 primary demo-path prioritization:** Under POST_COOK_HOT_HOLD_6H, C1 is the priority 1
+qualification candidate for whole chicken (P1), while C5 is the priority 1 qualification candidate
+for portions (P2–P4). C5 whole fill ratio (1.57) precludes whole bird use.
 
 ---
 

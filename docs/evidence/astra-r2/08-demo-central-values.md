@@ -95,6 +95,7 @@ Compared to B1-ESTIMATED on the **portions stream** (ASTRA-E025: 6,336,000 packs
 ¹ C5 plastic accounting is a conservative all-film scenario; cellulose body mass far exceeds film+coating.
 This value must not be presented as a measured plastic fact.
 
+> **Canonical gate outcomes:** POST_COOK P2–P4 = QUALIFICATION REQUIRED (priority 1); LITERAL 250°C = BLOCKED (thermal FAIL).
 > **Thermal CONFLICT:** BIOPAP LC body claims 175 °C (2016) vs 185 °C (2026). Six-hour hold at
 > 90 °C requires a co-developed film not yet nominated. This CONFLICT is retained from the canonical
 > HTF-03 dataset and must not be changed by implementation without new qualifying evidence.

@@ -74,7 +74,8 @@ and a separate real plastic BOM replacing the accounting scenario.
 > HTF-03 record and **may not be resolved to PASS by this document.**
 >
 > C5 is BLOCKED under LITERAL_OVEN_250C_THEN_HOLD (thermal FAIL gate). This document covers the
-> POST_COOK_HOT_HOLD_6H workflow only, where the outcome is CONFLICT pending film qualification.
+> POST_COOK_HOT_HOLD_6H workflow only, where the canonical outcome is QUALIFICATION REQUIRED
+> (priority 1 for portions P2–P4), with an open thermal evidence CONFLICT (175 °C vs 185 °C) pending film qualification.
 
 ### Key metrics
 
@@ -109,8 +110,9 @@ on how light the incumbent bag actually is.
 The cost premium is ~**+1.95 RON/pack** (+270%), translating to ~**+12.4 M RON/year** additional network cost.
 At ~901 RON/kg virgin avoided (central), the economics require strong sustainability positioning.
 
-**Qualification blocker:** The thermal CONFLICT on the BIOPAP LC body and unidentified film must be
-resolved through physical qualification before C5 can serve as a recommended candidate for hot-hold.
+**Qualification boundary:** Under POST_COOK_HOT_HOLD_6H, C5 is QUALIFICATION REQUIRED (priority 1
+for P2–P4 portions). The thermal CONFLICT (175 °C vs 185 °C) on the BIOPAP LC body and unidentified film
+is the open research boundary requiring physical qualification before commercial adoption.
 
 ---
 

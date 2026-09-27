@@ -54,9 +54,13 @@ python docs/evidence/astra-r2/astra_r2_verify.py
      - C6-RO-H annual spend: baseline (ASTRA-E532) 2,290,464 RON, incremental (ASTRA-E534) +4,146,336 RON
      - Geometry fill ratios: C1 (ASTRA-E246) 0.5475, C5 (ASTRA-E332) 1.5731, C6-RO-H (ASTRA-E405) 0.8128
 
-4. **Step 4: Canonical Gate Outcomes Regression**
+4. **Step 4: Canonical Gate Outcomes Regression & Candidate Matrix Consistency**
    - Asserts `C6` under `LITERAL_OVEN_250C_THEN_HOLD` has `outcome == "QUALIFICATION REQUIRED"` and `qualification_priority == 2` for all 4 products (P1–P4).
    - Asserts `C5` under `LITERAL_OVEN_250C_THEN_HOLD` has `outcome == "BLOCKED"` with `thermal_workflow == FAIL` for all 4 products.
+   - Asserts `C5` under `POST_COOK_HOT_HOLD_6H` has `outcome == "QUALIFICATION REQUIRED"` and `qualification_priority == 1` for portions (P2–P4).
+   - Asserts `C1` under `POST_COOK_HOT_HOLD_6H` has `outcome == "QUALIFICATION REQUIRED"` and `qualification_priority == 1` for whole chicken (P1).
+   - Asserts `ASTRA-E009` provenance: `state == "OBSERVED_VERIFIED"`, basis notes provider/mentor observation of 100% virgin fossil plastic, does NOT imply PET/PA itself was observed.
+   - Asserts `05-demo-candidate-matrix.md` consistency: C5 outcome is NOT collapsed to `CONFLICT`, but shows context-specific primary demo-path `QUALIFICATION REQUIRED, priority 1` (P2–P4), literal 250°C `BLOCKED`, and thermal evidence `CONFLICT 175°C vs 185°C`.
    - Verifies exact canonical gate cell counts:
      - `QUALIFICATION_REQUIRED`: 135
      - `UNKNOWN`: 129
@@ -118,7 +122,7 @@ python docs/evidence/astra-r2/astra_r2_verify.py
 
 === Step 4: gate outcome regression ===
   Gate cells: {'QUALIFICATION_REQUIRED': 135, 'UNKNOWN': 129, 'FAIL': 24}
-  PASS: Gate outcome regression: C6 LITERAL=QUALIFICATION_REQUIRED priority=2, C5 LITERAL=BLOCKED
+  PASS: Gate outcome regression: C6 LITERAL=QUAL_REQ p2, C5 LITERAL=BLOCKED, C5 POST_COOK=QUAL_REQ p1, C1 POST_COOK=QUAL_REQ p1, matrix consistent
 
 === Step 5: evidence state preservation & structured dimensions ===
   PASS: All 17 OBSERVED_VERIFIED facts preserved with final_state = OBSERVED_VERIFIED
