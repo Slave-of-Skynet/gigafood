@@ -1,4 +1,21 @@
-# PackShift
+# PackShift (GigaFood) — AgriFood Hackathon 2026
+
+> 🏆 **AgriFood Hackathon 2026 Project (Profi Retail Challenge)**  
+> 🤝 **Teamwork:** **Team SoS (Slave of Skynet)**  
+> 🌍 **Live Demo (24/7 Cloud Version):** **[https://denis100strike.github.io/packshift/](https://denis100strike.github.io/packshift/)**  
+> 🇷🇺 **Описание для портфолио (RU):** [О_ПРОЕКТЕ_PORTFOLIO.md](О_ПРОЕКТЕ_PORTFOLIO.md)
+
+### 👥 Team SoS (Участники команды)
+
+| Team Member | Role | Core Contribution |
+|---|---|---|
+| **Denis Mironov** ([@denis100strike](https://github.com/denis100strike)) | **Frontend Developer & UI Integration** | Interactive React 19 / TypeScript components, 1-click multilingual i18n (RU/RO/EN), interactive Pentagon Radar Chart, responsive layout & API integration |
+| **Vadim** ([@Mr-Ressentiment](https://github.com/Mr-Ressentiment)) | **Product Owner & Physical Packaging (HTF-05)** | Engineering specification for 250°C Grill & Oven Pouch, glue-free thermal bonding, steam-cooling physics model, P1–P4 product archetypes |
+| **Igor Gladyshev** ([@Igor](https://github.com/igor-gladyshev)) | **Packaging Research & Data Recon** | European supplier reconnaissance (Sirane, Ready Chef Go, Faerch, Contital), Tier A/B evidence verification, food-contact compliance |
+| **Alisa Anusat** ([@lisqrn](https://github.com/lisqrn)) | **Frontend Development & Data Modeling** | UI data modeling, gate state visualization, candidate evaluation cards |
+| **Vladimir Barbalat** ([@barbalatv](https://github.com/barbalatv)) | **Backend Development & Domain Engine** | Python / FastAPI calculation engine, 6 Hard Gates matrix, fail-closed validation, 165 automated pytest tests (100% PASS) |
+
+---
 
 Evidence-aware Packaging Transition Copilot for the AgriFood challenge's primary
 goal: reducing virgin plastic in packaging. The working A-core compares current
