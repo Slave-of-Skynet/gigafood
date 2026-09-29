@@ -1,0 +1,884 @@
+{
+  "health": {
+    "status": "READY",
+    "evidence_version": "1.0",
+    "dataset_kind": "PUBLIC",
+    "disclosure": "PUBLIC-EVIDENCE DEMO DATA — NOT PROFI PROVIDER DATA. Candidate comparisons are decision-support examples, not implementation approvals.",
+    "error": null
+  },
+  "scenarios": {
+    "schema_version": "1.0",
+    "dataset_kind": "PUBLIC",
+    "disclosure": "PUBLIC-EVIDENCE DEMO DATA — NOT PROFI PROVIDER DATA. Candidate comparisons are decision-support examples, not implementation approvals.",
+    "scenarios": [
+      {
+        "id": "cchbc-500ml-rpet-transition",
+        "label": "Case A: 500ml PET Beverage Bottle (Virgin PET Baseline to 100% rPET Body)",
+        "current": {
+          "id": "cchbc-500ml-virgin",
+          "label": "500ml PET Bottle — Virgin Baseline",
+          "components": [
+            {
+              "id": "body",
+              "material": "Polyethylene terephthalate (PET)",
+              "plastic_mass_g": {
+                "value": 19.5,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                  "note": "Average 500ml PET bottle body mass of 19.5 g reported in Coca-Cola HBC Green Finance Report (September 2023), Circular Economy / Packaging section."
+                }
+              },
+              "recycled_content_fraction": {
+                "value": 0.0,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                  "note": "Conventional virgin PET baseline prior to rPET conversion; 0.0 recycled content fraction (100% virgin PET)."
+                }
+              }
+            },
+            {
+              "id": "closure",
+              "material": "High-density polyethylene (HDPE)",
+              "plastic_mass_g": {
+                "value": 2.5,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                  "note": "Average bottle closure mass of 2.5 g reported in Coca-Cola HBC Green Finance Report (September 2023)."
+                }
+              },
+              "recycled_content_fraction": {
+                "value": 0.0,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                  "note": "Standard beverage bottle closure manufactured from virgin food-grade HDPE (0.0 recycled content fraction)."
+                }
+              }
+            }
+          ],
+          "food_contact": true,
+          "use_context": "Carbonated soft drink and mineral water single-use packaging (room temperature / refrigerated)",
+          "capabilities": null,
+          "max_temperature_c": null,
+          "microwave_safe": null
+        },
+        "candidate": {
+          "id": "cchbc-500ml-rpet",
+          "label": "500ml PET Bottle — 100% rPET Body + Virgin HDPE Closure",
+          "components": [
+            {
+              "id": "body",
+              "material": "Recycled polyethylene terephthalate (rPET)",
+              "plastic_mass_g": {
+                "value": 19.5,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                  "note": "Bottle body mass maintained at 19.5 g using food-grade decontaminated rPET preforms produced in-house (e.g. Gaglianico plant)."
+                }
+              },
+              "recycled_content_fraction": {
+                "value": 1.0,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                  "note": "100% post-consumer recycled PET preform resin allocation certified in Coca-Cola HBC Green Finance Report."
+                }
+              }
+            },
+            {
+              "id": "closure",
+              "material": "High-density polyethylene (HDPE)",
+              "plastic_mass_g": {
+                "value": 2.5,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                  "note": "Retained 2.5 g HDPE closure mass (closure unconverted)."
+                }
+              },
+              "recycled_content_fraction": {
+                "value": 0.0,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                  "note": "Closure remains 0.0 recycled content fraction due to technical and organoleptic constraints on recycled polyolefins for pressurized caps."
+                }
+              }
+            }
+          ],
+          "food_contact": true,
+          "use_context": "Carbonated soft drink and mineral water single-use packaging (room temperature / refrigerated)",
+          "capabilities": null,
+          "max_temperature_c": null,
+          "microwave_safe": null
+        },
+        "operational_requirements": null
+      },
+      {
+        "id": "deli-pp-to-rpet-transition",
+        "label": "Case B: 360-375ml Food Container (Virgin PP Hot/Microwave vs 80% rPET Chilled-Only)",
+        "current": {
+          "id": "berry-unipak-360ml-pp",
+          "label": "Berry UniPak 360ml Round Pot — Virgin Polypropylene",
+          "components": [
+            {
+              "id": "pot",
+              "material": "Polypropylene (PP)",
+              "plastic_mass_g": {
+                "value": 14.8,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.berryglobal.com/en/product/5226",
+                  "note": "Berry Global / Superfos Product 5226 technical specification: 360ml UniPak container body weight 14.8 g. Excludes separate snap-on lid (boundary limitation: represented body component only, not verified complete package)."
+                }
+              },
+              "recycled_content_fraction": {
+                "value": 0.0,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.berryglobal.com/en/product/5226",
+                  "note": "Standard virgin injection moulding PP grade; 0.0 recycled content fraction."
+                }
+              }
+            }
+          ],
+          "food_contact": true,
+          "use_context": "Hot filling up to 95°C and microwave reheating; food-contact approved under Regulation (EU) 10/2011",
+          "capabilities": {
+            "max_temperature_c": {
+              "value": 95.0,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.berryglobal.com/en/product/5226",
+                "note": "Berry Superfos Product 5226 technical specification: rated for hot filling up to 95°C."
+              }
+            },
+            "microwave_safe": {
+              "value": true,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.berryglobal.com/en/product/5226",
+                "note": "Berry Superfos Product 5226 technical specification: microwave safe."
+              }
+            }
+          },
+          "max_temperature_c": null,
+          "microwave_safe": null
+        },
+        "candidate": {
+          "id": "duni-deli-375ml-rpet",
+          "label": "Duni Deli Hinged 375ml Container — 80% rPET",
+          "components": [
+            {
+              "id": "container",
+              "material": "Recycled polyethylene terephthalate (rPET)",
+              "plastic_mass_g": {
+                "value": 12.0,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971",
+                  "note": "Duni BioPak Article 205971 technical datasheet: Deli Hinged 375ml piece gross weight 12.0 g."
+                }
+              },
+              "recycled_content_fraction": {
+                "value": 0.8,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971",
+                  "note": "Manufacturer technical specification declares 80% post-consumer recycled PET (RPET) content."
+                }
+              }
+            }
+          ],
+          "food_contact": true,
+          "use_context": "Chilled storage only (up to 70°C for 2h max); strictly NOT suitable for microwave oven reheating",
+          "capabilities": {
+            "max_temperature_c": {
+              "value": 70.0,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971",
+                "note": "Duni BioPak Article 205971 technical datasheet: maximum temperature +70°C for up to 2 hours."
+              }
+            },
+            "microwave_safe": {
+              "value": false,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971",
+                "note": "Duni BioPak Article 205971 technical datasheet: strictly not suitable for use in a microwave oven."
+              }
+            }
+          },
+          "max_temperature_c": null,
+          "microwave_safe": null
+        },
+        "operational_requirements": {
+          "max_temperature_c": {
+            "value": 95.0,
+            "provenance": {
+              "origin": "ASSUMED",
+              "verification_state": "NOT_VERIFIED",
+              "source_reference": "demo:prepared-food-hot-fill",
+              "note": "Demonstration operating requirement: hot filling up to 95°C for prepared hot food; hypothetical demo scenario assumption, not Profi provider requirement."
+            }
+          },
+          "microwave_safe": {
+            "value": true,
+            "provenance": {
+              "origin": "ASSUMED",
+              "verification_state": "NOT_VERIFIED",
+              "source_reference": "demo:prepared-food-microwave",
+              "note": "Demonstration operating requirement: microwave reheating suitability; hypothetical demo scenario assumption, not Profi provider requirement."
+            }
+          }
+        }
+      }
+    ]
+  },
+  "comparisons": {
+    "cchbc-500ml-rpet-transition": {
+      "scenario": {
+        "id": "cchbc-500ml-rpet-transition",
+        "label": "Case A: 500ml PET Beverage Bottle (Virgin PET Baseline to 100% rPET Body)",
+        "current": {
+          "id": "cchbc-500ml-virgin",
+          "label": "500ml PET Bottle — Virgin Baseline",
+          "components": [
+            {
+              "id": "body",
+              "material": "Polyethylene terephthalate (PET)",
+              "plastic_mass_g": {
+                "value": 19.5,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                  "note": "Average 500ml PET bottle body mass of 19.5 g reported in Coca-Cola HBC Green Finance Report (September 2023), Circular Economy / Packaging section."
+                }
+              },
+              "recycled_content_fraction": {
+                "value": 0.0,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                  "note": "Conventional virgin PET baseline prior to rPET conversion; 0.0 recycled content fraction (100% virgin PET)."
+                }
+              }
+            },
+            {
+              "id": "closure",
+              "material": "High-density polyethylene (HDPE)",
+              "plastic_mass_g": {
+                "value": 2.5,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                  "note": "Average bottle closure mass of 2.5 g reported in Coca-Cola HBC Green Finance Report (September 2023)."
+                }
+              },
+              "recycled_content_fraction": {
+                "value": 0.0,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                  "note": "Standard beverage bottle closure manufactured from virgin food-grade HDPE (0.0 recycled content fraction)."
+                }
+              }
+            }
+          ],
+          "food_contact": true,
+          "use_context": "Carbonated soft drink and mineral water single-use packaging (room temperature / refrigerated)",
+          "capabilities": null,
+          "max_temperature_c": null,
+          "microwave_safe": null
+        },
+        "candidate": {
+          "id": "cchbc-500ml-rpet",
+          "label": "500ml PET Bottle — 100% rPET Body + Virgin HDPE Closure",
+          "components": [
+            {
+              "id": "body",
+              "material": "Recycled polyethylene terephthalate (rPET)",
+              "plastic_mass_g": {
+                "value": 19.5,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                  "note": "Bottle body mass maintained at 19.5 g using food-grade decontaminated rPET preforms produced in-house (e.g. Gaglianico plant)."
+                }
+              },
+              "recycled_content_fraction": {
+                "value": 1.0,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                  "note": "100% post-consumer recycled PET preform resin allocation certified in Coca-Cola HBC Green Finance Report."
+                }
+              }
+            },
+            {
+              "id": "closure",
+              "material": "High-density polyethylene (HDPE)",
+              "plastic_mass_g": {
+                "value": 2.5,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                  "note": "Retained 2.5 g HDPE closure mass (closure unconverted)."
+                }
+              },
+              "recycled_content_fraction": {
+                "value": 0.0,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/debt-investors/Green%20Finance%20Report%20-%20September%202023.pdf",
+                  "note": "Closure remains 0.0 recycled content fraction due to technical and organoleptic constraints on recycled polyolefins for pressurized caps."
+                }
+              }
+            }
+          ],
+          "food_contact": true,
+          "use_context": "Carbonated soft drink and mineral water single-use packaging (room temperature / refrigerated)",
+          "capabilities": null,
+          "max_temperature_c": null,
+          "microwave_safe": null
+        },
+        "operational_requirements": null
+      },
+      "status": "CALCULATED",
+      "eligibility_status": "REVIEW_REQUIRED",
+      "origin": "CALCULATED",
+      "verification_state": "INDICATIVE",
+      "current_virgin_pack_g": 22.0,
+      "candidate_virgin_pack_g": 2.5,
+      "reduction_g": 19.5,
+      "reduction_pct": 88.63636363636364,
+      "missing_fields": [],
+      "constraints": [
+        {
+          "constraint_id": "food-contact-suitability",
+          "status": "REVIEW_REQUIRED",
+          "reason": "Food-contact suitability, food safety, shelf life and implementation suitability are NOT VERIFIED. This calculation is not an approval or legal verdict.",
+          "source_reference": null,
+          "verification_state": "NOT_VERIFIED"
+        }
+      ]
+    },
+    "deli-pp-to-rpet-transition": {
+      "scenario": {
+        "id": "deli-pp-to-rpet-transition",
+        "label": "Case B: 360-375ml Food Container (Virgin PP Hot/Microwave vs 80% rPET Chilled-Only)",
+        "current": {
+          "id": "berry-unipak-360ml-pp",
+          "label": "Berry UniPak 360ml Round Pot — Virgin Polypropylene",
+          "components": [
+            {
+              "id": "pot",
+              "material": "Polypropylene (PP)",
+              "plastic_mass_g": {
+                "value": 14.8,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.berryglobal.com/en/product/5226",
+                  "note": "Berry Global / Superfos Product 5226 technical specification: 360ml UniPak container body weight 14.8 g. Excludes separate snap-on lid (boundary limitation: represented body component only, not verified complete package)."
+                }
+              },
+              "recycled_content_fraction": {
+                "value": 0.0,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.berryglobal.com/en/product/5226",
+                  "note": "Standard virgin injection moulding PP grade; 0.0 recycled content fraction."
+                }
+              }
+            }
+          ],
+          "food_contact": true,
+          "use_context": "Hot filling up to 95°C and microwave reheating; food-contact approved under Regulation (EU) 10/2011",
+          "capabilities": {
+            "max_temperature_c": {
+              "value": 95.0,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.berryglobal.com/en/product/5226",
+                "note": "Berry Superfos Product 5226 technical specification: rated for hot filling up to 95°C."
+              }
+            },
+            "microwave_safe": {
+              "value": true,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.berryglobal.com/en/product/5226",
+                "note": "Berry Superfos Product 5226 technical specification: microwave safe."
+              }
+            }
+          },
+          "max_temperature_c": null,
+          "microwave_safe": null
+        },
+        "candidate": {
+          "id": "duni-deli-375ml-rpet",
+          "label": "Duni Deli Hinged 375ml Container — 80% rPET",
+          "components": [
+            {
+              "id": "container",
+              "material": "Recycled polyethylene terephthalate (rPET)",
+              "plastic_mass_g": {
+                "value": 12.0,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971",
+                  "note": "Duni BioPak Article 205971 technical datasheet: Deli Hinged 375ml piece gross weight 12.0 g."
+                }
+              },
+              "recycled_content_fraction": {
+                "value": 0.8,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971",
+                  "note": "Manufacturer technical specification declares 80% post-consumer recycled PET (RPET) content."
+                }
+              }
+            }
+          ],
+          "food_contact": true,
+          "use_context": "Chilled storage only (up to 70°C for 2h max); strictly NOT suitable for microwave oven reheating",
+          "capabilities": {
+            "max_temperature_c": {
+              "value": 70.0,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971",
+                "note": "Duni BioPak Article 205971 technical datasheet: maximum temperature +70°C for up to 2 hours."
+              }
+            },
+            "microwave_safe": {
+              "value": false,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971",
+                "note": "Duni BioPak Article 205971 technical datasheet: strictly not suitable for use in a microwave oven."
+              }
+            }
+          },
+          "max_temperature_c": null,
+          "microwave_safe": null
+        },
+        "operational_requirements": {
+          "max_temperature_c": {
+            "value": 95.0,
+            "provenance": {
+              "origin": "ASSUMED",
+              "verification_state": "NOT_VERIFIED",
+              "source_reference": "demo:prepared-food-hot-fill",
+              "note": "Demonstration operating requirement: hot filling up to 95°C for prepared hot food; hypothetical demo scenario assumption, not Profi provider requirement."
+            }
+          },
+          "microwave_safe": {
+            "value": true,
+            "provenance": {
+              "origin": "ASSUMED",
+              "verification_state": "NOT_VERIFIED",
+              "source_reference": "demo:prepared-food-microwave",
+              "note": "Demonstration operating requirement: microwave reheating suitability; hypothetical demo scenario assumption, not Profi provider requirement."
+            }
+          }
+        }
+      },
+      "status": "CALCULATED",
+      "eligibility_status": "BLOCKED",
+      "origin": "CALCULATED",
+      "verification_state": "INDICATIVE",
+      "current_virgin_pack_g": 14.8,
+      "candidate_virgin_pack_g": 2.3999999999999995,
+      "reduction_g": 12.400000000000002,
+      "reduction_pct": 83.78378378378379,
+      "missing_fields": [],
+      "constraints": [
+        {
+          "constraint_id": "food-contact-suitability",
+          "status": "REVIEW_REQUIRED",
+          "reason": "Food-contact suitability, food safety, shelf life and implementation suitability are NOT VERIFIED. This calculation is not an approval or legal verdict.",
+          "source_reference": null,
+          "verification_state": "NOT_VERIFIED"
+        },
+        {
+          "constraint_id": "thermal-envelope-incompatibility",
+          "status": "BLOCKED",
+          "reason": "For the assumed demo operating requirement of 95°C, candidate documented maximum is 70°C.",
+          "source_reference": "https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971",
+          "verification_state": "NOT_VERIFIED"
+        },
+        {
+          "constraint_id": "microwave-reheating-incompatibility",
+          "status": "BLOCKED",
+          "reason": "The assumed demo operating context requires microwave reheating, while the candidate manufacturer source states it is not microwave safe.",
+          "source_reference": "https://www.duni.com/en/products/deli-hinged-375-ml-transparent-1-comp-205971",
+          "verification_state": "NOT_VERIFIED"
+        }
+      ]
+    }
+  },
+  "portfolios": [
+    {
+      "id": "faerch-deli-trays",
+      "label": "Faerch Rigid Prepared-Food Trays",
+      "use_context": "Single-portion hot prepared food microwave reheating",
+      "dataset_kind": "PUBLIC",
+      "disclosure": "PUBLIC-EVIDENCE SELECTION DEMO — NOT PROFI PROVIDER DATA. Faerch A/S technical product sheets (2021-2025). Decision-support model, not implementation approval.",
+      "baseline_label": "Faerch P 2226-1C Rectangular Tray (PP Grey)",
+      "candidate_count": 2
+    }
+  ],
+  "portfolio_details": {
+    "faerch-deli-trays": {
+      "portfolio_id": "faerch-deli-trays",
+      "label": "Faerch Rigid Prepared-Food Trays",
+      "dataset_kind": "PUBLIC",
+      "disclosure": "PUBLIC-EVIDENCE SELECTION DEMO — NOT PROFI PROVIDER DATA. Faerch A/S technical product sheets (2021-2025). Decision-support model, not implementation approval.",
+      "use_context": "Single-portion hot prepared food microwave reheating",
+      "operational_requirements": {
+        "max_temperature_c": {
+          "value": 95.0,
+          "provenance": {
+            "origin": "ASSUMED",
+            "verification_state": "NOT_VERIFIED",
+            "source_reference": "demo:prepared-food-hot-fill",
+            "note": "Demonstration operating requirement: hot filling / reheating up to 95°C for prepared hot food; hypothetical demo scenario assumption, not Profi provider requirement."
+          }
+        },
+        "microwave_safe": {
+          "value": true,
+          "provenance": {
+            "origin": "ASSUMED",
+            "verification_state": "NOT_VERIFIED",
+            "source_reference": "demo:prepared-food-microwave",
+            "note": "Demonstration operating requirement: microwave reheating suitability; hypothetical demo scenario assumption, not Profi provider requirement."
+          }
+        }
+      },
+      "annual_units_requested": null,
+      "baseline": {
+        "package": {
+          "id": "faerch-p-2226-1c",
+          "label": "Faerch P 2226-1C Rectangular Tray (PP Grey)",
+          "components": [
+            {
+              "id": "tray-body",
+              "material": "Polypropylene (PP Grey, Recipe 9626)",
+              "plastic_mass_g": {
+                "value": 26.29,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "Faerch A/S Technical Product Sheet (Item 2226014004, 2021-09-07)",
+                  "note": "Nominal piece weight 26.29 g ±10% (tray body only; sealing film excluded)."
+                }
+              },
+              "recycled_content_fraction": {
+                "value": 0.0,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "Faerch PP Material Platform Claim",
+                  "note": "Faerch policy confirms food-grade PP is produced from 100% virgin material (family-level claim)."
+                }
+              }
+            }
+          ],
+          "food_contact": true,
+          "use_context": "Single-portion hot prepared food container (microwave reheating)",
+          "capabilities": {
+            "max_temperature_c": {
+              "value": 121.0,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "Faerch A/S Technical Product Sheet (Item 2226014004, 2021-09-07)",
+                "note": "Rated for temperature range -20°C to +121°C."
+              }
+            },
+            "microwave_safe": {
+              "value": true,
+              "provenance": {
+                "origin": "MANUFACTURER_SUPPLIED",
+                "verification_state": "SOURCE_AVAILABLE",
+                "source_reference": "Faerch A/S Technical Product Sheet (Item 2226014004, 2021-09-07)",
+                "note": "Cooking suitability explicitly affirmed for Microwave."
+              }
+            }
+          },
+          "max_temperature_c": null,
+          "microwave_safe": null
+        },
+        "metadata": {
+          "component_boundary": "TRAY_BODY_ONLY",
+          "recycled_content_point_value_status": "EXACT_POINT_VALUE",
+          "recycled_content_scope": "FAMILY_CLAIM",
+          "evidence_date": "2021-09-07"
+        },
+        "virgin_plastic_g": 26.29,
+        "calculation_status": "CALCULATED"
+      },
+      "candidates": [
+        {
+          "candidate": {
+            "id": "faerch-c-2200-1l",
+            "label": "Faerch C 2200-1L Evolve CPET Tray",
+            "components": [
+              {
+                "id": "tray-body",
+                "material": "CPET Evolve (Recipe 6811)",
+                "plastic_mass_g": {
+                  "value": 21.38,
+                  "provenance": {
+                    "origin": "MANUFACTURER_SUPPLIED",
+                    "verification_state": "SOURCE_AVAILABLE",
+                    "source_reference": "Faerch A/S Technical Product Sheet (Item 2200012097, 2023-01-09)",
+                    "note": "Nominal piece weight 21.38 g ±10% (tray body only; sealing film excluded). 1000 ml nominal volume."
+                  }
+                },
+                "recycled_content_fraction": {
+                  "value": null,
+                  "provenance": {
+                    "origin": "MANUFACTURER_SUPPLIED",
+                    "verification_state": "INSUFFICIENT_DATA",
+                    "source_reference": "Faerch A/S Technical Product Sheet (Item 2200012097, 2023-01-09)",
+                    "note": "Recycled PET content fluctuates; datasheet defers to sales/compliance declaration for recipe 6811. 'Up to 70%' is marketing ceiling, not article point value."
+                  }
+                }
+              }
+            ],
+            "food_contact": true,
+            "use_context": "Single-portion hot prepared food container (dual-ovenable/microwave)",
+            "capabilities": {
+              "max_temperature_c": {
+                "value": 220.0,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "Faerch A/S Technical Product Sheet (Item 2200012097, 2023-01-09)",
+                  "note": "Rated for temperature range -40°C to +220°C."
+                }
+              },
+              "microwave_safe": {
+                "value": true,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "Faerch A/S Technical Product Sheet (Item 2200012097, 2023-01-09)",
+                  "note": "Cooking suitability affirmed for Oven/Microwave."
+                }
+              }
+            },
+            "max_temperature_c": null,
+            "microwave_safe": null
+          },
+          "metadata": {
+            "component_boundary": "TRAY_BODY_ONLY",
+            "recycled_content_point_value_status": "NON_POINT_VALUE",
+            "recycled_content_scope": null,
+            "evidence_date": "2023-01-09"
+          },
+          "comparability": {
+            "rating": "BOUNDED_WITH_QUALIFIER",
+            "boundary_match": true,
+            "notes": [
+              "Common component boundary matched. Strong nominal-capacity / format comparability is not established by the current structured Selection metadata."
+            ]
+          },
+          "calculation": {
+            "status": "INSUFFICIENT_DATA",
+            "verification_state": "INSUFFICIENT_DATA",
+            "current_virgin_pack_g": 26.29,
+            "candidate_virgin_pack_g": null,
+            "reduction_g": null,
+            "reduction_pct": null,
+            "missing_fields": [
+              "candidate.components.tray-body.recycled_content_fraction"
+            ]
+          },
+          "eligibility": {
+            "status": "REVIEW_REQUIRED",
+            "constraints": [
+              {
+                "constraint_id": "food-contact-suitability",
+                "status": "REVIEW_REQUIRED",
+                "reason": "Food-contact suitability, food safety, shelf life and implementation suitability are NOT VERIFIED. This calculation is not an approval or legal verdict.",
+                "source_reference": null,
+                "verification_state": "NOT_VERIFIED"
+              },
+              {
+                "constraint_id": "thermal-envelope-verification",
+                "status": "REVIEW_REQUIRED",
+                "reason": "For the assumed demo operating requirement of 95°C, the candidate numerically satisfies the thermal requirement (220°C), but eligibility cannot be established because one or more decision-critical premises are not VERIFIED.",
+                "source_reference": "Faerch A/S Technical Product Sheet (Item 2200012097, 2023-01-09)",
+                "verification_state": "NOT_VERIFIED"
+              },
+              {
+                "constraint_id": "microwave-reheating-verification",
+                "status": "REVIEW_REQUIRED",
+                "reason": "The candidate satisfies the assumed demo microwave reheating requirement, but eligibility cannot be established because one or more decision-critical premises are not VERIFIED.",
+                "source_reference": "Faerch A/S Technical Product Sheet (Item 2200012097, 2023-01-09)",
+                "verification_state": "NOT_VERIFIED"
+              }
+            ]
+          },
+          "annual_impact": null,
+          "next_action": {
+            "action_code": "REQUEST_PCR_EVIDENCE",
+            "summary": "Request SKU/recipe recycled-content declaration",
+            "details": "Calculation withheld. Request current SKU/recipe recycled-content declaration with provenance from manufacturer for candidate components before calculating virgin plastic delta."
+          }
+        },
+        {
+          "candidate": {
+            "id": "faerch-k-2182-1g",
+            "label": "Faerch K 2182-1G Clear APET Tray",
+            "components": [
+              {
+                "id": "tray-body",
+                "material": "APET Clear (Recipe 7900)",
+                "plastic_mass_g": {
+                  "value": 21.48,
+                  "provenance": {
+                    "origin": "MANUFACTURER_SUPPLIED",
+                    "verification_state": "SOURCE_AVAILABLE",
+                    "source_reference": "Faerch A/S Technical Product Sheet (Item 2182015004, 2025-06-25)",
+                    "note": "Nominal piece weight 21.48 g ±10% (tray body only; sealing film excluded). 895 ml nominal volume."
+                  }
+                },
+                "recycled_content_fraction": {
+                  "value": null,
+                  "provenance": {
+                    "origin": "MANUFACTURER_SUPPLIED",
+                    "verification_state": "INSUFFICIENT_DATA",
+                    "source_reference": "Faerch A/S Technical Product Sheet (Item 2182015004, 2025-06-25)",
+                    "note": "Recycled content unstated on TDS; customer must request current recipe declaration."
+                  }
+                }
+              }
+            ],
+            "food_contact": true,
+            "use_context": "Single-portion chilled prepared food container (not ovenable)",
+            "capabilities": {
+              "max_temperature_c": {
+                "value": 70.0,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "SOURCE_AVAILABLE",
+                  "source_reference": "Faerch A/S Technical Product Sheet (Item 2182015004, 2025-06-25)",
+                  "note": "Rated for temperature range -40°C to +70°C. Documented 70°C ceiling."
+                }
+              },
+              "microwave_safe": {
+                "value": null,
+                "provenance": {
+                  "origin": "MANUFACTURER_SUPPLIED",
+                  "verification_state": "NOT_VERIFIED",
+                  "source_reference": "Faerch A/S Technical Product Sheet (Item 2182015004, 2025-06-25)",
+                  "note": "TDS states 'Not ovenable'; microwave capability is unstated/unknown."
+                }
+              }
+            },
+            "max_temperature_c": null,
+            "microwave_safe": null
+          },
+          "metadata": {
+            "component_boundary": "TRAY_BODY_ONLY",
+            "recycled_content_point_value_status": "UNSTATED",
+            "recycled_content_scope": null,
+            "evidence_date": "2025-06-25"
+          },
+          "comparability": {
+            "rating": "BOUNDED_WITH_QUALIFIER",
+            "boundary_match": true,
+            "notes": [
+              "Common component boundary matched. Strong nominal-capacity / format comparability is not established by the current structured Selection metadata."
+            ]
+          },
+          "calculation": {
+            "status": "INSUFFICIENT_DATA",
+            "verification_state": "INSUFFICIENT_DATA",
+            "current_virgin_pack_g": 26.29,
+            "candidate_virgin_pack_g": null,
+            "reduction_g": null,
+            "reduction_pct": null,
+            "missing_fields": [
+              "candidate.components.tray-body.recycled_content_fraction"
+            ]
+          },
+          "eligibility": {
+            "status": "BLOCKED",
+            "constraints": [
+              {
+                "constraint_id": "food-contact-suitability",
+                "status": "REVIEW_REQUIRED",
+                "reason": "Food-contact suitability, food safety, shelf life and implementation suitability are NOT VERIFIED. This calculation is not an approval or legal verdict.",
+                "source_reference": null,
+                "verification_state": "NOT_VERIFIED"
+              },
+              {
+                "constraint_id": "thermal-envelope-incompatibility",
+                "status": "BLOCKED",
+                "reason": "For the assumed demo operating requirement of 95°C, candidate documented maximum is 70°C.",
+                "source_reference": "Faerch A/S Technical Product Sheet (Item 2182015004, 2025-06-25)",
+                "verification_state": "NOT_VERIFIED"
+              },
+              {
+                "constraint_id": "microwave-reheating-incompatibility",
+                "status": "REVIEW_REQUIRED",
+                "reason": "Operating context requires microwave reheating, but candidate packaging microwave capability is not established.",
+                "source_reference": null,
+                "verification_state": "NOT_VERIFIED"
+              }
+            ]
+          },
+          "annual_impact": null,
+          "next_action": {
+            "action_code": "REJECT_INCOMPATIBLE",
+            "summary": "Reject candidate: operationally incompatible with stated operating context",
+            "details": "Do not advance this candidate for the stated modeled operating context. Violated constraint: thermal-envelope-incompatibility (For the assumed demo operating requirement of 95°C, candidate documented maximum is 70°C.). Modify requirements or evaluate alternative candidate."
+          }
+        }
+      ],
+      "summary_verdict": "No candidate is currently recommendable for transition: Faerch C 2200-1L Evolve CPET Tray requires a current SKU/recipe recycled-content declaration with provenance, while Faerch K 2182-1G Clear APET Tray is blocked by thermal incompatibility under the stated modeled operating context."
+    }
+  }
+}
