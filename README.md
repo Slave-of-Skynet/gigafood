@@ -1,31 +1,49 @@
-# PackShift (GigaFood) — AgriFood Hackathon 2026
+# PackShift — GigaHack 2026 AgriFood / Profi prototype
 
-> 🏆 **AgriFood Hackathon 2026 Project (Profi Retail Challenge)**  
-> 🤝 **Teamwork:** **Team SoS (Slave of Skynet)**  
-> 🌍 **Live Demo (24/7 Cloud Version):** **[https://denis100strike.github.io/packshift/](https://denis100strike.github.io/packshift/)**  
-> 🇷🇺 **Описание для портфолио (RU):** [О_ПРОЕКТЕ_PORTFOLIO.md](О_ПРОЕКТЕ_PORTFOLIO.md)
+**Team SoS (Slave of Skynet)** built an evidence-aware packaging decision-support
+prototype alongside a proposed high-temperature food-packaging concept. Python services
+calculate represented virgin-plastic use, check bounded operational eligibility, evaluate
+portfolios, and expose qualification next actions. React/TypeScript presents the results.
 
-### 👥 Team SoS (Участники команды)
+**Calculation ≠ operational eligibility ≠ implementation approval.** Public evidence,
+illustrative fixtures, estimates, and hypothetical user inputs are kept distinct. This
+runtime uses deterministic rules, not LLM inference; participation does not imply an award.
 
-| Team Member | Role | Core Contribution |
-|---|---|---|
-| **Denis Mironov** ([@denis100strike](https://github.com/denis100strike)) | **Frontend Developer & UI Integration** | Interactive React 19 / TypeScript components, 1-click multilingual i18n (RU/RO/EN), interactive Pentagon Radar Chart, responsive layout & API integration |
-| **Vadim** ([@Mr-Ressentiment](https://github.com/Mr-Ressentiment)) | **Product Owner & Physical Packaging (HTF-05)** | Engineering specification for 250°C Grill & Oven Pouch, glue-free thermal bonding, steam-cooling physics model, P1–P4 product archetypes |
-| **Igor Gladyshev** ([@Igor](https://github.com/igor-gladyshev)) | **Packaging Research & Data Recon** | European supplier reconnaissance (Sirane, Ready Chef Go, Faerch, Contital), Tier A/B evidence verification, food-contact compliance |
-| **Alisa Anusat** ([@lisqrn](https://github.com/lisqrn)) | **Frontend Development & Data Modeling** | UI data modeling, gate state visualization, candidate evaluation cards |
-| **Vladimir Barbalat** ([@barbalatv](https://github.com/barbalatv)) | **Backend Development & Domain Engine** | Python / FastAPI calculation engine, 6 Hard Gates matrix, fail-closed validation, 165 automated pytest tests (100% PASS) |
+**[Public static preview](https://denis100strike.github.io/packshift/)** · [Run the full local demo](docs/demo-modes.md#reproduce-the-full-local-demo) · [Engineering case study](docs/portfolio.md) · [Demo modes and limitations](docs/demo-modes.md)
 
----
+The GitHub Pages preview can display **committed responses after API failure**. It does
+not establish a live backend: Selection overrides replay saved defaults, recommendation
+uses saved contexts, and Comparison economics needs a working API. The separate showcase
+slider performs illustrative browser-side arithmetic. Thermal/certification-style UI
+claims are concept/simulation material, not proof of physical qualification.
 
-Evidence-aware Packaging Transition Copilot for the AgriFood challenge's primary
-goal: reducing virgin plastic in packaging. The working A-core compares current
-and candidate packaging with deterministic calculations, provenance and visible
-uncertainty. Selection MVP adds curated portfolio assessment, comparability,
-operational eligibility, deterministic next actions and optional hypothetical annual impact. Digital decision support is explicitly within challenge scope.
+## Engineering highlights
 
-The repository includes a public evidence pack and an illustrative fixture; the
-illustrative fixture remains the A-core runtime default; Selection defaults to the PUBLIC portfolio. No Profi provider dataset is
-available. Results are decision support, not certification or implementation approval.
+- **Evidence-aware calculations:** component boundaries, signed deltas, explicit missing values and provenance.
+- **Eligibility before action:** `BLOCKED` and `REVIEW_REQUIRED` remain distinct from numerical attractiveness; bounded `ELIGIBLE` is not certification.
+- **Portfolio and qualification workflows:** deterministic Selection grouping plus a separate six-gate HTF-03 recommendation path.
+- **Hypothetical economics:** implemented packaging-cost/volume scenarios with `USER_PROVIDED` / `NOT_VERIFIED` inputs, not actual Profi savings or full ROI/TCO/LCA.
+- **Reproducible local demo:** strict PUBLIC-pack selection and real HTTP preflight, with backend tests and frontend build in CI.
+
+## Team contributions
+
+| Team member | Role | Contributions and representative merged work |
+| --- | --- | --- |
+| **Denis Mironov** ([@denis100strike](https://github.com/denis100strike)) | **Frontend Developer & UI Integration** | Interactive React/TypeScript components, responsive layouts, Pentagon Radar Chart, multilingual UI/API integration; canonical recommendation journey [#40](https://github.com/Slave-of-Skynet/gigafood/pull/40). |
+| **Vadim** ([@Mr-Ressentiment](https://github.com/Mr-Ressentiment)) | **Product Owner & Physical Packaging (HTF-05)** | Proposed Grill & Oven Pouch specification, thermal-bonding/steam-cooling concept and product archetypes; pitch/evidence narrative [#42](https://github.com/Slave-of-Skynet/gigafood/pull/42). These are proposed physical concepts, not verified 250°C qualification. |
+| **Igor Gladyshev** ([@IgorGlUTMStudent](https://github.com/IgorGlUTMStudent)) | **Packaging Research & Data Recon / Backend Engineering** | European supplier/evidence and food-contact research; Selection backend [#14](https://github.com/Slave-of-Skynet/gigafood/pull/14), economic evaluator [#21](https://github.com/Slave-of-Skynet/gigafood/pull/21), HTF-03 runtime/API [#35](https://github.com/Slave-of-Skynet/gigafood/pull/35). |
+| **Alisa Anusat** ([@lisqrn](https://github.com/lisqrn)) | **Frontend Development & Data Modeling / QA** | Gate visualization and evaluation cards, acceptance/claim-safety matrices [#34](https://github.com/Slave-of-Skynet/gigafood/pull/34), interface/language integration [#46](https://github.com/Slave-of-Skynet/gigafood/pull/46) and presentation text [#47](https://github.com/Slave-of-Skynet/gigafood/pull/47). |
+| **Vladimir Barbalat** ([@barbalatv](https://github.com/barbalatv)) | **Team Lead / Backend & Domain Engineering / Integration** | Architecture/contracts and domain reconciliation [#4](https://github.com/Slave-of-Skynet/gigafood/pull/4), eligibility correctness [#6](https://github.com/Slave-of-Skynet/gigafood/pull/6), Selection/UI and demo preflight integration [#19](https://github.com/Slave-of-Skynet/gigafood/pull/19), evidence synthesis [#32](https://github.com/Slave-of-Skynet/gigafood/pull/32). |
+
+Team leadership is supplied by the project owner. Other role titles retain the existing
+team credits; PR links substantiate implementation/documentation contributions rather
+than independently verifying organizational titles. Team integration is not sole authorship.
+
+The repository includes a PUBLIC evidence pack and an illustrative fixture. Manual
+startup defaults to ILLUSTRATIVE A-core and PUBLIC Selection; the presentation launcher
+selects PUBLIC for both. The additive recommendation runtime loads HTF-03 research and
+its display projection. No Profi provider dataset is available. Estimates remain estimates,
+and unknown supplier capabilities do not become verified by entering the application.
 
 ## Current context
 
@@ -41,13 +59,18 @@ available. Results are decision support, not certification or implementation app
 The UI uses PackShift and the API display title is PackShift API. The bounded
 thermal/microwave eligibility gate remains independent of environmental calculations.
 Selection uses deterministic decision grouping, not global ranking or optimization.
-No costs/ROI, LCA/CO2 engine, comprehensive qualification, database/accounts,
-supplier integration, AI/LLM runtime or production deployment is implemented.
+Hypothetical packaging-cost arithmetic is implemented in the Comparison economic evaluator.
+A full ROI/TCO/LCA or CO2 engine, comprehensive qualification, database/accounts, supplier
+integration, AI/LLM inference, and a production backend deployment are not established by
+this prototype. The public static preview is a separate demo mode.
+Older architecture/handoff reports carry their own inspected revisions; the
+[current case study](docs/portfolio.md) and [demo-mode disclosure](docs/demo-modes.md)
+describe the source baseline used for this showcase.
 
 ## One-command presentation demo
 
 For presentation/rehearsal, use the demo launcher: it explicitly selects and verifies
-PUBLIC A-core and PUBLIC Selection.
+PUBLIC A-core and PUBLIC Selection, and checks the independent HTF-03 recommendation runtime.
 
 Install the declared prerequisites once using `./scripts/verify.ps1` (Windows) or
 `bash scripts/verify.sh` (POSIX). Then, from repository root:
@@ -115,7 +138,8 @@ In **Comparison mode**, below Environmental Impact, PackShift provides a bounded
 - Operationally BLOCKED candidates remain non-actionable even if economic arithmetic appears attractive.
 
 
-Open **Portfolio Selection** (default mode). Inspect PUBLIC / not-Profi disclosure,
+The UI initially opens the physical-concept showcase. Choose **Browse packaging**
+(**Portfolio Selection**; labels vary by language). Inspect PUBLIC / not-Profi disclosure,
 baseline, candidates, comparability, environmental result, operational eligibility
 and next action. Effective backend requirements and provenance are visible above the baseline.
 Candidate order comes directly from backend decision grouping.
@@ -192,7 +216,7 @@ CI then runs `bash scripts/demo.sh --check` to verify the runtime demo and clean
 Locally run `./scripts/demo.ps1 -Check` for the same preflight.
 
 Launch the presentation demo, confirm `PUBLIC` and the not-Profi disclosure, then
-switch from default **Portfolio Selection** to **Comparison**:
+choose **Compare plastic use** (**Comparison**; labels vary by language):
 
 1. Select **Case A** (`cchbc-500ml-rpet-transition`): 22.0 → 2.5 g/unit;
    reduction 19.5 g/unit, about 88.64%, `CALCULATED` / `INDICATIVE`. Operational
@@ -217,10 +241,16 @@ For a separate manual development check with illustrative A-core, switch to **Co
    `REVIEW_REQUIRED`, not `BLOCKED` (missing numerical evidence does not fabricate
    an operational incompatibility).
 3. Inspect both packages' values, provenance, and `NOT_VERIFIED` suitability notice.
-4. Stop the backend, reload the page: service error and Retry. Restart it and retry.
+4. In local **Comparison** or **Selection**, stop the backend and reload: service error and Retry. Restart it and retry. Recommendation has an additional saved-response fallback; see [demo modes](docs/demo-modes.md#fallback-also-affects-local-recommendation).
 5. Start backend with an absent evidence path: health and calculation routes return 503.
 
 For either pack, `CALCULATED ≠ VERIFIED`; public evidence is not provider data.
 No safety/legal/shelf-life certification, implementation approval or annual Profi
 savings may be claimed. See the [demo policy](docs/canon/product_canon.md#demo-claims-and-non-features).
 The [ARC-01 handoff](docs/handoff.md) records historical results, not current repository state.
+
+## Further reading
+
+- [Engineering case study](docs/portfolio.md): source-linked architecture, evidence, decisions and collaboration.
+- [Demo modes](docs/demo-modes.md): static responses, local evaluation, provenance and proposed UI follow-ups.
+- [Historical Russian portfolio write-up](О_ПРОЕКТЕ_PORTFOLIO.md): original presentation material; its hosting and physical-performance claims are qualified by the current demo-mode disclosure.
