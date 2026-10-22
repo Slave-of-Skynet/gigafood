@@ -5508,3 +5508,46 @@ button, select, summary, a { touch-action: manipulation; }
   color: #475569;
   margin: 0;
 }
+
+/* Transport source is separate from domain evidence and qualification. */
+.source-status { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding: 9px 12px; margin: 8px 0; border-left: 3px solid #64748b; background: #f1f5f9; color: #334155; font-size: 13px; overflow-wrap: anywhere; }
+.source-status strong { color: #0f172a; }
+.source-status small { flex-basis: 100%; font-size: 11px; }
+.source-status[data-origin="LIVE_API"] { border-left-color: #0284c7; }
+.source-status[data-origin="STATIC_SNAPSHOT"] { border-left-color: #b45309; }
+.source-note { font-size: 13px; }
+.scenario-form > fieldset { min-width: 0; border: 0; padding: 0; margin: 0; grid-column: 1 / -1; display: grid; grid-template-columns: inherit; gap: inherit; }
+.scenario-form fieldset:disabled { opacity: .65; }
+.scenario-form fieldset:disabled input, .scenario-form fieldset:disabled select, .scenario-form fieldset:disabled button { cursor: not-allowed; }
+.showcase-calculator-card .calc-header { display: block; }
+.product-pricing-deck > :only-child { grid-column: 1 / -1; }
+.showcase-calculator-card .calc-header p { margin: 8px 0 0; }
+.layer-step-content > span { display: block; }
+.anatomy-grid > *, .radar-main-layout > *, .showcase-product-detail-card > * { min-width: 0; }
+.layer-step-content { min-width: 0; overflow-wrap: anywhere; }
+.detail-spec-item dd { margin-left: 0; overflow-wrap: anywhere; }
+.qualification-sheet { padding: 24px; overflow-y: auto; color: #1e293b; }
+.qualification-sheet h2 { margin: 0 0 16px; }
+.qualification-checks > div { padding: 10px 0; border-bottom: 1px solid #cbd5e1; break-inside: avoid; }
+.qualification-checks dt { font-weight: 600; }
+.qualification-checks dd { margin: 4px 0 0; }
+@media (max-width: 640px) {
+  .showcase-product-detail-card, .product-anatomy-container { padding: 16px; }
+  .showcase-tab-btn { min-width: min(280px, 100%); }
+  .source-status { font-size: 12px; }
+  .qualification-sheet { padding: 16px; }
+  .qualification-dialog .cert-modal-toolbar { flex-wrap: wrap; gap: 12px; padding: 12px; }
+  .qualification-dialog h2 { font-size: 20px; overflow-wrap: anywhere; }
+}
+@media print {
+  html:has(body.qualification-print) { min-height: 0; padding: 0; background: white; }
+  body.qualification-print { min-height: 0; overflow: visible !important; }
+  body.qualification-print > :not(.cert-modal-backdrop) { display: none !important; }
+  body.qualification-print .cert-modal-backdrop, body.qualification-print .qualification-dialog,
+  body.qualification-print .qualification-sheet, body.qualification-print .qualification-sheet * { visibility: visible; }
+  body.qualification-print .cert-modal-backdrop { position: static; inset: auto; padding: 0; background: white; backdrop-filter: none; display: block; overflow: visible; }
+  body.qualification-print .qualification-dialog { display: block; max-width: none; max-height: none; overflow: visible; box-shadow: none; border-radius: 0; animation: none; }
+  body.qualification-print .cert-modal-toolbar { display: none; }
+  body.qualification-print .qualification-sheet { overflow: visible; padding: 0; font-size: 11pt; }
+  body.qualification-print .qualification-sheet .disclosure-banner { color: black; border: 2px solid black; padding: 12px; }
+}

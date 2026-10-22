@@ -99,12 +99,12 @@ export function PentagonRadarChart({
   return (
     <div className="pentagon-comparison-card">
       <div className="radar-header">
-        <span className="radar-tag">📊 {t("Сравнительный радар эффективности")}</span>
+        <span className="radar-tag">📊 {t("Illustrative radar judgments")}</span>
         <h4 className="radar-title">
-          {t("График-пентагон:")} <strong>{t(productName)}</strong> {t("vs Худшая альтернатива (Стандартный PP-бокс 32г)")}
+          {t("ILLUSTRATIVE CONCEPT")} <strong>{t(productName)}</strong> {t("Illustrative PP comparator (32 g assumption)")}
         </h4>
         <p className="radar-desc">
-          {t("Оценка по 5 ключевым инженерным факторам: термостойкость, пластикоемкость, вторичная переработка, сочность продукта и экономика.")}
+          {t("Manual 0–100 scores retained for illustration. They are not measurements, independent ratings, probabilities or qualification results.")}
         </p>
       </div>
 
@@ -125,7 +125,7 @@ export function PentagonRadarChart({
           onMouseEnter={() => setHoveredSeries('product')}
           onMouseLeave={() => setHoveredSeries(null)}
         >
-          🟢 {t("Только наше решение")}
+          🟢 {t("Concept judgment")}
         </button>
         <button
           type="button"
@@ -134,7 +134,7 @@ export function PentagonRadarChart({
           onMouseEnter={() => setHoveredSeries('worst')}
           onMouseLeave={() => setHoveredSeries(null)}
         >
-          🔴 {t("Только худшая альтернатива")}
+          🔴 {t("Comparator judgment")}
         </button>
       </div>
 
@@ -264,7 +264,7 @@ export function PentagonRadarChart({
             >
               <span className="legend-color-dot" style={{ background: productColor }} />
               <strong>{t(productName)}</strong>
-              <small>({t("Наше решение")})</small>
+              <small>({t("Concept judgment")})</small>
             </button>
             <button
               type="button"
@@ -275,8 +275,8 @@ export function PentagonRadarChart({
               title={t("Нажмите или наведите, чтобы показать только этот график")}
             >
               <span className="legend-color-dot worst-dot" />
-              <strong>{t("Худшая альтернатива (PP)")}</strong>
-              <small>({t("Полипропилен 32г")})</small>
+              <strong>{t("Comparator judgment")}</strong>
+              <small>({t("Illustrative PP comparator (32 g assumption)")})</small>
             </button>
           </div>
         </div>
@@ -346,7 +346,7 @@ export function PentagonRadarChart({
                     transition: 'opacity 0.2s ease',
                   }}
                 >
-                  <strong>✓ {t("Решение:")}</strong> {t(m.productNote)}
+                  <strong>· {t("Concept judgment")}</strong> {t(m.productNote)}
                 </span>
                 <span
                   className="note-worst"
@@ -355,7 +355,7 @@ export function PentagonRadarChart({
                     transition: 'opacity 0.2s ease',
                   }}
                 >
-                  <strong>✗ {t("Худший вариант:")}</strong> {t(m.worstNote)}
+                  <strong>· {t("Comparator judgment")}</strong> {t(m.worstNote)}
                 </span>
               </div>
             </div>
