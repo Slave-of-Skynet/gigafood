@@ -15,11 +15,8 @@ import { CandidateRecommendationCard } from './CandidateRecommendationCard';
 import { DecisionSummary } from './DecisionSummary';
 import { ProductSelector } from './ProductSelector';
 import { WorkflowSelector } from './WorkflowSelector';
-import {
-  getOfflineProducts,
-  getOfflineCandidates,
-  getOfflineEvaluation,
-} from '../api/offlineFallback';
+import type { ApiResponse } from '../api/provenance';
+import { ProvenanceStatus } from './ProvenanceStatus';
 
 interface RecommendationViewProps {
   visible: boolean;
@@ -31,7 +28,7 @@ interface RecommendationViewProps {
 type LoadState<T> =
   | { status: 'loading' }
   | { status: 'error'; message: string; is503?: boolean }
-  | { status: 'ready'; data: T };
+  | ({ status: 'ready' } & ApiResponse<T>);
 
 export function RecommendationView({
   visible,
@@ -40,21 +37,8 @@ export function RecommendationView({
   targetProductId,
 }: RecommendationViewProps) {
   const t = useTranslation();
-  // Catalogues state - initialized with offline fallback for instant render
-  const [productsLoad, setProductsLoad] = useState<LoadState<RecommendationProductsResponse>>(() => {
-    try {
-      const off = getOfflineProducts();
-      if (off) return { status: 'ready', data: off };
-    } catch {}
-    return { status: 'loading' };
-  });
-  const [candidatesLoad, setCandidatesLoad] = useState<LoadState<RecommendationCandidatesResponse>>(() => {
-    try {
-      const off = getOfflineCandidates();
-      if (off) return { status: 'ready', data: off };
-    } catch {}
-    return { status: 'loading' };
-  });
+  const [productsLoad, setProductsLoad] = useState<LoadState<RecommendationProductsResponse>>({ status: 'loading' });
+  const [candidatesLoad, setCandidatesLoad] = useState<LoadState<RecommendationCandidatesResponse>>({ status: 'loading' });
 
   // User selection context
   const [selectedProductId, setSelectedProductId] = useState<ProductId>(targetProductId || 'P1');
@@ -72,14 +56,10 @@ export function RecommendationView({
     }
   }, [targetProductId]);
 
-  // Evaluation response state - initialized with offline fallback for instant render
-  const [evaluationLoad, setEvaluationLoad] = useState<LoadState<RecommendationEvaluationResponse>>(() => {
-    try {
-      const off = getOfflineEvaluation('P1', 'POST_COOK_HOT_HOLD_6H');
-      if (off) return { status: 'ready', data: off };
-    } catch {}
-    return { status: 'loading' };
-  });
+  const [evaluationState, setEvaluationLoad] = useState<LoadState<RecommendationEvaluationResponse>>({ status: 'loading' });
+  const evaluationLoad: LoadState<RecommendationEvaluationResponse> = evaluationState.status === 'ready' &&
+    (evaluationState.data.context.product.product_id !== selectedProductId || evaluationState.data.context.workflow.workflow_id !== selectedWorkflowId)
+    ? { status: 'loading' } : evaluationState;
 
   // Stale-response protection: generation guard & abort controller
   const evalGenerationRef = useRef(0);
@@ -88,106 +68,38 @@ export function RecommendationView({
   // Attempt counter for retry
   const [attempt, setAttempt] = useState(0);
 
-  // 1. Load initial catalogues (Products & Candidates)
   useEffect(() => {
     const controller = new AbortController();
-
-    Promise.all([
-      api.recommendationProducts(controller.signal),
-      api.recommendationCandidates(controller.signal),
-    ])
+    setProductsLoad({ status: 'loading' });
+    setCandidatesLoad({ status: 'loading' });
+    Promise.all([api.recommendationProducts(controller.signal), api.recommendationCandidates(controller.signal)])
       .then(([productsResp, candidatesResp]) => {
         if (controller.signal.aborted) return;
-        setProductsLoad({ status: 'ready', data: productsResp });
-        setCandidatesLoad({ status: 'ready', data: candidatesResp });
-
-        if (productsResp.default_product_id) {
-          setSelectedProductId(productsResp.default_product_id);
-        }
-        if (productsResp.default_workflow_id) {
-          setSelectedWorkflowId(productsResp.default_workflow_id);
-        }
-      })
-      .catch((err) => {
+        setProductsLoad({ status: 'ready', ...productsResp });
+        setCandidatesLoad({ status: 'ready', ...candidatesResp });
+        setSelectedProductId(old => productsResp.data.products.some(p => p.product_id === old) ? old : productsResp.data.default_product_id);
+        setSelectedWorkflowId(old => productsResp.data.workflows.some(w => w.workflow_id === old) ? old : productsResp.data.default_workflow_id);
+      }).catch(error => {
         if (controller.signal.aborted) return;
-        try {
-          const offProd = getOfflineProducts();
-          const offCand = getOfflineCandidates();
-          if (offProd && offCand) {
-            setProductsLoad({ status: 'ready', data: offProd });
-            setCandidatesLoad({ status: 'ready', data: offCand });
-            return;
-          }
-        } catch {
-          // Ignore
-        }
-        const msg = String(err?.message || err);
-        const is503 = msg.includes('503') || msg.includes('RECOMMENDATION_EVIDENCE_UNAVAILABLE');
-        setProductsLoad((prev) => (prev.status === 'ready' ? prev : { status: 'error', message: msg, is503 }));
-        setCandidatesLoad((prev) => (prev.status === 'ready' ? prev : { status: 'error', message: msg, is503 }));
+        setProductsLoad({ status: 'error', message: String(error) });
+        setCandidatesLoad({ status: 'error', message: String(error) });
       });
-
     return () => controller.abort();
   }, [attempt]);
 
-  // 2. Evaluate recommendation when selectedProductId or selectedWorkflowId changes
   useEffect(() => {
-    // Abort any prior in-flight evaluation request
-    if (evalAbortControllerRef.current) {
-      evalAbortControllerRef.current.abort();
-    }
-
-    const currentGeneration = ++evalGenerationRef.current;
+    const generation = ++evalGenerationRef.current;
     const controller = new AbortController();
+    evalAbortControllerRef.current?.abort();
     evalAbortControllerRef.current = controller;
-
-    try {
-      const offEval = getOfflineEvaluation(selectedProductId, selectedWorkflowId);
-      if (offEval) {
-        setEvaluationLoad({ status: 'ready', data: offEval });
-      } else {
-        setEvaluationLoad({ status: 'loading' });
-      }
-    } catch {
-      setEvaluationLoad({ status: 'loading' });
-    }
-
-    api
-      .evaluateRecommendation(
-        {
-          product_id: selectedProductId,
-          workflow_id: selectedWorkflowId,
-        },
-        controller.signal
-      )
-      .then((data) => {
-        // Discard stale response if a newer selection request has been issued
-        if (currentGeneration !== evalGenerationRef.current || controller.signal.aborted) {
-          return;
-        }
-        setEvaluationLoad({ status: 'ready', data });
-      })
-      .catch((err) => {
-        if (currentGeneration !== evalGenerationRef.current || controller.signal.aborted) {
-          return;
-        }
-        try {
-          const offEval = getOfflineEvaluation(selectedProductId, selectedWorkflowId);
-          if (offEval) {
-            setEvaluationLoad({ status: 'ready', data: offEval });
-            return;
-          }
-        } catch {
-          // Ignore
-        }
-        const msg = String(err?.message || err);
-        const is503 = msg.includes('503') || msg.includes('RECOMMENDATION_EVIDENCE_UNAVAILABLE');
-        setEvaluationLoad((prev) => (prev.status === 'ready' ? prev : { status: 'error', message: msg, is503 }));
+    setEvaluationLoad({ status: 'loading' });
+    api.evaluateRecommendation({ product_id: selectedProductId, workflow_id: selectedWorkflowId }, controller.signal)
+      .then(response => {
+        if (generation === evalGenerationRef.current && !controller.signal.aborted) setEvaluationLoad({ status: 'ready', ...response });
+      }).catch(error => {
+        if (generation === evalGenerationRef.current && !controller.signal.aborted) setEvaluationLoad({ status: 'error', message: String(error) });
       });
-
-    return () => {
-      controller.abort();
-    };
+    return () => controller.abort();
   }, [selectedProductId, selectedWorkflowId, attempt]);
 
   const handleRetry = () => {
@@ -195,15 +107,16 @@ export function RecommendationView({
   };
 
   // Helper lookups
-  const configurations = candidatesLoad.status === 'ready' ? candidatesLoad.data.configurations : [];
+  const evaluation = evaluationLoad.status === 'ready' ? evaluationLoad.data : null;
+  const matchingCatalogue = candidatesLoad.status === 'ready' && evaluation &&
+    candidatesLoad.data.dataset_id === evaluation.dataset_id && candidatesLoad.data.source_revision_hash === evaluation.source_revision_hash;
+  const configurations = matchingCatalogue ? candidatesLoad.data.configurations : [];
   const configMap = new Map<string, PackagingConfiguration>(
     configurations.map((c) => [c.configuration_id, c])
   );
 
   const sourcesMap: Record<string, SourceReference> =
-    candidatesLoad.status === 'ready' ? candidatesLoad.data.referenced_sources : {};
-
-  const evaluation = evaluationLoad.status === 'ready' ? evaluationLoad.data : null;
+    evaluation?.referenced_sources ?? {};
 
   // Assessments grouping
   const assessments: CandidateRecommendationAssessment[] = evaluation?.assessments || [];
@@ -223,6 +136,7 @@ export function RecommendationView({
 
   return (
     <div className="recommendation-view" hidden={!visible} aria-live="polite">
+      <ProvenanceStatus label="Recommendation results" response={evaluationLoad.status === 'ready' ? evaluationLoad : undefined} pending={evaluationLoad.status === 'loading'} unavailable={evaluationLoad.status === 'error'} />
       <section id="problem" className="simple-intro" aria-label={t("How to find packaging")}>
         <h2>{t("Find packaging in two simple steps")}</h2>
         <p>{t("Choose a product, then select how it is heated. Your results update automatically below.")}</p>
@@ -253,8 +167,8 @@ export function RecommendationView({
         <div className="spotlight-content">
           <span className="spotlight-icon">🔥</span>
           <div>
-            <strong className="spotlight-title">{t("Универсальная разработка для 250°C: Foil Grill Bag и Smoothwall Tray")}</strong>
-            <span className="spotlight-desc">{t("Строго 2 материала · Шов без клея · 100% переработка под нормативы Румынии")}</span>
+            <strong className="spotlight-title">{t("Engineering concepts for a proposed oven workflow")}</strong>
+            <span className="spotlight-desc">{t("Composition, thermal behavior and collection routes require configuration-specific verification.")}</span>
           </div>
         </div>
         <button
@@ -266,6 +180,8 @@ export function RecommendationView({
         </button>
       </div>
 
+      {productsLoad.status === 'ready' && <ProvenanceStatus compact label="Product catalogue" response={productsLoad} />}
+      {candidatesLoad.status === 'ready' && <ProvenanceStatus compact label="Candidate catalogue" response={candidatesLoad} />}
       {/* Controls Deck: Stage A (Product) & Stage B (Workflow) */}
       {productsLoad.status === 'ready' && (
         <div id="journey-context" className="recommendation-controls-deck">

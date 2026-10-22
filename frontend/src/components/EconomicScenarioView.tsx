@@ -1,10 +1,13 @@
 import { useTranslation } from '../i18n';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 import { api } from '../api/client';
 import type { Comparison, EconomicScenarioRequest, EconomicScenarioResponse } from '../api/contracts';
+import type { ApiResponse } from '../api/provenance';
+import { ProvenanceStatus } from './ProvenanceStatus';
 
 interface Props {
+  backendAvailable: boolean;
   scenarioId: string;
   scenarioLabel: string;
   comparison: Comparison;
@@ -36,7 +39,7 @@ const formatKg = (val: number | null): string => {
   return `${val.toLocaleString('en-US', { maximumFractionDigits: 1 })} kg / year`;
 };
 
-export function EconomicScenarioView({ scenarioId, scenarioLabel, comparison }: Props) {
+export function EconomicScenarioView({ scenarioId, scenarioLabel, comparison, backendAvailable }: Props) {
   const t = useTranslation();
   const [annualUnits, setAnnualUnits] = useState('');
   const [currentCost, setCurrentCost] = useState('');
@@ -45,17 +48,27 @@ export function EconomicScenarioView({ scenarioId, scenarioLabel, comparison }: 
   const [validation, setValidation] = useState('');
   const [evaluating, setEvaluating] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [result, setResult] = useState<EconomicScenarioResponse | null>(null);
+  const requestKey = JSON.stringify([scenarioId, annualUnits, currentCost, candidateCost, transitionCost]);
+  const [responseState, setResponse] = useState<{ key: string; response: ApiResponse<EconomicScenarioResponse> } | null>(null);
+  const response = responseState?.key === requestKey ? responseState.response : null;
+  const result = response?.data;
+  const activeRequest = useRef<AbortController | null>(null);
 
   // Clear previous results when scenario changes
   useEffect(() => {
-    setResult(null);
+    activeRequest.current?.abort();
+    setResponse(null);
+    setEvaluating(false);
     setError(null);
     setValidation('');
-  }, [scenarioId]);
+    return () => activeRequest.current?.abort();
+  }, [scenarioId, annualUnits, currentCost, candidateCost, transitionCost, backendAvailable]);
 
   function evaluate(event: FormEvent) {
     event.preventDefault();
+    if (!backendAvailable) return;
+    activeRequest.current?.abort();
+    setResponse(null);
     const units = Number(annualUnits.trim());
     if (!annualUnits.trim() || !Number.isSafeInteger(units) || units <= 0) {
       setValidation('Annual units must be a positive whole number greater than 0.');
@@ -95,25 +108,30 @@ export function EconomicScenarioView({ scenarioId, scenarioLabel, comparison }: 
     };
 
     const controller = new AbortController();
+    activeRequest.current = controller;
     api.economicScenario(scenarioId, req, controller.signal)
       .then((data) => {
-        setResult(data);
+        if (controller.signal.aborted || activeRequest.current !== controller) return;
+        setResponse({ key: requestKey, response: data });
         setEvaluating(false);
       })
       .catch((err) => {
+        if (controller.signal.aborted || activeRequest.current !== controller) return;
         setError(String(err));
         setEvaluating(false);
       });
   }
 
   function resetScenario() {
+    activeRequest.current?.abort();
     setAnnualUnits('');
     setCurrentCost('');
     setCandidateCost('');
     setTransitionCost('');
     setValidation('');
     setError(null);
-    setResult(null);
+    setResponse(null);
+    setEvaluating(false);
   }
 
   const isBlocked = comparison.eligibility_status === 'BLOCKED';
@@ -133,8 +151,11 @@ export function EconomicScenarioView({ scenarioId, scenarioLabel, comparison }: 
       </div>
 
       <p className="disclosure-banner">{t("Hypothetical economic scenario based on user-supplied volume and packaging costs. Not actual Profi pricing, procurement terms, commercial commitment, or verified savings.")}</p>
+      <ProvenanceStatus response={response ?? undefined} pending={evaluating} unavailable={!backendAvailable || error !== null || !response} />
+      {!backendAvailable && <p>{t('Custom calculations require a connected backend. No recorded economic response is available.')}</p>}
 
       <form onSubmit={evaluate} className="scenario-form economic-form" noValidate>
+        <fieldset disabled={!backendAvailable}>
         <div className="scenario-form-heading">
           <h3>{t("User-Supplied Economic Parameters")}</h3>
           <p>{t("Supply retail volume and packaging unit economics to calculate hypothetical annual spend and incremental cost per kg avoided.")}</p>
@@ -196,6 +217,7 @@ export function EconomicScenarioView({ scenarioId, scenarioLabel, comparison }: 
           </button>
           <button type="button" className="scenario-pill" onClick={resetScenario}>{t("Reset economic scenario")}</button>
         </div>
+        </fieldset>
       </form>
 
       {t(validation && <p className="validation-alert" role="alert">{t(validation)}</p>)}
