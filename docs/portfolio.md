@@ -1,6 +1,6 @@
 # PackShift: evidence-aware packaging decision support
 
-[Project and local demo](../README.md) · [Public preview](https://denis100strike.github.io/packshift/) · [Exact demo-mode behavior](demo-modes.md)
+[Project and local demo](../README.md) · [Official static demo](https://slave-of-skynet.github.io/gigafood/) · [Exact demo-mode behavior](demo-modes.md)
 
 ## Problem and challenge context
 
