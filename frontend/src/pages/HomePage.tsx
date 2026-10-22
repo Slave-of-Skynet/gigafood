@@ -1,3 +1,5 @@
+import type { Load, ApiResponse } from '../api/provenance';
+import { ProvenanceStatus } from '../components/ProvenanceStatus';
 import { useTranslation } from '../i18n';
 import { useLanguage, type Language } from '../i18n';
 import { useEffect, useState } from 'react';
@@ -16,11 +18,6 @@ import type {
   WorkflowId,
 } from '../api/contracts';
 
-type Load<T> =
-  | { state: 'loading' }
-  | { state: 'error'; message: string }
-  | { state: 'ready'; data: T };
-
 const formatNumberOnly = (value: number | null) =>
   value === null
     ? 'Required inputs need verification'
@@ -35,9 +32,10 @@ export function HomePage() {
   const [attempt, setAttempt] = useState(0);
   const [selected, setSelected] = useState('');
   const [runtime, setRuntime] = useState<
-    Load<{ health: Health; evidence: Evidence }>
+    ({ state: 'loading' } | { state: 'error'; message: string } | { state: 'ready'; data: {health: Health; evidence: Evidence}; healthResponse: ApiResponse<Health>; evidenceResponse: ApiResponse<Evidence> })
   >({ state: 'loading' });
-  const [result, setResult] = useState<Load<Comparison>>({ state: 'loading' });
+  const [resultState, setResult] = useState<Load<Comparison>>({ state: 'loading' });
+  const result: Load<Comparison> = resultState.state === 'ready' && resultState.data.scenario.id !== selected ? { state: 'loading' } : resultState;
 
 
 
@@ -48,19 +46,20 @@ export function HomePage() {
     (async () => {
       const health = await api.health(controller.signal);
       const evidence = await api.scenarios(controller.signal);
-      if (health.status !== 'READY' || !evidence.scenarios.length) {
+      if (health.data.status !== 'READY' || !evidence.data.scenarios.length) {
         throw new Error('Evidence unavailable');
       }
       if (controller.signal.aborted) return;
       setSelected((old) =>
-        evidence.scenarios.some((s) => s.id === old)
+        evidence.data.scenarios.some((s) => s.id === old)
           ? old
-          : evidence.scenarios[0].id
+          : evidence.data.scenarios[0].id
       );
-      setRuntime({ state: 'ready', data: { health, evidence } });
+      setRuntime({ state: 'ready', data: { health: health.data, evidence: evidence.data }, healthResponse: health, evidenceResponse: evidence });
     })().catch((error) => {
       if (!controller.signal.aborted) {
         setRuntime({ state: 'error', message: String(error) });
+        setResult({ state: 'error', message: String(error) });
       }
     });
     return () => controller.abort();
@@ -72,8 +71,8 @@ export function HomePage() {
     setResult({ state: 'loading' });
     api
       .comparison(selected, controller.signal)
-      .then((data) => {
-        if (!controller.signal.aborted) setResult({ state: 'ready', data });
+      .then((response) => {
+        if (!controller.signal.aborted) setResult({ state: 'ready', ...response });
       })
       .catch((error) => {
         if (!controller.signal.aborted) {
@@ -99,12 +98,12 @@ export function HomePage() {
             <div className="runtime-pill" hidden={mode !== 'comparison'}>
               <span
                 className={`pulse-dot ${
-                  runtime.state === 'ready' ? '' : 'offline'
+                  runtime.state === 'ready' && runtime.healthResponse.origin === 'LIVE_API' ? '' : 'offline'
                 }`}
               />
               <span>
                 {t(runtime.state === 'ready'
-                  ? `A-core: ${runtime.data.health.status} · ${runtime.data.evidence.dataset_kind}`
+                  ? runtime.healthResponse.origin === 'LIVE_API' ? 'Backend response received' : 'Recorded health; backend availability not established'
                   : runtime.state === 'loading'
                   ? 'Checking runtime…'
                   : 'A-core unavailable')}
@@ -237,7 +236,7 @@ export function HomePage() {
             aria-pressed={mode === 'universal_pouch'}
             onClick={() => setMode('universal_pouch')}
           >
-            🔥 {t("Термо-упаковка 250°C (Grill & Oven Pouch)")}
+            🔥 {t('Engineering concepts')}
           </button>
           <button
             type="button"
@@ -278,6 +277,8 @@ export function HomePage() {
         <SelectionView visible={mode === 'selection'} />
 
         <div className="comparison-mode" hidden={mode !== 'comparison'}>
+          <ProvenanceStatus compact label="Scenario catalogue" response={runtime.state === 'ready' ? runtime.evidenceResponse : undefined} pending={runtime.state === 'loading'} unavailable={runtime.state === 'error'} />
+          <ProvenanceStatus label="Comparison results" response={result.state === 'ready' ? result : undefined} pending={result.state === 'loading'} unavailable={result.state === 'error'} />
           {t(runtime.state === 'loading' && (
             <div className="status-panel" role="status">
               <h2>{t("Checking service and evidence…")}</h2>
@@ -305,7 +306,7 @@ export function HomePage() {
                       className={`dataset-badge ${runtime.data.evidence.dataset_kind}`}
                     >{t("Dataset: ")}{t(runtime.data.evidence.dataset_kind)}
                     </span>
-                    <span style={{ fontSize: '13.5px', fontWeight: 600 }}>{t("Service: ")}{t(runtime.data.health.status)}{t(" · Schema v")}{t(runtime.data.evidence.schema_version)}
+                    <span style={{ fontSize: '13.5px', fontWeight: 600 }}>{t(runtime.healthResponse.origin === 'LIVE_API' ? 'Backend response' : 'Recorded health')}: {t(runtime.data.health.status)}{t(" · Schema v")}{t(runtime.data.evidence.schema_version)}
                     </span>
                   </div>
                   <div className="disclosure-banner">
@@ -739,7 +740,7 @@ export function HomePage() {
                   </section>
 
                   {/* INT-R5 Economic Scenario Amplifier Section */}
-                  <EconomicScenarioView
+                  <EconomicScenarioView key={result.data.scenario.id} backendAvailable={result.origin === 'LIVE_API'}
                     scenarioId={result.data.scenario.id}
                     scenarioLabel={result.data.scenario.label}
                     comparison={result.data}

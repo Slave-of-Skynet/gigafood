@@ -1,3 +1,5 @@
+import type { Load } from '../api/provenance';
+import { ProvenanceStatus } from '../components/ProvenanceStatus';
 import { useTranslation } from '../i18n';
 import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
@@ -16,11 +18,6 @@ import type {
 import { format, OperationalRequirementsView, PackageView } from './EvidenceDetails';
 import { ProductVisual } from './ProductVisual';
 import { reductionRingStyle } from './metricRing';
-
-type Load<T> =
-  | { state: 'loading' }
-  | { state: 'error'; message: string }
-  | { state: 'ready'; data: T };
 
 const formatNumberOnly = (value: number | null) =>
   value === null
@@ -593,25 +590,30 @@ export function SelectionView({ visible }: { visible: boolean }) {
   const [submitted, setSubmitted] = useState<SelectionRequest | null>(null);
   const [validation, setValidation] = useState('');
   const [evaluationAttempt, setEvaluationAttempt] = useState(0);
-  const [result, setResult] = useState<Load<SelectionResponse>>({
+  const [resultState, setResult] = useState<Load<SelectionResponse>>({
     state: 'loading',
   });
+  const result: Load<SelectionResponse> = resultState.state === 'ready' && resultState.data.portfolio_id !== selected ? { state: 'loading' } : resultState;
+  const canEvaluate = result.state === 'ready' && result.origin === 'LIVE_API';
 
   useEffect(() => {
     const controller = new AbortController();
     setPortfolios({ state: 'loading' });
     api
       .portfolios(controller.signal)
-      .then((data) => {
+      .then((response) => {
+        const data = response.data;
         if (!Array.isArray(data) || !data.length)
           throw new Error('No portfolios available');
         if (controller.signal.aborted) return;
         setSelected((old) => (data.some((p) => p.id === old) ? old : data[0].id));
-        setPortfolios({ state: 'ready', data });
+        setPortfolios({ state: 'ready', ...response });
       })
       .catch((error) => {
-        if (!controller.signal.aborted)
+        if (!controller.signal.aborted) {
           setPortfolios({ state: 'error', message: String(error) });
+          setResult({ state: 'error', message: String(error) });
+        }
       });
     return () => controller.abort();
   }, [attempt]);
@@ -625,8 +627,8 @@ export function SelectionView({ visible }: { visible: boolean }) {
         ? api.portfolio(selected, controller.signal)
         : api.evaluatePortfolio(selected, submitted, controller.signal);
     request
-      .then((data) => {
-        if (!controller.signal.aborted) setResult({ state: 'ready', data });
+      .then((response) => {
+        if (!controller.signal.aborted) setResult({ state: 'ready', ...response });
       })
       .catch((error) => {
         if (!controller.signal.aborted)
@@ -637,6 +639,7 @@ export function SelectionView({ visible }: { visible: boolean }) {
 
   function evaluate(event: FormEvent) {
     event.preventDefault();
+    if (!canEvaluate) { setValidation('Custom scenarios require the connected backend.'); return; }
     const units = Number(volume);
     if (volume.trim() && (!Number.isSafeInteger(units) || units <= 0)) {
       setValidation(
@@ -676,7 +679,7 @@ export function SelectionView({ visible }: { visible: boolean }) {
 
   return (
     <>
-      <div className="runtime-pill selection-availability" role="status">
+      <div className="runtime-pill selection-availability" role="status" hidden={!visible}>
         {t(portfolios.state === 'loading'
           ? 'Selection: checking portfolios…'
           : portfolios.state === 'error'
@@ -685,10 +688,12 @@ export function SelectionView({ visible }: { visible: boolean }) {
           ? 'Selection: evaluation unavailable'
           : result.state === 'loading'
           ? 'Selection: portfolios loaded · evaluating…'
-          : `Selection: READY · ${portfolios.data.length} portfolio(s)`)}
+          : result.origin === 'LIVE_API' ? 'Backend assessment available' : 'Recorded portfolio preview')}
       </div>
 
       <div className="selection-mode" hidden={!visible}>
+        <ProvenanceStatus compact label="Portfolio catalogue" response={portfolios.state === 'ready' ? portfolios : undefined} pending={portfolios.state === 'loading'} unavailable={portfolios.state === 'error'} />
+        <ProvenanceStatus label="Portfolio assessment" response={result.state === 'ready' ? result : undefined} pending={result.state === 'loading'} unavailable={result.state === 'error'} />
         {t(portfolios.state === 'loading' && (
           <div className="status-panel">{t("Loading Selection portfolios…")}</div>
         ))}
@@ -724,10 +729,12 @@ export function SelectionView({ visible }: { visible: boolean }) {
                 </select>
               </label>
 
+              {!canEvaluate && <p className="source-note">{t('Custom scenarios require the connected backend.')} <button type="button" onClick={resetScenario}>{t('Reload defaults / check backend')}</button></p>}
               <form onSubmit={evaluate} className="scenario-form" noValidate>
-                <div className="scenario-form-heading">
+                <fieldset disabled={!canEvaluate}><div className="scenario-form-heading">
                   <h3>{t("User-supplied scenario")}</h3>
                   <p>{t("Not a verified Profi requirement. Blank fields and “Use portfolio default” inherit the committed portfolio assumptions.")}</p>
+                  <p>{t('Results reflect the last submitted scenario. Edits require evaluation.')}</p>
                 </div>
 
                 <label className="scenario-label" htmlFor="scenario-context">{t("Scenario notes (not evaluated)")}<input
@@ -785,6 +792,7 @@ export function SelectionView({ visible }: { visible: boolean }) {
                     onClick={resetScenario}
                   >{t("Reset to portfolio defaults")}</button>
                 </div>
+                </fieldset>
               </form>
 
               {t(validation && <p role="alert">{t(validation)}</p>)}

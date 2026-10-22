@@ -14,6 +14,8 @@ try {
     try {
         npm ci
         if ($LASTEXITCODE -ne 0) { throw 'Frontend install failed' }
+        npm test
+        if ($LASTEXITCODE -ne 0) { throw 'Frontend tests failed' }
         npm run build
         if ($LASTEXITCODE -ne 0) { throw 'Frontend build failed' }
     } finally { Pop-Location }

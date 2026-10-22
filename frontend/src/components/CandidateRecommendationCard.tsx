@@ -99,9 +99,7 @@ export function CandidateRecommendationCard({
             </span>
           </div>
           <h3 className="candidate-name-title">
-            {isC6
-              ? t("Foil Grill & Oven Bag (Ready. Chef. Go! / Sirane) · Smoothwall Tray")
-              : t(assessment.candidate_name)}
+            {t(assessment.candidate_name)}
           </h3>
         </div>
 
@@ -132,7 +130,7 @@ export function CandidateRecommendationCard({
               loading="lazy"
             />
             <span className="reference-image-disclaimer">
-              {t("Reference product image · Not evidence of qualification or Profi approval")}
+              {t("Reference image only. It does not establish that this exact PackShift configuration was manufactured, tested or approved.")}
             </span>
           </div>
         </div>
@@ -188,69 +186,8 @@ export function CandidateRecommendationCard({
           </div>
 
           <div className="universal-pouch-spec-panel">
-            <div className="universal-pouch-header">
-              <span className="pouch-badge">🔥 {t("Universal 250°C Engineering Solution")}</span>
-              <h4 className="pouch-title">{t("Universal Grill & Oven Packaging (Strictly 2 Materials · Glue-Free · 100% Recyclable)")}</h4>
-              <p className="pouch-subtitle">{t("Engineered specifically for 250°C cooking with tool-free manual separation for Romanian waste regulations.")}</p>
-            </div>
-
-            <div className="pouch-products-grid">
-              {/* Product 1: Foil Grill & Oven Bag */}
-              <div className="pouch-product-card primary-pouch">
-                <div className="pouch-product-header">
-                  <span className="badge-primary-sol">⭐ {t("Primary Solution: Foil Grill & Oven Bag")}</span>
-                  <span className="pouch-type-desc">{t("Flexible Hybrid Foil Pouch with Self-Venting Window")}</span>
-                </div>
-                <div className="pouch-specs-list">
-                  <div className="pouch-spec-item">
-                    <strong>{t("Strictly 2 Materials:")}</strong>
-                    <span>{t("Heavy Duty Aluminum Foil (body/bottom) + High-Temp BOPET window.")}</span>
-                  </div>
-                  <div className="pouch-spec-item">
-                    <strong>{t("250°C Steam Cooling Physics:")}</strong>
-                    <span>{t("Steam phase change absorbs thermal energy — film temperature stays under 110–130°C (only 2–5% shrinkage). 100% clarity & food safety preserved.")}</span>
-                  </div>
-                  <div className="pouch-spec-item">
-                    <strong>{t("Glue-Free Peel-able Heat Seal:")}</strong>
-                    <span>{t("Thermocompression welding with aPET contact layer flowing into foil micropores (mechanical interlock, zero solvent/adhesive).")}</span>
-                  </div>
-                  <div className="pouch-spec-item">
-                    <strong>{t("Venting & Romania Separation:")}</strong>
-                    <span>{t("Self-Venting micro-channels relieve steam. Tool-free manual Peel-away separation: foil to metal, PET to plastic (100% recyclable).")}</span>
-                  </div>
-                  <div className="pouch-spec-item price-item">
-                    <strong>{t("References & Wholesale Price:")}</strong>
-                    <span className="pouch-price">{t("Ready. Chef. Go! & Sirane Sira-Cook™ Supreme · $0.15–$0.35 / unit (~0.70–1.60 RON).")}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Product 2: Smoothwall Tray */}
-              <div className="pouch-product-card alt-pouch">
-                <div className="pouch-product-header">
-                  <span className="badge-alt-sol">🔄 {t("Alternative Solution: Smoothwall Tray")}</span>
-                  <span className="pouch-type-desc">{t("Semi-Rigid Smoothwall Container with Heat-Sealed Membrane")}</span>
-                </div>
-                <div className="pouch-specs-list">
-                  <div className="pouch-spec-item">
-                    <strong>{t("Strictly 2 Materials:")}</strong>
-                    <span>{t("Deep-drawn Smoothwall Aluminum + High-Temp CPET clear membrane.")}</span>
-                  </div>
-                  <div className="pouch-spec-item">
-                    <strong>{t("Flange Sealing Mechanics:")}</strong>
-                    <span>{t("Thermocompression welded to smooth flange without glue. Factory laser micro-perforations vent excess 220–250°C steam.")}</span>
-                  </div>
-                  <div className="pouch-spec-item">
-                    <strong>{t("Easy-Peel Separation:")}</strong>
-                    <span>{t("Clean pull tab separates membrane from metal rim for easy, tool-free sorting in Romanian recycling bins.")}</span>
-                  </div>
-                  <div className="pouch-spec-item price-item">
-                    <strong>{t("References & Wholesale Price:")}</strong>
-                    <span className="pouch-price">{t("Advanta Packaging Smoothwall + KM Packaging films · $0.08–$0.25 / set (~0.37–1.15 RON).")}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <strong>{t('ILLUSTRATIVE CONCEPT')}</strong>
+            <p>{t('Engineering concepts in the showcase do not qualify this assessed configuration. Use its gates and source-specific limitations below.')}</p>
           </div>
         </>
       )}
