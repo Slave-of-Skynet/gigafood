@@ -157,7 +157,7 @@ export function HomePage() {
 
           <div className="brand-cluster">
             <a href="#overview" className="logo-img" aria-label={t("PackShift Home")}>
-              <img src="/logo.png" alt={t("PackShift")} className="logo-log" />
+              <img src={`${import.meta.env.BASE_URL}logo.png`} alt={t("PackShift")} className="logo-log" />
             </a>
           </div>
 
