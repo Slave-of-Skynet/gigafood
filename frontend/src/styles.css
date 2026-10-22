@@ -5532,6 +5532,12 @@ button, select, summary, a { touch-action: manipulation; }
 .qualification-checks dt { font-weight: 600; }
 .qualification-checks dd { margin: 4px 0 0; }
 @media (max-width: 640px) {
+  .nav-bar { grid-template-columns: minmax(0, 1fr); }
+  .brand-cluster { grid-column: 1; grid-row: 1; }
+  .blk-lang { grid-column: 1; grid-row: 2; justify-self: start; width: 100%; }
+  .nav-bar-sect { grid-column: 1; grid-row: 3; }
+  .lang-control-cluster { flex-wrap: wrap; min-width: 0; max-width: 100%; }
+  .lang-select { max-width: 100%; }
   .showcase-product-detail-card, .product-anatomy-container { padding: 16px; }
   .showcase-tab-btn { min-width: min(280px, 100%); }
   .source-status { font-size: 12px; }

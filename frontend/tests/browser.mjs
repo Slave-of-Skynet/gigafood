@@ -61,6 +61,7 @@ try {
   await expect(page.locator('.runtime-pill').first()).toContainText('Recorded health; backend availability not established');
   assert.equal(await page.locator('#econ-annual-units').isDisabled(), true);
   await expect(page.locator('#economics .source-status')).toHaveAttribute('data-origin', 'UNAVAILABLE');
+  await page.locator('.comparison-mode > .source-status').first().scrollIntoViewIfNeeded();
   await page.screenshot({ path: path.join(output, 'static-comparison.png'), fullPage: false });
   record('static Comparison + recorded READY + economics unavailable');
   await mode(page, 2);
@@ -71,6 +72,7 @@ try {
   await page.locator('.selection-mode button').filter({ hasText: 'Reload defaults / check backend' }).click();
   await expect(page.locator('.selection-mode > .source-status').last()).toHaveAttribute('data-origin', 'STATIC_SNAPSHOT');
   assert.equal(control.calls.filter(c => c.url.endsWith('/evaluate') && c.url.includes('/portfolios/')).length, postCount);
+  await page.locator('.selection-mode > .source-status').first().scrollIntoViewIfNeeded();
   await page.screenshot({ path: path.join(output, 'static-selection.png'), fullPage: false });
   record('static Selection defaults visible; override controls disabled; defaults reload is GET');
   await mode(page, 1);
@@ -141,6 +143,7 @@ try {
     await expect(page.getByRole('dialog')).toBeVisible();
     await page.keyboard.press('Escape');
   }
+  await page.locator('.product-title-text').scrollIntoViewIfNeeded();
   await page.screenshot({ path: path.join(output, 'tray-concept.png'), fullPage: false });
   record('tray concept, calculator assumptions, supplier enquiry and checklist in EN/RU/RO');
   assert.deepEqual(faults, []);
@@ -193,12 +196,21 @@ try {
 
   const mobile = await setup(true, { width: 390, height: 844 });
   await noOverflow(mobile.page);
+  for (const label of ['RU','RO / MD','EN']) {
+    await mobile.page.locator('.lang-buttons-group button').filter({ hasText: label }).click();
+    for (const button of await mobile.page.locator('.lang-buttons-group button').all()) {
+      const box = await button.boundingBox();
+      assert.ok(box && box.x >= 0 && box.x + box.width <= 390, 'language button clipped on mobile');
+    }
+  }
+  await mobile.page.locator('.showcase-hero-banner').scrollIntoViewIfNeeded();
   await mobile.page.screenshot({ path: path.join(output, 'concept-mobile.png'), fullPage: false });
   for (const index of [1,2,3]) {
     await mode(mobile.page, index);
     await expect(mobile.page.locator('.source-status:visible').first()).toContainText('RECORDED DEMO');
     await noOverflow(mobile.page);
   }
+  await mobile.page.locator('.comparison-mode > .source-status').last().scrollIntoViewIfNeeded();
   await mobile.page.screenshot({ path: path.join(output, 'static-mobile.png'), fullPage: false });
   assert.deepEqual(mobile.faults, []);
   record('390px mobile concept and all response modes preserve visible provenance without overflow');

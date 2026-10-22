@@ -67,6 +67,9 @@ test('local unavailable API never falls back, including when a saved response ex
   await unavailable(() => failing(404, false).portfolio(portfolio, signal()));
 });
 test('unsupported contexts, prototype names and malformed IDs cannot select a default', async () => {
+  // Validation failures must reject the returned promise so existing view .catch paths handle them.
+  await assert.rejects(offline.portfolio('', signal()), ApiUnavailableError);
+  await assert.rejects(offline.evaluateRecommendation({ ...body, product_id: '' }, signal()), ApiUnavailableError);
   for (const id of ['', ' ', '../faerch-deli-trays', 'faerch-deli-trays/extra', '%2F', '__proto__', 'constructor', 'missing']) {
     await unavailable(() => offline.portfolio(id, signal()));
     await unavailable(() => offline.comparison(id, signal()));

@@ -90,18 +90,18 @@ export function createApiClient(options: { fetch?: typeof fetch; isStaticHost?: 
   return {
     health: (s: AbortSignal) => request('health', s, isHealth, saved(staticSnapshot.health)),
     scenarios: (s: AbortSignal) => request('scenarios', s, isEvidence, saved(staticSnapshot.scenarios)),
-    comparison: (id: string, s: AbortSignal) => request(`scenarios/${idPath(id)}/comparison`, s, comparisonGuard(id), saved(ownValue(staticSnapshot.comparisons, id))),
+    comparison: async (id: string, s: AbortSignal) => request(`scenarios/${idPath(id)}/comparison`, s, comparisonGuard(id), saved(ownValue(staticSnapshot.comparisons, id))),
     portfolios: (s: AbortSignal) => request('portfolios', s, isPortfolios, saved(staticSnapshot.portfolios)),
-    portfolio: (id: string, s: AbortSignal) => request(`portfolios/${idPath(id)}`, s, portfolioGuard(id), saved(ownValue(staticSnapshot.portfolio_details, id))),
-    evaluatePortfolio: (id: string, body: SelectionRequest, s: AbortSignal) => request(`portfolios/${idPath(id)}/evaluate`, s, portfolioGuard(id, body),
+    portfolio: async (id: string, s: AbortSignal) => request(`portfolios/${idPath(id)}`, s, portfolioGuard(id), saved(ownValue(staticSnapshot.portfolio_details, id))),
+    evaluatePortfolio: async (id: string, body: SelectionRequest, s: AbortSignal) => request(`portfolios/${idPath(id)}/evaluate`, s, portfolioGuard(id, body),
       Object.keys(body).length === 0 ? saved(ownValue(staticSnapshot.portfolio_details, id)) : undefined, body),
-    economicScenario: (id: string, body: EconomicScenarioRequest, s: AbortSignal) => request<EconomicScenarioResponse>(`scenarios/${idPath(id)}/economics`, s,
+    economicScenario: async (id: string, body: EconomicScenarioRequest, s: AbortSignal) => request<EconomicScenarioResponse>(`scenarios/${idPath(id)}/economics`, s,
       (v): v is EconomicScenarioResponse => isRecord(v) && v.scenario_id === id && v.annual_units === body.annual_units &&
         v.current_cost_eur_per_unit === body.current_cost_eur_per_unit && v.candidate_cost_eur_per_unit === body.candidate_cost_eur_per_unit &&
         v.one_time_transition_cost_eur === (body.one_time_transition_cost_eur ?? null) && typeof v.annual_cost_delta_eur === 'number', undefined, body),
     recommendationProducts: (s: AbortSignal) => request('recommendation/products', s, isProducts, saved(getOfflineProducts(), true)),
     recommendationCandidates: (s: AbortSignal) => request('recommendation/candidates', s, isCandidates, saved(getOfflineCandidates(), true)),
-    evaluateRecommendation: (body: RecommendationEvaluationRequest, s: AbortSignal) => {
+    evaluateRecommendation: async (body: RecommendationEvaluationRequest, s: AbortSignal) => {
       idPath(body.product_id); idPath(body.workflow_id);
       if (body.configuration_id != null) idPath(body.configuration_id);
       return request('recommendation/evaluate', s, recommendationGuard(body), body.configuration_id ? undefined : saved(getOfflineEvaluation(body.product_id, body.workflow_id), true), body);
