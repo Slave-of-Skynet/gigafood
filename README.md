@@ -9,7 +9,7 @@ portfolios, and expose qualification next actions. React/TypeScript presents the
 illustrative fixtures, estimates, and hypothetical user inputs are kept distinct. This
 runtime uses deterministic rules, not LLM inference; participation does not imply an award.
 
-**[Public static preview](https://denis100strike.github.io/packshift/)** · [Run the full local demo](docs/demo-modes.md#reproduce-the-full-local-demo) · [Engineering case study](docs/portfolio.md) · [Demo modes and limitations](docs/demo-modes.md)
+**[Official static demo](https://slave-of-skynet.github.io/gigafood/)** · [Run the full local demo](docs/demo-modes.md#reproduce-the-full-local-demo) · [Engineering case study](docs/portfolio.md) · [Demo modes and limitations](docs/demo-modes.md)
 
 The GitHub Pages preview labels saved responses **RECORDED DEMO**. Selection defaults
 remain read-only there; custom overrides and Comparison economics require the backend.
