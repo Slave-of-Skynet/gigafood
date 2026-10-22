@@ -22,6 +22,34 @@ has no independent, any-host fallback. Successful JSON receives structural/conte
 checks, including requested IDs and echoed Selection/economics inputs. These frontend
 checks are not a replacement for backend evidence validation.
 
+## Organization-managed GitHub Pages deployment
+
+The source-controlled workflow [`pages.yml`](../.github/workflows/pages.yml) builds the
+frontend from `gigafood/main` for the project path `/gigafood/`. Its **intended** URL
+is <https://slave-of-skynet.github.io/gigafood/>. Treat the URL as **unverified**
+until a successful deployment and browser inspection have been completed.
+
+Initial setup by a repository admin: **Settings → Pages → Build and deployment →
+Source: GitHub Actions**. Merge the reviewed workflow PR into `main` to publish
+the initial build, or trigger **Publish PackShift on organization Pages** manually
+on `main` from the Actions tab. Future `main` changes under `frontend/` or the
+publishing workflow automatically rebuild and redeploy the static demo.
+
+The Pages workflow runs the frontend presentation/provenance tests, builds with
+`npm --prefix frontend run build -- --base=/gigafood/`, validates the output,
+and deploys only the static `frontend/dist` artifact. Pull requests build and
+test but **do not deploy**. The workflow never calls an LLM provider, deploys
+FastAPI, or submits recorded snapshots as new calculations.
+
+After the deployment, check the published page (not just CI): `RECORDED DEMO`
+provenance, read-only static Selection controls, unavailable Comparison economics,
+non-certifying engineering checklist, image loading, and all EN/RU/RO modes.
+Backend evaluations require the [local demo](#reproduce-the-full-local-demo).
+
+The separately maintained <https://denis100strike.github.io/packshift/> is a
+**legacy preview**. This workflow does not modify that personal website or imply
+that its deployed source is current.
+
 ## Static preview boundary
 
 The [public preview](https://denis100strike.github.io/packshift/) is a separate hosted

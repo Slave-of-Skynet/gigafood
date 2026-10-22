@@ -17,28 +17,28 @@ const PRODUCT_METADATA: Record<
     icon: '🍗',
     portionSize: 'Test size: 1.0–1.4 kg. Actual size needs confirmation.',
     example: 'Pui la rotisor întreg (high hot grease / headspace)',
-    image: '/reference-packaging/pouch-chicken-l.jpg',
+    image: 'reference-packaging/pouch-chicken-l.jpg',
   },
   P2: {
     label: 'Chicken Wings & Thighs',
     icon: '🍖',
     portionSize: 'Portion size needs confirmation.',
     example: 'Aripioare & pulpe rumenite',
-    image: '/reference-packaging/pouch-wings-sm.jpg',
+    image: 'reference-packaging/pouch-wings-sm.jpg',
   },
   P3: {
     label: 'Hot Potatoes & Vegetables',
     icon: '🥔',
     portionSize: 'Portion size needs confirmation.',
     example: 'Cartofi wedges & legume coapte',
-    image: '/reference-packaging/veg-1.jpg',
+    image: 'reference-packaging/veg-1.jpg',
   },
   P4: {
     label: 'Prepared Hot Meat Portions',
     icon: '🥩',
     portionSize: 'Portion size needs confirmation.',
     example: 'Ceafă, șnițel & friptură caldă',
-    image: '/reference-packaging/meat-1.jpg',
+    image: 'reference-packaging/meat-1.jpg',
   },
 };
 
@@ -83,7 +83,7 @@ export function ProductSelector({
                 <span className="product-id-tag">{prod.product_id}</span>
                 {meta.image && (
                   <img
-                    src={meta.image}
+                    src={`${import.meta.env.BASE_URL}${meta.image}`}
                     alt={t(meta.label)}
                     className="product-card-thumb"
                     style={{ width: '42px', height: '42px', objectFit: 'cover', borderRadius: '8px', border: '1px solid #c2b280' }}

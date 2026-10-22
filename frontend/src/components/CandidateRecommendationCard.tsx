@@ -20,9 +20,9 @@ interface CandidateRecommendationCardProps {
 
 // Reference packaging image map for physical concept visualization (Section 14)
 const CONCEPT_REFERENCE_IMAGES: Record<string, string> = {
-  C1: '/reference-packaging/sacma-gaia-futamura.jpg',
-  C2: '/reference-packaging/sacma-blife-gaia.jpg',
-  C6: '/reference-packaging/user-fajita-meat.jpg',
+  C1: 'reference-packaging/sacma-gaia-futamura.jpg',
+  C2: 'reference-packaging/sacma-blife-gaia.jpg',
+  C6: 'reference-packaging/user-fajita-meat.jpg',
 };
 
 export function CandidateRecommendationCard({
@@ -124,7 +124,7 @@ export function CandidateRecommendationCard({
         <div className="candidate-visual-reference">
           <div className="reference-image-container">
             <img
-              src={refImage}
+              src={`${import.meta.env.BASE_URL}${refImage}`}
               alt={t(`Physical packaging reference for ${assessment.candidate_name}`)}
               className="reference-packaging-img"
               loading="lazy"

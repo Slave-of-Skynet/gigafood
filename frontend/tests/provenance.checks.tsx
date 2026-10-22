@@ -10,6 +10,7 @@ import { ComplianceCertificateModal } from '../src/components/ComplianceCertific
 import { UniversalPouchShowcase } from '../src/components/UniversalPouchShowcase';
 import { EuropeanManufacturingDossier } from '../src/components/EuropeanManufacturingDossier';
 import { CandidateRecommendationCard } from '../src/components/CandidateRecommendationCard';
+import { ProductSelector } from '../src/components/ProductSelector';
 import { LanguageProvider, translate } from '../src/i18n';
 import { trustMessages } from '../src/i18n/trustMessages';
 
@@ -165,6 +166,10 @@ test('concept, modal, source states and limitations survive all three languages 
     const assessment = recommendation.evaluations.P1[workflow].assessments.find(a => a.candidate_id === 'C6');
     const card = render(<CandidateRecommendationCard assessment={assessment} sourcesMap={{}} />);
     assert.ok(card.includes(translate('Engineering concepts in the showcase do not qualify this assessed configuration. Use its gates and source-specific limitations below.', language)));
+    assert.match(card, /src="\/packshift\/reference-packaging\/user-fajita-meat\.jpg"/);
+    const selector = render(<ProductSelector products={recommendation.products.products} selectedProductId="P1" onSelectProduct={() => {}} />);
+    assert.match(selector, /src="\/packshift\/reference-packaging\/pouch-chicken-l\.jpg"/);
+    assert.doesNotMatch(selector + card, /src="\/(?:logo\.png|reference-packaging\/)/);
     assert.doesNotMatch(card, /100% Recyclable|100% clarity|100% переработка|100% păstrate|film temperature stays/);
   }
 });
