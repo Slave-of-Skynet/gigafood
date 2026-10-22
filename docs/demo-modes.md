@@ -1,85 +1,96 @@
-# PackShift demo modes and recorded-response disclosure
+# PackShift demo modes and response provenance
 
 [Project](../README.md) · [Engineering case study](portfolio.md)
 
-## Public hosted preview
+## Runtime states
 
-<https://denis100strike.github.io/packshift/> is a **static frontend preview**. A
-22 October 2026 browser inspection returned HTTP 200 for the page, while same-origin
-`/api/v1/` reads returned 404 and recommendation POST returned 405. The interface still
-displayed content. This is evidence of the observed hosted behavior, not a live FastAPI
-backend or an uptime guarantee. Its deployed SHA was not established.
+Every API client result carries `LIVE_API` or `STATIC_SNAPSHOT` separately from the
+unchanged backend DTO. Views display `LOADING` while a request is pending and
+`UNAVAILABLE` when it fails. Visible source text does not depend only on color.
 
-The behavior below was traced at organization-repository baseline
-`b6d8df2064d753a283cccb5b535a5bbe06acd3b0`; future deployments may differ.
+- **LIVE API** means that the configured API returned this response successfully.
+  It does not establish verified source evidence, current supplier capability or
+  physical qualification. Domain `ESTIMATED`, `ASSUMED`, `BLOCKED`, `REVIEW_REQUIRED`
+  and `ELIGIBLE` meanings are unchanged.
+- **RECORDED DEMO** means that a committed example was selected. It is not a new
+  backend calculation. A recorded health `READY` does not establish backend availability.
+- Pending/error operations do not retain an older answer as the current result.
+  Aborted requests cannot select a recording or overwrite a newer selection.
 
-The [client](../frontend/src/api/client.ts) first requests absolute same-origin
-`/api/v1/...` URLs, not an API under the `/packshift/` path. On `*.github.io`, an HTTP
-error or caught fetch failure can return a matching committed snapshot instead. The
-response is not newly evaluated by Python.
+[client.ts](../frontend/src/api/client.ts) owns all recorded lookups; Recommendation
+has no independent, any-host fallback. Successful JSON receives structural/context
+checks, including requested IDs and echoed Selection/economics inputs. These frontend
+checks are not a replacement for backend evidence validation.
 
-| UI/API operation | Static fallback | Input boundary |
+## Static preview boundary
+
+The [public preview](https://denis100strike.github.io/packshift/) is a separate hosted
+static frontend. This source change does not deploy or establish its deployed revision.
+Behavior described here applies when this frontend revision is built and served.
+
+The client requests absolute same-origin `/api/v1/...` URLs. Only on `*.github.io`,
+missing API routes (HTTP 404/405) or a network `TypeError` may select an exact recording.
+HTTP 400/401/403/422/500/503, malformed successful responses and aborts stay errors;
+they never become live successes or silently replay saved answers. On other hosts,
+API failure stays unavailable, including Recommendation.
+
+| Operation | Recorded support | Input boundary |
 | --- | --- | --- |
-| Health and scenario discovery | `staticApiSnapshot.json` | Saved PUBLIC demo state, not current backend availability |
-| Comparison | Saved comparison | Only `cchbc-500ml-rpet-transition` and `deli-pp-to-rpet-transition` |
-| Portfolio discovery/detail | Saved portfolio listing/assessment | `faerch-deli-trays` |
-| Portfolio evaluate POST | Same saved portfolio detail | Annual units, temperature, and microwave overrides are **not recalculated** in the static resolver |
-| Recommendation catalogues | `offlineRecommendationData.json` | Saved products, candidates, configurations, and sources |
-| Recommendation evaluate POST | Lookup by product/workflow | `P1`–`P4` × `POST_COOK_HOT_HOLD_6H` or `LITERAL_OVEN_250C_THEN_HOLD`; other request fields do not drive a new calculation |
-| Comparison economics POST | No static fallback | Requires a working backend; an API failure remains an error |
+| Health and scenario discovery | `staticApiSnapshot.json` | Saved health and scenario list; no live availability claim |
+| Comparison | Two exact IDs | `cchbc-500ml-rpet-transition`, `deli-pp-to-rpet-transition` |
+| Portfolio listing/detail | `faerch-deli-trays` | Read-only default assessment |
+| Portfolio evaluate | Only an empty request may select the default recording | Any supplied override, including volume, temperature, microwave or context, requires the backend; static controls are disabled |
+| Recommendation catalogues | `offlineRecommendationData.json` | Saved products, candidates, configurations and sources |
+| Recommendation evaluate | Eight recorded product/workflow pairs | `P1`–`P4` × `POST_COOK_HOT_HOLD_6H` / `LITERAL_OVEN_250C_THEN_HOLD`; a custom configuration requires the backend |
+| Comparison economics | None | Requires a connected backend; controls disabled for recorded Comparison |
 
-Unknown comparison/portfolio IDs have no matching fallback and remain errors after a
-failed API call. The recommendation lookup returns `null` for an absent saved context;
-it cannot synthesize an assessment. A saved health `READY` means only that a recorded
-payload says READY, not that any backend has just passed its health check.
+Empty, malformed and unmatched IDs never select a default. A context without a
+recording is unavailable. **Reload defaults / check backend** fetches Selection defaults
+again; it does not submit custom overrides. Recommendation **Retry** reloads catalogues
+and the selected product/workflow, preserving valid selections. Selection results describe
+the last submitted scenario; editing draft fields requires another evaluation.
 
-## Fallback also affects local recommendation
+## Recording identity
 
-[RecommendationView](../frontend/src/components/RecommendationView.tsx) initializes
-catalogues and a default assessment from saved data before API completion. It also
-restores saved product/workflow assessments after errors **on any hostname**, independently
-of the client's GitHub Pages rule. Successful API responses can replace that data.
-There is no reliable live/recorded status in this flow; source research labels do not
-disclose transport mode. This documentation adds disclosure in the repository, not in
-the runtime UI.
-
-Outside GitHub Pages, Comparison and Selection normally expose request errors rather
-than using the client's static resolver. A failed recommendation request can still
-appear successful because of the component-level fallback. Do not use continued UI
-rendering as evidence of backend availability or validation of a changed scenario.
-
-## Showcase calculations and presentation caveats
-
-The default [Grill & Oven Pouch showcase](../frontend/src/components/UniversalPouchShowcase.tsx)
-is a concept presentation. Its browser-side slider recomputes illustrative arithmetic
-using a fixed 32 g incumbent and 2.8 g bag / 0 g tray plastic assumptions, with fixed
-price assumptions and a currency conversion factor. These are not measurements of the
-selected canonical candidate, supplier quotes, or actual Profi economics. This calculator
-is separate from the Comparison economics endpoint.
-
-Manual radar scores, thermal/recyclability assertions, and the
-[compliance-passport simulation](../frontend/src/components/ComplianceCertificateModal.tsx)
-must not be treated as laboratory evidence, certification, or implementation approval.
-The modal includes `VERIFIED` / `250°C PASS` presentation text; this documentation review
-did not establish primary qualification documents for those exact claims/configurations.
-The existing Russian portfolio write-up is historical presentation material, not the
-current evidence contract. No additional customer or private research material is
-published by this PR.
-
-## Snapshot identity and provenance
-
-- [staticApiSnapshot.json](../frontend/src/api/staticApiSnapshot.json) contains saved
-  health, two comparisons, and the Faerch portfolio. Health records evidence version
-  `1.0` and PUBLIC / not-Profi disclosure; no snapshot-generation timestamp is provided.
+- [staticApiSnapshot.json](../frontend/src/api/staticApiSnapshot.json) retains its saved
+  PUBLIC health, two comparisons and Faerch assessment. No capture date is supplied.
 - [offlineRecommendationData.json](../frontend/src/api/offlineRecommendationData.json)
-  declares schema `htf03.recommendation.v1`, dataset `HTF-03-canonical-packaging`, research
-  cutoff `2026-09-26`, and source revision
+  retains schema `htf03.recommendation.v1`, dataset `HTF-03-canonical-packaging`, research
+  cutoff `2026-09-26` and source revision
   `a8445f85c4ad8e09addb858a3bac9d15583c0b6e1b9828226475ed33d7310e15`.
-  That metadata identifies recorded research, not capture time or present supplier capability.
-- Local backend startup loads [PUBLIC comparisons](../data/evidence/public-packaging.json),
-  [Selection portfolios](../data/evidence/selection-portfolios.json), and the
-  [HTF-03 research/projection](evidence/htf-03/) through their respective validators.
-  PUBLIC, ESTIMATED, ASSUMED, and USER_PROVIDED values retain their different meanings.
+  The UI preserves these identifiers and explicitly separates research cutoff from
+  recording time. It does not invent a new snapshot timestamp.
+- Backend evidence paths and source numerical values are unchanged. PUBLIC, ESTIMATED,
+  ASSUMED and USER_PROVIDED keep their existing meanings.
+
+## Concept presentation and calculations
+
+The default physical showcase is labelled **ILLUSTRATIVE CONCEPT**. Reference images
+do not establish that the exact proposed PackShift configuration was manufactured,
+tested or approved. The proposed 250°C oven workflow, film cooling, material composition,
+food-contact migration/PFAS, seam fit, leakage, cleaning/reuse and local collection all
+require configuration-specific documentation and testing. No guaranteed recycling rate,
+bin color, absence of migration, manufacturing readiness or commercial benefit is asserted.
+
+Radar values remain the existing manually assigned 0–100 judgments, visibly identified
+as illustrations rather than measured performance or independent ratings. Layer dimensions
+are proposed design assumptions. Supplier names are investigation leads, not qualified
+partners; invented supplier-specific prices, MOQs, dates and guarantees are removed.
+
+The browser slider retains its existing arithmetic and range: 5,000–100,000 monthly
+units; 32 g incumbent, 2.8 g pouch, 0 g single-use plastic in the tray scenario. It
+excludes the reusable lid, coatings, losses and lifecycle effects. Price assumptions
+are $0.15–$0.35 / $0.25–$0.40 with fixed 4.6 RON/USD conversion. These are visibly
+fixed inputs, not current quotes/exchange rates, measured environmental savings or
+the backend Comparison economics calculation.
+
+The historical `ComplianceCertificateModal.tsx` filename now renders **Engineering
+Qualification Checklist — Concept Only**. It contains outstanding measurements/documents,
+future qualification steps and an evidence-boundary link. Fictional lab identities,
+certificate IDs, measured results, signatories, dates and approval/verification artifacts
+are removed. The same non-certifying content is retained in print/PDF, with its explicit
+no-conformity-approval statement. The older Russian portfolio remains historical material,
+not a qualification record.
 
 ## Reproduce the full local demo
 
@@ -101,24 +112,39 @@ frontend reachability, and proxy behavior before `PACKSHIFT DEMO READY`. `-Check
 stops the services after preflight; the normal launcher stays running until Ctrl+C.
 Run the existing verify script separately when the full test/build suite is needed.
 
-The UI starts with the physical-concept showcase. Choose **Find packaging** for
-recommendation, **Browse packaging** for Selection, or **Compare plastic use** for
-Comparison (labels vary by language). With the backend healthy, Selection overrides
-and Comparison economics are actually evaluated by their Python services. Recommendation
-uses product/workflow/configuration evidence; its component fallback caveat still applies.
+The UI initially opens the concept showcase. Choose **Find packaging** for
+Recommendation, **Browse packaging** for Selection, or **Compare plastic use** for
+Comparison (labels vary by language). Backend-backed calculations and six-gate
+recommendation semantics are unchanged. No provider key is needed.
 
-Manual backend startup without overrides uses ILLUSTRATIVE A-core evidence and PUBLIC
-Selection, unlike the presentation launcher. A-core health does not establish Selection
-or recommendation readiness. Invalid backend packs fail their affected endpoints rather
-than silently replacing the evidence; the frontend fallback can mask that failure.
+Manual backend startup without evidence overrides uses ILLUSTRATIVE A-core evidence
+and PUBLIC Selection, unlike the presentation launcher. A-core health alone does not
+establish readiness of the other endpoints. Invalid evidence fails the affected endpoint;
+HTTP 500/503 is not hidden by a saved frontend response.
 
-## Proposed product follow-ups — not implemented here
+## Verification
 
-1. Display live, loading, recorded, and unavailable modes with snapshot date/version;
-   do not mask server validation errors as successful recommendations.
-2. Disable unsupported static scenario overrides or disclose that they replay defaults.
-3. Mark illustrative slider/radar values at their point of use and bind every physical
-   qualification claim to configuration-specific primary evidence; make the passport
-   simulation unmistakably non-certifying.
+`scripts/verify.sh` / `scripts/verify.ps1` run backend tests, `npm test`, production build
+and whitespace checks. `npm test` uses the existing Node/esbuild toolchain for presentation
+and provenance/static-boundary regressions; it adds no test framework.
 
-These require a separately authorized runtime/UI change. This PR changes documentation only.
+Optional browser checks use an already available Playwright browser library. After the
+production build and local PUBLIC demo startup:
+
+```powershell
+$env:PACKSHIFT_PLAYWRIGHT_MODULE = '<path to installed @playwright/test>'
+$env:PACKSHIFT_BROWSER_OUTPUT = '<external output directory>'
+node frontend/tests/browser.mjs
+```
+
+The browser harness serves the local production assets on synthetic `*.github.io` and
+localhost origins through request routing. Live routes proxy the actual local PUBLIC API;
+failures/delays are controlled. It does not deploy or verify the currently hosted preview.
+It covers source labels, static controls, real overrides/economics, outages/recovery,
+abort/races, localization, checklist focus/printing and mobile layout. Browser artifacts
+default to `.browser-results/` outside the frontend; use an external output directory
+when keeping the worktree clean. CI runs the deterministic Node checks and full demo
+preflight; browser verification is a separate optional run.
+
+Physical qualification, actual supplier terms and production readiness remain outside
+the conclusions of software tests.

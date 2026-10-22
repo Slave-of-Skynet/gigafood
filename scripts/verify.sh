@@ -4,5 +4,5 @@ cd "$(dirname "$0")/.."
 if [ ! -x .venv/bin/python ]; then python3 -m venv .venv; fi
 .venv/bin/python -m pip install -e './backend[test]'
 .venv/bin/python -m pytest backend/tests
-(cd frontend && npm ci && npm run build)
+(cd frontend && npm ci && npm test && npm run build)
 git diff --check

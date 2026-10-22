@@ -30,13 +30,13 @@ flowchart LR
     Inputs[Hypothetical user inputs] --> Services
     Services --> API[FastAPI responses]
     API --> UI[React interface]
-    Saved[Committed response snapshots] -.->|Preview or failure fallback| UI
+    Saved[Committed response snapshots] -.->|Labelled static preview| UI
 ```
 
 The [API composition](../backend/app/main.py), [evidence loader](../backend/app/runtime/context.py),
 and [client](../frontend/src/api/client.ts) expose these boundaries. A backend failure
-does not create replacement evidence, but frontend fallback can still make a saved
-result appear successful. Demo disclosure is therefore part of interpreting the output.
+does not create replacement evidence. The frontend labels exact static recordings and
+exposes server errors rather than presenting saved results as live responses.
 
 ## Environmental calculation boundaries
 
@@ -106,15 +106,20 @@ cases. This corrects the older README statement that no cost calculation existed
 
 ## Demo modes, testing, and collaboration
 
-The public GitHub Pages URL is a static preview using committed responses after API
-failure. Selection overrides there replay the default portfolio assessment; recommendation
-uses saved product/workflow combinations. The showcase's browser-side arithmetic is
-separate from the backend evaluator. [Demo modes](demo-modes.md) lists supported inputs,
-snapshot identities, limitations, and a reproducible local launcher.
+The GitHub Pages preview can show exact committed responses with visible **RECORDED
+DEMO** provenance. Selection defaults are read-only there; overrides and Comparison
+economics require the backend. Recommendation no longer restores saved assessments
+after local API failures. Successful backend responses show **LIVE API**, separately
+from their evidence/qualification state. The concept calculator and manual radar scores
+identify their fixed assumptions at the point of use. [Demo modes](demo-modes.md)
+lists exact supported inputs, recording identity and the reproducible local launcher.
 
-[CI](../.github/workflows/ci.yml) runs backend tests, TypeScript/Vite build, and the
-HTTP demo preflight. A separate [workflow](../.github/workflows/htf-03-validation.yml)
-validates HTF-03 evidence changes. Green software checks do not certify the packaging.
+[CI](../.github/workflows/ci.yml) runs backend tests, existing presentation and new
+provenance regressions, TypeScript/Vite build, and HTTP demo preflight. Optional
+[browser checks](../frontend/tests/browser.mjs) cover production assets with controlled
+static/local origins and the actual local PUBLIC API. A separate
+[workflow](../.github/workflows/htf-03-validation.yml) validates HTF-03 evidence changes.
+Green software checks do not certify the packaging or establish deployment.
 
 Vladimir Barbalat's **Team Lead** role is owner-supplied. Merged history supports his
 integration reconciliation [#4](https://github.com/Slave-of-Skynet/gigafood/pull/4),
@@ -127,9 +132,9 @@ Integration does not imply sole authorship.
 
 ## Limitations
 
-No customer adoption, actual Profi savings, competition award, physical certification,
-or production readiness is established here. Recommendation fallback lacks a clear
-live-versus-recorded indicator, and the showcase/certificate presentation includes claims
-that cannot serve as qualification evidence. Those are documented follow-ups, not fixes
-in this PR. Real deployment would require configuration-specific supplier evidence,
-physical testing, and an explicit human decision beyond this prototype.
+No customer adoption, actual Profi savings, competition award, physical certification
+or production readiness is established here. The concept showcase now qualifies thermal,
+material, collection, environmental and commercial assumptions. The printable engineering
+checklist contains outstanding verification requirements rather than fictional lab results
+or certificates. Real implementation still requires configuration-specific supplier
+evidence, physical testing and an explicit human decision beyond this prototype.

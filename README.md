@@ -11,11 +11,12 @@ runtime uses deterministic rules, not LLM inference; participation does not impl
 
 **[Public static preview](https://denis100strike.github.io/packshift/)** · [Run the full local demo](docs/demo-modes.md#reproduce-the-full-local-demo) · [Engineering case study](docs/portfolio.md) · [Demo modes and limitations](docs/demo-modes.md)
 
-The GitHub Pages preview can display **committed responses after API failure**. It does
-not establish a live backend: Selection overrides replay saved defaults, recommendation
-uses saved contexts, and Comparison economics needs a working API. The separate showcase
-slider performs illustrative browser-side arithmetic. Thermal/certification-style UI
-claims are concept/simulation material, not proof of physical qualification.
+The GitHub Pages preview labels saved responses **RECORDED DEMO**. Selection defaults
+remain read-only there; custom overrides and Comparison economics require the backend.
+Recommendation uses only exact saved product/workflow contexts on the static host;
+local API failures remain unavailable. Successful responses show **LIVE API**, which
+does not imply verified evidence. The separate concept slider and radar visibly identify
+their assumptions, and the printable qualification checklist establishes no conformity approval.
 
 ## Engineering highlights
 
@@ -241,7 +242,7 @@ For a separate manual development check with illustrative A-core, switch to **Co
    `REVIEW_REQUIRED`, not `BLOCKED` (missing numerical evidence does not fabricate
    an operational incompatibility).
 3. Inspect both packages' values, provenance, and `NOT_VERIFIED` suitability notice.
-4. In local **Comparison** or **Selection**, stop the backend and reload: service error and Retry. Restart it and retry. Recommendation has an additional saved-response fallback; see [demo modes](docs/demo-modes.md#fallback-also-affects-local-recommendation).
+4. In local **Comparison** or **Selection**, stop the backend and reload: service error and Retry. Restart it and retry. Recommendation also exposes local API failures; only the static host can select explicitly labelled recordings. See [demo modes](docs/demo-modes.md#static-preview-boundary).
 5. Start backend with an absent evidence path: health and calculation routes return 503.
 
 For either pack, `CALCULATED ≠ VERIFIED`; public evidence is not provider data.
@@ -252,5 +253,5 @@ The [ARC-01 handoff](docs/handoff.md) records historical results, not current re
 ## Further reading
 
 - [Engineering case study](docs/portfolio.md): source-linked architecture, evidence, decisions and collaboration.
-- [Demo modes](docs/demo-modes.md): static responses, local evaluation, provenance and proposed UI follow-ups.
+- [Demo modes](docs/demo-modes.md): recorded responses, local evaluation, provenance and concept qualification boundaries.
 - [Historical Russian portfolio write-up](О_ПРОЕКТЕ_PORTFOLIO.md): original presentation material; its hosting and physical-performance claims are qualified by the current demo-mode disclosure.
